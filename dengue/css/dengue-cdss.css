@@ -1,0 +1,2340 @@
+/**
+ * CliniPortal CDSS — Dengue Fluid & Shock Management Stylesheet v2.0
+ * Path: src/content/docspace/public/cdss/dengue/css/dengue-cdss.css
+ * Standard: Clean Clinical, Ultra-Responsive (Desktop / Tablet / Mobile), Icon-First, 100% Dark Mode
+ */
+
+:root {
+  --cdss-primary: #0284c7;
+  --cdss-primary-hover: #0369a1;
+  --cdss-primary-light: rgba(2, 132, 199, 0.1);
+  --cdss-primary-glow: rgba(2, 132, 199, 0.25);
+
+  --cdss-danger: #ef4444;
+  --cdss-danger-hover: #dc2626;
+  --cdss-danger-light: rgba(239, 68, 68, 0.1);
+
+  --cdss-warning: #f59e0b;
+  --cdss-warning-hover: #d97706;
+  --cdss-warning-light: rgba(245, 158, 11, 0.1);
+
+  --cdss-success: #10b981;
+  --cdss-success-hover: #059669;
+  --cdss-success-light: rgba(16, 185, 129, 0.1);
+
+  --cdss-info: #06b6d4;
+  --cdss-info-light: rgba(6, 182, 212, 0.1);
+
+  --cdss-purple: #8b5cf6;
+  --cdss-purple-light: rgba(139, 92, 246, 0.1);
+
+  --cdss-surface: #ffffff;
+  --cdss-surface-alt: #f8fafc;
+  --cdss-surface-elevated: #ffffff;
+  --cdss-bg: #f1f5f9;
+  --cdss-border: #e2e8f0;
+  --cdss-border-subtle: #edf2f7;
+  --cdss-border-hover: #cbd5e1;
+
+  --cdss-text: #0f172a;
+  --cdss-text-muted: #64748b;
+  --cdss-text-subtle: #94a3b8;
+
+  --cdss-radius: 12px;
+  --cdss-radius-sm: 8px;
+  --cdss-radius-lg: 16px;
+  --cdss-radius-full: 9999px;
+
+  --cdss-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --cdss-shadow-sm: 0 2px 6px -1px rgba(0, 0, 0, 0.06), 0 1px 4px -1px rgba(0, 0, 0, 0.04);
+  --cdss-shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.08);
+  --cdss-shadow-lg: 0 10px 25px -4px rgba(0, 0, 0, 0.1), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+
+  --cdss-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --cdss-font-display: 'Plus Jakarta Sans', var(--cdss-font-sans);
+  --cdss-font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  
+  --cdss-touch-target: 44px;
+}
+
+[data-theme="dark"] {
+  --cdss-primary: #38bdf8;
+  --cdss-primary-hover: #0ea5e9;
+  --cdss-primary-light: rgba(56, 189, 248, 0.14);
+  --cdss-primary-glow: rgba(56, 189, 248, 0.3);
+
+  --cdss-danger: #f87171;
+  --cdss-danger-hover: #ef4444;
+  --cdss-danger-light: rgba(248, 113, 113, 0.15);
+
+  --cdss-warning: #fbbf24;
+  --cdss-warning-hover: #f59e0b;
+  --cdss-warning-light: rgba(251, 191, 36, 0.15);
+
+  --cdss-success: #34d399;
+  --cdss-success-hover: #10b981;
+  --cdss-success-light: rgba(52, 211, 153, 0.15);
+
+  --cdss-info: #38bdf8;
+  --cdss-info-light: rgba(56, 189, 248, 0.15);
+
+  --cdss-purple: #a78bfa;
+  --cdss-purple-light: rgba(167, 139, 250, 0.15);
+
+  --cdss-surface: #1e293b;
+  --cdss-surface-alt: #162032;
+  --cdss-surface-elevated: #24334a;
+  --cdss-bg: #0b1120;
+  --cdss-border: #334155;
+  --cdss-border-subtle: #293548;
+  --cdss-border-hover: #475569;
+
+  --cdss-text: #f8fafc;
+  --cdss-text-muted: #94a3b8;
+  --cdss-text-subtle: #64748b;
+
+  --cdss-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --cdss-shadow-sm: 0 2px 6px -1px rgba(0, 0, 0, 0.3);
+  --cdss-shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+  --cdss-shadow-lg: 0 12px 30px -4px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   BASE CONTAINER
+   ============================================================ */
+.dengue-cdss-app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 5rem 1.25rem;
+  font-family: var(--cdss-font-sans);
+  color: var(--cdss-text);
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   TOP COMPACT CONTROL BAR (Clinical Toolbar)
+   ============================================================ */
+.cdss-top-bar {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  box-shadow: var(--cdss-shadow-sm);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.cdss-bar-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cdss-icon-badge {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: var(--cdss-radius-sm);
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+}
+
+.cdss-brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.cdss-brand-title {
+  font-family: var(--cdss-font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cdss-brand-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--cdss-radius-full);
+  background: var(--cdss-danger-light);
+  color: var(--cdss-danger);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  letter-spacing: 0.02em;
+}
+
+.cdss-brand-subtitle {
+  font-size: 0.78rem;
+  color: var(--cdss-text-muted);
+  margin-top: 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cdss-brand-subtitle span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Quick Action Toolbar Buttons (Icon-First) */
+.cdss-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cdss-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 38px;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--cdss-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--cdss-border);
+  background: var(--cdss-surface-alt);
+  color: var(--cdss-text);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  white-space: nowrap;
+}
+
+.cdss-action-btn:hover {
+  background: var(--cdss-surface-elevated);
+  border-color: var(--cdss-primary);
+  color: var(--cdss-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--cdss-shadow-xs);
+}
+
+.cdss-action-btn:active {
+  transform: translateY(0);
+}
+
+.cdss-action-btn--primary {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+}
+
+.cdss-action-btn--primary:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+}
+
+.cdss-action-btn--icon-only {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  min-width: 38px;
+  border-radius: var(--cdss-radius-sm);
+}
+
+.cdss-print-vaso-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cdss-text);
+  padding: 0 0.65rem;
+  height: 38px;
+  border-radius: var(--cdss-radius-sm);
+  background: var(--cdss-surface-alt);
+  border: 1px solid var(--cdss-border);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+
+.cdss-print-vaso-checkbox:hover {
+  border-color: var(--cdss-primary);
+  background: var(--cdss-surface);
+}
+
+.cdss-print-vaso-checkbox input {
+  accent-color: var(--cdss-primary);
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
+/* ============================================================
+   PRESET CASES BAR (5 Clinical Scenarios)
+   ============================================================ */
+.cdss-cases-bar {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--cdss-shadow-xs);
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cdss-cases-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cdss-text-muted);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cdss-cases-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.cdss-case-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--cdss-radius-full);
+  border: 1px solid var(--cdss-border);
+  background: var(--cdss-surface-alt);
+  color: var(--cdss-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.cdss-case-pill:hover {
+  background: var(--cdss-surface-elevated);
+  border-color: var(--cdss-primary);
+  color: var(--cdss-primary);
+  transform: translateY(-1px);
+}
+
+.cdss-case-pill.active {
+  background: var(--cdss-primary-light);
+  border-color: var(--cdss-primary);
+  color: var(--cdss-primary);
+  font-weight: 700;
+  box-shadow: 0 0 0 1px var(--cdss-primary);
+}
+
+.cdss-case-pill--danger.active {
+  background: var(--cdss-danger-light);
+  border-color: var(--cdss-danger);
+  color: var(--cdss-danger);
+  box-shadow: 0 0 0 1px var(--cdss-danger);
+}
+
+.cdss-case-pill-icon {
+  font-size: 0.95rem;
+}
+
+.cdss-case-pill-tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--cdss-text-muted);
+  background: var(--cdss-surface);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--cdss-radius-full);
+  border: 1px solid var(--cdss-border);
+}
+
+/* ============================================================
+   MAIN GRID (Hero Input Bar + 2-Column Responsive Layout)
+   ============================================================ */
+.cdss-main-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* ============================================================
+   LEFT COLUMN: PATIENT FORM & WEIGHT ANALYZER
+   ============================================================ */
+.cdss-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cdss-card {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 1.15rem;
+  box-shadow: var(--cdss-shadow-sm);
+  transition: border-color 0.2s ease;
+}
+
+.cdss-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.95rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--cdss-border-subtle);
+}
+
+.cdss-card-title {
+  font-family: var(--cdss-font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cdss-card-title i {
+  color: var(--cdss-primary);
+}
+
+/* Form Groups & Inputs */
+.cdss-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.cdss-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.cdss-form-group:last-child {
+  margin-bottom: 0;
+}
+
+.cdss-form-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cdss-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cdss-input,
+.cdss-select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--cdss-radius-sm);
+  border: 1px solid var(--cdss-border);
+  background: var(--cdss-surface-alt);
+  color: var(--cdss-text);
+  font-size: 0.88rem;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  min-height: 40px;
+}
+
+.cdss-input:focus,
+.cdss-select:focus {
+  outline: none;
+  border-color: var(--cdss-primary);
+  background: var(--cdss-surface);
+  box-shadow: 0 0 0 3px var(--cdss-primary-light);
+}
+
+.cdss-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cdss-input-group .cdss-input {
+  padding-right: 2.75rem;
+}
+
+.cdss-input-suffix {
+  position: absolute;
+  right: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cdss-text-muted);
+  pointer-events: none;
+}
+
+/* Segmented Control for Gender */
+.cdss-segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--cdss-surface-alt);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 3px;
+  gap: 2px;
+}
+
+.cdss-segmented-btn {
+  border: none;
+  background: transparent;
+  color: var(--cdss-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+  min-height: 34px;
+}
+
+.cdss-segmented-btn.active {
+  background: var(--cdss-surface);
+  color: var(--cdss-primary);
+  font-weight: 700;
+  box-shadow: var(--cdss-shadow-xs);
+}
+
+/* CDC 2014 Weight Analysis Box */
+.cdss-weight-box {
+  background: var(--cdss-surface-alt);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+.cdss-weight-tags-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cdss-weight-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--cdss-radius-full);
+}
+
+.cdss-weight-status-badge--obese {
+  background: var(--cdss-danger-light);
+  color: var(--cdss-danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.cdss-weight-status-badge--normal {
+  background: var(--cdss-success-light);
+  color: var(--cdss-success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.cdss-weight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.cdss-wcell {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.55rem 0.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cdss-wcell--highlight {
+  background: var(--cdss-primary-light);
+  border-color: var(--cdss-primary);
+  box-shadow: 0 0 0 1px var(--cdss-primary);
+}
+
+.cdss-wcell-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--cdss-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+
+.cdss-wcell-val {
+  font-family: var(--cdss-font-mono);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  line-height: 1.2;
+}
+
+.cdss-wcell--highlight .cdss-wcell-val {
+  color: var(--cdss-primary);
+}
+
+.cdss-weight-note {
+  font-size: 0.72rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.45;
+  background: var(--cdss-surface);
+  padding: 0.5rem 0.65rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--cdss-primary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.cdss-weight-note i {
+  color: var(--cdss-primary);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   RIGHT COLUMN: CDSS OUTPUT, SCHEDULE & PROTOCOLS
+   ============================================================ */
+.cdss-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Alerts Banner */
+.cdss-alerts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cdss-alert-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--cdss-radius-sm);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cdss-alert-box--danger {
+  background: var(--cdss-danger-light);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--cdss-text);
+}
+
+.cdss-alert-box--warning {
+  background: var(--cdss-warning-light);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--cdss-text);
+}
+
+.cdss-alert-box--info {
+  background: var(--cdss-info-light);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: var(--cdss-text);
+}
+
+.cdss-alert-box i {
+  font-size: 1.1rem;
+  margin-top: 1px;
+}
+
+.cdss-alert-box--danger i { color: var(--cdss-danger); }
+.cdss-alert-box--warning i { color: var(--cdss-warning); }
+.cdss-alert-box--info i { color: var(--cdss-info); }
+
+.cdss-alert-body strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+/* KPI Bento Cards */
+.cdss-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.cdss-kpi-card {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 0.95rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  box-shadow: var(--cdss-shadow-xs);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cdss-kpi-card:hover {
+  border-color: var(--cdss-border-hover);
+  transform: translateY(-1px);
+}
+
+.cdss-kpi-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: var(--cdss-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.cdss-kpi-icon--blue {
+  background: var(--cdss-primary-light);
+  color: var(--cdss-primary);
+}
+
+.cdss-kpi-icon--purple {
+  background: var(--cdss-purple-light);
+  color: var(--cdss-purple);
+}
+
+.cdss-kpi-icon--teal {
+  background: var(--cdss-info-light);
+  color: var(--cdss-info);
+}
+
+.cdss-kpi-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cdss-kpi-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--cdss-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.cdss-kpi-value {
+  font-family: var(--cdss-font-mono);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  line-height: 1.2;
+}
+
+.cdss-kpi-value small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cdss-text-muted);
+}
+
+.cdss-kpi-sub {
+  font-size: 0.72rem;
+  color: var(--cdss-text-subtle);
+  margin-top: 0.15rem;
+}
+
+/* ============================================================
+   FLUID STAGE TIMELINE VISUALIZATION
+   ============================================================ */
+.cdss-timeline-card {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--cdss-shadow-xs);
+}
+
+.cdss-timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.cdss-timeline-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.cdss-timeline-title i {
+  color: var(--cdss-primary);
+}
+
+.cdss-timeline-track {
+  display: flex;
+  width: 100%;
+  height: 38px;
+  background: var(--cdss-surface-alt);
+  border-radius: var(--cdss-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--cdss-border);
+  position: relative;
+}
+
+.cdss-timeline-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 0.5rem;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  position: relative;
+  transition: filter 0.2s ease;
+  cursor: default;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cdss-timeline-segment:hover {
+  filter: brightness(1.1);
+}
+
+.cdss-timeline-segment small {
+  font-size: 0.65rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.cdss-seg-1 { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.cdss-seg-2 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.cdss-seg-3 { background: linear-gradient(135deg, #0284c7, #2563eb); }
+.cdss-seg-4 { background: linear-gradient(135deg, #10b981, #059669); }
+.cdss-seg-5 { background: linear-gradient(135deg, #64748b, #475569); }
+
+.cdss-timeline-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  font-family: var(--cdss-font-mono);
+  font-size: 0.72rem;
+  color: var(--cdss-text-muted);
+}
+
+/* ============================================================
+   BẢNG ĐIỀU PHỐI CỌC DỊCH 4 CỘT (DESKTOP / TABLET)
+   ============================================================ */
+.cdss-table-card {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  box-shadow: var(--cdss-shadow-sm);
+  overflow: hidden;
+}
+
+.cdss-table-header-wrap {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--cdss-border);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cdss-table-title-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.cdss-table-title {
+  font-family: var(--cdss-font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cdss-table-desc {
+  font-size: 0.78rem;
+  color: var(--cdss-text-muted);
+  margin: 0;
+}
+
+.cdss-table-scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.cdss-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  text-align: left;
+}
+
+.cdss-table th {
+  background: var(--cdss-surface-alt);
+  color: var(--cdss-text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--cdss-border);
+  white-space: nowrap;
+}
+
+.cdss-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--cdss-border);
+  vertical-align: top;
+}
+
+.cdss-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cdss-table tr:hover td {
+  background: var(--cdss-surface-alt);
+}
+
+/* Cột 1: Mốc Giờ & Cữ */
+.cdss-step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: var(--cdss-primary);
+  color: #ffffff;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--cdss-radius-full);
+  margin-bottom: 0.35rem;
+}
+
+.cdss-time-window {
+  font-family: var(--cdss-font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cdss-text);
+  margin-bottom: 0.35rem;
+}
+
+.cdss-duration-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--cdss-text-muted);
+}
+
+.cdss-duration-select {
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid var(--cdss-border);
+  background: var(--cdss-surface);
+  color: var(--cdss-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cdss-stage-title {
+  font-size: 0.75rem;
+  color: var(--cdss-text-muted);
+  margin-top: 0.35rem;
+}
+
+/* Cột 2: Tốc Độ & Thể Tích */
+.cdss-rate-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.cdss-rate-number {
+  font-family: var(--cdss-font-mono);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--cdss-primary);
+}
+
+.cdss-rate-unit {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cdss-text-muted);
+}
+
+.cdss-drops-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--cdss-surface-alt);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--cdss-radius-sm);
+  border: 1px solid var(--cdss-border);
+  font-size: 0.8rem;
+  margin: 0.35rem 0;
+  color: var(--cdss-text);
+}
+
+.cdss-volume-calc {
+  font-size: 0.78rem;
+  color: var(--cdss-text-muted);
+}
+
+.cdss-volume-calc strong {
+  color: var(--cdss-text);
+}
+
+/* Cột 3: Dịch Có Sẵn & Treo Thêm */
+.cdss-carry-over {
+  font-size: 0.78rem;
+  color: var(--cdss-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.cdss-hang-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--cdss-radius-sm);
+  background: var(--cdss-surface-alt);
+  border: 1px solid var(--cdss-border);
+  color: var(--cdss-text-muted);
+}
+
+.cdss-hang-badge--active {
+  background: var(--cdss-success-light);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: var(--cdss-success);
+}
+
+/* Cột 4: Tổng Cọc & Giám Sát */
+.cdss-pole-metric {
+  font-size: 0.82rem;
+  margin-bottom: 0.4rem;
+}
+
+.cdss-pole-metric strong {
+  font-family: var(--cdss-font-mono);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+}
+
+.cdss-hct-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  background: var(--cdss-danger-light);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--cdss-danger);
+  margin-bottom: 0.35rem;
+}
+
+.cdss-monitor-tip {
+  font-size: 0.72rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   RESPONSIVE FLUID CARD STACK (Mobile Fallback)
+   ============================================================ */
+.cdss-fluid-cards-stack {
+  display: none;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0.85rem;
+}
+
+.cdss-fluid-mobile-card {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.95rem;
+  box-shadow: var(--cdss-shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cdss-fcard-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--cdss-border-subtle);
+  padding-bottom: 0.5rem;
+}
+
+.cdss-fcard-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cdss-fcard-time {
+  font-family: var(--cdss-font-mono);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+}
+
+.cdss-fcard-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.cdss-fcard-metric {
+  background: var(--cdss-surface-alt);
+  border: 1px solid var(--cdss-border-subtle);
+  border-radius: 6px;
+  padding: 0.5rem 0.65rem;
+}
+
+.cdss-fcard-metric-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--cdss-text-muted);
+  text-transform: uppercase;
+}
+
+.cdss-fcard-metric-val {
+  font-family: var(--cdss-font-mono);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  line-height: 1.2;
+}
+
+/* ============================================================
+   COLLAPSIBLE ACCORDION PANELS (Vasopressors & Nursing)
+   ============================================================ */
+.cdss-accordion {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  overflow: hidden;
+  box-shadow: var(--cdss-shadow-sm);
+}
+
+.cdss-accordion-trigger {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem 1.25rem;
+  background: var(--cdss-surface);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease;
+  user-select: none;
+}
+
+.cdss-accordion-trigger:hover {
+  background: var(--cdss-surface-alt);
+}
+
+.cdss-accordion-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cdss-accordion-icon {
+  font-size: 1.15rem;
+  color: var(--cdss-primary);
+}
+
+.cdss-accordion-title {
+  font-family: var(--cdss-font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--cdss-text);
+}
+
+.cdss-accordion-subtitle {
+  font-size: 0.76rem;
+  color: var(--cdss-text-muted);
+  margin-top: 0.1rem;
+}
+
+.cdss-accordion-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cdss-accordion-chevron {
+  font-size: 0.85rem;
+  color: var(--cdss-text-muted);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cdss-accordion.open .cdss-accordion-chevron {
+  transform: rotate(180deg);
+}
+
+.cdss-accordion-content {
+  display: none;
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--cdss-border-subtle);
+  animation: slideDown 0.2s ease;
+}
+
+.cdss-accordion.open .cdss-accordion-content {
+  display: block;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Vasopressor Drug Cards Grid */
+.cdss-vaso-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cdss-vaso-card {
+  background: var(--cdss-surface-alt);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cdss-vaso-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cdss-drug-name {
+  font-family: var(--cdss-font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.cdss-drug-name--primary { color: var(--cdss-primary); }
+.cdss-drug-name--danger { color: var(--cdss-danger); }
+
+.cdss-drug-indication {
+  font-size: 0.74rem;
+  color: var(--cdss-text-muted);
+}
+
+.cdss-recipe-box {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.cdss-recipe-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cdss-recipe-key {
+  color: var(--cdss-text-muted);
+}
+
+.cdss-recipe-highlight {
+  border-top: 1px dashed var(--cdss-border);
+  padding-top: 0.4rem;
+  font-weight: 700;
+}
+
+.cdss-recipe-highlight.text-primary { color: var(--cdss-primary); }
+.cdss-recipe-highlight.text-danger { color: var(--cdss-danger); }
+
+.cdss-dosing-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: 6px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8rem;
+}
+
+.cdss-vaso-warning {
+  font-size: 0.72rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.4;
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.cdss-vaso-warning i {
+  color: var(--cdss-warning);
+  margin-top: 2px;
+}
+
+/* Nursing Checklist */
+.cdss-nursing-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.cdss-nursing-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--cdss-text);
+  padding: 0.5rem 0.75rem;
+  background: var(--cdss-surface-alt);
+  border-radius: 6px;
+  border: 1px solid var(--cdss-border-subtle);
+}
+
+.cdss-nursing-item i {
+  color: var(--cdss-success);
+  margin-top: 3px;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   STICKY MOBILE FOOTER BAR
+   ============================================================ */
+.cdss-mobile-sticky-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 990;
+  background: var(--cdss-surface);
+  border-top: 1px solid var(--cdss-border);
+  padding: 0.65rem 1rem;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.cdss-mobile-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cdss-mbar-summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.cdss-mbar-main {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cdss-mbar-sub {
+  font-size: 0.72rem;
+  color: var(--cdss-text-muted);
+}
+
+.cdss-mbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* ============================================================
+   DRAWER / MODAL FOR MOBILE PARAMETERS
+   ============================================================ */
+.cdss-drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cdss-drawer-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+.cdss-mobile-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 85vh;
+  background: var(--cdss-surface);
+  border-top-left-radius: var(--cdss-radius-lg);
+  border-top-right-radius: var(--cdss-radius-lg);
+  border-top: 1px solid var(--cdss-border);
+  padding: 1.25rem;
+  z-index: 1001;
+  box-shadow: var(--cdss-shadow-lg);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.cdss-mobile-drawer.active {
+  transform: translateY(0);
+}
+
+.cdss-drawer-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--cdss-border-hover);
+  border-radius: 2px;
+  margin: 0 auto 1rem auto;
+}
+
+.cdss-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.cdss-drawer-title {
+  font-family: var(--cdss-font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--cdss-text);
+}
+
+/* Toast Notifications */
+.cdss-toast {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  background: var(--cdss-surface-elevated);
+  color: var(--cdss-text);
+  border: 1px solid var(--cdss-border);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--cdss-radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--cdss-shadow-lg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cdss-toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cdss-toast i {
+  color: var(--cdss-primary);
+  font-size: 1.1rem;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS (Tablet & Mobile)
+   ============================================================ */
+
+/* TABLET (768px to 1024px) */
+@media (max-width: 1024px) {
+  .cdss-main-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .cdss-kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cdss-top-bar {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* MOBILE (< 768px) */
+@media (max-width: 768px) {
+  .dengue-cdss-app {
+    padding: 0.75rem 0.75rem 6.5rem 0.75rem;
+  }
+
+  .cdss-top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .cdss-toolbar-actions {
+    justify-content: stretch;
+  }
+
+  .cdss-action-btn {
+    flex: 1;
+    min-height: 42px; /* Touch target */
+    font-size: 0.78rem;
+    padding: 0.45rem 0.5rem;
+  }
+
+  .cdss-cases-bar {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .cdss-kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .cdss-kpi-card {
+    padding: 0.75rem 0.85rem;
+  }
+
+  /* Hide Table, Show Fluid Cards on Mobile */
+  .cdss-table-scroll {
+    display: none;
+  }
+
+  .cdss-fluid-cards-stack {
+    display: flex;
+  }
+
+  .cdss-vaso-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cdss-mobile-sticky-bar {
+    display: block;
+  }
+
+  .cdss-toast {
+    bottom: 4.5rem;
+    left: 1rem;
+    right: 1rem;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   NON-RESPONSE & REFRACTORY SHOCK SUITE STYLES (QĐ 2760/BYT)
+   ============================================================ */
+.cdss-refractory-card {
+  background: var(--cdss-surface);
+  border: 1.5px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  box-shadow: var(--cdss-shadow-sm);
+  margin-top: 1.25rem;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.cdss-refractory-card.active-danger {
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2), var(--cdss-shadow-md);
+}
+
+.cdss-refractory-header {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(245, 158, 11, 0.06) 50%, rgba(2, 132, 199, 0.05) 100%);
+  border-bottom: 1px solid var(--cdss-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cdss-refractory-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.cdss-refractory-title i {
+  color: var(--cdss-danger);
+}
+
+.cdss-refractory-nav {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  background: var(--cdss-surface-alt);
+  border-bottom: 1px solid var(--cdss-border);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.cdss-ref-tab-btn {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--cdss-radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--cdss-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s ease;
+}
+
+.cdss-ref-tab-btn:hover {
+  background: var(--cdss-surface);
+  color: var(--cdss-primary);
+  border-color: var(--cdss-border);
+}
+
+.cdss-ref-tab-btn.active {
+  background: var(--cdss-surface);
+  color: var(--cdss-danger);
+  border-color: var(--cdss-danger);
+  box-shadow: var(--cdss-shadow-xs);
+}
+
+.cdss-refractory-body {
+  padding: 1.25rem;
+}
+
+.cdss-callout-decision {
+  border-radius: var(--cdss-radius-sm);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+  border-left: 4px solid var(--cdss-danger);
+  background: rgba(239, 68, 68, 0.05);
+  border-top: 1px solid rgba(239, 68, 68, 0.15);
+  border-right: 1px solid rgba(239, 68, 68, 0.15);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.cdss-callout-decision.callout-warning {
+  border-left-color: var(--cdss-warning);
+  background: rgba(245, 158, 11, 0.05);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.cdss-callout-decision.callout-info {
+  border-left-color: var(--cdss-primary);
+  background: rgba(2, 132, 199, 0.05);
+  border-color: rgba(2, 132, 199, 0.2);
+}
+
+.cdss-decision-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cdss-decision-reasoning {
+  font-size: 0.82rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.45;
+  margin-bottom: 0.6rem;
+}
+
+.cdss-decision-action {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cdss-danger);
+  background: var(--cdss-surface);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cdss-tab-pane {
+  display: none;
+  animation: cdssFadeIn 0.2s ease-in-out;
+}
+
+.cdss-tab-pane.active {
+  display: block;
+}
+
+@keyframes cdssFadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Blood products & Medication Dosing Table */
+.cdss-ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin: 0.75rem 0;
+  background: var(--cdss-surface);
+  border-radius: var(--cdss-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--cdss-border);
+}
+
+.cdss-ref-table th {
+  background: var(--cdss-surface-alt);
+  padding: 0.6rem 0.85rem;
+  font-weight: 700;
+  color: var(--cdss-text);
+  text-align: left;
+  border-bottom: 1px solid var(--cdss-border);
+}
+
+.cdss-ref-table td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--cdss-border-subtle);
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.cdss-ref-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cdss-dose-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  font-weight: 800;
+  font-family: var(--cdss-font-mono);
+  border-radius: 6px;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--cdss-primary);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.cdss-dose-badge--danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--cdss-danger);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+/* Albumin Calculation Box */
+.cdss-albumin-calc-card {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(139, 92, 246, 0.05));
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  border-radius: var(--cdss-radius-sm);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* ABCS Bento Cards */
+.cdss-abcs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.cdss-abcs-card {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.85rem 1rem;
+  border-top: 3px solid var(--cdss-primary);
+  box-shadow: var(--cdss-shadow-xs);
+}
+
+.cdss-abcs-card--acidosis { border-top-color: #ef4444; }
+.cdss-abcs-card--bleeding { border-top-color: #dc2626; }
+.cdss-abcs-card--calcium  { border-top-color: #f59e0b; }
+.cdss-abcs-card--sugar    { border-top-color: #10b981; }
+
+.cdss-abcs-card-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cdss-abcs-criteria {
+  font-size: 0.75rem;
+  color: var(--cdss-text-muted);
+  margin-bottom: 0.4rem;
+  font-style: italic;
+}
+
+.cdss-abcs-action {
+  font-size: 0.8rem;
+  color: var(--cdss-text);
+  font-weight: 600;
+  background: var(--cdss-surface-alt);
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--cdss-border-subtle);
+  line-height: 1.35;
+}
+
+/* 4 Vasopressors Grid */
+.cdss-vaso-quad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.85rem;
+}
+
+/* ============================================================
+   MODERN WORKSPACE MODE SWITCHER & DIRECTIVE SUITE
+   ============================================================ */
+.cdss-mode-switcher-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 0.4rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--cdss-shadow-xs);
+  flex-wrap: wrap;
+}
+
+.cdss-mode-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.cdss-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--cdss-radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--cdss-text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.cdss-mode-btn:hover {
+  background: var(--cdss-surface-alt);
+  color: var(--cdss-text);
+}
+
+.cdss-mode-btn.active {
+  background: var(--cdss-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+}
+
+.cdss-mode-btn.active.mode-danger {
+  background: var(--cdss-danger);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.cdss-mode-hint {
+  font-size: 0.76rem;
+  color: var(--cdss-text-muted);
+  padding-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Clinical Directive Box */
+.cdss-directive-card {
+  background: var(--cdss-surface);
+  border: 1.5px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--cdss-shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.cdss-directive-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--cdss-primary);
+}
+
+.cdss-directive-card.directive--danger {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.03) 0%, var(--cdss-surface) 100%);
+}
+.cdss-directive-card.directive--danger::before {
+  background: var(--cdss-danger);
+}
+
+.cdss-directive-card.directive--warning {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.03) 0%, var(--cdss-surface) 100%);
+}
+.cdss-directive-card.directive--warning::before {
+  background: var(--cdss-warning);
+}
+
+.cdss-directive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.65rem;
+}
+
+.cdss-directive-title {
+  font-family: var(--cdss-font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.cdss-directive-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--cdss-radius-full);
+}
+
+.cdss-directive-action-banner {
+  background: var(--cdss-surface-alt);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.cdss-directive-action-banner.action--danger {
+  background: rgba(239, 68, 68, 0.06);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: var(--cdss-danger);
+}
+
+.cdss-directive-action-banner.action--warning {
+  background: rgba(245, 158, 11, 0.06);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: var(--cdss-warning);
+}
+
+.cdss-directive-action-banner.action--primary {
+  background: rgba(2, 132, 199, 0.06);
+  border-color: rgba(2, 132, 199, 0.25);
+  color: var(--cdss-primary);
+}
+
+.cdss-directive-reasoning {
+  font-size: 0.82rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.65rem;
+}
+
+.cdss-scenario-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  padding-top: 0.65rem;
+  border-top: 1px dashed var(--cdss-border);
+}
+
+.cdss-scenario-btn {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: 1px solid var(--cdss-border);
+  background: var(--cdss-surface);
+  color: var(--cdss-text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cdss-scenario-btn:hover {
+  background: var(--cdss-surface-alt);
+  border-color: var(--cdss-primary);
+  color: var(--cdss-primary);
+}
+
+.cdss-scenario-btn.active {
+  background: var(--cdss-primary-light);
+  border-color: var(--cdss-primary);
+  color: var(--cdss-primary);
+  font-weight: 800;
+}
+
+/* Ca Lâm Sàng Group Header */
+.cdss-cases-bar {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  box-shadow: var(--cdss-shadow-xs);
+}
+
+.cdss-cases-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.cdss-cases-group-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cdss-text-muted);
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Patient Station Section Separator */
+.cdss-station-section {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--cdss-border-subtle);
+}
+
+.cdss-station-section:last-child {
+  border-bottom: none;
+}
+
+.cdss-station-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cdss-text-muted);
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ============================================================
+   PRINT STYLES (Chỉ in nội dung cần thiết & Bảng điều phối cọc dịch)
+   ============================================================ */
+.cdss-print-sheet {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: 'Times New Roman', 'DejaVu Serif', serif !important;
+    font-size: 10pt !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ẩn hoàn toàn toàn bộ giao diện web tương tác */
+  .cdss-portal-navbar,
+  .dengue-cdss-app,
+  .cdss-top-bar,
+  .cdss-cases-bar,
+  .cdss-main-grid,
+  .cdss-mobile-sticky-bar,
+  .cdss-drawer-overlay,
+  .cdss-mobile-drawer,
+  .cdss-toast,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm 6mm 10mm;
+  }
+
+  /* Hiển thị DUY NHẤT phiếu y lệnh lâm sàng chuẩn */
+  .cdss-print-sheet {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .cdss-print-page {
+    width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cdss-print-meta-top {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    font-size: 8pt !important;
+    border-bottom: 1.2px solid #000 !important;
+    padding-bottom: 3px !important;
+    margin-bottom: 5px !important;
+    line-height: 1.25 !important;
+  }
+
+  .cdss-print-left-org {
+    text-align: left !important;
+  }
+
+  .cdss-print-right-org {
+    text-align: right !important;
+  }
+
+  .cdss-print-title-area {
+    text-align: center !important;
+    margin: 4px 0 6px 0 !important;
+  }
+
+  .cdss-print-main-title {
+    font-size: 13pt !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    letter-spacing: 0.02em !important;
+    color: #000 !important;
+  }
+
+  .cdss-print-sub-title {
+    font-size: 8pt !important;
+    font-style: italic !important;
+    margin-top: 2px !important;
+    color: #333 !important;
+  }
+
+  .cdss-print-patient-box {
+    border: 1px solid #000 !important;
+    padding: 4px 6px !important;
+    margin-bottom: 6px !important;
+    font-size: 8.8pt !important;
+    background: #fafafa !important;
+    line-height: 1.3 !important;
+  }
+
+  .cdss-print-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .cdss-print-weight-highlight {
+    background: #f0fdf4 !important;
+    border: 1px solid #16a34a !important;
+    padding: 1px 5px !important;
+    border-radius: 3px !important;
+    font-size: 8.5pt !important;
+  }
+
+  /* BẢNG TRUYỀN DỊCH CHUẨN IN */
+  .cdss-print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 5px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cdss-print-table th,
+  .cdss-print-table td {
+    border: 1px solid #000 !important;
+    padding: 3px 5px !important;
+    font-size: 8.5pt !important;
+    vertical-align: top !important;
+    color: #000 !important;
+    line-height: 1.25 !important;
+  }
+
+  .cdss-print-table th {
+    background: #e5e7eb !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    font-size: 8pt !important;
+  }
+
+  .cdss-print-summary-strip {
+    display: flex !important;
+    justify-content: space-between !important;
+    background: #f3f4f6 !important;
+    border: 1px solid #4b5563 !important;
+    padding: 3px 6px !important;
+    font-size: 8.5pt !important;
+    font-weight: 600 !important;
+    margin-bottom: 5px !important;
+  }
+
+  .cdss-print-vaso-box {
+    border: 1px dashed #374151 !important;
+    padding: 4px 6px !important;
+    margin-bottom: 5px !important;
+    font-size: 8pt !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cdss-print-vaso-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+    margin-top: 2px !important;
+  }
+
+  .cdss-print-vaso-col {
+    line-height: 1.25 !important;
+  }
+
+  .cdss-print-safety-notes {
+    font-size: 7.8pt !important;
+    line-height: 1.25 !important;
+    color: #111827 !important;
+    margin-bottom: 6px !important;
+    border-left: 2.5px solid #000 !important;
+    padding-left: 5px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cdss-print-signatures {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    text-align: center !important;
+    margin-top: 6px !important;
+    font-size: 8.5pt !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cdss-print-sign-col {
+    width: 45% !important;
+  }
+}

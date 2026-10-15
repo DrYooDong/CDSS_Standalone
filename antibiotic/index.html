@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CDSS Đánh Giá Nhiễm Trùng &amp; Quản Lý Liều Kháng Sinh (InfectoDose) | CliniPortal CDSS</title>
+    <meta name="description" content="Hệ thống hỗ trợ ra quyết định lâm sàng (CDSS) 2 phân hệ hoàn chỉnh: Đánh giá nhiễm trùng NHSN-CDC, phân tầng nguy cơ vi khuẩn đa kháng MDR và phác đồ khởi đầu BV Bệnh Nhiệt Đới 2026; Tính toán liều 43 kháng sinh theo độ thanh thải Creatinine (Cockcroft-Gault), eGFR CKD-EPI 2021, lọc máu chu kỳ HD/CRRT/CAPD, cảnh báo tương tác thuốc DDI và xuất báo cáo hội chẩn PDF." />
+    <meta property="og:title" content="CDSS Đánh Giá Nhiễm Trùng &amp; Quản Lý Liều Kháng Sinh (InfectoDose) | CliniPortal CDSS" />
+    <meta property="og:description" content="Hệ thống hỗ trợ ra quyết định lâm sàng (CDSS) 2 phân hệ: Đánh giá nhiễm trùng NHSN-CDC, phân tầng nguy cơ vi khuẩn đa kháng và tính toán liều 43 kháng sinh chuẩn hóa." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CliniPortal CDSS Shell Styles & Theme Script -->
+    <link rel="stylesheet" href="../shared/cdss-shell.css">
+    <script src="../shared/cdss-shell.js"></script>
+
+    <link rel="stylesheet" crossorigin href="./assets/index-vt4Cmq8g.css">
+    <script type="module" crossorigin src="./assets/index-BMtZug1u.js"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white">
+    <!-- CliniPortal Master Navigation Bar -->
+    <header class="cdss-portal-navbar">
+      <div class="cdss-portal-nav-breadcrumbs">
+      <a href="../index.html"><i class="fa-solid fa-microchip"></i> CDSS Platform Hub</a>
+      <i class="fa-solid fa-chevron-right separator"></i>
+        <span class="active"><i class="fa-solid fa-viruses text-blue-600"></i> Đánh Giá Nhiễm Trùng &amp; Kháng Sinh (InfectoDose CDSS)</span>
+      </div>
+
+      <div class="cdss-portal-nav-right">
+        
+        <a href="../index.html" class="cdss-portal-nav-btn" title="Trở về Danh Mục CDSS">
+          <i class="fa-solid fa-th-large"></i> <span>Danh Mục CDSS</span>
+        </a>
+        <button id="theme-toggle" class="cdss-portal-theme-btn" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mount Point for Full React Application -->
+    <div id="root"></div>
+
+    <!-- Offline file:/// Fallback Loader -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const rootEl = document.getElementById('root');
+          if (rootEl && rootEl.children.length === 0) {
+            console.info('Module blocked or pending under file:///, activating standalone IIFE bundle...');
+            const s = document.createElement('script');
+            s.src = './assets/antibiotic-app.iife.js?v=' + Date.now();
+            document.body.appendChild(s);
+          }
+        }, 300);
+      });
+    </script>
+  </body>
+</html>

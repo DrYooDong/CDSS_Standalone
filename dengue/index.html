@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDSS Tính Dịch Truyền &amp; Chống Sốc SXHD Dengue (Bộ Y Tế 2023) — CliniPortal CDSS</title>
+  <meta name="description" content="Hệ thống Hỗ trợ Quyết định Lâm sàng CDSS điều trị SXHD Dengue: Tính cân nặng hiệu chỉnh CDC 2014, lập bảng cọc dịch 4 cột động học và liều vận mạch bơm tiêm điện 50ml.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/vault-hub.css">
+  <link rel="stylesheet" href="css/dengue-cdss.css">
+
+  <!-- CliniPortal CDSS Shell Styles & Theme Script -->
+  <link rel="stylesheet" href="../shared/cdss-shell.css">
+  <script src="../shared/cdss-shell.js"></script>
+
+  <style>
+    body {
+      background-color: var(--cdss-bg);
+      color: var(--cdss-text);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body>
+  <!-- CliniPortal Master Navigation Bar -->
+  <header class="cdss-portal-navbar">
+    <div class="cdss-portal-nav-breadcrumbs">
+      <a href="../index.html"><i class="fa-solid fa-microchip"></i> CDSS Platform Hub</a>
+      <i class="fa-solid fa-chevron-right separator"></i>
+      <span class="active"><i class="fa-solid fa-droplet text-red-500"></i> SXHD Dengue (Bộ Y Tế 2023)</span>
+    </div>
+
+    <div class="cdss-portal-nav-right">
+      
+      <a href="../index.html" class="cdss-portal-nav-btn" title="Trở về Danh Mục CDSS">
+        <i class="fa-solid fa-th-large"></i> <span>Danh Mục CDSS</span>
+      </a>
+      <button id="theme-toggle" class="cdss-portal-theme-btn" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mount Point for Dengue CDSS Application -->
+  <div id="dengue-cdss-container"></div>
+
+  <script type="module">
+    import { DengueCDSSController } from './dengue-bundle.js';
+    if (!window.__dengue_initialized) {
+      window.__dengue_initialized = true;
+      new DengueCDSSController('dengue-cdss-container');
+    }
+  </script>
+
+  <!-- Offline file:/// Fallback Loader -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const container = document.getElementById('dengue-cdss-container');
+        if (container && container.children.length === 0 && !window.__dengue_initialized) {
+          console.info('ES Module blocked under file:///, activating standalone IIFE bundle...');
+          const s = document.createElement('script');
+          s.src = './dengue-bundle.iife.js?v=' + Date.now();
+          s.onload = () => {
+            const Controller = window.DengueCDSSController || (window.DengueBundle && window.DengueBundle.DengueCDSSController);
+            if (Controller && !window.__dengue_initialized) {
+              window.__dengue_initialized = true;
+              new Controller('dengue-cdss-container');
+            }
+          };
+          document.body.appendChild(s);
+        }
+      }, 200);
+    });
+  </script>
+</body>
+</html>

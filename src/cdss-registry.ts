@@ -1,0 +1,177 @@
+/**
+ * CDSS Standalone Suite — 9 Core Clinical Decision Support Modules Registry
+ */
+import { CDSSModuleMeta } from './cdss-types';
+
+export const CDSS_MODULES: CDSSModuleMeta[] = [
+  {
+    id: 'cdss-dengue-fluid',
+    slug: 'dengue',
+    title: 'Phác Đồ Dịch Truyền & Chống Sốc SXHD Dengue (Bộ Y Tế 2023)',
+    titleEn: 'Dengue Fluid Resuscitation & Shock Management CDSS',
+    shortDesc: 'Tự động tính cân nặng hiệu chỉnh CDC 2014, bảng kế hoạch cọc dịch 4 cột động học và liều vận mạch Dopamin/Noradrenalin bơm tiêm điện 50ml.',
+    category: 'infectious',
+    categoryName: 'Truyền nhiễm & Cấp cứu',
+    version: '2.0.0 (BYT 2023)',
+    updatedAt: '2026-09-08',
+    author: 'CliniPortal CDSS Squad & BYT QĐ 2760/QĐ-BYT',
+    guidelineSource: 'Quyết định số 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y tế Việt Nam',
+    icd10: ['A97', 'A97.0', 'A97.1', 'A97.2', 'A97.9'],
+    icon: 'fa-solid fa-droplet',
+    badge: 'Bộ Y Tế 2023',
+    isStandalone: true,
+    standaloneUrl: 'dengue/index.html'
+  },
+  {
+    id: 'cdss-ecg-analysis',
+    slug: 'ecg',
+    title: 'Phân Tích Điện Tâm Đồ 12 Chuyển Đạo & AI Chẩn Đoán (ECG Master)',
+    titleEn: '12-Lead ECG Waveform Analysis & Diagnostic Assistant CDSS',
+    shortDesc: 'Bộ phân tích điện tâm đồ 12 đạo trình trực quan trên canvas độ phân giải cao: 21 ca bệnh lâm sàng điển hình, đo đạc thước Caliper điện tử, cẩm nang 10 bước BS Nguyễn Tôn Kinh Thi & ECG Made Easy, đo trục điện tim, QT/QTc, STEMI định khu và thuật toán Brugada.',
+    category: 'cardiology',
+    categoryName: 'Tim mạch',
+    version: '2.5.0 (21 Ca Lâm Sàng)',
+    updatedAt: '2026-09-09',
+    author: 'CliniPortal ECG Master Squad & Dr. Atul Luthra',
+    guidelineSource: 'AHA/ACC/HRS Guidelines for the Interpretation of the 12-Lead Electrocardiogram & BS Nguyễn Tôn Kinh Thi',
+    icd10: ['I21', 'I47', 'I48', 'I49', 'R94.3'],
+    icon: 'fa-solid fa-heart-pulse',
+    badge: '21 Ca Lâm Sàng + Caliper',
+    isStandalone: true,
+    standaloneUrl: 'ecg/index.html'
+  },
+  {
+    id: 'cdss-abg-pro',
+    slug: 'abg',
+    title: 'Phân Tích Khí Máu Động Mạch & Xử Trí Lâm Sàng (ABG Pro)',
+    titleEn: 'Arterial Blood Gas Analysis & Acid-Base Clinical Decision Support',
+    shortDesc: 'Đánh giá 6 bước rối loạn toan kiềm, 24 ca lâm sàng chuyên sâu, Nomogram Siggaard-Andersen tương tác, 3 cây quyết định trao đổi khí & GOLDMARK, cẩm nang Test Allen và kỹ thuật lấy máu động mạch.',
+    category: 'respiratory',
+    categoryName: 'Hô hấp & Cấp cứu',
+    version: '2.5.0 (24 Ca Lâm Sàng + Nomogram)',
+    updatedAt: '2026-09-09',
+    author: 'CliniPortal Critical Care Squad & EBM Guidelines',
+    guidelineSource: 'Hennessey & Japp / Pierre & Ranson ABG Interpretation Guidelines / Arterial Blood Gases Made Easy',
+    icd10: ['E87.2', 'E87.3', 'J96', 'E10.1', 'R06.0'],
+    icon: 'fa-solid fa-lungs',
+    badge: '24 Ca + Nomogram + Cây Quyết Định',
+    isStandalone: true,
+    standaloneUrl: 'abg/index.html'
+  },
+  {
+    id: 'cdss-hepa-biochem',
+    slug: 'hepa',
+    title: 'Phân Tích Sinh Hóa Gan & Quyết Định Lâm Sàng (HepaCDSS)',
+    titleEn: 'Liver Biochemistry & Clinical Decision Support System',
+    shortDesc: 'Phân tích sinh hóa gan chuẩn ACG, WHO: lưu đồ tiếp cận, tính tỷ số R-ratio, De Ritis, FIB-4, APRI, phân tầng viêm gan virus, xơ gan Child-Pugh, MELD-Na và tổn thương gan do thuốc (DILI).',
+    category: 'gastroenterology',
+    categoryName: 'Tiêu hóa & Gan mật',
+    version: '2.0.0',
+    updatedAt: '2026-09-08',
+    author: 'CliniPortal HepaCDSS Squad & ACG Guidelines',
+    guidelineSource: 'ACG Clinical Guideline: Evaluation of Abnormal Liver Chemistries (Am J Gastroenterol 2017)',
+    icd10: ['K71', 'K72', 'K73', 'K74', 'K76', 'B18'],
+    icon: 'fa-solid fa-virus',
+    badge: 'ACG & WHO Standard',
+    isStandalone: true,
+    standaloneUrl: 'hepa/index.html'
+  },
+  {
+    id: 'cdss-sepsis-risk',
+    slug: 'sepsis',
+    title: 'Phân Tầng Nguy Cơ Nhiễm Trùng & Sốc Nhiễm Khuẩn (SepsisCDSS)',
+    titleEn: 'Sepsis & Septic Shock Clinical Decision Support System',
+    shortDesc: 'Sàng lọc đa phương thức, nhận diện và phân tầng nguy cơ nhiễm trùng, nhiễm khuẩn huyết (Sepsis) và sốc nhiễm khuẩn theo NICE 2024/2026, Sepsis-3 (SOFA/qSOFA), Phoenix 2024 (Nhi khoa), Obstetric SOFA, LP-NEWS và tỷ số NLR.',
+    category: 'resuscitation',
+    categoryName: 'Hồi sức Cấp cứu',
+    version: '2.0.0 (NICE & Sepsis-3 & Phoenix)',
+    updatedAt: '2026-09-23',
+    author: 'CliniPortal Critical Care Squad & NICE NG253 / SSC 2024',
+    guidelineSource: 'NICE NG253 (2024/2026 update), Surviving Sepsis Campaign (SSC) & Phoenix Sepsis Criteria 2024',
+    icd10: ['A41.9', 'R65.2', 'R65.21', 'A40', 'A41'],
+    icon: 'fa-solid fa-biohazard',
+    badge: 'NICE 2024 + Phoenix 2024 + Sepsis-3',
+    isStandalone: true,
+    standaloneUrl: 'sepsis/index.html'
+  },
+  {
+    id: 'cdss-antibiotic-dosing',
+    slug: 'antibiotic',
+    title: 'Đánh Giá Nhiễm Trùng & Phác Đồ, Liều Kháng Sinh (InfectoDose CDSS)',
+    titleEn: 'Infection Assessment, MDR Risk Stratification & Precision Antibiotic Dosing CDSS',
+    shortDesc: 'Hệ thống hỗ trợ ra quyết định lâm sàng 2 phân hệ hoàn chỉnh: (1) Đánh giá nhiễm trùng NHSN-CDC, phân tầng nguy cơ vi khuẩn đa kháng (SOFA/CLIF-SOFA) và phác đồ kháng sinh khởi đầu theo BV Bệnh Nhiệt Đới & Bộ Y Tế; (2) Cá thể hóa tính liều 43 kháng sinh, hiệu chỉnh chức năng thận (CrCl/eGFR), lọc máu chu kỳ HD/CRRT/CAPD, tương tác thuốc DDI và tái đánh giá xuống thang 48-72h.',
+    category: 'pharmacology',
+    categoryName: 'Truyền nhiễm & Kháng sinh',
+    version: '3.0.0 (BVBND 2026 & NHSN)',
+    updatedAt: '2026-10-10',
+    author: 'CliniPortal CDSS Squad & BV Bệnh Nhiệt Đới & Sanford/Stanford',
+    guidelineSource: 'BV Bệnh Nhiệt Đới (eMed 2026), QĐ 5631/QĐ-BYT 2020 & Stanford/Sanford Antimicrobial Guide',
+    icd10: ['A41', 'A49', 'Z16', 'N18', 'J18', 'K65'],
+    icon: 'fa-solid fa-viruses',
+    badge: 'BVBND 2026 + NHSN + 43 KS + HD/CRRT',
+    isStandalone: true,
+    standaloneUrl: 'antibiotic/index.html'
+  },
+  {
+    id: 'cdss-vancomycin-pk',
+    slug: 'vancomycin',
+    title: 'Quản Lý Liều & Dược Động Học Vancomycin (ASHP/IDSA 2020)',
+    titleEn: 'Vancomycin Precision Dosing & TDM AUC/MIC CDSS',
+    shortDesc: 'Hỗ trợ ra quyết định lâm sàng tính toán liều nạp, liều duy trì, chỉnh liều theo CrCl/eGFR, béo phì (Zhang 2024), lọc máu IHD, giám sát nồng độ đáy Trough và TDM AUC24/MIC mục tiêu 400-600 theo hướng dẫn ASHP/IDSA 2020 và BVĐK Cà Mau.',
+    category: 'pharmacology',
+    categoryName: 'Dược lý & Kháng sinh',
+    version: '2.0.0 (ASHP 2020 & BV Cà Mau)',
+    updatedAt: '2026-09-22',
+    author: 'CliniPortal Pharmacology Squad & Hướng dẫn ASHP/IDSA/PIDS/SIDP 2020 & BVĐK Cà Mau',
+    guidelineSource: 'ASHP/IDSA/PIDS/SIDP 2020 Therapeutic Monitoring of Vancomycin & Hướng Dẫn Sử Dụng Vancomycin BVĐK Cà Mau',
+    icd10: ['Z16', 'N18', 'A41', 'A49', 'B95.6'],
+    icon: 'fa-solid fa-syringe',
+    badge: 'ASHP 2020 + TDM AUC/MIC + Béo Phì',
+    isStandalone: true,
+    standaloneUrl: 'vancomycin/index.html'
+  },
+  {
+    id: 'cdss-diacare-insulin',
+    slug: 'diacare',
+    title: 'Quản Lý Insulin & Đường Huyết Nội Viện (DiaCare CDSS)',
+    titleEn: 'DiaCare Inpatient Glycemic & Insulin Management CDSS',
+    shortDesc: 'Hệ thống hỗ trợ ra quyết định lâm sàng quản lý đái tháo đường nội viện, tự động tính toán liều insulin phác đồ Basal-Bolus, hiệu chỉnh suy thận/suy gan/béo phì, phác đồ trượt SSI, xử trí cấp cứu DKA/HHS và tình huống lâm sàng đặc thù (chu phẫu, corticoid, lọc máu, nuôi ăn sonde) theo ADA 2026 và JBDS-IP.',
+    category: 'endocrinology',
+    categoryName: 'Nội tiết & Chuyển hóa',
+    version: '2.0.0 (ADA 2026 & JBDS-IP)',
+    updatedAt: '2026-09-28',
+    author: 'CliniPortal CDSS Squad & ADA 2026 / JBDS-IP',
+    guidelineSource: 'ADA Standards of Care 2026 (Hospital Care) & JBDS-IP Inpatient Glycemic Guidelines',
+    icd10: ['E10', 'E11', 'E14', 'E87.2', 'R73.9'],
+    icon: 'fa-solid fa-syringe',
+    badge: 'ADA 2026 + JBDS-IP + Basal-Bolus',
+    isStandalone: true,
+    standaloneUrl: 'diacare/index.html'
+  },
+  {
+    id: 'cdss-inpatient-exam',
+    slug: 'inpatient',
+    title: 'Tiếp Cận Lâm Sàng & Khám Bệnh Nội Trú (Bates & Macleod)',
+    titleEn: 'Inpatient Clinical Examination & Diagnostic Approach CDSS',
+    shortDesc: 'Cẩm nang khám lâm sàng có hệ thống, tiếp cận các hội chứng và triệu chứng bệnh nội trú kinh điển, bộ công cụ hỏi bệnh sử 7 thuộc tính, tra cứu nhanh và ghi chú mục tiêu lâm sàng.',
+    category: 'internal',
+    categoryName: 'Nội khoa & Lâm sàng',
+    version: '1.0.0 (Bates & Macleod)',
+    updatedAt: '2026-09-28',
+    author: 'CliniPortal CDSS Squad & Bates / Macleod',
+    guidelineSource: "Bates’ Pocket Guide to Physical Examination & Macleod's Clinical Examination",
+    icd10: ['R00-R99', 'Z00.0'],
+    icon: 'fa-solid fa-stethoscope',
+    badge: 'Bates & Macleod + 7 Thuộc Tính',
+    isStandalone: true,
+    standaloneUrl: 'inpatient/index.html'
+  }
+];
+
+export function getCDSSModuleById(id: string): CDSSModuleMeta | undefined {
+  return CDSS_MODULES.find(m => m.id === id);
+}
+
+export function getCDSSModuleBySlug(slug: string): CDSSModuleMeta | undefined {
+  return CDSS_MODULES.find(m => m.slug === slug);
+}
