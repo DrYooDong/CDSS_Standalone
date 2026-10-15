@@ -1,21 +1,24 @@
 /**
  * CliniPortal CDSS — Shared Shell Navigation & Theme Controller
- * Path: src/content/docspace/public/cdss/shared/cdss-shell.js
+ * Path: /shared/cdss-shell.js
  * 
- * Đồng bộ Dark/Light Mode, trạng thái lưu trữ LocalStorage,
- * và sự kiện giao diện cho tất cả các CDSS modules.
+ * Synchronized Light/Dark Theme Controller (Default: Light Mode)
+ * Ensures smooth theme propagation across all CDSS modules & Main Hub.
  */
 
 (function () {
-  const THEME_KEY = 'cliniportal_theme';
+  var THEME_KEY = 'cliniportal_theme';
 
   function getPreferredTheme() {
-    const saved = localStorage.getItem(THEME_KEY);
+    var saved = localStorage.getItem(THEME_KEY);
+    // Explicit user choice
     if (saved === 'dark' || saved === 'light') return saved;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    // Default strictly to light mode
+    return 'light';
   }
 
-  function applyTheme(theme, updateToggleBtn = true) {
+  function applyTheme(theme, updateToggleBtn) {
+    if (typeof updateToggleBtn === 'undefined') updateToggleBtn = true;
     document.documentElement.setAttribute('data-theme', theme);
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -24,56 +27,56 @@
     }
 
     if (updateToggleBtn) {
-      const toggleBtns = document.querySelectorAll('#theme-toggle, .cdss-portal-theme-btn, .cdss-theme-toggle');
-      toggleBtns.forEach(btn => {
+      var toggleBtns = document.querySelectorAll('#theme-toggle, .cdss-portal-theme-btn, .cdss-theme-toggle');
+      toggleBtns.forEach(function (btn) {
         btn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
         btn.setAttribute('title', theme === 'dark' ? 'Chuyển sang chế độ Sáng' : 'Chuyển sang chế độ Tối');
       });
     }
 
-    window.dispatchEvent(new CustomEvent('cliniportal-theme-change', { detail: { theme } }));
+    window.dispatchEvent(new CustomEvent('cliniportal-theme-change', { detail: { theme: theme } }));
   }
 
   function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    localStorage.setItem(THEME_KEY, next);
+    var current = document.documentElement.getAttribute('data-theme') || 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+    try {
+      localStorage.setItem(THEME_KEY, next);
+    } catch (e) {
+      // Ignore localStorage quotas
+    }
     applyTheme(next);
   }
 
-  // Khởi tạo theme tức thời trước khi render hoàn tất
-  const initialTheme = getPreferredTheme();
+  // Khởi tạo theme tức thời trước khi render hoàn tất (Default: Light)
+  var initialTheme = getPreferredTheme();
   applyTheme(initialTheme, false);
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', function () {
     applyTheme(getPreferredTheme(), true);
 
     // Gán sự kiện cho các nút toggle
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('#theme-toggle, .cdss-portal-theme-btn, .cdss-theme-toggle');
+    document.addEventListener('click', function (e) {
+      var target = e.target;
+      var btn = target && target.closest ? target.closest('#theme-toggle, .cdss-portal-theme-btn, .cdss-theme-toggle') : null;
       if (btn) {
         e.preventDefault();
         toggleTheme();
       }
     });
 
-    // Lắng nghe thay đổi theme từ hệ điều hành nếu user chưa từng set thủ công
-    if (window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem(THEME_KEY)) {
-          applyTheme(e.matches ? 'dark' : 'light');
-        }
-      });
-    }
+    // Đồng bộ theme qua các tab trình duyệt
+    window.addEventListener('storage', function (e) {
+      if (e.key === THEME_KEY && (e.newValue === 'light' || e.newValue === 'dark')) {
+        applyTheme(e.newValue, true);
+      }
+    });
   });
 
-  // Xuất helper ra window để các module có thể gọi
-  window.CliniPortalShell = {
-    getTheme: () => document.documentElement.getAttribute('data-theme') || 'light',
-    setTheme: (t) => {
-      localStorage.setItem(THEME_KEY, t);
-      applyTheme(t);
-    },
-    toggleTheme: toggleTheme
+  // Expose global controller
+  window.CliniPortalTheme = {
+    get: getPreferredTheme,
+    apply: applyTheme,
+    toggle: toggleTheme
   };
 })();

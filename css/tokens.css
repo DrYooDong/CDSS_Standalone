@@ -19,11 +19,11 @@
   --color-text-faint:     oklch(65% 0.03 240);
   --color-text-inverse:   #ffffff;
 
-  /* --- Brand & Primary Accent (Medical Blue) --- */
-  --color-primary:        oklch(58% 0.18 225);
-  --color-primary-hover:  oklch(50% 0.18 225);
-  --color-primary-hl:     oklch(95% 0.04 225);
-  --color-primary-rgb:    2, 132, 199;
+  /* --- Brand & Primary Accent (Medical Teal - HepaCDSS Standard) --- */
+  --color-primary:        #0d9488;
+  --color-primary-hover:  #0f766e;
+  --color-primary-hl:     #f0fdfa;
+  --color-primary-rgb:    13, 148, 136;
 
   /* --- Clinical Semantic Tiers --- */
   --clinical-critical:    oklch(62% 0.22 25);   /* Cấp cứu / Chống chỉ định */

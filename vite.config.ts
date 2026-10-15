@@ -4,8 +4,10 @@ import { resolve } from 'path';
 export default defineConfig({
   base: './',
   server: {
+    host: '0.0.0.0',
     port: 3000,
-    open: true
+    hmr: process.env.DISABLE_HMR !== 'true',
+    watch: process.env.DISABLE_HMR === 'true' ? null : {}
   },
   build: {
     outDir: 'dist',

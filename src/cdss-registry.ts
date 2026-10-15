@@ -1,5 +1,6 @@
 /**
  * CDSS Standalone Suite — 9 Core Clinical Decision Support Modules Registry
+ * Fully synchronized with HepaCDSS design language & EBM guidelines
  */
 import { CDSSModuleMeta } from './cdss-types';
 
@@ -19,6 +20,7 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     icd10: ['A97', 'A97.0', 'A97.1', 'A97.2', 'A97.9'],
     icon: 'fa-solid fa-droplet',
     badge: 'Bộ Y Tế 2023',
+    features: ['Cân nặng hiệu chỉnh CDC 2014', 'Cọc dịch 4 cột động học', 'Bơm tiêm điện Dopamin/Noradrenalin', 'Sốc trơ & Cao phân tử Dextran 40', 'Giám sát Hct & CVP'],
     isStandalone: true,
     standaloneUrl: 'dengue/index.html'
   },
@@ -37,6 +39,7 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     icd10: ['I21', 'I47', 'I48', 'I49', 'R94.3'],
     icon: 'fa-solid fa-heart-pulse',
     badge: '21 Ca Lâm Sàng + Caliper',
+    features: ['21 Ca lâm sàng mẫu', 'Thước Caliper đo đạc miligiây', '10 Bước đọc BS Kinh Thi', 'Định khu nhồi máu STEMI', 'Thuật toán Brugada & QT/QTc'],
     isStandalone: true,
     standaloneUrl: 'ecg/index.html'
   },
@@ -55,6 +58,7 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     icd10: ['E87.2', 'E87.3', 'J96', 'E10.1', 'R06.0'],
     icon: 'fa-solid fa-lungs',
     badge: '24 Ca + Nomogram + Cây Quyết Định',
+    features: ['Lưu đồ 6 bước toan kiềm', 'Nomogram Siggaard-Andersen', '24 Ca bệnh kèm giải thích', 'Anion Gap & Delta Gap', 'Căn nguyên GOLDMARK & A-a gradient'],
     isStandalone: true,
     standaloneUrl: 'abg/index.html'
   },
@@ -66,13 +70,14 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     shortDesc: 'Phân tích sinh hóa gan chuẩn ACG, WHO: lưu đồ tiếp cận, tính tỷ số R-ratio, De Ritis, FIB-4, APRI, phân tầng viêm gan virus, xơ gan Child-Pugh, MELD-Na và tổn thương gan do thuốc (DILI).',
     category: 'gastroenterology',
     categoryName: 'Tiêu hóa & Gan mật',
-    version: '2.0.0',
+    version: '2.0.0 (Chuẩn ACG 2017 & WHO)',
     updatedAt: '2026-09-08',
     author: 'CliniPortal HepaCDSS Squad & ACG Guidelines',
     guidelineSource: 'ACG Clinical Guideline: Evaluation of Abnormal Liver Chemistries (Am J Gastroenterol 2017)',
     icd10: ['K71', 'K72', 'K73', 'K74', 'K76', 'B18'],
     icon: 'fa-solid fa-virus',
     badge: 'ACG & WHO Standard',
+    features: ['Tỷ số R (R-ratio) tổn thương gan', 'Tỷ số De Ritis (AST/ALT)', 'Xơ hóa FIB-4 & APRI', 'Child-Pugh & MELD-Na', 'Tổn thương gan do thuốc DILI'],
     isStandalone: true,
     standaloneUrl: 'hepa/index.html'
   },
@@ -91,6 +96,7 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     icd10: ['A41.9', 'R65.2', 'R65.21', 'A40', 'A41'],
     icon: 'fa-solid fa-biohazard',
     badge: 'NICE 2024 + Phoenix 2024 + Sepsis-3',
+    features: ['Thang điểm SOFA & qSOFA', 'Phoenix 2024 (Sepsis Nhi khoa)', 'NICE NG253 Phân tầng nguy cơ', 'Obstetric SOFA (Sản khoa)', 'Tỷ số NLR & Gói 1 giờ SSC'],
     isStandalone: true,
     standaloneUrl: 'sepsis/index.html'
   },
@@ -109,6 +115,7 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     icd10: ['A41', 'A49', 'Z16', 'N18', 'J18', 'K65'],
     icon: 'fa-solid fa-viruses',
     badge: 'BVBND 2026 + NHSN + 43 KS + HD/CRRT',
+    features: ['Đánh giá nhiễm trùng NHSN-CDC', 'Phân tầng nguy cơ vi khuẩn MDR', 'Tính liều 43 kháng sinh', 'Hiệu chỉnh CrCl & Lọc máu HD/CRRT', 'Tương tác thuốc DDI & Xuống thang'],
     isStandalone: true,
     standaloneUrl: 'antibiotic/index.html'
   },
@@ -127,6 +134,7 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     icd10: ['Z16', 'N18', 'A41', 'A49', 'B95.6'],
     icon: 'fa-solid fa-syringe',
     badge: 'ASHP 2020 + TDM AUC/MIC + Béo Phì',
+    features: ['Tính liều nạp 25-35 mg/kg', 'Liều duy trì theo độ thanh thải CrCl', 'Mục tiêu AUC24/MIC 400-600 mg·h/L', 'Hiệu chỉnh bệnh nhân béo phì (Zhang 2024)', 'Phác đồ lọc máu IHD & Nồng độ đáy Trough'],
     isStandalone: true,
     standaloneUrl: 'vancomycin/index.html'
   },
@@ -145,6 +153,7 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     icd10: ['E10', 'E11', 'E14', 'E87.2', 'R73.9'],
     icon: 'fa-solid fa-syringe',
     badge: 'ADA 2026 + JBDS-IP + Basal-Bolus',
+    features: ['Phác đồ Basal-Bolus cá thể hóa', 'Phác đồ trượt hiệu chỉnh SSI', 'Cấp cứu toan ceton DKA & HHS', 'Tình huống chu phẫu, corticoid, sonde', 'Hiệu chỉnh suy gan, suy thận (eGFR)'],
     isStandalone: true,
     standaloneUrl: 'diacare/index.html'
   },
@@ -163,6 +172,7 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     icd10: ['R00-R99', 'Z00.0'],
     icon: 'fa-solid fa-stethoscope',
     badge: 'Bates & Macleod + 7 Thuộc Tính',
+    features: ['Hỏi bệnh sử 7 thuộc tính (OPQRST)', 'Khám hệ cơ quan toàn diện Bates', 'Tiếp cận 30+ hội chứng & triệu chứng', 'Chẩn đoán phân biệt & Bẫy lâm sàng', 'Ghi chú mục tiêu điều trị nội trú'],
     isStandalone: true,
     standaloneUrl: 'inpatient/index.html'
   }

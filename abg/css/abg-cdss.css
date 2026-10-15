@@ -13,10 +13,10 @@
   --abg-line: #e2e8f0;
   --abg-line-subtle: #f1f5f9;
   
-  --abg-primary: #2563eb;
-  --abg-primary-hover: #1d4ed8;
-  --abg-primary-bg: #eff6ff;
-  --abg-primary-border: #bfdbfe;
+  --abg-primary: #0d9488;
+  --abg-primary-hover: #0f766e;
+  --abg-primary-bg: #f0fdfa;
+  --abg-primary-border: #99f6e4;
   
   --abg-red: #ef4444;
   --abg-red-bg: #fef2f2;
@@ -33,9 +33,9 @@
   --abg-purple: #8b5cf6;
   --abg-purple-bg: #f5f3ff;
   
-  --abg-font-sans: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --abg-font-display: 'Space Grotesk', -apple-system, sans-serif;
-  --abg-font-mono: 'IBM Plex Mono', monospace;
+  --abg-font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --abg-font-display: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --abg-font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
   
   --abg-radius-sm: 6px;
   --abg-radius-md: 10px;
@@ -54,10 +54,10 @@
   --abg-line: #334155;
   --abg-line-subtle: #1e293b;
   
-  --abg-primary: #3b82f6;
-  --abg-primary-hover: #60a5fa;
-  --abg-primary-bg: rgba(59, 130, 246, 0.15);
-  --abg-primary-border: rgba(59, 130, 246, 0.35);
+  --abg-primary: #14b8a6;
+  --abg-primary-hover: #2dd4bf;
+  --abg-primary-bg: rgba(20, 184, 166, 0.15);
+  --abg-primary-border: rgba(20, 184, 166, 0.35);
   
   --abg-red-bg: rgba(239, 68, 68, 0.15);
   --abg-red-border: rgba(239, 68, 68, 0.3);

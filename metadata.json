@@ -1,0 +1,8 @@
+{
+  "name": "CDSS Platform Suite — Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập",
+  "description": "Bộ công cụ CDSS hỗ trợ quyết định lâm sàng độc lập chuyên sâu: Dengue, ECG, ABG, Sinh Hóa Gan, SEPSIS, Liều Kháng Sinh, Vancomycin, Insulin Nội Viện, Khám Bệnh Nội Trú.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

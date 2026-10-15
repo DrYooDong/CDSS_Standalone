@@ -5,10 +5,11 @@
   "type": "module",
   "description": "Hệ thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập (CDSS Standalone Suite) - 9 Modules Chuyên Sâu",
   "scripts": {
-    "dev": "vite --port 3000 --open",
+    "dev": "vite --host 0.0.0.0 --port 3000",
     "build": "vite build",
     "preview": "vite preview --port 3000",
-    "build:hub": "esbuild src/index.ts --bundle --outfile=cdss-hub-bundle.js --format=iife"
+    "build:hub": "esbuild src/index.ts --bundle --outfile=cdss-hub-bundle.js --format=iife",
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
     "lucide-react": "^0.546.0",

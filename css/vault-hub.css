@@ -3,7 +3,6 @@
  * 100% Design Tokens & Dark Mode Compliant
  */
 @import url('./vault-design-tokens.css');
-@import url('./vault-reader.css');
 
 :root {
   --vault-primary:       var(--dsp-sky);

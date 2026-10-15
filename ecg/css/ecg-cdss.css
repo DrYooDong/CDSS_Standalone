@@ -120,14 +120,15 @@
 }
 
 .ecg-btn--primary {
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
   color: #fff;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
 }
 
 .ecg-btn--primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.35);
 }
 
 /* Patient Banner */
@@ -258,14 +259,14 @@
 }
 
 .ecg-tool-btn:hover {
-  border-color: #0284c7;
-  color: #0284c7;
+  border-color: #0d9488;
+  color: #0d9488;
 }
 
 .ecg-tool-btn.active {
-  background: rgba(2, 132, 199, 0.12);
-  border-color: #0284c7;
-  color: #0284c7;
+  background: rgba(13, 148, 136, 0.12);
+  border-color: #0d9488;
+  color: #0d9488;
 }
 
 .ecg-select-sm {
@@ -378,12 +379,12 @@
 }
 
 .ecg-tab-btn:hover {
-  color: #0284c7;
+  color: #0d9488;
 }
 
 .ecg-tab-btn.active {
-  color: #0284c7;
-  border-bottom-color: #0284c7;
+  color: #0d9488;
+  border-bottom-color: #0d9488;
   background: var(--vault-surface);
   font-weight: 700;
 }
@@ -416,8 +417,8 @@
 }
 
 .ecg-diag-card--primary {
-  border-color: rgba(2, 132, 199, 0.35);
-  background: radial-gradient(circle at 100% 0%, rgba(2, 132, 199, 0.06) 0%, var(--vault-bg) 70%);
+  border-color: rgba(13, 148, 136, 0.35);
+  background: radial-gradient(circle at 100% 0%, rgba(13, 148, 136, 0.06) 0%, var(--vault-bg) 70%);
 }
 
 .ecg-diag-card-header {

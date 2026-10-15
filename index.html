@@ -4,168 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CDSS Platform Suite — Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập</title>
-  <meta name="description" content="Bộ công cụ CDSS hỗ trợ quyết định lâm sàng độc lập chuyên sâu: Dengue, ECG, ABG, Sinh Hóa Gan, SEPSIS, Liều Kháng Sinh, Vancomycin, Insulin Nội Viện, Khám Bệnh Nội Trú.">
+  <meta name="description" content="Bộ công cụ CDSS hỗ trợ quyết định lâm sàng độc lập chuyên sâu 9 chuyên khoa: SXHD Dengue, ECG Master, ABG Pro, Sinh Hóa Gan HepaCDSS, SepsisCDSS, InfectoDose Kháng Sinh, Vancomycin PK, DiaCare Insulin, Khám Bệnh Nội Trú Bates.">
+  <meta property="og:title" content="CDSS Platform Suite — Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập" />
+  <meta property="og:description" content="Bộ công cụ CDSS hỗ trợ quyết định lâm sàng độc lập chuyên sâu 9 chuyên khoa chuẩn Y học chứng cứ (EBM)." />
+  <meta property="og:type" content="website" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <link rel="stylesheet" href="./css/tokens.css">
-  <link rel="stylesheet" href="./css/vault-design-tokens.css">
-  <link rel="stylesheet" href="./css/vault-hub.css">
-  <link rel="stylesheet" href="./css/cdss-hub.css">
+  <!-- CliniPortal CDSS Shell Styles & Theme Script -->
   <link rel="stylesheet" href="./shared/cdss-shell.css">
-  <script src="./shared/cdss-shell.js"></script>
-
-  <style>
-    body {
-      background-color: var(--dsp-bg-base, #f8fafc);
-      color: var(--dsp-text-primary, #0f172a);
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      font-family: var(--dsp-font-sans, 'Plus Jakarta Sans', sans-serif);
-      -webkit-font-smoothing: antialiased;
-    }
-    .vault-navbar {
-      background: rgba(255, 255, 255, 0.92);
-      border-bottom: 1px solid var(--dsp-border-subtle, #e2e8f0);
-      padding: 0.75rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-    }
-    [data-theme="dark"] .vault-navbar {
-      background: rgba(15, 23, 42, 0.92);
-      border-bottom-color: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-    .vault-nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      font-family: var(--dsp-font-display, 'Plus Jakarta Sans', sans-serif);
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--dsp-text-primary, #0f172a);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    [data-theme="dark"] .vault-nav-brand {
-      color: #f8fafc;
-    }
-    .vault-nav-brand-icon {
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
-    }
-    .vault-nav-links {
-      display: flex;
-      gap: 0.65rem;
-      align-items: center;
-    }
-    .vault-nav-btn {
-      padding: 0.5rem 0.95rem;
-      border-radius: 8px;
-      border: 1px solid var(--dsp-border-subtle, #cbd5e1);
-      background: var(--dsp-surface, #ffffff);
-      color: var(--dsp-text-primary, #0f172a);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    [data-theme="dark"] .vault-nav-btn {
-      background: #1e293b;
-      color: #f8fafc;
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-    .vault-nav-btn:hover {
-      border-color: #0284c7;
-      color: #0284c7;
-      transform: translateY(-1px);
-    }
-    .vault-nav-btn--theme {
-      width: 2.25rem;
-      height: 2.25rem;
-      padding: 0;
-      justify-content: center;
-    }
-    footer.cdss-footer {
-      border-top: 1px solid var(--color-border);
-      padding: 2.5rem 1rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--color-text-muted);
-      margin-top: 4rem;
-      background: var(--color-surface);
-    }
-  </style>
+  <link rel="stylesheet" href="./css/cdss-hub.css">
+  <script type="module" src="./shared/cdss-shell.js"></script>
 </head>
 <body>
-  <!-- Navigation Top Bar -->
-  <header class="vault-navbar">
-    <a href="./index.html" class="vault-nav-brand">
-      <div class="vault-nav-brand-icon">
-        <i class="fa-solid fa-microchip"></i>
-      </div>
-      <span>CDSS Platform <span style="font-weight:500; color:#64748b; font-size: 0.95rem;">| 9 Modules Lâm Sàng</span></span>
-    </a>
-
-    <div class="vault-nav-links">
-      <a href="#cdss-hub-app" class="vault-nav-btn">
-        <i class="fa-solid fa-layer-group"></i> <span>9 Công Cụ CDSS</span>
+  <!-- Standardized Master Top Navigation Bar (HepaCDSS Style) -->
+  <header class="cdss-portal-navbar">
+    <div class="cdss-portal-nav-breadcrumbs">
+      <a href="./index.html" class="cdss-brand-link">
+        <div class="cdss-brand-icon">
+          <i class="fa-solid fa-microchip"></i>
+        </div>
+        <span class="cdss-brand-name">CDSS Platform Suite</span>
       </a>
-      <button id="theme-toggle" class="vault-nav-btn vault-nav-btn--theme" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+      <i class="fa-solid fa-chevron-right separator"></i>
+      <span class="active"><i class="fa-solid fa-shapes text-teal-600"></i> Trung Tâm Quyết Định Lâm Sàng (9 CDSS)</span>
+    </div>
+
+    <div class="cdss-portal-nav-right">
+      <a href="#cdss-search-input" class="cdss-portal-nav-btn" title="Tìm kiếm công cụ CDSS nhanh">
+        <i class="fa-solid fa-magnifying-glass"></i> <span>Tra Cứu</span>
+      </a>
+      <a href="#cdss-clinical-scenarios" class="cdss-portal-nav-btn" title="9 Tình huống cấp cứu khẩn cấp">
+        <i class="fa-solid fa-bolt-lightning text-amber-500"></i> <span>Tình Huống Cấp Cứu</span>
+      </a>
+      <button id="theme-toggle" class="cdss-portal-theme-btn" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
         <i class="fa-solid fa-moon"></i>
       </button>
     </div>
   </header>
 
-  <!-- CDSS Hub Application Container -->
+  <!-- CDSS Hub Application Mount Container -->
   <main id="cdss-hub-app"></main>
 
-  <footer class="cdss-footer">
-    <div style="max-width: 900px; margin: 0 auto; line-height: 1.6;">
-      <p style="font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; color: var(--color-text);">
+  <footer style="border-top: 1px solid var(--color-border); padding: 3rem 1.5rem; text-align: center; font-size: 0.85rem; color: var(--color-text-muted); background: var(--color-surface); margin-top: 4rem;">
+    <div style="max-width: 960px; margin: 0 auto; line-height: 1.7;">
+      <p style="font-family: var(--cdss-font-display); font-weight: 800; font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--color-text);">
         Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập (CDSS Standalone Suite)
       </p>
-      <p>
-        Bao gồm 9 module chuyên sâu: Dịch truyền SXHD Dengue, ECG Master, ABG Pro, Sinh hóa gan HepaCDSS, SepsisCDSS, InfectoDose Kháng sinh, Vancomycin PK, DiaCare Insulin nội viện, Khám bệnh nội trú Bates & Macleod.
+      <p style="margin-bottom: 0.75rem;">
+        Hợp nhất 9 module CDSS độc lập: Dịch truyền SXHD Dengue, ECG Master, ABG Pro, Sinh hóa gan HepaCDSS, SepsisCDSS, InfectoDose Kháng sinh, Vancomycin PK, DiaCare Insulin nội viện, Khám bệnh nội trú Bates &amp; Macleod.
       </p>
-      <p style="margin-top: 0.75rem; font-size: 0.78rem; opacity: 0.8;">
-        Phát triển theo tiêu chuẩn Y học chứng cứ (EBM), Bộ Y Tế Việt Nam, AHA/ACC, NICE, ASHP, ADA & Bates Clinical Examination.
+      <p style="font-size: 0.78rem; opacity: 0.85; margin: 0;">
+        Phát triển theo tiêu chuẩn Y học chứng cứ (EBM), Bộ Y Tế Việt Nam, AHA/ACC, NICE, ASHP, ADA &amp; Bates Pocket Guide to Physical Examination.
       </p>
     </div>
   </footer>
 
-  <!-- Load CDSS Hub Bundle (IIFE Global window.initCDSSHub) -->
-  <script src="./cdss-hub-bundle.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.initCDSSHub) {
-        window.initCDSSHub('cdss-hub-app');
-      }
-    });
-  </script>
+  <!-- Load CDSS Hub Application Entry -->
+  <script type="module" src="./src/index.ts"></script>
 </body>
 </html>

@@ -26,6 +26,7 @@ export interface CDSSModuleMeta {
   icd10?: string[];
   icon: string;
   badge?: string;
+  features?: string[];
   isStandalone: boolean;
   standaloneUrl: string;
 }

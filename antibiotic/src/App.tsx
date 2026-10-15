@@ -156,7 +156,7 @@ export default function App() {
   const isEn = language === 'en';
 
   return (
-    <div className="min-h-screen bg-slate-50/60 flex flex-col selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-slate-50/60 flex flex-col selection:bg-teal-600 selection:text-white">
       
       {/* Top Header */}
       <Header
@@ -180,17 +180,17 @@ export default function App() {
               onClick={() => setAppMode('selection')}
               className={`p-3 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer ${
                 appMode === 'selection'
-                  ? 'bg-blue-50/90 border-blue-500 ring-2 ring-blue-500/20 text-blue-950 shadow-xs'
+                  ? 'bg-teal-50/90 border-teal-500 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
                   : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50'
               }`}
             >
-              <div className={`p-2 rounded-lg shrink-0 ${appMode === 'selection' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-200 text-slate-600'}`}>
+              <div className={`p-2 rounded-lg shrink-0 ${appMode === 'selection' ? 'bg-teal-600 text-white shadow-xs' : 'bg-slate-200 text-slate-600'}`}>
                 <Workflow className="w-5 h-5" />
               </div>
               <div className="min-w-0">
                 <div className="flex items-center space-x-2">
-                  <span className="text-xs font-black uppercase tracking-wider text-blue-600">Phân hệ 1</span>
-                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700">Mới • BVBND 2026</span>
+                  <span className="text-xs font-black uppercase tracking-wider text-teal-600">Phân hệ 1</span>
+                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-teal-100 text-teal-700">Mới • BVBND 2026</span>
                 </div>
                 <div className="text-sm font-bold text-slate-900 mt-0.5 truncate">
                   Đánh Giá Nhiễm Trùng & Phác Đồ Ban Đầu
@@ -206,11 +206,11 @@ export default function App() {
               onClick={() => setAppMode('dosing')}
               className={`p-3 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer ${
                 appMode === 'dosing'
-                  ? 'bg-blue-50/90 border-blue-500 ring-2 ring-blue-500/20 text-blue-950 shadow-xs'
+                  ? 'bg-teal-50/90 border-teal-500 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
                   : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50'
               }`}
             >
-              <div className={`p-2 rounded-lg shrink-0 ${appMode === 'dosing' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-200 text-slate-600'}`}>
+              <div className={`p-2 rounded-lg shrink-0 ${appMode === 'dosing' ? 'bg-teal-600 text-white shadow-xs' : 'bg-slate-200 text-slate-600'}`}>
                 <Calculator className="w-5 h-5" />
               </div>
               <div className="min-w-0">
@@ -280,7 +280,7 @@ export default function App() {
                     onClick={() => setActiveTab('all')}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${
                       activeTab === 'all'
-                        ? 'bg-blue-600 text-white shadow-xs'
+                        ? 'bg-teal-600 text-white shadow-xs'
                         : 'text-slate-600 hover:bg-slate-100'
                     }`}
                   >
@@ -292,11 +292,11 @@ export default function App() {
                     onClick={() => setActiveTab('dosing')}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${
                       activeTab === 'dosing'
-                        ? 'bg-blue-600 text-white shadow-xs'
+                        ? 'bg-teal-600 text-white shadow-xs'
                         : 'text-slate-600 hover:bg-slate-100'
                     }`}
                   >
-                    <Pill className="w-3.5 h-3.5 text-blue-500" />
+                    <Pill className="w-3.5 h-3.5 text-teal-600" />
                     <span>{isEn ? 'Dose & CrCl Table' : 'Liều & Bảng CrCl'}</span>
                   </button>
 

@@ -47,10 +47,10 @@
   --dsp-pink-light:         rgba(236, 72, 153, 0.12);
 
   /* --- Primary Brand Aliases --- */
-  --dsp-primary:            var(--dsp-sky);
-  --dsp-primary-light:      #38bdf8;
-  --dsp-primary-dark:       var(--dsp-sky-dark);
-  --dsp-primary-glow:       var(--dsp-sky-glow);
+  --dsp-primary:            var(--dsp-teal);
+  --dsp-primary-light:      #2dd4bf;
+  --dsp-primary-dark:       #0f766e;
+  --dsp-primary-glow:       var(--dsp-teal-glow);
 
   /* --- SBAR 4-Pillar Semantics --- */
   --dsp-sbar-s:             var(--dsp-rose);

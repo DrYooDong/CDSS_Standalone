@@ -42,15 +42,15 @@ export const Header: React.FC<HeaderProps> = ({
           
           {/* Logo & Identity */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 to-cyan-600 flex items-center justify-center text-white shadow-md shadow-teal-500/20">
               <Activity className="w-6 h-6 animate-pulse" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900">
-                  InfectoDose <span className="text-blue-600">CDSS</span>
+                  InfectoDose <span className="text-teal-600">CDSS</span>
                 </span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-teal-100 text-teal-800">
                   v3.0 Pro
                 </span>
                 <span className="hidden xl:inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -81,17 +81,17 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Original Preview View */}
             <button
               onClick={onOpenOriginal}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-teal-800 bg-teal-50 hover:bg-teal-100 transition-colors"
               title={isEn ? 'View Original Stanford/UCSF Preview' : 'Xem bản xem gốc Stanford/UCSF'}
             >
-              <ExternalLink className="w-3.5 h-3.5 text-indigo-600" />
+              <ExternalLink className="w-3.5 h-3.5 text-teal-600" />
               <span>{isEn ? 'Original Mode' : 'Giao diện gốc'}</span>
             </button>
 
             {/* Consultation PDF Report */}
             <button
               onClick={onOpenPdfModal}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white bg-teal-600 hover:bg-teal-700 shadow-sm transition-all"
             >
               <FileText className="w-3.5 h-3.5" />
               <span>{isEn ? 'Export PDF / Print' : 'Xuất Phiếu Hội Chẩn'}</span>
@@ -112,7 +112,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => onLanguageChange('vi')}
                 className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all ${
                   language === 'vi' 
-                    ? 'bg-white text-blue-700 shadow-xs' 
+                    ? 'bg-white text-teal-700 shadow-xs' 
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -122,7 +122,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => onLanguageChange('en')}
                 className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all ${
                   language === 'en' 
-                    ? 'bg-white text-blue-700 shadow-xs' 
+                    ? 'bg-white text-teal-700 shadow-xs' 
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >

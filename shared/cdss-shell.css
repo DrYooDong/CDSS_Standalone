@@ -1,38 +1,93 @@
 /**
  * CliniPortal CDSS — Shared Shell & Navigation Design System
- * Path: src/content/docspace/public/cdss/shared/cdss-shell.css
+ * Path: /shared/cdss-shell.css
  * 
- * Chuẩn hóa giao diện Header, Breadcrumb, Theme Toggle và Design Tokens 
- * cho toàn bộ hệ thống module CDSS độc lập (Standalone CDSS).
+ * Standard: HepaCDSS Medical Aesthetics
+ * - Clean Clinical Light Mode (Default)
+ * - Medical Teal (#0d9488) Primary Brand
+ * - Plus Jakarta Sans & Inter & JetBrains Mono Typography
+ * - Standardized Breadcrumb Bar & Quick-Switch Navigation
  */
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :root {
-  --color-primary: #0284c7;
-  --color-primary-hover: #0369a1;
+  --color-primary: #0d9488;
+  --color-primary-hover: #0f766e;
+  --color-primary-light: #f0fdfa;
+  --color-primary-border: #99f6e4;
+  --color-primary-glow: rgba(13, 148, 136, 0.18);
+  
   --color-surface: #ffffff;
+  --color-surface-subtle: #f8fafc;
   --color-bg: #f8fafc;
   --color-text: #0f172a;
   --color-text-muted: #64748b;
   --color-border: #e2e8f0;
-  --color-success: #16a34a;
-  --color-warning: #eab308;
-  --color-danger: #ef4444;
-  --color-info: #06b6d4;
+  --color-border-hover: #cbd5e1;
+
+  --color-success: #059669;
+  --color-success-light: #ecfdf5;
+  --color-warning: #d97706;
+  --color-warning-light: #fffbeb;
+  --color-danger: #e11d48;
+  --color-danger-light: #fff1f2;
+  --color-info: #0284c7;
+  --color-info-light: #f0f9ff;
   
-  --cdss-nav-height: 52px;
-  --cdss-font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --cdss-nav-height: 54px;
+  --cdss-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --cdss-font-display: 'Plus Jakarta Sans', var(--cdss-font-sans);
   --cdss-font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+
+  --cdss-radius-sm: 8px;
+  --cdss-radius-md: 12px;
+  --cdss-radius-lg: 16px;
+  --cdss-radius-full: 9999px;
+
+  --cdss-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --cdss-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --cdss-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --cdss-shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
 }
 
 [data-theme="dark"] {
-  --color-primary: #38bdf8;
-  --color-primary-hover: #0ea5e9;
+  --color-primary: #14b8a6;
+  --color-primary-hover: #2dd4bf;
+  --color-primary-light: rgba(20, 184, 166, 0.12);
+  --color-primary-border: rgba(20, 184, 166, 0.3);
+  --color-primary-glow: rgba(20, 184, 166, 0.3);
+
   --color-surface: #1e293b;
-  --color-bg: #0f172a;
+  --color-surface-subtle: #0f172a;
+  --color-bg: #0b1120;
   --color-text: #f8fafc;
   --color-text-muted: #94a3b8;
   --color-border: rgba(255, 255, 255, 0.1);
   --color-border-hover: rgba(255, 255, 255, 0.2);
+
+  --color-success: #10b981;
+  --color-success-light: rgba(16, 185, 129, 0.15);
+  --color-warning: #f59e0b;
+  --color-warning-light: rgba(245, 158, 11, 0.15);
+  --color-danger: #f43f5e;
+  --color-danger-light: rgba(244, 63, 94, 0.15);
+  --color-info: #38bdf8;
+  --color-info-light: rgba(56, 189, 248, 0.15);
+}
+
+/* Base Body Uniformity */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--cdss-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Master Top Navigation Bar */
@@ -41,32 +96,32 @@
   top: 0;
   z-index: 999;
   height: var(--cdss-nav-height);
-  padding: 0 1.25rem;
+  padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid var(--color-border);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-  font-family: var(--cdss-font-sans);
+  font-family: var(--cdss-font-display);
   box-sizing: border-box;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 [data-theme="dark"] .cdss-portal-navbar {
-  background: rgba(15, 23, 42, 0.94);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Breadcrumbs Area */
 .cdss-portal-nav-breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.82rem;
+  gap: 0.65rem;
+  font-size: 0.85rem;
   color: var(--color-text-muted);
   white-space: nowrap;
   overflow: hidden;
@@ -76,10 +131,10 @@
 .cdss-portal-nav-breadcrumbs a {
   color: var(--color-text-muted);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.45rem;
   transition: color 0.15s ease;
 }
 
@@ -87,9 +142,34 @@
   color: var(--color-primary);
 }
 
+.cdss-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--cdss-font-display);
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.cdss-brand-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.28);
+}
+
 .cdss-portal-nav-breadcrumbs .separator {
-  font-size: 0.6rem;
-  opacity: 0.5;
+  font-size: 0.65rem;
+  opacity: 0.45;
   color: var(--color-text-muted);
 }
 
@@ -98,45 +178,47 @@
   font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
 /* Action Buttons Area */
 .cdss-portal-nav-right {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.65rem;
   flex-shrink: 0;
 }
 
 .cdss-portal-nav-btn {
-  padding: 0.38rem 0.75rem;
+  padding: 0.42rem 0.85rem;
   border-radius: 8px;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   color: var(--color-text);
   text-decoration: none;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   cursor: pointer;
   transition: all 0.2s ease;
   line-height: 1.2;
+  box-shadow: var(--cdss-shadow-xs);
 }
 
 .cdss-portal-nav-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  background: var(--color-primary-light);
   transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.12);
+  box-shadow: 0 3px 8px rgba(13, 148, 136, 0.14);
 }
 
 /* Theme Toggle Button */
 .cdss-portal-theme-btn {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   padding: 0;
   display: inline-flex;
   align-items: center;
@@ -147,39 +229,103 @@
   color: var(--color-text);
   cursor: pointer;
   transition: all 0.2s ease;
+  font-size: 0.95rem;
+  box-shadow: var(--cdss-shadow-xs);
 }
 
 .cdss-portal-theme-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  background: var(--color-primary-light);
   transform: rotate(15deg);
+}
+
+/* Common Medical Badges */
+.cdss-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.22rem 0.65rem;
+  border-radius: var(--cdss-radius-full);
+  line-height: 1.2;
+}
+
+.cdss-badge--teal {
+  background: #f0fdfa;
+  color: #0f766e;
+  border: 1px solid #99f6e4;
+}
+
+[data-theme="dark"] .cdss-badge--teal {
+  background: rgba(20, 184, 166, 0.15);
+  color: #2dd4bf;
+  border-color: rgba(20, 184, 166, 0.35);
+}
+
+.cdss-badge--emerald {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+[data-theme="dark"] .cdss-badge--emerald {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.cdss-badge--rose {
+  background: #fff1f2;
+  color: #be123c;
+  border: 1px solid #fecdd3;
+}
+
+[data-theme="dark"] .cdss-badge--rose {
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+  border-color: rgba(244, 63, 94, 0.35);
+}
+
+/* Primary Action Buttons */
+.cdss-btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 10px rgba(13, 148, 136, 0.25);
+}
+
+.cdss-btn-teal:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.35);
+  color: #ffffff;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .cdss-portal-navbar {
-    padding: 0 0.75rem;
+    padding: 0 1rem;
   }
   
-  .cdss-portal-nav-breadcrumbs .crumb-hide-mobile {
+  .cdss-portal-nav-breadcrumbs .separator:first-of-type,
+  .cdss-portal-nav-breadcrumbs a:first-of-type span {
     display: none;
   }
   
   .cdss-portal-nav-btn span {
-    display: none;
-  }
-  
-  .cdss-portal-nav-btn {
-    padding: 0.4rem 0.55rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .cdss-portal-nav-breadcrumbs .separator:first-of-type {
-    display: none;
-  }
-  
-  .cdss-portal-nav-breadcrumbs a:first-of-type {
     display: none;
   }
 }
