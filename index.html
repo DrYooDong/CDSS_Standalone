@@ -17,7 +17,7 @@
   <!-- CliniPortal CDSS Shell Styles & Theme Script -->
   <link rel="stylesheet" href="./shared/cdss-shell.css">
   <link rel="stylesheet" href="./css/cdss-hub.css">
-  <script type="module" src="./shared/cdss-shell.js"></script>
+  <script src="./shared/cdss-shell.js"></script>
 </head>
 <body>
   <!-- Standardized Master Top Navigation Bar (HepaCDSS Style) -->
@@ -63,7 +63,7 @@
     </div>
   </footer>
 
-  <!-- Load CDSS Hub Application Entry -->
-  <script type="module" src="./src/index.ts"></script>
+  <!-- CDSS Hub Application Bundle (Pre-bundled IIFE - works directly on GitHub Pages, offline file:///, and Vite dev server) -->
+  <script src="./cdss-hub-bundle.js"></script>
 </body>
 </html>

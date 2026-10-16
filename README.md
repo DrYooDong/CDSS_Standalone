@@ -48,6 +48,32 @@ Toàn bộ dự án tĩnh tối ưu sẽ được xuất ra thư mục `dist/`, 
 
 ---
 
+## 🌐 Hướng Dẫn Đẩy Lên GitHub & Triển Khai GitHub Pages (Hoạt Động 100%)
+
+Dự án hỗ trợ 2 cách đưa lên GitHub và chạy mượt mà không lỗi:
+
+### Cách A: Tự Động Hóa Với GitHub Actions (Khuyên Dùng)
+Dự án đã tích hợp sẵn workflow tự động `.github/workflows/deploy.yml`:
+1. Đẩy code lên GitHub repository của bạn:
+   ```bash
+   git init
+   git add .
+   git commit -m "feat: CDSS Standalone Suite full modules"
+   git branch -M main
+   git remote add origin https://github.com/<YOUR_USERNAME>/<YOUR_REPO>.git
+   git push -u origin main
+   ```
+2. Trên trang GitHub repo, vào **Settings** ➔ **Pages**.
+3. Tại mục **Build and deployment** ➔ **Source**, chọn **GitHub Actions**.
+4. GitHub sẽ tự động build và cung cấp link trang web trực tuyến: `https://<YOUR_USERNAME>.github.io/<YOUR_REPO>/`.
+
+### Cách B: Chạy Trực Tiếp Từ Nhánh main (Zero Build)
+Nhờ file bundle độc lập `cdss-hub-bundle.js` và cấu hình đường dẫn tương đối (`./`), bạn có thể deploy trực tiếp từ root mà không cần build:
+1. Vào **Settings** ➔ **Pages** trên GitHub.
+2. Tại mục **Source**, chọn **Deploy from a branch**.
+3. Chọn nhánh **main** (hoặc master) và thư mục **/ (root)** ➔ Bấm **Save**.
+4. Toàn bộ 9 module CDSS và Trung tâm tra cứu sẽ hoạt động hoàn hảo ngay lập tức.
+
 ## 🎨 Điểm Nổi Bật Về Giao Diện & Trải Nghiệm (UX)
 - **100% Dark Mode & Light Mode**: Tự động nhận diện theme hệ thống và đồng bộ trạng thái qua `localStorage`.
 - **Thanh tìm kiếm tức thì**: Lọc theo từ khóa, tên bệnh, mã ICD-10 hoặc hướng dẫn điều trị.
