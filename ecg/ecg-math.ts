@@ -293,7 +293,7 @@ export function generateLeadWaveformPoints(
     for (const cStart of cycles) {
       const dt = t - cStart;
       if (dt >= -0.15 && dt < rrIntervalSec) {
-        vMv += calculateCycleVoltage(dt, waveData);
+        vMv += calculateCycleVoltage(dt, waveData, heartRate);
       }
     }
 
@@ -309,124 +309,135 @@ export function generateLeadWaveformPoints(
   return points;
 }
 
-function calculateCycleVoltage(dt: number, w: LeadWaveData): number {
+/**
+ * Calculates voltage (mV) at time offset dt (seconds from cycle start)
+ * Incorporates Bazett-style rate scaling and sharp high-slew biological depolarizations.
+ */
+function calculateCycleVoltage(dt: number, w: LeadWaveData, heartRate: number = 75): number {
   let v = 0;
 
-  // P Wave (begins around dt = 0.0)
-  const pDur = w.pWave.dur || 0.08;
+  // Rate adaptation factor for ST-T duration (based on Bazett principle sqrt(RR / 0.8))
+  const hrClamped = Math.max(30, Math.min(220, heartRate));
+  const rrSec = 60 / hrClamped;
+  const rateFactor = Math.max(0.65, Math.min(1.35, Math.sqrt(rrSec / 0.8)));
+
+  // P Wave (begins at dt = 0.0)
+  const pDur = (w.pWave.dur || 0.08) * (rateFactor < 1.0 ? Math.max(0.75, rateFactor) : 1.0);
   const pAmp = w.pWave.amp || 0.15;
   if (dt >= 0 && dt < pDur) {
     const norm = dt / pDur;
     if (w.pWave.shape === "bifid") {
       // P mitrale / 2 peaks (M shape)
-      v += pAmp * (Math.sin(norm * Math.PI * 2) * 0.4 + Math.sin(norm * Math.PI) * 0.7);
+      v += pAmp * (Math.sin(norm * Math.PI * 2) * 0.45 + Math.sin(norm * Math.PI) * 0.65);
     } else if (w.pWave.shape === "peaked") {
-      // P pulmonale (A shape / peaked)
-      v += pAmp * Math.pow(Math.sin(norm * Math.PI), 1.6);
+      // P pulmonale (peaked tented P wave)
+      v += pAmp * Math.pow(Math.sin(norm * Math.PI), 1.8);
     } else if (w.pWave.shape === "inverted") {
       v -= Math.abs(pAmp) * Math.sin(norm * Math.PI);
     } else if (w.pWave.shape === "flat") {
       v += 0;
     } else {
-      // normal rounded
-      v += pAmp * Math.sin(norm * Math.PI);
+      // Physiological asymmetric dome: slightly slower ascending limb
+      const skewedNorm = Math.pow(norm, 0.92);
+      v += pAmp * Math.sin(skewedNorm * Math.PI);
     }
   }
 
   // PR Segment
-  const prEnd = (w.pWave.dur || 0.08) + (w.prSegment.dur || 0.08);
+  const prDur = (w.prSegment.dur || 0.08) * (rateFactor < 1.0 ? Math.max(0.75, rateFactor) : 1.0);
+  const prEnd = pDur + prDur;
   if (dt >= pDur && dt < prEnd && w.prSegment.deviation) {
     v += w.prSegment.deviation;
   }
 
-  // QRS Complex
+  // QRS Complex (sharp biological depolarization)
   const qrsStart = prEnd;
   const qDur = w.qWave.dur || 0.02;
   const rDur = w.rWave.dur || 0.04;
   const sDur = w.sWave.dur || 0.03;
 
-  // Q wave
+  // Q wave (sharp nadir trough)
   if (dt >= qrsStart && dt < qrsStart + qDur) {
     const norm = (dt - qrsStart) / qDur;
-    v += w.qWave.amp * Math.sin(norm * Math.PI); // w.qWave.amp is negative or 0
+    v += w.qWave.amp * Math.pow(Math.sin(norm * Math.PI), 1.25);
   }
 
-  // R wave
+  // R wave (sharp triangular apex)
   const rStart = qrsStart + qDur;
   if (dt >= rStart && dt < rStart + rDur) {
     const norm = (dt - rStart) / rDur;
-    let rVal = w.rWave.amp * Math.sin(norm * Math.PI);
+    let rVal = w.rWave.amp * Math.pow(Math.sin(norm * Math.PI), 1.25);
     if (w.rWave.notched) {
-      rVal *= (1 - 0.25 * Math.sin(norm * Math.PI * 3));
+      rVal *= (1 - 0.28 * Math.sin(norm * Math.PI * 3));
     }
     v += rVal;
   }
 
-  // S wave
+  // S wave (sharp negative deflection)
   const sStart = rStart + rDur;
   if (dt >= sStart && dt < sStart + sDur) {
     const norm = (dt - sStart) / sDur;
-    v += w.sWave.amp * Math.sin(norm * Math.PI); // w.sWave.amp is negative
+    v += w.sWave.amp * Math.pow(Math.sin(norm * Math.PI), 1.25);
   }
 
-  // R' wave (R prime for RBBB)
+  // R' wave (R prime for RBBB / Brugada)
   const rPrimeStart = sStart + sDur;
   if (w.rPrimeWave && w.rPrimeWave.amp > 0) {
     const rPrimeDur = w.rPrimeWave.dur || 0.04;
     if (dt >= rPrimeStart && dt < rPrimeStart + rPrimeDur) {
       const norm = (dt - rPrimeStart) / rPrimeDur;
-      v += w.rPrimeWave.amp * Math.sin(norm * Math.PI);
+      v += w.rPrimeWave.amp * Math.pow(Math.sin(norm * Math.PI), 1.25);
     }
   }
 
-  // ST Segment
+  // ST Segment (rate-scaled)
   const qrsEnd = rPrimeStart + (w.rPrimeWave?.amp ? (w.rPrimeWave.dur || 0.04) : 0);
-  const stDur = 0.10;
+  const stDur = 0.10 * rateFactor;
   if (dt >= qrsEnd && dt < qrsEnd + stDur) {
     const norm = (dt - qrsEnd) / stDur;
     const elev = w.stSegment.elevation;
     if (w.stSegment.slope === "coved") {
-      // Tombstone / coved elevation (STEMI or Brugada)
-      v += elev * Math.cos(norm * (Math.PI / 2));
+      // Tombstone / coved elevation (STEMI or Brugada Type 1)
+      v += elev * (Math.cos(norm * (Math.PI / 2)) * 0.8 + 0.2);
     } else if (w.stSegment.slope === "scooped") {
       // Digoxin scooped depression
-      v += elev * Math.sin(norm * Math.PI);
+      v += elev * Math.sin(norm * Math.PI) * 1.1;
     } else if (w.stSegment.slope === "downsloping") {
-      v += elev * (1 - norm * 0.7);
+      v += elev * (1 - norm * 0.75);
     } else if (w.stSegment.slope === "upsloping") {
-      v += elev * (0.3 + norm * 0.7);
+      v += elev * (0.25 + norm * 0.75);
     } else {
       v += elev;
     }
   }
 
-  // T Wave
+  // T Wave (rate-scaled with physiological asymmetry)
   const tStart = qrsEnd + stDur;
-  const tDur = w.tWave.dur || 0.16;
+  const tDur = (w.tWave.dur || 0.16) * rateFactor;
   if (dt >= tStart && dt < tStart + tDur) {
     const norm = (dt - tStart) / tDur;
     const tAmp = w.tWave.amp;
     if (w.tWave.shape === "peaked") {
       // Tall tented peaked T (Hyperkalemia)
-      v += tAmp * Math.pow(Math.sin(norm * Math.PI), 2.2);
+      v += tAmp * Math.pow(Math.sin(norm * Math.PI), 2.3);
     } else if (w.tWave.shape === "inverted") {
       // Inverted T
-      v += -Math.abs(tAmp) * Math.sin(norm * Math.PI);
+      v -= Math.abs(tAmp) * Math.sin(norm * Math.PI);
     } else if (w.tWave.shape === "biphasic") {
       // Biphasic (+/- or -/+)
       v += tAmp * Math.sin(norm * Math.PI * 2);
     } else if (w.tWave.shape === "hyperacute") {
-      v += tAmp * 1.5 * Math.sin(norm * Math.PI);
+      v += tAmp * 1.5 * Math.pow(Math.sin(norm * Math.PI), 1.3);
     } else {
       // Standard asymmetric T: slow rise, faster fall
-      const skewedNorm = Math.pow(norm, 0.85);
+      const skewedNorm = Math.pow(norm, 0.82);
       v += tAmp * Math.sin(skewedNorm * Math.PI);
     }
   }
 
   // U Wave
-  const uStart = tStart + tDur + 0.02;
-  const uDur = w.uWave?.dur || 0.08;
+  const uStart = tStart + tDur + 0.02 * rateFactor;
+  const uDur = (w.uWave?.dur || 0.08) * rateFactor;
   if (w.uWave && w.uWave.amp !== 0 && dt >= uStart && dt < uStart + uDur) {
     const norm = (dt - uStart) / uDur;
     v += w.uWave.amp * Math.sin(norm * Math.PI);
@@ -516,7 +527,7 @@ export function generateCalibrationPulse(
   const y0 = originYPx;
   const yTop = originYPx - h;
 
-  return `M ${x0} ${y0} L ${x0 + 2} ${y0} L ${x0 + 2} ${yTop} L ${x0 + w - 2} ${yTop} L ${x0 + w - 2} ${y0} L ${x0 + w} ${y0}`;
+  return `M ${x0} ${y0} L ${x0} ${yTop} L ${x0 + w} ${yTop} L ${x0 + w} ${y0}`;
 }
 
 /**
@@ -707,38 +718,35 @@ export interface BeatMorphologyPoint {
  * Generates dynamic Poincaré plot points and HRV autonomic indices (SD1, SD2)
  * for any ECG case based on its clinical heart rate and regularity classification.
  */
-export function calculateCasePoincareHrv(
+/**
+ * Generates dynamic sequence of RR intervals matching heart rate and clinical rhythm.
+ */
+export function generateCaseRrIntervals(
   heartRate: number,
   regularity: string,
-  category: string
-): PoincareHrvAnalysis {
+  category: string,
+  count: number = 80
+): number[] {
   const baseRr = 60000 / Math.max(30, Math.min(220, heartRate));
   const isAFib = regularity.includes("Loạn nhịp") || category === "Arrhythmia";
   const isIrregular = regularity.includes("Không đều");
 
-  // Determine dispersion parameters
   let targetSd1 = 28.0;
   let targetSd2 = 72.0;
 
   if (isAFib) {
-    // Fan/comet shaped cloud characteristic of Atrial Fibrillation
     targetSd1 = 110.0;
     targetSd2 = 180.0;
   } else if (isIrregular) {
     targetSd1 = 65.0;
     targetSd2 = 115.0;
   } else if (heartRate > 110) {
-    // Tachycardia: reduced autonomic variability
     targetSd1 = 12.0;
     targetSd2 = 35.0;
   }
 
-  // Generate sequence of 100 RR intervals
-  const nBeats = 90;
   const rrList: number[] = [];
-
-  for (let i = 0; i < nBeats; i++) {
-    // Gaussian-like noise with pseudo-random seed
+  for (let i = 0; i < count; i++) {
     const u1 = Math.max(1e-6, (Math.sin(i * 12.9898 + 78.233) * 43758.5453) % 1);
     const u2 = Math.max(1e-6, (Math.cos(i * 93.9898 + 67.345) * 24634.6345) % 1);
     const z0 = Math.sqrt(-2.0 * Math.log(Math.abs(u1))) * Math.cos(2.0 * Math.PI * u2);
@@ -746,15 +754,33 @@ export function calculateCasePoincareHrv(
 
     let rr = baseRr + (z0 * targetSd2 + z1 * targetSd1) / Math.SQRT2;
 
-    // Simulate ectopic beats (PVCs) occasionally if irregular
-    if (isIrregular && i % 12 === 0) {
-      rr = baseRr * 0.65; // premature beat
-    } else if (isIrregular && i % 12 === 1) {
-      rr = baseRr * 1.35; // compensatory pause
+    if (isIrregular && i % 10 === 3) {
+      rr = baseRr * 0.68; // premature ectopic beat
+    } else if (isIrregular && i % 10 === 4) {
+      rr = baseRr * 1.32; // compensatory pause
     }
 
-    rrList.push(Math.max(300, Math.min(1800, rr)));
+    rrList.push(Math.round(Math.max(280, Math.min(2000, rr))));
   }
+  return rrList;
+}
+
+/**
+ * Generates dynamic Poincaré plot points and HRV autonomic indices (SD1, SD2)
+ * for any ECG case based on recorded RR intervals or clinical heart rate and regularity classification.
+ */
+export function calculateCasePoincareHrv(
+  heartRate: number,
+  regularity: string,
+  category: string,
+  recordedRrList?: number[]
+): PoincareHrvAnalysis {
+  const baseRr = 60000 / Math.max(30, Math.min(220, heartRate));
+  const isAFib = regularity.includes("Loạn nhịp") || category === "Arrhythmia";
+
+  const rrList: number[] = (recordedRrList && recordedRrList.length >= 8)
+    ? [...recordedRrList]
+    : generateCaseRrIntervals(heartRate, regularity, category, 90);
 
   // Build (RR_n, RR_{n+1}) points
   const points: PoincarePoint[] = [];
@@ -777,10 +803,10 @@ export function calculateCasePoincareHrv(
   const meanRr = rrList.reduce((a, b) => a + b, 0) / rrList.length;
   const meanHr = Math.round(60000 / meanRr);
 
-  const varDiff = diffs.reduce((sum, d) => sum + d * d, 0) / diffs.length;
+  const varDiff = diffs.reduce((sum, d) => sum + d * d, 0) / Math.max(1, diffs.length);
   const sd1 = Math.sqrt(0.5 * varDiff);
 
-  const varRr = rrList.reduce((sum, r) => sum + (r - meanRr) ** 2, 0) / rrList.length;
+  const varRr = rrList.reduce((sum, r) => sum + (r - meanRr) ** 2, 0) / Math.max(1, rrList.length);
   const sd2 = Math.sqrt(Math.max(1.0, 2 * varRr - 0.5 * varDiff));
   const sdRatio = sd1 / (sd2 + 1e-6);
   const rmssd = Math.sqrt(varDiff);
@@ -827,7 +853,7 @@ export function generateBeatMorphologyProfile(
     const rOffset = (leadData.pWave.dur || 0.08) + (leadData.prSegment.dur || 0.06) + (leadData.qWave.dur || 0.02) + (leadData.rWave.dur || 0.04) * 0.5;
     const cycleDt = t + rOffset;
 
-    let v = calculateCycleVoltage(cycleDt, leadData);
+    let v = calculateCycleVoltage(cycleDt, leadData, heartRate);
 
     // Natural beat-to-beat variability (SD) is highest during repolarization (ST-T) and baseline
     const repolFactor = Math.abs(t - 0.20) < 0.15 ? 0.08 : 0.03;

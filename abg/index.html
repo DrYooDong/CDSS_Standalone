@@ -11,8 +11,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
+  <!-- Instant Theme Sync (Auto Light Mode Default & Universal Synchronization) -->
+  <script>
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var urlTheme = params.get('theme');
+        var saved = urlTheme || localStorage.getItem('cliniportal_theme') || localStorage.getItem('clinical_theme') || localStorage.getItem('theme');
+        var theme = (saved === 'dark' || saved === 'light') ? saved : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- CliniPortal CDSS Shell Styles & Theme Script -->
   <link rel="stylesheet" href="../shared/cdss-shell.css">
+  <link rel="stylesheet" href="css/abg-cdss.css">
   <script src="../shared/cdss-shell.js"></script>
 
   <script type="module" crossorigin src="./assets/index-BGaPOR3j.js"></script>

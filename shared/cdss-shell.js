@@ -194,21 +194,67 @@
   ];
 
   /* --------------------------------------------------------------------------
-     1. THEME CONTROLLER
+     1. THEME CONTROLLER (Auto Light Mode Default + Universal Synchronization)
      -------------------------------------------------------------------------- */
+  var THEME_KEYS = ['cliniportal_theme', 'clinical_theme', 'theme', 'dsp-theme'];
+
+  function saveStoredTheme(theme) {
+    if (theme !== 'dark' && theme !== 'light') theme = 'light';
+    THEME_KEYS.forEach(function (k) {
+      try {
+        localStorage.setItem(k, theme);
+      } catch (e) {}
+    });
+    try {
+      if (window.history && window.history.replaceState) {
+        var url = new URL(window.location.href);
+        url.searchParams.set('theme', theme);
+        window.history.replaceState(null, '', url.toString());
+      }
+    } catch (e) {}
+  }
+
   function getPreferredTheme() {
-    var saved = localStorage.getItem(THEME_KEY);
-    if (saved === 'dark' || saved === 'light') return saved;
-    return 'light'; // Default clinical light
+    try {
+      // 1. URL search param has highest immediate priority (supports file:/// protocol)
+      var urlParams = new URLSearchParams(window.location.search);
+      var urlTheme = urlParams.get('theme');
+      if (urlTheme === 'dark' || urlTheme === 'light') {
+        saveStoredTheme(urlTheme);
+        return urlTheme;
+      }
+
+      // 2. Check stored theme keys
+      for (var i = 0; i < THEME_KEYS.length; i++) {
+        var saved = localStorage.getItem(THEME_KEYS[i]);
+        if (saved === 'dark' || saved === 'light') {
+          saveStoredTheme(saved);
+          return saved;
+        }
+      }
+    } catch (e) {}
+
+    // 3. Absolute Clinical Default: LIGHT MODE
+    return 'light';
   }
 
   function applyTheme(theme, updateToggleBtn) {
+    if (theme !== 'dark' && theme !== 'light') theme = 'light';
     if (typeof updateToggleBtn === 'undefined') updateToggleBtn = true;
+
     document.documentElement.setAttribute('data-theme', theme);
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
+      if (document.body) {
+        document.body.classList.add('dark');
+        document.body.setAttribute('data-theme', 'dark');
+      }
     } else {
       document.documentElement.classList.remove('dark');
+      if (document.body) {
+        document.body.classList.remove('dark');
+        document.body.setAttribute('data-theme', 'light');
+      }
     }
 
     if (updateToggleBtn) {
@@ -226,10 +272,8 @@
     triggerHaptic();
     var current = document.documentElement.getAttribute('data-theme') || 'light';
     var next = current === 'dark' ? 'light' : 'dark';
-    try {
-      localStorage.setItem(THEME_KEY, next);
-    } catch (e) {}
-    applyTheme(next);
+    saveStoredTheme(next);
+    applyTheme(next, true);
     showToast(next === 'dark' ? 'Đã bật chế độ Tối (Dark Mode)' : 'Đã bật chế độ Sáng (Clinical Light)');
   }
 
@@ -679,10 +723,32 @@
 
     // Storage listener across tabs
     window.addEventListener('storage', function (e) {
-      if (e.key === THEME_KEY && (e.newValue === 'light' || e.newValue === 'dark')) {
+      if (THEME_KEYS.indexOf(e.key) !== -1 && (e.newValue === 'light' || e.newValue === 'dark')) {
         applyTheme(e.newValue, true);
       }
     });
+
+    // Universal link theme decorator to ensure file:/// and cross-page navigation maintains theme
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (a && a.href) {
+        var href = a.getAttribute('href');
+        if (href && href.indexOf('.html') !== -1 && href.indexOf('javascript:') !== 0 && href.indexOf('#') !== 0) {
+          var currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+          saveStoredTheme(currentTheme);
+          var parts = href.split('#');
+          var base = parts[0];
+          var hash = parts.length > 1 ? '#' + parts[1] : '';
+          var sep = base.indexOf('?') !== -1 ? '&' : '?';
+          if (base.indexOf('theme=') !== -1) {
+            base = base.replace(/theme=(dark|light)/g, 'theme=' + currentTheme);
+          } else {
+            base = base + sep + 'theme=' + currentTheme;
+          }
+          a.setAttribute('href', base + hash);
+        }
+      }
+    }, true);
   });
 
   // Expose global controller

@@ -33,6 +33,7 @@ export interface EcgCanvasOptions {
   selectedLead?: LeadName;
   filterMode?: LeadFilterMode;
   showGrid?: boolean;
+  showWaveMarkers?: boolean; // Highlight fiducial wave landmarks P, Q, R, S, J, ST, T, U
   isLiveMode?: boolean;
   isAudioMuted?: boolean;
 }
@@ -91,6 +92,7 @@ export class EcgCanvasRenderer {
       selectedLead: opts.selectedLead || 'II',
       filterMode: opts.filterMode || 'ALL',
       showGrid: opts.showGrid !== undefined ? opts.showGrid : true,
+      showWaveMarkers: opts.showWaveMarkers !== undefined ? opts.showWaveMarkers : false,
       isLiveMode: opts.isLiveMode || false,
       isAudioMuted: opts.isAudioMuted !== undefined ? opts.isAudioMuted : true
     };
@@ -146,6 +148,12 @@ export class EcgCanvasRenderer {
     this.activeWaveAnnotation = null;
     this.render();
     return this.caliper.active;
+  }
+
+  public toggleWaveMarkers(): boolean {
+    this.options.showWaveMarkers = !this.options.showWaveMarkers;
+    this.render();
+    return this.options.showWaveMarkers;
   }
 
   public setAnnotationMode(wave: WaveType | null): void {
@@ -538,7 +546,12 @@ export class EcgCanvasRenderer {
 
     this.drawSvgPathString(waveformPath, signalColor, 1.6);
 
-    // 6. Draw sweep line if live mode
+    // 6. Draw Wave Component Landmarks & Boundaries (P, Q, R, S, J, ST, T, U) if enabled
+    if (this.options.showWaveMarkers || this.options.layoutMode === 'single') {
+      this.drawLeadFiducialMarkers(leadData, originX, originY, pxPerMm, width);
+    }
+
+    // 7. Draw sweep line if live mode
     if (this.options.isLiveMode && maxPx !== undefined && maxPx >= originX && maxPx <= originX + width) {
       this.ctx.strokeStyle = '#38bdf8';
       this.ctx.lineWidth = 2.0;
@@ -547,6 +560,97 @@ export class EcgCanvasRenderer {
       this.ctx.lineTo(maxPx, originY + height * 0.45);
       this.ctx.stroke();
     }
+  }
+
+  private drawLeadFiducialMarkers(
+    leadData: any,
+    originX: number,
+    originY: number,
+    pxPerMm: number,
+    maxWidth: number
+  ): void {
+    const hr = Math.max(30, Math.min(220, this.currentCase.metrics.heartRate));
+    const rrSec = 60 / hr;
+    const rateFactor = Math.max(0.65, Math.min(1.35, Math.sqrt(rrSec / 0.8)));
+
+    const pDur = (leadData.pWave.dur || 0.08) * (rateFactor < 1.0 ? Math.max(0.75, rateFactor) : 1.0);
+    const prDur = (leadData.prSegment.dur || 0.08) * (rateFactor < 1.0 ? Math.max(0.75, rateFactor) : 1.0);
+    const prEnd = pDur + prDur;
+    const qDur = leadData.qWave.dur || 0.02;
+    const rDur = leadData.rWave.dur || 0.04;
+    const sDur = leadData.sWave.dur || 0.03;
+    const rPrimeDur = leadData.rPrimeWave?.amp ? (leadData.rPrimeWave.dur || 0.04) : 0;
+    const qrsEnd = prEnd + qDur + rDur + sDur + rPrimeDur;
+    const stDur = 0.10 * rateFactor;
+    const tDur = (leadData.tWave.dur || 0.16) * rateFactor;
+
+    const cStartSec = 0.15; // first cycle starts after 0.15s
+    const xBase = originX + 12 + (5 * pxPerMm);
+    const mmPerSec = 25;
+    const mmPerMv = 10 * this.options.voltageGain;
+
+    const timeToPx = (tSec: number) => xBase + tSec * mmPerSec * pxPerMm;
+    const voltToPy = (vMv: number) => originY - vMv * mmPerMv * pxPerMm;
+
+    // Check if within bounds
+    if (timeToPx(cStartSec + qrsEnd + stDur + tDur) > originX + maxWidth) return;
+
+    const landmarks: Array<{ name: string; t: number; v: number; color: string; isJ?: boolean }> = [
+      { name: 'P', t: cStartSec + pDur * 0.5, v: leadData.pWave.amp || 0.15, color: '#0284c7' },
+      { name: 'Q', t: cStartSec + prEnd + qDur * 0.5, v: leadData.qWave.amp || 0, color: '#d97706' },
+      { name: 'R', t: cStartSec + prEnd + qDur + rDur * 0.5, v: leadData.rWave.amp, color: '#dc2626' },
+      { name: 'S', t: cStartSec + prEnd + qDur + rDur + sDur * 0.5, v: leadData.sWave.amp || 0, color: '#4f46e5' },
+      { name: 'J', t: cStartSec + qrsEnd, v: leadData.stSegment.elevation || 0, color: '#059669', isJ: true },
+      { name: 'ST', t: cStartSec + qrsEnd + stDur * 0.5, v: leadData.stSegment.elevation || 0, color: '#ea580c' },
+      { name: 'T', t: cStartSec + qrsEnd + stDur + tDur * 0.55, v: leadData.tWave.amp, color: '#9333ea' },
+    ];
+
+    if (leadData.uWave && leadData.uWave.amp !== 0) {
+      landmarks.push({
+        name: 'U',
+        t: cStartSec + qrsEnd + stDur + tDur + 0.04 * rateFactor,
+        v: leadData.uWave.amp,
+        color: '#0d9488'
+      });
+    }
+
+    this.ctx.save();
+    for (const lm of landmarks) {
+      const px = timeToPx(lm.t);
+      const py = voltToPy(lm.v);
+
+      // Vertical guide dash to isoelectric baseline
+      this.ctx.strokeStyle = lm.color;
+      this.ctx.lineWidth = 0.8;
+      this.ctx.setLineDash([2, 2]);
+      this.ctx.beginPath();
+      this.ctx.moveTo(px, originY);
+      this.ctx.lineTo(px, py);
+      this.ctx.stroke();
+      this.ctx.setLineDash([]);
+
+      // Point circle
+      this.ctx.fillStyle = lm.color;
+      this.ctx.beginPath();
+      if (lm.isJ) {
+        // J-point: prominent double circle
+        this.ctx.arc(px, py, 4.2, 0, Math.PI * 2);
+        this.ctx.fill();
+        this.ctx.strokeStyle = '#ffffff';
+        this.ctx.lineWidth = 1.4;
+        this.ctx.stroke();
+      } else {
+        this.ctx.arc(px, py, 2.8, 0, Math.PI * 2);
+        this.ctx.fill();
+      }
+
+      // Text badge
+      this.ctx.fillStyle = lm.color;
+      this.ctx.font = 'bold 10px "JetBrains Mono", monospace';
+      const labelY = py <= originY ? py - 6 : py + 12;
+      this.ctx.fillText(lm.name, px - 3, labelY);
+    }
+    this.ctx.restore();
   }
 
   private drawSvgPathString(pathStr: string, strokeColor: string, strokeWidth: number): void {

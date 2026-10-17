@@ -155,7 +155,7 @@ var ECG_CASES = [
       alphaAngle: 45,
       prInterval: 160,
       qrsDuration: 90,
-      qt: 410,
+      qt: 355,
       qtc: 448
     },
     leadsData: (() => {
@@ -253,6 +253,10 @@ var ECG_CASES = [
       leads["aVF"].qWave = { amp: -0.2, dur: 0.03 };
       leads["aVF"].stSegment = { elevation: 0.35, slope: "coved" };
       leads["aVF"].tWave = { amp: 0.45, dur: 0.18, shape: "hyperacute" };
+      leads["I"].rWave = { amp: 0.25, dur: 0.03 };
+      leads["I"].sWave = { amp: -0.6, dur: 0.04 };
+      leads["aVF"].rWave = { amp: 1.4, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -0.1, dur: 0.02 };
       leads["I"].stSegment = { elevation: -0.2, slope: "downsloping" };
       leads["I"].tWave = { amp: -0.25, dur: 0.16, shape: "inverted" };
       leads["aVL"].stSegment = { elevation: -0.3, slope: "downsloping" };
@@ -330,6 +334,10 @@ var ECG_CASES = [
         leads[k].sWave = { amp: leads[k].sWave.amp * 1.3, dur: 0.06 };
         leads[k].stSegment = { elevation: -0.05, slope: "downsloping" };
       }
+      leads["I"].rWave = { amp: 1.2, dur: 0.08, notched: true };
+      leads["I"].sWave = { amp: -0.2, dur: 0.04 };
+      leads["aVF"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -1.2, dur: 0.08 };
       return leads;
     })(),
     leadsSummary: {
@@ -535,7 +543,7 @@ var ECG_CASES = [
       prInterval: 0,
       qrsDuration: 165,
       // QRS rất rộng
-      qt: 340,
+      qt: 315,
       qtc: 540
     },
     leadsData: (() => {
@@ -555,6 +563,8 @@ var ECG_CASES = [
       leads["V6"].sWave = { amp: -1.6, dur: 0.12, wide: true };
       leads["I"].rWave = { amp: 0.2, dur: 0.03 };
       leads["I"].sWave = { amp: -1.4, dur: 0.12 };
+      leads["aVF"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -0.9, dur: 0.12 };
       leads["aVR"].rWave = { amp: 1.5, dur: 0.08 };
       return leads;
     })(),
@@ -631,6 +641,10 @@ var ECG_CASES = [
       leads["V2"].tWave = { amp: 1.8, dur: 0.14, shape: "peaked" };
       leads["V3"].tWave = { amp: 2, dur: 0.14, shape: "peaked" };
       leads["V4"].tWave = { amp: 1.6, dur: 0.14, shape: "peaked" };
+      leads["I"].rWave = { amp: 1.1, dur: 0.08, notched: true };
+      leads["I"].sWave = { amp: -0.1, dur: 0.04 };
+      leads["aVF"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -1.04, dur: 0.08 };
       return leads;
     })(),
     leadsSummary: {
@@ -833,7 +847,7 @@ var ECG_CASES = [
       alphaAngle: 45,
       prInterval: 0,
       qrsDuration: 90,
-      qt: 320,
+      qt: 350,
       qtc: 340
       // QT ngắn
     },
@@ -904,8 +918,8 @@ var ECG_CASES = [
       qrsDuration: 85,
       qt: 380,
       qtc: 416,
-      sokolowLyon: 24
-      // SV1 (12mm) + RV5 (12mm) = 24mm (<35mm)
+      sokolowLyon: 31
+      // SV1 (13mm) + RV5 (18mm) = 31mm (<35mm chuẩn)
     },
     leadsData: cloneNormalLeads(),
     leadsSummary: {
@@ -977,6 +991,8 @@ var ECG_CASES = [
         leads[l].tWave = { amp: 0.45, dur: 0.16, shape: "normal" };
         leads[l].qrsDuration = 145;
       }
+      leads["aVF"].rWave = { amp: 0.35, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -0.95, dur: 0.06 };
       return leads;
     })(),
     leadsSummary: {
@@ -1124,6 +1140,14 @@ var ECG_CASES = [
     },
     leadsData: (() => {
       const leads = cloneNormalLeads();
+      leads["I"].rWave = { amp: 1.4, dur: 0.04 };
+      leads["I"].sWave = { amp: -0.1, dur: 0.02 };
+      leads["II"].rWave = { amp: 0.3, dur: 0.03 };
+      leads["II"].sWave = { amp: -0.8, dur: 0.04 };
+      leads["III"].rWave = { amp: 0.2, dur: 0.02 };
+      leads["III"].sWave = { amp: -1.2, dur: 0.04 };
+      leads["aVF"].rWave = { amp: 0.25, dur: 0.02 };
+      leads["aVF"].sWave = { amp: -1, dur: 0.04 };
       leads["II"].pWave = { amp: 0.18, dur: 0.12, shape: "bifid" };
       leads["V1"].pWave = { amp: -0.12, dur: 0.1, shape: "biphasic" };
       leads["V1"].rWave = { amp: 0.2, dur: 0.02 };
@@ -1275,7 +1299,7 @@ var ECG_CASES = [
       alphaAngle: 0,
       prInterval: 0,
       qrsDuration: 160,
-      qt: 560,
+      qt: 310,
       qtc: 580
     },
     leadsData: (() => {
@@ -1368,6 +1392,16 @@ var ECG_CASES = [
         leads[l].tWave = { amp: -0.3, dur: 0.16, shape: "inverted" };
         leads[l].qrsDuration = 140;
       }
+      leads["I"].rWave = { amp: 1.3, dur: 0.08 };
+      leads["I"].sWave = { amp: -0.2, dur: 0.04 };
+      leads["aVL"].rWave = { amp: 1.2, dur: 0.08 };
+      leads["aVL"].sWave = { amp: -0.2, dur: 0.04 };
+      leads["II"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["II"].sWave = { amp: -1, dur: 0.08 };
+      leads["III"].rWave = { amp: 0.15, dur: 0.04 };
+      leads["III"].sWave = { amp: -1.3, dur: 0.08 };
+      leads["aVF"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -1.3, dur: 0.08 };
       return leads;
     })(),
     leadsSummary: {
@@ -1700,116 +1734,6 @@ var ECG_CASES = [
 ];
 
 // ecg/ecg-math.ts
-var LEAD_ANATOMY_MAP = {
-  I: {
-    lead: "I",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o I (DI)",
-    type: "Limb Bipolar",
-    region: "Th\xE0nh b\xEAn cao (High Lateral)",
-    culpritVessel: "\u0110M M\u0169 (LCx) / Nh\xE1nh ch\xE9o LAD",
-    viewAngle: "Tr\u1EE5c 0\xB0 (C\u1EF1c \xE2m: C\u1ED5 tay P, C\u1EF1c d\u01B0\u01A1ng: C\u1ED5 tay T)",
-    description: "Kh\u1EA3o s\xE1t m\u1EB7t b\xEAn th\u1EA5t tr\xE1i. B\xECnh th\u01B0\u1EDDng QRS ch\u1EE7 y\u1EBFu d\u01B0\u01A1ng. ST ch\xEAnh l\xEAn g\u1EE3i \xFD NMCT th\xE0nh b\xEAn."
-  },
-  II: {
-    lead: "II",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o II (DII)",
-    type: "Limb Bipolar",
-    region: "Th\xE0nh d\u01B0\u1EDBi (Inferior Wall)",
-    culpritVessel: "\u0110M V\xE0nh Ph\u1EA3i (RCA 85%) / \u0110M M\u0169 (LCx 15%)",
-    viewAngle: "Tr\u1EE5c +60\xB0 (D\u1ECDc theo tr\u1EE5c gi\u1EA3i ph\u1EABu bu\u1ED3ng tim)",
-    description: "Tr\u1EE5c d\u1EABn truy\u1EC1n song song v\u1EDBi kh\u1EED c\u1EF1c th\u1EA5t. S\xF3ng P v\xE0 QRS r\xF5 nh\u1EA5t, \u0111\u01B0\u1EE3c ch\u1ECDn l\xE0m d\u1EA3i nh\u1ECBp chu\u1EA9n (Rhythm Strip)."
-  },
-  III: {
-    lead: "III",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o III (DIII)",
-    type: "Limb Bipolar",
-    region: "Th\xE0nh d\u01B0\u1EDBi (Inferior Wall)",
-    culpritVessel: "\u0110M V\xE0nh Ph\u1EA3i (RCA - \u0110o\u1EA1n g\u1EA7n ho\u1EB7c gi\u1EEFa)",
-    viewAngle: "Tr\u1EE5c +120\xB0 (C\u1EF1c \xE2m: C\u1ED5 tay T, C\u1EF1c d\u01B0\u01A1ng: C\u1ED5 ch\xE2n T)",
-    description: "Kh\u1EA3o s\xE1t m\u1EB7t d\u01B0\u1EDBi tim. Khi ST ch\xEAnh \u1EDF DIII > DII g\u1EE3i \xFD m\u1EA1nh t\u1EAFc RCA h\u01A1n l\xE0 LCx."
-  },
-  aVR: {
-    lead: "aVR",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o aVR",
-    type: "Limb Unipolar",
-    region: "\u0110\xE1y tim / Bu\u1ED3ng nh\u0129-th\u1EA5t ph\u1EA3i (Right Atrium/Basal)",
-    culpritVessel: "Th\xE2n chung v\xE0nh tr\xE1i (LMCA) / B\u1EC7nh 3 nh\xE1nh n\u1EB7ng",
-    viewAngle: "Tr\u1EE5c -150\xB0 (Nh\xECn ng\u01B0\u1EE3c h\u01B0\u1EDBng v\xE0o l\xF2ng bu\u1ED3ng th\u1EA5t)",
-    description: "B\xECnh th\u01B0\u1EDDng P, QRS, T \u0111\u1EC1u \xE2m s\xE2u. ST ch\xEAnh l\xEAn \u2265 1mm \u1EDF aVR l\xE0 d\u1EA5u hi\u1EC7u b\xE1o \u0111\u1ED9ng \u0111\u1ECF \u0111e d\u1ECDa s\u1ED1c tim (t\u1EAFc LMCA)."
-  },
-  aVL: {
-    lead: "aVL",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o aVL",
-    type: "Limb Unipolar",
-    region: "Th\xE0nh b\xEAn cao (High Lateral)",
-    culpritVessel: "\u0110M M\u0169 (LCx) / Nh\xE1nh ch\xE9o (Diagonal LAD)",
-    viewAngle: "Tr\u1EE5c -30\xB0 (H\u01B0\u1EDBng v\u1EC1 vai tr\xE1i)",
-    description: "C\xF9ng DI quan s\xE1t th\xE0nh b\xEAn cao. S\xF3ng ST ch\xEAnh xu\u1ED1ng \u1EDF aVL l\xE0 h\xECnh \u1EA3nh soi g\u01B0\u01A1ng s\u1EDBm nh\u1EA5t v\xE0 nh\u1EA1y nh\u1EA5t c\u1EE7a NMCT th\xE0nh d\u01B0\u1EDBi."
-  },
-  aVF: {
-    lead: "aVF",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o aVF",
-    type: "Limb Unipolar",
-    region: "Th\xE0nh d\u01B0\u1EDBi (Inferior Wall)",
-    culpritVessel: "\u0110M V\xE0nh Ph\u1EA3i (RCA) / \u0110M M\u0169 (LCx)",
-    viewAngle: "Tr\u1EE5c +90\xB0 (H\u01B0\u1EDBng th\u1EB3ng \u0111\u1EE9ng xu\u1ED1ng b\xE0n ch\xE2n)",
-    description: "H\u1EE3p c\xF9ng DII v\xE0 DIII th\xE0nh b\u1ED9 ba chuy\u1EC3n \u0111\u1EA1o th\xE0nh d\u01B0\u1EDBi. \u0110o\u1EA1n ST ch\xEAnh l\xEAn b\xE1o hi\u1EC7u NMCT c\u1EA5p th\xE0nh d\u01B0\u1EDBi."
-  },
-  V1: {
-    lead: "V1",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o V1",
-    type: "Precordial",
-    region: "V\xE1ch li\xEAn th\u1EA5t (Septal) & Th\u1EA5t ph\u1EA3i",
-    culpritVessel: "Nh\xE1nh xuy\xEAn v\xE1ch c\u1EE7a \u0110M Li\xEAn Th\u1EA5t Tr\u01B0\u1EDBc (LAD)",
-    viewAngle: "Khoang li\xEAn s\u01B0\u1EDDn 4 b\u1EDD ph\u1EA3i x\u01B0\u01A1ng \u1EE9c",
-    description: "Nh\xECn tr\u1EF1c ti\u1EBFp th\u1EA5t ph\u1EA3i v\xE0 v\xE1ch ng\u0103n. R nh\u1ECF, S s\xE2u (rS). R cao b\u1EA5t th\u01B0\u1EDDng g\u1EE3i \xFD ph\xEC \u0111\u1EA1i th\u1EA5t ph\u1EA3i ho\u1EB7c Bloc nh\xE1nh ph\u1EA3i (RBBB)."
-  },
-  V2: {
-    lead: "V2",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o V2",
-    type: "Precordial",
-    region: "V\xE1ch li\xEAn th\u1EA5t (Septal Wall)",
-    culpritVessel: "\u0110M Li\xEAn Th\u1EA5t Tr\u01B0\u1EDBc (LAD \u0111o\u1EA1n g\u1EA7n)",
-    viewAngle: "Khoang li\xEAn s\u01B0\u1EDDn 4 b\u1EDD tr\xE1i x\u01B0\u01A1ng \u1EE9c",
-    description: "Quan s\xE1t v\xE1ch li\xEAn th\u1EA5t. V\xF9ng nh\u1EA1y c\u1EA3m ph\xE1t hi\u1EC7n h\u1ED9i ch\u1EE9ng Brugada (d\u1EA1ng v\xF2m rSr' \u1EDF V1-V2) v\xE0 thi\u1EBFu m\xE1u c\u01A1 tim c\u1EA5p."
-  },
-  V3: {
-    lead: "V3",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o V3",
-    type: "Precordial",
-    region: "Th\xE0nh tr\u01B0\u1EDBc m\u1ECFm tim (Anterior Wall)",
-    culpritVessel: "\u0110M Li\xEAn Th\u1EA5t Tr\u01B0\u1EDBc (LAD \u0111o\u1EA1n gi\u1EEFa)",
-    viewAngle: "N\u1EB1m gi\u1EEFa V2 v\xE0 V4 (KLS 5)",
-    description: "V\xF9ng chuy\u1EC3n ti\u1EBFp \u0111i\u1EC7n h\u1ECDc. B\xECnh th\u01B0\u1EDDng s\xF3ng R v\xE0 S c\xE2n b\u1EB1ng. ST ch\xEAnh l\xEAn d\u1EA1ng v\xF2m \u1EDF V3 l\xE0 d\u1EA5u hi\u1EC7u \u0111i\u1EC3n h\xECnh c\u1EE7a NMCT th\xE0nh tr\u01B0\u1EDBc."
-  },
-  V4: {
-    lead: "V4",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o V4",
-    type: "Precordial",
-    region: "Th\xE0nh tr\u01B0\u1EDBc m\u1ECFm tim (Anterior / Apical)",
-    culpritVessel: "\u0110M Li\xEAn Th\u1EA5t Tr\u01B0\u1EDBc (LAD)",
-    viewAngle: "Khoang li\xEAn s\u01B0\u1EDDn 5 tr\xEAn \u0111\u01B0\u1EDDng trung \u0111\xF2n tr\xE1i",
-    description: "Nh\xECn v\xE0o m\u1ECFm tim th\u1EA5t tr\xE1i. ST ch\xEAnh l\xEAn k\xE8m s\xF3ng T cao nh\u1ECDn kh\u1ED5ng l\u1ED3 (hyperacute T) b\xE1o hi\u1EC7u t\u1EAFc ngh\u1EBDn c\u1EA5p LAD."
-  },
-  V5: {
-    lead: "V5",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o V5",
-    type: "Precordial",
-    region: "Th\xE0nh tr\u01B0\u1EDBc - b\xEAn (Anterolateral Wall)",
-    culpritVessel: "\u0110M M\u0169 (LCx) / Nh\xE1nh ch\xE9o LAD",
-    viewAngle: "Khoang li\xEAn s\u01B0\u1EDDn 5 tr\xEAn \u0111\u01B0\u1EDDng n\xE1ch tr\u01B0\u1EDBc tr\xE1i",
-    description: "Quan s\xE1t m\u1EB7t b\xEAn th\u1EA5t tr\xE1i. S\xF3ng R chi\u1EBFm \u01B0u th\u1EBF bi\xEAn \u0111\u1ED9 cao. D\xF9ng trong ti\xEAu chu\u1EA9n Sokolow-Lyon ch\u1EA9n \u0111o\xE1n d\xE0y th\u1EA5t tr\xE1i."
-  },
-  V6: {
-    lead: "V6",
-    nameVi: "Chuy\u1EC3n \u0111\u1EA1o V6",
-    type: "Precordial",
-    region: "Th\xE0nh b\xEAn th\u1EA5t tr\xE1i (Lateral Wall)",
-    culpritVessel: "\u0110M M\u0169 (LCx)",
-    viewAngle: "Khoang li\xEAn s\u01B0\u1EDDn 5 tr\xEAn \u0111\u01B0\u1EDDng n\xE1ch gi\u1EEFa tr\xE1i",
-    description: "Quan s\xE1t ph\u1EA7n b\xEAn xa th\u1EA5t tr\xE1i. QRS d\u01B0\u01A1ng \u0111\u1ED3ng d\u1EA1ng v\u1EDBi DI v\xE0 aVL. S\xF3ng q nh\u1ECF sinh l\xFD th\u01B0\u1EDDng th\u1EA5y do kh\u1EED c\u1EF1c v\xE1ch ng\u0103n."
-  }
-};
 function generateLeadWaveformPoints(waveData, heartRate, durationSec = 2.5, options = {}) {
   const sampleRate = options.sampleRate || 350;
   const totalSamples = Math.floor(durationSec * sampleRate);
@@ -1839,7 +1763,7 @@ function generateLeadWaveformPoints(waveData, heartRate, durationSec = 2.5, opti
     for (const cStart of cycles) {
       const dt = t - cStart;
       if (dt >= -0.15 && dt < rrIntervalSec) {
-        vMv += calculateCycleVoltage(dt, waveData);
+        vMv += calculateCycleVoltage(dt, waveData, heartRate);
       }
     }
     const microFuzz = Math.sin(i * 1.3) * Math.cos(i * 2.7) * 0.015;
@@ -1849,25 +1773,30 @@ function generateLeadWaveformPoints(waveData, heartRate, durationSec = 2.5, opti
   }
   return points;
 }
-function calculateCycleVoltage(dt, w) {
+function calculateCycleVoltage(dt, w, heartRate = 75) {
   let v = 0;
-  const pDur = w.pWave.dur || 0.08;
+  const hrClamped = Math.max(30, Math.min(220, heartRate));
+  const rrSec = 60 / hrClamped;
+  const rateFactor = Math.max(0.65, Math.min(1.35, Math.sqrt(rrSec / 0.8)));
+  const pDur = (w.pWave.dur || 0.08) * (rateFactor < 1 ? Math.max(0.75, rateFactor) : 1);
   const pAmp = w.pWave.amp || 0.15;
   if (dt >= 0 && dt < pDur) {
     const norm = dt / pDur;
     if (w.pWave.shape === "bifid") {
-      v += pAmp * (Math.sin(norm * Math.PI * 2) * 0.4 + Math.sin(norm * Math.PI) * 0.7);
+      v += pAmp * (Math.sin(norm * Math.PI * 2) * 0.45 + Math.sin(norm * Math.PI) * 0.65);
     } else if (w.pWave.shape === "peaked") {
-      v += pAmp * Math.pow(Math.sin(norm * Math.PI), 1.6);
+      v += pAmp * Math.pow(Math.sin(norm * Math.PI), 1.8);
     } else if (w.pWave.shape === "inverted") {
       v -= Math.abs(pAmp) * Math.sin(norm * Math.PI);
     } else if (w.pWave.shape === "flat") {
       v += 0;
     } else {
-      v += pAmp * Math.sin(norm * Math.PI);
+      const skewedNorm = Math.pow(norm, 0.92);
+      v += pAmp * Math.sin(skewedNorm * Math.PI);
     }
   }
-  const prEnd = (w.pWave.dur || 0.08) + (w.prSegment.dur || 0.08);
+  const prDur = (w.prSegment.dur || 0.08) * (rateFactor < 1 ? Math.max(0.75, rateFactor) : 1);
+  const prEnd = pDur + prDur;
   if (dt >= pDur && dt < prEnd && w.prSegment.deviation) {
     v += w.prSegment.deviation;
   }
@@ -1877,67 +1806,67 @@ function calculateCycleVoltage(dt, w) {
   const sDur = w.sWave.dur || 0.03;
   if (dt >= qrsStart && dt < qrsStart + qDur) {
     const norm = (dt - qrsStart) / qDur;
-    v += w.qWave.amp * Math.sin(norm * Math.PI);
+    v += w.qWave.amp * Math.pow(Math.sin(norm * Math.PI), 1.25);
   }
   const rStart = qrsStart + qDur;
   if (dt >= rStart && dt < rStart + rDur) {
     const norm = (dt - rStart) / rDur;
-    let rVal = w.rWave.amp * Math.sin(norm * Math.PI);
+    let rVal = w.rWave.amp * Math.pow(Math.sin(norm * Math.PI), 1.25);
     if (w.rWave.notched) {
-      rVal *= 1 - 0.25 * Math.sin(norm * Math.PI * 3);
+      rVal *= 1 - 0.28 * Math.sin(norm * Math.PI * 3);
     }
     v += rVal;
   }
   const sStart = rStart + rDur;
   if (dt >= sStart && dt < sStart + sDur) {
     const norm = (dt - sStart) / sDur;
-    v += w.sWave.amp * Math.sin(norm * Math.PI);
+    v += w.sWave.amp * Math.pow(Math.sin(norm * Math.PI), 1.25);
   }
   const rPrimeStart = sStart + sDur;
   if (w.rPrimeWave && w.rPrimeWave.amp > 0) {
     const rPrimeDur = w.rPrimeWave.dur || 0.04;
     if (dt >= rPrimeStart && dt < rPrimeStart + rPrimeDur) {
       const norm = (dt - rPrimeStart) / rPrimeDur;
-      v += w.rPrimeWave.amp * Math.sin(norm * Math.PI);
+      v += w.rPrimeWave.amp * Math.pow(Math.sin(norm * Math.PI), 1.25);
     }
   }
   const qrsEnd = rPrimeStart + (w.rPrimeWave?.amp ? w.rPrimeWave.dur || 0.04 : 0);
-  const stDur = 0.1;
+  const stDur = 0.1 * rateFactor;
   if (dt >= qrsEnd && dt < qrsEnd + stDur) {
     const norm = (dt - qrsEnd) / stDur;
     const elev = w.stSegment.elevation;
     if (w.stSegment.slope === "coved") {
-      v += elev * Math.cos(norm * (Math.PI / 2));
+      v += elev * (Math.cos(norm * (Math.PI / 2)) * 0.8 + 0.2);
     } else if (w.stSegment.slope === "scooped") {
-      v += elev * Math.sin(norm * Math.PI);
+      v += elev * Math.sin(norm * Math.PI) * 1.1;
     } else if (w.stSegment.slope === "downsloping") {
-      v += elev * (1 - norm * 0.7);
+      v += elev * (1 - norm * 0.75);
     } else if (w.stSegment.slope === "upsloping") {
-      v += elev * (0.3 + norm * 0.7);
+      v += elev * (0.25 + norm * 0.75);
     } else {
       v += elev;
     }
   }
   const tStart = qrsEnd + stDur;
-  const tDur = w.tWave.dur || 0.16;
+  const tDur = (w.tWave.dur || 0.16) * rateFactor;
   if (dt >= tStart && dt < tStart + tDur) {
     const norm = (dt - tStart) / tDur;
     const tAmp = w.tWave.amp;
     if (w.tWave.shape === "peaked") {
-      v += tAmp * Math.pow(Math.sin(norm * Math.PI), 2.2);
+      v += tAmp * Math.pow(Math.sin(norm * Math.PI), 2.3);
     } else if (w.tWave.shape === "inverted") {
-      v += -Math.abs(tAmp) * Math.sin(norm * Math.PI);
+      v -= Math.abs(tAmp) * Math.sin(norm * Math.PI);
     } else if (w.tWave.shape === "biphasic") {
       v += tAmp * Math.sin(norm * Math.PI * 2);
     } else if (w.tWave.shape === "hyperacute") {
-      v += tAmp * 1.5 * Math.sin(norm * Math.PI);
+      v += tAmp * 1.5 * Math.pow(Math.sin(norm * Math.PI), 1.3);
     } else {
-      const skewedNorm = Math.pow(norm, 0.85);
+      const skewedNorm = Math.pow(norm, 0.82);
       v += tAmp * Math.sin(skewedNorm * Math.PI);
     }
   }
-  const uStart = tStart + tDur + 0.02;
-  const uDur = w.uWave?.dur || 0.08;
+  const uStart = tStart + tDur + 0.02 * rateFactor;
+  const uDur = (w.uWave?.dur || 0.08) * rateFactor;
   if (w.uWave && w.uWave.amp !== 0 && dt >= uStart && dt < uStart + uDur) {
     const norm = (dt - uStart) / uDur;
     v += w.uWave.amp * Math.sin(norm * Math.PI);
@@ -1993,7 +1922,7 @@ function generateCalibrationPulse(pixelsPerMmX, pixelsPerMmY, originYPx, startX 
   const x0 = startX;
   const y0 = originYPx;
   const yTop = originYPx - h;
-  return `M ${x0} ${y0} L ${x0 + 2} ${y0} L ${x0 + 2} ${yTop} L ${x0 + w - 2} ${yTop} L ${x0 + w - 2} ${y0} L ${x0 + w} ${y0}`;
+  return `M ${x0} ${y0} L ${x0} ${yTop} L ${x0 + w} ${yTop} L ${x0 + w} ${y0}`;
 }
 function validateUserManualAnnotations(annotations, waveData, lead, heartRate, caseTitle) {
   if (annotations.length === 0) {
@@ -2125,7 +2054,7 @@ function validateUserManualAnnotations(annotations, waveData, lead, heartRate, c
     guidanceChapter: "Ch\u01B0\u01A1ng 2 - \u0110\u1ECBnh v\u1ECB \u0111i\u1EC3m J v\xE0 ph\xE2n t\xEDch bi\u1EBFn \u0111\u1ED5i \u0111o\u1EA1n ST-T"
   };
 }
-function calculateCasePoincareHrv(heartRate, regularity, category) {
+function generateCaseRrIntervals(heartRate, regularity, category, count = 80) {
   const baseRr = 6e4 / Math.max(30, Math.min(220, heartRate));
   const isAFib = regularity.includes("Lo\u1EA1n nh\u1ECBp") || category === "Arrhythmia";
   const isIrregular = regularity.includes("Kh\xF4ng \u0111\u1EC1u");
@@ -2141,21 +2070,26 @@ function calculateCasePoincareHrv(heartRate, regularity, category) {
     targetSd1 = 12;
     targetSd2 = 35;
   }
-  const nBeats = 90;
   const rrList = [];
-  for (let i = 0; i < nBeats; i++) {
+  for (let i = 0; i < count; i++) {
     const u1 = Math.max(1e-6, Math.sin(i * 12.9898 + 78.233) * 43758.5453 % 1);
     const u2 = Math.max(1e-6, Math.cos(i * 93.9898 + 67.345) * 24634.6345 % 1);
     const z0 = Math.sqrt(-2 * Math.log(Math.abs(u1))) * Math.cos(2 * Math.PI * u2);
     const z1 = Math.sqrt(-2 * Math.log(Math.abs(u1))) * Math.sin(2 * Math.PI * u2);
     let rr = baseRr + (z0 * targetSd2 + z1 * targetSd1) / Math.SQRT2;
-    if (isIrregular && i % 12 === 0) {
-      rr = baseRr * 0.65;
-    } else if (isIrregular && i % 12 === 1) {
-      rr = baseRr * 1.35;
+    if (isIrregular && i % 10 === 3) {
+      rr = baseRr * 0.68;
+    } else if (isIrregular && i % 10 === 4) {
+      rr = baseRr * 1.32;
     }
-    rrList.push(Math.max(300, Math.min(1800, rr)));
+    rrList.push(Math.round(Math.max(280, Math.min(2e3, rr))));
   }
+  return rrList;
+}
+function calculateCasePoincareHrv(heartRate, regularity, category, recordedRrList) {
+  const baseRr = 6e4 / Math.max(30, Math.min(220, heartRate));
+  const isAFib = regularity.includes("Lo\u1EA1n nh\u1ECBp") || category === "Arrhythmia";
+  const rrList = recordedRrList && recordedRrList.length >= 8 ? [...recordedRrList] : generateCaseRrIntervals(heartRate, regularity, category, 90);
   const points = [];
   const diffs = [];
   for (let i = 0; i < rrList.length - 1; i++) {
@@ -2170,9 +2104,9 @@ function calculateCasePoincareHrv(heartRate, regularity, category) {
   }
   const meanRr = rrList.reduce((a, b) => a + b, 0) / rrList.length;
   const meanHr = Math.round(6e4 / meanRr);
-  const varDiff = diffs.reduce((sum, d) => sum + d * d, 0) / diffs.length;
+  const varDiff = diffs.reduce((sum, d) => sum + d * d, 0) / Math.max(1, diffs.length);
   const sd1 = Math.sqrt(0.5 * varDiff);
-  const varRr = rrList.reduce((sum, r) => sum + (r - meanRr) ** 2, 0) / rrList.length;
+  const varRr = rrList.reduce((sum, r) => sum + (r - meanRr) ** 2, 0) / Math.max(1, rrList.length);
   const sd2 = Math.sqrt(Math.max(1, 2 * varRr - 0.5 * varDiff));
   const sdRatio = sd1 / (sd2 + 1e-6);
   const rmssd = Math.sqrt(varDiff);
@@ -2204,7 +2138,7 @@ function generateBeatMorphologyProfile(leadData, heartRate) {
     const timeMs = Math.round(t * 1e3);
     const rOffset = (leadData.pWave.dur || 0.08) + (leadData.prSegment.dur || 0.06) + (leadData.qWave.dur || 0.02) + (leadData.rWave.dur || 0.04) * 0.5;
     const cycleDt = t + rOffset;
-    let v = calculateCycleVoltage(cycleDt, leadData);
+    let v = calculateCycleVoltage(cycleDt, leadData, heartRate);
     const repolFactor = Math.abs(t - 0.2) < 0.15 ? 0.08 : 0.03;
     const stdDev = Math.max(0.02, repolFactor * (1 + Math.abs(v) * 0.15));
     points.push({
@@ -2277,6 +2211,7 @@ var EcgCanvasRenderer = class {
       selectedLead: opts.selectedLead || "II",
       filterMode: opts.filterMode || "ALL",
       showGrid: opts.showGrid !== void 0 ? opts.showGrid : true,
+      showWaveMarkers: opts.showWaveMarkers !== void 0 ? opts.showWaveMarkers : false,
       isLiveMode: opts.isLiveMode || false,
       isAudioMuted: opts.isAudioMuted !== void 0 ? opts.isAudioMuted : true
     };
@@ -2323,6 +2258,11 @@ var EcgCanvasRenderer = class {
     this.activeWaveAnnotation = null;
     this.render();
     return this.caliper.active;
+  }
+  toggleWaveMarkers() {
+    this.options.showWaveMarkers = !this.options.showWaveMarkers;
+    this.render();
+    return this.options.showWaveMarkers;
   }
   setAnnotationMode(wave) {
     this.activeWaveAnnotation = wave;
@@ -2628,6 +2568,9 @@ var EcgCanvasRenderer = class {
       maxPx
     );
     this.drawSvgPathString(waveformPath, signalColor, 1.6);
+    if (this.options.showWaveMarkers || this.options.layoutMode === "single") {
+      this.drawLeadFiducialMarkers(leadData, originX, originY, pxPerMm, width);
+    }
     if (this.options.isLiveMode && maxPx !== void 0 && maxPx >= originX && maxPx <= originX + width) {
       this.ctx.strokeStyle = "#38bdf8";
       this.ctx.lineWidth = 2;
@@ -2636,6 +2579,75 @@ var EcgCanvasRenderer = class {
       this.ctx.lineTo(maxPx, originY + height * 0.45);
       this.ctx.stroke();
     }
+  }
+  drawLeadFiducialMarkers(leadData, originX, originY, pxPerMm, maxWidth) {
+    const hr = Math.max(30, Math.min(220, this.currentCase.metrics.heartRate));
+    const rrSec = 60 / hr;
+    const rateFactor = Math.max(0.65, Math.min(1.35, Math.sqrt(rrSec / 0.8)));
+    const pDur = (leadData.pWave.dur || 0.08) * (rateFactor < 1 ? Math.max(0.75, rateFactor) : 1);
+    const prDur = (leadData.prSegment.dur || 0.08) * (rateFactor < 1 ? Math.max(0.75, rateFactor) : 1);
+    const prEnd = pDur + prDur;
+    const qDur = leadData.qWave.dur || 0.02;
+    const rDur = leadData.rWave.dur || 0.04;
+    const sDur = leadData.sWave.dur || 0.03;
+    const rPrimeDur = leadData.rPrimeWave?.amp ? leadData.rPrimeWave.dur || 0.04 : 0;
+    const qrsEnd = prEnd + qDur + rDur + sDur + rPrimeDur;
+    const stDur = 0.1 * rateFactor;
+    const tDur = (leadData.tWave.dur || 0.16) * rateFactor;
+    const cStartSec = 0.15;
+    const xBase = originX + 12 + 5 * pxPerMm;
+    const mmPerSec = 25;
+    const mmPerMv = 10 * this.options.voltageGain;
+    const timeToPx = (tSec) => xBase + tSec * mmPerSec * pxPerMm;
+    const voltToPy = (vMv) => originY - vMv * mmPerMv * pxPerMm;
+    if (timeToPx(cStartSec + qrsEnd + stDur + tDur) > originX + maxWidth) return;
+    const landmarks = [
+      { name: "P", t: cStartSec + pDur * 0.5, v: leadData.pWave.amp || 0.15, color: "#0284c7" },
+      { name: "Q", t: cStartSec + prEnd + qDur * 0.5, v: leadData.qWave.amp || 0, color: "#d97706" },
+      { name: "R", t: cStartSec + prEnd + qDur + rDur * 0.5, v: leadData.rWave.amp, color: "#dc2626" },
+      { name: "S", t: cStartSec + prEnd + qDur + rDur + sDur * 0.5, v: leadData.sWave.amp || 0, color: "#4f46e5" },
+      { name: "J", t: cStartSec + qrsEnd, v: leadData.stSegment.elevation || 0, color: "#059669", isJ: true },
+      { name: "ST", t: cStartSec + qrsEnd + stDur * 0.5, v: leadData.stSegment.elevation || 0, color: "#ea580c" },
+      { name: "T", t: cStartSec + qrsEnd + stDur + tDur * 0.55, v: leadData.tWave.amp, color: "#9333ea" }
+    ];
+    if (leadData.uWave && leadData.uWave.amp !== 0) {
+      landmarks.push({
+        name: "U",
+        t: cStartSec + qrsEnd + stDur + tDur + 0.04 * rateFactor,
+        v: leadData.uWave.amp,
+        color: "#0d9488"
+      });
+    }
+    this.ctx.save();
+    for (const lm of landmarks) {
+      const px = timeToPx(lm.t);
+      const py = voltToPy(lm.v);
+      this.ctx.strokeStyle = lm.color;
+      this.ctx.lineWidth = 0.8;
+      this.ctx.setLineDash([2, 2]);
+      this.ctx.beginPath();
+      this.ctx.moveTo(px, originY);
+      this.ctx.lineTo(px, py);
+      this.ctx.stroke();
+      this.ctx.setLineDash([]);
+      this.ctx.fillStyle = lm.color;
+      this.ctx.beginPath();
+      if (lm.isJ) {
+        this.ctx.arc(px, py, 4.2, 0, Math.PI * 2);
+        this.ctx.fill();
+        this.ctx.strokeStyle = "#ffffff";
+        this.ctx.lineWidth = 1.4;
+        this.ctx.stroke();
+      } else {
+        this.ctx.arc(px, py, 2.8, 0, Math.PI * 2);
+        this.ctx.fill();
+      }
+      this.ctx.fillStyle = lm.color;
+      this.ctx.font = 'bold 10px "JetBrains Mono", monospace';
+      const labelY = py <= originY ? py - 6 : py + 12;
+      this.ctx.fillText(lm.name, px - 3, labelY);
+    }
+    this.ctx.restore();
   }
   drawSvgPathString(pathStr, strokeColor, strokeWidth) {
     if (!pathStr) return;
@@ -2702,11 +2714,26 @@ var EcgCanvasRenderer = class {
 };
 
 // ecg/ecg-ui.ts
+var ALL_12_LEADS2 = [
+  "I",
+  "II",
+  "III",
+  "aVR",
+  "aVL",
+  "aVF",
+  "V1",
+  "V2",
+  "V3",
+  "V4",
+  "V5",
+  "V6"
+];
 var EcgCDSSController = class {
   container;
   currentCase;
   renderer = null;
-  currentTab = "diagnosis";
+  currentTab = "components";
+  selectedInspectorLead = "II";
   constructor(containerId) {
     const el = document.getElementById(containerId);
     if (!el) throw new Error(`Container #${containerId} not found`);
@@ -2718,8 +2745,8 @@ var EcgCDSSController = class {
     this.renderLayout();
     this.initCanvasRenderer();
     this.attachEventListeners();
-    this.updatePatientInfo();
-    this.updateDiagnosticPanel();
+    this.updateTelemetryStrip();
+    this.updateContentPanel();
   }
   renderLayout() {
     this.container.innerHTML = `
@@ -2728,46 +2755,46 @@ var EcgCDSSController = class {
         <header class="ecg-top-card">
           <div class="ecg-header-main">
             <div class="ecg-badge-group">
-              <span class="ecg-badge ecg-badge--cardio"><i class="fa-solid fa-heart-pulse"></i> CDSS \u0110i\u1EC7n T\xE2m \u0110\u1ED3 12 \u0110\u1EA1o Tr\xECnh</span>
+              <span class="ecg-badge ecg-badge--cardio"><i class="fa-solid fa-heart-pulse"></i> \u0110\u1ED3 H\u1ECDa & \u0110\u1ED9 Ch\xEDnh X\xE1c Th\xE0nh Ph\u1EA7n S\xF3ng ECG 12 Chuy\u1EC3n \u0110\u1EA1o</span>
               <span class="ecg-badge ecg-badge--live" id="live-indicator"><i class="fa-solid fa-circle"></i> S\u1EB5n s\xE0ng</span>
-              <span class="ecg-badge ecg-badge--secondary" id="case-severity-badge">M\u1EE9c \u0111\u1ED9: ${this.currentCase.severity}</span>
+              <span class="ecg-badge ecg-badge--secondary" id="grid-spec-badge">L\u01B0\u1EDBi Y H\u1ECDc 25mm/s \u2022 10mm/mV \u2022 Xung 1mV</span>
             </div>
             <h1 class="ecg-app-title">
-              H\u1EC7 Th\u1ED1ng Ph\xE2n T\xEDch & H\u1ED7 Tr\u1EE3 Ch\u1EA9n \u0110o\xE1n ECG 12 Chuy\u1EC3n \u0110\u1EA1o
+              H\u1EC7 Th\u1ED1ng \u0110\u1ED3 H\u1ECDa & Ph\xE2n T\xEDch \u0110\u1ED9 Ch\xEDnh X\xE1c Th\xE0nh Ph\u1EA7n \u0110i\u1EC7n T\xE2m \u0110\u1ED3 (ECG Precision Inspector)
             </h1>
           </div>
 
-          <!-- Case Selector & Quick Actions -->
+          <!-- Case Selector -->
           <div class="ecg-case-selector-wrap">
-            <label for="ecg-case-select"><i class="fa-solid fa-folder-open"></i> Th\u01B0 Vi\u1EC7n Ca L\xE2m S\xE0ng:</label>
+            <label for="ecg-case-select"><i class="fa-solid fa-folder-open"></i> Th\u01B0 Vi\u1EC7n Ca \u0110i\u1EC7n T\xE2m \u0110\u1ED3:</label>
             <select id="ecg-case-select" class="ecg-select">
               ${ECG_CASES.map((c) => `
                 <option value="${c.id}" ${c.id === this.currentCase.id ? "selected" : ""}>
-                  [${c.category}] ${c.title} \u2014 ${c.severity}
+                  [${c.category}] ${c.title}
                 </option>
               `).join("")}
             </select>
-            <button id="btn-export-soap" class="ecg-btn ecg-btn--primary">
-              <i class="fa-solid fa-notes-medical"></i> Ch\xE9p V\xE0o B\u1EC7nh \xC1n
-            </button>
           </div>
         </header>
 
-        <!-- Patient Info Card -->
-        <section class="ecg-patient-banner" id="ecg-patient-banner">
-          <!-- Dynamic Patient Info -->
+        <!-- Telemetry & Waveform Metrics Ribbon -->
+        <section class="ecg-telemetry-strip" id="ecg-telemetry-strip">
+          <!-- Dynamic Telemetry items -->
         </section>
 
-        <!-- Canvas Toolbar (Controls, Caliper, Speed, Theme) -->
+        <!-- Canvas Toolbar (Speed, Gain, Theme, Markers, Caliper, Live, Audio) -->
         <div class="ecg-canvas-toolbar">
           <div class="ecg-tool-group">
-            <button id="btn-toggle-live" class="ecg-tool-btn" title="M\xF4 ph\u1ECFng m\xE1y monitor th\u1EDDi gian th\u1EF1c">
+            <button id="btn-toggle-live" class="ecg-tool-btn" title="M\xF4 ph\u1ECFng qu\xE9t m\xE1y monitor th\u1EDDi gian th\u1EF1c">
               <i class="fa-solid fa-play"></i> <span>M\xF4 Ph\u1ECFng Monitor</span>
             </button>
             <button id="btn-toggle-audio" class="ecg-tool-btn" title="B\u1EADt/T\u1EAFt \xE2m thanh nh\u1ECBp tim QRS">
-              <i class="fa-solid fa-volume-xmark"></i> <span>\xC2m Nh\u1ECBp Tim</span>
+              <i class="fa-solid fa-volume-xmark"></i> <span>\xC2m Nh\u1ECBp QRS</span>
             </button>
-            <button id="btn-toggle-caliper" class="ecg-tool-btn" title="B\u1EADt th\u01B0\u1EDBc \u0111o Caliper \u0111i\u1EC7n t\u1EED">
+            <button id="btn-toggle-markers" class="ecg-tool-btn" title="B\u1EADt/T\u1EAFt hi\u1EC3n th\u1ECB m\u1ED1c s\xF3ng P-Q-R-S-J-T-U tr\xEAn \u0111\u1ED3 h\u1ECDa">
+              <i class="fa-solid fa-tags"></i> <span>M\u1ED1c S\xF3ng (P-Q-R-S-J-T)</span>
+            </button>
+            <button id="btn-toggle-caliper" class="ecg-tool-btn" title="B\u1EADt th\u01B0\u1EDBc \u0111o Caliper \u0111i\u1EC7n t\u1EED tr\u1EF1c ti\u1EBFp tr\xEAn \u0111\u1ED3 h\u1ECDa">
               <i class="fa-solid fa-ruler-combined"></i> <span>Th\u01B0\u1EDBc Caliper</span>
             </button>
           </div>
@@ -2783,11 +2810,10 @@ var EcgCDSSController = class {
           </div>
 
           <div class="ecg-tool-group">
-            <span class="ecg-tool-label">Giao di\u1EC7n:</span>
-            <select id="select-theme" class="ecg-select-sm">
-              <option value="paper" selected>Gi\u1EA5y H\u1ED3ng ECG L\xE2m S\xE0ng</option>
-              <option value="monitor">Monitor H\u1ED3i S\u1EE9c (Xanh Neon)</option>
-              <option value="amber">Monitor CRT H\u1ED5 Ph\xE1ch</option>
+            <span class="ecg-tool-label">T\u1ED1c \u0111\u1ED9 gi\u1EA5y:</span>
+            <select id="select-speed" class="ecg-select-sm">
+              <option value="25" selected>25 mm/s (Chu\u1EA9n l\xE2m s\xE0ng)</option>
+              <option value="50">50 mm/s (Ph\xF3ng \u0111\u1EA1i chi ti\u1EBFt)</option>
             </select>
           </div>
 
@@ -2799,11 +2825,20 @@ var EcgCDSSController = class {
               <option value="2.0">2.0x (20mm/mV)</option>
             </select>
           </div>
+
+          <div class="ecg-tool-group">
+            <span class="ecg-tool-label">Giao di\u1EC7n:</span>
+            <select id="select-theme" class="ecg-select-sm">
+              <option value="paper" selected>Gi\u1EA5y H\u1ED3ng ECG L\xE2m S\xE0ng</option>
+              <option value="monitor">Monitor H\u1ED3i S\u1EE9c (Xanh Neon)</option>
+              <option value="amber">Monitor CRT H\u1ED5 Ph\xE1ch</option>
+            </select>
+          </div>
         </div>
 
-        <!-- Annotation Tools Strip -->
-        <div class="ecg-annotation-toolbar">
-          <span class="ecg-ann-label"><i class="fa-solid fa-tags"></i> Ch\u1EA5m \u0110i\u1EC3m M\u1ED1c S\xF3ng:</span>
+        <!-- Annotation Tools Strip (Active when manually labeling) -->
+        <div class="ecg-annotation-toolbar" id="ecg-annotation-toolbar">
+          <span class="ecg-ann-label"><i class="fa-solid fa-crosshairs"></i> Ch\u1EA5m \u0110i\u1EC3m Th\u1EA9m \u0110\u1ECBnh M\u1ED1c S\xF3ng:</span>
           <div class="ecg-ann-btn-group">
             <button class="ecg-ann-btn" data-wave="P">S\xF3ng P</button>
             <button class="ecg-ann-btn" data-wave="Q">S\xF3ng Q</button>
@@ -2813,37 +2848,28 @@ var EcgCDSSController = class {
             <button class="ecg-ann-btn" data-wave="T">S\xF3ng T</button>
             <button class="ecg-ann-btn" data-wave="U">S\xF3ng U</button>
             <button id="btn-clear-ann" class="ecg-ann-btn ecg-ann-btn--clear" title="X\xF3a to\xE0n b\u1ED9 nh\xE3n \u0111\xE3 ch\u1EA5m">
-              <i class="fa-solid fa-trash-can"></i> X\xF3a Nh\xE3n
+              <i class="fa-solid fa-trash-can"></i> X\xF3a M\u1ED1c
             </button>
           </div>
         </div>
 
-        <!-- Canvas Container -->
+        <!-- Main Canvas Mount Point -->
         <div class="ecg-canvas-wrapper" id="ecg-canvas-mount-point">
           <!-- Canvas injected here -->
         </div>
 
-        <!-- Clinical Diagnostic & Evaluation Subsystem -->
+        <!-- ECG Waveform Components & Precision Measurement Subsystem -->
         <section class="ecg-diagnostic-section">
           <!-- Navigation Tabs -->
           <div class="ecg-diag-tabs">
-            <button class="ecg-tab-btn active" data-tab="diagnosis">
-              <i class="fa-solid fa-stethoscope"></i> Ch\u1EA9n \u0110o\xE1n & Khuy\u1EBFn C\xE1o L\xE2m S\xE0ng
-            </button>
-            <button class="ecg-tab-btn" data-tab="criteria">
-              <i class="fa-solid fa-calculator"></i> Th\u01B0\u1EDBc \u0110o Ch\u1EC9 S\u1ED1 & Ti\xEAu Chu\u1EA9n \u0110i\u1EC7n Sinh L\xFD
-            </button>
-            <button class="ecg-tab-btn" data-tab="anatomy">
-              <i class="fa-solid fa-diagram-project"></i> Gi\u1EA3i Ph\u1EABu Chuy\u1EC3n \u0110\u1EA1o & Nh\xE1nh M\u1EA1ch V\xE0nh
-            </button>
-            <button class="ecg-tab-btn" data-tab="annotation">
-              <i class="fa-solid fa-award"></i> Ch\u1EA5m M\u1ED1c S\xF3ng
-            </button>
-            <button class="ecg-tab-btn" data-tab="guide">
-              <i class="fa-solid fa-book-medical"></i> C\u1EA9m Nang 10 B\u01B0\u1EDBc & Kinh \u0110i\u1EC3n ECG
+            <button class="ecg-tab-btn active" data-tab="components">
+              <i class="fa-solid fa-wave-square"></i> B\u1EA3ng \u0110o L\u01B0\u1EDDng & \u0110\u1ED9 Ch\xEDnh X\xE1c Th\xE0nh Ph\u1EA7n S\xF3ng (ECG Components Inspector)
             </button>
             <button class="ecg-tab-btn" data-tab="advanced-graphics">
-              <i class="fa-solid fa-chart-line text-teal-600"></i> \u0110\u1ED3 H\u1ECDa N\xE2ng Cao & Poincar\xE9 (WFDB / MIT-BIH)
+              <i class="fa-solid fa-chart-line text-teal-600"></i> \u0110\u1ED3 H\u1ECDa N\xE2ng Cao & \u0110\u1ED9ng H\u1ECDc Poincar\xE9 (WFDB / MIT-BIH)
+            </button>
+            <button class="ecg-tab-btn" data-tab="caliper-annotation">
+              <i class="fa-solid fa-ruler-combined"></i> Th\u01B0\u1EDBc \u0110o Caliper & Ch\u1EA5m M\u1ED1c S\xF3ng
             </button>
           </div>
 
@@ -2859,17 +2885,28 @@ var EcgCDSSController = class {
     `;
   }
   initCanvasRenderer() {
+    const isDarkGlobal = document.documentElement.getAttribute("data-theme") === "dark";
+    const initialCanvasTheme = isDarkGlobal ? "monitor" : "paper";
     this.renderer = new EcgCanvasRenderer("ecg-canvas-mount-point", this.currentCase, {
-      theme: "paper",
+      theme: initialCanvasTheme,
       layoutMode: "3x4",
       paperSpeed: 25,
       voltageGain: 1,
       isLiveMode: false,
-      isAudioMuted: true
+      isAudioMuted: true,
+      showWaveMarkers: true
     });
+    const selectTheme = document.getElementById("select-theme");
+    if (selectTheme) {
+      selectTheme.value = initialCanvasTheme;
+    }
+    const btnMarkers = document.getElementById("btn-toggle-markers");
+    if (btnMarkers) {
+      btnMarkers.classList.add("active");
+    }
     window.addEventListener("ecg-annotation-update", (e) => {
       const report = e.detail?.report;
-      if (report && this.currentTab === "annotation") {
+      if (report && this.currentTab === "caliper-annotation") {
         this.renderAnnotationTab(report);
       }
     });
@@ -2882,9 +2919,9 @@ var EcgCDSSController = class {
         if (found) {
           this.currentCase = found;
           this.renderer?.setCase(found);
-          this.updatePatientInfo();
-          this.updateDiagnosticPanel();
-          this.showToast(`\u0110\xE3 t\u1EA3i ca b\u1EC7nh: ${found.title}`);
+          this.updateTelemetryStrip();
+          this.updateContentPanel();
+          this.showToast(`\u0110\xE3 t\u1EA3i \u0111i\u1EC7n t\xE2m \u0111\u1ED3: ${found.title}`);
         }
       });
     }
@@ -2898,7 +2935,7 @@ var EcgCDSSController = class {
         const ind = document.getElementById("live-indicator");
         if (ind) {
           ind.className = `ecg-badge ${isLive ? "ecg-badge--danger" : "ecg-badge--live"}`;
-          ind.innerHTML = isLive ? `<i class="fa-solid fa-heartbeat fa-beat"></i> \u0110ANG CH\u1EA0Y MONITOR` : `<i class="fa-solid fa-circle"></i> S\u1EB5n s\xE0ng`;
+          ind.innerHTML = isLive ? `<i class="fa-solid fa-heartbeat fa-beat"></i> \u0110ANG QU\xC9T MONITOR` : `<i class="fa-solid fa-circle"></i> S\u1EB5n s\xE0ng`;
         }
       });
     }
@@ -2908,7 +2945,16 @@ var EcgCDSSController = class {
         if (!this.renderer) return;
         const isMuted = this.renderer.toggleMute();
         btnAudio.classList.toggle("active", !isMuted);
-        btnAudio.innerHTML = !isMuted ? `<i class="fa-solid fa-volume-high"></i> <span>\xC2m Thanh: B\u1EADt</span>` : `<i class="fa-solid fa-volume-xmark"></i> <span>\xC2m Nh\u1ECBp Tim</span>`;
+        btnAudio.innerHTML = !isMuted ? `<i class="fa-solid fa-volume-high"></i> <span>\xC2m Thanh: B\u1EADt</span>` : `<i class="fa-solid fa-volume-xmark"></i> <span>\xC2m Nh\u1ECBp QRS</span>`;
+      });
+    }
+    const btnMarkers = document.getElementById("btn-toggle-markers");
+    if (btnMarkers) {
+      btnMarkers.addEventListener("click", () => {
+        if (!this.renderer) return;
+        const isShown = this.renderer.toggleWaveMarkers();
+        btnMarkers.classList.toggle("active", isShown);
+        this.showToast(isShown ? "\u0110\xE3 b\u1EADt hi\u1EC3n th\u1ECB m\u1ED1c s\xF3ng P-Q-R-S-J-T-U" : "\u0110\xE3 \u1EA9n m\u1ED1c s\xF3ng");
       });
     }
     const btnCaliper = document.getElementById("btn-toggle-caliper");
@@ -2918,7 +2964,7 @@ var EcgCDSSController = class {
         const isActive = this.renderer.toggleCaliper();
         btnCaliper.classList.toggle("active", isActive);
         if (isActive) {
-          this.showToast("Th\u01B0\u1EDBc Caliper \u0111\xE3 b\u1EADt: Nh\u1EA5p v\xE0 k\xE9o tr\xEAn gi\u1EA5y ECG \u0111\u1EC3 \u0111o kho\u1EA3ng th\u1EDDi gian v\xE0 bi\xEAn \u0111\u1ED9.");
+          this.showToast("Th\u01B0\u1EDBc Caliper B\u1EACT: Nh\u1EA5p v\xE0 k\xE9o chu\u1ED9t tr\xEAn \u0111\u1ED3 h\u1ECDa \u0111\u1EC3 \u0111o");
         }
       });
     }
@@ -2928,28 +2974,46 @@ var EcgCDSSController = class {
         this.renderer?.setOptions({ layoutMode: selectLayout.value });
       });
     }
+    const selectSpeed = document.getElementById("select-speed");
+    if (selectSpeed) {
+      selectSpeed.addEventListener("change", () => {
+        const speed = parseFloat(selectSpeed.value) || 25;
+        this.renderer?.setOptions({ paperSpeed: speed });
+        this.showToast(`T\u1ED1c \u0111\u1ED9 k\xE9o gi\u1EA5y: ${speed} mm/s`);
+      });
+    }
+    const selectGain = document.getElementById("select-gain");
+    if (selectGain) {
+      selectGain.addEventListener("change", () => {
+        const gain = parseFloat(selectGain.value) || 1;
+        this.renderer?.setOptions({ voltageGain: gain });
+      });
+    }
     const selectTheme = document.getElementById("select-theme");
     if (selectTheme) {
       selectTheme.addEventListener("change", () => {
         this.renderer?.setOptions({ theme: selectTheme.value });
       });
     }
-    const selectGain = document.getElementById("select-gain");
-    if (selectGain) {
-      selectGain.addEventListener("change", () => {
-        this.renderer?.setOptions({ voltageGain: parseFloat(selectGain.value) });
-      });
-    }
+    window.addEventListener("cliniportal-theme-change", (e) => {
+      const isDark = e.detail?.theme === "dark";
+      const targetTheme = isDark ? "monitor" : "paper";
+      const selectThemeEl = document.getElementById("select-theme");
+      if (selectThemeEl) {
+        selectThemeEl.value = targetTheme;
+      }
+      this.renderer?.setOptions({ theme: targetTheme });
+    });
     const annBtns = document.querySelectorAll(".ecg-ann-btn[data-wave]");
     annBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         const wave = btn.getAttribute("data-wave");
-        const wasActive = btn.classList.contains("active");
+        const isAlreadyActive = btn.classList.contains("active");
         annBtns.forEach((b) => b.classList.remove("active"));
-        if (!wasActive) {
+        if (!isAlreadyActive) {
           btn.classList.add("active");
           this.renderer?.setAnnotationMode(wave);
-          this.showToast(`\u0110\xE3 k\xEDch ho\u1EA1t ch\u1EBF \u0111\u1ED9 ch\u1EA5m ${wave}: Nh\u1EA5p l\xEAn \u0111\u01B0\u1EDDng bi\u1EC3u di\u1EC5n s\xF3ng.`);
+          this.showToast(`Ch\u1EBF \u0111\u1ED9 ch\u1EA5m m\u1ED1c: ${wave}. Nh\u1EA5p chu\u1ED9t l\xEAn \u0111\u1ED3 h\u1ECDa ECG.`);
         } else {
           this.renderer?.setAnnotationMode(null);
         }
@@ -2960,8 +3024,8 @@ var EcgCDSSController = class {
       btnClearAnn.addEventListener("click", () => {
         this.renderer?.clearAnnotations();
         annBtns.forEach((b) => b.classList.remove("active"));
-        this.showToast("\u0110\xE3 x\xF3a to\xE0n b\u1ED9 nh\xE3n s\xF3ng.");
-        if (this.currentTab === "annotation") {
+        this.showToast("\u0110\xE3 x\xF3a to\xE0n b\u1ED9 nh\xE3n m\u1ED1c s\xF3ng.");
+        if (this.currentTab === "caliper-annotation") {
           this.renderAnnotationTab(null);
         }
       });
@@ -2972,472 +3036,437 @@ var EcgCDSSController = class {
         tabBtns.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
         this.currentTab = btn.getAttribute("data-tab");
-        this.updateDiagnosticPanel();
+        this.updateContentPanel();
       });
     });
-    const btnExportSoap = document.getElementById("btn-export-soap");
-    if (btnExportSoap) {
-      btnExportSoap.addEventListener("click", () => this.exportSoapPlan());
-    }
   }
-  updatePatientInfo() {
-    const banner = document.getElementById("ecg-patient-banner");
-    if (!banner) return;
-    const p = this.currentCase.patient;
+  updateTelemetryStrip() {
+    const strip = document.getElementById("ecg-telemetry-strip");
+    if (!strip) return;
     const m = this.currentCase.metrics;
-    banner.innerHTML = `
-      <div class="ecg-patient-grid">
-        <div class="ecg-patient-col-main">
-          <div class="ecg-patient-name-row">
-            <span class="ecg-patient-name"><i class="fa-solid fa-user-injured"></i> ${p.name}</span>
-            <span class="ecg-patient-demog">${p.age} tu\u1ED5i \u2022 ${p.gender}</span>
-          </div>
-          <p class="ecg-patient-complaint"><strong>L\xFD do v\xE0o vi\u1EC7n:</strong> ${p.chiefComplaint}</p>
-          <p class="ecg-patient-history"><strong>B\u1EC7nh s\u1EED:</strong> ${p.clinicalHistory}</p>
-        </div>
+    const rrMs = Math.round(6e4 / Math.max(30, m.heartRate));
+    strip.innerHTML = `
+      <div class="ecg-telem-item">
+        <span class="ecg-telem-label"><i class="fa-solid fa-heart-pulse text-danger"></i> T\u1EA7n S\u1ED1 Tim (HR)</span>
+        <span class="ecg-telem-val ${m.heartRate > 100 || m.heartRate < 60 ? "text-danger" : ""}">${m.heartRate} bpm <small style="font-weight:normal; color:#64748b;">(RR: ${rrMs}ms)</small></span>
+      </div>
 
-        <div class="ecg-patient-vitals-col">
-          <div class="ecg-vital-item">
-            <span class="ecg-vital-label">Huy\u1EBFt \xC1p:</span>
-            <span class="ecg-vital-val font-bold">${p.vitals.bp} mmHg</span>
-          </div>
-          <div class="ecg-vital-item">
-            <span class="ecg-vital-label">Nh\u1ECBp Tim (HR):</span>
-            <span class="ecg-vital-val font-bold text-danger">${m.heartRate} bpm</span>
-          </div>
-          <div class="ecg-vital-item">
-            <span class="ecg-vital-label">SpO2 / Nhi\u1EC7t:</span>
-            <span class="ecg-vital-val">${p.vitals.spo2}% \u2022 ${p.vitals.temp}\xB0C</span>
-          </div>
-          ${p.labs?.troponinI ? `
-            <div class="ecg-vital-item ecg-vital-item--highlight">
-              <span class="ecg-vital-label">Troponin I:</span>
-              <span class="ecg-vital-val text-danger font-bold">${p.labs.troponinI}</span>
-            </div>
-          ` : ""}
-          ${p.labs?.k ? `
-            <div class="ecg-vital-item">
-              <span class="ecg-vital-label">K+ m\xE1u:</span>
-              <span class="ecg-vital-val">${p.labs.k} mEq/L</span>
-            </div>
-          ` : ""}
-        </div>
+      <div class="ecg-telem-item">
+        <span class="ecg-telem-label"><i class="fa-solid fa-wave-square text-primary"></i> Nh\u1ECBp & T\xEDnh Ch\u1EA5t</span>
+        <span class="ecg-telem-val" title="${m.rhythmType}">${m.rhythmType}</span>
+      </div>
+
+      <div class="ecg-telem-item">
+        <span class="ecg-telem-label"><i class="fa-solid fa-compass text-teal-600"></i> Tr\u1EE5c QRS (G\xF3c \u03B1)</span>
+        <span class="ecg-telem-val">${m.axis} (${m.alphaAngle}\xB0)</span>
+      </div>
+
+      <div class="ecg-telem-item">
+        <span class="ecg-telem-label"><i class="fa-solid fa-arrows-left-right text-indigo-600"></i> Kho\u1EA3ng PR</span>
+        <span class="ecg-telem-val ${m.prInterval > 200 || m.prInterval < 120 ? "text-danger" : ""}">${m.prInterval} ms <small style="font-weight:normal; color:#64748b;">(120-200ms)</small></span>
+      </div>
+
+      <div class="ecg-telem-item">
+        <span class="ecg-telem-label"><i class="fa-solid fa-gauge-high text-amber-600"></i> Th\u1EDDi Gian QRS</span>
+        <span class="ecg-telem-val ${m.qrsDuration >= 120 ? "text-danger" : ""}">${m.qrsDuration} ms <small style="font-weight:normal; color:#64748b;">(&lt;120ms)</small></span>
+      </div>
+
+      <div class="ecg-telem-item">
+        <span class="ecg-telem-label"><i class="fa-solid fa-stopwatch text-purple-600"></i> QT / QTc (Bazett)</span>
+        <span class="ecg-telem-val ${m.qtc > 450 ? "text-danger" : ""}">${m.qt} / ${m.qtc} ms</span>
+      </div>
+
+      <div class="ecg-telem-item">
+        <span class="ecg-telem-label"><i class="fa-solid fa-bolt text-warning"></i> Sokolow-Lyon / Cornell</span>
+        <span class="ecg-telem-val">${m.sokolowLyon !== void 0 ? `${m.sokolowLyon} mm` : "\u2014"} / ${m.cornellCriteria !== void 0 ? `${m.cornellCriteria} mm` : "\u2014"}</span>
       </div>
     `;
-    const sevBadge = document.getElementById("case-severity-badge");
-    if (sevBadge) {
-      sevBadge.textContent = `M\u1EE9c \u0111\u1ED9: ${this.currentCase.severity}`;
-      sevBadge.className = `ecg-badge ${this.currentCase.severity === "Kh\u1EA9n c\u1EA5p" || this.currentCase.severity === "Nguy k\u1ECBch" ? "ecg-badge--danger" : "ecg-badge--secondary"}`;
-    }
   }
-  updateDiagnosticPanel() {
+  updateContentPanel() {
     const wrap = document.getElementById("ecg-tab-content");
     if (!wrap) return;
-    if (this.currentTab === "diagnosis") {
-      this.renderDiagnosisTab(wrap);
-    } else if (this.currentTab === "criteria") {
-      this.renderCriteriaTab(wrap);
-    } else if (this.currentTab === "anatomy") {
-      this.renderAnatomyTab(wrap);
-    } else if (this.currentTab === "guide") {
-      this.renderGuideTab(wrap);
+    if (this.currentTab === "components") {
+      this.renderComponentsTab(wrap);
     } else if (this.currentTab === "advanced-graphics") {
       this.renderAdvancedGraphicsTab(wrap);
     } else {
       this.renderAnnotationTab(this.renderer?.lastValidationReport || null);
     }
   }
-  renderDiagnosisTab(wrap) {
+  /**
+   * Dedicated ECG Wave Components Precision Inspector
+   */
+  renderComponentsTab(wrap) {
     const c = this.currentCase;
-    const d = c.diagnosis;
+    const m = c.metrics;
+    const lead = this.selectedInspectorLead;
+    const leadData = c.leadsData[lead] || c.leadsData["II"];
+    const pDurMs = Math.round((leadData.pWave.dur || 0.08) * 1e3);
+    const pAmpMv = leadData.pWave.amp || 0.15;
+    const pAmpMm = (pAmpMv * 10).toFixed(1);
+    const isPNormal = pDurMs < 120 && pAmpMv < 0.25 && pAmpMv > -0.05;
+    const prDurMs = m.prInterval;
+    const prElevMv = leadData.prSegment.elevation || 0;
+    const isPrNormal = prDurMs >= 120 && prDurMs <= 200 && Math.abs(prElevMv) < 0.05;
+    const qDurMs = Math.round((leadData.qWave.dur || 0.02) * 1e3);
+    const qAmpMv = Math.abs(leadData.qWave.amp || 0);
+    const rAmpMv = leadData.rWave.amp || 1;
+    const isQPathological = qDurMs >= 40 || rAmpMv > 0 && qAmpMv / rAmpMv >= 0.25;
+    const sAmpMv = Math.abs(leadData.sWave.amp || 0);
+    const rsRatio = sAmpMv > 0 ? (rAmpMv / sAmpMv).toFixed(2) : "\u221E";
+    const isQrsWide = m.qrsDuration >= 120;
+    const stElevMv = leadData.stSegment.elevation || 0;
+    const stElevMm = (stElevMv * 10).toFixed(1);
+    const isStElevated = stElevMv >= 0.1;
+    const isStDepressed = stElevMv <= -0.05;
+    const tAmpMv = leadData.tWave.amp || 0.3;
+    const tDurMs = Math.round((leadData.tWave.dur || 0.16) * 1e3);
+    const tShape = leadData.tWave.shape || "b\u1EA5t \u0111\u1ED1i x\u1EE9ng sinh l\xFD";
+    const uAmpMv = leadData.uWave ? leadData.uWave.amp : 0;
+    const hasUWave = uAmpMv !== 0;
     wrap.innerHTML = `
-      <div class="ecg-diag-grid">
-        <!-- Ch\u1EA9n \u0111o\xE1n then ch\u1ED1t & Nh\xE1nh th\u1EE7 ph\u1EA1m -->
-        <div class="ecg-diag-card ecg-diag-card--primary">
-          <div class="ecg-diag-card-header">
-            <i class="fa-solid fa-file-waveform"></i>
-            <h3>K\u1EBFt Lu\u1EADn Ch\u1EA9n \u0110o\xE1n \u0110i\u1EC7n T\xE2m \u0110\u1ED3</h3>
-            <span class="ecg-confidence-tag">\u0110\u1ED9 tin c\u1EADy: ${d.confidence.primary}%</span>
-          </div>
-          <div class="ecg-primary-diagnosis">
-            ${d.primary}
-          </div>
-          ${d.culpritVesselOrCause ? `
-            <div class="ecg-culprit-box">
-              <i class="fa-solid fa-heart-crack text-danger"></i>
-              <div>
-                <strong>V\u1ECB tr\xED t\u1ED5n th\u01B0\u01A1ng / Nh\xE1nh th\u1EE7 ph\u1EA1m:</strong>
-                <p>${d.culpritVesselOrCause}</p>
-              </div>
-            </div>
-          ` : ""}
-
-          <div class="ecg-key-findings-list">
-            <strong>D\u1EA5u hi\u1EC7u then ch\u1ED1t tr\xEAn 12 \u0111\u1EA1o tr\xECnh:</strong>
-            <ul>
-              ${d.keyFindings.map((f) => `<li><i class="fa-solid fa-circle-check text-primary"></i> <span>${f}</span></li>`).join("")}
-            </ul>
-          </div>
-        </div>
-
-        <!-- Ph\xE1c \u0110\u1ED3 X\u1EED Tr\xED Kh\u1EA9n C\u1EA5p & Ch\u1EA9n \u0110o\xE1n Ph\xE2n Bi\u1EC7t -->
-        <div class="ecg-diag-card">
-          <div class="ecg-diag-card-header">
-            <i class="fa-solid fa-truck-medical"></i>
-            <h3>H\u01B0\u1EDBng X\u1EED Tr\xED C\u1EA5p C\u1EE9u & Can Thi\u1EC7p</h3>
-          </div>
-          
-          <ol class="ecg-treatment-steps">
-            ${d.treatment.map((step, idx) => `
-              <li>
-                <span class="ecg-step-num">${idx + 1}</span>
-                <span class="ecg-step-text">${step}</span>
-              </li>
-            `).join("")}
-          </ol>
-
-          <div class="ecg-differentials-box">
-            <strong>Ch\u1EA9n \u0111o\xE1n ph\xE2n bi\u1EC7t c\u1EA7n lo\u1EA1i tr\u1EEB:</strong>
-            <p>${d.differentials.join(" \u2022 ")}</p>
-          </div>
-
-          <div class="ecg-learning-box">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <div>
-              <strong>\u0110i\u1EC3m c\u1ED1t l\xF5i l\xE2m s\xE0ng:</strong>
-              <p>${c.learningNotes.coreTakeaway}</p>
-              <small class="text-muted"><i class="fa-solid fa-triangle-exclamation"></i> C\u1EA1m b\u1EABy: ${c.learningNotes.pitfallToAvoid}</small>
-            </div>
-          </div>
-        </div>
+      <!-- Lead Quick Selector Pills -->
+      <div class="ecg-lead-pills-container">
+        <span class="ecg-lead-pills-label"><i class="fa-solid fa-filter"></i> Kh\u1EA3o s\xE1t chi ti\u1EBFt \u0111\u1EA1o tr\xECnh:</span>
+        ${ALL_12_LEADS2.map((l) => `
+          <button class="ecg-lead-pill ${l === lead ? "active" : ""}" data-lead="${l}">
+            ${l}
+          </button>
+        `).join("")}
       </div>
-    `;
-  }
-  renderCriteriaTab(wrap) {
-    const m = this.currentCase.metrics;
-    wrap.innerHTML = `
-      <div class="ecg-criteria-grid">
-        <!-- Th\xF4ng s\u1ED1 \u0111o \u0111\u1EA1c \u0111i\u1EC7n h\u1ECDc -->
-        <div class="ecg-criteria-card">
-          <h3><i class="fa-solid fa-wave-square"></i> C\xE1c Kho\u1EA3ng Th\u1EDDi Gian \u0110i\u1EC7n H\u1ECDc</h3>
-          <table class="ecg-metrics-table">
+
+      <!-- 9 ECG Waveform Component Precision Cards Grid -->
+      <div class="ecg-comp-grid">
+        <!-- 1. S\xF3ng P -->
+        <div class="ecg-comp-card">
+          <div class="ecg-comp-card-header">
+            <h4 class="ecg-comp-card-title">
+              <i class="fa-solid fa-circle-dot text-primary"></i> 1. S\xF3ng P (Kh\u1EED C\u1EF1c Nh\u0129)
+            </h4>
+            <span class="ecg-comp-badge ${isPNormal ? "ecg-comp-badge--normal" : "ecg-comp-badge--warning"}">
+              ${isPNormal ? "\u0110\u1EA1t chu\u1EA9n sinh l\xFD" : "B\u1EA5t th\u01B0\u1EDDng / Bi\u1EBFn \u0111\u1ED5i"}
+            </span>
+          </div>
+          <table class="ecg-comp-table">
             <tr>
-              <td>Nh\u1ECBp & T\xEDnh ch\u1EA5t:</td>
-              <td class="font-bold">${m.rhythmType} (${m.regularity})</td>
+              <td class="ecg-comp-table-lbl">Bi\xEAn \u0111\u1ED9 (Amplitude):</td>
+              <td class="ecg-comp-table-val">${pAmpMv.toFixed(2)} mV (${pAmpMm} mm)</td>
             </tr>
             <tr>
-              <td>T\u1EA7n s\u1ED1 th\u1EA5t (HR):</td>
-              <td class="font-bold text-danger">${m.heartRate} chu k\u1EF3/ph\xFAt</td>
+              <td class="ecg-comp-table-lbl">Th\u1EDDi gian (Duration):</td>
+              <td class="ecg-comp-table-val">${pDurMs} ms</td>
             </tr>
             <tr>
-              <td>Tr\u1EE5c \u0111i\u1EC7n tim (G\xF3c \u03B1):</td>
-              <td class="font-bold">${m.axis} (${m.alphaAngle}\xB0)</td>
-            </tr>
-            <tr>
-              <td>Kho\u1EA3ng PR:</td>
-              <td class="${m.prInterval > 200 ? "text-danger font-bold" : ""}">${m.prInterval} ms (Chu\u1EA9n: 120-200ms)</td>
-            </tr>
-            <tr>
-              <td>\u0110\u1ED9 r\u1ED9ng QRS:</td>
-              <td class="${m.qrsDuration > 120 ? "text-danger font-bold" : ""}">${m.qrsDuration} ms (Chu\u1EA9n: &lt;120ms)</td>
-            </tr>
-            <tr>
-              <td>Kho\u1EA3ng QT:</td>
-              <td>${m.qt} ms</td>
-            </tr>
-            <tr>
-              <td>QTc (C\xF4ng th\u1EE9c Bazett):</td>
-              <td class="${m.qtc > 450 ? "text-danger font-bold" : ""}">${m.qtc} ms (Chu\u1EA9n: &lt;440ms nam, &lt;460ms n\u1EEF)</td>
+              <td class="ecg-comp-table-lbl">H\xECnh th\xE1i / C\u1EF1c t\xEDnh:</td>
+              <td class="ecg-comp-table-val">${pAmpMv >= 0 ? "D\u01B0\u01A1ng \u0111\u1ED3ng d\u1EA1ng" : "\xC2m / Hai pha"}</td>
             </tr>
           </table>
+          <div class="ecg-comp-ref-box">
+            <strong>Gi\u1EDBi h\u1EA1n sinh l\xFD b\xECnh th\u01B0\u1EDDng:</strong> Th\u1EDDi gian &lt; 120 ms (3 \xF4 nh\u1ECF), Bi\xEAn \u0111\u1ED9 &lt; 0.25 mV (2.5 mm). Cao nh\u1ECDn &ge; 2.5mm: D\xE0y nh\u0129 ph\u1EA3i (P ph\u1EBF); Hai \u0111\u1EC9nh r\u1ED9ng &ge; 120ms: D\xE0y nh\u0129 tr\xE1i (P nh\u0129).
+          </div>
         </div>
 
-        <!-- Thang \u0111i\u1EC3m ph\xEC \u0111\u1EA1i & Ti\xEAu chu\u1EA9n \u0111\u1EB7c bi\u1EC7t -->
-        <div class="ecg-criteria-card">
-          <h3><i class="fa-solid fa-list-check"></i> Ti\xEAu Chu\u1EA9n Ph\xEC \u0110\u1EA1i & Ti\xEAn L\u01B0\u1EE3ng</h3>
-          <div class="ecg-criteria-list">
-            <div class="ecg-crit-item">
-              <div class="ecg-crit-header">
-                <strong>Ch\u1EC9 s\u1ED1 Sokolow-Lyon (D\xE0y th\u1EA5t tr\xE1i):</strong>
-                <span class="ecg-crit-val">${m.sokolowLyon !== void 0 ? `${m.sokolowLyon} mm` : "N/A"}</span>
-              </div>
-              <p class="ecg-crit-desc">SV1 + RV5 (Ng\u01B0\u1EE1ng d\xE0y th\u1EA5t tr\xE1i: \u2265 35 mm \u1EDF ng\u01B0\u1EDDi l\u1EDBn > 35 tu\u1ED5i).</p>
-            </div>
+        <!-- 2. Kho\u1EA3ng PR & \u0110o\u1EA1n PR -->
+        <div class="ecg-comp-card">
+          <div class="ecg-comp-card-header">
+            <h4 class="ecg-comp-card-title">
+              <i class="fa-solid fa-left-right text-indigo-600"></i> 2. Kho\u1EA3ng PR &amp; \u0110o\u1EA1n PR
+            </h4>
+            <span class="ecg-comp-badge ${isPrNormal ? "ecg-comp-badge--normal" : "ecg-comp-badge--danger"}">
+              ${isPrNormal ? "\u0110\u1EB3ng \u0111i\u1EC7n chu\u1EA9n" : prDurMs > 200 ? "PR k\xE9o d\xE0i (Bloc AV I)" : prDurMs < 120 ? "PR ng\u1EAFn (WPW)" : "PR ch\xEAnh xu\u1ED1ng"}
+            </span>
+          </div>
+          <table class="ecg-comp-table">
+            <tr>
+              <td class="ecg-comp-table-lbl">Kho\u1EA3ng PR (P start &rarr; Q):</td>
+              <td class="ecg-comp-table-val">${prDurMs} ms</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">\u0110o\u1EA1n PR (P end &rarr; Q):</td>
+              <td class="ecg-comp-table-val">${prElevMv !== 0 ? `${(prElevMv * 10).toFixed(1)} mm (${prElevMv.toFixed(2)} mV)` : "0.0 mm (\u0110\u1EB3ng \u0111i\u1EC7n)"}</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">D\u1EABn truy\u1EC1n nh\u0129 th\u1EA5t:</td>
+              <td class="ecg-comp-table-val">${prDurMs > 200 ? "Ch\u1EADm tr\u1EC5 qua n\xFAt AV" : prDurMs < 120 ? "K\xEDch th\xEDch s\u1EDBm b\xF3 ph\u1EE5" : "D\u1EABn truy\u1EC1n b\xECnh th\u01B0\u1EDDng"}</td>
+            </tr>
+          </table>
+          <div class="ecg-comp-ref-box">
+            <strong>Gi\u1EDBi h\u1EA1n sinh l\xFD b\xECnh th\u01B0\u1EDDng:</strong> Kho\u1EA3ng PR 120 - 200 ms (3 - 5 \xF4 nh\u1ECF). \u0110o\u1EA1n PR b\xECnh th\u01B0\u1EDDng \u0111\u1EB3ng \u0111i\u1EC7n; ch\xEAnh xu\u1ED1ng trong Vi\xEAm m\xE0ng ngo\xE0i tim c\u1EA5p ho\u1EB7c Nh\u1ED3i m\xE1u c\u01A1 tim t\xE2m nh\u0129.
+          </div>
+        </div>
 
-            <div class="ecg-crit-item">
-              <div class="ecg-crit-header">
-                <strong>Ti\xEAu chu\u1EA9n Cornell:</strong>
-                <span class="ecg-crit-val">${m.cornellCriteria !== void 0 ? `${m.cornellCriteria} mm` : "N/A"}</span>
-              </div>
-              <p class="ecg-crit-desc">R aVL + S V3 (&gt; 28 mm \u1EDF nam, &gt; 20 mm \u1EDF n\u1EEF).</p>
-            </div>
+        <!-- 3. S\xF3ng Q -->
+        <div class="ecg-comp-card">
+          <div class="ecg-comp-card-header">
+            <h4 class="ecg-comp-card-title">
+              <i class="fa-solid fa-arrow-down-long text-amber-600"></i> 3. S\xF3ng Q (Kh\u1EED C\u1EF1c V\xE1ch)
+            </h4>
+            <span class="ecg-comp-badge ${qAmpMv === 0 ? "ecg-comp-badge--normal" : isQPathological ? "ecg-comp-badge--danger" : "ecg-comp-badge--normal"}">
+              ${qAmpMv === 0 ? "Kh\xF4ng c\xF3 s\xF3ng Q" : isQPathological ? "Q ho\u1EA1i t\u1EED b\u1EC7nh l\xFD" : "q nh\u1ECF sinh l\xFD"}
+            </span>
+          </div>
+          <table class="ecg-comp-table">
+            <tr>
+              <td class="ecg-comp-table-lbl">Bi\xEAn \u0111\u1ED9 \xE2m (Depth):</td>
+              <td class="ecg-comp-table-val">${qAmpMv.toFixed(2)} mV (${(qAmpMv * 10).toFixed(1)} mm)</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">Th\u1EDDi gian (Width):</td>
+              <td class="ecg-comp-table-val">${qDurMs} ms</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">T\u1EF7 l\u1EC7 Q/R:</td>
+              <td class="ecg-comp-table-val">${rAmpMv > 0 ? `${Math.round(qAmpMv / rAmpMv * 100)}% R` : "\u2014"}</td>
+            </tr>
+          </table>
+          <div class="ecg-comp-ref-box">
+            <strong>Ti\xEAu chu\u1EA9n s\xF3ng Q b\u1EC7nh l\xFD (Ho\u1EA1i t\u1EED c\u01A1 tim):</strong> Th\u1EDDi gian &ge; 40 ms (1 \xF4 nh\u1ECF) HO\u1EB6C bi\xEAn \u0111\u1ED9 &ge; 25% chi\u1EC1u cao s\xF3ng R k\u1EBF ti\u1EBFp (ngo\u1EA1i tr\u1EEB \u0111\u1EA1o tr\xECnh III v\xE0 aVR).
+          </div>
+        </div>
 
-            <div class="ecg-crit-item">
-              <div class="ecg-crit-header">
-                <strong>H\u1ED9i ch\u1EE9ng Brugada:</strong>
-                <span class="ecg-crit-val">${this.currentCase.diagnosis.brugadaAnalysis || "\xC2m t\xEDnh"}</span>
-              </div>
-              <p class="ecg-crit-desc">\u0110o\u1EA1n ST ch\xEAnh l\xEAn d\u1EA1ng v\xF2m (Type 1) ho\u1EB7c d\u1EA1ng y\xEAn ng\u1EF1a (Type 2) \u2265 2mm \u1EDF V1-V2.</p>
-            </div>
+        <!-- 4. S\xF3ng R & S -->
+        <div class="ecg-comp-card">
+          <div class="ecg-comp-card-header">
+            <h4 class="ecg-comp-card-title">
+              <i class="fa-solid fa-arrows-up-down text-red-600"></i> 4. S\xF3ng R &amp; S (Kh\u1EED C\u1EF1c Th\u1EA5t)
+            </h4>
+            <span class="ecg-comp-badge ${leadData.rPrimeWave?.amp ? "ecg-comp-badge--warning" : "ecg-comp-badge--normal"}">
+              ${leadData.rPrimeWave?.amp ? "D\u1EA1ng rSR' (Bloc nh\xE1nh)" : "H\xECnh th\xE1i chu\u1EA9n"}
+            </span>
+          </div>
+          <table class="ecg-comp-table">
+            <tr>
+              <td class="ecg-comp-table-lbl">\u0110\u1EC9nh R (Amplitude):</td>
+              <td class="ecg-comp-table-val">${rAmpMv.toFixed(2)} mV (${(rAmpMv * 10).toFixed(1)} mm)</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">\u0110\xE1y S (Depth):</td>
+              <td class="ecg-comp-table-val">${sAmpMv.toFixed(2)} mV (${(sAmpMv * 10).toFixed(1)} mm)</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">T\u1EF7 s\u1ED1 R/S:</td>
+              <td class="ecg-comp-table-val">${rsRatio}</td>
+            </tr>
+          </table>
+          <div class="ecg-comp-ref-box">
+            <strong>Ti\u1EBFn tri\u1EC3n R tr\u01B0\u1EDBc tim b\xECnh th\u01B0\u1EDDng:</strong> R t\u0103ng d\u1EA7n t\u1EEB V1 &rarr; V5, S s\xE2u nh\u1EA5t \u1EDF V1-V2 v\xE0 gi\u1EA3m d\u1EA7n v\u1EC1 V6. V\xF9ng chuy\u1EC3n ti\u1EBFp (R &asymp; S) th\u01B0\u1EDDng \u1EDF V3 ho\u1EB7c V4.
+          </div>
+        </div>
+
+        <!-- 5. Ph\u1EE9c B\u1ED9 QRS -->
+        <div class="ecg-comp-card">
+          <div class="ecg-comp-card-header">
+            <h4 class="ecg-comp-card-title">
+              <i class="fa-solid fa-heart text-danger"></i> 5. Ph\u1EE9c B\u1ED9 QRS To\xE0n Th\u1EC3
+            </h4>
+            <span class="ecg-comp-badge ${isQrsWide ? "ecg-comp-badge--danger" : "ecg-comp-badge--normal"}">
+              ${isQrsWide ? "QRS gi\xE3n r\u1ED9ng (&ge;120ms)" : "QRS h\u1EB9p sinh l\xFD (&lt;120ms)"}
+            </span>
+          </div>
+          <table class="ecg-comp-table">
+            <tr>
+              <td class="ecg-comp-table-lbl">T\u1ED5ng th\u1EDDi gian QRS:</td>
+              <td class="ecg-comp-table-val">${m.qrsDuration} ms</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">Tr\u1EE5c \u0111i\u1EC7n tim:</td>
+              <td class="ecg-comp-table-val">${m.axis} (${m.alphaAngle}\xB0)</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">\u0110i\u1EC7n th\u1EBF d\xE0y th\u1EA5t:</td>
+              <td class="ecg-comp-table-val">Sokolow-Lyon: ${m.sokolowLyon !== void 0 ? `${m.sokolowLyon} mm` : "\u2014"}</td>
+            </tr>
+          </table>
+          <div class="ecg-comp-ref-box">
+            <strong>Gi\u1EDBi h\u1EA1n sinh l\xFD b\xECnh th\u01B0\u1EDDng:</strong> Th\u1EDDi gian 70 - 100 ms (h\u1EB9p, thanh m\u1EA3nh). Gi\xE3n r\u1ED9ng &ge; 120 ms g\u1EB7p trong Bloc nh\xE1nh ph\u1EA3i/tr\xE1i, nh\u1ECBp t\u1EF1 th\u1EA5t ho\u1EB7c ngo\u1EA1i t\xE2m thu th\u1EA5t.
+          </div>
+        </div>
+
+        <!-- 6. \u0110i\u1EC3m J (J-Point) -->
+        <div class="ecg-comp-card">
+          <div class="ecg-comp-card-header">
+            <h4 class="ecg-comp-card-title">
+              <i class="fa-solid fa-location-dot text-emerald-600"></i> 6. \u0110i\u1EC3m J (J-Point Precision)
+            </h4>
+            <span class="ecg-comp-badge ${Math.abs(stElevMv) < 0.05 ? "ecg-comp-badge--normal" : stElevMv > 0 ? "ecg-comp-badge--danger" : "ecg-comp-badge--warning"}">
+              ${Math.abs(stElevMv) < 0.05 ? "\u0110i\u1EC3m J \u0111\u1EB3ng \u0111i\u1EC7n" : stElevMv > 0 ? `\u0110i\u1EC3m J n\xE2ng cao (+${stElevMm} mm)` : `\u0110i\u1EC3m J h\u1EA1 th\u1EA5p (${stElevMm} mm)`}
+            </span>
+          </div>
+          <table class="ecg-comp-table">
+            <tr>
+              <td class="ecg-comp-table-lbl">V\u1ECB tr\xED \u0111i\u1EC3m J:</td>
+              <td class="ecg-comp-table-val">Giao \u0111i\u1EC3m cu\u1ED1i QRS &amp; \u0111\u1EA7u ST</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">\u0110\u1ED9 ch\xEAnh t\u1EA1i \u0111i\u1EC3m J:</td>
+              <td class="ecg-comp-table-val">${stElevMv >= 0 ? `+${stElevMv.toFixed(2)}` : stElevMv.toFixed(2)} mV (${stElevMm} mm)</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">M\u1ED1c chu\u1EA9n \u0111\u1ED1i chi\u1EBFu:</td>
+              <td class="ecg-comp-table-val">\u0110o\u1EA1n TP ho\u1EB7c \u0111o\u1EA1n PR tr\u01B0\u1EDBc \u0111\xF3</td>
+            </tr>
+          </table>
+          <div class="ecg-comp-ref-box">
+            <strong>\xDD ngh\u0129a then ch\u1ED1t:</strong> \u0110i\u1EC3m J l\xE0 m\u1ED1c v\xE0ng \u0111o l\u01B0\u1EDDng \u0111o\u1EA1n ST. \u0110i\u1EC3m J ch\xEAnh l\xEAn &ge; 1 mm (\u0111\u1EA1o tr\xECnh chi) ho\u1EB7c &ge; 2 mm (V2-V3 \u1EDF nam &ge; 40t) l\xE0 ti\xEAu chu\u1EA9n ch\u1EA9n \u0111o\xE1n STEMI.
+          </div>
+        </div>
+
+        <!-- 7. \u0110o\u1EA1n ST -->
+        <div class="ecg-comp-card">
+          <div class="ecg-comp-card-header">
+            <h4 class="ecg-comp-card-title">
+              <i class="fa-solid fa-chart-area text-orange-600"></i> 7. \u0110o\u1EA1n ST (T\xE1i C\u1EF1c Th\u1EA5t S\u1EDBm)
+            </h4>
+            <span class="ecg-comp-badge ${isStElevated ? "ecg-comp-badge--danger" : isStDepressed ? "ecg-comp-badge--danger" : "ecg-comp-badge--normal"}">
+              ${isStElevated ? "ST ch\xEAnh l\xEAn" : isStDepressed ? "ST ch\xEAnh xu\u1ED1ng" : "ST \u0111\u1EB3ng \u0111i\u1EC7n"}
+            </span>
+          </div>
+          <table class="ecg-comp-table">
+            <tr>
+              <td class="ecg-comp-table-lbl">M\u1EE9c \u0111\u1ED9 ch\xEAnh (J+60ms):</td>
+              <td class="ecg-comp-table-val">${stElevMv >= 0 ? `+${stElevMm}` : stElevMm} mm (${stElevMv >= 0 ? `+${stElevMv.toFixed(2)}` : stElevMv.toFixed(2)} mV)</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">H\xECnh th\xE1i \u0111o\u1EA1n ST:</td>
+              <td class="ecg-comp-table-val">${isStElevated ? "V\xF2m l\u1ED3i (Coved / STEMI)" : isStDepressed ? "D\u1ED1c xu\u1ED1ng (Downsloping)" : "\u0110\u1EB3ng \u0111i\u1EC7n sinh l\xFD"}</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">Th\u1EDDi gian \u0111o\u1EA1n ST:</td>
+              <td class="ecg-comp-table-val">&asymp; 80 - 120 ms</td>
+            </tr>
+          </table>
+          <div class="ecg-comp-ref-box">
+            <strong>Ph\xE2n lo\u1EA1i h\xECnh th\xE1i:</strong> ST ch\xEAnh l\xEAn d\u1EA1ng v\xF2m l\u1ED3i (STEMI/Brugada type 1); ST ch\xEAnh l\xF5m \u0111\xE1y thuy\u1EC1n (Vi\xEAm m\xE0ng ngo\xE0i tim); ST ch\xEAnh d\u1ED1c xu\u1ED1ng (Thi\u1EBFu m\xE1u c\u1EE5c b\u1ED9); M\xFAc th\xECa (Ng\u1EA5m Digoxin).
+          </div>
+        </div>
+
+        <!-- 8. S\xF3ng T -->
+        <div class="ecg-comp-card">
+          <div class="ecg-comp-card-header">
+            <h4 class="ecg-comp-card-title">
+              <i class="fa-solid fa-mountain text-purple-600"></i> 8. S\xF3ng T (T\xE1i C\u1EF1c Th\u1EA5t Mu\u1ED9n)
+            </h4>
+            <span class="ecg-comp-badge ${tAmpMv > 0.8 ? "ecg-comp-badge--warning" : tAmpMv < -0.1 ? "ecg-comp-badge--danger" : "ecg-comp-badge--normal"}">
+              ${tAmpMv > 0.8 ? "T cao nh\u1ECDn (Tented T)" : tAmpMv < -0.1 ? "S\xF3ng T \xE2m s\xE2u" : "T d\u01B0\u01A1ng sinh l\xFD"}
+            </span>
+          </div>
+          <table class="ecg-comp-table">
+            <tr>
+              <td class="ecg-comp-table-lbl">Bi\xEAn \u0111\u1ED9 s\xF3ng T:</td>
+              <td class="ecg-comp-table-val">${tAmpMv.toFixed(2)} mV (${(tAmpMv * 10).toFixed(1)} mm)</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">Th\u1EDDi gian s\xF3ng T:</td>
+              <td class="ecg-comp-table-val">${tDurMs} ms</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">T\xEDnh \u0111\u1ED1i x\u1EE9ng &amp; C\u1EF1c t\xEDnh:</td>
+              <td class="ecg-comp-table-val">${tShape}</td>
+            </tr>
+          </table>
+          <div class="ecg-comp-ref-box">
+            <strong>Gi\u1EDBi h\u1EA1n sinh l\xFD b\xECnh th\u01B0\u1EDDng:</strong> S\xF3ng T b\xECnh th\u01B0\u1EDDng <em>b\u1EA5t \u0111\u1ED1i x\u1EE9ng</em> (s\u01B0\u1EDDn l\xEAn thoai tho\u1EA3i, s\u01B0\u1EDDn xu\u1ED1ng d\u1ED1c). T \u0111\u1ED1i x\u1EE9ng cao nh\u1ECDn g\u1EB7p trong T\u0103ng kali m\xE1u; T \xE2m s\xE2u nh\u1ECDn \u0111\u1ED1i x\u1EE9ng (H\u1ED9i ch\u1EE9ng Wellens - H\u1EB9p LAD).
+          </div>
+        </div>
+
+        <!-- 9. S\xF3ng U & Kho\u1EA3ng QT/QTc -->
+        <div class="ecg-comp-card">
+          <div class="ecg-comp-card-header">
+            <h4 class="ecg-comp-card-title">
+              <i class="fa-solid fa-stopwatch text-teal-600"></i> 9. S\xF3ng U &amp; Kho\u1EA3ng QT / QTc
+            </h4>
+            <span class="ecg-comp-badge ${m.qtc > 450 ? "ecg-comp-badge--danger" : hasUWave && uAmpMv >= 0.15 ? "ecg-comp-badge--warning" : "ecg-comp-badge--normal"}">
+              ${m.qtc > 450 ? "QTc k\xE9o d\xE0i" : hasUWave && uAmpMv >= 0.15 ? "S\xF3ng U n\u1ED5i cao (H\u1EA1 K+)" : "\u0110\u1EA1t chu\u1EA9n"}
+            </span>
+          </div>
+          <table class="ecg-comp-table">
+            <tr>
+              <td class="ecg-comp-table-lbl">Kho\u1EA3ng QT \u0111o \u0111\u01B0\u1EE3c:</td>
+              <td class="ecg-comp-table-val">${m.qt} ms</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">QTc hi\u1EC7u ch\u1EC9nh (Bazett):</td>
+              <td class="ecg-comp-table-val ${m.qtc > 450 ? "text-danger" : ""}">${m.qtc} ms</td>
+            </tr>
+            <tr>
+              <td class="ecg-comp-table-lbl">S\xF3ng U (Sau s\xF3ng T):</td>
+              <td class="ecg-comp-table-val">${hasUWave ? `${uAmpMv.toFixed(2)} mV (${(uAmpMv * 10).toFixed(1)} mm)` : "Kh\xF4ng xu\u1EA5t hi\u1EC7n"}</td>
+            </tr>
+          </table>
+          <div class="ecg-comp-ref-box">
+            <strong>Ng\u01B0\u1EE1ng an to\xE0n \u0111i\u1EC7n tim:</strong> QTc b\xECnh th\u01B0\u1EDDng &le; 440 ms (nam), &le; 460 ms (n\u1EEF). QTc &gt; 500 ms c\xF3 nguy c\u01A1 k\xEDch ph\xE1t xo\u1EAFn \u0111\u1EC9nh (TdP). S\xF3ng U &gt; 1.5 mm g\u1EE3i \xFD H\u1EA1 kali m\xE1u n\u1EB7ng.
           </div>
         </div>
       </div>
     `;
+    const pills = wrap.querySelectorAll(".ecg-lead-pill");
+    pills.forEach((p) => {
+      p.addEventListener("click", () => {
+        const selected = p.getAttribute("data-lead");
+        if (selected) {
+          this.selectedInspectorLead = selected;
+          this.renderComponentsTab(wrap);
+        }
+      });
+    });
   }
-  renderAnatomyTab(wrap) {
-    const leads = ["I", "II", "III", "aVR", "aVL", "aVF", "V1", "V2", "V3", "V4", "V5", "V6"];
-    wrap.innerHTML = `
-      <div class="ecg-anatomy-grid">
-        ${leads.map((l) => {
-      const info = LEAD_ANATOMY_MAP[l];
-      return `
-            <div class="ecg-lead-anatomy-card">
-              <div class="ecg-lead-anatomy-header">
-                <span class="ecg-lead-code">${info.lead}</span>
-                <span class="ecg-lead-region">${info.region}</span>
-              </div>
-              <div class="ecg-lead-vessel">
-                <i class="fa-solid fa-syringe text-danger"></i> <strong>\u0110M nu\xF4i:</strong> ${info.culpritVessel}
-              </div>
-              <p class="ecg-lead-desc">${info.description}</p>
-            </div>
-          `;
-    }).join("")}
-      </div>
-    `;
-  }
-  renderAnnotationTab(report) {
-    const wrap = document.getElementById("ecg-tab-content");
-    if (!wrap) return;
-    if (!report || report.totalAnnotations === 0) {
-      wrap.innerHTML = `
-        <div class="ecg-empty-ann-state">
-          <i class="fa-solid fa-hand-pointer fa-3x text-muted"></i>
-          <h3>Ch\u01B0a c\xF3 m\u1ED1c s\xF3ng n\xE0o \u0111\u01B0\u1EE3c ch\u1EA5m \u0111i\u1EC3m</h3>
-          <p>
-            Ch\u1ECDn c\xE1c n\xFAt s\xF3ng (P, Q, R, S, J, T, U) \u1EDF thanh c\xF4ng c\u1EE5 ph\xEDa tr\xEAn v\xE0 nh\u1EA5p chu\u1ED9t tr\u1EF1c ti\u1EBFp l\xEAn \u0111\u01B0\u1EDDng bi\u1EC3u di\u1EC5n \u0111i\u1EC7n t\xE2m \u0111\u1ED3 \u0111\u1EC3 h\u1EC7 th\u1ED1ng ch\u1EA5m \u0111i\u1EC3m \u0111\u1ED9 ch\xEDnh x\xE1c.
-          </p>
-        </div>
-      `;
-      return;
-    }
-    wrap.innerHTML = `
-      <div class="ecg-ann-report">
-        <div class="ecg-ann-summary-card">
-          <div class="ecg-ann-score-box">
-            <span class="ecg-ann-score">${report.overallScore}</span>
-            <span class="ecg-ann-score-label">/ 100 \u0110i\u1EC3m</span>
-          </div>
-          <div class="ecg-ann-summary-text">
-            <h3>K\u1EBFt Qu\u1EA3 Nh\u1EADn Di\u1EC7n S\xF3ng L\xE2m S\xE0ng</h3>
-            <p class="ecg-ann-feedback">${report.feedback}</p>
-            <p class="ecg-ann-pearl"><i class="fa-solid fa-lightbulb text-warning"></i> ${report.clinicalPearl}</p>
-          </div>
-        </div>
-
-        <div class="ecg-ann-items-list">
-          <h4>Chi Ti\u1EBFt T\u1EEBng V\u1ECB Tr\xED S\xF3ng:</h4>
-          ${report.items.map((item) => `
-            <div class="ecg-ann-result-row ecg-ann-result-row--${item.status}">
-              <div class="ecg-ann-wave-badge">${item.waveType} (${item.lead})</div>
-              <div class="ecg-ann-item-desc">
-                <strong>${item.message}</strong>
-                <p>${item.morphologyEvaluation}</p>
-              </div>
-              <div class="ecg-ann-item-score font-bold">${item.score}\u0111</div>
-            </div>
-          `).join("")}
-        </div>
-      </div>
-    `;
-  }
-  renderGuideTab(wrap) {
-    wrap.innerHTML = `
-      <div class="ecg-guide-container">
-        <!-- Header Banner -->
-        <div class="ecg-guide-banner">
-          <div class="ecg-guide-banner-icon">
-            <i class="fa-solid fa-book-bookmark"></i>
-          </div>
-          <div>
-            <h3>C\u1EA9m Nang H\u01B0\u1EDBng D\u1EABn \u0110\u1ECDc \u0110i\u1EC7n T\xE2m \u0110\u1ED3 C\u0103n B\u1EA3n & Chuy\xEAn S\xE2u</h3>
-            <p>Bi\xEAn so\u1EA1n h\u1EC7 th\u1ED1ng h\xF3a theo chuy\xEAn kh\u1EA3o <strong>"\u0110\u1ECDc \u0110i\u1EC7n T\xE2m \u0110\u1ED3 D\u1EC5 H\u01A1n"</strong> (BS Nguy\u1EC5n T\xF4n Kinh Thi) &amp; gi\xE1o tr\xECnh qu\u1ED1c t\u1EBF kinh \u0111i\u1EC3n <strong>"ECG Made Easy" 4th Edition</strong> (Dr. Atul Luthra).</p>
-          </div>
-        </div>
-
-        <!-- Guide Subsections Grid -->
-        <div class="ecg-guide-grid">
-          <!-- 10 Steps System -->
-          <div class="ecg-guide-card">
-            <div class="ecg-guide-card-header">
-              <i class="fa-solid fa-list-check text-primary"></i>
-              <h4>1. Quy Tr\xECnh 10 B\u01B0\u1EDBc Ph\xE2n T\xEDch ECG Chu\u1EA9n</h4>
-            </div>
-            <ol class="ecg-guide-steps-list">
-              <li><strong>1. Nh\u1ECBp tim (Rhythm):</strong> Nh\u1ECBp xoang (P \u0111\u1ED3ng d\u1EA1ng, P(+) \u1EDF DI, DII, aVF, P(-) \u1EDF aVR; t\u1EF7 l\u1EC7 P:QRS 1:1) hay lo\u1EA1n nh\u1ECBp (rung nh\u0129, cu\u1ED3ng nh\u0129, nh\u1ECBp nhanh th\u1EA5t, nh\u1ECBp b\u1ED9 n\u1ED1i).</li>
-              <li><strong>2. T\u1EA7n s\u1ED1 tim (Rate):</strong> \u0110\u1EC1u: 300 / s\u1ED1 \xF4 l\u1EDBn (ho\u1EB7c 1500 / s\u1ED1 \xF4 nh\u1ECF). Kh\xF4ng \u0111\u1EC1u: \u0110\u1EBFm s\u1ED1 QRS trong 30 \xF4 l\u1EDBn (6 gi\xE2y) nh\xE2n 10.</li>
-              <li><strong>3. Tr\u1EE5c \u0111i\u1EC7n tim (Axis):</strong> D\u1EF1a v\xE0o DI v\xE0 aVF: Tr\u1EE5c trung gian (-30\xB0 \u0111\u1EBFn +90\xB0), Tr\u1EE5c tr\xE1i (-30\xB0 \u0111\u1EBFn -90\xB0), Tr\u1EE5c ph\u1EA3i (+90\xB0 \u0111\u1EBFn +180\xB0), V\xF4 \u0111\u1ECBnh.</li>
-              <li><strong>4. S\xF3ng P:</strong> Th\u1EDDi gian < 120ms (3 \xF4 nh\u1ECF), Bi\xEAn \u0111\u1ED9 < 2.5mm \u1EDF DII; P ph\u1EBF (cao nh\u1ECDn \u2265 2.5mm do d\xE0y nh\u0129 ph\u1EA3i) vs P nh\u0129 (hai \u0111\u1EC9nh ch\u1EBB > 40ms do d\xE0y nh\u0129 tr\xE1i).</li>
-              <li><strong>5. Kho\u1EA3ng PR:</strong> 120 - 200ms (3 - 5 \xF4 nh\u1ECF). PR ng\u1EAFn (< 120ms) g\u1EE3i \xFD h\u1ED9i ch\u1EE9ng k\xEDch th\xEDch s\u1EDBm WPW/LGL; PR d\xE0i (> 200ms) l\xE0 Bloc nh\u0129 th\u1EA5t \u0111\u1ED9 I.</li>
-              <li><strong>6. Ph\u1EE9c b\u1ED9 QRS:</strong> R\u1ED9ng khi \u2265 120ms (Bloc nh\xE1nh, nh\u1ECBp th\u1EA5t). \u0110\xE1nh gi\xE1 s\xF3ng Q ho\u1EA1i t\u1EED (> 40ms ho\u1EB7c > 25% R). Ti\xEAu chu\u1EA9n d\xE0y th\u1EA5t Sokolow-Lyon, Cornell.</li>
-              <li><strong>7. \u0110o\u1EA1n ST:</strong> \u0110o t\u1EA1i \u0111i\u1EC3m J; ST ch\xEAnh l\xEAn d\u1EA1ng v\xF2m (STEMI, Brugada) hay l\xF5m (vi\xEAm m\xE0ng ngo\xE0i tim); ST ch\xEAnh xu\u1ED1ng (thi\u1EBFu m\xE1u d\u01B0\u1EDBi n\u1ED9i t\xE2m m\u1EA1c, ng\u1EA5m Digoxin).</li>
-              <li><strong>8. S\xF3ng T:</strong> B\xECnh th\u01B0\u1EDDng c\xF9ng h\u01B0\u1EDBng QRS; T cao nh\u1ECDn \u0111\u1ED1i x\u1EE9ng h\u1EB9p \u0111\xE1y (T\u0103ng Kali m\xE1u); T d\u1EB9t/\xE2m (H\u1EA1 Kali m\xE1u, thi\u1EBFu m\xE1u c\u01A1 tim c\u1EA5p/m\u1EA1n).</li>
-              <li><strong>9. Kho\u1EA3ng QT/QTc:</strong> QTc = QT / \u221A(RR); B\xECnh th\u01B0\u1EDDng \u2264 440ms (Nam), \u2264 460ms (N\u1EEF). K\xE9o d\xE0i > 500ms b\xE1o \u0111\u1ED9ng \u0111\u1ECF nguy c\u01A1 b\xF9ng ph\xE1t xo\u1EAFn \u0111\u1EC9nh (Torsades de Pointes).</li>
-              <li><strong>10. S\xF3ng U:</strong> B\xECnh th\u01B0\u1EDDng nh\u1ECF < 2mm c\xF9ng chi\u1EC1u s\xF3ng T; N\u1ED5i cao b\u1EA5t th\u01B0\u1EDDng t\u1EA1o hi\u1EC7u \u1EE9ng "l\u01B0ng l\u1EA1c \u0111\xE0" khi Kali m\xE1u h\u1EA1 n\u1EB7ng (< 2.5 mEq/L).</li>
-            </ol>
-          </div>
-
-          <!-- STEMI Localization & Culprit Vessels -->
-          <div class="ecg-guide-card">
-            <div class="ecg-guide-card-header">
-              <i class="fa-solid fa-heart-pulse text-danger"></i>
-              <h4>2. \u0110\u1ECBnh Khu Nh\u1ED3i M\xE1u C\u01A1 Tim & \u0110\u1ED9ng M\u1EA1ch Th\u1EE7 Ph\u1EA1m</h4>
-            </div>
-            <table class="ecg-guide-table">
-              <thead>
-                <tr>
-                  <th>V\xF9ng gi\u1EA3i ph\u1EABu</th>
-                  <th>Chuy\u1EC3n \u0111\u1EA1o ST ch\xEAnh l\xEAn</th>
-                  <th>Chuy\u1EC3n \u0111\u1EA1o soi g\u01B0\u01A1ng</th>
-                  <th>\u0110\u1ED9ng m\u1EA1ch th\u1EE7 ph\u1EA1m</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Tr\u01B0\u1EDBc r\u1ED9ng</strong></td>
-                  <td>V1 \u0111\u1EBFn V6, DI, aVL</td>
-                  <td>DII, DIII, aVF</td>
-                  <td>LAD \u0111o\u1EA1n g\u1EA7n (Nguy k\u1ECBch)</td>
-                </tr>
-                <tr>
-                  <td><strong>Tr\u01B0\u1EDBc v\xE1ch</strong></td>
-                  <td>V1, V2, V3, V4</td>
-                  <td>Kh\xF4ng r\xF5 / nh\u1EB9</td>
-                  <td>LAD \u0111o\u1EA1n gi\u1EEFa</td>
-                </tr>
-                <tr>
-                  <td><strong>Th\xE0nh d\u01B0\u1EDBi</strong></td>
-                  <td>DII, DIII, aVF</td>
-                  <td>DI, aVL</td>
-                  <td>RCA (85-90%) ho\u1EB7c LCx</td>
-                </tr>
-                <tr>
-                  <td><strong>Th\xE0nh b\xEAn</strong></td>
-                  <td>DI, aVL, V5, V6</td>
-                  <td>DII, DIII, aVF</td>
-                  <td>LCx ho\u1EB7c Nh\xE1nh ch\xE9o Diagonal</td>
-                </tr>
-                <tr>
-                  <td><strong>Th\u1EA5t ph\u1EA3i</strong></td>
-                  <td>V3R, V4R (ST\u2191 \u2265 1mm)</td>
-                  <td>\u2014</td>
-                  <td>\u0110o\u1EA1n g\u1EA7n RCA (Tr\xE1nh Nitroglycerin!)</td>
-                </tr>
-                <tr>
-                  <td><strong>Th\xE0nh sau th\u1EF1c</strong></td>
-                  <td>V7, V8, V9 (ST\u2191 \u2265 0.5mm)</td>
-                  <td>ST\u2193 V1, V2, V3 (R cao)</td>
-                  <td>LCx ho\u1EB7c PDA</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Bundle Branch Blocks & Brugada -->
-          <div class="ecg-guide-card">
-            <div class="ecg-guide-card-header">
-              <i class="fa-solid fa-bolt text-warning"></i>
-              <h4>3. Bloc Nh\xE1nh & Thu\u1EADt To\xE1n Brugada (VT vs SVT)</h4>
-            </div>
-            <div class="ecg-guide-block">
-              <h5>Bloc Nh\xE1nh Tr\xE1i (LBBB) vs Ph\u1EA3i (RBBB):</h5>
-              <ul>
-                <li><strong>LBBB:</strong> QRS \u2265 120ms, s\xF3ng R r\u1ED9ng kh\xEDa ch\u1EEF M \u1EDF DI, aVL, V5-V6; d\u1EA1ng QS s\xE2u \u1EDF V1-V3. Lu\xF4n coi LBBB m\u1EDBi xu\u1EA5t hi\u1EC7n l\xE0 t\u01B0\u01A1ng \u0111\u01B0\u01A1ng STEMI!</li>
-                <li><strong>RBBB:</strong> QRS \u2265 120ms, d\u1EA1ng tai th\u1ECF rsR' ho\u1EB7c rSR' \u1EDF V1-V2; s\xF3ng S r\u1ED9ng s\xE2u \u1EDF DI, V5-V6.</li>
-              </ul>
-              <h5 style="margin-top: 0.75rem;">Thu\u1EADt To\xE1n Brugada 4 B\u01B0\u1EDBc (Ph\xE2n bi\u1EC7t VT v\u1EDBi SVT QRS R\u1ED9ng):</h5>
-              <ol class="ecg-guide-brugada-steps">
-                <li><strong>B\u01B0\u1EDBc 1:</strong> C\xF3 s\u1EF1 v\u1EAFng m\u1EB7t ho\xE0n to\xE0n c\u1EE7a ph\u1EE9c b\u1ED9 RS \u1EDF t\u1EA5t c\u1EA3 c\xE1c chuy\u1EC3n \u0111\u1EA1o V1-V6 kh\xF4ng? \u2192 <em>N\u1EBFu C\xD3: Ch\u1EA9n \u0111o\xE1n Nh\u1ECBp nhanh th\u1EA5t (VT).</em></li>
-                <li><strong>B\u01B0\u1EDBc 2:</strong> Kho\u1EA3ng c\xE1ch RS d\xE0i nh\u1EA5t \u1EDF b\u1EA5t k\u1EF3 chuy\u1EC3n \u0111\u1EA1o tr\u01B0\u1EDBc tim n\xE0o c\xF3 > 100ms kh\xF4ng? \u2192 <em>N\u1EBFu C\xD3: Ch\u1EA9n \u0111o\xE1n VT.</em></li>
-                <li><strong>B\u01B0\u1EDBc 3:</strong> C\xF3 d\u1EA5u hi\u1EC7u ph\xE2n ly nh\u0129 - th\u1EA5t (AV dissociation, nh\xE1t b\u1EAFt \u0111\u01B0\u1EE3c th\u1EA5t, nh\xE1t h\u1ED7n h\u1EE3p) kh\xF4ng? \u2192 <em>N\u1EBFu C\xD3: Kh\u1EB3ng \u0111\u1ECBnh 100% VT.</em></li>
-                <li><strong>B\u01B0\u1EDBc 4:</strong> \u0110\u1EA1t ti\xEAu chu\u1EA9n h\xECnh th\xE1i kinh \u0111i\u1EC3n c\u1EE7a VT \u1EDF c\u1EA3 V1/V2 v\xE0 V6 kh\xF4ng? \u2192 <em>N\u1EBFu C\xD3: VT; N\u1EBFu KH\xD4NG: SVT d\u1EABn truy\u1EC1n l\u1EC7ch h\u01B0\u1EDBng.</em></li>
-              </ol>
-            </div>
-          </div>
-
-          <!-- Electrolytes & Pharmacology -->
-          <div class="ecg-guide-card">
-            <div class="ecg-guide-card-header">
-              <i class="fa-solid fa-flask-vial text-success"></i>
-              <h4>4. R\u1ED1i Lo\u1EA1n \u0110i\u1EC7n Gi\u1EA3i & D\u01B0\u1EE3c L\xFD Tim M\u1EA1ch</h4>
-            </div>
-            <div class="ecg-guide-block">
-              <ul>
-                <li><strong>T\u0103ng Kali m\xE1u (Hyperkalemia):</strong> K+ > 5.5: S\xF3ng T cao nh\u1ECDn \u0111\u1ED1i x\u1EE9ng h\u1EB9p \u0111\xE1y \u2192 K+ > 6.5: PR k\xE9o d\xE0i, P d\u1EB9t/bi\u1EBFn m\u1EA5t \u2192 K+ > 7.5: QRS d\xE3n r\u1ED9ng h\xF2a v\xE0o s\xF3ng T t\u1EA1o h\xECnh sin (Sine-wave) \u2192 Rung th\u1EA5t / V\xF4 t\xE2m thu. X\u1EED tr\xED ngay Calcium Gluconate 10% \u0111\u1EC3 \u1ED5n \u0111\u1ECBnh m\xE0ng t\u1EBF b\xE0o tim!</li>
-                <li><strong>H\u1EA1 Kali m\xE1u (Hypokalemia):</strong> K+ < 3.5: \u0110o\u1EA1n ST ch\xEAnh xu\u1ED1ng, s\xF3ng T d\u1EB9t, s\xF3ng U nh\xF4 cao (h\xECnh \u1EA3nh 2 b\u01B0\u1EDBu l\u1EA1c \u0111\xE0 Camel-hump). Nguy c\u01A1 xo\u1EAFn \u0111\u1EC9nh khi ph\u1ED1i h\u1EE3p thu\u1ED1c ch\u1ED1ng lo\u1EA1n nh\u1ECBp.</li>
-                <li><strong>Ng\u1ED9 \u0111\u1ED9c Digoxin:</strong> \u0110o\u1EA1n ST ch\xEAnh xu\u1ED1ng h\xECnh \u0111\xE1y ch\xE9n Salvador Dali (Scooped ST), r\xFAt ng\u1EAFn kho\u1EA3ng QT, r\u1ED1i lo\u1EA1n nh\u1ECBp th\u1EA5t (ngo\u1EA1i t\xE2m thu nh\u1ECBp \u0111\xF4i Bigeminy, nh\u1ECBp nhanh b\u1ED9 n\u1ED1i).</li>
-                <li><strong>H\u1ED9i ch\u1EE9ng Brugada:</strong> Type 1: ST ch\xEAnh l\xEAn d\u1EA1ng v\xF2m (coved-type) \u2265 2mm \u1EDF V1-V2 ti\u1EBFp n\u1ED1i b\u1EB1ng T \xE2m \u0111\u1ED1i x\u1EE9ng. R\u1EA5t nguy hi\u1EC3m, nguy c\u01A1 \u0111\u1ED9t t\u1EED ban \u0111\xEAm \u1EDF ng\u01B0\u1EDDi tr\u1EBB (SUDS).</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
+  /**
+   * Advanced Graphics Tab (Poincaré HRV & Beat Morphology Superposition)
+   */
   renderAdvancedGraphicsTab(wrap) {
     const c = this.currentCase;
     const m = c.metrics;
     const poincare = calculateCasePoincareHrv(m.heartRate, m.regularity, c.category);
-    const selectedLead = this.renderer?.getOptions().selectedLead || "II";
+    const selectedLead = this.selectedInspectorLead;
     const leadData = c.leadsData[selectedLead] || c.leadsData["II"];
     const morphology = generateBeatMorphologyProfile(leadData, m.heartRate);
     wrap.innerHTML = `
       <div class="ecg-adv-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 16px; margin-bottom: 20px;">
         <!-- Card 1: Poincar\xE9 Plot (RR_n vs RR_n+1) -->
-        <div class="ecg-diag-card" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:16px;">
+        <div class="ecg-diag-card" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:10px; padding:16px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
             <div style="display:flex; align-items:center; gap:8px;">
               <i class="fa-solid fa-chart-line text-primary" style="font-size:1.2rem; color:#2563eb;"></i>
-              <h3 style="margin:0; font-size:1.05rem; font-weight:700;">Bi\u1EC3u \u0110\u1ED3 Poincar\xE9 HRV (RR<sub>n</sub> vs RR<sub>n+1</sub>)</h3>
+              <h3 style="margin:0; font-size:1.05rem; font-weight:700;">Bi\u1EC3u \u0110\u1ED3 \u0110\u1ED9ng H\u1ECDc Poincar\xE9 HRV (RR<sub>n</sub> vs RR<sub>n+1</sub>)</h3>
             </div>
             <span class="ecg-badge ecg-badge--cardio">${m.regularity}</span>
           </div>
           <p style="font-size:12.5px; color:#64748b; margin-bottom:10px;">
-            K\u1EBF th\u1EEBa thu\u1EADt to\xE1n t\u1EEB <strong>mondejar/ecg-classification</strong>: Ph\xE2n t\xEDch \u0111\u1ED9ng h\u1ECDc R-R, ph\xE1t hi\u1EC7n s\u1EDBm Rung nh\u0129, ngo\u1EA1i t\xE2m thu th\u1EA5t (PVC) v\xE0 qu\xE1 t\u1EA3i giao c\u1EA3m.
+            Thu\u1EADt to\xE1n ph\xE2n t\xEDch \u0111\u1ED9ng h\u1ECDc ph\xE2n t\xE1n chu k\u1EF3 R-R: \u0110\xE1nh gi\xE1 \u0111\u1ED9 bi\u1EBFn thi\xEAn nh\u1ECBp tim (HRV), ph\xE1t hi\u1EC7n rung nh\u0129 v\xE0 ngo\u1EA1i t\xE2m thu.
           </p>
           <div style="position:relative; width:100%; height:270px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">
             <canvas id="canvas-poincare" style="width:100%; height:100%; display:block;"></canvas>
           </div>
           <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:8px; margin-top:12px; font-size:12px; text-align:center;">
-            <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>SD1 (Ng\u1EAFn):</strong><br>${poincare.sd1} ms</div>
-            <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>SD2 (D\xE0i):</strong><br>${poincare.sd2} ms</div>
+            <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>SD1:</strong><br>${poincare.sd1} ms</div>
+            <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>SD2:</strong><br>${poincare.sd2} ms</div>
             <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>SD1/SD2:</strong><br>${poincare.sdRatio}</div>
             <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>RMSSD:</strong><br>${poincare.rmssd} ms</div>
           </div>
           <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:6px; font-size:12.5px; margin-top:10px; color:#166534;">
-            <i class="fa-solid fa-circle-info"></i> <strong>Di\u1EC5n gi\u1EA3i l\xE2m s\xE0ng:</strong> ${poincare.rhythmInterpretation}
+            <i class="fa-solid fa-circle-info"></i> <strong>\u0110\xE1nh gi\xE1 \u0111\u1ED9ng h\u1ECDc:</strong> ${poincare.rhythmInterpretation}
           </div>
         </div>
 
         <!-- Card 2: Beat Morphology Overlay -->
-        <div class="ecg-diag-card" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:16px;">
+        <div class="ecg-diag-card" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:10px; padding:16px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
             <div style="display:flex; align-items:center; gap:8px;">
               <i class="fa-solid fa-wave-square" style="font-size:1.2rem; color:#dc2626;"></i>
-              <h3 style="margin:0; font-size:1.05rem; font-weight:700;">H\xECnh Th\xE1i Nh\xE1t B\xF3p & D\u1EA3i Tin C\u1EADy (\u0110\u1EA1o Tr\xECnh ${selectedLead})</h3>
+              <h3 style="margin:0; font-size:1.05rem; font-weight:700;">X\u1EBFp Ch\u1ED3ng H\xECnh Th\xE1i Nh\xE1t B\xF3p (\u0110\u1EA1o Tr\xECnh ${selectedLead})</h3>
             </div>
-            <span class="ecg-badge ecg-badge--secondary">Mean Beat \xB1 1 SD</span>
+            <span class="ecg-badge ecg-badge--secondary">Mean Beat &plusmn; 1 SD</span>
           </div>
           <p style="font-size:12.5px; color:#64748b; margin-bottom:10px;">
-            X\u1EBFp ch\u1ED3ng nh\xE1t b\xF3p v\xE0 d\u1EA3i \u0111\u1ED9 l\u1EC7ch chu\u1EA9n \u0111\u1EC3 kh\u1EA3o s\xE1t chi ti\u1EBFt ch\xEAnh l\u1EC7ch ST, s\xF3ng T kh\u1ED5ng l\u1ED3 ho\u1EB7c s\xF3ng Delta.
+            Ph\u1ED5 x\u1EBFp ch\u1ED3ng h\xECnh th\xE1i nh\xE1t b\xF3p v\xE0 d\u1EA3i \u0111\u1ED9 l\u1EC7ch chu\u1EA9n \u0111\u1EC3 kh\u1EA3o s\xE1t chi ti\u1EBFt ch\xEAnh l\u1EC7ch ST, s\xF3ng T kh\u1ED5ng l\u1ED3 ho\u1EB7c s\xF3ng Delta.
           </p>
           <div style="position:relative; width:100%; height:270px; background:#fffdfa; border-radius:8px; border:1px solid #fecaca; overflow:hidden;">
             <canvas id="canvas-morphology" style="width:100%; height:100%; display:block;"></canvas>
           </div>
           <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:8px; margin-top:12px; font-size:12px; text-align:center;">
-            <div style="background:#fef2f2; padding:6px; border-radius:6px;"><strong>Bi\xEAn \u0111\u1ED9 R:</strong><br>${leadData.rWave.amp.toFixed(2)} mV</div>
+            <div style="background:#fef2f2; padding:6px; border-radius:6px;"><strong>\u0110\u1EC9nh R:</strong><br>${leadData.rWave.amp.toFixed(2)} mV</div>
             <div style="background:#fef2f2; padding:6px; border-radius:6px;"><strong>\u0110o\u1EA1n ST:</strong><br>${leadData.stSegment.elevation > 0 ? `+${leadData.stSegment.elevation.toFixed(2)} mV` : `${leadData.stSegment.elevation.toFixed(2)} mV`}</div>
-            <div style="background:#fef2f2; padding:6px; border-radius:6px;"><strong>S\xF3ng T:</strong><br>${leadData.tWave.amp.toFixed(2)} mV (${leadData.tWave.shape || "chu\u1EA9n"})</div>
+            <div style="background:#fef2f2; padding:6px; border-radius:6px;"><strong>S\xF3ng T:</strong><br>${leadData.tWave.amp.toFixed(2)} mV</div>
           </div>
           <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:10px; border-radius:6px; font-size:12.5px; margin-top:10px; color:#1e40af;">
             <i class="fa-solid fa-magnifying-glass-chart"></i> <strong>\u0110\u1EB7c \u0111i\u1EC3m s\xF3ng:</strong> ${c.diagnosis.keyFindings[0] || "H\xECnh th\xE1i nh\xE1t b\xF3p trong gi\u1EDBi h\u1EA1n kh\u1EA3o s\xE1t."}
@@ -3445,58 +3474,35 @@ var EcgCDSSController = class {
         </div>
       </div>
 
-      <!-- Section 3: High-DPI WFDB Export & Download Hub -->
-      <div class="ecg-diag-card" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:18px; margin-top:16px;">
+      <!-- High-DPI Graphic Export Hub -->
+      <div class="ecg-diag-card" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:10px; padding:18px;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
           <div style="display:flex; align-items:center; gap:8px;">
-            <i class="fa-solid fa-file-pdf" style="font-size:1.3rem; color:#dc2626;"></i>
-            <h3 style="margin:0; font-size:1.1rem; font-weight:700;">B\u1ED9 \u0110\u1ED3 H\u1ECDa 300 DPI L\xE2m S\xE0ng & Poster H\u1ED9i Ch\u1EA9n (Chu\u1EA9n MIT-LCP/wfdb-python)</h3>
+            <i class="fa-solid fa-file-image" style="font-size:1.3rem; color:#0284c7;"></i>
+            <h3 style="margin:0; font-size:1.1rem; font-weight:700;">Xu\u1EA5t B\u1EA3n \u0110\u1ED3 H\u1ECDa ECG \u0110\u1ED9 N\xE9t Cao 300 DPI</h3>
           </div>
           <button id="btn-export-canvas-hi-res" class="ecg-btn ecg-btn--primary">
-            <i class="fa-solid fa-download"></i> T\u1EA3i \u1EA2nh 12 \u0110\u1EA1o Tr\xECnh Hi\u1EC7n T\u1EA1i (PNG T\u1EA3i V\u1EC1)
+            <i class="fa-solid fa-download"></i> T\u1EA3i \u1EA2nh \u0110\u1ED3 H\u1ECDa 12 \u0110\u1EA1o Tr\xECnh (PNG)
           </button>
         </div>
-        <p style="font-size:13px; color:#64748b; margin-bottom:16px;">
-          C\xE1c b\u1EA3n \u0111\u1ED3 h\u1ECDa \u0111\u1ED9 n\xE9t cao 300 DPI \u0111\xE3 \u0111\u01B0\u1EE3c sinh t\u1EEB engine Python k\u1EBFt h\u1EE3p gi\u1EEFa <em>wfdb-python</em> (l\u01B0\u1EDBi milimet y h\u1ECDc, xung \u0111\u1ECBnh chu\u1EA9n 1mV, chu\u1EA9n 12 chuy\u1EC3n \u0111\u1EA1o 3x4 + DII) v\xE0 <em>mondejar/ecg-classification</em>:
+        <p style="font-size:13px; color:#64748b; margin-bottom:12px;">
+          L\u01B0\u1EDBi milimet chu\u1EA9n y t\u1EBF (\xF4 nh\u1ECF 1mm = 0.04s/0.1mV, \xF4 l\u1EDBn 5mm = 0.20s/0.5mV), xung \u0111\u1ECBnh chu\u1EA9n chu\u1EA9n m\u1EF1c 1mV x 0.20s.
         </p>
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
-          <a href="./python/output/clinical_12lead_stemi_inferior_paper.png" target="_blank" style="display:flex; align-items:center; gap:12px; padding:12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; text-decoration:none; color:inherit; transition:all 0.2s;">
-            <i class="fa-solid fa-image" style="font-size:1.8rem; color:#2563eb;"></i>
-            <div>
-              <strong style="display:block; font-size:13px; color:#0f172a;">B\u0103ng 12 \u0110\u1EA1o Tr\xECnh (Gi\u1EA5y H\u1ED3ng)</strong>
-              <small style="color:#64748b; font-size:11.5px;">300 DPI \u2022 Chu\u1EA9n y t\u1EBF 25mm/s & 10mm/mV</small>
-            </div>
-          </a>
-          <a href="./python/output/mitbih_106_morphology_overlay.png" target="_blank" style="display:flex; align-items:center; gap:12px; padding:12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; text-decoration:none; color:inherit; transition:all 0.2s;">
-            <i class="fa-solid fa-layer-group" style="font-size:1.8rem; color:#0d9488;"></i>
-            <div>
-              <strong style="display:block; font-size:13px; color:#0f172a;">B\u1ED9 S\u01B0u T\u1EADp H\xECnh Th\xE1i MIT-BIH</strong>
-              <small style="color:#64748b; font-size:11.5px;">5 ph\xE2n l\u1EDBp nh\u1ECBp (N, V, A, L, R) v\u1EDBi Mean \xB1 1 SD</small>
-            </div>
-          </a>
-          <a href="./python/output/cdss_diagnostic_poster_stemi_inferior.png" target="_blank" style="display:flex; align-items:center; gap:12px; padding:12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; text-decoration:none; color:inherit; transition:all 0.2s;">
-            <i class="fa-solid fa-file-medical" style="font-size:1.8rem; color:#dc2626;"></i>
-            <div>
-              <strong style="display:block; font-size:13px; color:#0f172a;">Poster Ch\u1EA9n \u0110o\xE1n C\u1EA5p C\u1EE9u CDSS</strong>
-              <small style="color:#64748b; font-size:11.5px;">12 \u0110\u1EA1o tr\xECnh + Poincar\xE9 + Ph\xE1c \u0111\u1ED3 can thi\u1EC7p PCI</small>
-            </div>
-          </a>
-        </div>
       </div>
     `;
     setTimeout(() => {
       this.drawPoincareCanvas(poincare);
       this.drawMorphologyCanvas(morphology, selectedLead);
-      const btnExportHiRes = document.getElementById("btn-export-canvas-hi-res");
-      if (btnExportHiRes) {
-        btnExportHiRes.addEventListener("click", () => {
+      const btnExport = document.getElementById("btn-export-canvas-hi-res");
+      if (btnExport) {
+        btnExport.addEventListener("click", () => {
           const mainCanvas = document.querySelector(".ecg-main-canvas");
           if (mainCanvas) {
             const link = document.createElement("a");
             link.download = `ECG_12Lead_${this.currentCase.id}_${Date.now()}.png`;
             link.href = mainCanvas.toDataURL("image/png");
             link.click();
-            this.showToast("\u0110\xE3 t\u1EA3i xu\u1ED1ng \u1EA3nh ECG ch\u1EA5t l\u01B0\u1EE3ng cao!");
+            this.showToast("\u0110\xE3 t\u1EA3i xu\u1ED1ng \u0111\u1ED3 h\u1ECDa ECG ch\u1EA5t l\u01B0\u1EE3ng cao!");
           }
         });
       }
@@ -3564,27 +3570,16 @@ var EcgCDSSController = class {
     ctx.lineWidth = 1.5;
     ctx.stroke();
     ctx.restore();
-    for (const pt of poincare.points) {
-      const px = toX(pt.rrN);
-      const py = toY(pt.rrN1);
-      if (px < padding || px > w - padding || py < padding || py > h - padding) continue;
-      ctx.fillStyle = pt.label === "V" ? "#ef4444" : pt.label === "Pause" ? "#f59e0b" : "#2563eb";
-      ctx.beginPath();
-      ctx.arc(px, py, 3.2, 0, Math.PI * 2);
-      ctx.fill();
-    }
     ctx.fillStyle = "#dc2626";
-    ctx.beginPath();
-    ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = "#475569";
-    ctx.font = "11px sans-serif";
-    ctx.fillText("RR_n (ms)", w / 2 - 25, h - 5);
-    ctx.save();
-    ctx.translate(12, h / 2 + 30);
-    ctx.rotate(-Math.PI / 2);
-    ctx.fillText("RR_n+1 (ms)", 0, 0);
-    ctx.restore();
+    for (const pt of poincare.points) {
+      const px = toX(pt.rrCurrent);
+      const py = toY(pt.rrNext);
+      if (px >= padding && px <= w - padding && py >= padding && py <= h - padding) {
+        ctx.beginPath();
+        ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
   }
   drawMorphologyCanvas(points, lead) {
     const canvas = document.getElementById("canvas-morphology");
@@ -3600,128 +3595,116 @@ var EcgCDSSController = class {
     ctx.scale(dpr, dpr);
     ctx.fillStyle = "#fffdfa";
     ctx.fillRect(0, 0, w, h);
-    const padX = 40;
-    const padY = 30;
+    ctx.strokeStyle = "#fee2e2";
+    ctx.lineWidth = 0.5;
+    const step = 10;
+    for (let x = 0; x < w; x += step) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, h);
+      ctx.stroke();
+    }
+    for (let y = 0; y < h; y += step) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+    }
+    if (!points || points.length === 0) return;
+    const padX = 25;
+    const centerY = h * 0.55;
     const plotW = w - padX * 2;
-    const plotH = h - padY * 2;
-    const minT = -250;
-    const maxT = 400;
-    const minMv = -1.2;
-    const maxMv = 2;
-    const toX = (t) => padX + (t - minT) / (maxT - minT) * plotW;
-    const toY = (v) => h - padY - (v - minMv) / (maxMv - minMv) * plotH;
-    ctx.strokeStyle = "#fecaca";
-    ctx.lineWidth = 0.6;
-    for (let t = -200; t <= 400; t += 100) {
-      const x = toX(t);
-      ctx.beginPath();
-      ctx.moveTo(x, padY);
-      ctx.lineTo(x, h - padY);
-      ctx.stroke();
-      ctx.fillStyle = "#94a3b8";
-      ctx.font = "10px monospace";
-      ctx.fillText(`${t}`, x - 10, h - padY + 15);
-    }
-    for (let v = -1; v <= 1.8; v += 0.5) {
-      const y = toY(v);
-      ctx.beginPath();
-      ctx.moveTo(padX, y);
-      ctx.lineTo(w - padX, y);
-      ctx.stroke();
-      ctx.fillStyle = "#94a3b8";
-      ctx.font = "10px monospace";
-      ctx.fillText(`${v.toFixed(1)}`, padX - 28, y + 4);
-    }
-    const yZero = toY(0);
-    ctx.strokeStyle = "#94a3b8";
-    ctx.lineWidth = 1;
+    const maxT = points[points.length - 1].timeSec;
+    const scaleY = 70;
+    const toX = (t) => padX + t / maxT * plotW;
+    const toY = (v) => centerY - v * scaleY;
+    ctx.fillStyle = "rgba(239, 68, 68, 0.15)";
     ctx.beginPath();
-    ctx.moveTo(padX, yZero);
-    ctx.lineTo(w - padX, yZero);
-    ctx.stroke();
-    const xZero = toX(0);
-    ctx.strokeStyle = "#cbd5e1";
-    ctx.setLineDash([3, 3]);
-    ctx.beginPath();
-    ctx.moveTo(xZero, padY);
-    ctx.lineTo(xZero, h - padY);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.beginPath();
-    for (let i = 0; i < points.length; i++) {
-      const x = toX(points[i].timeMs);
-      const y = toY(points[i].upperMv);
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
+    ctx.moveTo(toX(points[0].timeSec), toY(points[0].meanVoltage + points[0].stdDev));
+    for (let i = 1; i < points.length; i++) {
+      ctx.lineTo(toX(points[i].timeSec), toY(points[i].meanVoltage + points[i].stdDev));
     }
     for (let i = points.length - 1; i >= 0; i--) {
-      const x = toX(points[i].timeMs);
-      const y = toY(points[i].lowerMv);
-      ctx.lineTo(x, y);
+      ctx.lineTo(toX(points[i].timeSec), toY(points[i].meanVoltage - points[i].stdDev));
     }
     ctx.closePath();
-    ctx.fillStyle = "rgba(239, 68, 68, 0.2)";
     ctx.fill();
+    ctx.strokeStyle = "#cbd5e1";
+    ctx.lineWidth = 1;
+    ctx.setLineDash([2, 2]);
     ctx.beginPath();
-    for (let i = 0; i < points.length; i++) {
-      const x = toX(points[i].timeMs);
-      const y = toY(points[i].meanMv);
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.strokeStyle = "#dc2626";
-    ctx.lineWidth = 2.4;
+    ctx.moveTo(padX, centerY);
+    ctx.lineTo(w - padX, centerY);
     ctx.stroke();
-    ctx.fillStyle = "#0f172a";
-    ctx.font = "bold 11px sans-serif";
-    ctx.fillText(`Th\u1EDDi gian t\u1EEB \u0111\u1EC9nh R (ms)`, w / 2 - 60, h - 5);
+    ctx.setLineDash([]);
+    ctx.strokeStyle = "#b91c1c";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(toX(points[0].timeSec), toY(points[0].meanVoltage));
+    for (let i = 1; i < points.length; i++) {
+      ctx.lineTo(toX(points[i].timeSec), toY(points[i].meanVoltage));
+    }
+    ctx.stroke();
   }
-  exportSoapPlan() {
-    const c = this.currentCase;
-    const p = c.patient;
-    const m = c.metrics;
-    const d = c.diagnosis;
-    const dateStr = (/* @__PURE__ */ new Date()).toLocaleDateString("vi-VN");
-    const text = [
-      `--- B\xC1O C\xC1O \u0110I\u1EC6N T\xC2M \u0110\u1ED2 12 CHUY\u1EC2N \u0110\u1EA0O (CDSS ECG MASTER) [${dateStr}] ---`,
-      `B\u1EC7nh nh\xE2n: ${p.name} | ${p.age} tu\u1ED5i (${p.gender})`,
-      `L\xFD do kh\xE1m: ${p.chiefComplaint}`,
-      `Sinh hi\u1EC7u: HA ${p.vitals.bp} mmHg, M\u1EA1ch ${m.heartRate} bpm, SpO2 ${p.vitals.spo2}%`,
-      `
-K\u1EBET QU\u1EA2 \u0110O \u0110\u1EA0C \u0110I\u1EC6N H\u1ECCC:`,
-      `  \u2022 Nh\u1ECBp: ${m.rhythmType} (${m.regularity}) | T\u1EA7n s\u1ED1: ${m.heartRate} l/p`,
-      `  \u2022 Tr\u1EE5c \u0111i\u1EC7n tim: ${m.axis} (${m.alphaAngle}\xB0)`,
-      `  \u2022 PR: ${m.prInterval} ms | QRS: ${m.qrsDuration} ms | QTc: ${m.qtc} ms`,
-      `
-CH\u1EA8N \u0110O\xC1N X\xC1C \u0110\u1ECANH:`,
-      `  \u2022 ${d.primary}`,
-      ...d.culpritVesselOrCause ? [`  \u2022 Nh\xE1nh th\u1EE7 ph\u1EA1m / Nguy\xEAn nh\xE2n: ${d.culpritVesselOrCause}`] : [],
-      `  \u2022 D\u1EA5u hi\u1EC7u ch\xECa kh\xF3a: ${d.keyFindings.join("; ")}`,
-      `
-K\u1EBE HO\u1EA0CH \u0110I\u1EC0U TR\u1ECA KH\u1EA8N C\u1EA4P (SOAP PLAN):`,
-      ...d.treatment.map((t, idx) => `  ${idx + 1}. ${t}`),
-      `
-Ph\xE2n bi\u1EC7t: ${d.differentials.join(", ")}`
-    ].join("\n");
-    navigator.clipboard.writeText(text).then(() => {
-      this.showToast("\u0110\xE3 sao ch\xE9p k\u1EBFt qu\u1EA3 ECG v\xE0o H\u1ED3 S\u01A1 B\u1EC7nh \xC1n / DocSpace!");
-    });
+  /**
+   * Caliper & Wave Landmark Annotation Tab
+   */
+  renderAnnotationTab(report) {
+    const wrap = document.getElementById("ecg-tab-content");
+    if (!wrap) return;
+    if (!report || report.totalAnnotations === 0) {
+      wrap.innerHTML = `
+        <div class="ecg-empty-ann-state">
+          <i class="fa-solid fa-crosshairs fa-3x text-muted"></i>
+          <h3>Th\u01B0\u1EDBc Caliper &amp; Th\u1EA9m \u0110\u1ECBnh Ch\u1EA5m M\u1ED1c S\xF3ng T\u01B0\u01A1ng T\xE1c</h3>
+          <p>
+            1. B\u1EADt <strong>Th\u01B0\u1EDBc Caliper</strong> tr\xEAn thanh c\xF4ng c\u1EE5 v\xE0 k\xE9o chu\u1ED9t tr\xEAn \u0111\u1ED3 h\u1ECDa \u0111\u1EC3 \u0111o kho\u1EA3ng th\u1EDDi gian (ms) v\xE0 \u0111i\u1EC7n th\u1EBF (mV).<br>
+            2. Ho\u1EB7c ch\u1ECDn c\xE1c n\xFAt s\xF3ng (<strong>P, Q, R, S, J, T, U</strong>) v\xE0 nh\u1EA5p chu\u1ED9t tr\u1EF1c ti\u1EBFp l\xEAn \u0111\u1EC9nh/\u0111\xE1y s\xF3ng \u0111\u1EC3 h\u1EC7 th\u1ED1ng ch\u1EA5m \u0111i\u1EC3m \u0111\u1ED9 ch\xEDnh x\xE1c nh\u1EADn di\u1EC7n th\xE0nh ph\u1EA7n.
+          </p>
+        </div>
+      `;
+      return;
+    }
+    wrap.innerHTML = `
+      <div class="ecg-ann-report">
+        <div class="ecg-ann-summary-card">
+          <div class="ecg-ann-score-box">
+            <span class="ecg-ann-score">${report.overallScore}</span>
+            <span class="ecg-ann-score-label">/ 100 \u0110i\u1EC3m</span>
+          </div>
+          <div class="ecg-ann-summary-text">
+            <h3>K\u1EBFt Qu\u1EA3 Nh\u1EADn Di\u1EC7n Th\xE0nh Ph\u1EA7n S\xF3ng</h3>
+            <p class="ecg-ann-feedback">${report.feedback}</p>
+            <p class="ecg-ann-pearl"><i class="fa-solid fa-lightbulb text-warning"></i> ${report.clinicalPearl}</p>
+          </div>
+        </div>
+
+        <div class="ecg-ann-items-list">
+          <h4>Chi Ti\u1EBFt T\u1EEBng V\u1ECB Tr\xED S\xF3ng \u0110\xE3 Ch\u1EA5m:</h4>
+          ${report.items.map((item) => `
+            <div class="ecg-ann-result-row ecg-ann-result-row--${item.status}">
+              <div class="ecg-ann-wave-badge">${item.waveType} (${item.lead})</div>
+              <div class="ecg-ann-item-desc">
+                <strong>${item.message}</strong>
+                <p>${item.morphologyEvaluation}</p>
+              </div>
+              <div class="ecg-ann-item-score font-bold">${item.score}\u0111</div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
   }
   showToast(msg) {
     const toast = document.getElementById("ecg-toast");
     if (!toast) return;
     toast.textContent = msg;
     toast.style.display = "block";
-    toast.classList.add("fade-in");
     setTimeout(() => {
       toast.style.display = "none";
-      toast.classList.remove("fade-in");
-    }, 3200);
+    }, 2800);
   }
 };
-if (typeof window !== "undefined") {
-  window.EcgCDSSController = EcgCDSSController;
-}
 export {
   EcgCDSSController
 };

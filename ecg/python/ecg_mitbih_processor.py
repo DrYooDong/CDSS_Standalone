@@ -88,6 +88,58 @@ class EcgSignalProcessor:
         clean = cls.remove_baseline_wander_median(bandpassed, fs)
         return clean
 
+    @classmethod
+    def pan_tompkins_qrs_detector(cls, ecg_signal: np.ndarray, fs: float) -> np.ndarray:
+        """
+        Classic Pan & Tompkins (1985) QRS Detection Algorithm:
+        Stage 1: Bandpass filter (5-15 Hz) to isolate QRS energy from P/T waves and baseline drift
+        Stage 2: 5-point Derivative filter: d[n] = (2x[n] + x[n-1] - x[n-3] - 2x[n-4]) / (8 * T)
+        Stage 3: Squaring operation: y[n] = (d[n])^2 (non-linear boost of high frequency QRS)
+        Stage 4: Moving Window Integrator (MWI) with 150ms window
+        Stage 5: Adaptive thresholding & refractory period (200ms) with searchback peak localization
+        
+        Returns:
+            r_peak_indices: np.ndarray of detected R-peak sample indices in ecg_signal
+        """
+        nyq = 0.5 * fs
+        # Stage 1: Bandpass 5-15 Hz
+        b_bp, a_bp = signal.butter(2, [5.0 / nyq, 15.0 / nyq], btype='band')
+        bp_sig = signal.filtfilt(b_bp, a_bp, ecg_signal)
+
+        # Stage 2: Five-point derivative
+        b_der = np.array([2.0, 1.0, 0.0, -1.0, -2.0]) * (fs / 8.0)
+        diff_sig = signal.lfilter(b_der, [1.0], bp_sig)
+
+        # Stage 3: Squaring
+        sq_sig = diff_sig ** 2
+
+        # Stage 4: Moving Window Integrator (150ms)
+        win_size = max(3, int(0.150 * fs))
+        kernel = np.ones(win_size) / win_size
+        mwi_sig = np.convolve(sq_sig, kernel, mode='same')
+
+        # Stage 5: Peak detection on MWI signal
+        min_distance = int(0.20 * fs)  # 200ms refractory period
+        mwi_threshold = np.mean(mwi_sig) * 0.65
+        mwi_peaks, _ = signal.find_peaks(mwi_sig, distance=min_distance, height=mwi_threshold)
+
+        # Searchback in original bandpassed signal around MWI peaks (-100ms to +100ms)
+        search_radius = int(0.10 * fs)
+        refined_r_peaks = []
+        n_samples = len(ecg_signal)
+
+        for p in mwi_peaks:
+            w_start = max(0, p - search_radius)
+            w_end = min(n_samples, p + search_radius)
+            if w_end > w_start:
+                local_window = ecg_signal[w_start:w_end]
+                # Find maximum absolute deflection (R or S wave)
+                local_max_idx = np.argmax(np.abs(local_window))
+                refined_peak = w_start + local_max_idx
+                refined_r_peaks.append(refined_peak)
+
+        return np.array(refined_r_peaks, dtype=int)
+
 
 class EcgBeatSegmenter:
     """Segments continuous ECG signals into individual cardiac beats."""

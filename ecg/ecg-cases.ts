@@ -159,7 +159,7 @@ export const ECG_CASES: EcgCase[] = [
       alphaAngle: 45,
       prInterval: 160,
       qrsDuration: 90,
-      qt: 410,
+      qt: 355,
       qtc: 448,
     },
     leadsData: (() => {
@@ -268,6 +268,12 @@ export const ECG_CASES: EcgCase[] = [
       leads["aVF"].stSegment = { elevation: 0.35, slope: "coved" };
       leads["aVF"].tWave = { amp: 0.45, dur: 0.18, shape: "hyperacute" };
 
+      // Right Axis Deviation: Lead I predominantly negative, aVF positive (Góc alpha ~ 105°)
+      leads["I"].rWave = { amp: 0.25, dur: 0.03 };
+      leads["I"].sWave = { amp: -0.60, dur: 0.04 }; // net I = -0.35 mV
+      leads["aVF"].rWave = { amp: 1.4, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -0.1, dur: 0.02 }; // net aVF = +1.30 mV => atan2(1.30, -0.35) = 105°
+
       // Reciprocal ST depression in DI, aVL
       leads["I"].stSegment = { elevation: -0.2, slope: "downsloping" };
       leads["I"].tWave = { amp: -0.25, dur: 0.16, shape: "inverted" };
@@ -346,6 +352,11 @@ export const ECG_CASES: EcgCase[] = [
         leads[k].sWave = { amp: leads[k].sWave.amp * 1.3, dur: 0.06 };
         leads[k].stSegment = { elevation: -0.05, slope: "downsloping" };
       }
+      // Left Axis Deviation (idioventricular escape vector -45°)
+      leads["I"].rWave = { amp: 1.2, dur: 0.08, notched: true };
+      leads["I"].sWave = { amp: -0.2, dur: 0.04 }; // net I = +1.0 mV
+      leads["aVF"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -1.2, dur: 0.08 }; // net aVF = -1.0 mV => atan2(-1.0, 1.0) = -45°
       return leads;
     })(),
     leadsSummary: {
@@ -553,7 +564,7 @@ export const ECG_CASES: EcgCase[] = [
       alphaAngle: -150,
       prInterval: 0,
       qrsDuration: 165, // QRS rất rộng
-      qt: 340,
+      qt: 315,
       qtc: 540,
     },
     leadsData: (() => {
@@ -575,8 +586,11 @@ export const ECG_CASES: EcgCase[] = [
       leads["V5"].sWave = { amp: -1.8, dur: 0.12, wide: true };
       leads["V6"].sWave = { amp: -1.6, dur: 0.12, wide: true };
 
+      // Northwest Axis (Extreme Axis -150°): both Lead I and Lead aVF negative
       leads["I"].rWave = { amp: 0.2, dur: 0.03 };
-      leads["I"].sWave = { amp: -1.4, dur: 0.12 };
+      leads["I"].sWave = { amp: -1.4, dur: 0.12 }; // net I = -1.20 mV
+      leads["aVF"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -0.9, dur: 0.12 }; // net aVF = -0.70 mV => atan2(-0.70, -1.20) = -150°
       leads["aVR"].rWave = { amp: 1.5, dur: 0.08 }; // tall R in aVR
       return leads;
     })(),
@@ -656,6 +670,12 @@ export const ECG_CASES: EcgCase[] = [
       leads["V2"].tWave = { amp: 1.8, dur: 0.14, shape: "peaked" };
       leads["V3"].tWave = { amp: 2.0, dur: 0.14, shape: "peaked" };
       leads["V4"].tWave = { amp: 1.6, dur: 0.14, shape: "peaked" };
+
+      // Left Axis Deviation in severe hyperkalemia (-40°)
+      leads["I"].rWave = { amp: 1.1, dur: 0.08, notched: true };
+      leads["I"].sWave = { amp: -0.1, dur: 0.04 }; // net I = +1.0 mV
+      leads["aVF"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -1.04, dur: 0.08 }; // net aVF = -0.84 mV => atan2(-0.84, 1.0) = -40°
       return leads;
     })(),
     leadsSummary: {
@@ -868,7 +888,7 @@ export const ECG_CASES: EcgCase[] = [
       alphaAngle: 45,
       prInterval: 0,
       qrsDuration: 90,
-      qt: 320,
+      qt: 350,
       qtc: 340, // QT ngắn
     },
     leadsData: (() => {
@@ -939,7 +959,7 @@ export const ECG_CASES: EcgCase[] = [
       qrsDuration: 85,
       qt: 380,
       qtc: 416,
-      sokolowLyon: 24, // SV1 (12mm) + RV5 (12mm) = 24mm (<35mm)
+      sokolowLyon: 31, // SV1 (13mm) + RV5 (18mm) = 31mm (<35mm chuẩn)
     },
     leadsData: cloneNormalLeads(),
     leadsSummary: {
@@ -1013,6 +1033,9 @@ export const ECG_CASES: EcgCase[] = [
         leads[l].tWave = { amp: 0.45, dur: 0.16, shape: "normal" };
         leads[l].qrsDuration = 145;
       }
+      // Inferior lead reciprocal / LAD vector in LBBB (-25°)
+      leads["aVF"].rWave = { amp: 0.35, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -0.95, dur: 0.06 }; // net aVF = -0.60 mV => atan2(-0.60, 1.30) = -25°
       return leads;
     })(),
     leadsSummary: {
@@ -1162,6 +1185,16 @@ export const ECG_CASES: EcgCase[] = [
     },
     leadsData: (() => {
       const leads = cloneNormalLeads();
+      // Limb leads reflecting Left Axis Deviation (-35°): Lead I positive, Lead II/III/aVF negative
+      leads["I"].rWave = { amp: 1.4, dur: 0.04 };
+      leads["I"].sWave = { amp: -0.1, dur: 0.02 };
+      leads["II"].rWave = { amp: 0.3, dur: 0.03 };
+      leads["II"].sWave = { amp: -0.8, dur: 0.04 };
+      leads["III"].rWave = { amp: 0.2, dur: 0.02 };
+      leads["III"].sWave = { amp: -1.2, dur: 0.04 };
+      leads["aVF"].rWave = { amp: 0.25, dur: 0.02 };
+      leads["aVF"].sWave = { amp: -1.0, dur: 0.04 };
+
       // P mitrale in DII: broad and notched
       leads["II"].pWave = { amp: 0.18, dur: 0.12, shape: "bifid" };
       // P biphasic with deep negative terminal component in V1
@@ -1326,7 +1359,7 @@ export const ECG_CASES: EcgCase[] = [
       alphaAngle: 0,
       prInterval: 0,
       qrsDuration: 160,
-      qt: 560,
+      qt: 310,
       qtc: 580,
     },
     leadsData: (() => {
@@ -1420,6 +1453,17 @@ export const ECG_CASES: EcgCase[] = [
         leads[l].tWave = { amp: -0.3, dur: 0.16, shape: "inverted" };
         leads[l].qrsDuration = 140;
       }
+      // Set superior/leftward axis (LAD -45°) characteristic of apical ventricular pacemaker
+      leads["I"].rWave = { amp: 1.3, dur: 0.08 };
+      leads["I"].sWave = { amp: -0.2, dur: 0.04 };
+      leads["aVL"].rWave = { amp: 1.2, dur: 0.08 };
+      leads["aVL"].sWave = { amp: -0.2, dur: 0.04 };
+      leads["II"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["II"].sWave = { amp: -1.0, dur: 0.08 };
+      leads["III"].rWave = { amp: 0.15, dur: 0.04 };
+      leads["III"].sWave = { amp: -1.3, dur: 0.08 };
+      leads["aVF"].rWave = { amp: 0.2, dur: 0.04 };
+      leads["aVF"].sWave = { amp: -1.3, dur: 0.08 };
       return leads;
     })(),
     leadsSummary: {
