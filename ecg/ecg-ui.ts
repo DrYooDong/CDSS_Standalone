@@ -6,13 +6,20 @@
 import { EcgCase, LeadName, WaveType, AnnotationValidationReport } from './ecg-types';
 import { ECG_CASES } from './ecg-cases';
 import { EcgCanvasRenderer, EcgCanvasOptions } from './ecg-canvas-renderer';
-import { LEAD_ANATOMY_MAP, LEAD_FILTER_DEFINITIONS } from './ecg-math';
+import {
+  LEAD_ANATOMY_MAP,
+  LEAD_FILTER_DEFINITIONS,
+  calculateCasePoincareHrv,
+  generateBeatMorphologyProfile,
+  PoincareHrvAnalysis,
+  BeatMorphologyPoint
+} from './ecg-math';
 
 export class EcgCDSSController {
   private container: HTMLElement;
   private currentCase: EcgCase;
   private renderer: EcgCanvasRenderer | null = null;
-  private currentTab: 'diagnosis' | 'criteria' | 'anatomy' | 'annotation' | 'guide' = 'diagnosis';
+  private currentTab: 'diagnosis' | 'criteria' | 'anatomy' | 'annotation' | 'guide' | 'advanced-graphics' = 'diagnosis';
 
   constructor(containerId: string) {
     const el = document.getElementById(containerId);
@@ -150,6 +157,9 @@ export class EcgCDSSController {
             </button>
             <button class="ecg-tab-btn" data-tab="guide">
               <i class="fa-solid fa-book-medical"></i> Cẩm Nang 10 Bước & Kinh Điển ECG
+            </button>
+            <button class="ecg-tab-btn" data-tab="advanced-graphics">
+              <i class="fa-solid fa-chart-line text-teal-600"></i> Đồ Họa Nâng Cao & Poincaré (WFDB / MIT-BIH)
             </button>
           </div>
 
@@ -386,6 +396,8 @@ export class EcgCDSSController {
       this.renderAnatomyTab(wrap);
     } else if (this.currentTab === 'guide') {
       this.renderGuideTab(wrap);
+    } else if (this.currentTab === 'advanced-graphics') {
+      this.renderAdvancedGraphicsTab(wrap);
     } else {
       this.renderAnnotationTab(this.renderer?.lastValidationReport || null);
     }
@@ -737,6 +749,349 @@ export class EcgCDSSController {
         </div>
       </div>
     `;
+  }
+
+  private renderAdvancedGraphicsTab(wrap: HTMLElement): void {
+    const c = this.currentCase;
+    const m = c.metrics;
+    const poincare = calculateCasePoincareHrv(m.heartRate, m.regularity, c.category);
+    const selectedLead: LeadName = (this.renderer?.getOptions().selectedLead) || 'II';
+    const leadData = c.leadsData[selectedLead] || c.leadsData['II'];
+    const morphology = generateBeatMorphologyProfile(leadData, m.heartRate);
+
+    wrap.innerHTML = `
+      <div class="ecg-adv-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 16px; margin-bottom: 20px;">
+        <!-- Card 1: Poincaré Plot (RR_n vs RR_n+1) -->
+        <div class="ecg-diag-card" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-chart-line text-primary" style="font-size:1.2rem; color:#2563eb;"></i>
+              <h3 style="margin:0; font-size:1.05rem; font-weight:700;">Biểu Đồ Poincaré HRV (RR<sub>n</sub> vs RR<sub>n+1</sub>)</h3>
+            </div>
+            <span class="ecg-badge ecg-badge--cardio">${m.regularity}</span>
+          </div>
+          <p style="font-size:12.5px; color:#64748b; margin-bottom:10px;">
+            Kế thừa thuật toán từ <strong>mondejar/ecg-classification</strong>: Phân tích động học R-R, phát hiện sớm Rung nhĩ, ngoại tâm thu thất (PVC) và quá tải giao cảm.
+          </p>
+          <div style="position:relative; width:100%; height:270px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0; overflow:hidden;">
+            <canvas id="canvas-poincare" style="width:100%; height:100%; display:block;"></canvas>
+          </div>
+          <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:8px; margin-top:12px; font-size:12px; text-align:center;">
+            <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>SD1 (Ngắn):</strong><br>${poincare.sd1} ms</div>
+            <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>SD2 (Dài):</strong><br>${poincare.sd2} ms</div>
+            <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>SD1/SD2:</strong><br>${poincare.sdRatio}</div>
+            <div style="background:#f1f5f9; padding:6px; border-radius:6px;"><strong>RMSSD:</strong><br>${poincare.rmssd} ms</div>
+          </div>
+          <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:6px; font-size:12.5px; margin-top:10px; color:#166534;">
+            <i class="fa-solid fa-circle-info"></i> <strong>Diễn giải lâm sàng:</strong> ${poincare.rhythmInterpretation}
+          </div>
+        </div>
+
+        <!-- Card 2: Beat Morphology Overlay -->
+        <div class="ecg-diag-card" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-wave-square" style="font-size:1.2rem; color:#dc2626;"></i>
+              <h3 style="margin:0; font-size:1.05rem; font-weight:700;">Hình Thái Nhát Bóp & Dải Tin Cậy (Đạo Trình ${selectedLead})</h3>
+            </div>
+            <span class="ecg-badge ecg-badge--secondary">Mean Beat ± 1 SD</span>
+          </div>
+          <p style="font-size:12.5px; color:#64748b; margin-bottom:10px;">
+            Xếp chồng nhát bóp và dải độ lệch chuẩn để khảo sát chi tiết chênh lệch ST, sóng T khổng lồ hoặc sóng Delta.
+          </p>
+          <div style="position:relative; width:100%; height:270px; background:#fffdfa; border-radius:8px; border:1px solid #fecaca; overflow:hidden;">
+            <canvas id="canvas-morphology" style="width:100%; height:100%; display:block;"></canvas>
+          </div>
+          <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:8px; margin-top:12px; font-size:12px; text-align:center;">
+            <div style="background:#fef2f2; padding:6px; border-radius:6px;"><strong>Biên độ R:</strong><br>${leadData.rWave.amp.toFixed(2)} mV</div>
+            <div style="background:#fef2f2; padding:6px; border-radius:6px;"><strong>Đoạn ST:</strong><br>${leadData.stSegment.elevation > 0 ? `+${leadData.stSegment.elevation.toFixed(2)} mV` : `${leadData.stSegment.elevation.toFixed(2)} mV`}</div>
+            <div style="background:#fef2f2; padding:6px; border-radius:6px;"><strong>Sóng T:</strong><br>${leadData.tWave.amp.toFixed(2)} mV (${leadData.tWave.shape || 'chuẩn'})</div>
+          </div>
+          <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:10px; border-radius:6px; font-size:12.5px; margin-top:10px; color:#1e40af;">
+            <i class="fa-solid fa-magnifying-glass-chart"></i> <strong>Đặc điểm sóng:</strong> ${c.diagnosis.keyFindings[0] || 'Hình thái nhát bóp trong giới hạn khảo sát.'}
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: High-DPI WFDB Export & Download Hub -->
+      <div class="ecg-diag-card" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:18px; margin-top:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <i class="fa-solid fa-file-pdf" style="font-size:1.3rem; color:#dc2626;"></i>
+            <h3 style="margin:0; font-size:1.1rem; font-weight:700;">Bộ Đồ Họa 300 DPI Lâm Sàng & Poster Hội Chẩn (Chuẩn MIT-LCP/wfdb-python)</h3>
+          </div>
+          <button id="btn-export-canvas-hi-res" class="ecg-btn ecg-btn--primary">
+            <i class="fa-solid fa-download"></i> Tải Ảnh 12 Đạo Trình Hiện Tại (PNG Tải Về)
+          </button>
+        </div>
+        <p style="font-size:13px; color:#64748b; margin-bottom:16px;">
+          Các bản đồ họa độ nét cao 300 DPI đã được sinh từ engine Python kết hợp giữa <em>wfdb-python</em> (lưới milimet y học, xung định chuẩn 1mV, chuẩn 12 chuyển đạo 3x4 + DII) và <em>mondejar/ecg-classification</em>:
+        </p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
+          <a href="./python/output/clinical_12lead_stemi_inferior_paper.png" target="_blank" style="display:flex; align-items:center; gap:12px; padding:12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; text-decoration:none; color:inherit; transition:all 0.2s;">
+            <i class="fa-solid fa-image" style="font-size:1.8rem; color:#2563eb;"></i>
+            <div>
+              <strong style="display:block; font-size:13px; color:#0f172a;">Băng 12 Đạo Trình (Giấy Hồng)</strong>
+              <small style="color:#64748b; font-size:11.5px;">300 DPI • Chuẩn y tế 25mm/s & 10mm/mV</small>
+            </div>
+          </a>
+          <a href="./python/output/mitbih_106_morphology_overlay.png" target="_blank" style="display:flex; align-items:center; gap:12px; padding:12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; text-decoration:none; color:inherit; transition:all 0.2s;">
+            <i class="fa-solid fa-layer-group" style="font-size:1.8rem; color:#0d9488;"></i>
+            <div>
+              <strong style="display:block; font-size:13px; color:#0f172a;">Bộ Sưu Tập Hình Thái MIT-BIH</strong>
+              <small style="color:#64748b; font-size:11.5px;">5 phân lớp nhịp (N, V, A, L, R) với Mean ± 1 SD</small>
+            </div>
+          </a>
+          <a href="./python/output/cdss_diagnostic_poster_stemi_inferior.png" target="_blank" style="display:flex; align-items:center; gap:12px; padding:12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; text-decoration:none; color:inherit; transition:all 0.2s;">
+            <i class="fa-solid fa-file-medical" style="font-size:1.8rem; color:#dc2626;"></i>
+            <div>
+              <strong style="display:block; font-size:13px; color:#0f172a;">Poster Chẩn Đoán Cấp Cứu CDSS</strong>
+              <small style="color:#64748b; font-size:11.5px;">12 Đạo trình + Poincaré + Phác đồ can thiệp PCI</small>
+            </div>
+          </a>
+        </div>
+      </div>
+    `;
+
+    // Render Canvases
+    setTimeout(() => {
+      this.drawPoincareCanvas(poincare);
+      this.drawMorphologyCanvas(morphology, selectedLead);
+
+      const btnExportHiRes = document.getElementById('btn-export-canvas-hi-res');
+      if (btnExportHiRes) {
+        btnExportHiRes.addEventListener('click', () => {
+          const mainCanvas = document.querySelector('.ecg-main-canvas') as HTMLCanvasElement | null;
+          if (mainCanvas) {
+            const link = document.createElement('a');
+            link.download = `ECG_12Lead_${this.currentCase.id}_${Date.now()}.png`;
+            link.href = mainCanvas.toDataURL('image/png');
+            link.click();
+            this.showToast('Đã tải xuống ảnh ECG chất lượng cao!');
+          }
+        });
+      }
+    }, 40);
+  }
+
+  private drawPoincareCanvas(poincare: PoincareHrvAnalysis): void {
+    const canvas = document.getElementById('canvas-poincare') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const w = rect.width || 420;
+    const h = rect.height || 270;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
+
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillRect(0, 0, w, h);
+
+    // Coordinate mapping
+    const minMs = 300;
+    const maxMs = 1500;
+    const padding = 35;
+    const plotW = w - padding * 2;
+    const plotH = h - padding * 2;
+
+    const toX = (ms: number) => padding + ((ms - minMs) / (maxMs - minMs)) * plotW;
+    const toY = (ms: number) => (h - padding) - ((ms - minMs) / (maxMs - minMs)) * plotH;
+
+    // Draw Grid Lines
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 1;
+    ctx.font = '10px monospace';
+    ctx.fillStyle = '#94a3b8';
+
+    for (let ms = 400; ms <= 1400; ms += 200) {
+      const x = toX(ms);
+      const y = toY(ms);
+
+      ctx.beginPath();
+      ctx.moveTo(x, padding);
+      ctx.lineTo(x, h - padding);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(padding, y);
+      ctx.lineTo(w - padding, y);
+      ctx.stroke();
+
+      ctx.fillText(`${ms}`, x - 12, h - padding + 15);
+      ctx.fillText(`${ms}`, padding - 28, y + 4);
+    }
+
+    // Line of identity y = x
+    ctx.strokeStyle = '#94a3b8';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(toX(minMs), toY(minMs));
+    ctx.lineTo(toX(maxMs), toY(maxMs));
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Draw Fitted Ellipse
+    const cx = toX(poincare.meanRr);
+    const cy = toY(poincare.meanRr);
+    const rx = (poincare.sd2 / (maxMs - minMs)) * plotW;
+    const ry = (poincare.sd1 / (maxMs - minMs)) * plotH;
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(-Math.PI / 4); // 45 degrees along y = x
+    ctx.beginPath();
+    ctx.ellipse(0, 0, Math.max(8, rx * 1.5), Math.max(5, ry * 1.5), 0, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
+    ctx.fill();
+    ctx.strokeStyle = '#0284c7';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.restore();
+
+    // Plot Points (RR_n, RR_{n+1})
+    for (const pt of poincare.points) {
+      const px = toX(pt.rrN);
+      const py = toY(pt.rrN1);
+      if (px < padding || px > w - padding || py < padding || py > h - padding) continue;
+
+      ctx.fillStyle = pt.label === 'V' ? '#ef4444' : pt.label === 'Pause' ? '#f59e0b' : '#2563eb';
+      ctx.beginPath();
+      ctx.arc(px, py, 3.2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Center Cross
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Axis Labels
+    ctx.fillStyle = '#475569';
+    ctx.font = '11px sans-serif';
+    ctx.fillText('RR_n (ms)', w / 2 - 25, h - 5);
+
+    ctx.save();
+    ctx.translate(12, h / 2 + 30);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('RR_n+1 (ms)', 0, 0);
+    ctx.restore();
+  }
+
+  private drawMorphologyCanvas(points: BeatMorphologyPoint[], lead: LeadName): void {
+    const canvas = document.getElementById('canvas-morphology') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const w = rect.width || 420;
+    const h = rect.height || 270;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
+
+    ctx.fillStyle = '#fffdfa';
+    ctx.fillRect(0, 0, w, h);
+
+    const padX = 40;
+    const padY = 30;
+    const plotW = w - padX * 2;
+    const plotH = h - padY * 2;
+
+    const minT = -250;
+    const maxT = 400;
+    const minMv = -1.2;
+    const maxMv = 2.0;
+
+    const toX = (t: number) => padX + ((t - minT) / (maxT - minT)) * plotW;
+    const toY = (v: number) => (h - padY) - ((v - minMv) / (maxMv - minMv)) * plotH;
+
+    // Grid
+    ctx.strokeStyle = '#fecaca';
+    ctx.lineWidth = 0.6;
+    for (let t = -200; t <= 400; t += 100) {
+      const x = toX(t);
+      ctx.beginPath();
+      ctx.moveTo(x, padY);
+      ctx.lineTo(x, h - padY);
+      ctx.stroke();
+
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '10px monospace';
+      ctx.fillText(`${t}`, x - 10, h - padY + 15);
+    }
+
+    for (let v = -1.0; v <= 1.8; v += 0.5) {
+      const y = toY(v);
+      ctx.beginPath();
+      ctx.moveTo(padX, y);
+      ctx.lineTo(w - padX, y);
+      ctx.stroke();
+
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '10px monospace';
+      ctx.fillText(`${v.toFixed(1)}`, padX - 28, y + 4);
+    }
+
+    // Zero Volt Baseline
+    const yZero = toY(0);
+    ctx.strokeStyle = '#94a3b8';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padX, yZero);
+    ctx.lineTo(w - padX, yZero);
+    ctx.stroke();
+
+    // R Peak Marker Line (t = 0)
+    const xZero = toX(0);
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(xZero, padY);
+    ctx.lineTo(xZero, h - padY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Draw Confidence Ribbon (Upper to Lower)
+    ctx.beginPath();
+    for (let i = 0; i < points.length; i++) {
+      const x = toX(points[i].timeMs);
+      const y = toY(points[i].upperMv);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    for (let i = points.length - 1; i >= 0; i--) {
+      const x = toX(points[i].timeMs);
+      const y = toY(points[i].lowerMv);
+      ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(239, 68, 68, 0.2)';
+    ctx.fill();
+
+    // Draw Mean Waveform
+    ctx.beginPath();
+    for (let i = 0; i < points.length; i++) {
+      const x = toX(points[i].timeMs);
+      const y = toY(points[i].meanMv);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = '#dc2626';
+    ctx.lineWidth = 2.4;
+    ctx.stroke();
+
+    // Labels
+    ctx.fillStyle = '#0f172a';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.fillText(`Thời gian từ đỉnh R (ms)`, w / 2 - 60, h - 5);
   }
 
   private exportSoapPlan(): void {

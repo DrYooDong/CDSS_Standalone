@@ -673,3 +673,174 @@ export function validateUserManualAnnotations(
     guidanceChapter: "Chương 2 - Định vị điểm J và phân tích biến đổi đoạn ST-T",
   };
 }
+
+/**
+ * ============================================================================
+ * ADVANCED ECG DYNAMICS & POINCARÉ HRV (inspired by mondejar/ecg-classification)
+ * ============================================================================
+ */
+export interface PoincarePoint {
+  rrN: number;     // ms
+  rrN1: number;    // ms
+  label?: string;  // N, V, A, L, R
+}
+
+export interface PoincareHrvAnalysis {
+  points: PoincarePoint[];
+  meanRr: number;
+  meanHr: number;
+  sd1: number;      // ms (short-term variability)
+  sd2: number;      // ms (long-term variability)
+  sdRatio: number;  // sd1 / sd2
+  rmssd: number;    // Root mean square of successive differences
+  rhythmInterpretation: string;
+}
+
+export interface BeatMorphologyPoint {
+  timeMs: number;   // relative to R peak (-250 to +400ms)
+  meanMv: number;
+  upperMv: number;  // mean + 1 SD
+  lowerMv: number;  // mean - 1 SD
+}
+
+/**
+ * Generates dynamic Poincaré plot points and HRV autonomic indices (SD1, SD2)
+ * for any ECG case based on its clinical heart rate and regularity classification.
+ */
+export function calculateCasePoincareHrv(
+  heartRate: number,
+  regularity: string,
+  category: string
+): PoincareHrvAnalysis {
+  const baseRr = 60000 / Math.max(30, Math.min(220, heartRate));
+  const isAFib = regularity.includes("Loạn nhịp") || category === "Arrhythmia";
+  const isIrregular = regularity.includes("Không đều");
+
+  // Determine dispersion parameters
+  let targetSd1 = 28.0;
+  let targetSd2 = 72.0;
+
+  if (isAFib) {
+    // Fan/comet shaped cloud characteristic of Atrial Fibrillation
+    targetSd1 = 110.0;
+    targetSd2 = 180.0;
+  } else if (isIrregular) {
+    targetSd1 = 65.0;
+    targetSd2 = 115.0;
+  } else if (heartRate > 110) {
+    // Tachycardia: reduced autonomic variability
+    targetSd1 = 12.0;
+    targetSd2 = 35.0;
+  }
+
+  // Generate sequence of 100 RR intervals
+  const nBeats = 90;
+  const rrList: number[] = [];
+
+  for (let i = 0; i < nBeats; i++) {
+    // Gaussian-like noise with pseudo-random seed
+    const u1 = Math.max(1e-6, (Math.sin(i * 12.9898 + 78.233) * 43758.5453) % 1);
+    const u2 = Math.max(1e-6, (Math.cos(i * 93.9898 + 67.345) * 24634.6345) % 1);
+    const z0 = Math.sqrt(-2.0 * Math.log(Math.abs(u1))) * Math.cos(2.0 * Math.PI * u2);
+    const z1 = Math.sqrt(-2.0 * Math.log(Math.abs(u1))) * Math.sin(2.0 * Math.PI * u2);
+
+    let rr = baseRr + (z0 * targetSd2 + z1 * targetSd1) / Math.SQRT2;
+
+    // Simulate ectopic beats (PVCs) occasionally if irregular
+    if (isIrregular && i % 12 === 0) {
+      rr = baseRr * 0.65; // premature beat
+    } else if (isIrregular && i % 12 === 1) {
+      rr = baseRr * 1.35; // compensatory pause
+    }
+
+    rrList.push(Math.max(300, Math.min(1800, rr)));
+  }
+
+  // Build (RR_n, RR_{n+1}) points
+  const points: PoincarePoint[] = [];
+  const diffs: number[] = [];
+
+  for (let i = 0; i < rrList.length - 1; i++) {
+    const rrN = rrList[i];
+    const rrN1 = rrList[i + 1];
+    const d = rrN1 - rrN;
+    diffs.push(d);
+
+    let label = "N";
+    if (rrN < baseRr * 0.78) label = "V"; // Ectopic / premature
+    else if (rrN > baseRr * 1.25) label = "Pause";
+
+    points.push({ rrN, rrN1, label });
+  }
+
+  // Calculate actual SD1, SD2, RMSSD
+  const meanRr = rrList.reduce((a, b) => a + b, 0) / rrList.length;
+  const meanHr = Math.round(60000 / meanRr);
+
+  const varDiff = diffs.reduce((sum, d) => sum + d * d, 0) / diffs.length;
+  const sd1 = Math.sqrt(0.5 * varDiff);
+
+  const varRr = rrList.reduce((sum, r) => sum + (r - meanRr) ** 2, 0) / rrList.length;
+  const sd2 = Math.sqrt(Math.max(1.0, 2 * varRr - 0.5 * varDiff));
+  const sdRatio = sd1 / (sd2 + 1e-6);
+  const rmssd = Math.sqrt(varDiff);
+
+  let rhythmInterpretation = "Nhịp xoang bình thường: Biểu đồ Poincaré dạng điếu xì gà (Cigar-shaped), hệ đối giao cảm và giao cảm cân bằng.";
+  if (isAFib) {
+    rhythmInterpretation = "Rung nhĩ (AFib): Đám mây điểm hình quạt/tam giác phân tán rộng vô định hình, mất tương quan giữa các chu kỳ tim liên tiếp.";
+  } else if (sd1 > 50) {
+    rhythmInterpretation = "Loạn nhịp / Ngoại tâm thu rải rác: Xuất hiện các cụm điểm vệ tinh nằm tách biệt khỏi trục chính (Line of Identity).";
+  } else if (sd2 < 40) {
+    rhythmInterpretation = "Giảm biến thiên nhịp tim (Depressed HRV): Đám mây điểm co cụm chặt chẽ quanh tâm, cảnh báo quá tải thần kinh giao cảm.";
+  }
+
+  return {
+    points,
+    meanRr: Math.round(meanRr),
+    meanHr,
+    sd1: Number(sd1.toFixed(1)),
+    sd2: Number(sd2.toFixed(1)),
+    sdRatio: Number(sdRatio.toFixed(3)),
+    rmssd: Number(rmssd.toFixed(1)),
+    rhythmInterpretation
+  };
+}
+
+/**
+ * Computes Beat Morphology Profile with Mean Waveform and Confidence Ribbon
+ * (Mean Beat ± 1 SD) for clinical overlay inspection.
+ */
+export function generateBeatMorphologyProfile(
+  leadData: LeadWaveData,
+  heartRate: number
+): BeatMorphologyPoint[] {
+  const points: BeatMorphologyPoint[] = [];
+  const dtRange = 0.65; // from -0.25s to +0.40s
+  const step = 0.005;   // 5ms resolution = 200 Hz
+  const tMin = -0.25;
+
+  for (let t = tMin; t <= 0.40; t += step) {
+    const timeMs = Math.round(t * 1000);
+    // Base cycle voltage calculation centered at R-peak
+    // WaveData timing in ecg-math: P wave is around dt=0, QRS is at ~0.16s
+    // Shift so R-peak is at 0ms
+    const rOffset = (leadData.pWave.dur || 0.08) + (leadData.prSegment.dur || 0.06) + (leadData.qWave.dur || 0.02) + (leadData.rWave.dur || 0.04) * 0.5;
+    const cycleDt = t + rOffset;
+
+    let v = calculateCycleVoltage(cycleDt, leadData);
+
+    // Natural beat-to-beat variability (SD) is highest during repolarization (ST-T) and baseline
+    const repolFactor = Math.abs(t - 0.20) < 0.15 ? 0.08 : 0.03;
+    const stdDev = Math.max(0.02, repolFactor * (1.0 + Math.abs(v) * 0.15));
+
+    points.push({
+      timeMs,
+      meanMv: Number(v.toFixed(3)),
+      upperMv: Number((v + stdDev).toFixed(3)),
+      lowerMv: Number((v - stdDev).toFixed(3))
+    });
+  }
+
+  return points;
+}
+

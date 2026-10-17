@@ -72,4 +72,21 @@ copyRecursive(path.join(rootDir, 'dengue', 'css'), path.join(distDir, 'dengue', 
 });
 console.log('✓ Copied dengue bundles and css -> dist/dengue/');
 
+// 7. Copy ecg runtime bundles, css, and python output
+copyRecursive(path.join(rootDir, 'ecg', 'css'), path.join(distDir, 'ecg', 'css'));
+copyRecursive(path.join(rootDir, 'ecg', 'python', 'output'), path.join(distDir, 'ecg', 'python', 'output'));
+['ecg-bundle.js'].forEach(file => {
+  const src = path.join(rootDir, 'ecg', file);
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, path.join(distDir, 'ecg', file));
+  }
+});
+const ecgIife = path.join(rootDir, 'ecg', 'assets', 'ecg-app.iife.js');
+if (fs.existsSync(ecgIife)) {
+  const destDir = path.join(distDir, 'ecg', 'assets');
+  if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+  fs.copyFileSync(ecgIife, path.join(destDir, 'ecg-app.iife.js'));
+}
+console.log('✓ Copied ecg bundles, css, and python output -> dist/ecg/');
+
 console.log('[postbuild] Done! All assets ready for GitHub Pages deployment.');

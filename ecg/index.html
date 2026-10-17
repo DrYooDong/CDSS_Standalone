@@ -13,10 +13,23 @@
   
   <!-- CliniPortal CDSS Shell Styles & Theme Script -->
   <link rel="stylesheet" href="../shared/cdss-shell.css">
+  <link rel="stylesheet" href="css/ecg-cdss.css">
   <script src="../shared/cdss-shell.js"></script>
 
-  <script type="module" crossorigin src="./assets/index-WKUCR0DS.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BMk9AXCF.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      background-color: var(--cdss-bg, #f8fafc);
+      color: var(--cdss-text, #1e293b);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
 </head>
 <body>
   <!-- CliniPortal Master Navigation Bar -->
@@ -28,7 +41,6 @@
     </div>
 
     <div class="cdss-portal-nav-right">
-      
       <a href="../index.html" class="cdss-portal-nav-btn" title="Trở về Danh Mục CDSS">
         <i class="fa-solid fa-th-large"></i> <span>Danh Mục CDSS</span>
       </a>
@@ -38,22 +50,37 @@
     </div>
   </header>
 
-  <!-- Mount Point for Full React Application -->
+  <!-- Mount Point for Full ECG Application -->
   <div id="root"></div>
+
+  <!-- ES Module Loader -->
+  <script type="module">
+    import { EcgCDSSController } from './ecg-bundle.js';
+    if (!window.__ecg_initialized) {
+      window.__ecg_initialized = true;
+      new EcgCDSSController('root');
+    }
+  </script>
 
   <!-- Offline file:/// Fallback Loader -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // If module is blocked under file:/// protocol, dynamically load IIFE bundle
       setTimeout(() => {
         const rootEl = document.getElementById('root');
-        if (rootEl && rootEl.children.length === 0) {
+        if (rootEl && rootEl.children.length === 0 && !window.__ecg_initialized) {
           console.info('Module blocked or pending, activating standalone IIFE bundle...');
           const s = document.createElement('script');
           s.src = './assets/ecg-app.iife.js?v=' + Date.now();
+          s.onload = () => {
+            const Controller = window.EcgCDSSController || (window.EcgApp && window.EcgApp.EcgCDSSController);
+            if (Controller && !window.__ecg_initialized) {
+              window.__ecg_initialized = true;
+              new Controller('root');
+            }
+          };
           document.body.appendChild(s);
         }
-      }, 300);
+      }, 250);
     });
   </script>
 </body>

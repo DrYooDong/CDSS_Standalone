@@ -6,10 +6,11 @@
   "description": "Hệ thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập (CDSS Standalone Suite) - 9 Modules Chuyên Sâu",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "npm run build:hub && npm run build:dengue && vite build && node scripts/postbuild.js",
+    "build": "npm run build:hub && npm run build:dengue && npm run build:ecg && vite build && node scripts/postbuild.js",
     "preview": "vite preview --port 3000",
     "build:hub": "esbuild src/index.ts --bundle --outfile=cdss-hub-bundle.js --format=iife",
     "build:dengue": "esbuild dengue/dengue-ui.ts --bundle --outfile=dengue/dengue-bundle.js --format=esm && esbuild dengue/dengue-ui.ts --bundle --outfile=dengue/dengue-bundle.iife.js --format=iife --global-name=DengueBundle",
+    "build:ecg": "esbuild ecg/ecg-ui.ts --bundle --outfile=ecg/ecg-bundle.js --format=esm && esbuild ecg/ecg-ui.ts --bundle --outfile=ecg/assets/ecg-app.iife.js --format=iife --global-name=EcgApp",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
