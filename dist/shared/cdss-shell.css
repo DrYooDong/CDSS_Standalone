@@ -388,6 +388,20 @@ html.dark .border-slate-300 {
   box-shadow: 0 3px 8px rgba(13, 148, 136, 0.14);
 }
 
+/* Standalone Icon Navigation Button (Square 36x36px matching theme-toggle) */
+.cdss-portal-icon-btn,
+.cdss-portal-nav-btn.cdss-portal-icon-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  font-size: 0.95rem;
+}
+
 /* Theme Toggle Button */
 .cdss-portal-theme-btn {
   width: 36px;

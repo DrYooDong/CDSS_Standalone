@@ -160,6 +160,16 @@ body {
   text-decoration: none;
 }
 
+.abg-btn--icon-only {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  min-width: 38px;
+  justify-content: center;
+  font-size: 0.95rem;
+  border-radius: var(--abg-radius-md);
+}
+
 .abg-btn--primary {
   background: var(--abg-primary);
   color: #ffffff;

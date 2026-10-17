@@ -123,6 +123,61 @@ export interface BranchDecisionResult {
   warnings: string[];
 }
 
+export type ColloidType = 'dextran40' | 'dextran70' | 'hes200' | 'hes130' | 'gelatin';
+
+export interface ColloidScheduleRow {
+  stepIndex: number;
+  stageName: string;
+  fluidKind: 'colloid' | 'crystalloid';
+  fluidName: string;
+  durationHours: number;
+  rateMlKgH: number;
+  dropsPerMin: number;
+  stepVolumeMl: number;
+  cumulativeColloidMl: number;
+  cumulativeColloidMlPerKg: number;
+  timeWindow: string;
+  bottlesToHang: number;
+  totalAtPoleMl: number;
+  monitoringNotes: string;
+  hctCheckRequired: boolean;
+  exceedsThreshold: boolean;
+}
+
+export interface ColloidPlanResult {
+  colloidType: ColloidType;
+  colloidName: string;
+  rows: ColloidScheduleRow[];
+  totalColloidVolumeMl: number;
+  totalColloidMlPerKg: number;
+  safeLimitVolumeMl: number;
+  remainingSafeMl: number;
+  isOverLimit: boolean;
+  albuminRecommended: boolean;
+  deEscalationCriteria: string[];
+}
+
+export interface HemodynamicProfile {
+  cvpLevel: 'low_normal' | 'high'; // <= 15 vs > 15 cmH2O
+  cardiacContractility: 'normal' | 'reduced';
+  vascularTone: 'normal' | 'low_warm_shock' | 'high_cold_shock';
+  isOverloaded: boolean;
+}
+
+export interface VasopressorDecisionResult {
+  primaryDrug: string;
+  primaryDose: string;
+  primaryPumpRateMlH: string;
+  secondaryDrug?: string;
+  secondaryDose?: string;
+  secondaryPumpRateMlH?: string;
+  rescueDrug?: string;
+  fluidAction: string;
+  clinicalRationale: string;
+  fluidTestMl: number;
+  monitoringDirectives: string[];
+}
+
 export interface DengueCDSSPlan {
   patient: DenguePatientInput;
   ageGroup: DengueAgeGroup;
@@ -130,10 +185,12 @@ export interface DengueCDSSPlan {
   fluidRows: FluidScheduleRow[];
   totalVolumeMl: number;
   totalDurationHours: number;
+  colloidPlan: ColloidPlanResult;
   vasopressorDopamin: VasopressorDoseInfo;
   vasopressorNoradrenalin: VasopressorDoseInfo;
   vasopressorDobutamin: VasopressorDoseInfo;
   vasopressorAdrenalin: VasopressorDoseInfo;
+  vasopressorDecision: VasopressorDecisionResult;
   bloodProducts: BloodProductItem[];
   nacProtocol: NACProtocolResult;
   branchDecision: BranchDecisionResult;

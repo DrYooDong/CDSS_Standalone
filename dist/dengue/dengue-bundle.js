@@ -200,10 +200,10 @@ var DENGUE_FLUID_TEMPLATES = {
         stageName: "C\u1EEF 3: Duy tr\xEC & Cai d\u1ECBch",
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4, 6],
+        defaultDurationHours: 6,
+        durationOptions: [6, 8, 12, 18],
         hctCheckRequired: true,
-        notes: "Ng\u01B0ng d\u1ECBch khi l\xE2m s\xE0ng \u1ED5n \u0111\u1ECBnh, khuy\u1EBFn kh\xEDch b\xF9 n\u01B0\u1EDBc \u0111i\u1EC7n gi\u1EA3i \u0111\u01B0\u1EDDng u\u1ED1ng."
+        notes: "Duy tr\xEC 1.5 ml/kg/h trong 6 - 18 gi\u1EDD (Ph\u1EE5 l\u1EE5c 6). Ng\u01B0ng d\u1ECBch sau 12 - 24 gi\u1EDD khi l\xE2m s\xE0ng \u1ED5n \u0111\u1ECBnh."
       }
     ]
   },
@@ -267,49 +267,58 @@ var DENGUE_FLUID_TEMPLATES = {
     ],
     adolescent: [
       {
-        stageName: "C\u1EEF 1: T\u1EA3i nhanh ch\u1ED1ng s\u1ED1c (15-20 ml/kg/h)",
-        defaultRateMlKgH: 15,
-        rateOptions: [15, 20],
+        stageName: "C\u1EEF 1: T\u1EA3i nhanh ch\u1ED1ng s\u1ED1c gi\u1EDD \u0111\u1EA7u (20 ml/kg/h)",
+        defaultRateMlKgH: 20,
+        rateOptions: [20],
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: "Theo d\xF5i s\xE1t Hct v\xE0 sinh hi\u1EC7u sau 1 gi\u1EDD."
+        notes: "D\u1ECBch tinh th\u1EC3 RL ho\u1EB7c NaCl 0.9% 20 ml/kg/h trong 1 gi\u1EDD (Ph\u1EE5 l\u1EE5c 11). \u0110\xE1nh gi\xE1 l\u1EA1i m\u1EA1ch, HA v\xE0 Hct."
       },
       {
-        stageName: "C\u1EEF 2: Gi\u1EA3m xu\u1ED1ng 10 ml/kg/h",
+        stageName: "C\u1EEF 2: Ra s\u1ED1c - Gi\u1EA3m xu\u1ED1ng 10 ml/kg/h",
         defaultRateMlKgH: 10,
         rateOptions: [10],
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: "Ki\u1EC3m tra xem ra s\u1ED1c hay t\xE1i s\u1ED1c."
+        notes: "Th\u1EDDi gian gi\u1EA3m n\u1EA5c b\u1EB1ng 1/2 tr\u1EBB nh\u1ECF nh\u1EB1m tr\xE1nh qu\xE1 t\u1EA3i d\u1ECBch. N\u1EBFu \u1ED5n \u0111\u1ECBnh chuy\u1EC3n C\u1EEF 3."
       },
       {
-        stageName: "C\u1EEF 3: Gi\u1EA3m xu\u1ED1ng 5 ml/kg/h",
+        stageName: "C\u1EEF 3: Gi\u1EA3m xu\u1ED1ng 7.5 ml/kg/h",
+        defaultRateMlKgH: 7.5,
+        rateOptions: [7.5],
+        defaultDurationHours: 1,
+        durationOptions: [1],
+        hctCheckRequired: false,
+        notes: "Truy\u1EC1n 7.5 ml/kg/h trong 1 gi\u1EDD theo Ph\u1EE5 l\u1EE5c 11 Q\u0110 2760/BYT."
+      },
+      {
+        stageName: "C\u1EEF 4: Gi\u1EA3m xu\u1ED1ng 5 ml/kg/h",
         defaultRateMlKgH: 5,
         rateOptions: [5],
-        defaultDurationHours: 2,
-        durationOptions: [2, 3],
-        hctCheckRequired: false,
-        notes: "R\xFAt ng\u1EAFn th\u1EDDi gian m\u1ED7i n\u1EA5c ph\xF2ng ng\u1EEBa qu\xE1 t\u1EA3i."
+        defaultDurationHours: 1,
+        durationOptions: [1, 2],
+        hctCheckRequired: true,
+        notes: "\u0110o l\u1EA1i Hct v\xE0 ki\u1EC3m tra sinh hi\u1EC7u tr\u01B0\u1EDBc khi gi\u1EA3m ti\u1EBFp."
       },
       {
-        stageName: "C\u1EEF 4: Gi\u1EA3m xu\u1ED1ng 3 ml/kg/h",
+        stageName: "C\u1EEF 5: Gi\u1EA3m xu\u1ED1ng 3 ml/kg/h",
         defaultRateMlKgH: 3,
         rateOptions: [3],
-        defaultDurationHours: 2,
-        durationOptions: [2, 3],
-        hctCheckRequired: true,
-        notes: "\u0110\xE1nh gi\xE1 tri gi\xE1c v\xE0 n\u01B0\u1EDBc ti\u1EC3u."
+        defaultDurationHours: 4,
+        durationOptions: [4, 5, 6],
+        hctCheckRequired: false,
+        notes: "Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 ml/kg/h trong 4 - 6 gi\u1EDD."
       },
       {
-        stageName: "C\u1EEF 5: Duy tr\xEC 1.5 ml/kg/h & Cai d\u1ECBch",
+        stageName: "C\u1EEF 6: Duy tr\xEC 1.5 ml/kg/h & Cai d\u1ECBch",
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4, 6],
+        defaultDurationHours: 12,
+        durationOptions: [12, 14, 18],
         hctCheckRequired: true,
-        notes: "Chu\u1EA9n b\u1ECB ng\u01B0ng d\u1ECBch an to\xE0n."
+        notes: "Duy tr\xEC 1.5 ml/kg/h trong 12 - 18 gi\u1EDD. Ng\u01B0ng d\u1ECBch sau 24 gi\u1EDD khi ra s\u1ED1c ho\xE0n to\xE0n."
       }
     ],
     adult: [
@@ -320,43 +329,43 @@ var DENGUE_FLUID_TEMPLATES = {
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: "B\xF9 d\u1ECBch tinh th\u1EC3 \u0111\u1EB3ng tr\u01B0\u01A1ng. \u0110o Hct ngay k\u1EBFt th\xFAc 1 gi\u1EDD."
+        notes: "B\xF9 d\u1ECBch tinh th\u1EC3 RL/NaCl 0.9% 15 ml/kg/h x 1h. \u0110o Hct v\xE0 sinh hi\u1EC7u ngay k\u1EBFt th\xFAc 1 gi\u1EDD (Ph\u1EE5 l\u1EE5c 16.1)."
       },
       {
-        stageName: "C\u1EEF 2: Ra s\u1ED1c - Gi\u1EA3m xu\u1ED1ng 10 ml/kg/h",
+        stageName: "C\u1EEF 2: Ra s\u1ED1c - Ti\u1EBFp t\u1EE5c 10 ml/kg/h trong 2 gi\u1EDD",
         defaultRateMlKgH: 10,
         rateOptions: [10],
-        defaultDurationHours: 1,
+        defaultDurationHours: 2,
         durationOptions: [1, 2],
         hctCheckRequired: true,
-        notes: "\u0110\xE1nh gi\xE1 m\u1EA1ch, huy\u1EBFt \xE1p, n\u01B0\u1EDBc ti\u1EC3u."
+        notes: "Truy\u1EC1n 10 ml/kg/h trong 2 gi\u1EDD (Ph\u1EE5 l\u1EE5c 16.1). N\u1EBFu kh\xF4ng c\u1EA3i thi\u1EC7n ho\u1EB7c Hct t\u0103ng: \u0111\u1ED5i Cao ph\xE2n t\u1EED 10 - 15 ml/kg/h."
       },
       {
-        stageName: "C\u1EEF 3: Gi\u1EA3m xu\u1ED1ng 5 ml/kg/h",
-        defaultRateMlKgH: 5,
-        rateOptions: [5],
+        stageName: "C\u1EEF 3: Gi\u1EA3m xu\u1ED1ng 6 ml/kg/h trong 2 gi\u1EDD",
+        defaultRateMlKgH: 6,
+        rateOptions: [6],
         defaultDurationHours: 2,
         durationOptions: [2, 3],
         hctCheckRequired: false,
-        notes: "L\u1EAFng nghe ran ph\u1ED5i, \u0111\u1EC1 ph\xF2ng ph\xF9 ph\u1ED5i c\u1EA5p."
+        notes: "Chu\u1EA9n Q\u0110 2760/BYT: B\u1EADc gi\u1EA3m \u1EDF ng\u01B0\u1EDDi l\u1EDBn l\xE0 6 ml/kg/h x 2h (kh\xF4ng d\xF9ng n\u1EA5c 5 ml/kg/h). L\u1EAFng nghe ran \u0111\xE1y ph\u1ED5i."
       },
       {
-        stageName: "C\u1EEF 4: Gi\u1EA3m xu\u1ED1ng 3 ml/kg/h",
+        stageName: "C\u1EEF 4: Gi\u1EA3m xu\u1ED1ng 3 ml/kg/h trong 5 - 7 gi\u1EDD",
         defaultRateMlKgH: 3,
         rateOptions: [3],
-        defaultDurationHours: 3,
-        durationOptions: [2, 3, 4],
+        defaultDurationHours: 5,
+        durationOptions: [5, 6, 7],
         hctCheckRequired: true,
-        notes: "Ki\u1EC3m tra Hct."
+        notes: "Truy\u1EC1n 3 ml/kg/h trong 5 - 7 gi\u1EDD. Ki\u1EC3m tra Hct v\xE0 n\u01B0\u1EDBc ti\u1EC3u (\u0111\xEDch \u2265 0.5 ml/kg/h)."
       },
       {
-        stageName: "C\u1EEF 5: Duy tr\xEC 1.5 ml/kg/h",
+        stageName: "C\u1EEF 5: Duy tr\xEC 1.5 ml/kg/h trong 12 gi\u1EDD & Cai d\u1ECBch",
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4, 6],
+        defaultDurationHours: 12,
+        durationOptions: [6, 12, 18],
         hctCheckRequired: true,
-        notes: "Gi\u1EA3m d\u1EA7n v\xE0 ng\u1EEBng truy\u1EC1n d\u1ECBch."
+        notes: "Duy tr\xEC 1.5 ml/kg/h trong 12 gi\u1EDD. Xem x\xE9t ng\u01B0ng d\u1ECBch sau 24 - 48 gi\u1EDD khi l\xE2m s\xE0ng \u1ED5n \u0111\u1ECBnh."
       }
     ]
   },
@@ -456,34 +465,61 @@ var DENGUE_FLUID_TEMPLATES = {
         defaultDurationHours: 0.25,
         durationOptions: [0.25],
         hctCheckRequired: true,
-        notes: "B\u01A1m nhanh t\u0129nh m\u1EA1ch qua kim 18G ho\u1EB7c truy\u1EC1n d\u01B0\u1EDBi \xE1p l\u1EF1c t\xFAi \xE9p."
+        notes: "Kh\u1EA9n tr\u01B0\u01A1ng truy\u1EC1n nhanh RL ho\u1EB7c NaCl 0.9% 15 ml/kg trong 15 ph\xFAt qua kim l\u1EDBn 18G ho\u1EB7c t\xFAi \xE9p (Ph\u1EE5 l\u1EE5c 16.2)."
       },
       {
-        stageName: "C\u1EEF 2: Ra s\u1ED1c -> Duy tr\xEC 10 ml/kg/h",
-        defaultRateMlKgH: 10,
-        rateOptions: [10],
+        stageName: "C\u1EEF 2: Ti\u1EBFp n\u1ED1i ngay Cao Ph\xE2n T\u1EED 15 ml/kg/h trong 1 gi\u1EDD",
+        defaultRateMlKgH: 15,
+        rateOptions: [15],
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: "N\u1EBFu s\u1ED1c tr\u01A1: \u0111\u1ED5i sang Cao ph\xE2n t\u1EED 10-15 ml/kg/h ho\u1EB7c ph\u1ED1i h\u1EE3p v\u1EADn m\u1EA1ch."
+        notes: "Chu\u1EA9n Q\u0110 2760: B\u1EAFt bu\u1ED9c chuy\u1EC3n sang CPT (Dextran 40 / HES 200) 15 ml/kg/h x 1h ngay sau c\u1EEF b\u01A1m. \u0110o l\u1EA1i Hct v\xE0 sinh hi\u1EC7u."
       },
       {
-        stageName: "C\u1EEF 3: Gi\u1EA3m xu\u1ED1ng 5 ml/kg/h",
-        defaultRateMlKgH: 5,
-        rateOptions: [5],
+        stageName: "C\u1EEF 3: Ra s\u1ED1c -> Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i 15 ml/kg/h trong 1 gi\u1EDD",
+        defaultRateMlKgH: 15,
+        rateOptions: [15],
+        defaultDurationHours: 1,
+        durationOptions: [1],
+        hctCheckRequired: true,
+        notes: "N\u1EBFu c\u1EA3i thi\u1EC7n l\xE2m s\xE0ng (m\u1EA1ch r\xF5, HA b\xECnh th\u01B0\u1EDDng): chuy\u1EC3n RL/NaCl 0.9% 15 ml/kg/h x 1h. N\u1EBFu kh\xF4ng c\u1EA3i thi\u1EC7n: ti\u1EBFp t\u1EE5c CPT 15 ml/kg/h x 1h."
+      },
+      {
+        stageName: "C\u1EEF 4: Gi\u1EA3m xu\u1ED1ng \u0111i\u1EC7n gi\u1EA3i 10 ml/kg/h trong 2 gi\u1EDD",
+        defaultRateMlKgH: 10,
+        rateOptions: [10],
         defaultDurationHours: 2,
-        durationOptions: [2, 3],
-        hctCheckRequired: false,
-        notes: "Kh\xE1m \u0111\xE1y ph\u1ED5i t\xECm ran \u1EA9m."
+        durationOptions: [1, 2],
+        hctCheckRequired: true,
+        notes: "\u0110\xE1nh gi\xE1 m\u1EA1ch, huy\u1EBFt \xE1p, n\u01B0\u1EDBc ti\u1EC3u v\xE0 ran ph\u1ED5i."
       },
       {
-        stageName: "C\u1EEF 4: Duy tr\xEC 3 -> 1.5 ml/kg/h",
+        stageName: "C\u1EEF 5: Gi\u1EA3m xu\u1ED1ng 6 ml/kg/h trong 2 gi\u1EDD",
+        defaultRateMlKgH: 6,
+        rateOptions: [6],
+        defaultDurationHours: 2,
+        durationOptions: [2],
+        hctCheckRequired: false,
+        notes: "Kh\xE1m \u0111\xE1y ph\u1ED5i, \u0111\u1EC1 ph\xF2ng ph\xF9 ph\u1ED5i c\u1EA5p."
+      },
+      {
+        stageName: "C\u1EEF 6: Gi\u1EA3m xu\u1ED1ng 3 ml/kg/h trong 5 - 7 gi\u1EDD",
         defaultRateMlKgH: 3,
         rateOptions: [3],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4],
+        defaultDurationHours: 5,
+        durationOptions: [5, 6, 7],
         hctCheckRequired: true,
-        notes: "\u0110\u01B0a v\u1EC1 t\u1ED1c \u0111\u1ED9 an to\xE0n v\xE0 ng\u01B0ng d\u1ECBch."
+        notes: "Ki\u1EC3m tra Hct v\xE0 b\xE0i ti\u1EBFt n\u01B0\u1EDBc ti\u1EC3u."
+      },
+      {
+        stageName: "C\u1EEF 7: Duy tr\xEC 1.5 ml/kg/h trong 12 gi\u1EDD & Cai d\u1ECBch",
+        defaultRateMlKgH: 1.5,
+        rateOptions: [1.5],
+        defaultDurationHours: 12,
+        durationOptions: [6, 12, 18],
+        hctCheckRequired: true,
+        notes: "Duy tr\xEC v\xE0 chu\u1EA9n b\u1ECB ng\u01B0ng d\u1ECBch an to\xE0n sau 24 - 48 gi\u1EDD."
       }
     ]
   }
@@ -689,6 +725,260 @@ var DENGUE_NON_RESPONSE_SCENARIOS = {
   ...DENGUE_REFRACTORY_SCENARIOS,
   cpt_escalation: DENGUE_REFRACTORY_SCENARIOS.hct_high_cpt
 };
+var DENGUE_COLLOID_METADATA = {
+  dextran40: {
+    name: "Dextran 40 10% trong NaCl 0.9%",
+    shortName: "Dextran 40",
+    oncoticPower: "R\u1EA5t cao (~40 mmHg, g\u1EA5p \u0111\xF4i \xE1p l\u1EF1c keo huy\u1EBFt t\u01B0\u01A1ng)",
+    volumeExpansionRatio: "1 : 1.8 - 2.0 (K\xE9o d\u1ECBch k\u1EBD v\xE0o l\xF2ng m\u1EA1ch m\u1EA1nh nh\u1EA5t)",
+    intravascularHalfLife: "3 - 6 gi\u1EDD (Th\u1EA3i tr\u1EEB ch\u1EE7 y\u1EBFu qua th\u1EADn)",
+    contraindications: "D\u1ECB \u1EE9ng Dextran, suy th\u1EADn thi\u1EC3u ni\u1EC7u kh\xF4ng do s\u1ED1c, suy tim \u1EE9 huy\u1EBFt n\u1EB7ng",
+    maxTotalDose: "60 ml/kg (Khuy\u1EBFn c\xE1o tr\u1EA7n BYT 2023)",
+    bytrank: "priority",
+    notes: "Thu\u1ED1c ch\u1ECDn l\u1EF1a \u01B0u ti\xEAn h\xE0ng \u0111\u1EA7u theo Q\u0110 2760/BYT. C\u1EA7n theo d\xF5i ph\u1EA3n \u1EE9ng qu\xE1 m\u1EABn m\u0169i \u0111\u1EA7u."
+  },
+  hes200: {
+    name: "6% Hydroxyethyl Starch 200/0.5 (HES 200.000 Dalton)",
+    shortName: "6% HES 200",
+    oncoticPower: "Cao (~30 - 36 mmHg)",
+    volumeExpansionRatio: "1 : 1.0 - 1.3",
+    intravascularHalfLife: "4 - 8 gi\u1EDD (L\u01B0u gi\u1EEF l\xF2ng m\u1EA1ch l\xE2u nh\u1EA5t)",
+    contraindications: "Suy th\u1EADn c\u1EA5p c\xF3 v\xF4 ni\u1EC7u, r\u1ED1i lo\u1EA1n \u0111\xF4ng m\xE1u n\u1EB7ng (gi\u1EA3m von Willebrand / VIII)",
+    maxTotalDose: "60 ml/kg (T\xE1c d\u1EE5ng ph\u1EE5 t\u0103ng khi t\u1ED5ng li\u1EC1u > 60 ml/kg)",
+    bytrank: "priority",
+    notes: "Thu\u1ED1c ch\u1ECDn l\u1EF1a t\u01B0\u01A1ng \u0111\u01B0\u01A1ng Dextran 40 trong Q\u0110 2760/BYT. Th\u1EADn tr\u1ECDng v\u1EDBi \u0111\u1ED9c t\xEDnh tr\xEAn th\u1EADn khi d\xF9ng qu\xE1 li\u1EC1u."
+  },
+  dextran70: {
+    name: "Dextran 70 6% trong NaCl 0.9%",
+    shortName: "Dextran 70",
+    oncoticPower: "Cao (~25 - 30 mmHg)",
+    volumeExpansionRatio: "1 : 1.2",
+    intravascularHalfLife: "6 - 12 gi\u1EDD",
+    contraindications: "Qu\xE1 m\u1EABn, suy tim n\u1EB7ng, r\u1ED1i lo\u1EA1n \u0111\xF4ng m\xE1u n\u1EB7ng",
+    maxTotalDose: "60 ml/kg",
+    bytrank: "priority",
+    notes: "Dung d\u1ECBch cao ph\xE2n t\u1EED \u01B0u ti\xEAn theo Q\u0110 2760/BYT; ph\xE2n t\u1EED l\u01B0\u1EE3ng l\u1EDBn h\u01A1n Dextran 40 n\xEAn gi\u1EEF trong m\u1EA1ch l\xE2u h\u01A1n."
+  },
+  hes130: {
+    name: "6% Hydroxyethyl Starch 130/0.4 (HES 130.000 Dalton - Voluven / Tetraspan)",
+    shortName: "6% HES 130",
+    oncoticPower: "Trung b\xECnh (~25 - 28 mmHg)",
+    volumeExpansionRatio: "1 : 1.0",
+    intravascularHalfLife: "2 - 4 gi\u1EDD (Chuy\u1EC3n h\xF3a v\xE0 \u0111\xE0o th\u1EA3i nhanh h\u01A1n HES 200)",
+    contraindications: "Nhi\u1EC5m tr\xF9ng huy\u1EBFt, suy th\u1EADn c\u1EA5p, t\u1ED5n th\u01B0\u01A1ng gan n\u1EB7ng",
+    maxTotalDose: "50 ml/kg",
+    bytrank: "alternative",
+    notes: "Dung d\u1ECBch thay th\u1EBF khi kh\xF4ng c\xF3 s\u1EB5n Dextran 40 ho\u1EB7c HES 200. Kh\u1EA3 n\u0103ng t\u0103ng th\u1EC3 t\xEDch v\xE0 th\u1EDDi gian l\u01B0u ng\u1EAFn h\u01A1n, c\u1EA7n theo d\xF5i s\xE1t Hct."
+  },
+  gelatin: {
+    name: "Dung d\u1ECBch Gelatin 4% (Gelafundin / Succinylated Gelatin)",
+    shortName: "Gelatin 4%",
+    oncoticPower: "Trung b\xECnh (~24 - 26 mmHg)",
+    volumeExpansionRatio: "1 : 1.0",
+    intravascularHalfLife: "1.5 - 3 gi\u1EDD",
+    contraindications: "D\u1ECB \u1EE9ng Gelatin, t\u0103ng calci m\xE1u, t\u0103ng kali m\xE1u",
+    maxTotalDose: "kh\xF4ng t\xEDch l\u0169y trong m\xF4 nh\u01B0ng t\u1ED1i \u0111a ~30 - 40 ml/kg/ng\xE0y",
+    bytrank: "alternative",
+    notes: "Dung d\u1ECBch thay th\u1EBF. \xCDt \u1EA3nh h\u01B0\u1EDFng ch\u1EE9c n\u0103ng \u0111\xF4ng m\xE1u v\xE0 ch\u1EE9c n\u0103ng th\u1EADn h\u01A1n HES, nh\u01B0ng th\u1EDDi gian duy tr\xEC th\u1EC3 t\xEDch ng\u1EAFn."
+  }
+};
+var DENGUE_COLLOID_TEMPLATES = {
+  child: [
+    {
+      stageName: "C\u1EEF 1: CPT T\u1EA3i li\u1EC1u n\u1EA5c 1 (15 ml/kg/h)",
+      fluidKind: "colloid",
+      defaultRateMlKgH: 15,
+      rateOptions: [10, 15, 20],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: "B\xF9 Cao Ph\xE2n T\u1EED trong 1 gi\u1EDD. \u0110\xE1nh gi\xE1 l\u1EA1i m\u1EA1ch, HA v\xE0 Hct ngay sau 1 gi\u1EDD. N\u1EBFu th\u1EA5t b\u1EA1i l\u1EA7n 1: l\u1EB7p l\u1EA1i 10-20 ml/kg/h."
+    },
+    {
+      stageName: "C\u1EEF 2: Ra s\u1ED1c - Gi\u1EA3m CPT xu\u1ED1ng 10 ml/kg/h",
+      fluidKind: "colloid",
+      defaultRateMlKgH: 10,
+      rateOptions: [10],
+      defaultDurationHours: 1,
+      durationOptions: [1, 2],
+      hctCheckRequired: true,
+      notes: "\u0110\xE1nh gi\xE1 c\u1EA3i thi\u1EC7n l\xE2m s\xE0ng (m\u1EA1ch r\xF5, HA b\xECnh th\u01B0\u1EDDng, chi \u1EA5m)."
+    },
+    {
+      stageName: "C\u1EEF 3: Gi\u1EA3m CPT xu\u1ED1ng 7.5 ml/kg/h",
+      fluidKind: "colloid",
+      defaultRateMlKgH: 7.5,
+      rateOptions: [7.5],
+      defaultDurationHours: 2,
+      durationOptions: [1, 2],
+      hctCheckRequired: false,
+      notes: "Gi\xE1m s\xE1t d\u1EA5u hi\u1EC7u qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n."
+    },
+    {
+      stageName: "C\u1EEF 4: Gi\u1EA3m CPT xu\u1ED1ng 5 ml/kg/h",
+      fluidKind: "colloid",
+      defaultRateMlKgH: 5,
+      rateOptions: [5],
+      defaultDurationHours: 2,
+      durationOptions: [1, 2],
+      hctCheckRequired: true,
+      notes: "Ki\u1EC3m tra 7 ti\xEAu chu\u1EA9n Ph\u1EE5 l\u1EE5c 10 tr\u01B0\u1EDBc khi chuy\u1EC3n sang dung d\u1ECBch \u0111i\u1EC7n gi\u1EA3i."
+    },
+    {
+      stageName: "C\u1EEF 5: Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i RL/NaCl 0.9% 5 ml/kg/h (Ph\u1EE5 l\u1EE5c 10)",
+      fluidKind: "crystalloid",
+      defaultRateMlKgH: 5,
+      rateOptions: [5],
+      defaultDurationHours: 3,
+      durationOptions: [3, 4],
+      hctCheckRequired: true,
+      notes: "Truy\u1EC1n \u0111i\u1EC7n gi\u1EA3i v\u1EDBi t\u1ED1c \u0111\u1ED9 \xEDt nh\u1EA5t b\u1EB1ng t\u1ED1c \u0111\u1ED9 CPT tr\u01B0\u1EDBc \u0111\xF3 trong 2-4 gi\u1EDD (Ph\u1EE5 l\u1EE5c 10)."
+    },
+    {
+      stageName: "C\u1EEF 6: Gi\u1EA3m \u0111i\u1EC7n gi\u1EA3i xu\u1ED1ng 3 ml/kg/h & Cai d\u1ECBch",
+      fluidKind: "crystalloid",
+      defaultRateMlKgH: 3,
+      rateOptions: [3],
+      defaultDurationHours: 4,
+      durationOptions: [4, 5, 6],
+      hctCheckRequired: true,
+      notes: "Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1 ml/kg/h. Xem x\xE9t ng\u01B0ng d\u1ECBch sau 24 - 48 gi\u1EDD."
+    }
+  ],
+  adolescent: [
+    {
+      stageName: "C\u1EEF 1: CPT T\u1EA3i li\u1EC1u n\u1EA5c 1 (15 ml/kg/h)",
+      fluidKind: "colloid",
+      defaultRateMlKgH: 15,
+      rateOptions: [10, 15, 20],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: "Truy\u1EC1n CPT trong 1 gi\u1EDD. Theo d\xF5i m\u1EA1ch, HA v\xE0 Hct."
+    },
+    {
+      stageName: "C\u1EEF 2: Ra s\u1ED1c - Gi\u1EA3m CPT xu\u1ED1ng 10 ml/kg/h",
+      fluidKind: "colloid",
+      defaultRateMlKgH: 10,
+      rateOptions: [10],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: "Th\u1EDDi gian gi\u1EA3m n\u1EA5c b\u1EB1ng 1/2 tr\u1EBB nh\u1ECF nh\u1EB1m tr\xE1nh qu\xE1 t\u1EA3i d\u1ECBch (Ph\u1EE5 l\u1EE5c 11)."
+    },
+    {
+      stageName: "C\u1EEF 3: Gi\u1EA3m CPT xu\u1ED1ng 7.5 ml/kg/h",
+      fluidKind: "colloid",
+      defaultRateMlKgH: 7.5,
+      rateOptions: [7.5],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: false,
+      notes: "Truy\u1EC1n 7.5 ml/kg/h trong 1 gi\u1EDD."
+    },
+    {
+      stageName: "C\u1EEF 4: Gi\u1EA3m CPT xu\u1ED1ng 5 ml/kg/h",
+      fluidKind: "colloid",
+      defaultRateMlKgH: 5,
+      rateOptions: [5],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: "\u0110\xE1nh gi\xE1 ti\xEAu chu\u1EA9n chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i Ph\u1EE5 l\u1EE5c 10."
+    },
+    {
+      stageName: "C\u1EEF 5: Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i RL/NaCl 0.9% 5 ml/kg/h",
+      fluidKind: "crystalloid",
+      defaultRateMlKgH: 5,
+      rateOptions: [5],
+      defaultDurationHours: 2,
+      durationOptions: [2, 3],
+      hctCheckRequired: false,
+      notes: "Chuy\u1EC3n sang dung d\u1ECBch \u0111i\u1EC7n gi\u1EA3i an to\xE0n."
+    },
+    {
+      stageName: "C\u1EEF 6: Gi\u1EA3m \u0111i\u1EC7n gi\u1EA3i 3 ml/kg/h",
+      fluidKind: "crystalloid",
+      defaultRateMlKgH: 3,
+      rateOptions: [3],
+      defaultDurationHours: 3,
+      durationOptions: [2, 3],
+      hctCheckRequired: true,
+      notes: "\u0110\xE1nh gi\xE1 n\u01B0\u1EDBc ti\u1EC3u v\xE0 tri gi\xE1c."
+    },
+    {
+      stageName: "C\u1EEF 7: Duy tr\xEC 1.5 ml/kg/h & Cai d\u1ECBch",
+      fluidKind: "crystalloid",
+      defaultRateMlKgH: 1.5,
+      rateOptions: [1.5],
+      defaultDurationHours: 12,
+      durationOptions: [6, 12, 18],
+      hctCheckRequired: true,
+      notes: "Duy tr\xEC v\xE0 chu\u1EA9n b\u1ECB ng\u01B0ng d\u1ECBch sau 24 gi\u1EDD."
+    }
+  ],
+  adult: [
+    {
+      stageName: "C\u1EEF 1: CPT T\u1EA3i li\u1EC1u ng\u01B0\u1EDDi l\u1EDBn (10 - 15 ml/kg/h)",
+      fluidKind: "colloid",
+      defaultRateMlKgH: 15,
+      rateOptions: [10, 15],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: "B\xF9 CPT 10 - 15 ml/kg/h trong 1 gi\u1EDD (Ph\u1EE5 l\u1EE5c 16.1). N\u1EBFu kh\xF4ng c\u1EA3i thi\u1EC7n: l\u1EB7p l\u1EA1i l\u1EA7n 2 li\u1EC1u 10 ml/kg/h."
+    },
+    {
+      stageName: "C\u1EEF 2: Ra s\u1ED1c -> Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i RL/NaCl 10 ml/kg/h trong 2 gi\u1EDD",
+      fluidKind: "crystalloid",
+      defaultRateMlKgH: 10,
+      rateOptions: [10],
+      defaultDurationHours: 2,
+      durationOptions: [1, 2],
+      hctCheckRequired: true,
+      notes: "Chu\u1EA9n Ph\u1EE5 l\u1EE5c 16.1: Ra s\u1ED1c chuy\u1EC3n ngay \u0111i\u1EC7n gi\u1EA3i 10 ml/kg/h trong 2 gi\u1EDD (h\u1EA1n ch\u1EBF t\u1ED1i \u0111a d\xF9ng CPT k\xE9o d\xE0i \u1EDF ng\u01B0\u1EDDi l\u1EDBn)."
+    },
+    {
+      stageName: "C\u1EEF 3: Gi\u1EA3m \u0111i\u1EC7n gi\u1EA3i xu\u1ED1ng 6 ml/kg/h trong 2 gi\u1EDD",
+      fluidKind: "crystalloid",
+      defaultRateMlKgH: 6,
+      rateOptions: [6],
+      defaultDurationHours: 2,
+      durationOptions: [2],
+      hctCheckRequired: false,
+      notes: "L\u1EAFng nghe ran \u1EA9m \u0111\xE1y ph\u1ED5i."
+    },
+    {
+      stageName: "C\u1EEF 4: Gi\u1EA3m \u0111i\u1EC7n gi\u1EA3i xu\u1ED1ng 3 ml/kg/h trong 5 - 7 gi\u1EDD",
+      fluidKind: "crystalloid",
+      defaultRateMlKgH: 3,
+      rateOptions: [3],
+      defaultDurationHours: 5,
+      durationOptions: [5, 6, 7],
+      hctCheckRequired: true,
+      notes: "Ki\u1EC3m tra Hct v\xE0 n\u01B0\u1EDBc ti\u1EC3u."
+    },
+    {
+      stageName: "C\u1EEF 5: Duy tr\xEC 1.5 ml/kg/h trong 12 gi\u1EDD & Cai d\u1ECBch",
+      fluidKind: "crystalloid",
+      defaultRateMlKgH: 1.5,
+      rateOptions: [1.5],
+      defaultDurationHours: 12,
+      durationOptions: [6, 12, 18],
+      hctCheckRequired: true,
+      notes: "Ng\u01B0ng d\u1ECBch an to\xE0n khi l\xE2m s\xE0ng v\xE0 Hct \u1ED5n \u0111\u1ECBnh."
+    }
+  ]
+};
+var DENGUE_DE_ESCALATION_CHECKLIST = [
+  "B\u1EC7nh nh\xE2n t\u1EC9nh t\xE1o, ti\u1EBFp x\xFAc t\u1ED1t",
+  "Chi \u1EA5m, th\u1EDDi gian \u0111\u1ED5 \u0111\u1EA7y mao m\u1EA1ch (CRT) b\xECnh th\u01B0\u1EDDng < 2 gi\xE2y",
+  "M\u1EA1ch r\xF5 v\xE0 huy\u1EBFt \xE1p b\xECnh th\u01B0\u1EDDng theo tu\u1ED5i (MAP: \u22641T \u226550, \u226410T \u226560, >10T \u226565 mmHg)",
+  "L\u01B0u l\u01B0\u1EE3ng n\u01B0\u1EDBc ti\u1EC3u > 0.5 ml/kg/gi\u1EDD",
+  "Hct gi\u1EA3m v\u1EC1 b\xECnh th\u01B0\u1EDDng ho\u1EB7c h\u1EBFt c\xF4 \u0111\u1EB7c m\xE1u",
+  "\xC1p l\u1EF1c t\u0129nh m\u1EA1ch trung t\xE2m (CVP) trong kho\u1EA3ng 10 - 15 cmH2O (n\u1EBFu c\xF3 \u0111o CVP)",
+  "ScvO2 \u2265 70% ho\u1EB7c Lactate m\xE1u b\xECnh th\u01B0\u1EDDng < 2.0 mmol/L (n\u1EBFu c\xF3 x\xE9t nghi\u1EC7m)"
+];
 
 // dengue/dengue-engine.ts
 function classifyAgeGroup(ageYears) {
@@ -824,6 +1114,172 @@ function calculateFluidSchedule(patient, effectiveWeightKg, customDurations) {
     currentClock = endClock;
   });
   return { rows, totalVolumeMl, totalDurationHours };
+}
+function calculateColloidSchedule(patient, effectiveWeightKg, selectedColloid = "dextran40", customDurations) {
+  const ageGroup = classifyAgeGroup(patient.ageYears);
+  const templates = DENGUE_COLLOID_TEMPLATES[ageGroup];
+  const meta = DENGUE_COLLOID_METADATA[selectedColloid] || DENGUE_COLLOID_METADATA.dextran40;
+  let currentClock = patient.startTime || "08:00";
+  let carryingFluidMl = 0;
+  let cumulativeColloidMl = 0;
+  const safeLimitVolumeMl = Math.round(60 * effectiveWeightKg);
+  const rows = [];
+  templates.forEach((tpl, idx) => {
+    const duration = customDurations?.[idx] !== void 0 ? customDurations[idx] : tpl.defaultDurationHours;
+    const rate = tpl.defaultRateMlKgH;
+    const stepVolumeMl = Math.round(rate * effectiveWeightKg * duration);
+    if (tpl.fluidKind === "colloid") {
+      cumulativeColloidMl += stepVolumeMl;
+    }
+    const cumulativeColloidMlPerKg = Math.round(cumulativeColloidMl / effectiveWeightKg * 10) / 10;
+    const exceedsThreshold = cumulativeColloidMlPerKg >= 60;
+    const isPediatric = ageGroup === "child";
+    const dropsPerMin = isPediatric ? Math.round(rate * effectiveWeightKg) : Math.round(rate * effectiveWeightKg / 3);
+    const endClock = addHoursToTime(currentClock, duration);
+    const timeWindow = `${currentClock} - ${endClock} (${duration}h)`;
+    const existingFluidMl = carryingFluidMl;
+    const deficitMl = Math.max(0, stepVolumeMl - existingFluidMl);
+    const bottlesToHang = Math.ceil(deficitMl / 500);
+    const addedFluidMl = bottlesToHang * 500;
+    const totalAtPoleMl = existingFluidMl + addedFluidMl;
+    carryingFluidMl = Math.max(0, totalAtPoleMl - stepVolumeMl);
+    rows.push({
+      stepIndex: idx + 1,
+      stageName: tpl.stageName,
+      fluidKind: tpl.fluidKind,
+      fluidName: tpl.fluidKind === "colloid" ? meta.shortName : "Ringer Lactate / NaCl 0.9%",
+      durationHours: duration,
+      rateMlKgH: rate,
+      dropsPerMin,
+      stepVolumeMl,
+      cumulativeColloidMl,
+      cumulativeColloidMlPerKg,
+      timeWindow,
+      bottlesToHang,
+      totalAtPoleMl,
+      monitoringNotes: tpl.notes,
+      hctCheckRequired: tpl.hctCheckRequired,
+      exceedsThreshold
+    });
+    currentClock = endClock;
+  });
+  const totalColloidMlPerKg = Math.round(cumulativeColloidMl / effectiveWeightKg * 10) / 10;
+  const isOverLimit = totalColloidMlPerKg >= 60;
+  const remainingSafeMl = Math.max(0, safeLimitVolumeMl - cumulativeColloidMl);
+  return {
+    colloidType: selectedColloid,
+    colloidName: meta.name,
+    rows,
+    totalColloidVolumeMl: cumulativeColloidMl,
+    totalColloidMlPerKg,
+    safeLimitVolumeMl,
+    remainingSafeMl,
+    isOverLimit,
+    albuminRecommended: isOverLimit,
+    deEscalationCriteria: DENGUE_DE_ESCALATION_CHECKLIST
+  };
+}
+function evaluateVasopressorAlgorithm(profile, effectiveWeightKg, ageYears) {
+  const isAdult = ageYears >= 16;
+  const fluidTestMl = Math.round(5 * effectiveWeightKg);
+  if (profile.cvpLevel === "low_normal") {
+    return {
+      primaryDrug: "Ch\u01B0a \u01B0u ti\xEAn v\u1EADn m\u1EA1ch \u2014 C\u1EA7n Test d\u1ECBch CPT tr\u01B0\u1EDBc",
+      primaryDose: "Test d\u1ECBch CPT: 5 ml/kg trong 30 ph\xFAt",
+      primaryPumpRateMlH: `${Math.round(10 * effectiveWeightKg)} ml/h trong 30 ph\xFAt`,
+      secondaryDrug: "Cao Ph\xE2n T\u1EED 10 - 20 ml/kg/h",
+      fluidAction: `B\u01A1m Test D\u1ECBch Cao Ph\xE2n T\u1EED ${fluidTestMl} ml (5 ml/kg) truy\u1EC1n t\u0129nh m\u1EA1ch nhanh trong 30 ph\xFAt. Theo d\xF5i s\xE1t \u0394CVP v\xE0 huy\u1EBFt \xE1p.`,
+      clinicalRationale: "CVP \u2264 15 cmH2O ch\u1EE9ng t\u1ECF th\u1EC3 t\xEDch l\xF2ng m\u1EA1ch c\xF2n thi\u1EBFu h\u1EE5t do th\u1EA5t tho\xE1t huy\u1EBFt t\u01B0\u01A1ng li\xEAn t\u1EE5c. D\xF9ng v\u1EADn m\u1EA1ch \u0111\u01A1n thu\u1EA7n khi ch\u01B0a b\xF9 \u0111\u1EE7 d\u1ECBch s\u1EBD g\xE2y co m\u1EA1ch ngo\u1EA1i bi\xEAn n\u1EB7ng, ho\u1EA1i t\u1EED chi v\xE0 suy th\u1EADn.",
+      fluidTestMl,
+      monitoringDirectives: [
+        `Truy\u1EC1n test Cao ph\xE2n t\u1EED ${fluidTestMl} ml trong 30 ph\xFAt.`,
+        "N\u1EBFu \u0394CVP t\u0103ng \u2265 5 cmH2O ho\u1EB7c huy\u1EBFt \xE1p c\u1EA3i thi\u1EC7n: ti\u1EBFp t\u1EE5c truy\u1EC1n CPT 10 - 20 ml/kg/h.",
+        "N\u1EBFu t\u1ED5ng li\u1EC1u CPT \u2265 60 ml/kg m\xE0 c\xF2n s\u1ED1c: xem x\xE9t b\xF9 Albumin 5% ho\u1EB7c 10% (Trang 20 Q\u0110 2760).",
+        "N\u1EBFu \u0394CVP t\u0103ng nhanh m\xE0 kh\xF4ng c\u1EA3i thi\u1EC7n huy\u1EBFt \xE1p: chuy\u1EC3n sang nh\xE1nh \u0111\xE1nh gi\xE1 suy tim / d\u1ECDa ph\xF9 ph\u1ED5i."
+      ]
+    };
+  }
+  if (profile.isOverloaded) {
+    return {
+      primaryDrug: "Dobutamin",
+      primaryDose: "3 - 10 \xB5g/kg/ph\xFAt",
+      primaryPumpRateMlH: "3 - 10 ml/gi\u1EDD tr\xEAn b\u01A1m ti\xEAm \u0111i\u1EC7n 50ml",
+      secondaryDrug: "Furosemide 0.5 - 1 mg/kg TM ch\u1EADm",
+      fluidAction: "NG\u01AFNG D\u1ECACH TRUY\u1EC0N T\u0128NH M\u1EA0CH NGAY L\u1EACP T\u1EE8C. N\u1EB1m \u0111\u1EA7u cao 30 - 45\xB0, th\u1EDF NCPAP.",
+      clinicalRationale: "CVP > 15 cmH2O k\xE8m d\u1EA5u hi\u1EC7u qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n / ph\xF9 ph\u1ED5i c\u1EA5p. B\u1EAFt bu\u1ED9c ng\u01B0ng n\u1EA1p d\u1ECBch v\xE0 d\xF9ng Dobutamin \u0111\u1EC3 t\u0103ng co b\xF3p c\u01A1 tim, gi\u1EA3m \xE1p l\u1EF1c mao m\u1EA1ch ph\u1ED5i b\xEDt k\u1EBFt h\u1EE3p l\u1EE3i ti\u1EC3u Furosemide.",
+      fluidTestMl: 0,
+      monitoringDirectives: [
+        "Ng\u01B0ng ho\xE0n to\xE0n d\u1ECBch truy\u1EC1n t\u0129nh m\u1EA1ch.",
+        "B\u01A1m ti\xEAm \u0111i\u1EC7n Dobutamin kh\u1EDFi \u0111\u1EA7u 3 - 5 ml/h, ch\u1EC9nh li\u1EC1u m\u1ED7i 15 ph\xFAt theo SpO2 v\xE0 ran ph\u1ED5i.",
+        `Furosemide ${Math.round(0.5 * effectiveWeightKg)} - ${Math.round(1 * effectiveWeightKg)} mg TM ch\u1EADm khi huy\u1EBFt \xE1p t\xE2m thu \u1ED5n \u0111\u1ECBnh.`,
+        "\u0110o \xE1p l\u1EF1c b\xE0ng quang gi\xE1n ti\u1EBFp \u0111o \xE1p l\u1EF1c \u1ED5 b\u1EE5ng; xem x\xE9t ch\u1ECDc gi\u1EA3i \xE1p m\xE0ng b\u1EE5ng n\u1EBFu \xE1p l\u1EF1c > 27 cmH2O."
+      ]
+    };
+  }
+  if (profile.cardiacContractility === "reduced") {
+    return {
+      primaryDrug: isAdult ? "Dobutamin ho\u1EB7c Noradrenalin" : "Dopamin",
+      primaryDose: isAdult ? "Dobutamin 5 - 10 \xB5g/kg/ph\xFAt" : "Dopamin 5 - 10 \xB5g/kg/ph\xFAt",
+      primaryPumpRateMlH: "5 - 10 ml/gi\u1EDD tr\xEAn b\u01A1m ti\xEAm \u0111i\u1EC7n 50ml",
+      secondaryDrug: "Dobutamin 3 - 10 \xB5g/kg/ph\xFAt",
+      secondaryDose: "3 - 10 \xB5g/kg/ph\xFAt (ph\u1ED1i h\u1EE3p)",
+      secondaryPumpRateMlH: "3 - 10 ml/gi\u1EDD",
+      rescueDrug: "Adrenalin 0.05 - 0.3 \xB5g/kg/ph\xFAt (0.5 - 3 ml/gi\u1EDD)",
+      fluidAction: "H\u1EA1n ch\u1EBF d\u1ECBch truy\u1EC1n t\u1ED1i \u0111a. Kh\xF4ng bolus d\u1ECBch nhanh khi CVP > 15 cmH2O.",
+      clinicalRationale: "Suy ch\u1EE9c n\u0103ng co b\xF3p c\u01A1 tim trong s\u1ED1c Dengue k\xE9o d\xE0i ho\u1EB7c vi\xEAm c\u01A1 tim Dengue. \u01AFu ti\xEAn Dopamin/Dobutamin \u0111\u1EC3 c\u1EA3i thi\u1EC7n cung l\u01B0\u1EE3ng tim. N\u1EBFu v\u1EABn tr\u01A1 ph\u1ED1i h\u1EE3p Adrenalin c\u1EE9u nguy.",
+      fluidTestMl: 0,
+      monitoringDirectives: [
+        "Theo d\xF5i li\xEAn t\u1EE5c monitor ECG t\xECm r\u1ED1i lo\u1EA1n nh\u1ECBp nhanh ho\u1EB7c nh\u1ECBp ch\u1EADm.",
+        "Si\xEAu \xE2m tim t\u1EA1i gi\u01B0\u1EDDng \u0111\xE1nh gi\xE1 EF, \u0111\u01B0\u1EDDng k\xEDnh th\u1EA5t tr\xE1i v\xE0 tr\xE0n d\u1ECBch m\xE0ng ngo\xE0i tim.",
+        "N\u1EBFu huy\u1EBFt \xE1p v\u1EABn k\u1EB9t sau khi t\u0103ng Dopamin \u0111\u1EBFn 10 \xB5g/kg/ph\xFAt: ph\u1ED1i h\u1EE3p Adrenalin 0.05 - 0.3 \xB5g/kg/ph\xFAt."
+      ]
+    };
+  }
+  if (profile.vascularTone === "low_warm_shock") {
+    const noraMaxMlH = isAdult ? 10 : 3;
+    return {
+      primaryDrug: "Noradrenalin",
+      primaryDose: isAdult ? "0.05 - 1.0 \xB5g/kg/ph\xFAt" : "0.05 - 0.3 \xB5g/kg/ph\xFAt",
+      primaryPumpRateMlH: `0.5 - ${noraMaxMlH} ml/gi\u1EDD tr\xEAn b\u01A1m ti\xEAm \u0111i\u1EC7n 50ml`,
+      secondaryDrug: "Dobutamin 3 - 10 \xB5g/kg/ph\xFAt (n\u1EBFu k\xE8m gi\u1EA3m co b\xF3p c\u01A1 tim)",
+      fluidAction: "Duy tr\xEC d\u1ECBch truy\u1EC1n t\u1ED1c \u0111\u1ED9 an to\xE0n theo d\xF5i s\xE1t CVP v\xE0 ScvO2.",
+      clinicalRationale: "S\u1ED1c c\xF3 bi\u1EC3u hi\u1EC7n gi\u1EA3m kh\xE1ng l\u1EF1c m\u1EA1ch h\u1EC7 th\u1ED1ng (HA t\xE2m tr\u01B0\u01A1ng t\u1EE5t s\xE2u, hi\u1EC7u \xE1p r\u1ED9ng, chi \u1EA5m). Noradrenalin l\xE0 thu\u1ED1c co m\u1EA1ch m\u1EA1nh ch\u1ECDn l\u1EF1a h\xE0ng \u0111\u1EA7u \u0111\u1EC3 ph\u1EE5c h\u1ED3i tr\u01B0\u01A1ng l\u1EF1c m\u1EA1ch v\xE0 n\xE2ng MAP.",
+      fluidTestMl: 0,
+      monitoringDirectives: [
+        "B\u1EAFt bu\u1ED9c truy\u1EC1n qua t\u0129nh m\u1EA1ch l\u1EDBn ho\u1EB7c catheter t\u0129nh m\u1EA1ch trung t\xE2m tr\xE1nh ho\u1EA1i t\u1EED m\xF4 do tho\xE1t m\u1EA1ch.",
+        "M\u1EE5c ti\xEAu MAP: Tr\u1EBB \u2264 1T \u2265 50, \u2264 10T \u2265 60, > 10T & Ng\u01B0\u1EDDi l\u1EDBn \u2265 65 mmHg.",
+        "\u0110i\u1EC1u ch\u1EC9nh t\u1ED1c \u0111\u1ED9 b\u01A1m m\u1ED7i 5 - 10 ph\xFAt \u0111\u1EC3 \u0111\u1EA1t MAP \u0111\xEDch."
+      ]
+    };
+  }
+  return {
+    primaryDrug: isAdult ? "Noradrenalin" : "Dopamin",
+    primaryDose: isAdult ? "0.05 - 0.3 \xB5g/kg/ph\xFAt" : "5 - 10 \xB5g/kg/ph\xFAt",
+    primaryPumpRateMlH: isAdult ? "0.5 - 3 ml/gi\u1EDD" : "5 - 10 ml/gi\u1EDD",
+    secondaryDrug: "Dobutamin 3 - 10 \xB5g/kg/ph\xFAt",
+    fluidAction: "Ng\u01B0ng d\u1ECBch n\u1EBFu CVP ti\u1EBFp t\u1EE5c t\u0103ng; \u0111\xE1nh gi\xE1 l\u1EA1i ch\u1EE9c n\u0103ng tim ph\u1ED5i.",
+    clinicalRationale: "CVP > 15 cmH2O cho th\u1EA5y ti\u1EC1n t\u1EA3i \u0111\xE3 \u0111\u1EA7y. C\u1EA7n h\u1ED7 tr\u1EE3 co b\xF3p v\xE0 tr\u01B0\u01A1ng l\u1EF1c m\u1EA1ch b\u1EB1ng v\u1EADn m\u1EA1ch.",
+    fluidTestMl: 0,
+    monitoringDirectives: [
+      "\u0110o CVP m\u1ED7i 1 - 2 gi\u1EDD.",
+      "Kh\xED m\xE1u \u0111\u1ED9ng m\u1EA1ch ki\u1EC3m tra Lactate v\xE0 th\u0103ng b\u1EB1ng toan ki\u1EC1m.",
+      "Duy tr\xEC l\u01B0\u1EE3ng n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1 ml/kg/h."
+    ]
+  };
+}
+function calculatePumpRateFromDose(drugName, doseMcgKgMin) {
+  const drug = drugName.toLowerCase();
+  if (drug.includes("noradrenalin") || drug.includes("adrenalin")) {
+    return Math.round(doseMcgKgMin / 0.1 * 10) / 10;
+  }
+  return Math.round(doseMcgKgMin * 10) / 10;
+}
+function calculateDoseFromPumpRate(drugName, rateMlH) {
+  const drug = drugName.toLowerCase();
+  if (drug.includes("noradrenalin") || drug.includes("adrenalin")) {
+    return Math.round(rateMlH * 0.1 * 100) / 100;
+  }
+  return Math.round(rateMlH * 10) / 10;
 }
 function calculateVasopressorDoses(effectiveWeightKg) {
   const dopaminTotalMg = Math.round(3 * effectiveWeightKg * 10) / 10;
@@ -980,7 +1436,7 @@ function calculateAlbuminDose(effectiveWeightKg, currentAlbuminGDl = 2, targetAl
     preparation5Percent: `Pha Albumin 5%: 1 l\u1ECD Albumin 20% 50ml + 150ml NaCl 0.9% = 200ml Albumin 5% (C\u1EA7n ${vials20Percent50ml} l\u1ECD)`,
     preparation10Percent: `Pha Albumin 10%: 1 l\u1ECD Albumin 20% 50ml + 50ml NaCl 0.9% = 100ml Albumin 10% (C\u1EA7n ${vials20Percent50ml} l\u1ECD)`,
     infusionRateMlH: `${minRateMlH} - ${maxRateMlH} ml/gi\u1EDD (T\u1ED5ng t\u1ED1c \u0111\u1ED9 d\u1ECBch g\u1ED3m CPT v\xE0 Albumin \u2264 20 ml/kg/h)`,
-    indicationNotes: "Ch\u1EC9 \u0111\u1ECBnh khi t\u1ED5ng CPT \u2265 60 ml/kg v\xE0 \u0111ang ch\u1ED1ng s\u1ED1c CPT \u2265 5-10 ml/kg/h k\xE8m Albumin < 2.5 g/dL ho\u1EB7c b\u1EC7nh nh\xE2n suy gan, suy th\u1EADn, ARDS."
+    indicationNotes: "Ch\u1EC9 \u0111\u1ECBnh khi t\u1ED5ng CPT \u2265 60 ml/kg v\xE0 \u0111ang ch\u1ED1ng s\u1ED1c CPT \u2265 5-10 ml/kg/h k\xE8m Albumin < 2.5 g/dL ho\u1EB7c b\u1EC7nh nh\xE2n suy gan, suy th\u1EADn, ARDS. \u1EDE ng\u01B0\u1EDDi l\u1EDBn: Ch\u1EC9 \u0111\u1ECBnh li\u1EC1u Albumin 1 g/kg truy\u1EC1n t\u0129nh m\u1EA1ch trong 4 - 6 gi\u1EDD (Ph\u1EE5 l\u1EE5c 18 - Q\u0110 2760/BYT)."
   };
 }
 function calculateNACProtocol(patient, effectiveWeightKg) {
@@ -1147,6 +1603,14 @@ function generateDengueCDSSPlan(patient, customDurations) {
     effectiveWeight,
     customDurations
   );
+  const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, "dextran_40");
+  const defaultHemodynamic = {
+    cvpLevel: "low_normal",
+    cardiacContractility: "normal",
+    vascularTone: "normal",
+    isOverloaded: false
+  };
+  const vasopressorDecision = evaluateVasopressorAlgorithm(defaultHemodynamic, effectiveWeight, patient.ageYears);
   const { dopamin, noradrenalin, dobutamin, adrenalin } = calculateVasopressorDoses(effectiveWeight);
   const bloodProducts = calculateBloodProducts(patient, effectiveWeight);
   const nacProtocol = calculateNACProtocol(patient, effectiveWeight);
@@ -1177,6 +1641,15 @@ function generateDengueCDSSPlan(patient, customDurations) {
       title: "S\u1ED0C SXHD (C\xD2N B\xD9) \u2014 C\u1EA6N \u0110O L\u1EA0I HCT SAU 1 GI\u1EDC",
       message: "T\u1EA3i nhanh 15-20 ml/kg/h trong gi\u1EDD \u0111\u1EA7u. B\u1EAFt bu\u1ED9c \u0111o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng tr\u01B0\u1EDBc khi chuy\u1EC3n c\u1EEF truy\u1EC1n.",
       ruleCode: "SHOCK_RESUS_1H"
+    });
+  }
+  if (colloidPlan.isOverLimit) {
+    alerts.push({
+      id: "alert_colloid_limit",
+      level: "danger",
+      title: "C\u1EA2NH B\xC1O TR\u1EA6N CAO PH\xC2N T\u1EEC: T\u1ED4NG LI\u1EC0U \u0110\u1EA0T \u2265 60 ML/KG",
+      message: `T\u1ED5ng l\u01B0\u1EE3ng CPT \u0111\xE3 \u0111\u1EA1t ${colloidPlan.totalColloidMlPerKg} ml/kg (ng\u01B0\u1EE1ng tr\u1EA7n an to\xE0n: 60 ml/kg). Nguy c\u01A1 t\u1ED5n th\u01B0\u01A1ng th\u1EADn c\u1EA5p v\xE0 r\u1ED1i lo\u1EA1n \u0111\xF4ng m\xE1u. N\u1EBFu v\u1EABn c\xF2n s\u1ED1c: \u0110o CVP, c\xE2n nh\u1EAFc b\xF9 Albumin 5% ho\u1EB7c 10% (Trang 20 Q\u0110 2760/BYT) v\xE0 v\u1EADn m\u1EA1ch.`,
+      ruleCode: "COLLOID_SAFETY_LIMIT_60"
     });
   }
   if (branchDecision.branchType === "blood") {
@@ -1232,15 +1705,26 @@ function generateDengueCDSSPlan(patient, customDurations) {
 2. B\u1EA2NG C\u1ECCC D\u1ECACH \u0110I\u1EC0U TR\u1ECA BAN \u0110\u1EA6U:`,
     ...rows.map((r) => `  \u2022 C\u1EEF ${r.stepIndex}: ${r.timeWindow} | T\u1ED1c \u0111\u1ED9 ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} gi\u1ECDt/ph\xFAt) | C\u1EA7n ${r.totalMl} ml (Treo th\xEAm ${r.bottlesToHang} chai 500ml) | T\u1EA1i c\u1ECDc: ${r.totalAtPoleMl} ml`),
     `
-3. PH\xC1C \u0110\u1ED2 KHI KH\xD4NG \u0110\xC1P \u1EE8NG / S\u1ED0C TR\u01A0 / T\xC1I S\u1ED0C (PH\u1EE4 L\u1EE4C 18):`,
-    `  \u2022 Dopamin: Pha ${dopamin.totalMg} mg trong 50ml Glucose 5%. T\u1ED1c \u0111\u1ED9 1 ml/h = 1 \xB5g/kg/ph\xFAt (Kh\u1EDFi \u0111\u1EA7u 5-10 ml/h).`,
-    `  \u2022 Noradrenalin: Pha ${noradrenalin.totalMg} mg trong 50ml Glucose 5%. T\u1ED1c \u0111\u1ED9 1 ml/h = 0.1 \xB5g/kg/ph\xFAt (Kh\u1EDFi \u0111\u1EA7u 0.5-2 ml/h).`,
-    `  \u2022 Dobutamin: Pha ${dobutamin.totalMg} mg trong 50ml Glucose 5%. T\u1ED1c \u0111\u1ED9 1 ml/h = 1 \xB5g/kg/ph\xFAt (Kh\u1EDFi \u0111\u1EA7u 3-10 ml/h khi CVP > 15 cmH2O ho\u1EB7c suy tim).`,
+3. PH\xC1C \u0110\u1ED2 CAO PH\xC2N T\u1EEC (CPT) & GI\u1EA2M LI\u1EC0U (PH\u1EE4 L\u1EE4C 10):`,
+    `  \u2022 Lo\u1EA1i d\u1ECBch khuy\u1EBFn c\xE1o: ${colloidPlan.colloidName}`,
+    `  \u2022 Gi\u1EDBi h\u1EA1n an to\xE0n CPT: ${colloidPlan.safeLimitVolumeMl} ml (t\u01B0\u01A1ng \u0111\u01B0\u01A1ng 60 ml/kg)`,
+    `  \u2022 B\u1EA3ng c\u1ECDc d\u1ECBch CPT n\u1EA5c thang:`,
+    ...colloidPlan.rows.map((r) => `    - C\u1EEF ${r.stepIndex} (${r.fluidName}): ${r.timeWindow} | T\u1ED1c \u0111\u1ED9 ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} gi\u1ECDt/ph\xFAt) | ${r.stepVolumeMl} ml (T\xEDch l\u0169y CPT: ${r.cumulativeColloidMlPerKg} ml/kg)`),
+    `  \u2022 7 Ti\xEAu chu\u1EA9n chuy\u1EC3n t\u1EEB CPT sang \u0110i\u1EC7n gi\u1EA3i (Ph\u1EE5 l\u1EE5c 10): M\u1EA1ch r\xF5, HA b\xECnh th\u01B0\u1EDDng, Chi \u1EA5m CRT < 2s, Hct gi\u1EA3m d\u1EA7n, N\u01B0\u1EDBc ti\u1EC3u \u2265 0.5-1 ml/kg/h, Gan thu nh\u1ECF, CVP \u1ED5n \u0111\u1ECBnh.`,
+    `
+4. L\u01AFU \u0110\u1ED2 V\u1EACN M\u1EA0CH & B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML (PH\u1EE4 L\u1EE4C 15 & 18):`,
+    `  \u2022 Test D\u1ECBch CPT (khi CVP \u2264 15 cmH2O): B\u01A1m 5 ml/kg trong 30 ph\xFAt (${vasopressorDecision.fluidTestMl} ml).`,
+    `  \u2022 Dopamin: Pha ${dopamin.totalMg} mg trong 50ml G5%. T\u1ED1c \u0111\u1ED9 1 ml/h = 1 \xB5g/kg/ph\xFAt (Kh\u1EDFi \u0111\u1EA7u 5-10 ml/h).`,
+    `  \u2022 Noradrenalin: Pha ${noradrenalin.totalMg} mg trong 50ml G5%. T\u1ED1c \u0111\u1ED9 1 ml/h = 0.1 \xB5g/kg/ph\xFAt (Kh\u1EDFi \u0111\u1EA7u 0.5-2 ml/h; \u01B0u ti\xEAn khi HA t\xE2m tr\u01B0\u01A1ng th\u1EA5p / s\u1ED1c \u1EA5m).`,
+    `  \u2022 Dobutamin: Pha ${dobutamin.totalMg} mg trong 50ml G5%. T\u1ED1c \u0111\u1ED9 1 ml/h = 1 \xB5g/kg/ph\xFAt (Kh\u1EDFi \u0111\u1EA7u 3-10 ml/h khi CVP > 15 cmH2O ho\u1EB7c suy tim/d\u1ECDa ph\xF9 ph\u1ED5i).`,
+    `  \u2022 Adrenalin: Pha ${adrenalin.totalMg} mg trong 50ml G5%. T\u1ED1c \u0111\u1ED9 1 ml/h = 0.1 \xB5g/kg/ph\xFAt (C\u1EE9u nguy khi tr\u01A1 Dopamin + Dobutamin).`,
+    `
+5. XU\u1EA4T HUY\u1EBET N\u1EB6NG & CH\u1EBE PH\u1EA8M M\xC1U (PH\u1EE4 L\u1EE4C 17):`,
     `  \u2022 HCL (khi Hct < 35%): Truy\u1EC1n ${Math.round(5 * effectiveWeight)} - ${Math.round(10 * effectiveWeight)} ml trong 1-2h song song CPT 10 ml/kg/h.`,
     `  \u2022 G\xF3i ABCS: Acidosis (Bicarbonate 4.2% ${Math.round(2 * effectiveWeight)} ml); Calcium (Calci clorua 10% 2-5ml); Sugar (Dextrose 30% ${Math.round(1.5 * effectiveWeight)} ml).`,
     ...nacProtocol.indicated ? [`  \u2022 Ph\xE1c \u0111\u1ED3 NAC Suy gan: T\u1EA5n c\xF4ng 150mg/kg (1h) -> 50mg/kg (4h) -> 100mg/kg (16h) -> Duy tr\xEC 6.25mg/kg/h. Tuy\u1EC7t \u0111\u1ED1i TR\xC1NH Ringer Lactate & Paracetamol.`] : [],
     `
-4. \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N: \u0110o Hct tr\u01B0\u1EDBc m\u1ED7i l\u1EA7n gi\u1EA3m t\u1ED1c \u0111\u1ED9; Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1.0 ml/kg/h; B\xE1o BS ngay n\u1EBFu n\u01B0\u1EDBc ti\u1EC3u < 0.5 ml/kg/h ho\u1EB7c ran \u1EA9m ph\u1ED5i.`
+6. \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N: \u0110o Hct tr\u01B0\u1EDBc m\u1ED7i l\u1EA7n gi\u1EA3m t\u1ED1c \u0111\u1ED9; Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1.0 ml/kg/h; B\xE1o BS ngay n\u1EBFu n\u01B0\u1EDBc ti\u1EC3u < 0.5 ml/kg/h ho\u1EB7c ran \u1EA9m ph\u1ED5i.`
   ];
   return {
     patient,
@@ -1249,10 +1733,12 @@ function generateDengueCDSSPlan(patient, customDurations) {
     fluidRows: rows,
     totalVolumeMl,
     totalDurationHours,
+    colloidPlan,
     vasopressorDopamin: dopamin,
     vasopressorNoradrenalin: noradrenalin,
     vasopressorDobutamin: dobutamin,
     vasopressorAdrenalin: adrenalin,
+    vasopressorDecision,
     bloodProducts,
     nacProtocol,
     branchDecision,
@@ -1354,7 +1840,7 @@ var CLINICAL_SAMPLE_CASES = [
       currentHctPercent: 46,
       baselineHctPercent: 38
     },
-    clinicalHighlight: "Nam 30T s\u1ED1c c\xF2n b\xF9 (170cm, 70kg, BMI 24.2 < 25): D\xF9ng c\xE2n n\u1EB7ng th\u1EF1c 70kg theo Ph\u1EE5 l\u1EE5c 9, b\xF9 d\u1ECBch n\u1EA5c thang 15 -> 10 -> 5 -> 3 -> 1.5 ml/kg/h."
+    clinicalHighlight: "Nam 30T s\u1ED1c c\xF2n b\xF9 (170cm, 70kg, BMI 24.2 < 25): D\xF9ng c\xE2n n\u1EB7ng th\u1EF1c 70kg theo Ph\u1EE5 l\u1EE5c 9, b\xF9 d\u1ECBch n\u1EA5c thang 15 -> 10 -> 6 -> 3 -> 1.5 ml/kg/h."
   },
   // 2. Nhóm Sốc Trơ & Xử Trí Không Đáp Ứng
   {
@@ -1440,6 +1926,17 @@ var DengueCDSSController = class {
   activeWorkspaceMode = "fluid_schedule";
   activeRefractorySubTab = "tab-cpt";
   includeVasopressorInPrint = false;
+  selectedColloidType = "dextran_40";
+  currentHemodynamic = {
+    cvpLevel: "low_normal",
+    cardiacContractility: "normal",
+    vascularTone: "normal",
+    isOverloaded: false
+  };
+  interactiveDrugName = "Dopamin";
+  interactiveDose = 5;
+  interactivePumpRate = 5;
+  deEscalationChecked = {};
   constructor(containerId) {
     const el = document.getElementById(containerId);
     if (!el) {
@@ -1482,11 +1979,11 @@ var DengueCDSSController = class {
           </div>
 
           <div class="cdss-toolbar-actions">
-            <button id="btn-copy-soap" class="cdss-action-btn cdss-action-btn--primary" title="Sao ch\xE9p K\u1EBF ho\u1EA1ch SOAP v\xE0o B\u1EC7nh \xE1n / DocSpace">
-              <i class="fa-solid fa-notes-medical"></i> <span>B\u1EC7nh \xC1n SOAP</span>
+            <button id="btn-copy-soap" class="cdss-action-btn cdss-action-btn--primary cdss-action-btn--icon-only" title="Sao ch\xE9p K\u1EBF ho\u1EA1ch SOAP v\xE0o B\u1EC7nh \xE1n / DocSpace" aria-label="Sao ch\xE9p SOAP">
+              <i class="fa-solid fa-notes-medical"></i>
             </button>
-            <button id="btn-copy-handover" class="cdss-action-btn" title="Sao ch\xE9p b\xE1o c\xE1o giao ban c\u1ECDc d\u1ECBch">
-              <i class="fa-solid fa-clipboard-check"></i> <span>B\xE0n Giao Ca</span>
+            <button id="btn-copy-handover" class="cdss-action-btn cdss-action-btn--icon-only" title="Sao ch\xE9p b\xE1o c\xE1o giao ban c\u1ECDc d\u1ECBch" aria-label="B\xE0n Giao Ca">
+              <i class="fa-solid fa-clipboard-check"></i>
             </button>
             <label class="cdss-print-vaso-checkbox" title="T\xF9y ch\u1ECDn in k\xE8m ph\xE1c \u0111\u1ED3 thu\u1ED1c v\u1EADn m\u1EA1ch b\u01A1m ti\xEAm \u0111i\u1EC7n (khi c\xF3 s\u1ED1c tr\u01A1)">
               <input type="checkbox" id="chk-include-vaso" />
@@ -1726,20 +2223,25 @@ var DengueCDSSController = class {
               <div class="cdss-mode-tabs" id="cdss-mode-tabs">
                 <button type="button" class="cdss-mode-btn active" data-mode="fluid_schedule">
                   <i class="fa-solid fa-table-list"></i>
-                  <span>1. B\u1EA3ng C\u1ECDc D\u1ECBch Ban \u0110\u1EA7u</span>
+                  <span>1. C\u1ECDc \u0110i\u1EC7n Gi\u1EA3i</span>
+                </button>
+                <button type="button" class="cdss-mode-btn" data-mode="colloid_schedule" id="btn-mode-colloid">
+                  <i class="fa-solid fa-flask-vial"></i>
+                  <span>2. C\u1ECDc Cao Ph\xE2n T\u1EED (CPT)</span>
+                  <span id="colloid-alert-dot" style="display:none; width:8px; height:8px; border-radius:50%; background:#ef4444;"></span>
                 </button>
                 <button type="button" class="cdss-mode-btn" data-mode="refractory_suite" id="btn-mode-refractory">
                   <i class="fa-solid fa-shield-virus"></i>
-                  <span>2. S\u1ED1c Tr\u01A1 &amp; Kh\xF4ng \u0110\xE1p \u1EE8ng</span>
+                  <span>3. S\u1ED1c Tr\u01A1 &amp; Kh\xF4ng \u0110\xE1p \u1EE8ng</span>
                   <span id="refractory-alert-dot" style="display:none; width:8px; height:8px; border-radius:50%; background:#ef4444;"></span>
                 </button>
                 <button type="button" class="cdss-mode-btn" data-mode="vasopressors">
                   <i class="fa-solid fa-syringe"></i>
-                  <span>3. V\u1EADn M\u1EA1ch 50ml (4 Lo\u1EA1i)</span>
+                  <span>4. V\u1EADn M\u1EA1ch 50ml (Ph\u1EE5 L\u1EE5c 15 &amp; 18)</span>
                 </button>
                 <button type="button" class="cdss-mode-btn" data-mode="nursing_checklist">
                   <i class="fa-solid fa-user-nurse"></i>
-                  <span>4. \u0110i\u1EC1u D\u01B0\u1EE1ng An To\xE0n</span>
+                  <span>5. \u0110i\u1EC1u D\u01B0\u1EE1ng An To\xE0n</span>
                 </button>
               </div>
 
@@ -1767,10 +2269,10 @@ var DengueCDSSController = class {
               <div class="cdss-mbar-sub" id="mbar-volume-sub">T\u1ED5ng: 2.340 ml / 24h</div>
             </div>
             <div class="cdss-mbar-actions">
-              <button type="button" id="btn-open-drawer" class="cdss-action-btn cdss-action-btn--primary">
-                <i class="fa-solid fa-sliders"></i> Ch\u1EC9nh Ca
+              <button type="button" id="btn-open-drawer" class="cdss-action-btn cdss-action-btn--primary cdss-action-btn--icon-only" title="Ch\u1EC9nh th\xF4ng s\u1ED1 ca b\u1EC7nh" aria-label="Ch\u1EC9nh Ca">
+                <i class="fa-solid fa-sliders"></i>
               </button>
-              <button type="button" id="btn-mbar-soap" class="cdss-action-btn cdss-action-btn--icon-only" title="Ch\xE9p B\u1EC7nh \xC1n">
+              <button type="button" id="btn-mbar-soap" class="cdss-action-btn cdss-action-btn--icon-only" title="Ch\xE9p B\u1EC7nh \xC1n" aria-label="Ch\xE9p B\u1EC7nh \xC1n">
                 <i class="fa-solid fa-notes-medical"></i>
               </button>
             </div>
@@ -2573,14 +3075,20 @@ var DengueCDSSController = class {
     if (dot) {
       dot.style.display = plan.patient.clinicalResponse !== "good" ? "inline-block" : "none";
     }
+    const colloidDot = document.getElementById("colloid-alert-dot");
+    if (colloidDot) {
+      colloidDot.style.display = plan.colloidPlan.isOverLimit ? "inline-block" : "none";
+    }
     const hintText = document.getElementById("cdss-mode-hint-text");
     if (hintText) {
       if (this.activeWorkspaceMode === "fluid_schedule") {
-        hintText.textContent = "B\u1EA3ng \u0111i\u1EC1u ph\u1ED1i c\u1ECDc d\u1ECBch 4 c\u1ED9t chu\u1EA9n h\xF3a (BYT)";
+        hintText.textContent = "B\u1EA3ng \u0111i\u1EC1u ph\u1ED1i c\u1ECDc d\u1ECBch \u0111i\u1EC7n gi\u1EA3i n\u1EA5c thang chu\u1EA9n h\xF3a (BYT 2023)";
+      } else if (this.activeWorkspaceMode === "colloid_schedule") {
+        hintText.textContent = "Ph\xE1c \u0111\u1ED3 c\u1ECDc d\u1ECBch Cao Ph\xE2n T\u1EED & gi\xE1m s\xE1t tr\u1EA7n an to\xE0n 60 ml/kg (Ph\u1EE5 l\u1EE5c 10)";
       } else if (this.activeWorkspaceMode === "refractory_suite") {
-        hintText.textContent = "Ph\xE1c \u0111\u1ED3 6 ph\xE2n nh\xE1nh khi b\u1EC7nh nh\xE2n kh\xF4ng \u0111\xE1p \u1EE9ng";
+        hintText.textContent = "Ph\xE1c \u0111\u1ED3 6 ph\xE2n nh\xE1nh khi b\u1EC7nh nh\xE2n kh\xF4ng \u0111\xE1p \u1EE9ng b\xF9 d\u1ECBch";
       } else if (this.activeWorkspaceMode === "vasopressors") {
-        hintText.textContent = "C\xF4ng th\u1EE9c pha 4 thu\u1ED1c v\u1EADn m\u1EA1ch b\u01A1m ti\xEAm \u0111i\u1EC7n 50ml";
+        hintText.textContent = "L\u01B0u \u0111\u1ED3 ch\u1ECDn v\u1EADn m\u1EA1ch theo CVP & B\u1ED9 t\xEDnh b\u01A1m ti\xEAm \u0111i\u1EC7n 50ml 2 chi\u1EC1u";
       } else {
         hintText.textContent = "Quy tr\xECnh ki\u1EC3m so\xE1t an to\xE0n \u0111i\u1EC1u d\u01B0\u1EE1ng t\u1EA1i gi\u01B0\u1EDDng";
       }
@@ -2593,6 +3101,9 @@ var DengueCDSSController = class {
     switch (this.activeWorkspaceMode) {
       case "fluid_schedule":
         this.renderFluidScheduleView(container, plan);
+        break;
+      case "colloid_schedule":
+        this.renderColloidScheduleView(container, plan);
         break;
       case "refractory_suite":
         this.renderRefractorySuiteView(container, plan);
@@ -2688,8 +3199,8 @@ var DengueCDSSController = class {
               T\u1EF1 \u0111\u1ED9ng g\u1ED9p th\u1EC3 t\xEDch, t\xEDnh gi\u1ECDt/ph\xFAt (d\xE2y 20g/ml), chuy\u1EC3n d\u1ECBch d\u01B0 v\xE0 t\xEDnh s\u1ED1 chai 500ml treo th\xEAm t\u1EA1i c\u1ECDc.
             </p>
           </div>
-          <button id="btn-reset-durations-sub" class="cdss-action-btn" title="Kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng chu\u1EA9n B\u1ED9 Y T\u1EBF">
-            <i class="fa-solid fa-clock-rotate-left"></i> <span>\u0110\u1EB7t L\u1EA1i Gi\u1EDD Chu\u1EA9n</span>
+          <button id="btn-reset-durations-sub" class="cdss-action-btn cdss-action-btn--icon-only" title="Kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng chu\u1EA9n B\u1ED9 Y T\u1EBF" aria-label="\u0110\u1EB7t L\u1EA1i Gi\u1EDD Chu\u1EA9n">
+            <i class="fa-solid fa-clock-rotate-left"></i>
           </button>
         </div>
 
@@ -2852,7 +3363,389 @@ var DengueCDSSController = class {
       });
     }
   }
-  // VIEW 2: PHÁC ĐỒ XỬ TRÍ KHI KHÔNG ĐÁP ỨNG & SỐC TRƠ
+  // VIEW 2: BẢNG CỌC DỊCH CAO PHÂN TỬ (COLLOID VIEW - PHỤ LỤC 10)
+  renderColloidScheduleView(container, plan) {
+    const colloidPlan = calculateColloidSchedule(
+      plan.patient,
+      plan.weightResult.adjustedWeightKg,
+      this.selectedColloidType
+    );
+    plan.colloidPlan = colloidPlan;
+    const meta = DENGUE_COLLOID_METADATA[this.selectedColloidType];
+    const pctOfSafeLimit = Math.min(100, Math.round(colloidPlan.totalColloidMlPerKg / 60 * 100));
+    const isOverLimit = colloidPlan.isOverLimit;
+    const isNearLimit = !isOverLimit && colloidPlan.totalColloidMlPerKg >= 45;
+    const albResult = calculateAlbuminDose(plan.weightResult.adjustedWeightKg, 2, 3.5);
+    container.innerHTML = `
+      <!-- Bento Stats & C\u1EA3nh B\xE1o Tr\u1EA7n 60 ml/kg -->
+      <div class="cdss-kpi-grid" style="margin-bottom: 1.25rem;">
+        <div class="cdss-kpi-card ${isOverLimit ? "cdss-kpi-card--danger" : isNearLimit ? "cdss-kpi-card--warning" : ""}">
+          <div class="cdss-kpi-icon ${isOverLimit ? "cdss-kpi-icon--red" : isNearLimit ? "cdss-kpi-icon--amber" : "cdss-kpi-icon--teal"}">
+            <i class="fa-solid fa-flask-vial"></i>
+          </div>
+          <div class="cdss-kpi-content">
+            <span class="cdss-kpi-label">T\u1ED5ng Li\u1EC1u CPT T\xEDch L\u0169y</span>
+            <span class="cdss-kpi-value ${isOverLimit ? "text-danger" : ""}">${colloidPlan.totalColloidMlPerKg} <small>ml/kg</small></span>
+            <span class="cdss-kpi-sub">
+              ${isOverLimit ? "\u26A0\uFE0F V\u01AF\u1EE2T TR\u1EA6N 60 ml/kg" : isNearLimit ? "\u26A0\uFE0F C\u1EACN TR\u1EA6N 60 ml/kg" : "\u2713 Trong ng\u01B0\u1EE1ng an to\xE0n"}
+            </span>
+          </div>
+        </div>
+
+        <div class="cdss-kpi-card">
+          <div class="cdss-kpi-icon cdss-kpi-icon--blue">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="cdss-kpi-content">
+            <span class="cdss-kpi-label">Tr\u1EA7n An To\xE0n T\u1ED1i \u0110a (60 ml/kg)</span>
+            <span class="cdss-kpi-value">${colloidPlan.safeLimitVolumeMl.toLocaleString("vi-VN")} <small>ml</small></span>
+            <span class="cdss-kpi-sub">${plan.weightResult.adjustedWeightKg} kg \xD7 60 ml/kg</span>
+          </div>
+        </div>
+
+        <div class="cdss-kpi-card">
+          <div class="cdss-kpi-icon cdss-kpi-icon--purple">
+            <i class="fa-solid fa-gauge"></i>
+          </div>
+          <div class="cdss-kpi-content">
+            <span class="cdss-kpi-label">L\u01B0\u1EE3ng CPT C\xF2n Ph\xE9p D\xF9ng</span>
+            <span class="cdss-kpi-value ${colloidPlan.remainingSafeMl <= 0 ? "text-danger" : "text-primary"}">
+              ${colloidPlan.remainingSafeMl.toLocaleString("vi-VN")} <small>ml</small>
+            </span>
+            <span class="cdss-kpi-sub">
+              ${colloidPlan.remainingSafeMl <= 0 ? "\u0110\xE3 h\u1EBFt quota an to\xE0n" : `~ ${Math.round(colloidPlan.remainingSafeMl / plan.weightResult.adjustedWeightKg)} ml/kg c\xF2n l\u1EA1i`}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- THANH \u0110O T\xCDCH L\u0168Y CPT SO V\u1EDAI TR\u1EA6N AN TO\xC0N 60 ML/KG -->
+      <div class="cdss-timeline-card" style="margin-bottom:1.25rem;">
+        <div class="cdss-timeline-header">
+          <span class="cdss-timeline-title">
+            <i class="fa-solid fa-chart-simple text-primary"></i> M\u1EE9c \u0110\u1ED9 S\u1EED D\u1EE5ng Dung L\u01B0\u1EE3ng D\u1ECBch Cao Ph\xE2n T\u1EED T\u1ED1i \u0110a
+          </span>
+          <span class="cdss-brand-badge ${isOverLimit ? "cdss-brand-badge--danger" : ""}">
+            ${colloidPlan.totalColloidMlPerKg} / 60 ml/kg (${pctOfSafeLimit}%)
+          </span>
+        </div>
+        <div style="background:var(--cdss-surface-alt); border-radius:8px; height:18px; width:100%; overflow:hidden; position:relative; border:1px solid var(--cdss-border-subtle); margin:0.6rem 0;">
+          <div style="height:100%; width:${pctOfSafeLimit}%; background:${isOverLimit ? "#ef4444" : isNearLimit ? "#f59e0b" : "var(--cdss-primary)"}; transition:width 0.4s ease;"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--cdss-text-muted);">
+          <span>0 ml/kg (B\u1EAFt \u0111\u1EA7u)</span>
+          <span style="color:#f59e0b; font-weight:700;">45 ml/kg (Ng\u01B0\u1EE1ng c\u1EA3nh b\xE1o)</span>
+          <span style="color:#ef4444; font-weight:800;">60 ml/kg (Tr\u1EA7n an to\xE0n tuy\u1EC7t \u0111\u1ED1i)</span>
+        </div>
+        ${isOverLimit ? `
+          <div style="margin-top:0.75rem; background:rgba(239, 68, 68, 0.08); border:1.5px solid var(--cdss-danger); border-radius:8px; padding:0.85rem 1rem;">
+            <div style="font-size:0.88rem; font-weight:800; color:var(--cdss-danger); margin-bottom:0.25rem;">
+              <i class="fa-solid fa-triangle-exclamation"></i> C\u1EA2NH B\xC1O TR\u1EA6N CAO PH\xC2N T\u1EEC: \u0110\xC3 D\xD9NG ${colloidPlan.totalColloidMlPerKg} ML/KG (\u2265 60 ML/KG)
+            </div>
+            <div style="font-size:0.78rem; line-height:1.45; color:var(--cdss-text);">
+              Theo Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT, t\u1ED5ng li\u1EC1u d\u1ECBch cao ph\xE2n t\u1EED kh\xF4ng qu\xE1 60 ml/kg \u0111\u1EC3 tr\xE1nh t\u1ED5n th\u01B0\u01A1ng th\u1EADn c\u1EA5p v\xE0 r\u1ED1i lo\u1EA1n \u0111\xF4ng m\xE1u.
+              <strong>N\u1EBFu b\u1EC7nh nh\xE2n v\u1EABn c\xF2n s\u1ED1c:</strong> B\u1EAFt bu\u1ED9c \u0111o CVP, kh\xF4ng t\u0103ng th\xEAm CPT, chuy\u1EC3n sang b\xF9 <strong>Albumin 5% ho\u1EB7c 10%</strong> (Trang 20 Q\u0110 2760) k\u1EBFt h\u1EE3p ph\u1ED1i h\u1EE3p thu\u1ED1c v\u1EADn m\u1EA1ch (Noradrenalin / Dopamin / Dobutamin).
+            </div>
+          </div>
+        ` : ""}
+      </div>
+
+      <!-- SELECTOR CH\u1ECCN LO\u1EA0I D\u1ECACH CAO PH\xC2N T\u1EEC & TH\xD4NG TIN D\u01AF\u1EE2C L\xDD H\u1ECCC -->
+      <section class="cdss-table-card" style="margin-bottom:1.25rem;">
+        <div class="cdss-table-header-wrap">
+          <div class="cdss-table-title-area">
+            <h2 class="cdss-table-title">
+              <i class="fa-solid fa-vial-circle-check"></i> L\u1EF1a Ch\u1ECDn Lo\u1EA1i Dung D\u1ECBch Cao Ph\xE2n T\u1EED (B\u1ED9 Y T\u1EBF 2023)
+            </h2>
+            <p class="cdss-table-desc">
+              \u01AFu ti\xEAn Dextran 40 trong NaCl 0.9% ho\u1EB7c Hydroxyethyl Starch (6% HES 200/0.5). Kh\xF4ng d\xF9ng HES cho b\u1EC7nh nh\xE2n \u0111\xE3 c\xF3 t\u1ED5n th\u01B0\u01A1ng th\u1EADn tr\u01B0\u1EDBc \u0111\xF3.
+            </p>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem;" id="colloid-type-selector">
+          ${Object.keys(DENGUE_COLLOID_METADATA).map((key) => {
+      const cMeta = DENGUE_COLLOID_METADATA[key];
+      const isSel = key === this.selectedColloidType;
+      return `
+              <button type="button" class="cdss-case-pill ${isSel ? "active" : ""}" data-colloid-type="${key}" style="font-size:0.8rem; padding:0.5rem 0.85rem;">
+                <i class="fa-solid fa-droplet text-primary"></i>
+                <strong>${cMeta.shortName}</strong>
+                <span style="font-size:0.68rem; opacity:0.8;">(${cMeta.brandNames[0]})</span>
+              </button>
+            `;
+    }).join("")}
+        </div>
+
+        <!-- TH\u1EBA D\u01AF\u1EE2C L\xDD L\xC2M S\xC0NG C\u1EE6A D\u1ECACH CPT \u0110ANG CH\u1ECCN -->
+        <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:10px; padding:0.85rem 1rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; flex-wrap:wrap; gap:6px;">
+            <strong style="font-size:0.95rem; color:var(--cdss-primary);">
+              <i class="fa-solid fa-info-circle"></i> ${meta.name}
+            </strong>
+            <span class="cdss-brand-badge">${meta.shortName}</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:0.6rem; margin-bottom:0.75rem;">
+            <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Tr\u1ECDng L\u01B0\u1EE3ng Ph\xE2n T\u1EED</div>
+              <strong style="font-size:0.85rem;">${meta.molecularWeight}</strong>
+            </div>
+            <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Th\u1EDDi Gian L\u01B0u L\xF2ng M\u1EA1ch</div>
+              <strong style="font-size:0.85rem; color:var(--cdss-primary);">${meta.intravascularPersistence}</strong>
+            </div>
+            <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">T\u0103ng Th\u1EC3 T\xEDch L\xF2ng M\u1EA1ch</div>
+              <strong style="font-size:0.85rem; color:var(--cdss-success);">${meta.plasmaExpansion}</strong>
+            </div>
+            <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Gi\u1EDBi H\u1EA1n T\u1ED1i \u0110a Li\u1EC1u</div>
+              <strong style="font-size:0.85rem; color:var(--cdss-danger);">${meta.maxSafeDose}</strong>
+            </div>
+          </div>
+
+          <div style="font-size:0.78rem; line-height:1.45; color:var(--cdss-text-muted);">
+            <div><strong style="color:var(--cdss-text);">\u01AFu \u0111i\u1EC3m & Ch\u1EC9 \u0111\u1ECBnh:</strong> ${meta.pros}</div>
+            <div style="margin-top:2px;"><strong style="color:var(--cdss-danger);">C\u1EA3nh b\xE1o an to\xE0n:</strong> ${meta.cons}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- B\u1EA2NG C\u1ECCC D\u1ECACH CAO PH\xC2N T\u1EEC 4 C\u1ED8T -->
+      <section class="cdss-table-card" style="margin-bottom:1.25rem;">
+        <div class="cdss-table-header-wrap">
+          <div class="cdss-table-title-area">
+            <h2 class="cdss-table-title">
+              <i class="fa-solid fa-table-list"></i> B\u1EA3ng C\u1ECDc D\u1ECBch Cao Ph\xE2n T\u1EED N\u1EA5c Thang &amp; Chuy\u1EC3n \u0110i\u1EC7n Gi\u1EA3i (Ph\u1EE5 L\u1EE5c 10)
+            </h2>
+            <p class="cdss-table-desc">
+              Ti\u1EBFn tr\xECnh gi\u1EA3m li\u1EC1u t\u1EEB 15-20 ml/kg/h \u279C 10 ml/kg/h \u279C 7.5-5 ml/kg/h \u279C 3 ml/kg/h \u279C Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i (Ringer Lactate / NaCl 0.9%).
+            </p>
+          </div>
+        </div>
+
+        <div class="cdss-table-scroll">
+          <table class="cdss-table">
+            <thead>
+              <tr>
+                <th style="width: 24%;">C\u1ED9t 1: M\u1ED1c Gi\u1EDD &amp; Giai \u0110o\u1EA1n</th>
+                <th style="width: 26%;">C\u1ED9t 2: T\u1ED1c \u0110\u1ED9 &amp; L\u01B0\u1EE3ng C\u1EA7n</th>
+                <th style="width: 26%;">C\u1ED9t 3: T\xEDch L\u0169y CPT &amp; Ng\u01B0\u1EE1ng 60ml/kg</th>
+                <th style="width: 24%;">C\u1ED9t 4: Y\xEAu C\u1EA7u \u0110o Hct &amp; Gi\xE1m S\xE1t</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${colloidPlan.rows.map((r) => {
+      const rowPct = Math.round(r.cumulativeColloidMlPerKg / 60 * 100);
+      const isStepOver = r.exceedsThreshold;
+      return `
+                  <tr class="${isStepOver ? "cdss-row--danger" : ""}">
+                    <td>
+                      <div class="cdss-step-badge">C\u1EEF ${r.stepIndex}</div>
+                      <div class="cdss-time-window">${r.timeWindow}</div>
+                      <div class="cdss-stage-title" style="margin-top:2px; font-weight:700; color:${r.fluidKind === "colloid" ? "var(--cdss-primary)" : "var(--cdss-teal)"};">
+                        ${r.stageName}
+                      </div>
+                      <div style="font-size:0.72rem; color:var(--cdss-text-muted);">
+                        <i class="fa-solid fa-flask"></i> ${r.fluidName}
+                      </div>
+                    </td>
+                    <td>
+                      <div class="cdss-rate-display">
+                        <span class="cdss-rate-number">${r.rateMlKgH}</span>
+                        <span class="cdss-rate-unit">ml/kg/gi\u1EDD</span>
+                      </div>
+                      <div class="cdss-drops-box">
+                        <i class="fa-solid fa-water" style="color:var(--cdss-info);"></i>
+                        <strong>${r.dropsPerMin}</strong> gi\u1ECDt/ph\xFAt
+                        <small style="color:var(--cdss-text-muted);">${plan.ageGroup === "child" ? "(D\xE2y vi gi\u1ECDt)" : "(D\xE2y 20 g/ml)"}</small>
+                      </div>
+                      <div class="cdss-volume-calc">
+                        C\u1EA7n: <strong>${r.stepVolumeMl.toLocaleString("vi-VN")} ml</strong> (${r.durationHours}h)
+                      </div>
+                    </td>
+                    <td>
+                      <div style="font-size:0.82rem; font-weight:800; color:${isStepOver ? "var(--cdss-danger)" : "var(--cdss-text)"};">
+                        T\xEDch l\u0169y: ${r.cumulativeColloidMlPerKg} ml/kg
+                      </div>
+                      <div style="font-size:0.72rem; color:var(--cdss-text-muted);">
+                        T\u1ED5ng th\u1EC3 t\xEDch: ${r.cumulativeColloidMl.toLocaleString("vi-VN")} ml
+                      </div>
+                      <div style="margin-top:4px; height:8px; width:100%; background:var(--cdss-surface-alt); border-radius:4px; overflow:hidden; border:1px solid var(--cdss-border-subtle);">
+                        <div style="height:100%; width:${Math.min(100, rowPct)}%; background:${isStepOver ? "#ef4444" : rowPct >= 75 ? "#f59e0b" : "var(--cdss-primary)"};"></div>
+                      </div>
+                      <div style="font-size:0.68rem; margin-top:2px; color:${isStepOver ? "var(--cdss-danger)" : "var(--cdss-text-muted)"};">
+                        ${isStepOver ? "\u26A0\uFE0F \u0110\xE3 v\u01B0\u1EE3t 60 ml/kg" : `${rowPct}% tr\u1EA7n an to\xE0n`}
+                      </div>
+                    </td>
+                    <td>
+                      ${r.hctCheckRequired ? `
+                        <div class="cdss-hct-pill" style="margin-bottom:4px;">
+                          <i class="fa-solid fa-vial"></i> <strong>\u0110o l\u1EA1i Hct sau c\u1EEF n\xE0y</strong>
+                        </div>
+                      ` : ""}
+                      <div class="cdss-monitor-tip">
+                        ${r.monitoringNotes}
+                      </div>
+                    </td>
+                  </tr>
+                `;
+    }).join("")}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 7 TI\xCAU CHU\u1EA8N DE-ESCALATION CHUY\u1EC2N CPT SANG \u0110I\u1EC6N GI\u1EA2I (PH\u1EE4 L\u1EE4C 10) -->
+      <section class="cdss-card" style="margin-bottom:1.25rem;">
+        <div class="cdss-card-header">
+          <div>
+            <h2 class="cdss-card-title">
+              <i class="fa-solid fa-list-check text-success"></i> 7 Ti\xEAu Chu\u1EA9n Gi\u1EA3m Li\u1EC1u &amp; Chuy\u1EC3n T\u1EEB CPT Sang \u0110i\u1EC7n Gi\u1EA3i (Ph\u1EE5 L\u1EE5c 10 - Q\u0110 2760)
+            </h2>
+            <div style="font-size:0.78rem; color:var(--cdss-text-muted); margin-top:2px;">
+              B\xE1c s\u0129 ki\u1EC3m tra t\u1EA1i gi\u01B0\u1EDDng tr\u01B0\u1EDBc khi quy\u1EBFt \u0111\u1ECBnh h\u1EA1 b\u1EADc t\u1ED1c \u0111\u1ED9 ho\u1EB7c chuy\u1EC3n sang Ringer Lactate / NaCl 0.9%.
+            </div>
+          </div>
+          <button type="button" id="btn-check-all-de-escalation" class="cdss-action-btn cdss-action-btn--icon-only" title="\u0110\xE1nh d\u1EA5u ch\u1ECDn t\u1EA5t c\u1EA3 ti\xEAu chu\u1EA9n h\u1EA1 b\u1EADc" aria-label="Ch\u1ECDn T\u1EA5t C\u1EA3">
+            <i class="fa-solid fa-check-double"></i>
+          </button>
+        </div>
+
+        <div style="padding:1rem;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:0.65rem;">
+            ${DENGUE_DE_ESCALATION_CHECKLIST.map((crit, idx) => {
+      const isChecked = !!this.deEscalationChecked[idx];
+      return `
+                <label style="display:flex; align-items:flex-start; gap:0.65rem; padding:0.65rem 0.8rem; background:var(--cdss-surface-alt); border:1px solid ${isChecked ? "var(--cdss-success)" : "var(--cdss-border-subtle)"}; border-radius:8px; cursor:pointer; transition:all 0.2s ease;">
+                  <input type="checkbox" class="cdss-de-esc-cb" data-crit-idx="${idx}" ${isChecked ? "checked" : ""} style="margin-top:3px; width:16px; height:16px; accent-color:var(--cdss-success);" />
+                  <span style="font-size:0.8rem; line-height:1.4; color:var(--cdss-text);">
+                    ${crit}
+                  </span>
+                </label>
+              `;
+    }).join("")}
+          </div>
+
+          <div id="de-escalation-verdict" style="margin-top:0.85rem;">
+            <!-- Dynamically populated verdict badge -->
+          </div>
+        </div>
+      </section>
+
+      <!-- WIDGET B\xD9 ALBUMIN KHI CPT \u0110\u1EA0T TR\u1EA6N HO\u1EB6C GI\u1EA2M ALBUMIN M\xC1U (TRANG 20 - Q\u0110 2760) -->
+      <section class="cdss-card" style="margin-bottom:0;">
+        <div class="cdss-card-header">
+          <div>
+            <h2 class="cdss-card-title">
+              <i class="fa-solid fa-droplet text-purple-600" style="color:var(--cdss-purple);"></i> Ph\xE1c \u0110\u1ED3 B\xF9 Albumin T\u0129nh M\u1EA1ch (B\u1ED9 Y T\u1EBF - Trang 20 Q\u0110 2760)
+            </h2>
+            <div style="font-size:0.78rem; color:var(--cdss-text-muted); margin-top:2px;">
+              Ch\u1EC9 \u0111\u1ECBnh khi t\u1ED5ng li\u1EC1u CPT \u2265 60 ml/kg m\xE0 c\xF2n s\u1ED1c, ho\u1EB7c s\u1ED1c tr\u01A1 k\xE8m Albumin m\xE1u < 2.5 - 3.0 g/dL.
+            </div>
+          </div>
+          <span class="cdss-brand-badge" style="background:var(--cdss-purple-light); color:var(--cdss-purple); border-color:var(--cdss-purple);">Albumin 5% / 10% / 20%</span>
+        </div>
+
+        <div style="padding:1rem;">
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:0.75rem; margin-bottom:1rem;">
+            <div class="cdss-recipe-box">
+              <div class="cdss-recipe-row">
+                <span class="cdss-recipe-key">T\u1ED5ng l\u01B0\u1EE3ng Albumin c\u1EA7n b\xF9:</span>
+                <strong>${albResult.albuminGrams} gam</strong>
+              </div>
+              <div class="cdss-recipe-row">
+                <span class="cdss-recipe-key">T\u01B0\u01A1ng \u0111\u01B0\u01A1ng l\u1ECD 20% 50ml:</span>
+                <strong style="color:var(--cdss-purple);">${albResult.vials20Percent50ml} l\u1ECD (50ml/l\u1ECD)</strong>
+              </div>
+              <div class="cdss-recipe-row">
+                <span class="cdss-recipe-key">T\u1ED1c \u0111\u1ED9 truy\u1EC1n g\u1EE3i \xFD:</span>
+                <span>${albResult.infusionRateMlH}</span>
+              </div>
+            </div>
+
+            <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.75rem;">
+              <div style="font-size:0.8rem; font-weight:800; color:var(--cdss-purple); margin-bottom:0.35rem;">
+                <i class="fa-solid fa-mortar-pestle"></i> H\u01B0\u1EDBng D\u1EABn Pha Dung D\u1ECBch Albumin (Ph\u1EE5 l\u1EE5c 18):
+              </div>
+              <div style="font-size:0.76rem; line-height:1.45; color:var(--cdss-text);">
+                \u2022 <strong>Pha Albumin 5%:</strong> ${albResult.preparation5Percent}<br>
+                \u2022 <strong>Pha Albumin 10%:</strong> ${albResult.preparation10Percent}<br>
+                \u2022 <strong>D\xF9ng Albumin 20% nguy\xEAn ch\u1EA5t:</strong> Truy\u1EC1n qua b\u01A1m ti\xEAm \u0111i\u1EC7n 2 - 5 ml/kg khi c\xF3 qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n n\u1EB7ng ho\u1EB7c ph\xF9 ph\u1ED5i c\u1EA5p.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+    const colloidBtns = container.querySelectorAll("#colloid-type-selector button");
+    colloidBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.currentTarget;
+        const cType = target.getAttribute("data-colloid-type");
+        if (cType) {
+          this.selectedColloidType = cType;
+          this.renderColloidScheduleView(container, plan);
+          this.showToast(`\u0110\xE3 chuy\u1EC3n lo\u1EA1i CPT: ${DENGUE_COLLOID_METADATA[cType].shortName}`);
+        }
+      });
+    });
+    const cbList = container.querySelectorAll(".cdss-de-esc-cb");
+    const updateVerdict = () => {
+      const checkedCount = Object.values(this.deEscalationChecked).filter(Boolean).length;
+      const totalCount = DENGUE_DE_ESCALATION_CHECKLIST.length;
+      const verdictEl = container.querySelector("#de-escalation-verdict");
+      if (verdictEl) {
+        if (checkedCount >= 5) {
+          verdictEl.innerHTML = `
+            <div style="background:rgba(16, 185, 129, 0.1); border:1.5px solid var(--cdss-success); border-radius:8px; padding:0.75rem 1rem; display:flex; align-items:center; gap:0.6rem;">
+              <i class="fa-solid fa-circle-check text-success" style="font-size:1.25rem;"></i>
+              <div>
+                <strong style="color:var(--cdss-success); font-size:0.88rem;">\u0110\xC3 \u0110\u1EA0T ${checkedCount}/${totalCount} TI\xCAU CHU\u1EA8N DE-ESCALATION (PH\u1EE4 L\u1EE4C 10)</strong>
+                <div style="font-size:0.76rem; color:var(--cdss-text);">B\u1EC7nh nh\xE2n c\u1EA3i thi\u1EC7n t\u1ED1t. \u0110\u1EE7 \u0111i\u1EC1u ki\u1EC7n h\u1EA1 b\u1EADc t\u1ED1c \u0111\u1ED9 CPT ho\u1EB7c chuy\u1EC3n sang b\xF9 d\u1ECBch tinh th\u1EC3 \u0111i\u1EC7n gi\u1EA3i (Ringer Lactate / NaCl 0.9%).</div>
+              </div>
+            </div>
+          `;
+        } else {
+          verdictEl.innerHTML = `
+            <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.6rem 0.85rem; font-size:0.76rem; color:var(--cdss-text-muted);">
+              \u0110\xE3 \u0111\u1EA1t <strong>${checkedCount}/${totalCount}</strong> ti\xEAu chu\u1EA9n. Ti\u1EBFp t\u1EE5c duy tr\xEC ph\xE1c \u0111\u1ED3 CPT hi\u1EC7n t\u1EA1i v\xE0 \u0111\xE1nh gi\xE1 l\u1EA1i sau 1 gi\u1EDD.
+            </div>
+          `;
+        }
+      }
+    };
+    cbList.forEach((cb) => {
+      cb.addEventListener("change", (e) => {
+        const target = e.target;
+        const idx = parseInt(target.getAttribute("data-crit-idx") || "0", 10);
+        this.deEscalationChecked[idx] = target.checked;
+        const label = target.closest("label");
+        if (label) {
+          label.style.borderColor = target.checked ? "var(--cdss-success)" : "var(--cdss-border-subtle)";
+        }
+        updateVerdict();
+      });
+    });
+    const btnCheckAll = container.querySelector("#btn-check-all-de-escalation");
+    if (btnCheckAll) {
+      btnCheckAll.addEventListener("click", () => {
+        DENGUE_DE_ESCALATION_CHECKLIST.forEach((_, idx) => {
+          this.deEscalationChecked[idx] = true;
+        });
+        cbList.forEach((cb) => {
+          cb.checked = true;
+          const label = cb.closest("label");
+          if (label) label.style.borderColor = "var(--cdss-success)";
+        });
+        updateVerdict();
+        this.showToast("\u0110\xE3 \u0111\xE1nh d\u1EA5u \u0111\u1EA1t 7/7 ti\xEAu chu\u1EA9n chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i!");
+      });
+    }
+    updateVerdict();
+  }
+  // VIEW 3: PHÁC ĐỒ XỬ TRÍ KHI KHÔNG ĐÁP ỨNG & SỐC TRƠ
   renderRefractorySuiteView(container, plan) {
     const effectiveWeight = plan.weightResult.adjustedWeightKg;
     const albuminCalc = calculateAlbuminDose(effectiveWeight, 2, 3.5);
@@ -2975,7 +3868,7 @@ var DengueCDSSController = class {
                   B\u1EC7nh nh\xE2n (${effectiveWeight}kg): <strong>${Math.round(10 * effectiveWeight)} - ${rateAdult} ml/gi\u1EDD</strong>
                 </div>
                 <div style="font-size:0.75rem; color:var(--cdss-text-muted); margin-top:6px;">
-                  Truy\u1EC1n trong 1 gi\u1EDD. N\u1EBFu ra s\u1ED1c: gi\u1EA3m b\u1EADc 10 -> 7.5 -> 5 -> 3 ml/kg/h.
+                  Truy\u1EC1n trong 1 gi\u1EDD. N\u1EBFu ra s\u1ED1c: chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i 10 (2h) -> 6 (2h) -> 3 (5-7h) -> 1.5 ml/kg/h (12h).
                 </div>
               </div>
             </div>
@@ -3279,23 +4172,298 @@ var DengueCDSSController = class {
       }
     }
   }
-  // VIEW 3: THUỐC VẬN MẠCH 4 LOẠI BƠM TIÊM ĐIỆN 50ML
+  // VIEW 4: THUỐC VẬN MẠCH & LƯU ĐỒ HUYẾT ĐỘNG CVP BƠM TIÊM ĐIỆN 50ML (PHỤ LỤC 15 & 18)
   renderVasopressorsView(container, plan) {
+    const effectiveWeight = plan.weightResult.adjustedWeightKg;
     const {
       vasopressorDopamin: d,
       vasopressorNoradrenalin: n,
       vasopressorDobutamin: dob,
       vasopressorAdrenalin: adr
     } = plan;
+    const decision = evaluateVasopressorAlgorithm(
+      this.currentHemodynamic,
+      effectiveWeight,
+      plan.patient.ageYears
+    );
+    plan.vasopressorDecision = decision;
+    const cptTestMl = Math.round(5 * effectiveWeight);
+    const cptTestPumpRate = Math.round(10 * effectiveWeight);
+    const curDrug = this.interactiveDrugName;
+    const isNoraOrAdr = curDrug.toLowerCase().includes("noradrenalin") || curDrug.toLowerCase().includes("adrenalin");
+    const calcRecipeTotalMg = isNoraOrAdr ? Math.round(0.3 * effectiveWeight * 100) / 100 : Math.round(3 * effectiveWeight * 10) / 10;
+    const calcEquivText = isNoraOrAdr ? "1 ml/gi\u1EDD = 0.1 \xB5g/kg/ph\xFAt" : "1 ml/gi\u1EDD = 1 \xB5g/kg/ph\xFAt";
     container.innerHTML = `
+      <!-- KH\u1ED0I 1: L\u01AFU \u0110\u1ED2 CH\u1ECCN THU\u1ED0C V\u1EACN M\u1EA0CH THEO CVP & HUY\u1EBET \u0110\u1ED8NG (PH\u1EE4 L\u1EE4C 15 & 18) -->
+      <section class="cdss-card" style="margin-top:0; margin-bottom:1.25rem;">
+        <div class="cdss-card-header">
+          <div>
+            <h2 class="cdss-card-title">
+              <i class="fa-solid fa-diagram-project text-primary"></i> L\u01B0u \u0110\u1ED3 Ch\u1ECDn Thu\u1ED1c V\u1EADn M\u1EA1ch &amp; Inotrope Theo CVP &amp; Huy\u1EBFt \u0110\u1ED9ng (Ph\u1EE5 L\u1EE5c 15 &amp; 18)
+            </h2>
+            <div style="font-size:0.78rem; color:var(--cdss-text-muted); margin-top:2px;">
+              Ph\xE2n t\u1EA7ng theo \xC1p l\u1EF1c t\u0129nh m\u1EA1ch trung t\xE2m (CVP), Co b\xF3p c\u01A1 tim v\xE0 Tr\u01B0\u01A1ng l\u1EF1c m\u1EA1ch (Q\u0110 2760/Q\u0110-BYT)
+            </div>
+          </div>
+          <span class="cdss-brand-badge">Ph\u1EE5 l\u1EE5c 15 &amp; 18</span>
+        </div>
+
+        <div style="padding:1rem;">
+          <!-- B\u1ED8 CH\u1ECCN 4 TR\u1EE4C HUY\u1EBET \u0110\u1ED8NG H\u1ECCC -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.75rem; margin-bottom:1rem;">
+            <!-- 1. M\u1EE9c CVP -->
+            <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.65rem 0.8rem;">
+              <div style="font-size:0.72rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); margin-bottom:0.4rem;">
+                <i class="fa-solid fa-gauge-high text-primary"></i> 1. M\u1EE9c CVP \u0110o \u0110\u01B0\u1EE3c:
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.35rem;">
+                <button type="button" class="cdss-segmented-btn ${this.currentHemodynamic.cvpLevel === "low_normal" ? "active" : ""}" data-hemo-prop="cvpLevel" data-hemo-val="low_normal" style="font-size:0.75rem; text-align:left; padding:0.35rem 0.6rem;">
+                  <strong>CVP \u2264 15 cmH2O</strong> (Ch\u01B0a \u0111\u1EE7 ti\u1EC1n t\u1EA3i / Test CPT)
+                </button>
+                <button type="button" class="cdss-segmented-btn ${this.currentHemodynamic.cvpLevel === "high" ? "active" : ""}" data-hemo-prop="cvpLevel" data-hemo-val="high" style="font-size:0.75rem; text-align:left; padding:0.35rem 0.6rem;">
+                  <strong>CVP > 15 cmH2O</strong> (\u0110\u1EE7 ti\u1EC1n t\u1EA3i / Nguy c\u01A1 qu\xE1 t\u1EA3i)
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. S\u1EE9c co b\xF3p c\u01A1 tim -->
+            <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.65rem 0.8rem;">
+              <div style="font-size:0.72rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); margin-bottom:0.4rem;">
+                <i class="fa-solid fa-heart-pulse text-danger"></i> 2. Co B\xF3p C\u01A1 Tim:
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.35rem;">
+                <button type="button" class="cdss-segmented-btn ${this.currentHemodynamic.cardiacContractility === "normal" ? "active" : ""}" data-hemo-prop="cardiacContractility" data-hemo-val="normal" style="font-size:0.75rem; text-align:left; padding:0.35rem 0.6rem;">
+                  <strong>B\xECnh th\u01B0\u1EDDng</strong>
+                </button>
+                <button type="button" class="cdss-segmented-btn ${this.currentHemodynamic.cardiacContractility === "reduced" ? "active" : ""}" data-hemo-prop="cardiacContractility" data-hemo-val="reduced" style="font-size:0.75rem; text-align:left; padding:0.35rem 0.6rem;">
+                  <strong>Gi\u1EA3m co b\xF3p</strong> (Vi\xEAm c\u01A1 tim / S\u1ED1c tim Dengue)
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Tr\u01B0\u01A1ng l\u1EF1c m\u1EA1ch & Huy\u1EBFt \xE1p -->
+            <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.65rem 0.8rem;">
+              <div style="font-size:0.72rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); margin-bottom:0.4rem;">
+                <i class="fa-solid fa-bolt text-warning"></i> 3. Tr\u01B0\u01A1ng L\u1EF1c M\u1EA1ch &amp; HA:
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.35rem;">
+                <button type="button" class="cdss-segmented-btn ${this.currentHemodynamic.vascularTone === "normal" ? "active" : ""}" data-hemo-prop="vascularTone" data-hemo-val="normal" style="font-size:0.75rem; text-align:left; padding:0.35rem 0.6rem;">
+                  <strong>B\xECnh th\u01B0\u1EDDng</strong>
+                </button>
+                <button type="button" class="cdss-segmented-btn ${this.currentHemodynamic.vascularTone === "low_warm_shock" ? "active" : ""}" data-hemo-prop="vascularTone" data-hemo-val="low_warm_shock" style="font-size:0.75rem; text-align:left; padding:0.35rem 0.6rem;">
+                  <strong>T\u1EE5t HA t\xE2m tr\u01B0\u01A1ng / S\u1ED1c \u1EA5m</strong> (Gi\u1EA3m kh\xE1ng l\u1EF1c)
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. Qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n -->
+            <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.65rem 0.8rem;">
+              <div style="font-size:0.72rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); margin-bottom:0.4rem;">
+                <i class="fa-solid fa-water text-teal-600"></i> 4. Qu\xE1 T\u1EA3i Tu\u1EA7n Ho\xE0n:
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.35rem;">
+                <button type="button" class="cdss-segmented-btn ${!this.currentHemodynamic.isOverloaded ? "active" : ""}" data-hemo-prop="isOverloaded" data-hemo-val="false" style="font-size:0.75rem; text-align:left; padding:0.35rem 0.6rem;">
+                  <strong>Kh\xF4ng qu\xE1 t\u1EA3i</strong>
+                </button>
+                <button type="button" class="cdss-segmented-btn ${this.currentHemodynamic.isOverloaded ? "active" : ""}" data-hemo-prop="isOverloaded" data-hemo-val="true" style="font-size:0.75rem; text-align:left; padding:0.35rem 0.6rem;">
+                  <strong>C\xF3 qu\xE1 t\u1EA3i / D\u1ECDa ph\xF9 ph\u1ED5i c\u1EA5p</strong>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- K\u1EBET QU\u1EA2 CH\u1EC8 \u0110\u1EA0O L\xC2M S\xC0NG THEO THU\u1EACT TO\xC1N B\u1ED8 Y T\u1EBE -->
+          <div style="background:var(--cdss-surface-alt); border:1.5px solid var(--cdss-primary); border-radius:10px; padding:1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.75rem; flex-wrap:wrap; gap:8px;">
+              <div>
+                <span style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:var(--cdss-primary); letter-spacing:0.5px;">
+                  Ch\u1EC9 \u0110\u1ECBnh Thu\u1ED1c &amp; H\xE0nh \u0110\u1ED9ng Khuy\u1EBFn C\xE1o:
+                </span>
+                <div style="font-size:1.15rem; font-weight:800; color:var(--cdss-text); margin-top:2px;">
+                  ${decision.primaryDrug}
+                </div>
+              </div>
+              <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                <span class="cdss-dose-badge cdss-dose-badge--danger" style="font-size:0.8rem;">Li\u1EC1u: ${decision.primaryDose}</span>
+                <span class="cdss-dose-badge" style="font-size:0.8rem; background:rgba(13,148,136,0.12); color:var(--cdss-primary); border-color:var(--cdss-primary);">
+                  B\u01A1m \u0111i\u1EC7n: ${decision.primaryPumpRateMlH}
+                </span>
+              </div>
+            </div>
+
+            <!-- H\xE0nh \u0110\u1ED9ng V\u1EDBi D\u1ECBch Truy\u1EC1n -->
+            <div style="background:var(--cdss-surface); border:1px solid var(--cdss-border-subtle); border-radius:6px; padding:0.65rem 0.85rem; margin-bottom:0.65rem;">
+              <strong style="color:var(--cdss-danger); font-size:0.82rem;">
+                <i class="fa-solid fa-hand-holding-droplet"></i> H\xE0nh \u0111\u1ED9ng d\u1ECBch truy\u1EC1n:
+              </strong>
+              <span style="font-size:0.8rem; color:var(--cdss-text); margin-left:4px;">
+                ${decision.fluidAction}
+              </span>
+            </div>
+
+            <!-- Thu\u1ED1c Ph\u1ED1i H\u1EE3p / C\u1EE9u Nguy n\u1EBFu c\xF3 -->
+            ${decision.secondaryDrug || decision.rescueDrug ? `
+              <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.65rem; font-size:0.78rem;">
+                ${decision.secondaryDrug ? `
+                  <div style="background:var(--cdss-surface); border:1px solid var(--cdss-border-subtle); border-radius:6px; padding:0.45rem 0.75rem;">
+                    <strong>Ph\u1ED1i h\u1EE3p:</strong> <span style="color:var(--cdss-purple); font-weight:700;">${decision.secondaryDrug}</span> ${decision.secondaryDose ? `(${decision.secondaryDose})` : ""}
+                  </div>
+                ` : ""}
+                ${decision.rescueDrug ? `
+                  <div style="background:var(--cdss-surface); border:1px solid var(--cdss-danger); border-radius:6px; padding:0.45rem 0.75rem; color:var(--cdss-danger);">
+                    <strong>C\u1EE9u nguy:</strong> <span style="font-weight:800;">${decision.rescueDrug}</span>
+                  </div>
+                ` : ""}
+              </div>
+            ` : ""}
+
+            <!-- L\xFD lu\u1EADn l\xE2m s\xE0ng & Ch\u1EC9 d\u1EABn theo d\xF5i -->
+            <div style="font-size:0.78rem; line-height:1.45; color:var(--cdss-text-muted);">
+              <div><strong>L\xFD lu\u1EADn l\xE2m s\xE0ng:</strong> ${decision.clinicalRationale}</div>
+              <ul style="margin:0.4rem 0 0 1.2rem; padding:0;">
+                ${decision.monitoringDirectives.map((dir) => `<li>${dir}</li>`).join("")}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KH\u1ED0I 2: \xD4 TEST D\u1ECACH CAO PH\xC2N T\u1EEC 5 ML/KG TRONG 30 PH\xDAT (PH\u1EE4 L\u1EE4C 18) -->
+      <section class="cdss-card" style="margin-bottom:1.25rem;">
+        <div class="cdss-card-header">
+          <div>
+            <h2 class="cdss-card-title">
+              <i class="fa-solid fa-stopwatch text-teal-600"></i> Quy Tr\xECnh Test D\u1ECBch Cao Ph\xE2n T\u1EED 5 ml/kg Trong 30 Ph\xFAt (Ph\u1EE5 L\u1EE5c 18 - Q\u0110 2760)
+            </h2>
+            <div style="font-size:0.78rem; color:var(--cdss-text-muted); margin-top:2px;">
+              B\u1EAFt bu\u1ED9c th\u1EF1c hi\u1EC7n khi CVP \u2264 15 cmH2O nh\u1EB1m \u0111\xE1nh gi\xE1 m\u1EE9c \u0111\xE1p \u1EE9ng th\u1EC3 t\xEDch tr\u01B0\u1EDBc khi n\xE2ng v\u1EADn m\u1EA1ch.
+            </div>
+          </div>
+          <span class="cdss-brand-badge" style="background:var(--cdss-primary-light); color:var(--cdss-primary); border-color:var(--cdss-primary);">5 ml/kg / 30 ph\xFAt</span>
+        </div>
+
+        <div style="padding:1rem;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem; margin-bottom:0.85rem;">
+            <div class="cdss-recipe-box">
+              <div class="cdss-recipe-row">
+                <span class="cdss-recipe-key">C\xE2n n\u1EB7ng t\xEDnh d\u1ECBch:</span>
+                <strong>${effectiveWeight} kg</strong>
+              </div>
+              <div class="cdss-recipe-row">
+                <span class="cdss-recipe-key">Th\u1EC3 t\xEDch Test CPT (5 ml/kg):</span>
+                <strong style="color:var(--cdss-primary); font-size:1.05rem;">${cptTestMl} ml</strong>
+              </div>
+              <div class="cdss-recipe-row">
+                <span class="cdss-recipe-key">Th\u1EDDi gian truy\u1EC1n:</span>
+                <span>Ch\xEDnh x\xE1c <strong>30 ph\xFAt</strong></span>
+              </div>
+              <div class="cdss-recipe-row cdss-recipe-highlight text-primary">
+                <span>T\u1ED1c \u0111\u1ED9 b\u01A1m m\xE1y:</span>
+                <span><strong>${cptTestPumpRate} ml/gi\u1EDD</strong> trong 30 ph\xFAt</span>
+              </div>
+            </div>
+
+            <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.75rem; font-size:0.78rem; line-height:1.45;">
+              <strong style="color:var(--cdss-primary); font-size:0.82rem; display:block; margin-bottom:0.35rem;">
+                <i class="fa-solid fa-stethoscope"></i> \u0110\xE1nh Gi\xE1 \u0110\xE1p \u1EE8ng Sau 30 Ph\xFAt Test CPT:
+              </strong>
+              \u2022 <strong>\u0394CVP t\u0103ng \u2265 5 cmH2O ho\u1EB7c Huy\u1EBFt \xE1p l\xEAn:</strong> Th\u1EC3 t\xEDch l\xF2ng m\u1EA1ch thi\u1EBFu h\u1EE5t \u279C Ti\u1EBFp t\u1EE5c truy\u1EC1n CPT t\u1ED1c \u0111\u1ED9 10 - 20 ml/kg/h.<br>
+              \u2022 <strong>CVP t\u0103ng v\u1ECDt > 15 cmH2O m\xE0 HA kh\xF4ng l\xEAn:</strong> Ti\u1EC1n t\u1EA3i \u0111\xE3 \u0111\u1EA7y, nguy c\u01A1 suy tim/qu\xE1 t\u1EA3i \u279C Ng\u01B0ng d\u1ECBch, d\xF9ng ngay <strong>Dobutamin</strong> ho\u1EB7c <strong>Noradrenalin</strong>.<br>
+              \u2022 <strong>\u0394CVP < 5 cmH2O & HA kh\xF4ng c\u1EA3i thi\u1EC7n:</strong> Th\u1EA5t tho\xE1t huy\u1EBFt t\u01B0\u01A1ng c\u1EF1c nhanh ho\u1EB7c m\u1EA5t m\xE1u \u1EA9n \u279C \u0110o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng, si\xEAu \xE2m tim/b\u1EE5ng kh\u1EA9n.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KH\u1ED0I 3: B\u1ED8 T\xCDNH LI\u1EC0U & T\u1ED0C \u0110\u1ED8 B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML HAI CHI\u1EC0U TH\u1EDCI GIAN TH\u1EF0C -->
+      <section class="cdss-card" style="margin-bottom:1.25rem;">
+        <div class="cdss-card-header">
+          <div>
+            <h2 class="cdss-card-title">
+              <i class="fa-solid fa-calculator text-primary"></i> B\u1ED9 T\xEDnh Li\u1EC1u &amp; T\u1ED1c \u0110\u1ED9 B\u01A1m Ti\xEAm \u0110i\u1EC7n 50ml Hai Chi\u1EC1u T\u01B0\u01A1ng T\xE1c
+            </h2>
+            <div style="font-size:0.78rem; color:var(--cdss-text-muted); margin-top:2px;">
+              Nh\u1EADp Li\u1EC1u (\xB5g/kg/ph\xFAt) \u279C T\u1EF1 t\xEDnh T\u1ED1c \u0111\u1ED9 b\u01A1m (ml/h) HO\u1EB6C Nh\u1EADp T\u1ED1c \u0111\u1ED9 b\u01A1m (ml/h) \u279C T\u1EF1 t\xEDnh Li\u1EC1u
+            </div>
+          </div>
+          <span class="cdss-brand-badge">Realtime 2-Way</span>
+        </div>
+
+        <div style="padding:1rem;">
+          <!-- N\xFAt ch\u1ECDn 4 lo\u1EA1i thu\u1ED1c v\u1EADn m\u1EA1ch -->
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem;" id="calc-drug-selector">
+            ${["Dopamin", "Noradrenalin", "Dobutamin", "Adrenalin"].map((dr) => `
+              <button type="button" class="cdss-case-pill ${dr === this.interactiveDrugName ? "active" : ""}" data-calc-drug="${dr}" style="font-size:0.8rem; padding:0.45rem 0.85rem;">
+                <i class="fa-solid fa-syringe ${dr.includes("Noradrenalin") || dr.includes("Adrenalin") ? "text-danger" : "text-primary"}"></i>
+                <span>${dr}</span>
+              </button>
+            `).join("")}
+          </div>
+
+          <!-- Card c\xF4ng th\u1EE9c pha c\u1EE7a thu\u1ED1c \u0111ang ch\u1ECDn -->
+          <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.75rem 1rem; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <div>
+              <span style="font-size:0.72rem; color:var(--cdss-text-muted); text-transform:uppercase;">C\xF4ng Th\u1EE9c Pha B\u01A1m Ti\xEAm \u0110i\u1EC7n 50ml (BYT):</span>
+              <div style="font-size:0.95rem; font-weight:800; color:var(--cdss-text); margin-top:2px;">
+                ${curDrug}: Pha <strong>${calcRecipeTotalMg} mg</strong> trong 50ml Glucose 5%
+              </div>
+            </div>
+            <div class="cdss-brand-badge" style="font-size:0.8rem; background:rgba(13,148,136,0.12); color:var(--cdss-primary); border-color:var(--cdss-primary);">
+              Quy \u0111\u1ED5i: ${calcEquivText}
+            </div>
+          </div>
+
+          <!-- B\u1EA3ng 2 input song song + Slider -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+            <!-- Input 1: Li\u1EC1u (\xB5g/kg/ph\xFAt) -->
+            <div style="background:var(--cdss-surface); border:1.5px solid var(--cdss-primary); border-radius:8px; padding:0.85rem;">
+              <label class="cdss-form-label" style="font-size:0.78rem; font-weight:800; color:var(--cdss-primary);">
+                <i class="fa-solid fa-weight-hanging"></i> Li\u1EC1u Thu\u1ED1c (\xB5g/kg/ph\xFAt):
+              </label>
+              <div class="cdss-input-group" style="margin-top:4px;">
+                <input type="number" id="calc-input-dose" min="0" max="30" step="${isNoraOrAdr ? "0.01" : "0.5"}" value="${this.interactiveDose}" class="cdss-input" style="font-size:1.15rem; font-weight:800; font-family:var(--cdss-font-mono);" />
+                <span class="cdss-input-suffix">\xB5g/kg/p</span>
+              </div>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); margin-top:4px;">
+                Li\u1EC1u chu\u1EA9n: ${curDrug.toLowerCase().includes("dopamin") ? "5 - 10 \xB5g/kg/p" : curDrug.toLowerCase().includes("noradrenalin") ? "0.05 - 1.0 \xB5g/kg/p" : curDrug.toLowerCase().includes("dobutamin") ? "3 - 10 \xB5g/kg/p" : "0.05 - 0.3 \xB5g/kg/p"}
+              </div>
+            </div>
+
+            <!-- Input 2: T\u1ED1c \u0111\u1ED9 b\u01A1m ti\xEAm \u0111i\u1EC7n (ml/gi\u1EDD) -->
+            <div style="background:var(--cdss-surface); border:1.5px solid var(--cdss-teal); border-radius:8px; padding:0.85rem;">
+              <label class="cdss-form-label" style="font-size:0.78rem; font-weight:800; color:var(--cdss-teal);">
+                <i class="fa-solid fa-sliders"></i> T\u1ED1c \u0110\u1ED9 B\u01A1m Ti\xEAm \u0110i\u1EC7n 50ml (ml/gi\u1EDD):
+              </label>
+              <div class="cdss-input-group" style="margin-top:4px;">
+                <input type="number" id="calc-input-rate" min="0" max="50" step="0.1" value="${this.interactivePumpRate}" class="cdss-input" style="font-size:1.15rem; font-weight:800; font-family:var(--cdss-font-mono); color:var(--cdss-teal);" />
+                <span class="cdss-input-suffix">ml/gi\u1EDD</span>
+              </div>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); margin-top:4px;">
+                C\xE0i \u0111\u1EB7t tr\u1EF1c ti\u1EBFp tr\xEAn m\xE1y b\u01A1m ti\xEAm \u0111i\u1EC7n 50ml
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider k\xE9o t\u1ED1c \u0111\u1ED9 -->
+          <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.75rem 1rem;">
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:4px;">
+              <span>K\xE9o ch\u1EC9nh t\u1ED1c \u0111\u1ED9 b\u01A1m nhanh:</span>
+              <strong id="slider-rate-label" style="color:var(--cdss-primary); font-family:var(--cdss-font-mono);">${this.interactivePumpRate} ml/gi\u1EDD (${this.interactiveDose} \xB5g/kg/p)</strong>
+            </div>
+            <input type="range" id="calc-slider-rate" min="0" max="${isNoraOrAdr ? "15" : "30"}" step="${isNoraOrAdr ? "0.1" : "0.5"}" value="${this.interactivePumpRate}" style="width:100%; height:6px; accent-color:var(--cdss-primary); cursor:pointer;" />
+          </div>
+        </div>
+      </section>
+
+      <!-- KH\u1ED0I 4: 4 TH\u1EBA THU\u1ED0C V\u1EACN M\u1EA0CH CHU\u1EA8N B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML -->
       <div class="cdss-card" style="margin-top:0;">
         <div class="cdss-card-header">
           <div>
             <h2 class="cdss-card-title">
-              <i class="fa-solid fa-syringe text-primary"></i> Ph\xE1c \u0110\u1ED3 4 Thu\u1ED1c V\u1EADn M\u1EA1ch B\u01A1m Ti\xEAm \u0110i\u1EC7n 50ml
+              <i class="fa-solid fa-pills text-primary"></i> Tra C\u1EE9u 4 Thu\u1ED1c V\u1EADn M\u1EA1ch Chu\u1EA9n B\u01A1m Ti\xEAm \u0110i\u1EC7n 50ml
             </h2>
             <div style="font-size:0.78rem; color:var(--cdss-text-muted); margin-top:2px;">
-              Chu\u1EA9n h\xF3a 100% theo Ph\u1EE5 l\u1EE5c 15 &amp; 18 \u2014 Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT (T\xEDnh theo ${plan.weightResult.adjustedWeightKg} kg c\xE2n t\xEDnh d\u1ECBch)
+              C\xF4ng th\u1EE9c pha, ch\u1EC9 \u0111\u1ECBnh, dung m\xF4i v\xE0 li\u1EC1u d\xF9ng chu\u1EA9n B\u1ED9 Y T\u1EBF (T\xEDnh theo ${effectiveWeight} kg)
             </div>
           </div>
           <span class="cdss-brand-badge">B\u01A1m Ti\xEAm 50ml</span>
@@ -3462,6 +4630,79 @@ var DengueCDSSController = class {
         </div>
       </div>
     `;
+    const hemoBtns = container.querySelectorAll(".cdss-segmented-btn[data-hemo-prop]");
+    hemoBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.currentTarget;
+        const prop = target.getAttribute("data-hemo-prop");
+        const val = target.getAttribute("data-hemo-val");
+        if (prop && val !== null) {
+          if (prop === "isOverloaded") {
+            this.currentHemodynamic.isOverloaded = val === "true";
+          } else {
+            this.currentHemodynamic[prop] = val;
+          }
+          this.renderVasopressorsView(container, plan);
+          this.showToast("\u0110\xE3 c\u1EADp nh\u1EADt l\u01B0u \u0111\u1ED3 huy\u1EBFt \u0111\u1ED9ng h\u1ECDc!");
+        }
+      });
+    });
+    const calcDrugBtns = container.querySelectorAll("#calc-drug-selector button");
+    calcDrugBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.currentTarget;
+        const drug = target.getAttribute("data-calc-drug");
+        if (drug) {
+          this.interactiveDrugName = drug;
+          if (drug.toLowerCase().includes("noradrenalin") || drug.toLowerCase().includes("adrenalin")) {
+            this.interactiveDose = 0.1;
+            this.interactivePumpRate = 1;
+          } else {
+            this.interactiveDose = 5;
+            this.interactivePumpRate = 5;
+          }
+          this.renderVasopressorsView(container, plan);
+        }
+      });
+    });
+    const inputDose = container.querySelector("#calc-input-dose");
+    const inputRate = container.querySelector("#calc-input-rate");
+    const sliderRate = container.querySelector("#calc-slider-rate");
+    const sliderLabel = container.querySelector("#slider-rate-label");
+    const syncFromDose = (dose) => {
+      this.interactiveDose = dose;
+      const rate = calculatePumpRateFromDose(this.interactiveDrugName, dose);
+      this.interactivePumpRate = rate;
+      if (inputRate) inputRate.value = rate.toString();
+      if (sliderRate) sliderRate.value = rate.toString();
+      if (sliderLabel) sliderLabel.textContent = `${rate} ml/gi\u1EDD (${dose} \xB5g/kg/p)`;
+    };
+    const syncFromRate = (rate) => {
+      this.interactivePumpRate = rate;
+      const dose = calculateDoseFromPumpRate(this.interactiveDrugName, rate);
+      this.interactiveDose = dose;
+      if (inputDose) inputDose.value = dose.toString();
+      if (sliderRate) sliderRate.value = rate.toString();
+      if (sliderLabel) sliderLabel.textContent = `${rate} ml/gi\u1EDD (${dose} \xB5g/kg/p)`;
+    };
+    if (inputDose) {
+      inputDose.addEventListener("input", () => {
+        const dose = parseFloat(inputDose.value) || 0;
+        syncFromDose(dose);
+      });
+    }
+    if (inputRate) {
+      inputRate.addEventListener("input", () => {
+        const rate = parseFloat(inputRate.value) || 0;
+        syncFromRate(rate);
+      });
+    }
+    if (sliderRate) {
+      sliderRate.addEventListener("input", () => {
+        const rate = parseFloat(sliderRate.value) || 0;
+        syncFromRate(rate);
+      });
+    }
   }
   // VIEW 4: ĐIỀU DƯỠNG AN TOÀN & BẢNG KIỂM
   renderNursingChecklistView(container, plan) {

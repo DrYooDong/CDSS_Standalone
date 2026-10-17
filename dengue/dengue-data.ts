@@ -3,7 +3,7 @@
  * Path: src/content/knowledge-vault/cdss/dengue/dengue-data.ts
  */
 
-import { Gender } from '../cdss-types';
+import { Gender, DengueAgeGroup, ColloidType } from '../cdss-types';
 
 /**
  * Bảng Cân Nặng Chuẩn CDC 2014 Theo Tuổi & Giới (Phụ lục 9 - QĐ 2760/QĐ-BYT)
@@ -204,10 +204,10 @@ export const DENGUE_FLUID_TEMPLATES = {
         stageName: 'Cữ 3: Duy trì & Cai dịch',
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4, 6],
+        defaultDurationHours: 6,
+        durationOptions: [6, 8, 12, 18],
         hctCheckRequired: true,
-        notes: 'Ngưng dịch khi lâm sàng ổn định, khuyến khích bù nước điện giải đường uống.'
+        notes: 'Duy trì 1.5 ml/kg/h trong 6 - 18 giờ (Phụ lục 6). Ngưng dịch sau 12 - 24 giờ khi lâm sàng ổn định.'
       }
     ]
   },
@@ -272,49 +272,58 @@ export const DENGUE_FLUID_TEMPLATES = {
     ],
     adolescent: [
       {
-        stageName: 'Cữ 1: Tải nhanh chống sốc (15-20 ml/kg/h)',
-        defaultRateMlKgH: 15,
-        rateOptions: [15, 20],
+        stageName: 'Cữ 1: Tải nhanh chống sốc giờ đầu (20 ml/kg/h)',
+        defaultRateMlKgH: 20,
+        rateOptions: [20],
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: 'Theo dõi sát Hct và sinh hiệu sau 1 giờ.'
+        notes: 'Dịch tinh thể RL hoặc NaCl 0.9% 20 ml/kg/h trong 1 giờ (Phụ lục 11). Đánh giá lại mạch, HA và Hct.'
       },
       {
-        stageName: 'Cữ 2: Giảm xuống 10 ml/kg/h',
+        stageName: 'Cữ 2: Ra sốc - Giảm xuống 10 ml/kg/h',
         defaultRateMlKgH: 10,
         rateOptions: [10],
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: 'Kiểm tra xem ra sốc hay tái sốc.'
+        notes: 'Thời gian giảm nấc bằng 1/2 trẻ nhỏ nhằm tránh quá tải dịch. Nếu ổn định chuyển Cữ 3.'
       },
       {
-        stageName: 'Cữ 3: Giảm xuống 5 ml/kg/h',
+        stageName: 'Cữ 3: Giảm xuống 7.5 ml/kg/h',
+        defaultRateMlKgH: 7.5,
+        rateOptions: [7.5],
+        defaultDurationHours: 1,
+        durationOptions: [1],
+        hctCheckRequired: false,
+        notes: 'Truyền 7.5 ml/kg/h trong 1 giờ theo Phụ lục 11 QĐ 2760/BYT.'
+      },
+      {
+        stageName: 'Cữ 4: Giảm xuống 5 ml/kg/h',
         defaultRateMlKgH: 5,
         rateOptions: [5],
-        defaultDurationHours: 2,
-        durationOptions: [2, 3],
-        hctCheckRequired: false,
-        notes: 'Rút ngắn thời gian mỗi nấc phòng ngừa quá tải.'
+        defaultDurationHours: 1,
+        durationOptions: [1, 2],
+        hctCheckRequired: true,
+        notes: 'Đo lại Hct và kiểm tra sinh hiệu trước khi giảm tiếp.'
       },
       {
-        stageName: 'Cữ 4: Giảm xuống 3 ml/kg/h',
+        stageName: 'Cữ 5: Giảm xuống 3 ml/kg/h',
         defaultRateMlKgH: 3,
         rateOptions: [3],
-        defaultDurationHours: 2,
-        durationOptions: [2, 3],
-        hctCheckRequired: true,
-        notes: 'Đánh giá tri giác và nước tiểu.'
+        defaultDurationHours: 4,
+        durationOptions: [4, 5, 6],
+        hctCheckRequired: false,
+        notes: 'Duy trì nước tiểu ≥ 0.5 ml/kg/h trong 4 - 6 giờ.'
       },
       {
-        stageName: 'Cữ 5: Duy trì 1.5 ml/kg/h & Cai dịch',
+        stageName: 'Cữ 6: Duy trì 1.5 ml/kg/h & Cai dịch',
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4, 6],
+        defaultDurationHours: 12,
+        durationOptions: [12, 14, 18],
         hctCheckRequired: true,
-        notes: 'Chuẩn bị ngưng dịch an toàn.'
+        notes: 'Duy trì 1.5 ml/kg/h trong 12 - 18 giờ. Ngưng dịch sau 24 giờ khi ra sốc hoàn toàn.'
       }
     ],
     adult: [
@@ -325,43 +334,43 @@ export const DENGUE_FLUID_TEMPLATES = {
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: 'Bù dịch tinh thể đẳng trương. Đo Hct ngay kết thúc 1 giờ.'
+        notes: 'Bù dịch tinh thể RL/NaCl 0.9% 15 ml/kg/h x 1h. Đo Hct và sinh hiệu ngay kết thúc 1 giờ (Phụ lục 16.1).'
       },
       {
-        stageName: 'Cữ 2: Ra sốc - Giảm xuống 10 ml/kg/h',
+        stageName: 'Cữ 2: Ra sốc - Tiếp tục 10 ml/kg/h trong 2 giờ',
         defaultRateMlKgH: 10,
         rateOptions: [10],
-        defaultDurationHours: 1,
+        defaultDurationHours: 2,
         durationOptions: [1, 2],
         hctCheckRequired: true,
-        notes: 'Đánh giá mạch, huyết áp, nước tiểu.'
+        notes: 'Truyền 10 ml/kg/h trong 2 giờ (Phụ lục 16.1). Nếu không cải thiện hoặc Hct tăng: đổi Cao phân tử 10 - 15 ml/kg/h.'
       },
       {
-        stageName: 'Cữ 3: Giảm xuống 5 ml/kg/h',
-        defaultRateMlKgH: 5,
-        rateOptions: [5],
+        stageName: 'Cữ 3: Giảm xuống 6 ml/kg/h trong 2 giờ',
+        defaultRateMlKgH: 6,
+        rateOptions: [6],
         defaultDurationHours: 2,
         durationOptions: [2, 3],
         hctCheckRequired: false,
-        notes: 'Lắng nghe ran phổi, đề phòng phù phổi cấp.'
+        notes: 'Chuẩn QĐ 2760/BYT: Bậc giảm ở người lớn là 6 ml/kg/h x 2h (không dùng nấc 5 ml/kg/h). Lắng nghe ran đáy phổi.'
       },
       {
-        stageName: 'Cữ 4: Giảm xuống 3 ml/kg/h',
+        stageName: 'Cữ 4: Giảm xuống 3 ml/kg/h trong 5 - 7 giờ',
         defaultRateMlKgH: 3,
         rateOptions: [3],
-        defaultDurationHours: 3,
-        durationOptions: [2, 3, 4],
+        defaultDurationHours: 5,
+        durationOptions: [5, 6, 7],
         hctCheckRequired: true,
-        notes: 'Kiểm tra Hct.'
+        notes: 'Truyền 3 ml/kg/h trong 5 - 7 giờ. Kiểm tra Hct và nước tiểu (đích ≥ 0.5 ml/kg/h).'
       },
       {
-        stageName: 'Cữ 5: Duy trì 1.5 ml/kg/h',
+        stageName: 'Cữ 5: Duy trì 1.5 ml/kg/h trong 12 giờ & Cai dịch',
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4, 6],
+        defaultDurationHours: 12,
+        durationOptions: [6, 12, 18],
         hctCheckRequired: true,
-        notes: 'Giảm dần và ngừng truyền dịch.'
+        notes: 'Duy trì 1.5 ml/kg/h trong 12 giờ. Xem xét ngưng dịch sau 24 - 48 giờ khi lâm sàng ổn định.'
       }
     ]
   },
@@ -461,34 +470,61 @@ export const DENGUE_FLUID_TEMPLATES = {
         defaultDurationHours: 0.25,
         durationOptions: [0.25],
         hctCheckRequired: true,
-        notes: 'Bơm nhanh tĩnh mạch qua kim 18G hoặc truyền dưới áp lực túi ép.'
+        notes: 'Khẩn trương truyền nhanh RL hoặc NaCl 0.9% 15 ml/kg trong 15 phút qua kim lớn 18G hoặc túi ép (Phụ lục 16.2).'
       },
       {
-        stageName: 'Cữ 2: Ra sốc -> Duy trì 10 ml/kg/h',
-        defaultRateMlKgH: 10,
-        rateOptions: [10],
+        stageName: 'Cữ 2: Tiếp nối ngay Cao Phân Tử 15 ml/kg/h trong 1 giờ',
+        defaultRateMlKgH: 15,
+        rateOptions: [15],
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: 'Nếu sốc trơ: đổi sang Cao phân tử 10-15 ml/kg/h hoặc phối hợp vận mạch.'
+        notes: 'Chuẩn QĐ 2760: Bắt buộc chuyển sang CPT (Dextran 40 / HES 200) 15 ml/kg/h x 1h ngay sau cữ bơm. Đo lại Hct và sinh hiệu.'
       },
       {
-        stageName: 'Cữ 3: Giảm xuống 5 ml/kg/h',
-        defaultRateMlKgH: 5,
-        rateOptions: [5],
+        stageName: 'Cữ 3: Ra sốc -> Chuyển điện giải 15 ml/kg/h trong 1 giờ',
+        defaultRateMlKgH: 15,
+        rateOptions: [15],
+        defaultDurationHours: 1,
+        durationOptions: [1],
+        hctCheckRequired: true,
+        notes: 'Nếu cải thiện lâm sàng (mạch rõ, HA bình thường): chuyển RL/NaCl 0.9% 15 ml/kg/h x 1h. Nếu không cải thiện: tiếp tục CPT 15 ml/kg/h x 1h.'
+      },
+      {
+        stageName: 'Cữ 4: Giảm xuống điện giải 10 ml/kg/h trong 2 giờ',
+        defaultRateMlKgH: 10,
+        rateOptions: [10],
         defaultDurationHours: 2,
-        durationOptions: [2, 3],
-        hctCheckRequired: false,
-        notes: 'Khám đáy phổi tìm ran ẩm.'
+        durationOptions: [1, 2],
+        hctCheckRequired: true,
+        notes: 'Đánh giá mạch, huyết áp, nước tiểu và ran phổi.'
       },
       {
-        stageName: 'Cữ 4: Duy trì 3 -> 1.5 ml/kg/h',
+        stageName: 'Cữ 5: Giảm xuống 6 ml/kg/h trong 2 giờ',
+        defaultRateMlKgH: 6,
+        rateOptions: [6],
+        defaultDurationHours: 2,
+        durationOptions: [2],
+        hctCheckRequired: false,
+        notes: 'Khám đáy phổi, đề phòng phù phổi cấp.'
+      },
+      {
+        stageName: 'Cữ 6: Giảm xuống 3 ml/kg/h trong 5 - 7 giờ',
         defaultRateMlKgH: 3,
         rateOptions: [3],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4],
+        defaultDurationHours: 5,
+        durationOptions: [5, 6, 7],
         hctCheckRequired: true,
-        notes: 'Đưa về tốc độ an toàn và ngưng dịch.'
+        notes: 'Kiểm tra Hct và bài tiết nước tiểu.'
+      },
+      {
+        stageName: 'Cữ 7: Duy trì 1.5 ml/kg/h trong 12 giờ & Cai dịch',
+        defaultRateMlKgH: 1.5,
+        rateOptions: [1.5],
+        defaultDurationHours: 12,
+        durationOptions: [6, 12, 18],
+        hctCheckRequired: true,
+        notes: 'Duy trì và chuẩn bị ngưng dịch an toàn sau 24 - 48 giờ.'
       }
     ]
   }
@@ -727,4 +763,293 @@ export const DENGUE_NON_RESPONSE_SCENARIOS = {
   ...DENGUE_REFRACTORY_SCENARIOS,
   cpt_escalation: DENGUE_REFRACTORY_SCENARIOS.hct_high_cpt
 };
+
+/**
+ * =========================================================================
+ * PHÁC ĐỒ DỊCH CAO PHÂN TỬ (CPT) CHUẨN THEO QUYẾT ĐỊNH 2760/QĐ-BYT (2023)
+ * Phụ lục 8, 10, 11, 16.1, 16.2 & 18
+ * =========================================================================
+ */
+
+export const DENGUE_COLLOID_METADATA: Record<ColloidType, {
+  name: string;
+  shortName: string;
+  oncoticPower: string;
+  volumeExpansionRatio: string;
+  intravascularHalfLife: string;
+  contraindications: string;
+  maxTotalDose: string;
+  bytrank: 'priority' | 'alternative';
+  notes: string;
+}> = {
+  dextran40: {
+    name: 'Dextran 40 10% trong NaCl 0.9%',
+    shortName: 'Dextran 40',
+    oncoticPower: 'Rất cao (~40 mmHg, gấp đôi áp lực keo huyết tương)',
+    volumeExpansionRatio: '1 : 1.8 - 2.0 (Kéo dịch kẽ vào lòng mạch mạnh nhất)',
+    intravascularHalfLife: '3 - 6 giờ (Thải trừ chủ yếu qua thận)',
+    contraindications: 'Dị ứng Dextran, suy thận thiểu niệu không do sốc, suy tim ứ huyết nặng',
+    maxTotalDose: '60 ml/kg (Khuyến cáo trần BYT 2023)',
+    bytrank: 'priority',
+    notes: 'Thuốc chọn lựa ưu tiên hàng đầu theo QĐ 2760/BYT. Cần theo dõi phản ứng quá mẫn mũi đầu.'
+  },
+  hes200: {
+    name: '6% Hydroxyethyl Starch 200/0.5 (HES 200.000 Dalton)',
+    shortName: '6% HES 200',
+    oncoticPower: 'Cao (~30 - 36 mmHg)',
+    volumeExpansionRatio: '1 : 1.0 - 1.3',
+    intravascularHalfLife: '4 - 8 giờ (Lưu giữ lòng mạch lâu nhất)',
+    contraindications: 'Suy thận cấp có vô niệu, rối loạn đông máu nặng (giảm von Willebrand / VIII)',
+    maxTotalDose: '60 ml/kg (Tác dụng phụ tăng khi tổng liều > 60 ml/kg)',
+    bytrank: 'priority',
+    notes: 'Thuốc chọn lựa tương đương Dextran 40 trong QĐ 2760/BYT. Thận trọng với độc tính trên thận khi dùng quá liều.'
+  },
+  dextran70: {
+    name: 'Dextran 70 6% trong NaCl 0.9%',
+    shortName: 'Dextran 70',
+    oncoticPower: 'Cao (~25 - 30 mmHg)',
+    volumeExpansionRatio: '1 : 1.2',
+    intravascularHalfLife: '6 - 12 giờ',
+    contraindications: 'Quá mẫn, suy tim nặng, rối loạn đông máu nặng',
+    maxTotalDose: '60 ml/kg',
+    bytrank: 'priority',
+    notes: 'Dung dịch cao phân tử ưu tiên theo QĐ 2760/BYT; phân tử lượng lớn hơn Dextran 40 nên giữ trong mạch lâu hơn.'
+  },
+  hes130: {
+    name: '6% Hydroxyethyl Starch 130/0.4 (HES 130.000 Dalton - Voluven / Tetraspan)',
+    shortName: '6% HES 130',
+    oncoticPower: 'Trung bình (~25 - 28 mmHg)',
+    volumeExpansionRatio: '1 : 1.0',
+    intravascularHalfLife: '2 - 4 giờ (Chuyển hóa và đào thải nhanh hơn HES 200)',
+    contraindications: 'Nhiễm trùng huyết, suy thận cấp, tổn thương gan nặng',
+    maxTotalDose: '50 ml/kg',
+    bytrank: 'alternative',
+    notes: 'Dung dịch thay thế khi không có sẵn Dextran 40 hoặc HES 200. Khả năng tăng thể tích và thời gian lưu ngắn hơn, cần theo dõi sát Hct.'
+  },
+  gelatin: {
+    name: 'Dung dịch Gelatin 4% (Gelafundin / Succinylated Gelatin)',
+    shortName: 'Gelatin 4%',
+    oncoticPower: 'Trung bình (~24 - 26 mmHg)',
+    volumeExpansionRatio: '1 : 1.0',
+    intravascularHalfLife: '1.5 - 3 giờ',
+    contraindications: 'Dị ứng Gelatin, tăng calci máu, tăng kali máu',
+    maxTotalDose: 'không tích lũy trong mô nhưng tối đa ~30 - 40 ml/kg/ngày',
+    bytrank: 'alternative',
+    notes: 'Dung dịch thay thế. Ít ảnh hưởng chức năng đông máu và chức năng thận hơn HES, nhưng thời gian duy trì thể tích ngắn.'
+  }
+};
+
+export interface ColloidStageTemplate {
+  stageName: string;
+  fluidKind: 'colloid' | 'crystalloid';
+  defaultRateMlKgH: number;
+  rateOptions: number[];
+  defaultDurationHours: number;
+  durationOptions: number[];
+  hctCheckRequired: boolean;
+  notes: string;
+}
+
+export const DENGUE_COLLOID_TEMPLATES: Record<DengueAgeGroup, ColloidStageTemplate[]> = {
+  child: [
+    {
+      stageName: 'Cữ 1: CPT Tải liều nấc 1 (15 ml/kg/h)',
+      fluidKind: 'colloid',
+      defaultRateMlKgH: 15,
+      rateOptions: [10, 15, 20],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: 'Bù Cao Phân Tử trong 1 giờ. Đánh giá lại mạch, HA và Hct ngay sau 1 giờ. Nếu thất bại lần 1: lặp lại 10-20 ml/kg/h.'
+    },
+    {
+      stageName: 'Cữ 2: Ra sốc - Giảm CPT xuống 10 ml/kg/h',
+      fluidKind: 'colloid',
+      defaultRateMlKgH: 10,
+      rateOptions: [10],
+      defaultDurationHours: 1,
+      durationOptions: [1, 2],
+      hctCheckRequired: true,
+      notes: 'Đánh giá cải thiện lâm sàng (mạch rõ, HA bình thường, chi ấm).'
+    },
+    {
+      stageName: 'Cữ 3: Giảm CPT xuống 7.5 ml/kg/h',
+      fluidKind: 'colloid',
+      defaultRateMlKgH: 7.5,
+      rateOptions: [7.5],
+      defaultDurationHours: 2,
+      durationOptions: [1, 2],
+      hctCheckRequired: false,
+      notes: 'Giám sát dấu hiệu quá tải tuần hoàn.'
+    },
+    {
+      stageName: 'Cữ 4: Giảm CPT xuống 5 ml/kg/h',
+      fluidKind: 'colloid',
+      defaultRateMlKgH: 5,
+      rateOptions: [5],
+      defaultDurationHours: 2,
+      durationOptions: [1, 2],
+      hctCheckRequired: true,
+      notes: 'Kiểm tra 7 tiêu chuẩn Phụ lục 10 trước khi chuyển sang dung dịch điện giải.'
+    },
+    {
+      stageName: 'Cữ 5: Chuyển điện giải RL/NaCl 0.9% 5 ml/kg/h (Phụ lục 10)',
+      fluidKind: 'crystalloid',
+      defaultRateMlKgH: 5,
+      rateOptions: [5],
+      defaultDurationHours: 3,
+      durationOptions: [3, 4],
+      hctCheckRequired: true,
+      notes: 'Truyền điện giải với tốc độ ít nhất bằng tốc độ CPT trước đó trong 2-4 giờ (Phụ lục 10).'
+    },
+    {
+      stageName: 'Cữ 6: Giảm điện giải xuống 3 ml/kg/h & Cai dịch',
+      fluidKind: 'crystalloid',
+      defaultRateMlKgH: 3,
+      rateOptions: [3],
+      defaultDurationHours: 4,
+      durationOptions: [4, 5, 6],
+      hctCheckRequired: true,
+      notes: 'Duy trì nước tiểu ≥ 0.5 - 1 ml/kg/h. Xem xét ngưng dịch sau 24 - 48 giờ.'
+    }
+  ],
+  adolescent: [
+    {
+      stageName: 'Cữ 1: CPT Tải liều nấc 1 (15 ml/kg/h)',
+      fluidKind: 'colloid',
+      defaultRateMlKgH: 15,
+      rateOptions: [10, 15, 20],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: 'Truyền CPT trong 1 giờ. Theo dõi mạch, HA và Hct.'
+    },
+    {
+      stageName: 'Cữ 2: Ra sốc - Giảm CPT xuống 10 ml/kg/h',
+      fluidKind: 'colloid',
+      defaultRateMlKgH: 10,
+      rateOptions: [10],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: 'Thời gian giảm nấc bằng 1/2 trẻ nhỏ nhằm tránh quá tải dịch (Phụ lục 11).'
+    },
+    {
+      stageName: 'Cữ 3: Giảm CPT xuống 7.5 ml/kg/h',
+      fluidKind: 'colloid',
+      defaultRateMlKgH: 7.5,
+      rateOptions: [7.5],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: false,
+      notes: 'Truyền 7.5 ml/kg/h trong 1 giờ.'
+    },
+    {
+      stageName: 'Cữ 4: Giảm CPT xuống 5 ml/kg/h',
+      fluidKind: 'colloid',
+      defaultRateMlKgH: 5,
+      rateOptions: [5],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: 'Đánh giá tiêu chuẩn chuyển điện giải Phụ lục 10.'
+    },
+    {
+      stageName: 'Cữ 5: Chuyển điện giải RL/NaCl 0.9% 5 ml/kg/h',
+      fluidKind: 'crystalloid',
+      defaultRateMlKgH: 5,
+      rateOptions: [5],
+      defaultDurationHours: 2,
+      durationOptions: [2, 3],
+      hctCheckRequired: false,
+      notes: 'Chuyển sang dung dịch điện giải an toàn.'
+    },
+    {
+      stageName: 'Cữ 6: Giảm điện giải 3 ml/kg/h',
+      fluidKind: 'crystalloid',
+      defaultRateMlKgH: 3,
+      rateOptions: [3],
+      defaultDurationHours: 3,
+      durationOptions: [2, 3],
+      hctCheckRequired: true,
+      notes: 'Đánh giá nước tiểu và tri giác.'
+    },
+    {
+      stageName: 'Cữ 7: Duy trì 1.5 ml/kg/h & Cai dịch',
+      fluidKind: 'crystalloid',
+      defaultRateMlKgH: 1.5,
+      rateOptions: [1.5],
+      defaultDurationHours: 12,
+      durationOptions: [6, 12, 18],
+      hctCheckRequired: true,
+      notes: 'Duy trì và chuẩn bị ngưng dịch sau 24 giờ.'
+    }
+  ],
+  adult: [
+    {
+      stageName: 'Cữ 1: CPT Tải liều người lớn (10 - 15 ml/kg/h)',
+      fluidKind: 'colloid',
+      defaultRateMlKgH: 15,
+      rateOptions: [10, 15],
+      defaultDurationHours: 1,
+      durationOptions: [1],
+      hctCheckRequired: true,
+      notes: 'Bù CPT 10 - 15 ml/kg/h trong 1 giờ (Phụ lục 16.1). Nếu không cải thiện: lặp lại lần 2 liều 10 ml/kg/h.'
+    },
+    {
+      stageName: 'Cữ 2: Ra sốc -> Chuyển điện giải RL/NaCl 10 ml/kg/h trong 2 giờ',
+      fluidKind: 'crystalloid',
+      defaultRateMlKgH: 10,
+      rateOptions: [10],
+      defaultDurationHours: 2,
+      durationOptions: [1, 2],
+      hctCheckRequired: true,
+      notes: 'Chuẩn Phụ lục 16.1: Ra sốc chuyển ngay điện giải 10 ml/kg/h trong 2 giờ (hạn chế tối đa dùng CPT kéo dài ở người lớn).'
+    },
+    {
+      stageName: 'Cữ 3: Giảm điện giải xuống 6 ml/kg/h trong 2 giờ',
+      fluidKind: 'crystalloid',
+      defaultRateMlKgH: 6,
+      rateOptions: [6],
+      defaultDurationHours: 2,
+      durationOptions: [2],
+      hctCheckRequired: false,
+      notes: 'Lắng nghe ran ẩm đáy phổi.'
+    },
+    {
+      stageName: 'Cữ 4: Giảm điện giải xuống 3 ml/kg/h trong 5 - 7 giờ',
+      fluidKind: 'crystalloid',
+      defaultRateMlKgH: 3,
+      rateOptions: [3],
+      defaultDurationHours: 5,
+      durationOptions: [5, 6, 7],
+      hctCheckRequired: true,
+      notes: 'Kiểm tra Hct và nước tiểu.'
+    },
+    {
+      stageName: 'Cữ 5: Duy trì 1.5 ml/kg/h trong 12 giờ & Cai dịch',
+      fluidKind: 'crystalloid',
+      defaultRateMlKgH: 1.5,
+      rateOptions: [1.5],
+      defaultDurationHours: 12,
+      durationOptions: [6, 12, 18],
+      hctCheckRequired: true,
+      notes: 'Ngưng dịch an toàn khi lâm sàng và Hct ổn định.'
+    }
+  ]
+};
+
+/**
+ * Bảng kiểm 7 tiêu chuẩn chuyển từ Cao Phân Tử sang Điện Giải (Phụ lục 10 - QĐ 2760/BYT)
+ */
+export const DENGUE_DE_ESCALATION_CHECKLIST = [
+  'Bệnh nhân tỉnh táo, tiếp xúc tốt',
+  'Chi ấm, thời gian đổ đầy mao mạch (CRT) bình thường < 2 giây',
+  'Mạch rõ và huyết áp bình thường theo tuổi (MAP: ≤1T ≥50, ≤10T ≥60, >10T ≥65 mmHg)',
+  'Lưu lượng nước tiểu > 0.5 ml/kg/giờ',
+  'Hct giảm về bình thường hoặc hết cô đặc máu',
+  'Áp lực tĩnh mạch trung tâm (CVP) trong khoảng 10 - 15 cmH2O (nếu có đo CVP)',
+  'ScvO2 ≥ 70% hoặc Lactate máu bình thường < 2.0 mmol/L (nếu có xét nghiệm)'
+];
+
 

@@ -71,37 +71,39 @@ export const Header: React.FC<HeaderProps> = ({
             {/* AMR Surveillance Lookup */}
             <button
               onClick={onOpenAmr}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
-              title={isEn ? 'Antimicrobial Resistance Data (Vietnam)' : 'Tra cứu đề kháng kháng sinh Việt Nam'}
+              className="p-2 rounded-lg text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center justify-center"
+              title={isEn ? 'Antimicrobial Resistance Data (Vietnam)' : 'Tra cứu dữ liệu đề kháng kháng sinh Việt Nam'}
+              aria-label="Dữ liệu Đề kháng"
             >
-              <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
-              <span>{isEn ? 'AMR Data VN' : 'Dữ liệu Đề kháng'}</span>
+              <ShieldAlert className="w-4 h-4 text-amber-600" />
             </button>
 
             {/* Original Preview View */}
             <button
               onClick={onOpenOriginal}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-teal-800 bg-teal-50 hover:bg-teal-100 transition-colors"
+              className="p-2 rounded-lg text-teal-800 bg-teal-50 hover:bg-teal-100 transition-colors flex items-center justify-center"
               title={isEn ? 'View Original Stanford/UCSF Preview' : 'Xem bản xem gốc Stanford/UCSF'}
+              aria-label="Giao diện gốc"
             >
-              <ExternalLink className="w-3.5 h-3.5 text-teal-600" />
-              <span>{isEn ? 'Original Mode' : 'Giao diện gốc'}</span>
+              <ExternalLink className="w-4 h-4 text-teal-600" />
             </button>
 
             {/* Consultation PDF Report */}
             <button
               onClick={onOpenPdfModal}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white bg-teal-600 hover:bg-teal-700 shadow-sm transition-all"
+              className="p-2 rounded-lg text-white bg-teal-600 hover:bg-teal-700 shadow-sm transition-all flex items-center justify-center"
+              title={isEn ? 'Export PDF / Print' : 'Xuất Phiếu Hội Chẩn / In PDF'}
+              aria-label="Xuất Phiếu Hội Chẩn"
             >
-              <FileText className="w-3.5 h-3.5" />
-              <span>{isEn ? 'Export PDF / Print' : 'Xuất Phiếu Hội Chẩn'}</span>
+              <FileText className="w-4 h-4" />
             </button>
 
             {/* Reset Button */}
             <button
               onClick={onReset}
-              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors"
+              className="p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors flex items-center justify-center"
               title={isEn ? 'Reset to default patient' : 'Đặt lại thông số mặc định'}
+              aria-label="Đặt lại thông số"
             >
               <RotateCcw className="w-4 h-4" />
             </button>

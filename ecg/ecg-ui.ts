@@ -77,17 +77,17 @@ export class EcgCDSSController {
         <!-- Canvas Toolbar (Speed, Gain, Theme, Markers, Caliper, Live, Audio) -->
         <div class="ecg-canvas-toolbar">
           <div class="ecg-tool-group">
-            <button id="btn-toggle-live" class="ecg-tool-btn" title="Mô phỏng quét máy monitor thời gian thực">
-              <i class="fa-solid fa-play"></i> <span>Mô Phỏng Monitor</span>
+            <button id="btn-toggle-live" class="ecg-tool-btn ecg-tool-btn--icon-only" title="Mô phỏng quét máy monitor thời gian thực" aria-label="Mô phỏng Monitor">
+              <i class="fa-solid fa-play"></i>
             </button>
-            <button id="btn-toggle-audio" class="ecg-tool-btn" title="Bật/Tắt âm thanh nhịp tim QRS">
-              <i class="fa-solid fa-volume-xmark"></i> <span>Âm Nhịp QRS</span>
+            <button id="btn-toggle-audio" class="ecg-tool-btn ecg-tool-btn--icon-only" title="Bật/Tắt âm thanh nhịp tim QRS" aria-label="Âm nhịp QRS">
+              <i class="fa-solid fa-volume-xmark"></i>
             </button>
-            <button id="btn-toggle-markers" class="ecg-tool-btn" title="Bật/Tắt hiển thị mốc sóng P-Q-R-S-J-T-U trên đồ họa">
-              <i class="fa-solid fa-tags"></i> <span>Mốc Sóng (P-Q-R-S-J-T)</span>
+            <button id="btn-toggle-markers" class="ecg-tool-btn ecg-tool-btn--icon-only" title="Bật/Tắt hiển thị mốc sóng P-Q-R-S-J-T-U trên đồ họa" aria-label="Mốc Sóng">
+              <i class="fa-solid fa-tags"></i>
             </button>
-            <button id="btn-toggle-caliper" class="ecg-tool-btn" title="Bật thước đo Caliper điện tử trực tiếp trên đồ họa">
-              <i class="fa-solid fa-ruler-combined"></i> <span>Thước Caliper</span>
+            <button id="btn-toggle-caliper" class="ecg-tool-btn ecg-tool-btn--icon-only" title="Bật thước đo Caliper điện tử trực tiếp trên đồ họa" aria-label="Thước Caliper">
+              <i class="fa-solid fa-ruler-combined"></i>
             </button>
           </div>
 

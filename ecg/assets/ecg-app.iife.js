@@ -2810,17 +2810,17 @@ var EcgApp = (() => {
         <!-- Canvas Toolbar (Speed, Gain, Theme, Markers, Caliper, Live, Audio) -->
         <div class="ecg-canvas-toolbar">
           <div class="ecg-tool-group">
-            <button id="btn-toggle-live" class="ecg-tool-btn" title="M\xF4 ph\u1ECFng qu\xE9t m\xE1y monitor th\u1EDDi gian th\u1EF1c">
-              <i class="fa-solid fa-play"></i> <span>M\xF4 Ph\u1ECFng Monitor</span>
+            <button id="btn-toggle-live" class="ecg-tool-btn ecg-tool-btn--icon-only" title="M\xF4 ph\u1ECFng qu\xE9t m\xE1y monitor th\u1EDDi gian th\u1EF1c" aria-label="M\xF4 ph\u1ECFng Monitor">
+              <i class="fa-solid fa-play"></i>
             </button>
-            <button id="btn-toggle-audio" class="ecg-tool-btn" title="B\u1EADt/T\u1EAFt \xE2m thanh nh\u1ECBp tim QRS">
-              <i class="fa-solid fa-volume-xmark"></i> <span>\xC2m Nh\u1ECBp QRS</span>
+            <button id="btn-toggle-audio" class="ecg-tool-btn ecg-tool-btn--icon-only" title="B\u1EADt/T\u1EAFt \xE2m thanh nh\u1ECBp tim QRS" aria-label="\xC2m nh\u1ECBp QRS">
+              <i class="fa-solid fa-volume-xmark"></i>
             </button>
-            <button id="btn-toggle-markers" class="ecg-tool-btn" title="B\u1EADt/T\u1EAFt hi\u1EC3n th\u1ECB m\u1ED1c s\xF3ng P-Q-R-S-J-T-U tr\xEAn \u0111\u1ED3 h\u1ECDa">
-              <i class="fa-solid fa-tags"></i> <span>M\u1ED1c S\xF3ng (P-Q-R-S-J-T)</span>
+            <button id="btn-toggle-markers" class="ecg-tool-btn ecg-tool-btn--icon-only" title="B\u1EADt/T\u1EAFt hi\u1EC3n th\u1ECB m\u1ED1c s\xF3ng P-Q-R-S-J-T-U tr\xEAn \u0111\u1ED3 h\u1ECDa" aria-label="M\u1ED1c S\xF3ng">
+              <i class="fa-solid fa-tags"></i>
             </button>
-            <button id="btn-toggle-caliper" class="ecg-tool-btn" title="B\u1EADt th\u01B0\u1EDBc \u0111o Caliper \u0111i\u1EC7n t\u1EED tr\u1EF1c ti\u1EBFp tr\xEAn \u0111\u1ED3 h\u1ECDa">
-              <i class="fa-solid fa-ruler-combined"></i> <span>Th\u01B0\u1EDBc Caliper</span>
+            <button id="btn-toggle-caliper" class="ecg-tool-btn ecg-tool-btn--icon-only" title="B\u1EADt th\u01B0\u1EDBc \u0111o Caliper \u0111i\u1EC7n t\u1EED tr\u1EF1c ti\u1EBFp tr\xEAn \u0111\u1ED3 h\u1ECDa" aria-label="Th\u01B0\u1EDBc Caliper">
+              <i class="fa-solid fa-ruler-combined"></i>
             </button>
           </div>
 

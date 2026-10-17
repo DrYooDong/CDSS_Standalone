@@ -649,9 +649,10 @@
 
     var cmdBtn = document.createElement('button');
     cmdBtn.type = 'button';
-    cmdBtn.className = 'cdss-portal-nav-btn cdss-nav-cmd-btn';
-    cmdBtn.setAttribute('title', 'Mở bảng chuyển nhanh CDSS (Phím tắt: Ctrl+K / Cmd+K)');
-    cmdBtn.innerHTML = '<i class="fa-solid fa-bolt text-teal-600"></i> <span>Chuyển CDSS</span> <span style="font-size:0.7rem; opacity:0.6; font-family:monospace; background:rgba(0,0,0,0.06); padding:1px 4px; border-radius:4px; margin-left:2px;">⌘K</span>';
+    cmdBtn.className = 'cdss-portal-nav-btn cdss-portal-icon-btn cdss-nav-cmd-btn';
+    cmdBtn.setAttribute('title', 'Chuyển nhanh CDSS (Phím tắt: Ctrl+K / ⌘K)');
+    cmdBtn.setAttribute('aria-label', 'Chuyển nhanh CDSS');
+    cmdBtn.innerHTML = '<i class="fa-solid fa-bolt text-teal-600"></i>';
     
     // Insert before theme toggle button
     navRight.insertBefore(cmdBtn, navRight.firstChild);

@@ -302,27 +302,27 @@ export function initCDSSHub(containerId: string): void {
                 class="cdss-view-btn ${viewMode === 'grid' ? 'active' : ''}" 
                 data-mode="grid"
                 title="Xem dạng Lưới Thẻ Chuẩn HepaCDSS"
+                aria-label="Xem dạng Lưới"
               >
                 <i class="fa-solid fa-table-cells-large"></i>
-                <span>Lưới</span>
               </button>
 
               <button 
                 class="cdss-view-btn ${viewMode === 'grouped' ? 'active' : ''}" 
                 data-mode="grouped"
                 title="Xem theo Khối Chuyên Khoa Điều Trị"
+                aria-label="Xem theo Phân Khoa"
               >
                 <i class="fa-solid fa-layer-group"></i>
-                <span>Phân Khoa</span>
               </button>
 
               <button 
                 class="cdss-view-btn ${viewMode === 'matrix' ? 'active' : ''}" 
                 data-mode="matrix"
                 title="Xem Bảng Ma Trận Lâm Sàng & ICD-10"
+                aria-label="Xem Bảng Ma Trận"
               >
                 <i class="fa-solid fa-table-list"></i>
-                <span>Ma Trận</span>
               </button>
             </div>
           </div>
@@ -336,8 +336,8 @@ export function initCDSSHub(containerId: string): void {
             ${q ? ` • Từ khóa: "<em>${q}</em>"` : ''}
           </div>
           ${(activeCategory !== 'all' || q) ? `
-            <button id="cdss-reset-filters" class="cdss-reset-btn">
-              <i class="fa-solid fa-rotate-left"></i> Đặt lại bộ lọc
+            <button id="cdss-reset-filters" class="cdss-reset-btn" title="Đặt lại bộ lọc (Hiển thị tất cả)" aria-label="Đặt lại bộ lọc">
+              <i class="fa-solid fa-rotate-left"></i>
             </button>
           ` : ''}
         </div>

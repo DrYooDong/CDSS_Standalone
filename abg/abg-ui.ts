@@ -90,11 +90,11 @@ export class AbgCDSSController {
           </div>
 
           <div class="abg-header-actions">
-            <button id="btn-export-soap" class="abg-btn abg-btn--soap" title="Chép kết quả phân tích theo cấu trúc bệnh án SOAP">
-              <i class="fa-solid fa-copy"></i> <span>Chép Vào Bệnh Án SOAP</span>
+            <button id="btn-export-soap" class="abg-btn abg-btn--soap abg-btn--icon-only" title="Chép kết quả phân tích theo cấu trúc bệnh án SOAP" aria-label="Chép SOAP">
+              <i class="fa-solid fa-copy"></i>
             </button>
-            <button id="btn-reset-normal" class="abg-btn abg-btn--outline" title="Đặt lại thông số bình thường">
-              <i class="fa-solid fa-rotate-left"></i> <span>Đặt Lại</span>
+            <button id="btn-reset-normal" class="abg-btn abg-btn--outline abg-btn--icon-only" title="Đặt lại thông số bình thường" aria-label="Đặt lại">
+              <i class="fa-solid fa-rotate-left"></i>
             </button>
           </div>
         </header>

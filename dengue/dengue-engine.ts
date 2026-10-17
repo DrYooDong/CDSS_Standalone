@@ -16,14 +16,22 @@ import {
   ABCSChecklist,
   CDSSAlertItem,
   DengueCDSSPlan,
-  Gender
+  Gender,
+  ColloidType,
+  ColloidScheduleRow,
+  ColloidPlanResult,
+  HemodynamicProfile,
+  VasopressorDecisionResult
 } from '../cdss-types';
 
 import {
   getCDCStandardWeight,
   DENGUE_FLUID_TEMPLATES,
   DENGUE_NURSING_CHECKLIST,
-  DENGUE_REFRACTORY_SCENARIOS
+  DENGUE_REFRACTORY_SCENARIOS,
+  DENGUE_COLLOID_METADATA,
+  DENGUE_COLLOID_TEMPLATES,
+  DENGUE_DE_ESCALATION_CHECKLIST
 } from './dengue-data';
 
 /**
@@ -236,6 +244,223 @@ export function calculateFluidSchedule(
 }
 
 /**
+ * Tính toán Bảng Kế Hoạch Cọc Dịch Cao Phân Tử (CPT) 4 Cột & Đếm Tích Lũy Liều An Toàn
+ * Chuẩn hóa 100% theo Phụ lục 8, 10, 11, 16.1 & 18 - QĐ 2760/QĐ-BYT
+ */
+export function calculateColloidSchedule(
+  patient: DenguePatientInput,
+  effectiveWeightKg: number,
+  selectedColloid: ColloidType = 'dextran40',
+  customDurations?: Record<number, number>
+): ColloidPlanResult {
+  const ageGroup = classifyAgeGroup(patient.ageYears);
+  const templates = DENGUE_COLLOID_TEMPLATES[ageGroup];
+  const meta = DENGUE_COLLOID_METADATA[selectedColloid] || DENGUE_COLLOID_METADATA.dextran40;
+
+  let currentClock = patient.startTime || '08:00';
+  let carryingFluidMl = 0;
+  let cumulativeColloidMl = 0;
+  const safeLimitVolumeMl = Math.round(60 * effectiveWeightKg); // Giới hạn an toàn 60 ml/kg theo BYT 2023
+
+  const rows: ColloidScheduleRow[] = [];
+
+  templates.forEach((tpl, idx) => {
+    const duration = customDurations?.[idx] !== undefined ? customDurations[idx] : tpl.defaultDurationHours;
+    const rate = tpl.defaultRateMlKgH;
+    const stepVolumeMl = Math.round(rate * effectiveWeightKg * duration);
+
+    if (tpl.fluidKind === 'colloid') {
+      cumulativeColloidMl += stepVolumeMl;
+    }
+
+    const cumulativeColloidMlPerKg = Math.round((cumulativeColloidMl / effectiveWeightKg) * 10) / 10;
+    const exceedsThreshold = cumulativeColloidMlPerKg >= 60;
+
+    const isPediatric = ageGroup === 'child';
+    const dropsPerMin = isPediatric
+      ? Math.round(rate * effectiveWeightKg)
+      : Math.round((rate * effectiveWeightKg) / 3);
+
+    const endClock = addHoursToTime(currentClock, duration);
+    const timeWindow = `${currentClock} - ${endClock} (${duration}h)`;
+
+    const existingFluidMl = carryingFluidMl;
+    const deficitMl = Math.max(0, stepVolumeMl - existingFluidMl);
+    const bottlesToHang = Math.ceil(deficitMl / 500);
+    const addedFluidMl = bottlesToHang * 500;
+    const totalAtPoleMl = existingFluidMl + addedFluidMl;
+    carryingFluidMl = Math.max(0, totalAtPoleMl - stepVolumeMl);
+
+    rows.push({
+      stepIndex: idx + 1,
+      stageName: tpl.stageName,
+      fluidKind: tpl.fluidKind,
+      fluidName: tpl.fluidKind === 'colloid' ? meta.shortName : 'Ringer Lactate / NaCl 0.9%',
+      durationHours: duration,
+      rateMlKgH: rate,
+      dropsPerMin,
+      stepVolumeMl,
+      cumulativeColloidMl,
+      cumulativeColloidMlPerKg,
+      timeWindow,
+      bottlesToHang,
+      totalAtPoleMl,
+      monitoringNotes: tpl.notes,
+      hctCheckRequired: tpl.hctCheckRequired,
+      exceedsThreshold
+    });
+
+    currentClock = endClock;
+  });
+
+  const totalColloidMlPerKg = Math.round((cumulativeColloidMl / effectiveWeightKg) * 10) / 10;
+  const isOverLimit = totalColloidMlPerKg >= 60;
+  const remainingSafeMl = Math.max(0, safeLimitVolumeMl - cumulativeColloidMl);
+
+  return {
+    colloidType: selectedColloid,
+    colloidName: meta.name,
+    rows,
+    totalColloidVolumeMl: cumulativeColloidMl,
+    totalColloidMlPerKg,
+    safeLimitVolumeMl,
+    remainingSafeMl,
+    isOverLimit,
+    albuminRecommended: isOverLimit,
+    deEscalationCriteria: DENGUE_DE_ESCALATION_CHECKLIST
+  };
+}
+
+/**
+ * Đánh giá lưu đồ chọn thuốc vận mạch & inotrope theo Phụ lục 15 & 18 - QĐ 2760/QĐ-BYT
+ */
+export function evaluateVasopressorAlgorithm(
+  profile: HemodynamicProfile,
+  effectiveWeightKg: number,
+  ageYears: number
+): VasopressorDecisionResult {
+  const isAdult = ageYears >= 16;
+  const fluidTestMl = Math.round(5 * effectiveWeightKg);
+
+  // 1. CVP <= 15 cmH2O: Chưa đủ tiền tải / thiếu dịch lòng mạch
+  if (profile.cvpLevel === 'low_normal') {
+    return {
+      primaryDrug: 'Chưa ưu tiên vận mạch — Cần Test dịch CPT trước',
+      primaryDose: 'Test dịch CPT: 5 ml/kg trong 30 phút',
+      primaryPumpRateMlH: `${Math.round(10 * effectiveWeightKg)} ml/h trong 30 phút`,
+      secondaryDrug: 'Cao Phân Tử 10 - 20 ml/kg/h',
+      fluidAction: `Bơm Test Dịch Cao Phân Tử ${fluidTestMl} ml (5 ml/kg) truyền tĩnh mạch nhanh trong 30 phút. Theo dõi sát ΔCVP và huyết áp.`,
+      clinicalRationale: 'CVP ≤ 15 cmH2O chứng tỏ thể tích lòng mạch còn thiếu hụt do thất thoát huyết tương liên tục. Dùng vận mạch đơn thuần khi chưa bù đủ dịch sẽ gây co mạch ngoại biên nặng, hoại tử chi và suy thận.',
+      fluidTestMl,
+      monitoringDirectives: [
+        `Truyền test Cao phân tử ${fluidTestMl} ml trong 30 phút.`,
+        'Nếu ΔCVP tăng ≥ 5 cmH2O hoặc huyết áp cải thiện: tiếp tục truyền CPT 10 - 20 ml/kg/h.',
+        'Nếu tổng liều CPT ≥ 60 ml/kg mà còn sốc: xem xét bù Albumin 5% hoặc 10% (Trang 20 QĐ 2760).',
+        'Nếu ΔCVP tăng nhanh mà không cải thiện huyết áp: chuyển sang nhánh đánh giá suy tim / dọa phù phổi.'
+      ]
+    };
+  }
+
+  // 2. CVP > 15 cmH2O
+  // Case A: Quá tải dịch / Co bóp cơ tim bình thường nhưng ứ trệ
+  if (profile.isOverloaded) {
+    return {
+      primaryDrug: 'Dobutamin',
+      primaryDose: '3 - 10 µg/kg/phút',
+      primaryPumpRateMlH: '3 - 10 ml/giờ trên bơm tiêm điện 50ml',
+      secondaryDrug: 'Furosemide 0.5 - 1 mg/kg TM chậm',
+      fluidAction: 'NGƯNG DỊCH TRUYỀN TĨNH MẠCH NGAY LẬP TỨC. Nằm đầu cao 30 - 45°, thở NCPAP.',
+      clinicalRationale: 'CVP > 15 cmH2O kèm dấu hiệu quá tải tuần hoàn / phù phổi cấp. Bắt buộc ngưng nạp dịch và dùng Dobutamin để tăng co bóp cơ tim, giảm áp lực mao mạch phổi bít kết hợp lợi tiểu Furosemide.',
+      fluidTestMl: 0,
+      monitoringDirectives: [
+        'Ngưng hoàn toàn dịch truyền tĩnh mạch.',
+        'Bơm tiêm điện Dobutamin khởi đầu 3 - 5 ml/h, chỉnh liều mỗi 15 phút theo SpO2 và ran phổi.',
+        `Furosemide ${Math.round(0.5 * effectiveWeightKg)} - ${Math.round(1 * effectiveWeightKg)} mg TM chậm khi huyết áp tâm thu ổn định.`,
+        'Đo áp lực bàng quang gián tiếp đo áp lực ổ bụng; xem xét chọc giải áp màng bụng nếu áp lực > 27 cmH2O.'
+      ]
+    };
+  }
+
+  // Case B: Co bóp cơ tim giảm (Viêm cơ tim / Sốc tim Dengue)
+  if (profile.cardiacContractility === 'reduced') {
+    return {
+      primaryDrug: isAdult ? 'Dobutamin hoặc Noradrenalin' : 'Dopamin',
+      primaryDose: isAdult ? 'Dobutamin 5 - 10 µg/kg/phút' : 'Dopamin 5 - 10 µg/kg/phút',
+      primaryPumpRateMlH: '5 - 10 ml/giờ trên bơm tiêm điện 50ml',
+      secondaryDrug: 'Dobutamin 3 - 10 µg/kg/phút',
+      secondaryDose: '3 - 10 µg/kg/phút (phối hợp)',
+      secondaryPumpRateMlH: '3 - 10 ml/giờ',
+      rescueDrug: 'Adrenalin 0.05 - 0.3 µg/kg/phút (0.5 - 3 ml/giờ)',
+      fluidAction: 'Hạn chế dịch truyền tối đa. Không bolus dịch nhanh khi CVP > 15 cmH2O.',
+      clinicalRationale: 'Suy chức năng co bóp cơ tim trong sốc Dengue kéo dài hoặc viêm cơ tim Dengue. Ưu tiên Dopamin/Dobutamin để cải thiện cung lượng tim. Nếu vẫn trơ phối hợp Adrenalin cứu nguy.',
+      fluidTestMl: 0,
+      monitoringDirectives: [
+        'Theo dõi liên tục monitor ECG tìm rối loạn nhịp nhanh hoặc nhịp chậm.',
+        'Siêu âm tim tại giường đánh giá EF, đường kính thất trái và tràn dịch màng ngoài tim.',
+        'Nếu huyết áp vẫn kẹt sau khi tăng Dopamin đến 10 µg/kg/phút: phối hợp Adrenalin 0.05 - 0.3 µg/kg/phút.'
+      ]
+    };
+  }
+
+  // Case C: Giảm kháng lực mạch hệ thống (HA tâm trương tụt, sốc ấm)
+  if (profile.vascularTone === 'low_warm_shock') {
+    const noraMaxMlH = isAdult ? 10 : 3;
+    return {
+      primaryDrug: 'Noradrenalin',
+      primaryDose: isAdult ? '0.05 - 1.0 µg/kg/phút' : '0.05 - 0.3 µg/kg/phút',
+      primaryPumpRateMlH: `0.5 - ${noraMaxMlH} ml/giờ trên bơm tiêm điện 50ml`,
+      secondaryDrug: 'Dobutamin 3 - 10 µg/kg/phút (nếu kèm giảm co bóp cơ tim)',
+      fluidAction: 'Duy trì dịch truyền tốc độ an toàn theo dõi sát CVP và ScvO2.',
+      clinicalRationale: 'Sốc có biểu hiện giảm kháng lực mạch hệ thống (HA tâm trương tụt sâu, hiệu áp rộng, chi ấm). Noradrenalin là thuốc co mạch mạnh chọn lựa hàng đầu để phục hồi trương lực mạch và nâng MAP.',
+      fluidTestMl: 0,
+      monitoringDirectives: [
+        'Bắt buộc truyền qua tĩnh mạch lớn hoặc catheter tĩnh mạch trung tâm tránh hoại tử mô do thoát mạch.',
+        'Mục tiêu MAP: Trẻ ≤ 1T ≥ 50, ≤ 10T ≥ 60, > 10T & Người lớn ≥ 65 mmHg.',
+        'Điều chỉnh tốc độ bơm mỗi 5 - 10 phút để đạt MAP đích.'
+      ]
+    };
+  }
+
+  // Case D: Mặc định khi CVP > 15 cmH2O
+  return {
+    primaryDrug: isAdult ? 'Noradrenalin' : 'Dopamin',
+    primaryDose: isAdult ? '0.05 - 0.3 µg/kg/phút' : '5 - 10 µg/kg/phút',
+    primaryPumpRateMlH: isAdult ? '0.5 - 3 ml/giờ' : '5 - 10 ml/giờ',
+    secondaryDrug: 'Dobutamin 3 - 10 µg/kg/phút',
+    fluidAction: 'Ngưng dịch nếu CVP tiếp tục tăng; đánh giá lại chức năng tim phổi.',
+    clinicalRationale: 'CVP > 15 cmH2O cho thấy tiền tải đã đầy. Cần hỗ trợ co bóp và trương lực mạch bằng vận mạch.',
+    fluidTestMl: 0,
+    monitoringDirectives: [
+      'Đo CVP mỗi 1 - 2 giờ.',
+      'Khí máu động mạch kiểm tra Lactate và thăng bằng toan kiềm.',
+      'Duy trì lượng nước tiểu ≥ 0.5 - 1 ml/kg/h.'
+    ]
+  };
+}
+
+/**
+ * Quy đổi liều sang tốc độ bơm tiêm điện 50ml (ml/giờ)
+ */
+export function calculatePumpRateFromDose(drugName: string, doseMcgKgMin: number): number {
+  const drug = drugName.toLowerCase();
+  if (drug.includes('noradrenalin') || drug.includes('adrenalin')) {
+    return Math.round((doseMcgKgMin / 0.1) * 10) / 10;
+  }
+  return Math.round(doseMcgKgMin * 10) / 10;
+}
+
+/**
+ * Quy đổi ngược từ tốc độ bơm tiêm điện 50ml (ml/giờ) sang liều (µg/kg/phút)
+ */
+export function calculateDoseFromPumpRate(drugName: string, rateMlH: number): number {
+  const drug = drugName.toLowerCase();
+  if (drug.includes('noradrenalin') || drug.includes('adrenalin')) {
+    return Math.round(rateMlH * 0.1 * 100) / 100;
+  }
+  return Math.round(rateMlH * 10) / 10;
+}
+
+/**
  * Tính liều Vận Mạch Dopamin, Noradrenalin, Dobutamin & Adrenalin Bơm Tiêm Điện 50ml
  * Chuẩn hóa 100% theo Phụ lục 15 & Phụ lục 18 - QĐ 2760/QĐ-BYT
  */
@@ -441,7 +666,7 @@ export function calculateAlbuminDose(
     preparation5Percent: `Pha Albumin 5%: 1 lọ Albumin 20% 50ml + 150ml NaCl 0.9% = 200ml Albumin 5% (Cần ${vials20Percent50ml} lọ)`,
     preparation10Percent: `Pha Albumin 10%: 1 lọ Albumin 20% 50ml + 50ml NaCl 0.9% = 100ml Albumin 10% (Cần ${vials20Percent50ml} lọ)`,
     infusionRateMlH: `${minRateMlH} - ${maxRateMlH} ml/giờ (Tổng tốc độ dịch gồm CPT và Albumin ≤ 20 ml/kg/h)`,
-    indicationNotes: 'Chỉ định khi tổng CPT ≥ 60 ml/kg và đang chống sốc CPT ≥ 5-10 ml/kg/h kèm Albumin < 2.5 g/dL hoặc bệnh nhân suy gan, suy thận, ARDS.'
+    indicationNotes: 'Chỉ định khi tổng CPT ≥ 60 ml/kg và đang chống sốc CPT ≥ 5-10 ml/kg/h kèm Albumin < 2.5 g/dL hoặc bệnh nhân suy gan, suy thận, ARDS. Ở người lớn: Chỉ định liều Albumin 1 g/kg truyền tĩnh mạch trong 4 - 6 giờ (Phụ lục 18 - QĐ 2760/BYT).'
   };
 }
 
@@ -658,6 +883,15 @@ export function generateDengueCDSSPlan(
     customDurations
   );
 
+  const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, 'dextran_40');
+  const defaultHemodynamic: HemodynamicProfile = {
+    cvpLevel: 'low_normal',
+    cardiacContractility: 'normal',
+    vascularTone: 'normal',
+    isOverloaded: false
+  };
+  const vasopressorDecision = evaluateVasopressorAlgorithm(defaultHemodynamic, effectiveWeight, patient.ageYears);
+
   const { dopamin, noradrenalin, dobutamin, adrenalin } = calculateVasopressorDoses(effectiveWeight);
   const bloodProducts = calculateBloodProducts(patient, effectiveWeight);
   const nacProtocol = calculateNACProtocol(patient, effectiveWeight);
@@ -694,6 +928,17 @@ export function generateDengueCDSSPlan(
       title: 'SỐC SXHD (CÒN BÙ) — CẦN ĐO LẠI HCT SAU 1 GIỜ',
       message: 'Tải nhanh 15-20 ml/kg/h trong giờ đầu. Bắt buộc đo lại Hct tại giường trước khi chuyển cữ truyền.',
       ruleCode: 'SHOCK_RESUS_1H'
+    });
+  }
+
+  // Cảnh báo trần an toàn dịch cao phân tử
+  if (colloidPlan.isOverLimit) {
+    alerts.push({
+      id: 'alert_colloid_limit',
+      level: 'danger',
+      title: 'CẢNH BÁO TRẦN CAO PHÂN TỬ: TỔNG LIỀU ĐẠT ≥ 60 ML/KG',
+      message: `Tổng lượng CPT đã đạt ${colloidPlan.totalColloidMlPerKg} ml/kg (ngưỡng trần an toàn: 60 ml/kg). Nguy cơ tổn thương thận cấp và rối loạn đông máu. Nếu vẫn còn sốc: Đo CVP, cân nhắc bù Albumin 5% hoặc 10% (Trang 20 QĐ 2760/BYT) và vận mạch.`,
+      ruleCode: 'COLLOID_SAFETY_LIMIT_60'
     });
   }
 
@@ -754,14 +999,23 @@ export function generateDengueCDSSPlan(
     `  • Lý luận lâm sàng: ${branchDecision.reasoning}`,
     `\n2. BẢNG CỌC DỊCH ĐIỀU TRỊ BAN ĐẦU:`,
     ...rows.map(r => `  • Cữ ${r.stepIndex}: ${r.timeWindow} | Tốc độ ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} giọt/phút) | Cần ${r.totalMl} ml (Treo thêm ${r.bottlesToHang} chai 500ml) | Tại cọc: ${r.totalAtPoleMl} ml`),
-    `\n3. PHÁC ĐỒ KHI KHÔNG ĐÁP ỨNG / SỐC TRƠ / TÁI SỐC (PHỤ LỤC 18):`,
-    `  • Dopamin: Pha ${dopamin.totalMg} mg trong 50ml Glucose 5%. Tốc độ 1 ml/h = 1 µg/kg/phút (Khởi đầu 5-10 ml/h).`,
-    `  • Noradrenalin: Pha ${noradrenalin.totalMg} mg trong 50ml Glucose 5%. Tốc độ 1 ml/h = 0.1 µg/kg/phút (Khởi đầu 0.5-2 ml/h).`,
-    `  • Dobutamin: Pha ${dobutamin.totalMg} mg trong 50ml Glucose 5%. Tốc độ 1 ml/h = 1 µg/kg/phút (Khởi đầu 3-10 ml/h khi CVP > 15 cmH2O hoặc suy tim).`,
+    `\n3. PHÁC ĐỒ CAO PHÂN TỬ (CPT) & GIẢM LIỀU (PHỤ LỤC 10):`,
+    `  • Loại dịch khuyến cáo: ${colloidPlan.colloidName}`,
+    `  • Giới hạn an toàn CPT: ${colloidPlan.safeLimitVolumeMl} ml (tương đương 60 ml/kg)`,
+    `  • Bảng cọc dịch CPT nấc thang:`,
+    ...colloidPlan.rows.map(r => `    - Cữ ${r.stepIndex} (${r.fluidName}): ${r.timeWindow} | Tốc độ ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} giọt/phút) | ${r.stepVolumeMl} ml (Tích lũy CPT: ${r.cumulativeColloidMlPerKg} ml/kg)`),
+    `  • 7 Tiêu chuẩn chuyển từ CPT sang Điện giải (Phụ lục 10): Mạch rõ, HA bình thường, Chi ấm CRT < 2s, Hct giảm dần, Nước tiểu ≥ 0.5-1 ml/kg/h, Gan thu nhỏ, CVP ổn định.`,
+    `\n4. LƯU ĐỒ VẬN MẠCH & BƠM TIÊM ĐIỆN 50ML (PHỤ LỤC 15 & 18):`,
+    `  • Test Dịch CPT (khi CVP ≤ 15 cmH2O): Bơm 5 ml/kg trong 30 phút (${vasopressorDecision.fluidTestMl} ml).`,
+    `  • Dopamin: Pha ${dopamin.totalMg} mg trong 50ml G5%. Tốc độ 1 ml/h = 1 µg/kg/phút (Khởi đầu 5-10 ml/h).`,
+    `  • Noradrenalin: Pha ${noradrenalin.totalMg} mg trong 50ml G5%. Tốc độ 1 ml/h = 0.1 µg/kg/phút (Khởi đầu 0.5-2 ml/h; ưu tiên khi HA tâm trương thấp / sốc ấm).`,
+    `  • Dobutamin: Pha ${dobutamin.totalMg} mg trong 50ml G5%. Tốc độ 1 ml/h = 1 µg/kg/phút (Khởi đầu 3-10 ml/h khi CVP > 15 cmH2O hoặc suy tim/dọa phù phổi).`,
+    `  • Adrenalin: Pha ${adrenalin.totalMg} mg trong 50ml G5%. Tốc độ 1 ml/h = 0.1 µg/kg/phút (Cứu nguy khi trơ Dopamin + Dobutamin).`,
+    `\n5. XUẤT HUYẾT NẶNG & CHẾ PHẨM MÁU (PHỤ LỤC 17):`,
     `  • HCL (khi Hct < 35%): Truyền ${Math.round(5 * effectiveWeight)} - ${Math.round(10 * effectiveWeight)} ml trong 1-2h song song CPT 10 ml/kg/h.`,
     `  • Gói ABCS: Acidosis (Bicarbonate 4.2% ${Math.round(2 * effectiveWeight)} ml); Calcium (Calci clorua 10% 2-5ml); Sugar (Dextrose 30% ${Math.round(1.5 * effectiveWeight)} ml).`,
     ...(nacProtocol.indicated ? [`  • Phác đồ NAC Suy gan: Tấn công 150mg/kg (1h) -> 50mg/kg (4h) -> 100mg/kg (16h) -> Duy trì 6.25mg/kg/h. Tuyệt đối TRÁNH Ringer Lactate & Paracetamol.`] : []),
-    `\n4. ĐIỀU DƯỠNG AN TOÀN: Đo Hct trước mỗi lần giảm tốc độ; Duy trì nước tiểu ≥ 0.5 - 1.0 ml/kg/h; Báo BS ngay nếu nước tiểu < 0.5 ml/kg/h hoặc ran ẩm phổi.`
+    `\n6. ĐIỀU DƯỠNG AN TOÀN: Đo Hct trước mỗi lần giảm tốc độ; Duy trì nước tiểu ≥ 0.5 - 1.0 ml/kg/h; Báo BS ngay nếu nước tiểu < 0.5 ml/kg/h hoặc ran ẩm phổi.`
   ];
 
   return {
@@ -771,10 +1025,12 @@ export function generateDengueCDSSPlan(
     fluidRows: rows,
     totalVolumeMl,
     totalDurationHours,
+    colloidPlan,
     vasopressorDopamin: dopamin,
     vasopressorNoradrenalin: noradrenalin,
     vasopressorDobutamin: dobutamin,
     vasopressorAdrenalin: adrenalin,
+    vasopressorDecision,
     bloodProducts,
     nacProtocol,
     branchDecision,

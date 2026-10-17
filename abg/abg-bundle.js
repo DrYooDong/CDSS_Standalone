@@ -1,4 +1,4 @@
-// public/cdss/abg/abg-engine.ts
+// abg/abg-engine.ts
 var KPA_TO_MMHG = 7.50062;
 var MMHG_TO_KPA = 1 / KPA_TO_MMHG;
 function convertPressureToMmHg(val, unit) {
@@ -546,7 +546,7 @@ function generateTreatmentGuidance(gasCategory, gasSeverity, type2Sub, acidCateg
   };
 }
 
-// public/cdss/abg/abg-cases.ts
+// abg/abg-cases.ts
 var CLINICAL_CASES = [
   {
     id: 1,
@@ -1784,7 +1784,7 @@ var CLINICAL_CASES = [
   }
 ];
 
-// public/cdss/abg/abg-protocols.ts
+// abg/abg-protocols.ts
 var CLINICAL_PROTOCOLS = [
   {
     id: "type1-failure",
@@ -2042,7 +2042,7 @@ var TREATMENT_PROTOCOLS = CLINICAL_PROTOCOLS.map((cp) => ({
   cautions: cp.pitfallsAndWarnings
 }));
 
-// public/cdss/abg/abg-glossary.ts
+// abg/abg-glossary.ts
 var ABG_GLOSSARY_TERMS = [
   {
     id: "ph",
@@ -2305,7 +2305,7 @@ var ABG_GLOSSARY_TERMS = [
 ];
 var ABG_GLOSSARY = ABG_GLOSSARY_TERMS;
 
-// public/cdss/abg/abg-ui.ts
+// abg/abg-ui.ts
 var ABG_PRESETS = [
   {
     name: "B\xECnh th\u01B0\u1EDDng",
@@ -2339,14 +2339,16 @@ var ABG_PRESETS = [
   }
 ];
 var AbgCDSSController = class {
+  container;
+  currentInput;
+  currentTab = "analyzer";
+  nomogramPco2 = 40;
+  nomogramPh = 7.4;
+  activeTree = "gas-exchange";
+  activeProcedureSub = "puncture";
+  selectedCaseId = null;
+  glossaryFilter = "";
   constructor(containerId) {
-    this.currentTab = "analyzer";
-    this.nomogramPco2 = 40;
-    this.nomogramPh = 7.4;
-    this.activeTree = "gas-exchange";
-    this.activeProcedureSub = "puncture";
-    this.selectedCaseId = null;
-    this.glossaryFilter = "";
     const el = document.getElementById(containerId);
     if (!el) throw new Error(`Container #${containerId} not found`);
     this.container = el;
@@ -2380,11 +2382,11 @@ var AbgCDSSController = class {
           </div>
 
           <div class="abg-header-actions">
-            <button id="btn-export-soap" class="abg-btn abg-btn--soap" title="Ch\xE9p k\u1EBFt qu\u1EA3 ph\xE2n t\xEDch theo c\u1EA5u tr\xFAc b\u1EC7nh \xE1n SOAP">
-              <i class="fa-solid fa-copy"></i> <span>Ch\xE9p V\xE0o B\u1EC7nh \xC1n SOAP</span>
+            <button id="btn-export-soap" class="abg-btn abg-btn--soap abg-btn--icon-only" title="Ch\xE9p k\u1EBFt qu\u1EA3 ph\xE2n t\xEDch theo c\u1EA5u tr\xFAc b\u1EC7nh \xE1n SOAP" aria-label="Ch\xE9p SOAP">
+              <i class="fa-solid fa-copy"></i>
             </button>
-            <button id="btn-reset-normal" class="abg-btn abg-btn--outline" title="\u0110\u1EB7t l\u1EA1i th\xF4ng s\u1ED1 b\xECnh th\u01B0\u1EDDng">
-              <i class="fa-solid fa-rotate-left"></i> <span>\u0110\u1EB7t L\u1EA1i</span>
+            <button id="btn-reset-normal" class="abg-btn abg-btn--outline abg-btn--icon-only" title="\u0110\u1EB7t l\u1EA1i th\xF4ng s\u1ED1 b\xECnh th\u01B0\u1EDDng" aria-label="\u0110\u1EB7t l\u1EA1i">
+              <i class="fa-solid fa-rotate-left"></i>
             </button>
           </div>
         </header>

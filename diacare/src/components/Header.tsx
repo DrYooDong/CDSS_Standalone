@@ -160,10 +160,11 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Report & PDF Button */}
             <button
               onClick={onOpenReport}
-              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-500 text-white shadow-sm transition active:scale-95"
+              className="p-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white shadow-sm transition active:scale-95 flex items-center justify-center"
+              title="Xuất Báo Cáo PDF"
+              aria-label="Xuất Báo Cáo PDF"
             >
-              <FileDown className="w-3.5 h-3.5" />
-              <span className="hidden xs:inline">Báo Cáo PDF</span>
+              <FileDown className="w-4 h-4" />
             </button>
           </div>
         </div>

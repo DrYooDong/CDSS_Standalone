@@ -75,10 +75,11 @@ export const StickyPatientBar: React.FC<StickyPatientBarProps> = ({
               <button
                 type="button"
                 onClick={onToggleSidebar}
-                className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold transition-colors border border-slate-300"
-                title={isSidebarCollapsed ? (isEn ? 'Expand patient parameters' : 'Mở rộng bảng thông tin bệnh nhân') : (isEn ? 'Collapse patient parameters' : 'Thu gọn bảng thông tin bệnh nhân')}
+                className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 transition-colors border border-slate-300 flex items-center justify-center"
+                title={isSidebarCollapsed ? (isEn ? 'Expand patient parameters' : 'Mở rộng thông tin bệnh nhân') : (isEn ? 'Collapse patient parameters' : 'Thu gọn thông tin bệnh nhân')}
+                aria-label={isSidebarCollapsed ? 'Mở rộng thông tin' : 'Thu gọn thông tin'}
               >
-                <span>{isSidebarCollapsed ? (isEn ? '📝 Input' : '📝 Nhập BN') : (isEn ? '◀ Collapse' : '◀ Thu gọn')}</span>
+                <User className="w-3.5 h-3.5 text-teal-700" />
               </button>
             )}
 
@@ -115,8 +116,9 @@ export const StickyPatientBar: React.FC<StickyPatientBarProps> = ({
             {interactionCount > 0 && (
               <button
                 onClick={() => onScrollToSection('ddi-section')}
-                className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold hover:bg-rose-100 transition-colors"
+                className="flex items-center space-x-1 px-2 py-1 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold hover:bg-rose-100 transition-colors"
                 title={isEn ? 'View Drug Interactions' : 'Xem tương tác thuốc'}
+                aria-label="Tương tác thuốc"
               >
                 <AlertTriangle className="w-3.5 h-3.5 text-rose-600 animate-pulse" />
                 <span>{interactionCount} DDI</span>
@@ -126,30 +128,31 @@ export const StickyPatientBar: React.FC<StickyPatientBarProps> = ({
             {/* Quick Copy button */}
             <button
               onClick={handleCopy}
-              className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors"
+              className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors flex items-center justify-center"
               title={isEn ? 'Copy Dosing' : 'Sao chép liều'}
+              aria-label="Sao chép liều"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-              <span className="hidden sm:inline">{copied ? (isEn ? 'Copied' : 'Đã chép') : (isEn ? 'Copy' : 'Chép')}</span>
+              {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-slate-600" />}
             </button>
 
             {/* PDF Export button */}
             <button
               onClick={onExportPdf}
-              className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-colors"
+              className="p-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-colors flex items-center justify-center"
               title={isEn ? 'Export PDF' : 'Xuất PDF'}
+              aria-label="Xuất PDF"
             >
               <FileDown className="w-3.5 h-3.5" />
-              <span>PDF</span>
             </button>
 
             {/* Scroll to top button */}
             <button
               onClick={onScrollToTop}
-              className="p-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors"
+              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors flex items-center justify-center"
               title={isEn ? 'Scroll to top' : 'Lên đầu trang'}
+              aria-label="Lên đầu trang"
             >
-              <ArrowUp className="w-4 h-4" />
+              <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
 

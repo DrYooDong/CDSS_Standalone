@@ -51,16 +51,16 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Minimalist Action Icon Buttons */}
-        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 shrink-0">
           {/* Guide for new doctors (Hướng dẫn) */}
           <button
             type="button"
             onClick={onOpenGuide}
             title="Cẩm nang hướng dẫn cho Bác sĩ mới"
-            className="px-2.5 py-1.5 text-xs font-semibold text-teal-800 bg-linear-to-r from-teal-50 to-emerald-50 hover:from-teal-100 hover:to-emerald-100 active:scale-95 rounded-lg border border-teal-300 shadow-2xs transition-all flex items-center gap-1.5"
+            aria-label="Cẩm nang hướng dẫn"
+            className="p-2 text-teal-800 bg-gradient-to-r from-teal-50 to-emerald-50 hover:from-teal-100 hover:to-emerald-100 active:scale-95 rounded-lg border border-teal-300 shadow-2xs transition-all flex items-center justify-center"
           >
             <GraduationCap className="w-4 h-4 text-teal-700" />
-            <span className="hidden sm:inline font-bold">Hướng dẫn</span>
           </button>
 
           {/* Guidelines / Tables (Tài liệu) */}
@@ -68,10 +68,10 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onOpenGuidelines}
             title="Tra cứu Bảng liều & Tài liệu gốc"
-            className="p-2 sm:px-2.5 sm:py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-lg transition-all flex items-center gap-1.5"
+            aria-label="Tra cứu tài liệu"
+            className="p-2 text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-lg transition-all flex items-center justify-center"
           >
             <BookOpen className="w-4 h-4 text-slate-600" />
-            <span className="hidden md:inline">Tài liệu</span>
           </button>
 
           {/* Sample Case */}
@@ -79,21 +79,21 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onLoadSample}
             title="Nạp ca lâm sàng mẫu"
-            className="p-2 sm:px-2.5 sm:py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-lg transition-all flex items-center gap-1.5"
+            aria-label="Ca lâm sàng mẫu"
+            className="p-2 text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-lg transition-all flex items-center justify-center"
           >
             <Sparkles className="w-4 h-4 text-amber-500" />
-            <span className="hidden md:inline">Ca mẫu</span>
           </button>
 
           {/* Reset */}
           <button
             type="button"
             onClick={onReset}
-            title="Làm mới thông tin"
-            className="p-2 sm:px-2.5 sm:py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 active:scale-95 rounded-lg transition-all flex items-center gap-1"
+            title="Làm mới thông tin / Đặt lại"
+            aria-label="Làm mới thông tin"
+            className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 active:scale-95 rounded-lg transition-all flex items-center justify-center"
           >
             <RotateCcw className="w-4 h-4" />
-            <span className="hidden md:inline">Làm lại</span>
           </button>
 
           {/* Print */}
@@ -101,10 +101,10 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onPrint}
             title="In phiếu lâm sàng (A4)"
-            className="p-2 sm:px-2.5 sm:py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-lg transition-all flex items-center gap-1.5"
+            aria-label="In phiếu lâm sàng"
+            className="p-2 text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-lg transition-all flex items-center justify-center"
           >
             <Printer className="w-4 h-4 text-slate-600" />
-            <span className="hidden md:inline">In phiếu</span>
           </button>
 
           {/* Export PDF */}
@@ -112,10 +112,10 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onExportPdf}
             title="Xuất báo cáo PDF nhanh"
-            className="px-3 py-2 sm:px-3 sm:py-1.5 text-xs font-semibold text-white bg-teal-600 hover:bg-teal-700 active:scale-95 rounded-lg shadow-xs transition-all flex items-center gap-1.5"
+            aria-label="Xuất báo cáo PDF"
+            className="p-2 text-white bg-teal-600 hover:bg-teal-700 active:scale-95 rounded-lg shadow-xs transition-all flex items-center justify-center"
           >
             <FileDown className="w-4 h-4" />
-            <span className="hidden xs:inline">Xuất PDF</span>
           </button>
         </div>
       </div>

@@ -272,23 +272,23 @@ export const ApproachView: React.FC<ApproachViewProps> = ({
                 </div>
 
                 {/* Actions Toolbar */}
-                <div className="flex items-center space-x-2 shrink-0">
+                <div className="flex items-center space-x-1.5 shrink-0">
                   <button
                     onClick={() => onOpenNotes(currentTopic.id, currentTopic.title)}
-                    className="flex items-center space-x-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/50 border border-purple-200 dark:border-purple-800 transition-all shadow-2xs"
+                    className="p-2 text-xs font-semibold rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/50 border border-purple-200 dark:border-purple-800 transition-all shadow-2xs flex items-center justify-center"
                     title="Ghi chú kinh nghiệm cá nhân"
+                    aria-label="Ghi chú"
                   >
                     <Edit3 className="w-4 h-4" />
-                    <span className="hidden sm:inline">Ghi chú</span>
                   </button>
 
                   <button
                     onClick={handleExportPDF}
-                    className="flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-slate-900 dark:bg-sky-600 text-white hover:bg-slate-800 dark:hover:bg-sky-500 transition-all shadow-xs"
+                    className="p-2 text-xs font-bold rounded-xl bg-slate-900 dark:bg-sky-600 text-white hover:bg-slate-800 dark:hover:bg-sky-500 transition-all shadow-xs flex items-center justify-center"
                     title="Xuất phác đồ tiếp cận sang PDF"
+                    aria-label="Xuất PDF"
                   >
                     <FileDown className="w-4 h-4" />
-                    <span>Xuất PDF</span>
                   </button>
 
                   <button

@@ -138,10 +138,11 @@ ${result.obstetricSofaScore !== undefined ? `- Obstetric SOFA: ${result.obstetri
           <div className="flex sm:flex-col gap-2 shrink-0">
             <button
               onClick={handleCopySbar}
-              className="flex-1 sm:flex-initial px-3.5 py-2 bg-white text-slate-800 border border-slate-300 rounded-lg hover:bg-slate-50 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98]"
+              className="p-2 bg-white text-slate-800 border border-slate-300 rounded-lg hover:bg-slate-50 shadow-sm active:scale-[0.98] flex items-center justify-center"
+              title="Sao chép báo cáo SBAR"
+              aria-label="Sao chép SBAR"
             >
               {copiedSbar ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-slate-600" />}
-              <span>{copiedSbar ? 'Đã Copy SBAR' : 'Sao chép SBAR'}</span>
             </button>
 
             <button

@@ -519,17 +519,19 @@
 }
 
 .cdss-view-btn {
-  padding: 0.38rem 0.75rem;
+  width: 34px;
+  height: 34px;
+  padding: 0;
   border-radius: 7px;
   border: none;
   background: transparent;
   color: var(--color-text-muted);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
   transition: all 0.15s ease;
 }
 
@@ -561,14 +563,15 @@
 .cdss-reset-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.65rem;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
   border-radius: 6px;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   color: var(--color-text-muted);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.15s ease;
 }

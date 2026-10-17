@@ -87,36 +87,27 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1.5">
             <button
               onClick={onOpenSearch}
-              className="flex items-center space-x-2 px-3 py-1.5 text-xs text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200/80 dark:hover:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-700 transition-colors shadow-2xs"
-              title="Tra cứu nhanh dấu hiệu, triệu chứng (Phím tắt: /)"
+              className="p-2 text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200/80 dark:hover:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-700 transition-colors shadow-2xs flex items-center justify-center"
+              title="Tra cứu nhanh dấu hiệu, triệu chứng (Phím tắt: / hoặc ⌘K)"
+              aria-label="Tra cứu nhanh"
             >
-              <Search className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
-              <span className="hidden sm:inline">Tra cứu nhanh</span>
-              <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded shadow-2xs">
-                ⌘K
-              </kbd>
+              <Search className="w-4 h-4 text-slate-500 dark:text-slate-400" />
             </button>
 
             {/* Dark Mode Night Shift Toggle */}
             <button
               onClick={onToggleTheme}
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border transition-all shadow-2xs text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200/80 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300"
+              className="p-2 rounded-xl border transition-all shadow-2xs bg-slate-100 dark:bg-slate-800 hover:bg-slate-200/80 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 flex items-center justify-center"
               title={theme === 'dark' ? 'Chuyển sang chế độ sáng' : 'Chuyển sang chế độ tối (Trực đêm / Thiếu sáng)'}
               aria-label="Chuyển đổi giao diện sáng tối"
             >
               {theme === 'dark' ? (
-                <>
-                  <Sun className="w-3.5 h-3.5 text-amber-400" />
-                  <span className="hidden sm:inline">Trực đêm</span>
-                </>
+                <Sun className="w-4 h-4 text-amber-400" />
               ) : (
-                <>
-                  <Moon className="w-3.5 h-3.5 text-slate-600" />
-                  <span className="hidden sm:inline">Chế độ tối</span>
-                </>
+                <Moon className="w-4 h-4 text-slate-600" />
               )}
             </button>
           </div>

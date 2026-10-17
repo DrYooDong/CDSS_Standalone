@@ -451,27 +451,27 @@
                 class="cdss-view-btn ${viewMode === "grid" ? "active" : ""}" 
                 data-mode="grid"
                 title="Xem d\u1EA1ng L\u01B0\u1EDBi Th\u1EBB Chu\u1EA9n HepaCDSS"
+                aria-label="Xem d\u1EA1ng L\u01B0\u1EDBi"
               >
                 <i class="fa-solid fa-table-cells-large"></i>
-                <span>L\u01B0\u1EDBi</span>
               </button>
 
               <button 
                 class="cdss-view-btn ${viewMode === "grouped" ? "active" : ""}" 
                 data-mode="grouped"
                 title="Xem theo Kh\u1ED1i Chuy\xEAn Khoa \u0110i\u1EC1u Tr\u1ECB"
+                aria-label="Xem theo Ph\xE2n Khoa"
               >
                 <i class="fa-solid fa-layer-group"></i>
-                <span>Ph\xE2n Khoa</span>
               </button>
 
               <button 
                 class="cdss-view-btn ${viewMode === "matrix" ? "active" : ""}" 
                 data-mode="matrix"
                 title="Xem B\u1EA3ng Ma Tr\u1EADn L\xE2m S\xE0ng & ICD-10"
+                aria-label="Xem B\u1EA3ng Ma Tr\u1EADn"
               >
                 <i class="fa-solid fa-table-list"></i>
-                <span>Ma Tr\u1EADn</span>
               </button>
             </div>
           </div>
@@ -485,8 +485,8 @@
             ${q ? ` \u2022 T\u1EEB kh\xF3a: "<em>${q}</em>"` : ""}
           </div>
           ${activeCategory !== "all" || q ? `
-            <button id="cdss-reset-filters" class="cdss-reset-btn">
-              <i class="fa-solid fa-rotate-left"></i> \u0110\u1EB7t l\u1EA1i b\u1ED9 l\u1ECDc
+            <button id="cdss-reset-filters" class="cdss-reset-btn" title="\u0110\u1EB7t l\u1EA1i b\u1ED9 l\u1ECDc (Hi\u1EC3n th\u1ECB t\u1EA5t c\u1EA3)" aria-label="\u0110\u1EB7t l\u1EA1i b\u1ED9 l\u1ECDc">
+              <i class="fa-solid fa-rotate-left"></i>
             </button>
           ` : ""}
         </div>
