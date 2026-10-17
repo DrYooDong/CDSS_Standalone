@@ -1,4 +1,4 @@
-// src/content/docspace/public/cdss/dengue/dengue-data.ts
+// dengue/dengue-data.ts
 var CDC_STANDARD_WEIGHT = {
   2: { male: 13, female: 12 },
   3: { male: 14, female: 14 },
@@ -618,7 +618,7 @@ var DENGUE_NON_RESPONSE_SCENARIOS = {
   cpt_escalation: DENGUE_REFRACTORY_SCENARIOS.hct_high_cpt
 };
 
-// src/content/docspace/public/cdss/dengue/dengue-engine.ts
+// dengue/dengue-engine.ts
 function classifyAgeGroup(ageYears) {
   if (ageYears >= 16) return "adult";
   if (ageYears >= 13) return "adolescent";
@@ -788,8 +788,7 @@ function calculateBloodProducts(patient, effectiveWeightKg) {
       id: "hcl",
       productName: "Kh\u1ED1i H\u1ED3ng C\u1EA7u L\u1EAFng (HCL)",
       indication: "S\u1ED1c kh\xF4ng c\u1EA3i thi\u1EC7n sau b\xF9 d\u1ECBch 40-60 ml/kg k\xE8m Hct < 35% ho\u1EB7c Hct gi\u1EA3m nhanh > 20% so v\u1EDBi ban \u0111\u1EA7u, ho\u1EB7c xu\u1EA5t huy\u1EBFt ti\xEAu h\xF3a / ph\u1EE7 t\u1EA1ng \u1ED3 \u1EA1t.",
-      doseFormula: "5 - 10 ml/kg truy\u1EC1n t\u0129nh m\u1EA1ch trong 1 - 2 gi\u1EDD",
-      calculatedDose: `${hclMinMl} - ${hclMaxMl} ml (t\u01B0\u01A1ng \u0111\u01B0\u01A1ng 1 - 2 \u0111\u01A1n v\u1ECB HCL)`,
+      calculatedDose: isAdult ? `${hclMinMl} - ${hclMaxMl} ml (~${Math.max(1, Math.round(hclMinMl / 250))} - ${Math.max(1, Math.ceil(hclMaxMl / 250))} t\xFAi 250ml)` : `${hclMinMl} - ${hclMaxMl} ml (truy\u1EC1n m\xE1y / b\u01A1m ti\xEAm \u0111i\u1EC7n)`,
       thresholdMet: !!(patient.currentHctPercent && patient.currentHctPercent <= 35) || !!patient.massiveBleeding,
       targetClinical: "Duy tr\xEC Hct m\u1EE5c ti\xEAu t\u1EEB 35% \u0111\u1EBFn 40%, c\u1EA3i thi\u1EC7n huy\u1EBFt \u0111\u1ED9ng, chi \u1EA5m, m\u1EA1ch ch\u1EADm l\u1EA1i.",
       precautions: "Song song truy\u1EC1n Cao ph\xE2n t\u1EED 10 ml/kg/h \u0111\u1EC3 n\xE2ng huy\u1EBFt \xE1p trong l\xFAc ch\u1EDD m\xE1u. L\xE0m ph\u1EA3n \u1EE9ng ch\xE9o t\u1EA1i gi\u01B0\u1EDDng."
@@ -1151,7 +1150,7 @@ function generateDengueCDSSPlan(patient, customDurations) {
   };
 }
 
-// src/content/docspace/public/cdss/dengue/dengue-ui.ts
+// dengue/dengue-ui.ts
 var CLINICAL_SAMPLE_CASES = [
   // 1. Nhóm Bù Dịch Ban Đầu & Phân Tầng Thể Trạng
   {
@@ -1300,13 +1299,14 @@ var CLINICAL_SAMPLE_CASES = [
   }
 ];
 var DengueCDSSController = class {
+  container;
+  currentPlan = null;
+  customDurations = {};
+  activeCaseId = "child-obese";
+  activeWorkspaceMode = "fluid_schedule";
+  activeRefractorySubTab = "tab-cpt";
+  includeVasopressorInPrint = false;
   constructor(containerId) {
-    this.currentPlan = null;
-    this.customDurations = {};
-    this.activeCaseId = "child-obese";
-    this.activeWorkspaceMode = "fluid_schedule";
-    this.activeRefractorySubTab = "tab-cpt";
-    this.includeVasopressorInPrint = false;
     const el = document.getElementById(containerId);
     if (!el) {
       throw new Error(`Container #${containerId} not found`);
@@ -1452,15 +1452,27 @@ var DengueCDSSController = class {
                     </div>
                   </div>
 
-                  <!-- C\xE2n n\u1EB7ng th\u1EF1c t\u1EBF -->
-                  <div class="cdss-form-group">
-                    <label class="cdss-form-label" for="input-weight">
-                      <span>C\xE2n N\u1EB7ng Th\u1EF1c T\u1EBF</span>
-                      <small style="color:var(--cdss-text-muted);">C\xE2n \u0111o t\u1EA1i c\u1EA5p c\u1EE9u</small>
-                    </label>
-                    <div class="cdss-input-group">
-                      <input type="number" id="input-weight" min="5" max="160" value="38" step="0.5" required class="cdss-input" />
-                      <span class="cdss-input-suffix">kg</span>
+                  <!-- C\xE2n n\u1EB7ng th\u1EF1c t\u1EBF & Chi\u1EC1u cao -->
+                  <div class="cdss-form-row">
+                    <div class="cdss-form-group">
+                      <label class="cdss-form-label" for="input-weight">
+                        <span>C\xE2n N\u1EB7ng Th\u1EF1c T\u1EBF</span>
+                      </label>
+                      <div class="cdss-input-group">
+                        <input type="number" id="input-weight" min="5" max="180" value="38" step="0.5" required class="cdss-input" />
+                        <span class="cdss-input-suffix">kg</span>
+                      </div>
+                    </div>
+
+                    <div class="cdss-form-group">
+                      <label class="cdss-form-label" for="input-height">
+                        <span>Chi\u1EC1u Cao</span>
+                        <small style="color:var(--cdss-text-muted);">T\xF9y ch\u1ECDn</small>
+                      </label>
+                      <div class="cdss-input-group">
+                        <input type="number" id="input-height" min="50" max="220" placeholder="165" step="1" class="cdss-input" />
+                        <span class="cdss-input-suffix">cm</span>
+                      </div>
                     </div>
                   </div>
 
@@ -1876,6 +1888,7 @@ var DengueCDSSController = class {
     const age = parseFloat(document.getElementById("input-age")?.value) || 8;
     const gender = document.getElementById("input-gender")?.value || "male";
     const weight = parseFloat(document.getElementById("input-weight")?.value) || 30;
+    const height = parseFloat(document.getElementById("input-height")?.value) || void 0;
     const severity = document.getElementById("input-severity")?.value || "warning_signs";
     const startTime = document.getElementById("input-starttime")?.value || "08:00";
     const response = document.getElementById("input-response")?.value || "good";
@@ -1888,6 +1901,7 @@ var DengueCDSSController = class {
       ageYears: age,
       gender,
       actualWeightKg: weight,
+      heightCm: height,
       severity,
       startTime,
       clinicalResponse: response,
@@ -2223,7 +2237,7 @@ var DengueCDSSController = class {
                       <div class="cdss-drops-box">
                         <i class="fa-solid fa-water" style="color:var(--cdss-info);"></i> 
                         <strong>${r.dropsPerMin}</strong> gi\u1ECDt/ph\xFAt
-                        <small style="color:var(--cdss-text-muted);">(D\xE2y 20 g/ml)</small>
+                        <small style="color:var(--cdss-text-muted);">${ageGroup === "child" ? "(D\xE2y vi gi\u1ECDt 60 g/ml)" : "(D\xE2y chu\u1EA9n 20 g/ml)"}</small>
                       </div>
                       <div class="cdss-volume-calc">
                         Th\u1EC3 t\xEDch c\u1EA7n: <strong>${r.totalMl.toLocaleString("vi-VN")} ml</strong>
@@ -2260,6 +2274,67 @@ var DengueCDSSController = class {
     }).join("")}
             </tbody>
           </table>
+        </div>
+
+        <!-- Mobile Adaptive Fluid Cards Stack (< 768px) -->
+        <div class="cdss-fluid-cards-stack">
+          ${plan.fluidRows.map((r, idx) => {
+      const tpl = tpls[idx];
+      const durationOptions = tpl?.durationOptions || [r.durationHours];
+      const optionsHtml = durationOptions.map((dur) => `
+              <option value="${dur}" ${dur === r.durationHours ? "selected" : ""}>${dur} gi\u1EDD</option>
+            `).join("");
+      return `
+              <div class="cdss-mfluid-card ${r.hctCheckRequired ? "cdss-mfluid-card--hct" : ""}">
+                <div class="cdss-mfluid-card-header">
+                  <div class="cdss-step-badge">C\u1EEF ${r.stepIndex}</div>
+                  <div class="cdss-mfluid-timewindow">${r.timeWindow}</div>
+                  <div class="cdss-duration-picker" style="margin-left:auto;">
+                    <select class="cdss-duration-select" data-row-idx="${idx}" aria-label="Th\u1EDDi l\u01B0\u1EE3ng c\u1EEF ${r.stepIndex}">
+                      ${optionsHtml}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="cdss-mfluid-stage-title">${r.stageName}</div>
+
+                <div class="cdss-mfluid-stats-grid">
+                  <div class="cdss-mfluid-stat">
+                    <span class="cdss-mfluid-stat-label">T\u1ED1c \u0110\u1ED9</span>
+                    <strong class="cdss-mfluid-stat-val text-primary">${r.rateMlKgH} <small>ml/kg/h</small></strong>
+                    <span class="cdss-mfluid-stat-sub"><i class="fa-solid fa-water text-info"></i> ${r.dropsPerMin} gi\u1ECDt/ph (${ageGroup === "child" ? "D\xE2y 60g" : "D\xE2y 20g"})</span>
+                  </div>
+                  <div class="cdss-mfluid-stat">
+                    <span class="cdss-mfluid-stat-label">L\u01B0\u1EE3ng D\u1ECBch C\u1EA7n</span>
+                    <strong class="cdss-mfluid-stat-val">${r.totalMl.toLocaleString("vi-VN")} <small>ml</small></strong>
+                    <span class="cdss-mfluid-stat-sub">${r.durationHours}h \xD7 ${plan.weightResult.adjustedWeightKg}kg</span>
+                  </div>
+                  <div class="cdss-mfluid-stat">
+                    <span class="cdss-mfluid-stat-label">Treo Th\xEAm</span>
+                    <strong class="cdss-mfluid-stat-val ${r.bottlesToHang > 0 ? "text-danger" : ""}">
+                      ${r.bottlesToHang > 0 ? `+${r.bottlesToHang} chai 500ml` : "0 (D\xF9ng s\u1EB5n)"}
+                    </strong>
+                    <span class="cdss-mfluid-stat-sub">C\xF3 s\u1EB5n: ${r.existingFluidMl} ml</span>
+                  </div>
+                  <div class="cdss-mfluid-stat">
+                    <span class="cdss-mfluid-stat-label">T\u1EA1i C\u1ECDc</span>
+                    <strong class="cdss-mfluid-stat-val text-teal-600">${r.totalAtPoleMl.toLocaleString("vi-VN")} <small>ml</small></strong>
+                    <span class="cdss-mfluid-stat-sub">D\u01B0 sau c\u1EEF: ${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</span>
+                  </div>
+                </div>
+
+                ${r.hctCheckRequired ? `
+                  <div class="cdss-hct-pill" style="margin-top:0.4rem; width:100%; justify-content:center;">
+                    <i class="fa-solid fa-vial"></i> <strong>B\u1EAET BU\u1ED8C \u0110O L\u1EA0I HCT SAU C\u1EEE N\xC0Y (${r.durationHours}h)</strong>
+                  </div>
+                ` : ""}
+
+                <div class="cdss-monitor-tip" style="margin-top:0.4rem;">
+                  ${r.monitoringNotes}
+                </div>
+              </div>
+            `;
+    }).join("")}
         </div>
       </section>
     `;

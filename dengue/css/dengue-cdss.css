@@ -857,12 +857,14 @@
 .cdss-timeline-track {
   display: flex;
   width: 100%;
-  height: 38px;
+  min-height: 40px;
   background: var(--cdss-surface-alt);
   border-radius: var(--cdss-radius-sm);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   border: 1px solid var(--cdss-border);
   position: relative;
+  scrollbar-width: thin;
 }
 
 .cdss-timeline-segment {
@@ -870,9 +872,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 0.5rem;
+  padding: 0 0.4rem;
   color: #ffffff;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 700;
   position: relative;
   transition: filter 0.2s ease;
@@ -880,6 +882,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  min-width: 55px;
 }
 
 .cdss-timeline-segment:hover {
@@ -954,13 +957,98 @@
 .cdss-table-scroll {
   overflow-x: auto;
   scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
 
 .cdss-table {
   width: 100%;
+  min-width: 640px;
   border-collapse: collapse;
   font-size: 0.84rem;
   text-align: left;
+}
+
+/* Mobile Adaptive Fluid Cards Stack */
+.cdss-fluid-cards-stack {
+  display: none;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0.85rem;
+}
+
+.cdss-mfluid-card {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.95rem;
+  box-shadow: var(--cdss-shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transition: all 0.2s ease;
+}
+
+.cdss-mfluid-card--hct {
+  border-left: 4px solid var(--cdss-danger);
+}
+
+.cdss-mfluid-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.cdss-mfluid-timewindow {
+  font-family: var(--cdss-font-mono);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--cdss-text);
+}
+
+.cdss-mfluid-stage-title {
+  font-size: 0.78rem;
+  color: var(--cdss-text-muted);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.cdss-mfluid-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  background: var(--cdss-surface-alt);
+  border-radius: 6px;
+  padding: 0.65rem;
+  border: 1px solid var(--cdss-border-subtle);
+}
+
+.cdss-mfluid-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.cdss-mfluid-stat-label {
+  font-size: 0.68rem;
+  color: var(--cdss-text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.cdss-mfluid-stat-val {
+  font-family: var(--cdss-font-mono);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  line-height: 1.2;
+}
+
+.cdss-mfluid-stat-sub {
+  font-size: 0.7rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.3;
 }
 
 .cdss-table th {

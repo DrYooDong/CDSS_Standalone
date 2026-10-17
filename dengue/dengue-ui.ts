@@ -354,15 +354,27 @@ export class DengueCDSSController {
                     </div>
                   </div>
 
-                  <!-- Cân nặng thực tế -->
-                  <div class="cdss-form-group">
-                    <label class="cdss-form-label" for="input-weight">
-                      <span>Cân Nặng Thực Tế</span>
-                      <small style="color:var(--cdss-text-muted);">Cân đo tại cấp cứu</small>
-                    </label>
-                    <div class="cdss-input-group">
-                      <input type="number" id="input-weight" min="5" max="160" value="38" step="0.5" required class="cdss-input" />
-                      <span class="cdss-input-suffix">kg</span>
+                  <!-- Cân nặng thực tế & Chiều cao -->
+                  <div class="cdss-form-row">
+                    <div class="cdss-form-group">
+                      <label class="cdss-form-label" for="input-weight">
+                        <span>Cân Nặng Thực Tế</span>
+                      </label>
+                      <div class="cdss-input-group">
+                        <input type="number" id="input-weight" min="5" max="180" value="38" step="0.5" required class="cdss-input" />
+                        <span class="cdss-input-suffix">kg</span>
+                      </div>
+                    </div>
+
+                    <div class="cdss-form-group">
+                      <label class="cdss-form-label" for="input-height">
+                        <span>Chiều Cao</span>
+                        <small style="color:var(--cdss-text-muted);">Tùy chọn</small>
+                      </label>
+                      <div class="cdss-input-group">
+                        <input type="number" id="input-height" min="50" max="220" placeholder="165" step="1" class="cdss-input" />
+                        <span class="cdss-input-suffix">cm</span>
+                      </div>
                     </div>
                   </div>
 
@@ -822,6 +834,7 @@ export class DengueCDSSController {
     const age = parseFloat((document.getElementById('input-age') as HTMLInputElement)?.value) || 8;
     const gender = ((document.getElementById('input-gender') as HTMLInputElement)?.value as Gender) || 'male';
     const weight = parseFloat((document.getElementById('input-weight') as HTMLInputElement)?.value) || 30;
+    const height = parseFloat((document.getElementById('input-height') as HTMLInputElement)?.value) || undefined;
     const severity = ((document.getElementById('input-severity') as HTMLSelectElement)?.value as DengueSeverity) || 'warning_signs';
     const startTime = (document.getElementById('input-starttime') as HTMLInputElement)?.value || '08:00';
     const response = ((document.getElementById('input-response') as HTMLSelectElement)?.value) || 'good';
@@ -835,6 +848,7 @@ export class DengueCDSSController {
       ageYears: age,
       gender,
       actualWeightKg: weight,
+      heightCm: height,
       severity,
       startTime,
       clinicalResponse: response,
@@ -1198,7 +1212,7 @@ export class DengueCDSSController {
                       <div class="cdss-drops-box">
                         <i class="fa-solid fa-water" style="color:var(--cdss-info);"></i> 
                         <strong>${r.dropsPerMin}</strong> giọt/phút
-                        <small style="color:var(--cdss-text-muted);">(Dây 20 g/ml)</small>
+                        <small style="color:var(--cdss-text-muted);">${ageGroup === 'child' ? '(Dây vi giọt 60 g/ml)' : '(Dây chuẩn 20 g/ml)'}</small>
                       </div>
                       <div class="cdss-volume-calc">
                         Thể tích cần: <strong>${r.totalMl.toLocaleString('vi-VN')} ml</strong>
@@ -1235,6 +1249,68 @@ export class DengueCDSSController {
               }).join('')}
             </tbody>
           </table>
+        </div>
+
+        <!-- Mobile Adaptive Fluid Cards Stack (< 768px) -->
+        <div class="cdss-fluid-cards-stack">
+          ${plan.fluidRows.map((r, idx) => {
+            const tpl = tpls[idx];
+            const durationOptions = tpl?.durationOptions || [r.durationHours];
+            const optionsHtml = durationOptions.map(dur => `
+              <option value="${dur}" ${dur === r.durationHours ? 'selected' : ''}>${dur} giờ</option>
+            `).join('');
+
+            return `
+              <div class="cdss-mfluid-card ${r.hctCheckRequired ? 'cdss-mfluid-card--hct' : ''}">
+                <div class="cdss-mfluid-card-header">
+                  <div class="cdss-step-badge">Cữ ${r.stepIndex}</div>
+                  <div class="cdss-mfluid-timewindow">${r.timeWindow}</div>
+                  <div class="cdss-duration-picker" style="margin-left:auto;">
+                    <select class="cdss-duration-select" data-row-idx="${idx}" aria-label="Thời lượng cữ ${r.stepIndex}">
+                      ${optionsHtml}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="cdss-mfluid-stage-title">${r.stageName}</div>
+
+                <div class="cdss-mfluid-stats-grid">
+                  <div class="cdss-mfluid-stat">
+                    <span class="cdss-mfluid-stat-label">Tốc Độ</span>
+                    <strong class="cdss-mfluid-stat-val text-primary">${r.rateMlKgH} <small>ml/kg/h</small></strong>
+                    <span class="cdss-mfluid-stat-sub"><i class="fa-solid fa-water text-info"></i> ${r.dropsPerMin} giọt/ph (${ageGroup === 'child' ? 'Dây 60g' : 'Dây 20g'})</span>
+                  </div>
+                  <div class="cdss-mfluid-stat">
+                    <span class="cdss-mfluid-stat-label">Lượng Dịch Cần</span>
+                    <strong class="cdss-mfluid-stat-val">${r.totalMl.toLocaleString('vi-VN')} <small>ml</small></strong>
+                    <span class="cdss-mfluid-stat-sub">${r.durationHours}h × ${plan.weightResult.adjustedWeightKg}kg</span>
+                  </div>
+                  <div class="cdss-mfluid-stat">
+                    <span class="cdss-mfluid-stat-label">Treo Thêm</span>
+                    <strong class="cdss-mfluid-stat-val ${r.bottlesToHang > 0 ? 'text-danger' : ''}">
+                      ${r.bottlesToHang > 0 ? `+${r.bottlesToHang} chai 500ml` : '0 (Dùng sẵn)'}
+                    </strong>
+                    <span class="cdss-mfluid-stat-sub">Có sẵn: ${r.existingFluidMl} ml</span>
+                  </div>
+                  <div class="cdss-mfluid-stat">
+                    <span class="cdss-mfluid-stat-label">Tại Cọc</span>
+                    <strong class="cdss-mfluid-stat-val text-teal-600">${r.totalAtPoleMl.toLocaleString('vi-VN')} <small>ml</small></strong>
+                    <span class="cdss-mfluid-stat-sub">Dư sau cữ: ${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</span>
+                  </div>
+                </div>
+
+                ${r.hctCheckRequired ? `
+                  <div class="cdss-hct-pill" style="margin-top:0.4rem; width:100%; justify-content:center;">
+                    <i class="fa-solid fa-vial"></i> <strong>BẮT BUỘC ĐO LẠI HCT SAU CỮ NÀY (${r.durationHours}h)</strong>
+                  </div>
+                ` : ''}
+
+                <div class="cdss-monitor-tip" style="margin-top:0.4rem;">
+                  ${r.monitoringNotes}
+                </div>
+              </div>
+            `;
+          }).join('')}
         </div>
       </section>
     `;
