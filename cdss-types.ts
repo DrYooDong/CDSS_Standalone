@@ -32,6 +32,10 @@ export interface WeightCalculationResult {
   adjustedWeightKg: number;
   formulaNote: string;
   warningText?: string;
+  bmi?: number;
+  idealWeightKg?: number;
+  isAdultMethod?: boolean;
+  tableRoundedWeightKg?: number;
 }
 
 export interface FluidScheduleRow {

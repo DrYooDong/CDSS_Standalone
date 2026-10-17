@@ -42,6 +42,54 @@ export function getCDCStandardWeight(age: number, gender: Gender): number {
 }
 
 /**
+ * Danh sách Chiều Cao (cm) & Cân Nặng (kg) trong 02 Bảng Tra Nhanh Chống Sốc SXH Người Lớn
+ * (Phụ lục 9 - Quyết định 2760/QĐ-BYT)
+ */
+export const ADULT_SHOCK_HEIGHTS = [
+  145, 147, 149, 151, 153, 155, 157, 159, 161, 163, 165,
+  167, 169, 171, 173, 175, 177, 179, 181, 183, 185, 187
+];
+
+export const ADULT_SHOCK_WEIGHTS = [
+  45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71,
+  73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101
+];
+
+/**
+ * Tính giá trị ô trong Bảng Cân Nặng Chống Sốc SXH Người Lớn (Phụ lục 9 - QĐ 2760/QĐ-BYT)
+ * - BMI < 25 kg/m²: Sử dụng cân nặng thực tế BN
+ * - BMI >= 25 kg/m²: Cân nặng hiệu chỉnh = IBW + 0.4 * (CN thực - IBW)
+ */
+export function getAdultShockCell(heightCm: number, weightKg: number, gender: Gender): {
+  bmi: number;
+  isAdjusted: boolean;
+  ibw: number;
+  adjBw: number;
+  tableWeight: number;
+} {
+  const heightM = heightCm / 100;
+  const bmi = Math.round((weightKg / (heightM * heightM)) * 10) / 10;
+  const isAdjusted = bmi >= 25.0;
+
+  const ibwRaw = gender === 'male'
+    ? 50.0 + 0.91 * (heightCm - 152.4)
+    : 45.5 + 0.91 * (heightCm - 152.4);
+  const ibw = Math.round(ibwRaw * 10) / 10;
+
+  const adjBwRaw = ibwRaw + 0.4 * (weightKg - ibwRaw);
+  const adjBw = Math.round(adjBwRaw * 10) / 10;
+  const tableWeight = isAdjusted ? Math.round(Math.round(adjBwRaw * 10) / 10) : weightKg;
+
+  return {
+    bmi,
+    isAdjusted,
+    ibw,
+    adjBw,
+    tableWeight
+  };
+}
+
+/**
  * Định nghĩa template bậc truyền dịch theo Phân độ và Độ tuổi
  */
 export interface FluidStageTemplate {

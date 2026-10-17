@@ -36,7 +36,16 @@ export function classifyAgeGroup(ageYears: number): DengueAgeGroup {
 }
 
 /**
- * Tính toán Cân Nặng Hiệu Chỉnh theo chuẩn CDC 2014 & Phụ lục 9 BYT
+ * Tính toán Cân Nặng Hiệu Chỉnh theo chuẩn CDC 2014 (Trẻ em) & Phụ lục 9 BYT (Người lớn)
+ * - Người lớn (>= 16T):
+ *   + BMI < 25 kg/m²: Dùng cân nặng thực tế.
+ *   + BMI >= 25 kg/m²: Dùng cân nặng hiệu chỉnh:
+ *     * IBW (Nữ): 45.5 + 0.91 x (chiều cao(cm) - 152.4)
+ *     * IBW (Nam): 50.0 + 0.91 x (chiều cao(cm) - 152.4)
+ *     * CN hiệu chỉnh = IBW + 0.4 x (CN thực - IBW)
+ * - Trẻ em (< 16T):
+ *   + Áp dụng Bảng CDC 2014 cho trẻ dư cân / béo phì (vượt quá 120% chuẩn tuổi CDC 2014).
+ *   + Khuyến cáo ước tính cho những giờ đầu và nên đo CVP theo dõi khi bù dịch.
  */
 export function calculateWeightAdjustment(
   ageYears: number,
@@ -44,47 +53,101 @@ export function calculateWeightAdjustment(
   actualWeightKg: number,
   heightCm?: number
 ): WeightCalculationResult {
-  const stdWeight = getCDCStandardWeight(ageYears, gender);
+  const isAdult = ageYears >= 16;
+  const stdWeight = getCDCStandardWeight(Math.min(16, ageYears), gender);
+
+  // 1. NGƯỜI LỚN (>= 16 TUỔI) — Áp dụng Phụ lục 9 QĐ 2760/QĐ-BYT
+  if (isAdult) {
+    if (heightCm && heightCm >= 100) {
+      const heightM = heightCm / 100;
+      const bmi = Math.round((actualWeightKg / (heightM * heightM)) * 10) / 10;
+      const isBmiOverweight = bmi >= 25.0;
+
+      // Công thức Phụ lục 9:
+      // Nam: 50.0 + 0.91 x (chiều cao (cm) - 152.4)
+      // Nữ:  45.5 + 0.91 x (chiều cao (cm) - 152.4)
+      const ibwRaw = gender === 'male'
+        ? 50.0 + 0.91 * (heightCm - 152.4)
+        : 45.5 + 0.91 * (heightCm - 152.4);
+      const ibw = Math.round(ibwRaw * 10) / 10;
+
+      if (!isBmiOverweight) {
+        // a) BMI < 25 kg/m²: sử dụng CN thực
+        return {
+          actualWeightKg,
+          standardWeightKg: ibw,
+          isObese: false,
+          ratioToStandard: Math.round((actualWeightKg / ibw) * 100) / 100,
+          adjustedWeightKg: actualWeightKg,
+          bmi,
+          idealWeightKg: ibw,
+          isAdultMethod: true,
+          tableRoundedWeightKg: actualWeightKg,
+          formulaNote: `Người lớn BMI = ${bmi} kg/m² (< 25): Sử dụng cân nặng thực tế ${actualWeightKg} kg theo Phụ lục 9 QĐ 2760/BYT.`
+        };
+      } else {
+        // b) BMI >= 25 kg/m²: sử dụng CN hiệu chỉnh
+        // CN hiệu chỉnh = CN lý tưởng + 0.4 x (CN thực - CN lý tưởng)
+        const adjBwRaw = ibwRaw + 0.4 * (actualWeightKg - ibwRaw);
+        const adjBw = Math.round(adjBwRaw * 10) / 10;
+        const tableRounded = Math.round(Math.round(adjBwRaw * 10) / 10);
+        const adjustedWeightKg = Math.max(ibw, Math.min(actualWeightKg, adjBw));
+
+        return {
+          actualWeightKg,
+          standardWeightKg: ibw,
+          isObese: true,
+          ratioToStandard: Math.round((actualWeightKg / ibw) * 100) / 100,
+          adjustedWeightKg,
+          bmi,
+          idealWeightKg: ibw,
+          isAdultMethod: true,
+          tableRoundedWeightKg: tableRounded,
+          formulaNote: `Người lớn BMI = ${bmi} kg/m² (≥ 25: Thừa cân/Béo phì) ➜ Dùng CN hiệu chỉnh Phụ lục 9 BYT: IBW = ${ibw} kg; CN hiệu chỉnh = ${adjustedWeightKg} kg (Bảng tra làm tròn: ${tableRounded} kg).`,
+          warningText: `Người lớn thể trọng lớn (BMI ${bmi} kg/m² ≥ 25): Bắt buộc dùng Cân Nặng Hiệu Chỉnh ${adjustedWeightKg} kg (Bảng tra làm tròn: ${tableRounded} kg) để tính dịch bù chống sốc. Phải giám sát chặt chẽ CVP, SpO2 và ran đáy phổi khi bù dịch.`
+        };
+      }
+    } else {
+      // Người lớn chưa có chiều cao -> nhắc nhở nhập chiều cao để tính BMI
+      return {
+        actualWeightKg,
+        standardWeightKg: stdWeight,
+        isObese: false,
+        ratioToStandard: Math.round((actualWeightKg / stdWeight) * 100) / 100,
+        adjustedWeightKg: actualWeightKg,
+        formulaNote: `Người lớn (≥ 16T): Chưa nhập chiều cao để tính BMI. Tạm dùng Cân nặng thực tế ${actualWeightKg} kg (Khuyến cáo nhập chiều cao để CDSS tính chính xác theo Phụ lục 9).`,
+        warningText: `Khuyến cáo: Người lớn cần nhập Chiều cao (cm) để xác định chỉ số BMI và tính Cân nặng hiệu chỉnh chính xác theo Phụ lục 9 QĐ 2760/BYT.`,
+        isAdultMethod: true,
+        tableRoundedWeightKg: actualWeightKg
+      };
+    }
+  }
+
+  // 2. TRẺ EM (< 16 TUỔI) — Áp dụng Bảng CDC 2014 theo hướng dẫn Phụ lục 9
+  // Bảng 1: CÂN NẶNG HIỆU CHỈNH Ở TRẺ EM DƯ CÂN HOẶC BÉO PHÌ (dựa theo hướng dẫn của CDC 2014)
   const ratio = actualWeightKg / stdWeight;
-  const isObese = ratio > 1.20; // Vượt quá 120% cân nặng chuẩn theo tuổi
+  const isObese = ratio > 1.20; // Vượt quá 120% cân nặng chuẩn theo tuổi CDC 2014
 
   let adjustedWeightKg = actualWeightKg;
-  let formulaNote = 'Cân nặng thực tế (Không quá ngưỡng thừa cân 120%)';
+  let formulaNote = `Trẻ em: Cân nặng thực tế ${actualWeightKg} kg (${Math.round(ratio * 100)}% so với chuẩn tuổi CDC 2014: ${stdWeight} kg, thể trạng bình thường).`;
   let warningText: string | undefined = undefined;
 
   if (isObese) {
-    if (ageYears < 16) {
-      // Theo QĐ 2760/QĐ-BYT: Trẻ béo phì dùng Cân nặng chuẩn theo tuổi (CDC 2014) để tính dịch
-      adjustedWeightKg = stdWeight;
-      formulaNote = `Áp dụng Cân nặng chuẩn CDC 2014 (${stdWeight} kg) thay cho cân nặng thực (${actualWeightKg} kg) do vượt ngưỡng 120% (${Math.round(ratio * 100)}% chuẩn tuổi).`;
-      warningText = `Cảnh báo: Trẻ thừa cân / béo phì (${Math.round(ratio * 100)}% so với chuẩn tuổi). Bắt buộc dùng cân nặng chuẩn ${stdWeight} kg để tính dịch nhằm tránh phù phổi cấp và quá tải tuần hoàn.`;
-    } else {
-      // Người lớn béo phì: Tính theo Cân nặng hiệu chỉnh AdjBW = IBW + 0.4 * (TBW - IBW) theo Phụ lục 9 QĐ 2760/BYT
-      let ibw = stdWeight;
-      if (heightCm && heightCm > 100) {
-        if (heightCm >= 152.4) {
-          ibw = gender === 'male' ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
-        } else {
-          // Khi chiều cao < 152.4 cm, dùng BMI chuẩn 22 kg/m² để tránh công thức Robinson/Devine bị thấp bất thường
-          ibw = 22 * Math.pow(heightCm / 100, 2);
-        }
-        ibw = Math.max(35, Math.round(ibw * 10) / 10);
-      }
-      const adjBw = Math.round((ibw + 0.4 * (actualWeightKg - ibw)) * 10) / 10;
-      adjustedWeightKg = Math.max(ibw, Math.min(actualWeightKg, adjBw));
-      formulaNote = `Người lớn béo phì: Cân nặng tính dịch hiệu chỉnh AdjBW = ${adjustedWeightKg} kg (IBW: ${ibw} kg, TBW: ${actualWeightKg} kg)`;
-      warningText = `Người lớn thể trọng lớn (${actualWeightKg} kg): Dùng cân nặng hiệu chỉnh AdjBW ${adjustedWeightKg} kg để tính dịch. Cần giám sát chặt chẽ CVP, SpO2 và ran đáy phổi khi bù dịch.`;
-    }
+    adjustedWeightKg = stdWeight;
+    formulaNote = `Trẻ em dư cân/béo phì (${Math.round(ratio * 100)}% chuẩn tuổi): Áp dụng Cân nặng hiệu chỉnh theo Bảng CDC 2014 (${stdWeight} kg) cho những giờ đầu (Phụ lục 9 - QĐ 2760/QĐ-BYT).`;
+    warningText = `Cảnh báo: Trẻ thừa cân / béo phì (${actualWeightKg} kg = ${Math.round(ratio * 100)}% so với chuẩn CDC 2014 ${stdWeight} kg). Khuyến cáo áp dụng tính cân nặng bù dịch cho trẻ em dư cân, béo phì này chỉ ước tính cho những giờ đầu và nên đo áp lực tĩnh mạch trung tâm (CVP) để theo dõi trong khi bù dịch.`;
   }
 
   return {
     actualWeightKg,
     standardWeightKg: stdWeight,
     isObese,
-    ratioToStandard: ratio,
+    ratioToStandard: Math.round(ratio * 100) / 100,
     adjustedWeightKg,
     formulaNote,
-    warningText
+    warningText,
+    isAdultMethod: false,
+    tableRoundedWeightKg: adjustedWeightKg
   };
 }
 
@@ -679,8 +742,12 @@ export function generateDengueCDSSPlan(
     `--- KẾ HOẠCH ĐIỀU TRỊ & CHỐNG SỐC SXHD DENGUE (CDSS BYT 2023) [${dateStr}] ---`,
     `Bệnh nhân: ${patient.ageYears} tuổi, Giới tính: ${patient.gender === 'male' ? 'Nam' : 'Nữ'}`,
     `Phân độ: ${patient.severity === 'warning_signs' ? 'SXHD có Dấu hiệu cảnh báo' : patient.severity === 'shock' ? 'Sốc SXHD' : 'Sốc SXHD nặng nguy kịch'}`,
-    `Cân nặng thực: ${patient.actualWeightKg} kg | Cân nặng chuẩn: ${weightResult.standardWeightKg} kg | Cân nặng tính dịch: ${effectiveWeight} kg`,
-    ...(weightResult.isObese ? [`[LƯU Ý]: Đã hiệu chỉnh theo chuẩn CDC 2014 để tránh quá tải tuần hoàn.`] : []),
+    `Cân nặng thực: ${patient.actualWeightKg} kg | Cân nặng chuẩn/IBW: ${weightResult.standardWeightKg} kg | Cân nặng tính dịch: ${effectiveWeight} kg`,
+    ...(weightResult.isObese ? [
+      patient.ageYears >= 16
+        ? `[LƯU Ý HIỆU CHỈNH NGƯỜI LỚN]: Đã hiệu chỉnh theo Phụ lục 9 BYT (BMI ${weightResult.bmi ?? ''} kg/m² ≥ 25: IBW = ${weightResult.idealWeightKg} kg, CN hiệu chỉnh = ${effectiveWeight} kg) để tránh quá tải tuần hoàn.`
+        : `[LƯU Ý HIỆU CHỈNH TRẺ EM]: Đã hiệu chỉnh theo Bảng CDC 2014 (${effectiveWeight} kg) cho trẻ dư cân/béo phì. Cần theo dõi sát CVP.`
+    ] : []),
     ...(patient.currentHctPercent ? [`Hct hiện tại: ${patient.currentHctPercent}% | Đánh giá đáp ứng: ${patient.clinicalResponse || 'Theo dõi'}`] : []),
     `\n1. NHÁNH XỬ TRÍ LÂM SÀNG: ${branchDecision.title}`,
     `  • Hướng xử trí: ${branchDecision.recommendedFluid}`,

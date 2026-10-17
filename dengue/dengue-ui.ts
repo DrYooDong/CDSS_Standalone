@@ -19,7 +19,11 @@ import {
 
 import {
   DENGUE_FLUID_TEMPLATES,
-  DENGUE_NON_RESPONSE_SCENARIOS
+  DENGUE_NON_RESPONSE_SCENARIOS,
+  CDC_STANDARD_WEIGHT,
+  ADULT_SHOCK_HEIGHTS,
+  ADULT_SHOCK_WEIGHTS,
+  getAdultShockCell
 } from './dengue-data';
 
 export type WorkspaceMode = 'fluid_schedule' | 'refractory_suite' | 'vasopressors' | 'nursing_checklist';
@@ -35,6 +39,7 @@ interface ClinicalSampleCase {
     ageYears: number;
     gender: Gender;
     actualWeightKg: number;
+    heightCm?: number;
     severity: DengueSeverity;
     clinicalResponse?: string;
     currentHctPercent?: number;
@@ -67,6 +72,24 @@ const CLINICAL_SAMPLE_CASES: ClinicalSampleCase[] = [
     clinicalHighlight: 'Trẻ béo phì > 120% chuẩn: Tự động dùng cân nặng hiệu chỉnh CDC 2014 (26kg) tránh phù phổi cấp.'
   },
   {
+    id: 'adult-obese-shock',
+    category: 'initial',
+    icon: 'fa-solid fa-weight-scale',
+    label: 'Nam 35T Béo Phì (75kg)',
+    tag: 'Phụ Lục 9 BYT',
+    input: {
+      ageYears: 35,
+      gender: 'male',
+      actualWeightKg: 75,
+      heightCm: 165,
+      severity: 'shock',
+      clinicalResponse: 'good',
+      currentHctPercent: 47,
+      baselineHctPercent: 39
+    },
+    clinicalHighlight: 'Nam 35T béo phì (165cm, 75kg, BMI 27.5 ≥ 25): Bắt buộc dùng Cân nặng hiệu chỉnh Phụ lục 9 BYT (67kg thay vì 75kg) để phòng ngừa phù phổi cấp.'
+  },
+  {
     id: 'child-shock',
     category: 'initial',
     icon: 'fa-solid fa-heart-pulse',
@@ -94,12 +117,13 @@ const CLINICAL_SAMPLE_CASES: ClinicalSampleCase[] = [
       ageYears: 35,
       gender: 'female',
       actualWeightKg: 62,
+      heightCm: 155,
       severity: 'severe_shock',
       clinicalResponse: 'good',
       currentHctPercent: 49,
       baselineHctPercent: 38
     },
-    clinicalHighlight: 'Sốc nguy kịch khẩn cấp: Bơm dịch 20 ml/kg/h siêu tốc + chuẩn bị Noradrenalin bơm tiêm điện.'
+    clinicalHighlight: 'Nữ 35T sốc nguy kịch 62kg (155cm, BMI 25.8 ≥ 25, hiệu chỉnh 54kg): Bơm dịch 20 ml/kg/h siêu tốc + chuẩn bị Noradrenalin bơm tiêm điện.'
   },
   {
     id: 'adult-shock-compensated',
@@ -111,12 +135,13 @@ const CLINICAL_SAMPLE_CASES: ClinicalSampleCase[] = [
       ageYears: 30,
       gender: 'male',
       actualWeightKg: 70,
+      heightCm: 170,
       severity: 'shock',
       clinicalResponse: 'good',
       currentHctPercent: 46,
       baselineHctPercent: 38
     },
-    clinicalHighlight: 'Nam 30 tuổi sốc còn bù 70kg: Bù dịch nấc thang chuẩn 15 -> 10 -> 5 -> 3 -> 1.5 ml/kg/h, đáp ứng tốt, ra sốc ổn định không cần vận mạch.'
+    clinicalHighlight: 'Nam 30T sốc còn bù (170cm, 70kg, BMI 24.2 < 25): Dùng cân nặng thực 70kg theo Phụ lục 9, bù dịch nấc thang 15 -> 10 -> 5 -> 3 -> 1.5 ml/kg/h.'
   },
 
   // 2. Nhóm Sốc Trơ & Xử Trí Không Đáp Ứng
@@ -746,6 +771,11 @@ export class DengueCDSSController {
     // Update Form Inputs
     this.setInputValue('input-age', sample.input.ageYears.toString());
     this.setInputValue('input-weight', sample.input.actualWeightKg.toString());
+    if (sample.input.heightCm !== undefined) {
+      this.setInputValue('input-height', sample.input.heightCm.toString());
+    } else {
+      this.setInputValue('input-height', '');
+    }
     this.setInputValue('input-severity', sample.input.severity);
     this.setGender(sample.input.gender);
 
@@ -876,46 +906,445 @@ export class DengueCDSSController {
     this.renderPrintSheet(plan);
   }
 
+  private activeModalTab: 'male_table' | 'female_table' | 'cdc_table' | 'formula_guide' = 'male_table';
+
   private renderWeightAnalysis(plan: DengueCDSSPlan): void {
     const box = document.getElementById('weight-analysis-box');
     if (!box) return;
 
-    const { weightResult, ageGroup } = plan;
+    const { weightResult, patient } = plan;
+    const isAdult = patient.ageYears >= 16;
     const isObese = weightResult.isObese;
 
-    const ageGroupLabel = ageGroup === 'child' 
-      ? 'Trẻ em (< 13 tuổi)' 
-      : ageGroup === 'adolescent' 
-        ? 'Thiếu niên (13-15T)' 
-        : 'Người lớn (≥ 16T)';
+    if (isAdult) {
+      // Giao diện cho Người lớn (Phụ lục 9 QĐ 2760/BYT)
+      const hasHeight = patient.heightCm && patient.heightCm >= 100;
+      const bmiStr = weightResult.bmi !== undefined ? `${weightResult.bmi} kg/m²` : 'Chưa có';
+      const bmiStatusText = !hasHeight
+        ? 'Cần nhập Chiều cao'
+        : isObese
+          ? `BMI ${weightResult.bmi} (≥ 25: Thừa Cân / Béo Phì)`
+          : `BMI ${weightResult.bmi} (< 25: Thể Trạng Chuẩn)`;
+      const bmiBadgeClass = !hasHeight
+        ? 'cdss-weight-status-badge--warning'
+        : isObese
+          ? 'cdss-weight-status-badge--obese'
+          : 'cdss-weight-status-badge--normal';
 
-    box.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-        <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted);">
-          Cân Nặng Tính Dịch (CDSS)
-        </span>
-        <span style="font-size:0.72rem; font-weight:700; color:${isObese ? 'var(--cdss-danger)' : 'var(--cdss-success)'};">
-          ${isObese ? 'Thừa Cân (> 120% Chuẩn)' : 'Thể Trạng Chuẩn'}
-        </span>
+      box.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:4px;">
+          <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); display:flex; align-items:center; gap:4px;">
+            <i class="fa-solid fa-scale-balanced text-primary"></i> Cân Nặng Tính Dịch (Phụ Lục 9 BYT)
+          </span>
+          <span class="cdss-weight-status-badge ${bmiBadgeClass}" style="font-size:0.7rem; font-weight:700;">
+            ${bmiStatusText}
+          </span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1.25fr; gap:0.35rem; background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.5rem; text-align:center;">
+          <div>
+            <div style="font-size:0.65rem; color:var(--cdss-text-muted); text-transform:uppercase;">Thực tế</div>
+            <strong style="font-size:0.9rem; font-family:var(--cdss-font-mono);">${weightResult.actualWeightKg} kg</strong>
+          </div>
+          <div style="border-left:1px solid var(--cdss-border-subtle);">
+            <div style="font-size:0.65rem; color:var(--cdss-text-muted); text-transform:uppercase;">BMI</div>
+            <strong style="font-size:0.9rem; font-family:var(--cdss-font-mono); color:${isObese ? 'var(--cdss-danger)' : 'var(--cdss-text)'};">${hasHeight ? weightResult.bmi : '---'}</strong>
+          </div>
+          <div style="border-left:1px solid var(--cdss-border-subtle);">
+            <div style="font-size:0.65rem; color:var(--cdss-text-muted); text-transform:uppercase;">Lý tưởng (IBW)</div>
+            <strong style="font-size:0.9rem; font-family:var(--cdss-font-mono); color:var(--cdss-text-muted);">${weightResult.idealWeightKg ? weightResult.idealWeightKg + ' kg' : '---'}</strong>
+          </div>
+          <div style="border-left:1px solid var(--cdss-border-subtle); background:var(--cdss-surface); border-radius:6px; padding:2px 0;">
+            <div style="font-size:0.65rem; color:var(--cdss-primary); font-weight:700; text-transform:uppercase;">Tính dịch</div>
+            <strong style="font-size:1.05rem; font-family:var(--cdss-font-mono); color:var(--cdss-primary);">${weightResult.adjustedWeightKg} kg</strong>
+            ${isObese && weightResult.tableRoundedWeightKg ? `<div style="font-size:0.62rem; color:var(--cdss-text-muted);">(Bảng tra: ${weightResult.tableRoundedWeightKg}kg)</div>` : ''}
+          </div>
+        </div>
+
+        <div style="font-size:0.72rem; color:var(--cdss-text-muted); line-height:1.4; margin-top:0.45rem;">
+          <i class="fa-solid fa-circle-info text-primary"></i> ${weightResult.formulaNote}
+        </div>
+
+        <button type="button" id="btn-open-weight-modal" class="cdss-btn-lookup-weight" style="margin-top:0.5rem; width:100%; display:flex; align-items:center; justify-content:center; gap:0.4rem; padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:700; background:rgba(13,148,136,0.08); color:var(--cdss-primary); border:1px solid rgba(13,148,136,0.25); border-radius:6px; cursor:pointer;">
+          <i class="fa-solid fa-table-cells"></i> <span>Tra Cứu 02 Bảng SXH Nam/Nữ &amp; CDC 2014</span>
+        </button>
+      `;
+    } else {
+      // Giao diện cho Trẻ em (CDC 2014)
+      const ratioPct = Math.round((weightResult.ratioToStandard || (weightResult.actualWeightKg / weightResult.standardWeightKg)) * 100);
+      const badgeClass = isObese ? 'cdss-weight-status-badge--obese' : 'cdss-weight-status-badge--normal';
+      const badgeText = isObese ? `Dư Cân / Béo Phì (${ratioPct}% Chuẩn)` : `Thể Trạng Chuẩn (${ratioPct}%)`;
+
+      box.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:4px;">
+          <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); display:flex; align-items:center; gap:4px;">
+            <i class="fa-solid fa-child text-primary"></i> Cân Nặng Tính Dịch (CDC 2014)
+          </span>
+          <span class="cdss-weight-status-badge ${badgeClass}" style="font-size:0.7rem; font-weight:700;">
+            ${badgeText}
+          </span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1.3fr; gap:0.4rem; background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.5rem; text-align:center;">
+          <div>
+            <div style="font-size:0.68rem; color:var(--cdss-text-muted);">Thực tế</div>
+            <strong style="font-size:0.95rem; font-family:var(--cdss-font-mono);">${weightResult.actualWeightKg} kg</strong>
+          </div>
+          <div style="border-left:1px solid var(--cdss-border-subtle); border-right:1px solid var(--cdss-border-subtle);">
+            <div style="font-size:0.68rem; color:var(--cdss-text-muted);">CDC 2014</div>
+            <strong style="font-size:0.95rem; font-family:var(--cdss-font-mono); color:var(--cdss-text-muted);">${weightResult.standardWeightKg} kg</strong>
+          </div>
+          <div style="background:var(--cdss-surface); border-radius:6px; padding:2px 0;">
+            <div style="font-size:0.68rem; color:var(--cdss-primary); font-weight:700;">Tính dịch</div>
+            <strong style="font-size:1.05rem; font-family:var(--cdss-font-mono); color:var(--cdss-primary);">${weightResult.adjustedWeightKg} kg</strong>
+          </div>
+        </div>
+
+        <div style="font-size:0.72rem; color:var(--cdss-text-muted); line-height:1.4; margin-top:0.45rem;">
+          <i class="fa-solid fa-circle-info text-primary"></i> ${weightResult.formulaNote}
+        </div>
+
+        <button type="button" id="btn-open-weight-modal" class="cdss-btn-lookup-weight" style="margin-top:0.5rem; width:100%; display:flex; align-items:center; justify-content:center; gap:0.4rem; padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:700; background:rgba(13,148,136,0.08); color:var(--cdss-primary); border:1px solid rgba(13,148,136,0.25); border-radius:6px; cursor:pointer;">
+          <i class="fa-solid fa-table-cells"></i> <span>Tra Cứu Bảng CDC 2014 &amp; Phụ Lục 9</span>
+        </button>
+      `;
+    }
+
+    // Gắn sự kiện mở modal
+    const btnModal = document.getElementById('btn-open-weight-modal');
+    if (btnModal) {
+      btnModal.onclick = () => this.openWeightLookupModal();
+    }
+  }
+
+  public openWeightLookupModal(): void {
+    let modal = document.getElementById('cdss-weight-modal-overlay');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'cdss-weight-modal-overlay';
+      modal.className = 'cdss-weight-modal-overlay';
+      document.body.appendChild(modal);
+    }
+
+    // Tự động chọn tab phù hợp với bệnh nhân hiện tại
+    if (this.currentPlan) {
+      if (this.currentPlan.patient.ageYears < 16) {
+        this.activeModalTab = 'cdc_table';
+      } else {
+        this.activeModalTab = this.currentPlan.patient.gender === 'female' ? 'female_table' : 'male_table';
+      }
+    }
+
+    this.renderWeightLookupModalContent();
+    modal.classList.add('active');
+  }
+
+  public closeWeightLookupModal(): void {
+    const modal = document.getElementById('cdss-weight-modal-overlay');
+    if (modal) {
+      modal.classList.remove('active');
+    }
+  }
+
+  private renderWeightLookupModalContent(): void {
+    const modal = document.getElementById('cdss-weight-modal-overlay');
+    if (!modal) return;
+
+    modal.innerHTML = `
+      <div class="cdss-weight-modal-dialog" onclick="event.stopPropagation()">
+        <!-- Header -->
+        <div class="cdss-weight-modal-header">
+          <div>
+            <h3 class="cdss-weight-modal-title">
+              <i class="fa-solid fa-table-cells text-primary"></i>
+              <span>Tra Cứu Bảng Cân Nặng Chống Sốc SXHD &amp; CDC 2014</span>
+            </h3>
+            <div style="font-size:0.75rem; color:var(--cdss-text-muted); margin-top:2px;">
+              Phụ lục 9 — Hướng dẫn chẩn đoán, điều trị SXHD (Ban hành kèm Quyết định 2760/QĐ-BYT ngày 04/07/2023)
+            </div>
+          </div>
+          <button type="button" class="cdss-weight-modal-close" id="btn-close-weight-modal" title="Đóng">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="cdss-weight-modal-tabs">
+          <button type="button" class="cdss-weight-modal-tab-btn ${this.activeModalTab === 'male_table' ? 'active' : ''}" data-tab="male_table">
+            <i class="fa-solid fa-mars"></i> <span>1. Bảng Chống Sốc SXH - NAM</span>
+          </button>
+          <button type="button" class="cdss-weight-modal-tab-btn ${this.activeModalTab === 'female_table' ? 'active' : ''}" data-tab="female_table">
+            <i class="fa-solid fa-venus"></i> <span>2. Bảng Chống Sốc SXH - NỮ</span>
+          </button>
+          <button type="button" class="cdss-weight-modal-tab-btn ${this.activeModalTab === 'cdc_table' ? 'active' : ''}" data-tab="cdc_table">
+            <i class="fa-solid fa-child"></i> <span>3. Bảng CDC 2014 (Trẻ Em)</span>
+          </button>
+          <button type="button" class="cdss-weight-modal-tab-btn ${this.activeModalTab === 'formula_guide' ? 'active' : ''}" data-tab="formula_guide">
+            <i class="fa-solid fa-square-root-variable"></i> <span>4. Công Thức &amp; Nguyên Tắc Phụ Lục 9</span>
+          </button>
+        </div>
+
+        <!-- Body Content -->
+        <div class="cdss-weight-modal-body">
+          ${this.getWeightModalTabHtml()}
+        </div>
       </div>
+    `;
 
-      <div style="display:grid; grid-template-columns:1fr 1fr 1.3fr; gap:0.4rem; background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.5rem;">
-        <div style="text-align:center;">
-          <div style="font-size:0.68rem; color:var(--cdss-text-muted);">Thực tế</div>
-          <strong style="font-size:0.95rem; font-family:var(--cdss-font-mono);">${weightResult.actualWeightKg} kg</strong>
+    // Bind close events
+    modal.onclick = (e) => {
+      if (e.target === modal) this.closeWeightLookupModal();
+    };
+    const btnClose = document.getElementById('btn-close-weight-modal');
+    if (btnClose) btnClose.onclick = () => this.closeWeightLookupModal();
+
+    // Bind tab clicks
+    const tabBtns = modal.querySelectorAll('.cdss-weight-modal-tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.getAttribute('data-tab') as any;
+        if (tab) {
+          this.activeModalTab = tab;
+          this.renderWeightLookupModalContent();
+        }
+      });
+    });
+
+    // Bind cell clicks to apply height and weight to form
+    const cells = modal.querySelectorAll('.cdss-matrix-cell[data-h][data-w]');
+    cells.forEach(c => {
+      c.addEventListener('click', () => {
+        const h = c.getAttribute('data-h');
+        const w = c.getAttribute('data-w');
+        const eff = c.getAttribute('data-eff');
+        if (h && w) {
+          this.setInputValue('input-height', h);
+          this.setInputValue('input-weight', w);
+          this.recalculate();
+          this.showToast(`Đã áp dụng: Chiều cao ${h} cm, Cân nặng thực ${w} kg ➜ Cân chống sốc: ${eff} kg`);
+          this.closeWeightLookupModal();
+        }
+      });
+    });
+
+    // Bind CDC row click
+    const cdcRows = modal.querySelectorAll('.cdss-cdc-row[data-age][data-weight]');
+    cdcRows.forEach(r => {
+      r.addEventListener('click', () => {
+        const age = r.getAttribute('data-age');
+        const weight = r.getAttribute('data-weight');
+        if (age && weight) {
+          this.setInputValue('input-age', age);
+          this.setInputValue('input-weight', weight);
+          this.recalculate();
+          this.showToast(`Đã áp dụng trẻ ${age} tuổi ➜ Cân nặng CDC 2014: ${weight} kg`);
+          this.closeWeightLookupModal();
+        }
+      });
+    });
+  }
+
+  private getWeightModalTabHtml(): string {
+    switch (this.activeModalTab) {
+      case 'male_table':
+        return this.renderMatrixTableHtml('male');
+      case 'female_table':
+        return this.renderMatrixTableHtml('female');
+      case 'cdc_table':
+        return this.renderCDCTableHtml();
+      case 'formula_guide':
+        return this.renderFormulaGuideHtml();
+      default:
+        return '';
+    }
+  }
+
+  private renderMatrixTableHtml(gender: Gender): string {
+    const isMale = gender === 'male';
+    const patient = this.currentPlan?.patient;
+    const curHeight = patient?.heightCm ? Math.round(patient.heightCm) : undefined;
+    const curWeight = patient?.actualWeightKg ? Math.round(patient.actualWeightKg) : undefined;
+    const curGender = patient?.gender;
+
+    // Tìm mốc gần nhất trong bảng cho bệnh nhân hiện tại
+    let matchedH: number | undefined = undefined;
+    let matchedW: number | undefined = undefined;
+    if (curHeight && curWeight && curGender === gender && patient.ageYears >= 16) {
+      matchedH = ADULT_SHOCK_HEIGHTS.reduce((prev, curr) => Math.abs(curr - curHeight) < Math.abs(prev - curHeight) ? curr : prev);
+      matchedW = ADULT_SHOCK_WEIGHTS.reduce((prev, curr) => Math.abs(curr - curWeight) < Math.abs(prev - curWeight) ? curr : prev);
+    }
+
+    const rowsHtml = ADULT_SHOCK_HEIGHTS.map(h => {
+      const isRowHighlight = matchedH === h;
+      const cellsHtml = ADULT_SHOCK_WEIGHTS.map(w => {
+        const cell = getAdultShockCell(h, w, gender);
+        const isCurrent = matchedH === h && matchedW === w;
+        const cellClass = isCurrent
+          ? 'cdss-matrix-cell cdss-matrix-cell--current'
+          : cell.isAdjusted
+            ? 'cdss-matrix-cell cdss-matrix-cell--adjusted'
+            : 'cdss-matrix-cell cdss-matrix-cell--real';
+
+        const tooltip = `Cao ${h}cm, Nặng ${w}kg ➜ BMI ${cell.bmi} kg/m² ${cell.isAdjusted ? '(≥25: Béo phì)' : '(<25: Chuẩn)'} ➜ Cân chống sốc: ${cell.tableWeight}kg (Click để áp dụng)`;
+
+        return `
+          <td class="${cellClass}" data-h="${h}" data-w="${w}" data-eff="${cell.tableWeight}" title="${tooltip}">
+            ${cell.isAdjusted ? cell.tableWeight : '<span style="opacity:0.4; font-size:0.6rem;">BN</span>'}
+          </td>
+        `;
+      }).join('');
+
+      return `
+        <tr class="${isRowHighlight ? 'cdss-matrix-row--highlight' : ''}">
+          <th class="cdss-matrix-th-left">${h}</th>
+          ${cellsHtml}
+          <th class="cdss-matrix-th-right">${h}</th>
+        </tr>
+      `;
+    }).join('');
+
+    return `
+      <div>
+        <div class="cdss-matrix-guide-bar">
+          <div>
+            <strong style="color:${isMale ? '#0284c7' : '#ec4899'}; font-size:0.85rem;">
+              <i class="fa-solid ${isMale ? 'fa-mars' : 'fa-venus'}"></i>
+              BẢNG CÂN NẶNG CHỐNG SỐC SXH — ${isMale ? 'NAM' : 'NỮ'} (PHỤ LỤC 9)
+            </strong>
+            <div style="color:var(--cdss-text-muted); margin-top:2px;">
+              Chiều cao: 145 – 187 cm &bull; Cân nặng thực tế: 45 – 101 kg. Click vào ô bất kỳ để điền nhanh vào form tính dịch.
+            </div>
+          </div>
+          <div class="cdss-matrix-legend">
+            <div class="cdss-matrix-legend-item">
+              <span class="cdss-matrix-legend-box" style="background:#e0f2fe;"></span>
+              <span><strong>BMI &lt; 25:</strong> Sử dụng cân nặng thực BN</span>
+            </div>
+            <div class="cdss-matrix-legend-item">
+              <span class="cdss-matrix-legend-box" style="background:#ffffff; border:1px solid #cbd5e1;"></span>
+              <span><strong>BMI &ge; 25:</strong> Cân nặng hiệu chỉnh (AdjBW)</span>
+            </div>
+            ${matchedH && matchedW ? `
+              <div class="cdss-matrix-legend-item" style="color:var(--cdss-danger); font-weight:700;">
+                <span class="cdss-matrix-legend-box" style="background:#ef4444; border-color:#facc15;"></span>
+                <span>BN hiện tại: Cao ${matchedH}cm, Nặng ${matchedW}kg</span>
+              </div>
+            ` : ''}
+          </div>
         </div>
-        <div style="text-align:center; border-left:1px solid var(--cdss-border-subtle); border-right:1px solid var(--cdss-border-subtle);">
-          <div style="font-size:0.68rem; color:var(--cdss-text-muted);">CDC 2014</div>
-          <strong style="font-size:0.95rem; font-family:var(--cdss-font-mono); color:var(--cdss-text-muted);">${weightResult.standardWeightKg} kg</strong>
-        </div>
-        <div style="text-align:center; background:var(--cdss-surface); border-radius:6px; padding:2px 0;">
-          <div style="font-size:0.68rem; color:var(--cdss-primary); font-weight:700;">Tính dịch</div>
-          <strong style="font-size:1.05rem; font-family:var(--cdss-font-mono); color:var(--cdss-primary);">${weightResult.adjustedWeightKg} kg</strong>
+
+        <div class="cdss-matrix-wrapper">
+          <table class="cdss-matrix-table">
+            <thead>
+              <tr>
+                <th class="cdss-matrix-corner">Cao (cm)</th>
+                ${ADULT_SHOCK_WEIGHTS.map(w => `<th class="cdss-matrix-th-top">${w}</th>`).join('')}
+                <th class="cdss-matrix-corner">Cao (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
         </div>
       </div>
+    `;
+  }
 
-      <div style="font-size:0.72rem; color:var(--cdss-text-muted); line-height:1.4; margin-top:0.4rem;">
-        <i class="fa-solid fa-circle-info text-primary"></i> ${weightResult.formulaNote}
+  private renderCDCTableHtml(): string {
+    const patient = this.currentPlan?.patient;
+    const curAge = patient?.ageYears;
+    const curGender = patient?.gender || 'male';
+
+    const ages = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    const rowsHtml = ages.map(age => {
+      const entry = CDC_STANDARD_WEIGHT[age];
+      const isCurrentAge = curAge !== undefined && Math.round(curAge) === age;
+      const targetWeight = curGender === 'male' ? entry.male : entry.female;
+
+      return `
+        <tr class="cdss-cdc-row ${isCurrentAge ? 'current-age-row' : ''}" data-age="${age}" data-weight="${targetWeight}" style="cursor:pointer;" title="Click để áp dụng cho trẻ ${age} tuổi">
+          <td style="font-weight:700;">${age} tuổi ${isCurrentAge ? '<span style="font-size:0.7rem; color:var(--cdss-primary); font-weight:800;">(BN Hiện Tại)</span>' : ''}</td>
+          <td style="color:${curGender === 'male' && isCurrentAge ? 'var(--cdss-primary)' : 'inherit'}; font-weight:${curGender === 'male' && isCurrentAge ? '900' : '600'};">${entry.male} kg</td>
+          <td style="color:${curGender === 'female' && isCurrentAge ? 'var(--cdss-primary)' : 'inherit'}; font-weight:${curGender === 'female' && isCurrentAge ? '900' : '600'};">${entry.female} kg</td>
+        </tr>
+      `;
+    }).join('');
+
+    return `
+      <div style="max-width:760px; margin:0 auto;">
+        <div style="background:var(--cdss-surface); border:1px solid var(--cdss-border); border-radius:8px; padding:0.85rem 1.1rem; margin-bottom:1rem;">
+          <h4 style="margin:0 0 0.4rem 0; font-size:0.92rem; font-weight:800; color:var(--cdss-text); display:flex; align-items:center; gap:0.4rem;">
+            <i class="fa-solid fa-child text-primary"></i>
+            <span>1. CÂN NẶNG HIỆU CHỈNH Ở TRẺ EM DƯ CÂN HOẶC BÉO PHÌ</span>
+          </h4>
+          <div style="font-size:0.78rem; color:var(--cdss-text-muted); font-style:italic; margin-bottom:0.5rem;">
+            (Dựa theo hướng dẫn của CDC 2014 — Trích Phụ lục 9 Quyết định số 2760/QĐ-BYT)
+          </div>
+          <div style="font-size:0.75rem; color:var(--cdss-danger); background:rgba(239,68,68,0.06); border-left:3px solid var(--cdss-danger); padding:0.5rem 0.75rem; border-radius:4px; line-height:1.45;">
+            <strong>Khuyến cáo BYT:</strong> Áp dụng tính cân nặng bù dịch cho trẻ em dư cân, béo phì này chỉ ước tính cho những giờ đầu và <u>nên đo áp lực tĩnh mạch trung tâm (CVP)</u> để theo dõi trong khi bù dịch.
+          </div>
+        </div>
+
+        <div class="cdss-cdc-table-wrap">
+          <table class="cdss-cdc-table">
+            <thead>
+              <tr>
+                <th>Tuổi (năm)</th>
+                <th><i class="fa-solid fa-mars" style="color:#0284c7;"></i> Nam (kg)</th>
+                <th><i class="fa-solid fa-venus" style="color:#ec4899;"></i> Nữ (kg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  private renderFormulaGuideHtml(): string {
+    return `
+      <div class="cdss-formula-card">
+        <h4 style="margin:0 0 0.75rem 0; font-size:1rem; font-weight:800; color:var(--cdss-text); border-bottom:1px solid var(--cdss-border-subtle); padding-bottom:0.5rem;">
+          <i class="fa-solid fa-book-medical text-primary"></i>
+          HƯỚNG DẪN TÍNH CÂN NẶNG BÙ DỊCH CHỐNG SỐC SXHD (PHỤ LỤC 9 - BYT 2023)
+        </h4>
+
+        <!-- Phần Người Lớn -->
+        <div style="margin-bottom:1.25rem;">
+          <h5 style="font-size:0.88rem; font-weight:800; color:var(--cdss-primary); margin:0 0 0.5rem 0;">
+            - Cân nặng (CN) chống sốc ở người lớn: xem Phụ lục 9
+          </h5>
+          <div style="font-size:0.8rem; line-height:1.6; color:var(--cdss-text); padding-left:0.5rem;">
+            <div><strong>a) BMI &lt; 25 kg/m²:</strong> sử dụng <u>Cân nặng thực tế</u>.</div>
+            <div><strong>b) BMI &ge; 25 kg/m²:</strong> sử dụng <u>Cân nặng hiệu chỉnh</u>.</div>
+            
+            <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border); border-radius:8px; padding:0.75rem 1rem; margin:0.6rem 0;">
+              <div style="font-weight:700; color:var(--cdss-text); margin-bottom:0.35rem;">+ CN lý tưởng (IBW - kg):</div>
+              <div style="font-family:var(--cdss-font-mono); font-size:0.82rem; color:var(--cdss-text); padding-left:0.75rem;">
+                &bull; <strong>Nữ:</strong> 45,5 + 0,91 &times; (chiều cao (cm) - 152,4)<br/>
+                &bull; <strong>Nam:</strong> 50,0 + 0,91 &times; (chiều cao (cm) - 152,4)
+              </div>
+              <div style="font-weight:700; color:var(--cdss-primary); margin-top:0.6rem; margin-bottom:0.35rem;">+ CN hiệu chỉnh (AdjBW - kg):</div>
+              <div style="font-family:var(--cdss-font-mono); font-size:0.85rem; font-weight:800; color:var(--cdss-primary); padding-left:0.75rem;">
+                CN hiệu chỉnh = CN lý tưởng + 0,4 &times; (CN thực - CN lý tưởng)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phần Trẻ Em -->
+        <div>
+          <h5 style="font-size:0.88rem; font-weight:800; color:#0284c7; margin:0 0 0.5rem 0;">
+            - Cân nặng hiệu chỉnh ở trẻ em dư cân hoặc béo phì: dựa theo CDC 2014
+          </h5>
+          <div style="font-size:0.8rem; line-height:1.6; color:var(--cdss-text); padding-left:0.5rem;">
+            <div>&bull; Khi cân nặng thực của trẻ vượt quá ngưỡng thừa cân (&gt; 120% so với cân nặng chuẩn theo tuổi CDC 2014): <strong>Bắt buộc dùng Cân nặng hiệu chỉnh CDC 2014</strong> tương ứng với độ tuổi để tính lượng dịch bù.</div>
+            <div>&bull; <em>Khuyến cáo áp dụng tính cân nặng bù dịch cho trẻ em dư cân, béo phì này chỉ ước tính cho những giờ đầu và nên đo áp lực tĩnh mạch trung tâm (CVP) để theo dõi trong khi bù dịch.</em></div>
+          </div>
+        </div>
       </div>
     `;
   }
@@ -2077,7 +2506,7 @@ export class DengueCDSSController {
             <span>Giới tính: <strong>${genderText}</strong></span>
             <span class="cdss-print-weight-highlight">
               CÂN TÍNH DỊCH (CDSS): <strong>${weightResult.adjustedWeightKg} kg</strong>
-              ${weightResult.isObese ? '<em style="font-size:0.8em; color:#b91c1c;">(BÉO PHÌ - HIỆU CHỈNH CDC)</em>' : `<span style="font-size:0.82em; color:#555;">(Thực tế: ${weightResult.actualWeightKg}kg)</span>`}
+              ${weightResult.isObese ? (patient.ageYears >= 16 ? '<em style="font-size:0.8em; color:#b91c1c;">(BÉO PHÌ - PHỤ LỤC 9 BYT)</em>' : '<em style="font-size:0.8em; color:#b91c1c;">(BÉO PHÌ - HIỆU CHỈNH CDC)</em>') : `<span style="font-size:0.82em; color:#555;">(Thực tế: ${weightResult.actualWeightKg}kg)</span>`}
             </span>
           </div>
 
@@ -2216,7 +2645,9 @@ export class DengueCDSSController {
     const text = [
       `📋 BÁO CÁO GIAO BAN DỊCH TRUYỀN SXHD DENGUE (QĐ 2760/QĐ-BYT)`,
       `• Bệnh nhân: ${p.patient.ageYears} tuổi (${p.patient.gender === 'male' ? 'Nam' : 'Nữ'}) | Nặng thực tế: ${p.weightResult.actualWeightKg} kg`,
-      `• Cân tính dịch CDC 2014: ${p.weightResult.adjustedWeightKg} kg ${p.weightResult.isObese ? '(ĐÃ HIỆU CHỈNH TRẺ THỪA CÂN)' : ''}`,
+      p.patient.ageYears >= 16
+        ? `• Cân tính dịch Phụ lục 9 BYT (AdjBW): ${p.weightResult.adjustedWeightKg} kg ${p.weightResult.isObese ? '(ĐÃ HIỆU CHỈNH NGƯỜI LỚN BÉO PHÌ)' : ''}`
+        : `• Cân tính dịch CDC 2014: ${p.weightResult.adjustedWeightKg} kg ${p.weightResult.isObese ? '(ĐÃ HIỆU CHỈNH TRẺ THỪA CÂN)' : ''}`,
       `• Phân độ: ${p.patient.severity === 'warning_signs' ? 'Dấu hiệu cảnh báo' : p.patient.severity === 'shock' ? 'Sốc SXHD' : 'Sốc nguy kịch'}`,
       `• Đánh giá đáp ứng: ${p.branchDecision.title}`,
       `• Hướng xử trí: ${p.branchDecision.recommendedFluid}`,

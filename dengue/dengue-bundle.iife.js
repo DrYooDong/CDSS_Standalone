@@ -51,6 +51,78 @@ var DengueBundle = (() => {
     const entry = CDC_STANDARD_WEIGHT[Math.round(age)];
     return entry ? entry[gender] : gender === "male" ? 30 : 30;
   }
+  var ADULT_SHOCK_HEIGHTS = [
+    145,
+    147,
+    149,
+    151,
+    153,
+    155,
+    157,
+    159,
+    161,
+    163,
+    165,
+    167,
+    169,
+    171,
+    173,
+    175,
+    177,
+    179,
+    181,
+    183,
+    185,
+    187
+  ];
+  var ADULT_SHOCK_WEIGHTS = [
+    45,
+    47,
+    49,
+    51,
+    53,
+    55,
+    57,
+    59,
+    61,
+    63,
+    65,
+    67,
+    69,
+    71,
+    73,
+    75,
+    77,
+    79,
+    81,
+    83,
+    85,
+    87,
+    89,
+    91,
+    93,
+    95,
+    97,
+    99,
+    101
+  ];
+  function getAdultShockCell(heightCm, weightKg, gender) {
+    const heightM = heightCm / 100;
+    const bmi = Math.round(weightKg / (heightM * heightM) * 10) / 10;
+    const isAdjusted = bmi >= 25;
+    const ibwRaw = gender === "male" ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
+    const ibw = Math.round(ibwRaw * 10) / 10;
+    const adjBwRaw = ibwRaw + 0.4 * (weightKg - ibwRaw);
+    const adjBw = Math.round(adjBwRaw * 10) / 10;
+    const tableWeight = isAdjusted ? Math.round(Math.round(adjBwRaw * 10) / 10) : weightKg;
+    return {
+      bmi,
+      isAdjusted,
+      ibw,
+      adjBw,
+      tableWeight
+    };
+  }
   var DENGUE_FLUID_TEMPLATES = {
     // 1. Dấu hiệu cảnh báo
     warning_signs: {
@@ -650,41 +722,81 @@ var DengueBundle = (() => {
     return "child";
   }
   function calculateWeightAdjustment(ageYears, gender, actualWeightKg, heightCm) {
-    const stdWeight = getCDCStandardWeight(ageYears, gender);
+    const isAdult = ageYears >= 16;
+    const stdWeight = getCDCStandardWeight(Math.min(16, ageYears), gender);
+    if (isAdult) {
+      if (heightCm && heightCm >= 100) {
+        const heightM = heightCm / 100;
+        const bmi = Math.round(actualWeightKg / (heightM * heightM) * 10) / 10;
+        const isBmiOverweight = bmi >= 25;
+        const ibwRaw = gender === "male" ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
+        const ibw = Math.round(ibwRaw * 10) / 10;
+        if (!isBmiOverweight) {
+          return {
+            actualWeightKg,
+            standardWeightKg: ibw,
+            isObese: false,
+            ratioToStandard: Math.round(actualWeightKg / ibw * 100) / 100,
+            adjustedWeightKg: actualWeightKg,
+            bmi,
+            idealWeightKg: ibw,
+            isAdultMethod: true,
+            tableRoundedWeightKg: actualWeightKg,
+            formulaNote: `Ng\u01B0\u1EDDi l\u1EDBn BMI = ${bmi} kg/m\xB2 (< 25): S\u1EED d\u1EE5ng c\xE2n n\u1EB7ng th\u1EF1c t\u1EBF ${actualWeightKg} kg theo Ph\u1EE5 l\u1EE5c 9 Q\u0110 2760/BYT.`
+          };
+        } else {
+          const adjBwRaw = ibwRaw + 0.4 * (actualWeightKg - ibwRaw);
+          const adjBw = Math.round(adjBwRaw * 10) / 10;
+          const tableRounded = Math.round(Math.round(adjBwRaw * 10) / 10);
+          const adjustedWeightKg2 = Math.max(ibw, Math.min(actualWeightKg, adjBw));
+          return {
+            actualWeightKg,
+            standardWeightKg: ibw,
+            isObese: true,
+            ratioToStandard: Math.round(actualWeightKg / ibw * 100) / 100,
+            adjustedWeightKg: adjustedWeightKg2,
+            bmi,
+            idealWeightKg: ibw,
+            isAdultMethod: true,
+            tableRoundedWeightKg: tableRounded,
+            formulaNote: `Ng\u01B0\u1EDDi l\u1EDBn BMI = ${bmi} kg/m\xB2 (\u2265 25: Th\u1EEBa c\xE2n/B\xE9o ph\xEC) \u279C D\xF9ng CN hi\u1EC7u ch\u1EC9nh Ph\u1EE5 l\u1EE5c 9 BYT: IBW = ${ibw} kg; CN hi\u1EC7u ch\u1EC9nh = ${adjustedWeightKg2} kg (B\u1EA3ng tra l\xE0m tr\xF2n: ${tableRounded} kg).`,
+            warningText: `Ng\u01B0\u1EDDi l\u1EDBn th\u1EC3 tr\u1ECDng l\u1EDBn (BMI ${bmi} kg/m\xB2 \u2265 25): B\u1EAFt bu\u1ED9c d\xF9ng C\xE2n N\u1EB7ng Hi\u1EC7u Ch\u1EC9nh ${adjustedWeightKg2} kg (B\u1EA3ng tra l\xE0m tr\xF2n: ${tableRounded} kg) \u0111\u1EC3 t\xEDnh d\u1ECBch b\xF9 ch\u1ED1ng s\u1ED1c. Ph\u1EA3i gi\xE1m s\xE1t ch\u1EB7t ch\u1EBD CVP, SpO2 v\xE0 ran \u0111\xE1y ph\u1ED5i khi b\xF9 d\u1ECBch.`
+          };
+        }
+      } else {
+        return {
+          actualWeightKg,
+          standardWeightKg: stdWeight,
+          isObese: false,
+          ratioToStandard: Math.round(actualWeightKg / stdWeight * 100) / 100,
+          adjustedWeightKg: actualWeightKg,
+          formulaNote: `Ng\u01B0\u1EDDi l\u1EDBn (\u2265 16T): Ch\u01B0a nh\u1EADp chi\u1EC1u cao \u0111\u1EC3 t\xEDnh BMI. T\u1EA1m d\xF9ng C\xE2n n\u1EB7ng th\u1EF1c t\u1EBF ${actualWeightKg} kg (Khuy\u1EBFn c\xE1o nh\u1EADp chi\u1EC1u cao \u0111\u1EC3 CDSS t\xEDnh ch\xEDnh x\xE1c theo Ph\u1EE5 l\u1EE5c 9).`,
+          warningText: `Khuy\u1EBFn c\xE1o: Ng\u01B0\u1EDDi l\u1EDBn c\u1EA7n nh\u1EADp Chi\u1EC1u cao (cm) \u0111\u1EC3 x\xE1c \u0111\u1ECBnh ch\u1EC9 s\u1ED1 BMI v\xE0 t\xEDnh C\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh ch\xEDnh x\xE1c theo Ph\u1EE5 l\u1EE5c 9 Q\u0110 2760/BYT.`,
+          isAdultMethod: true,
+          tableRoundedWeightKg: actualWeightKg
+        };
+      }
+    }
     const ratio = actualWeightKg / stdWeight;
     const isObese = ratio > 1.2;
     let adjustedWeightKg = actualWeightKg;
-    let formulaNote = "C\xE2n n\u1EB7ng th\u1EF1c t\u1EBF (Kh\xF4ng qu\xE1 ng\u01B0\u1EE1ng th\u1EEBa c\xE2n 120%)";
+    let formulaNote = `Tr\u1EBB em: C\xE2n n\u1EB7ng th\u1EF1c t\u1EBF ${actualWeightKg} kg (${Math.round(ratio * 100)}% so v\u1EDBi chu\u1EA9n tu\u1ED5i CDC 2014: ${stdWeight} kg, th\u1EC3 tr\u1EA1ng b\xECnh th\u01B0\u1EDDng).`;
     let warningText = void 0;
     if (isObese) {
-      if (ageYears < 16) {
-        adjustedWeightKg = stdWeight;
-        formulaNote = `\xC1p d\u1EE5ng C\xE2n n\u1EB7ng chu\u1EA9n CDC 2014 (${stdWeight} kg) thay cho c\xE2n n\u1EB7ng th\u1EF1c (${actualWeightKg} kg) do v\u01B0\u1EE3t ng\u01B0\u1EE1ng 120% (${Math.round(ratio * 100)}% chu\u1EA9n tu\u1ED5i).`;
-        warningText = `C\u1EA3nh b\xE1o: Tr\u1EBB th\u1EEBa c\xE2n / b\xE9o ph\xEC (${Math.round(ratio * 100)}% so v\u1EDBi chu\u1EA9n tu\u1ED5i). B\u1EAFt bu\u1ED9c d\xF9ng c\xE2n n\u1EB7ng chu\u1EA9n ${stdWeight} kg \u0111\u1EC3 t\xEDnh d\u1ECBch nh\u1EB1m tr\xE1nh ph\xF9 ph\u1ED5i c\u1EA5p v\xE0 qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n.`;
-      } else {
-        let ibw = stdWeight;
-        if (heightCm && heightCm > 100) {
-          if (heightCm >= 152.4) {
-            ibw = gender === "male" ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
-          } else {
-            ibw = 22 * Math.pow(heightCm / 100, 2);
-          }
-          ibw = Math.max(35, Math.round(ibw * 10) / 10);
-        }
-        const adjBw = Math.round((ibw + 0.4 * (actualWeightKg - ibw)) * 10) / 10;
-        adjustedWeightKg = Math.max(ibw, Math.min(actualWeightKg, adjBw));
-        formulaNote = `Ng\u01B0\u1EDDi l\u1EDBn b\xE9o ph\xEC: C\xE2n n\u1EB7ng t\xEDnh d\u1ECBch hi\u1EC7u ch\u1EC9nh AdjBW = ${adjustedWeightKg} kg (IBW: ${ibw} kg, TBW: ${actualWeightKg} kg)`;
-        warningText = `Ng\u01B0\u1EDDi l\u1EDBn th\u1EC3 tr\u1ECDng l\u1EDBn (${actualWeightKg} kg): D\xF9ng c\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh AdjBW ${adjustedWeightKg} kg \u0111\u1EC3 t\xEDnh d\u1ECBch. C\u1EA7n gi\xE1m s\xE1t ch\u1EB7t ch\u1EBD CVP, SpO2 v\xE0 ran \u0111\xE1y ph\u1ED5i khi b\xF9 d\u1ECBch.`;
-      }
+      adjustedWeightKg = stdWeight;
+      formulaNote = `Tr\u1EBB em d\u01B0 c\xE2n/b\xE9o ph\xEC (${Math.round(ratio * 100)}% chu\u1EA9n tu\u1ED5i): \xC1p d\u1EE5ng C\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh theo B\u1EA3ng CDC 2014 (${stdWeight} kg) cho nh\u1EEFng gi\u1EDD \u0111\u1EA7u (Ph\u1EE5 l\u1EE5c 9 - Q\u0110 2760/Q\u0110-BYT).`;
+      warningText = `C\u1EA3nh b\xE1o: Tr\u1EBB th\u1EEBa c\xE2n / b\xE9o ph\xEC (${actualWeightKg} kg = ${Math.round(ratio * 100)}% so v\u1EDBi chu\u1EA9n CDC 2014 ${stdWeight} kg). Khuy\u1EBFn c\xE1o \xE1p d\u1EE5ng t\xEDnh c\xE2n n\u1EB7ng b\xF9 d\u1ECBch cho tr\u1EBB em d\u01B0 c\xE2n, b\xE9o ph\xEC n\xE0y ch\u1EC9 \u01B0\u1EDBc t\xEDnh cho nh\u1EEFng gi\u1EDD \u0111\u1EA7u v\xE0 n\xEAn \u0111o \xE1p l\u1EF1c t\u0129nh m\u1EA1ch trung t\xE2m (CVP) \u0111\u1EC3 theo d\xF5i trong khi b\xF9 d\u1ECBch.`;
     }
     return {
       actualWeightKg,
       standardWeightKg: stdWeight,
       isObese,
-      ratioToStandard: ratio,
+      ratioToStandard: Math.round(ratio * 100) / 100,
       adjustedWeightKg,
       formulaNote,
-      warningText
+      warningText,
+      isAdultMethod: false,
+      tableRoundedWeightKg: adjustedWeightKg
     };
   }
   function addHoursToTime(startTimeStr, hoursToAdd) {
@@ -1132,8 +1244,10 @@ var DengueBundle = (() => {
       `--- K\u1EBE HO\u1EA0CH \u0110I\u1EC0U TR\u1ECA & CH\u1ED0NG S\u1ED0C SXHD DENGUE (CDSS BYT 2023) [${dateStr}] ---`,
       `B\u1EC7nh nh\xE2n: ${patient.ageYears} tu\u1ED5i, Gi\u1EDBi t\xEDnh: ${patient.gender === "male" ? "Nam" : "N\u1EEF"}`,
       `Ph\xE2n \u0111\u1ED9: ${patient.severity === "warning_signs" ? "SXHD c\xF3 D\u1EA5u hi\u1EC7u c\u1EA3nh b\xE1o" : patient.severity === "shock" ? "S\u1ED1c SXHD" : "S\u1ED1c SXHD n\u1EB7ng nguy k\u1ECBch"}`,
-      `C\xE2n n\u1EB7ng th\u1EF1c: ${patient.actualWeightKg} kg | C\xE2n n\u1EB7ng chu\u1EA9n: ${weightResult.standardWeightKg} kg | C\xE2n n\u1EB7ng t\xEDnh d\u1ECBch: ${effectiveWeight} kg`,
-      ...weightResult.isObese ? [`[L\u01AFU \xDD]: \u0110\xE3 hi\u1EC7u ch\u1EC9nh theo chu\u1EA9n CDC 2014 \u0111\u1EC3 tr\xE1nh qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n.`] : [],
+      `C\xE2n n\u1EB7ng th\u1EF1c: ${patient.actualWeightKg} kg | C\xE2n n\u1EB7ng chu\u1EA9n/IBW: ${weightResult.standardWeightKg} kg | C\xE2n n\u1EB7ng t\xEDnh d\u1ECBch: ${effectiveWeight} kg`,
+      ...weightResult.isObese ? [
+        patient.ageYears >= 16 ? `[L\u01AFU \xDD HI\u1EC6U CH\u1EC8NH NG\u01AF\u1EDCI L\u1EDAN]: \u0110\xE3 hi\u1EC7u ch\u1EC9nh theo Ph\u1EE5 l\u1EE5c 9 BYT (BMI ${weightResult.bmi ?? ""} kg/m\xB2 \u2265 25: IBW = ${weightResult.idealWeightKg} kg, CN hi\u1EC7u ch\u1EC9nh = ${effectiveWeight} kg) \u0111\u1EC3 tr\xE1nh qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n.` : `[L\u01AFU \xDD HI\u1EC6U CH\u1EC8NH TR\u1EBA EM]: \u0110\xE3 hi\u1EC7u ch\u1EC9nh theo B\u1EA3ng CDC 2014 (${effectiveWeight} kg) cho tr\u1EBB d\u01B0 c\xE2n/b\xE9o ph\xEC. C\u1EA7n theo d\xF5i s\xE1t CVP.`
+      ] : [],
       ...patient.currentHctPercent ? [`Hct hi\u1EC7n t\u1EA1i: ${patient.currentHctPercent}% | \u0110\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng: ${patient.clinicalResponse || "Theo d\xF5i"}`] : [],
       `
 1. NH\xC1NH X\u1EEC TR\xCD L\xC2M S\xC0NG: ${branchDecision.title}`,
@@ -1196,6 +1310,24 @@ var DengueBundle = (() => {
       clinicalHighlight: "Tr\u1EBB b\xE9o ph\xEC > 120% chu\u1EA9n: T\u1EF1 \u0111\u1ED9ng d\xF9ng c\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh CDC 2014 (26kg) tr\xE1nh ph\xF9 ph\u1ED5i c\u1EA5p."
     },
     {
+      id: "adult-obese-shock",
+      category: "initial",
+      icon: "fa-solid fa-weight-scale",
+      label: "Nam 35T B\xE9o Ph\xEC (75kg)",
+      tag: "Ph\u1EE5 L\u1EE5c 9 BYT",
+      input: {
+        ageYears: 35,
+        gender: "male",
+        actualWeightKg: 75,
+        heightCm: 165,
+        severity: "shock",
+        clinicalResponse: "good",
+        currentHctPercent: 47,
+        baselineHctPercent: 39
+      },
+      clinicalHighlight: "Nam 35T b\xE9o ph\xEC (165cm, 75kg, BMI 27.5 \u2265 25): B\u1EAFt bu\u1ED9c d\xF9ng C\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh Ph\u1EE5 l\u1EE5c 9 BYT (67kg thay v\xEC 75kg) \u0111\u1EC3 ph\xF2ng ng\u1EEBa ph\xF9 ph\u1ED5i c\u1EA5p."
+    },
+    {
       id: "child-shock",
       category: "initial",
       icon: "fa-solid fa-heart-pulse",
@@ -1223,12 +1355,13 @@ var DengueBundle = (() => {
         ageYears: 35,
         gender: "female",
         actualWeightKg: 62,
+        heightCm: 155,
         severity: "severe_shock",
         clinicalResponse: "good",
         currentHctPercent: 49,
         baselineHctPercent: 38
       },
-      clinicalHighlight: "S\u1ED1c nguy k\u1ECBch kh\u1EA9n c\u1EA5p: B\u01A1m d\u1ECBch 20 ml/kg/h si\xEAu t\u1ED1c + chu\u1EA9n b\u1ECB Noradrenalin b\u01A1m ti\xEAm \u0111i\u1EC7n."
+      clinicalHighlight: "N\u1EEF 35T s\u1ED1c nguy k\u1ECBch 62kg (155cm, BMI 25.8 \u2265 25, hi\u1EC7u ch\u1EC9nh 54kg): B\u01A1m d\u1ECBch 20 ml/kg/h si\xEAu t\u1ED1c + chu\u1EA9n b\u1ECB Noradrenalin b\u01A1m ti\xEAm \u0111i\u1EC7n."
     },
     {
       id: "adult-shock-compensated",
@@ -1240,12 +1373,13 @@ var DengueBundle = (() => {
         ageYears: 30,
         gender: "male",
         actualWeightKg: 70,
+        heightCm: 170,
         severity: "shock",
         clinicalResponse: "good",
         currentHctPercent: 46,
         baselineHctPercent: 38
       },
-      clinicalHighlight: "Nam 30 tu\u1ED5i s\u1ED1c c\xF2n b\xF9 70kg: B\xF9 d\u1ECBch n\u1EA5c thang chu\u1EA9n 15 -> 10 -> 5 -> 3 -> 1.5 ml/kg/h, \u0111\xE1p \u1EE9ng t\u1ED1t, ra s\u1ED1c \u1ED5n \u0111\u1ECBnh kh\xF4ng c\u1EA7n v\u1EADn m\u1EA1ch."
+      clinicalHighlight: "Nam 30T s\u1ED1c c\xF2n b\xF9 (170cm, 70kg, BMI 24.2 < 25): D\xF9ng c\xE2n n\u1EB7ng th\u1EF1c 70kg theo Ph\u1EE5 l\u1EE5c 9, b\xF9 d\u1ECBch n\u1EA5c thang 15 -> 10 -> 5 -> 3 -> 1.5 ml/kg/h."
     },
     // 2. Nhóm Sốc Trơ & Xử Trí Không Đáp Ứng
     {
@@ -1838,6 +1972,11 @@ var DengueBundle = (() => {
       });
       this.setInputValue("input-age", sample.input.ageYears.toString());
       this.setInputValue("input-weight", sample.input.actualWeightKg.toString());
+      if (sample.input.heightCm !== void 0) {
+        this.setInputValue("input-height", sample.input.heightCm.toString());
+      } else {
+        this.setInputValue("input-height", "");
+      }
       this.setInputValue("input-severity", sample.input.severity);
       this.setGender(sample.input.gender);
       if (sample.input.clinicalResponse) {
@@ -1951,39 +2090,395 @@ var DengueBundle = (() => {
       this.updateMobileStickyBar(plan);
       this.renderPrintSheet(plan);
     }
+    activeModalTab = "male_table";
     renderWeightAnalysis(plan) {
       const box = document.getElementById("weight-analysis-box");
       if (!box) return;
-      const { weightResult, ageGroup } = plan;
+      const { weightResult, patient } = plan;
+      const isAdult = patient.ageYears >= 16;
       const isObese = weightResult.isObese;
-      const ageGroupLabel = ageGroup === "child" ? "Tr\u1EBB em (< 13 tu\u1ED5i)" : ageGroup === "adolescent" ? "Thi\u1EBFu ni\xEAn (13-15T)" : "Ng\u01B0\u1EDDi l\u1EDBn (\u2265 16T)";
-      box.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-        <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted);">
-          C\xE2n N\u1EB7ng T\xEDnh D\u1ECBch (CDSS)
-        </span>
-        <span style="font-size:0.72rem; font-weight:700; color:${isObese ? "var(--cdss-danger)" : "var(--cdss-success)"};">
-          ${isObese ? "Th\u1EEBa C\xE2n (> 120% Chu\u1EA9n)" : "Th\u1EC3 Tr\u1EA1ng Chu\u1EA9n"}
-        </span>
-      </div>
+      if (isAdult) {
+        const hasHeight = patient.heightCm && patient.heightCm >= 100;
+        const bmiStr = weightResult.bmi !== void 0 ? `${weightResult.bmi} kg/m\xB2` : "Ch\u01B0a c\xF3";
+        const bmiStatusText = !hasHeight ? "C\u1EA7n nh\u1EADp Chi\u1EC1u cao" : isObese ? `BMI ${weightResult.bmi} (\u2265 25: Th\u1EEBa C\xE2n / B\xE9o Ph\xEC)` : `BMI ${weightResult.bmi} (< 25: Th\u1EC3 Tr\u1EA1ng Chu\u1EA9n)`;
+        const bmiBadgeClass = !hasHeight ? "cdss-weight-status-badge--warning" : isObese ? "cdss-weight-status-badge--obese" : "cdss-weight-status-badge--normal";
+        box.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:4px;">
+          <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); display:flex; align-items:center; gap:4px;">
+            <i class="fa-solid fa-scale-balanced text-primary"></i> C\xE2n N\u1EB7ng T\xEDnh D\u1ECBch (Ph\u1EE5 L\u1EE5c 9 BYT)
+          </span>
+          <span class="cdss-weight-status-badge ${bmiBadgeClass}" style="font-size:0.7rem; font-weight:700;">
+            ${bmiStatusText}
+          </span>
+        </div>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr 1.3fr; gap:0.4rem; background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.5rem;">
-        <div style="text-align:center;">
-          <div style="font-size:0.68rem; color:var(--cdss-text-muted);">Th\u1EF1c t\u1EBF</div>
-          <strong style="font-size:0.95rem; font-family:var(--cdss-font-mono);">${weightResult.actualWeightKg} kg</strong>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1.25fr; gap:0.35rem; background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.5rem; text-align:center;">
+          <div>
+            <div style="font-size:0.65rem; color:var(--cdss-text-muted); text-transform:uppercase;">Th\u1EF1c t\u1EBF</div>
+            <strong style="font-size:0.9rem; font-family:var(--cdss-font-mono);">${weightResult.actualWeightKg} kg</strong>
+          </div>
+          <div style="border-left:1px solid var(--cdss-border-subtle);">
+            <div style="font-size:0.65rem; color:var(--cdss-text-muted); text-transform:uppercase;">BMI</div>
+            <strong style="font-size:0.9rem; font-family:var(--cdss-font-mono); color:${isObese ? "var(--cdss-danger)" : "var(--cdss-text)"};">${hasHeight ? weightResult.bmi : "---"}</strong>
+          </div>
+          <div style="border-left:1px solid var(--cdss-border-subtle);">
+            <div style="font-size:0.65rem; color:var(--cdss-text-muted); text-transform:uppercase;">L\xFD t\u01B0\u1EDFng (IBW)</div>
+            <strong style="font-size:0.9rem; font-family:var(--cdss-font-mono); color:var(--cdss-text-muted);">${weightResult.idealWeightKg ? weightResult.idealWeightKg + " kg" : "---"}</strong>
+          </div>
+          <div style="border-left:1px solid var(--cdss-border-subtle); background:var(--cdss-surface); border-radius:6px; padding:2px 0;">
+            <div style="font-size:0.65rem; color:var(--cdss-primary); font-weight:700; text-transform:uppercase;">T\xEDnh d\u1ECBch</div>
+            <strong style="font-size:1.05rem; font-family:var(--cdss-font-mono); color:var(--cdss-primary);">${weightResult.adjustedWeightKg} kg</strong>
+            ${isObese && weightResult.tableRoundedWeightKg ? `<div style="font-size:0.62rem; color:var(--cdss-text-muted);">(B\u1EA3ng tra: ${weightResult.tableRoundedWeightKg}kg)</div>` : ""}
+          </div>
         </div>
-        <div style="text-align:center; border-left:1px solid var(--cdss-border-subtle); border-right:1px solid var(--cdss-border-subtle);">
-          <div style="font-size:0.68rem; color:var(--cdss-text-muted);">CDC 2014</div>
-          <strong style="font-size:0.95rem; font-family:var(--cdss-font-mono); color:var(--cdss-text-muted);">${weightResult.standardWeightKg} kg</strong>
+
+        <div style="font-size:0.72rem; color:var(--cdss-text-muted); line-height:1.4; margin-top:0.45rem;">
+          <i class="fa-solid fa-circle-info text-primary"></i> ${weightResult.formulaNote}
         </div>
-        <div style="text-align:center; background:var(--cdss-surface); border-radius:6px; padding:2px 0;">
-          <div style="font-size:0.68rem; color:var(--cdss-primary); font-weight:700;">T\xEDnh d\u1ECBch</div>
-          <strong style="font-size:1.05rem; font-family:var(--cdss-font-mono); color:var(--cdss-primary);">${weightResult.adjustedWeightKg} kg</strong>
+
+        <button type="button" id="btn-open-weight-modal" class="cdss-btn-lookup-weight" style="margin-top:0.5rem; width:100%; display:flex; align-items:center; justify-content:center; gap:0.4rem; padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:700; background:rgba(13,148,136,0.08); color:var(--cdss-primary); border:1px solid rgba(13,148,136,0.25); border-radius:6px; cursor:pointer;">
+          <i class="fa-solid fa-table-cells"></i> <span>Tra C\u1EE9u 02 B\u1EA3ng SXH Nam/N\u1EEF &amp; CDC 2014</span>
+        </button>
+      `;
+      } else {
+        const ratioPct = Math.round((weightResult.ratioToStandard || weightResult.actualWeightKg / weightResult.standardWeightKg) * 100);
+        const badgeClass = isObese ? "cdss-weight-status-badge--obese" : "cdss-weight-status-badge--normal";
+        const badgeText = isObese ? `D\u01B0 C\xE2n / B\xE9o Ph\xEC (${ratioPct}% Chu\u1EA9n)` : `Th\u1EC3 Tr\u1EA1ng Chu\u1EA9n (${ratioPct}%)`;
+        box.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:4px;">
+          <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); display:flex; align-items:center; gap:4px;">
+            <i class="fa-solid fa-child text-primary"></i> C\xE2n N\u1EB7ng T\xEDnh D\u1ECBch (CDC 2014)
+          </span>
+          <span class="cdss-weight-status-badge ${badgeClass}" style="font-size:0.7rem; font-weight:700;">
+            ${badgeText}
+          </span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1.3fr; gap:0.4rem; background:var(--cdss-surface-alt); border:1px solid var(--cdss-border-subtle); border-radius:8px; padding:0.5rem; text-align:center;">
+          <div>
+            <div style="font-size:0.68rem; color:var(--cdss-text-muted);">Th\u1EF1c t\u1EBF</div>
+            <strong style="font-size:0.95rem; font-family:var(--cdss-font-mono);">${weightResult.actualWeightKg} kg</strong>
+          </div>
+          <div style="border-left:1px solid var(--cdss-border-subtle); border-right:1px solid var(--cdss-border-subtle);">
+            <div style="font-size:0.68rem; color:var(--cdss-text-muted);">CDC 2014</div>
+            <strong style="font-size:0.95rem; font-family:var(--cdss-font-mono); color:var(--cdss-text-muted);">${weightResult.standardWeightKg} kg</strong>
+          </div>
+          <div style="background:var(--cdss-surface); border-radius:6px; padding:2px 0;">
+            <div style="font-size:0.68rem; color:var(--cdss-primary); font-weight:700;">T\xEDnh d\u1ECBch</div>
+            <strong style="font-size:1.05rem; font-family:var(--cdss-font-mono); color:var(--cdss-primary);">${weightResult.adjustedWeightKg} kg</strong>
+          </div>
+        </div>
+
+        <div style="font-size:0.72rem; color:var(--cdss-text-muted); line-height:1.4; margin-top:0.45rem;">
+          <i class="fa-solid fa-circle-info text-primary"></i> ${weightResult.formulaNote}
+        </div>
+
+        <button type="button" id="btn-open-weight-modal" class="cdss-btn-lookup-weight" style="margin-top:0.5rem; width:100%; display:flex; align-items:center; justify-content:center; gap:0.4rem; padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:700; background:rgba(13,148,136,0.08); color:var(--cdss-primary); border:1px solid rgba(13,148,136,0.25); border-radius:6px; cursor:pointer;">
+          <i class="fa-solid fa-table-cells"></i> <span>Tra C\u1EE9u B\u1EA3ng CDC 2014 &amp; Ph\u1EE5 L\u1EE5c 9</span>
+        </button>
+      `;
+      }
+      const btnModal = document.getElementById("btn-open-weight-modal");
+      if (btnModal) {
+        btnModal.onclick = () => this.openWeightLookupModal();
+      }
+    }
+    openWeightLookupModal() {
+      let modal = document.getElementById("cdss-weight-modal-overlay");
+      if (!modal) {
+        modal = document.createElement("div");
+        modal.id = "cdss-weight-modal-overlay";
+        modal.className = "cdss-weight-modal-overlay";
+        document.body.appendChild(modal);
+      }
+      if (this.currentPlan) {
+        if (this.currentPlan.patient.ageYears < 16) {
+          this.activeModalTab = "cdc_table";
+        } else {
+          this.activeModalTab = this.currentPlan.patient.gender === "female" ? "female_table" : "male_table";
+        }
+      }
+      this.renderWeightLookupModalContent();
+      modal.classList.add("active");
+    }
+    closeWeightLookupModal() {
+      const modal = document.getElementById("cdss-weight-modal-overlay");
+      if (modal) {
+        modal.classList.remove("active");
+      }
+    }
+    renderWeightLookupModalContent() {
+      const modal = document.getElementById("cdss-weight-modal-overlay");
+      if (!modal) return;
+      modal.innerHTML = `
+      <div class="cdss-weight-modal-dialog" onclick="event.stopPropagation()">
+        <!-- Header -->
+        <div class="cdss-weight-modal-header">
+          <div>
+            <h3 class="cdss-weight-modal-title">
+              <i class="fa-solid fa-table-cells text-primary"></i>
+              <span>Tra C\u1EE9u B\u1EA3ng C\xE2n N\u1EB7ng Ch\u1ED1ng S\u1ED1c SXHD &amp; CDC 2014</span>
+            </h3>
+            <div style="font-size:0.75rem; color:var(--cdss-text-muted); margin-top:2px;">
+              Ph\u1EE5 l\u1EE5c 9 \u2014 H\u01B0\u1EDBng d\u1EABn ch\u1EA9n \u0111o\xE1n, \u0111i\u1EC1u tr\u1ECB SXHD (Ban h\xE0nh k\xE8m Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT ng\xE0y 04/07/2023)
+            </div>
+          </div>
+          <button type="button" class="cdss-weight-modal-close" id="btn-close-weight-modal" title="\u0110\xF3ng">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="cdss-weight-modal-tabs">
+          <button type="button" class="cdss-weight-modal-tab-btn ${this.activeModalTab === "male_table" ? "active" : ""}" data-tab="male_table">
+            <i class="fa-solid fa-mars"></i> <span>1. B\u1EA3ng Ch\u1ED1ng S\u1ED1c SXH - NAM</span>
+          </button>
+          <button type="button" class="cdss-weight-modal-tab-btn ${this.activeModalTab === "female_table" ? "active" : ""}" data-tab="female_table">
+            <i class="fa-solid fa-venus"></i> <span>2. B\u1EA3ng Ch\u1ED1ng S\u1ED1c SXH - N\u1EEE</span>
+          </button>
+          <button type="button" class="cdss-weight-modal-tab-btn ${this.activeModalTab === "cdc_table" ? "active" : ""}" data-tab="cdc_table">
+            <i class="fa-solid fa-child"></i> <span>3. B\u1EA3ng CDC 2014 (Tr\u1EBB Em)</span>
+          </button>
+          <button type="button" class="cdss-weight-modal-tab-btn ${this.activeModalTab === "formula_guide" ? "active" : ""}" data-tab="formula_guide">
+            <i class="fa-solid fa-square-root-variable"></i> <span>4. C\xF4ng Th\u1EE9c &amp; Nguy\xEAn T\u1EAFc Ph\u1EE5 L\u1EE5c 9</span>
+          </button>
+        </div>
+
+        <!-- Body Content -->
+        <div class="cdss-weight-modal-body">
+          ${this.getWeightModalTabHtml()}
         </div>
       </div>
+    `;
+      modal.onclick = (e) => {
+        if (e.target === modal) this.closeWeightLookupModal();
+      };
+      const btnClose = document.getElementById("btn-close-weight-modal");
+      if (btnClose) btnClose.onclick = () => this.closeWeightLookupModal();
+      const tabBtns = modal.querySelectorAll(".cdss-weight-modal-tab-btn");
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tab = btn.getAttribute("data-tab");
+          if (tab) {
+            this.activeModalTab = tab;
+            this.renderWeightLookupModalContent();
+          }
+        });
+      });
+      const cells = modal.querySelectorAll(".cdss-matrix-cell[data-h][data-w]");
+      cells.forEach((c) => {
+        c.addEventListener("click", () => {
+          const h = c.getAttribute("data-h");
+          const w = c.getAttribute("data-w");
+          const eff = c.getAttribute("data-eff");
+          if (h && w) {
+            this.setInputValue("input-height", h);
+            this.setInputValue("input-weight", w);
+            this.recalculate();
+            this.showToast(`\u0110\xE3 \xE1p d\u1EE5ng: Chi\u1EC1u cao ${h} cm, C\xE2n n\u1EB7ng th\u1EF1c ${w} kg \u279C C\xE2n ch\u1ED1ng s\u1ED1c: ${eff} kg`);
+            this.closeWeightLookupModal();
+          }
+        });
+      });
+      const cdcRows = modal.querySelectorAll(".cdss-cdc-row[data-age][data-weight]");
+      cdcRows.forEach((r) => {
+        r.addEventListener("click", () => {
+          const age = r.getAttribute("data-age");
+          const weight = r.getAttribute("data-weight");
+          if (age && weight) {
+            this.setInputValue("input-age", age);
+            this.setInputValue("input-weight", weight);
+            this.recalculate();
+            this.showToast(`\u0110\xE3 \xE1p d\u1EE5ng tr\u1EBB ${age} tu\u1ED5i \u279C C\xE2n n\u1EB7ng CDC 2014: ${weight} kg`);
+            this.closeWeightLookupModal();
+          }
+        });
+      });
+    }
+    getWeightModalTabHtml() {
+      switch (this.activeModalTab) {
+        case "male_table":
+          return this.renderMatrixTableHtml("male");
+        case "female_table":
+          return this.renderMatrixTableHtml("female");
+        case "cdc_table":
+          return this.renderCDCTableHtml();
+        case "formula_guide":
+          return this.renderFormulaGuideHtml();
+        default:
+          return "";
+      }
+    }
+    renderMatrixTableHtml(gender) {
+      const isMale = gender === "male";
+      const patient = this.currentPlan?.patient;
+      const curHeight = patient?.heightCm ? Math.round(patient.heightCm) : void 0;
+      const curWeight = patient?.actualWeightKg ? Math.round(patient.actualWeightKg) : void 0;
+      const curGender = patient?.gender;
+      let matchedH = void 0;
+      let matchedW = void 0;
+      if (curHeight && curWeight && curGender === gender && patient.ageYears >= 16) {
+        matchedH = ADULT_SHOCK_HEIGHTS.reduce((prev, curr) => Math.abs(curr - curHeight) < Math.abs(prev - curHeight) ? curr : prev);
+        matchedW = ADULT_SHOCK_WEIGHTS.reduce((prev, curr) => Math.abs(curr - curWeight) < Math.abs(prev - curWeight) ? curr : prev);
+      }
+      const rowsHtml = ADULT_SHOCK_HEIGHTS.map((h) => {
+        const isRowHighlight = matchedH === h;
+        const cellsHtml = ADULT_SHOCK_WEIGHTS.map((w) => {
+          const cell = getAdultShockCell(h, w, gender);
+          const isCurrent = matchedH === h && matchedW === w;
+          const cellClass = isCurrent ? "cdss-matrix-cell cdss-matrix-cell--current" : cell.isAdjusted ? "cdss-matrix-cell cdss-matrix-cell--adjusted" : "cdss-matrix-cell cdss-matrix-cell--real";
+          const tooltip = `Cao ${h}cm, N\u1EB7ng ${w}kg \u279C BMI ${cell.bmi} kg/m\xB2 ${cell.isAdjusted ? "(\u226525: B\xE9o ph\xEC)" : "(<25: Chu\u1EA9n)"} \u279C C\xE2n ch\u1ED1ng s\u1ED1c: ${cell.tableWeight}kg (Click \u0111\u1EC3 \xE1p d\u1EE5ng)`;
+          return `
+          <td class="${cellClass}" data-h="${h}" data-w="${w}" data-eff="${cell.tableWeight}" title="${tooltip}">
+            ${cell.isAdjusted ? cell.tableWeight : '<span style="opacity:0.4; font-size:0.6rem;">BN</span>'}
+          </td>
+        `;
+        }).join("");
+        return `
+        <tr class="${isRowHighlight ? "cdss-matrix-row--highlight" : ""}">
+          <th class="cdss-matrix-th-left">${h}</th>
+          ${cellsHtml}
+          <th class="cdss-matrix-th-right">${h}</th>
+        </tr>
+      `;
+      }).join("");
+      return `
+      <div>
+        <div class="cdss-matrix-guide-bar">
+          <div>
+            <strong style="color:${isMale ? "#0284c7" : "#ec4899"}; font-size:0.85rem;">
+              <i class="fa-solid ${isMale ? "fa-mars" : "fa-venus"}"></i>
+              B\u1EA2NG C\xC2N N\u1EB6NG CH\u1ED0NG S\u1ED0C SXH \u2014 ${isMale ? "NAM" : "N\u1EEE"} (PH\u1EE4 L\u1EE4C 9)
+            </strong>
+            <div style="color:var(--cdss-text-muted); margin-top:2px;">
+              Chi\u1EC1u cao: 145 \u2013 187 cm &bull; C\xE2n n\u1EB7ng th\u1EF1c t\u1EBF: 45 \u2013 101 kg. Click v\xE0o \xF4 b\u1EA5t k\u1EF3 \u0111\u1EC3 \u0111i\u1EC1n nhanh v\xE0o form t\xEDnh d\u1ECBch.
+            </div>
+          </div>
+          <div class="cdss-matrix-legend">
+            <div class="cdss-matrix-legend-item">
+              <span class="cdss-matrix-legend-box" style="background:#e0f2fe;"></span>
+              <span><strong>BMI &lt; 25:</strong> S\u1EED d\u1EE5ng c\xE2n n\u1EB7ng th\u1EF1c BN</span>
+            </div>
+            <div class="cdss-matrix-legend-item">
+              <span class="cdss-matrix-legend-box" style="background:#ffffff; border:1px solid #cbd5e1;"></span>
+              <span><strong>BMI &ge; 25:</strong> C\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh (AdjBW)</span>
+            </div>
+            ${matchedH && matchedW ? `
+              <div class="cdss-matrix-legend-item" style="color:var(--cdss-danger); font-weight:700;">
+                <span class="cdss-matrix-legend-box" style="background:#ef4444; border-color:#facc15;"></span>
+                <span>BN hi\u1EC7n t\u1EA1i: Cao ${matchedH}cm, N\u1EB7ng ${matchedW}kg</span>
+              </div>
+            ` : ""}
+          </div>
+        </div>
 
-      <div style="font-size:0.72rem; color:var(--cdss-text-muted); line-height:1.4; margin-top:0.4rem;">
-        <i class="fa-solid fa-circle-info text-primary"></i> ${weightResult.formulaNote}
+        <div class="cdss-matrix-wrapper">
+          <table class="cdss-matrix-table">
+            <thead>
+              <tr>
+                <th class="cdss-matrix-corner">Cao (cm)</th>
+                ${ADULT_SHOCK_WEIGHTS.map((w) => `<th class="cdss-matrix-th-top">${w}</th>`).join("")}
+                <th class="cdss-matrix-corner">Cao (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+    }
+    renderCDCTableHtml() {
+      const patient = this.currentPlan?.patient;
+      const curAge = patient?.ageYears;
+      const curGender = patient?.gender || "male";
+      const ages = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+      const rowsHtml = ages.map((age) => {
+        const entry = CDC_STANDARD_WEIGHT[age];
+        const isCurrentAge = curAge !== void 0 && Math.round(curAge) === age;
+        const targetWeight = curGender === "male" ? entry.male : entry.female;
+        return `
+        <tr class="cdss-cdc-row ${isCurrentAge ? "current-age-row" : ""}" data-age="${age}" data-weight="${targetWeight}" style="cursor:pointer;" title="Click \u0111\u1EC3 \xE1p d\u1EE5ng cho tr\u1EBB ${age} tu\u1ED5i">
+          <td style="font-weight:700;">${age} tu\u1ED5i ${isCurrentAge ? '<span style="font-size:0.7rem; color:var(--cdss-primary); font-weight:800;">(BN Hi\u1EC7n T\u1EA1i)</span>' : ""}</td>
+          <td style="color:${curGender === "male" && isCurrentAge ? "var(--cdss-primary)" : "inherit"}; font-weight:${curGender === "male" && isCurrentAge ? "900" : "600"};">${entry.male} kg</td>
+          <td style="color:${curGender === "female" && isCurrentAge ? "var(--cdss-primary)" : "inherit"}; font-weight:${curGender === "female" && isCurrentAge ? "900" : "600"};">${entry.female} kg</td>
+        </tr>
+      `;
+      }).join("");
+      return `
+      <div style="max-width:760px; margin:0 auto;">
+        <div style="background:var(--cdss-surface); border:1px solid var(--cdss-border); border-radius:8px; padding:0.85rem 1.1rem; margin-bottom:1rem;">
+          <h4 style="margin:0 0 0.4rem 0; font-size:0.92rem; font-weight:800; color:var(--cdss-text); display:flex; align-items:center; gap:0.4rem;">
+            <i class="fa-solid fa-child text-primary"></i>
+            <span>1. C\xC2N N\u1EB6NG HI\u1EC6U CH\u1EC8NH \u1EDE TR\u1EBA EM D\u01AF C\xC2N HO\u1EB6C B\xC9O PH\xCC</span>
+          </h4>
+          <div style="font-size:0.78rem; color:var(--cdss-text-muted); font-style:italic; margin-bottom:0.5rem;">
+            (D\u1EF1a theo h\u01B0\u1EDBng d\u1EABn c\u1EE7a CDC 2014 \u2014 Tr\xEDch Ph\u1EE5 l\u1EE5c 9 Quy\u1EBFt \u0111\u1ECBnh s\u1ED1 2760/Q\u0110-BYT)
+          </div>
+          <div style="font-size:0.75rem; color:var(--cdss-danger); background:rgba(239,68,68,0.06); border-left:3px solid var(--cdss-danger); padding:0.5rem 0.75rem; border-radius:4px; line-height:1.45;">
+            <strong>Khuy\u1EBFn c\xE1o BYT:</strong> \xC1p d\u1EE5ng t\xEDnh c\xE2n n\u1EB7ng b\xF9 d\u1ECBch cho tr\u1EBB em d\u01B0 c\xE2n, b\xE9o ph\xEC n\xE0y ch\u1EC9 \u01B0\u1EDBc t\xEDnh cho nh\u1EEFng gi\u1EDD \u0111\u1EA7u v\xE0 <u>n\xEAn \u0111o \xE1p l\u1EF1c t\u0129nh m\u1EA1ch trung t\xE2m (CVP)</u> \u0111\u1EC3 theo d\xF5i trong khi b\xF9 d\u1ECBch.
+          </div>
+        </div>
+
+        <div class="cdss-cdc-table-wrap">
+          <table class="cdss-cdc-table">
+            <thead>
+              <tr>
+                <th>Tu\u1ED5i (n\u0103m)</th>
+                <th><i class="fa-solid fa-mars" style="color:#0284c7;"></i> Nam (kg)</th>
+                <th><i class="fa-solid fa-venus" style="color:#ec4899;"></i> N\u1EEF (kg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+    }
+    renderFormulaGuideHtml() {
+      return `
+      <div class="cdss-formula-card">
+        <h4 style="margin:0 0 0.75rem 0; font-size:1rem; font-weight:800; color:var(--cdss-text); border-bottom:1px solid var(--cdss-border-subtle); padding-bottom:0.5rem;">
+          <i class="fa-solid fa-book-medical text-primary"></i>
+          H\u01AF\u1EDANG D\u1EAAN T\xCDNH C\xC2N N\u1EB6NG B\xD9 D\u1ECACH CH\u1ED0NG S\u1ED0C SXHD (PH\u1EE4 L\u1EE4C 9 - BYT 2023)
+        </h4>
+
+        <!-- Ph\u1EA7n Ng\u01B0\u1EDDi L\u1EDBn -->
+        <div style="margin-bottom:1.25rem;">
+          <h5 style="font-size:0.88rem; font-weight:800; color:var(--cdss-primary); margin:0 0 0.5rem 0;">
+            - C\xE2n n\u1EB7ng (CN) ch\u1ED1ng s\u1ED1c \u1EDF ng\u01B0\u1EDDi l\u1EDBn: xem Ph\u1EE5 l\u1EE5c 9
+          </h5>
+          <div style="font-size:0.8rem; line-height:1.6; color:var(--cdss-text); padding-left:0.5rem;">
+            <div><strong>a) BMI &lt; 25 kg/m\xB2:</strong> s\u1EED d\u1EE5ng <u>C\xE2n n\u1EB7ng th\u1EF1c t\u1EBF</u>.</div>
+            <div><strong>b) BMI &ge; 25 kg/m\xB2:</strong> s\u1EED d\u1EE5ng <u>C\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh</u>.</div>
+            
+            <div style="background:var(--cdss-surface-alt); border:1px solid var(--cdss-border); border-radius:8px; padding:0.75rem 1rem; margin:0.6rem 0;">
+              <div style="font-weight:700; color:var(--cdss-text); margin-bottom:0.35rem;">+ CN l\xFD t\u01B0\u1EDFng (IBW - kg):</div>
+              <div style="font-family:var(--cdss-font-mono); font-size:0.82rem; color:var(--cdss-text); padding-left:0.75rem;">
+                &bull; <strong>N\u1EEF:</strong> 45,5 + 0,91 &times; (chi\u1EC1u cao (cm) - 152,4)<br/>
+                &bull; <strong>Nam:</strong> 50,0 + 0,91 &times; (chi\u1EC1u cao (cm) - 152,4)
+              </div>
+              <div style="font-weight:700; color:var(--cdss-primary); margin-top:0.6rem; margin-bottom:0.35rem;">+ CN hi\u1EC7u ch\u1EC9nh (AdjBW - kg):</div>
+              <div style="font-family:var(--cdss-font-mono); font-size:0.85rem; font-weight:800; color:var(--cdss-primary); padding-left:0.75rem;">
+                CN hi\u1EC7u ch\u1EC9nh = CN l\xFD t\u01B0\u1EDFng + 0,4 &times; (CN th\u1EF1c - CN l\xFD t\u01B0\u1EDFng)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ph\u1EA7n Tr\u1EBB Em -->
+        <div>
+          <h5 style="font-size:0.88rem; font-weight:800; color:#0284c7; margin:0 0 0.5rem 0;">
+            - C\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh \u1EDF tr\u1EBB em d\u01B0 c\xE2n ho\u1EB7c b\xE9o ph\xEC: d\u1EF1a theo CDC 2014
+          </h5>
+          <div style="font-size:0.8rem; line-height:1.6; color:var(--cdss-text); padding-left:0.5rem;">
+            <div>&bull; Khi c\xE2n n\u1EB7ng th\u1EF1c c\u1EE7a tr\u1EBB v\u01B0\u1EE3t qu\xE1 ng\u01B0\u1EE1ng th\u1EEBa c\xE2n (&gt; 120% so v\u1EDBi c\xE2n n\u1EB7ng chu\u1EA9n theo tu\u1ED5i CDC 2014): <strong>B\u1EAFt bu\u1ED9c d\xF9ng C\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh CDC 2014</strong> t\u01B0\u01A1ng \u1EE9ng v\u1EDBi \u0111\u1ED9 tu\u1ED5i \u0111\u1EC3 t\xEDnh l\u01B0\u1EE3ng d\u1ECBch b\xF9.</div>
+            <div>&bull; <em>Khuy\u1EBFn c\xE1o \xE1p d\u1EE5ng t\xEDnh c\xE2n n\u1EB7ng b\xF9 d\u1ECBch cho tr\u1EBB em d\u01B0 c\xE2n, b\xE9o ph\xEC n\xE0y ch\u1EC9 \u01B0\u1EDBc t\xEDnh cho nh\u1EEFng gi\u1EDD \u0111\u1EA7u v\xE0 n\xEAn \u0111o \xE1p l\u1EF1c t\u0129nh m\u1EA1ch trung t\xE2m (CVP) \u0111\u1EC3 theo d\xF5i trong khi b\xF9 d\u1ECBch.</em></div>
+          </div>
+        </div>
       </div>
     `;
     }
@@ -3084,7 +3579,7 @@ var DengueBundle = (() => {
             <span>Gi\u1EDBi t\xEDnh: <strong>${genderText}</strong></span>
             <span class="cdss-print-weight-highlight">
               C\xC2N T\xCDNH D\u1ECACH (CDSS): <strong>${weightResult.adjustedWeightKg} kg</strong>
-              ${weightResult.isObese ? '<em style="font-size:0.8em; color:#b91c1c;">(B\xC9O PH\xCC - HI\u1EC6U CH\u1EC8NH CDC)</em>' : `<span style="font-size:0.82em; color:#555;">(Th\u1EF1c t\u1EBF: ${weightResult.actualWeightKg}kg)</span>`}
+              ${weightResult.isObese ? patient.ageYears >= 16 ? '<em style="font-size:0.8em; color:#b91c1c;">(B\xC9O PH\xCC - PH\u1EE4 L\u1EE4C 9 BYT)</em>' : '<em style="font-size:0.8em; color:#b91c1c;">(B\xC9O PH\xCC - HI\u1EC6U CH\u1EC8NH CDC)</em>' : `<span style="font-size:0.82em; color:#555;">(Th\u1EF1c t\u1EBF: ${weightResult.actualWeightKg}kg)</span>`}
             </span>
           </div>
 
@@ -3215,7 +3710,7 @@ var DengueBundle = (() => {
       const text = [
         `\u{1F4CB} B\xC1O C\xC1O GIAO BAN D\u1ECACH TRUY\u1EC0N SXHD DENGUE (Q\u0110 2760/Q\u0110-BYT)`,
         `\u2022 B\u1EC7nh nh\xE2n: ${p.patient.ageYears} tu\u1ED5i (${p.patient.gender === "male" ? "Nam" : "N\u1EEF"}) | N\u1EB7ng th\u1EF1c t\u1EBF: ${p.weightResult.actualWeightKg} kg`,
-        `\u2022 C\xE2n t\xEDnh d\u1ECBch CDC 2014: ${p.weightResult.adjustedWeightKg} kg ${p.weightResult.isObese ? "(\u0110\xC3 HI\u1EC6U CH\u1EC8NH TR\u1EBA TH\u1EEAA C\xC2N)" : ""}`,
+        p.patient.ageYears >= 16 ? `\u2022 C\xE2n t\xEDnh d\u1ECBch Ph\u1EE5 l\u1EE5c 9 BYT (AdjBW): ${p.weightResult.adjustedWeightKg} kg ${p.weightResult.isObese ? "(\u0110\xC3 HI\u1EC6U CH\u1EC8NH NG\u01AF\u1EDCI L\u1EDAN B\xC9O PH\xCC)" : ""}` : `\u2022 C\xE2n t\xEDnh d\u1ECBch CDC 2014: ${p.weightResult.adjustedWeightKg} kg ${p.weightResult.isObese ? "(\u0110\xC3 HI\u1EC6U CH\u1EC8NH TR\u1EBA TH\u1EEAA C\xC2N)" : ""}`,
         `\u2022 Ph\xE2n \u0111\u1ED9: ${p.patient.severity === "warning_signs" ? "D\u1EA5u hi\u1EC7u c\u1EA3nh b\xE1o" : p.patient.severity === "shock" ? "S\u1ED1c SXHD" : "S\u1ED1c nguy k\u1ECBch"}`,
         `\u2022 \u0110\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng: ${p.branchDecision.title}`,
         `\u2022 H\u01B0\u1EDBng x\u1EED tr\xED: ${p.branchDecision.recommendedFluid}`,
