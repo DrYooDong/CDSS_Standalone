@@ -7,15 +7,31 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.resolve(rootDir, 'dist');
 
-console.log('[postbuild] Syncing static runtime assets into dist directory...');
+console.log('[postbuild] Starting production deployment bundle sync...');
 
 if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
 }
 
-// 1. Create .nojekyll for GitHub Pages
+// 1. Ensure .nojekyll for GitHub Pages
 fs.writeFileSync(path.join(distDir, '.nojekyll'), '');
 console.log('✓ Created dist/.nojekyll');
+
+const IGNORE_PATTERNS = [
+  'node_modules',
+  '.git',
+  '.github',
+  '__pycache__',
+  '.vscode',
+  '.idea',
+  '.DS_Store'
+];
+
+function shouldIgnore(name) {
+  if (IGNORE_PATTERNS.includes(name)) return true;
+  if (name.endsWith('.pyc')) return true;
+  return false;
+}
 
 function copyRecursive(src, dest) {
   if (!fs.existsSync(src)) return;
@@ -26,6 +42,7 @@ function copyRecursive(src, dest) {
     }
     const entries = fs.readdirSync(src);
     for (const entry of entries) {
+      if (shouldIgnore(entry)) continue;
       copyRecursive(path.join(src, entry), path.join(dest, entry));
     }
   } else {
@@ -37,56 +54,97 @@ function copyRecursive(src, dest) {
   }
 }
 
-// 2. Copy shared shell assets
+// 2. Copy Root Entrypoints & Shell Assets
+const rootFilesToCopy = [
+  'index.html',
+  'cdss-hub-bundle.js',
+  'manifest.webmanifest',
+  'sw.js',
+  'metadata.json'
+];
+
+for (const file of rootFilesToCopy) {
+  const src = path.join(rootDir, file);
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, path.join(distDir, file));
+    console.log(`✓ Copied ${file} -> dist/${file}`);
+  } else {
+    console.warn(`⚠ Warning: Root file ${file} not found!`);
+  }
+}
+
+// Also create 404.html from index.html for SPA / GitHub Pages fallback routing
+if (fs.existsSync(path.join(rootDir, 'index.html'))) {
+  fs.copyFileSync(path.join(rootDir, 'index.html'), path.join(distDir, '404.html'));
+  console.log('✓ Created dist/404.html (GitHub Pages fallback)');
+}
+
+// Copy shared and css directories
 copyRecursive(path.join(rootDir, 'shared'), path.join(distDir, 'shared'));
 console.log('✓ Copied shared/ -> dist/shared/');
 
-// 3. Copy css folder
 copyRecursive(path.join(rootDir, 'css'), path.join(distDir, 'css'));
 console.log('✓ Copied css/ -> dist/css/');
 
-// 4. Copy cdss-hub-bundle.js
-const hubBundle = path.join(rootDir, 'cdss-hub-bundle.js');
-if (fs.existsSync(hubBundle)) {
-  fs.copyFileSync(hubBundle, path.join(distDir, 'cdss-hub-bundle.js'));
-  console.log('✓ Copied cdss-hub-bundle.js -> dist/');
-}
+// 3. Copy all 9 CDSS Clinical Modules
+const CDSS_MODULES = [
+  'dengue',
+  'ecg',
+  'abg',
+  'hepa',
+  'sepsis',
+  'antibiotic',
+  'vancomycin',
+  'diacare',
+  'inpatient'
+];
 
-// 5. Copy manifest.webmanifest and sw.js
-const manifest = path.join(rootDir, 'manifest.webmanifest');
-if (fs.existsSync(manifest)) {
-  fs.copyFileSync(manifest, path.join(distDir, 'manifest.webmanifest'));
-}
-const sw = path.join(rootDir, 'sw.js');
-if (fs.existsSync(sw)) {
-  fs.copyFileSync(sw, path.join(distDir, 'sw.js'));
-}
+console.log('[postbuild] Syncing 9 CDSS clinical modules...');
 
-// 6. Copy dengue runtime bundles & css
-copyRecursive(path.join(rootDir, 'dengue', 'css'), path.join(distDir, 'dengue', 'css'));
-['dengue-bundle.js', 'dengue-bundle.iife.js'].forEach(file => {
-  const src = path.join(rootDir, 'dengue', file);
-  if (fs.existsSync(src)) {
-    fs.copyFileSync(src, path.join(distDir, 'dengue', file));
+for (const mod of CDSS_MODULES) {
+  const srcModDir = path.join(rootDir, mod);
+  const destModDir = path.join(distDir, mod);
+
+  if (!fs.existsSync(srcModDir)) {
+    console.error(`✗ Error: Module folder ${mod} does not exist in root!`);
+    continue;
   }
-});
-console.log('✓ Copied dengue bundles and css -> dist/dengue/');
 
-// 7. Copy ecg runtime bundles, css, and python output
-copyRecursive(path.join(rootDir, 'ecg', 'css'), path.join(distDir, 'ecg', 'css'));
-copyRecursive(path.join(rootDir, 'ecg', 'python', 'output'), path.join(distDir, 'ecg', 'python', 'output'));
-['ecg-bundle.js'].forEach(file => {
-  const src = path.join(rootDir, 'ecg', file);
-  if (fs.existsSync(src)) {
-    fs.copyFileSync(src, path.join(distDir, 'ecg', file));
+  copyRecursive(srcModDir, destModDir);
+
+  // Validation: Check that index.html exists in module dist
+  const modIndex = path.join(destModDir, 'index.html');
+  if (fs.existsSync(modIndex)) {
+    console.log(`✓ Synced module [${mod}] -> dist/${mod}/ (index.html verified)`);
+  } else {
+    console.error(`✗ Warning: Module [${mod}] has NO index.html in dist!`);
   }
-});
-const ecgIife = path.join(rootDir, 'ecg', 'assets', 'ecg-app.iife.js');
-if (fs.existsSync(ecgIife)) {
-  const destDir = path.join(distDir, 'ecg', 'assets');
-  if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
-  fs.copyFileSync(ecgIife, path.join(destDir, 'ecg-app.iife.js'));
 }
-console.log('✓ Copied ecg bundles, css, and python output -> dist/ecg/');
 
-console.log('[postbuild] Done! All assets ready for GitHub Pages deployment.');
+// 4. Final Verification
+const requiredFiles = [
+  'index.html',
+  '404.html',
+  '.nojekyll',
+  'cdss-hub-bundle.js',
+  'shared/cdss-shell.css',
+  'shared/cdss-shell.js',
+  'css/cdss-hub.css',
+  ...CDSS_MODULES.map(m => `${m}/index.html`)
+];
+
+let allOk = true;
+for (const relPath of requiredFiles) {
+  const fullPath = path.join(distDir, relPath);
+  if (!fs.existsSync(fullPath)) {
+    console.error(`✗ CRITICAL ERROR: Missing required build artifact: dist/${relPath}`);
+    allOk = false;
+  }
+}
+
+if (!allOk) {
+  console.error('[postbuild] Build verification FAILED! Missing critical files.');
+  process.exit(1);
+}
+
+console.log('[postbuild] SUCCESS: All 9 CDSS modules, root hub, and assets successfully synced into dist/!');
