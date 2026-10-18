@@ -172,7 +172,7 @@ export const NHSN_CRITERIA_SECTIONS: NhsnCriteriaSection[] = [
 
   {
     id: 'nhsn_cns_meningitis',
-    titleVi: 'Nhiễm trùng Hệ Thần kinh Trung ương (Viêm màng não mủ / Áp xe não)',
+    titleVi: 'Nhiễm trùng Hệ Thần kinh Trung ương (Viêm màng não, Áp xe não/cột sống)',
     site: 'cns',
     population: 'adult',
     requiredCriteriaCount: 2,
@@ -184,24 +184,60 @@ export const NHSN_CRITERIA_SECTIONS: NhsnCriteriaSection[] = [
       },
       {
         id: 'cns_altered_consciousness',
-        textVi: 'Rối loạn tri giác (lơ mơ, mê), co giật hoặc dấu thần kinh khu trú',
+        textVi: 'Rối loạn tri giác (lơ mơ, mê), co giật hoặc dấu thần kinh khu trú (liệt dây sọ, yếu chi)',
         isClinical: true
       },
       {
         id: 'cns_csf_abnormal',
-        textVi: 'Dịch não tủy (DNT): Đục hoặc áp lực tăng, tăng bạch cầu đa nhân, protein tăng, đường DNT/máu < 0.4',
+        textVi: 'Dịch não tủy (DNT): Đục/tăng áp lực, tăng bạch cầu đa nhân, protein tăng, đường DNT/máu < 0.4',
         isLab: true
       },
       {
         id: 'cns_gram_pcr_culture',
-        textVi: 'Nhuộm Gram DNT thấy vi khuẩn HOẶC cấy DNT / cấy máu dương tính HOẶC PCR DNT dương tính',
+        textVi: 'Nhuộm Gram DNT thấy vi trùng HOẶC cấy DNT/cấy máu (+) HOẶC PCR/kháng thể DNT (+)',
         isMicrobiology: true
+      },
+      {
+        id: 'cns_spine_imaging',
+        textVi: 'Bằng chứng hình ảnh học (MRI/CT sọ não hoặc cột sống): Ổ áp xe não, tụ mủ ngoài/dưới màng cứng',
+        isImaging: true
       }
     ],
     source: { doc: 'BVBND_LuuDo', page: 22 }
+  },
+
+  {
+    id: 'nhsn_sepsis_bloodstream',
+    titleVi: 'Nhiễm khuẩn huyết & Sốc nhiễm khuẩn (Sepsis / Septic Shock)',
+    site: 'sepsis',
+    population: 'adult',
+    requiredCriteriaCount: 2,
+    criteria: [
+      {
+        id: 'sepsis_sirs_fever',
+        textVi: 'Hội chứng đáp ứng viêm toàn thân (SIRS): Sốt (> 38.0°C) hoặc Hạ thân nhiệt (< 36.0°C) + Nhịp tim > 90 bpm + Thở > 20 l/p',
+        isClinical: true
+      },
+      {
+        id: 'sepsis_organ_dysfunction',
+        textVi: 'Suy đa cơ quan cấp tính (SOFA tăng ≥ 2 điểm so với nền hoặc tụt huyết áp cần vận mạch)',
+        isClinical: true
+      },
+      {
+        id: 'sepsis_procalcitonin_lactate',
+        textVi: 'Dấu ấn sinh học nhiễm trùng tăng cao: Procalcitonin ≥ 0.5 - 2 ng/mL HOẶC Lactate máu > 2.0 mmol/L',
+        isLab: true
+      },
+      {
+        id: 'sepsis_blood_culture_positive',
+        textVi: 'Cấy máu vi sinh trước khi dùng kháng sinh: Dương tính với vi khuẩn gây bệnh (lấy ≥ 2 chai tại 2 vị trí khác nhau)',
+        isMicrobiology: true
+      }
+    ],
+    source: { doc: 'BVBND_LuuDo', page: 2 }
   }
 ];
 
 export function getNhsnCriteriaForSite(site: string): NhsnCriteriaSection | undefined {
-  return NHSN_CRITERIA_SECTIONS.find(sec => sec.site === site);
+  return NHSN_CRITERIA_SECTIONS.find(sec => sec.site === site) || NHSN_CRITERIA_SECTIONS[0];
 }

@@ -165,6 +165,11 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
 
   const handleSelectPreset = (presetId: string) => {
     setActivePreset(presetId);
+    if (presetId === 'vap_severe') setSelectedSyndrome('nhsn_vap_vae');
+    else if (presetId === 'cap_standard') setSelectedSyndrome('nhsn_pneumonia_adult');
+    else if (presetId === 'sepsis_cirrhosis') setSelectedSyndrome('nhsn_sbp_peritoneal');
+    else if (presetId === 'cauti_elderly') setSelectedSyndrome('nhsn_uti');
+    else if (presetId === 'ssti_cellulitis') setSelectedSyndrome('nhsn_ssti');
     onApplyPreset(presetId);
   };
 
@@ -249,10 +254,11 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                 onClick={() => {
                   onSelectSite(s.id);
                   if (s.id === 'respiratory') setSelectedSyndrome('nhsn_pneumonia_adult');
-                  else if (s.id === 'urinary') setSelectedSyndrome('nhsn_cauti');
-                  else if (s.id === 'sepsis') setSelectedSyndrome('nhsn_clabsi');
+                  else if (s.id === 'urinary') setSelectedSyndrome('nhsn_uti');
+                  else if (s.id === 'sepsis') setSelectedSyndrome('nhsn_sepsis_bloodstream');
                   else if (s.id === 'skin_soft_tissue') setSelectedSyndrome('nhsn_ssti');
-                  else if (s.id === 'peritoneal') setSelectedSyndrome('nhsn_sbp');
+                  else if (s.id === 'peritoneal') setSelectedSyndrome('nhsn_sbp_peritoneal');
+                  else if (s.id === 'cns') setSelectedSyndrome('nhsn_cns_meningitis');
                 }}
                 className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
                   isSelected

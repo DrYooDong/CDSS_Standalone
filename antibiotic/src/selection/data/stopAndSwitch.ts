@@ -96,7 +96,7 @@ export const STOP_ANTIBIOTIC_CHECKLIST = {
   clinicalCriteria: [
     {
       id: 'crit_afebrile',
-      textVi: 'Thân nhiệt ≤ 37.3°C trong liên tục ≥ 24 - 48 giờ (không dùng hạ sốt)',
+      textVi: 'Nhiệt độ ≤ 37.8°C (≤ 100.0°F) trong ≥ 24 - 48 giờ (không dùng thuốc hạ sốt)',
       isMandatory: true
     },
     {
@@ -106,7 +106,7 @@ export const STOP_ANTIBIOTIC_CHECKLIST = {
     },
     {
       id: 'crit_oxygenation',
-      textVi: 'FiO₂ ≤ 40% HOẶC SpO₂ đạt mục tiêu lâm sàng khi thở khí trời',
+      textVi: 'FiO₂ ≤ 40% hoặc SpO₂ đạt mục tiêu lâm sàng (khi thở khí trời)',
       isMandatory: true
     },
     {
@@ -127,7 +127,7 @@ export const STOP_ANTIBIOTIC_CHECKLIST = {
     },
     {
       id: 'crit_wbc',
-      textVi: 'Số lượng bạch cầu (WBC) về ngưỡng bình thường (4.000 - 10.000/mm³)'
+      textVi: 'Bạch cầu (WBC) về ngưỡng bình thường'
     },
     {
       id: 'crit_crp',
@@ -136,8 +136,18 @@ export const STOP_ANTIBIOTIC_CHECKLIST = {
   ],
   additionalFavorable: [
     { id: 'crit_lactate', textVi: 'Lactate máu bình thường (< 2.0 mmol/L)' },
-    { id: 'crit_neg_blood_culture', textVi: 'Cấy máu kiểm tra âm tính sau điều trị' }
-  ]
+    { id: 'crit_neg_blood_culture', textVi: 'Cấy máu kiểm tra âm tính sau điều trị (NTH)' }
+  ],
+  // BVBND Guidelines on Discontinuation & Follow-up
+  ruleNotesVi: [
+    'Điều kiện ngưng KS: Phải đủ thời gian điều trị tối thiểu theo bằng chứng VÀ có cải thiện lâm sàng (đạt đủ 5 tiêu chí lâm sàng + ít nhất 1 tiêu chí cận lâm sàng).',
+    'Quy tắc xuống thang (*): Có thể KHÔNG xuống thang khi thời gian sử dụng kháng sinh còn lại ≤ 2 ngày. Nếu đổi sang KS khác, phải duy trì thời gian điều trị của thuốc mới ít nhất 3 – 5 ngày.',
+    'Bắt buộc Hội chẩn: Khi tiếp tục dùng KS mà vi sinh báo kháng, hoặc thời gian dùng KS ngoài hướng dẫn của phác đồ, hoặc lâm sàng không cải thiện.'
+  ],
+  postDiscontinuationMonitoringVi: {
+    first48h: 'Trong 24 - 48 giờ đầu: Theo dõi sát nhiệt độ sốt, sinh hiệu, tri giác; lặp lại xét nghiệm Procalcitonin (PCT) nếu lâm sàng nghi ngờ.',
+    recurrence: 'Nếu tái phát triệu chứng nhiễm trùng: Cấy máu / cấy lại bệnh phẩm ngay lập tức; khởi động lại kháng sinh theo bằng chứng vi sinh và hội chẩn.'
+  }
 };
 
 export const IV_TO_PO_CONTRAINDICATIONS = [

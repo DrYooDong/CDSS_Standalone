@@ -185,9 +185,10 @@ export function evaluate48hReassessment(
         actionType = 'de_escalate';
         actionTitleVi = 'Lâm sàng cải thiện + Vi khuẩn Nhạy cảm với KS đang dùng';
         actionTitleEn = 'Clinical Improvement + Organism Sensitive';
-        recommendationsVi.push('Tiếp tục hoặc xuống thang kháng sinh phổ hẹp nhất phù hợp với kết quả Kháng sinh đồ.');
-        recommendationsVi.push('Xem xét điều kiện chuyển từ tiêm sang uống (IV to PO) và ngưng KS khi đủ ngày.');
-        recommendationsEn.push('De-escalate to narrower-spectrum agent based on AST. Assess IV-to-PO switch.');
+        recommendationsVi.push('Tiếp tục / thay đổi / Xuống thang kháng sinh phổ hẹp phù hợp với kết quả Kháng sinh đồ (KSĐ).');
+        recommendationsVi.push('Lưu ý BVBND (*): Có thể KHÔNG xuống thang khi thời gian sử dụng KS còn lại ≤ 2 ngày. Nếu đổi sang KS khác phải duy trì liệu trình mới ít nhất 3 – 5 ngày.');
+        recommendationsVi.push('Xem xét điều kiện chuyển từ tiêm sang uống (IV sang PO) ngay khi dung nạp đường tiêu hóa.');
+        recommendationsEn.push('De-escalate to narrower-spectrum agent based on AST. Note: de-escalation may be omitted if remaining duration ≤ 2 days; new agent requires ≥ 3-5 days.');
         stopChecklistEligible = true;
         ivToPoEligible = true;
       } else {
@@ -195,10 +196,10 @@ export function evaluate48hReassessment(
         actionType = 'consult';
         actionTitleVi = 'Lâm sàng cải thiện NHƯNG Vi khuẩn Kháng thuốc trên KSĐ';
         actionTitleEn = 'Clinical Improvement BUT Resistant Organism on AST';
-        recommendationsVi.push('Hội chẩn Dược lâm sàng / Vi sinh lâm sàng.');
-        recommendationsVi.push('Đánh giá xem vi khuẩn phân lập là tác nhân gây bệnh thực sự hay chỉ là vi khuẩn tạp nhiễm/định cư.');
-        recommendationsVi.push('Nếu lâm sàng đáp ứng tốt và nguồn nhiễm đã giải quyết, có thể cân nhắc tiếp tục hoặc đổi KS phổ hẹp trúng đích.');
-        recommendationsEn.push('Consult ID/Microbiology. Assess if isolate represents true pathogen vs colonizer.');
+        recommendationsVi.push('BẮT BUỘC HỘI CHẨN nếu có ý định tiếp tục dùng kháng sinh mà vi sinh báo kháng.');
+        recommendationsVi.push('Đánh giá cẩn trọng xem chủng vi khuẩn phân lập là tác nhân gây bệnh thực sự hay chỉ là tạp nhiễm/định cư.');
+        recommendationsVi.push('Nếu không giải trình được vi khuẩn tạp nhiễm, xem xét thay đổi kháng sinh phù hợp theo Kháng sinh đồ (KSĐ).');
+        recommendationsEn.push('Mandatory consultation if continuing resistant agent. Assess true pathogen vs colonizer, or switch per AST.');
       }
     } else {
       // culture pending

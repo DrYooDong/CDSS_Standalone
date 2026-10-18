@@ -615,7 +615,7 @@ export const StepReassess: React.FC<StepReassessProps> = ({
                   </strong>
                   <p className="text-xs mt-1 leading-relaxed text-slate-700">
                     {stopResult.canStop
-                      ? `Bệnh nhân đã đạt đủ số ngày tối thiểu (${currentDays}/${stopResult.minDays} ngày), thỏa mãn 5/5 tiêu chuẩn ổn định lâm sàng và ít nhất 1 chỉ số chỉ điểm cận lâm sàng thuận lợi. Khuyến cáo ngưng kháng sinh để giảm thiểu độc tính và nguy cơ chọn lọc chủng đề kháng.`
+                      ? `Bệnh nhân đã đạt đủ số ngày tối thiểu (${currentDays}/${stopResult.minDays} ngày), thỏa mãn 5/5 tiêu chuẩn ổn định lâm sàng và ít nhất 1 chỉ số chỉ điểm cận lâm sàng thuận lợi. Khuyến cáo ngưng kháng sinh để giảm thiểu độc tính và nguy cơ chọn lọc chủng đề kháng. Ghi nhận quyết định vào hồ sơ bệnh án.`
                       : `Hiện tại chưa đạt đủ các tiêu chí ngưng thuốc. Lý do: ${
                           !stopResult.minDurationMet
                             ? `Chưa đủ ngày tối thiểu (${currentDays}/${stopResult.minDays} ngày); `
@@ -631,6 +631,31 @@ export const StepReassess: React.FC<StepReassessProps> = ({
                         }`}
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* Hướng Dẫn Theo Dõi Sau Khi Ngưng Kháng Sinh (Chuẩn BVBND) */}
+            <div className="p-4 rounded-xl bg-teal-50/70 border border-teal-200/80 space-y-2 text-xs">
+              <h4 className="font-bold text-teal-950 flex items-center gap-1.5">
+                <Info className="w-4 h-4 text-teal-700" />
+                <span>Quy trình Theo dõi Sau khi Ngưng Kháng sinh &amp; Xuống thang (BV Bệnh Nhiệt Đới):</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-800">
+                <div className="bg-white p-3 rounded-lg border border-teal-100 space-y-1">
+                  <strong className="text-teal-900 block font-bold">1. Theo dõi trong 24 – 48 giờ đầu:</strong>
+                  <p className="text-slate-600">
+                    Theo dõi sát nhiệt độ sốt, sinh hiệu, mức độ tri giác. Lặp lại xét nghiệm Procalcitonin (PCT) nếu lâm sàng có dấu hiệu nghi ngờ tái bùng phát.
+                  </p>
+                </div>
+                <div className="bg-white p-3 rounded-lg border border-teal-100 space-y-1">
+                  <strong className="text-rose-900 block font-bold">2. Xử trí khi tái phát triệu chứng:</strong>
+                  <p className="text-slate-600">
+                    Cấy máu / cấy bệnh phẩm lại ngay lập tức. Khởi động lại kháng sinh theo bằng chứng vi sinh và kích hoạt hội chẩn Dược lâm sàng / Hồi sức.
+                  </p>
+                </div>
+              </div>
+              <div className="p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 font-medium mt-2">
+                <strong>Quy tắc xuống thang (*):</strong> Có thể <em>KHÔNG</em> xuống thang khi thời gian sử dụng kháng sinh còn lại ≤ 2 ngày. Nếu đổi sang kháng sinh khác, bắt buộc phải duy trì thời gian điều trị ít nhất <strong>3 – 5 ngày</strong>.
               </div>
             </div>
           </div>
