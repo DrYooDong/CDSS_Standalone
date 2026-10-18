@@ -1,23 +1,11 @@
-const esbuild = require('C:/Users/nguye/AppData/Roaming/npm/node_modules/esbuild');
+const esbuild = require('esbuild');
 const path = require('path');
 
-const localModules = 'C:/Users/nguye/.gemini/antigravity-ide/temp_build/node_modules';
-const nodeBuiltins = new Set(['fs', 'path', 'worker_threads', 'stream', 'crypto', 'buffer', 'util', 'events', 'http', 'https', 'url', 'zlib', 'os']);
-
-const localResolverPlugin = {
-  name: 'local-resolver',
+const ignoreCssPlugin = {
+  name: 'ignore-css',
   setup(build) {
-    build.onResolve({ filter: /^[^./]/ }, (args) => {
-      if (nodeBuiltins.has(args.path)) {
-        return { path: args.path, external: true };
-      }
-      try {
-        const resolved = require.resolve(args.path, { paths: [localModules] });
-        return { path: resolved };
-      } catch (e) {
-        return null;
-      }
-    });
+    build.onResolve({ filter: /\.css$/ }, args => ({ path: args.path, namespace: 'ignore-css' }));
+    build.onLoad({ filter: /.*/, namespace: 'ignore-css' }, () => ({ contents: '', loader: 'js' }));
   }
 };
 
@@ -32,7 +20,7 @@ const localResolverPlugin = {
       platform: 'browser',
       jsx: 'automatic',
       minify: false,
-      plugins: [localResolverPlugin],
+      plugins: [ignoreCssPlugin],
       define: {
         'process.env.NODE_ENV': '"production"'
       }
@@ -48,7 +36,7 @@ const localResolverPlugin = {
       platform: 'browser',
       jsx: 'automatic',
       minify: false,
-      plugins: [localResolverPlugin],
+      plugins: [ignoreCssPlugin],
       define: {
         'process.env.NODE_ENV': '"production"'
       }

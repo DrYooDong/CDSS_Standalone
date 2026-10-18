@@ -78,11 +78,11 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
           </div>
 
           {/* Tab switch */}
-          <div className="inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200">
+          <div className="w-full sm:w-auto grid grid-cols-2 sm:flex p-1 bg-slate-100 rounded-xl border border-slate-200">
             <button
               type="button"
               onClick={() => setActiveTab('regimens')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${
                 activeTab === 'regimens'
                   ? 'bg-white text-teal-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -94,7 +94,7 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
             <button
               type="button"
               onClick={() => setActiveTab('antibiogram')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${
                 activeTab === 'antibiogram'
                   ? 'bg-white text-teal-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -279,7 +279,7 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
 
               {/* Bảng vi khuẩn */}
               <div className="overflow-x-auto rounded-xl border border-slate-200">
-                <table className="w-full text-xs text-left border-collapse">
+                <table className="w-full min-w-[550px] text-xs text-left border-collapse">
                   <thead>
                     <tr className="border-b border-slate-200 bg-slate-50 text-slate-700 font-bold">
                       <th className="py-2.5 px-3">Tác nhân gây bệnh</th>
@@ -344,19 +344,20 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
       )}
 
       {/* Navigation Buttons */}
-      <div className="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex items-center justify-between">
+      <div className="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
         <button
           type="button"
           onClick={onPrevStep}
-          className="px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center space-x-1.5 cursor-pointer"
+          className="w-full sm:w-auto px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Quay lại Giai đoạn 1 (Đánh giá &amp; Phân tầng)</span>
         </button>
+
         <button
           type="button"
           onClick={onNextStep}
-          className="px-5 py-2.5 text-xs sm:text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl shadow-sm transition-all flex items-center space-x-1.5 cursor-pointer"
+          className="w-full sm:w-auto px-5 py-2.5 text-xs sm:text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl shadow-sm transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]"
         >
           <span>Tiếp tục: Giai đoạn 3 (Tái đánh giá 48-72h)</span>
           <ArrowRight className="w-4 h-4" />

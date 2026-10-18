@@ -215,7 +215,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 flex-wrap">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 max-w-full scrollbar-none sm:flex-wrap">
             {presets.map(p => {
               const isSelected = activePreset === p.id;
               return (
@@ -223,7 +223,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                   key={p.id}
                   type="button"
                   onClick={() => handleSelectPreset(p.id)}
-                  className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center space-x-1.5 ${
+                  className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center space-x-1.5 shrink-0 whitespace-nowrap ${
                     isSelected
                       ? 'bg-teal-500 text-slate-950 font-bold shadow-sm ring-2 ring-white/30'
                       : 'bg-white/10 text-slate-200 hover:bg-white/20 hover:text-white border border-white/10'
@@ -237,7 +237,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             <button
               type="button"
               onClick={() => handleSelectPreset('custom')}
-              className="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-1"
+              className="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-1 shrink-0 whitespace-nowrap"
               title="Làm mới để tự nhập ca bệnh"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -293,10 +293,10 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                   )}
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-900 truncate">
+                  <div className="text-xs font-bold text-slate-900 leading-snug break-words">
                     {s.titleVi}
                   </div>
-                  <div className="text-[10px] text-slate-500 truncate mt-0.5">
+                  <div className="text-[10px] text-slate-500 mt-0.5 leading-snug break-words line-clamp-1 sm:line-clamp-none">
                     {s.subVi}
                   </div>
                 </div>
@@ -350,12 +350,12 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
           </label>
 
           {site === 'sepsis' && (
-            <div className="flex items-center space-x-2 ml-auto">
-              <span className="text-xs font-bold text-rose-600 uppercase tracking-wider">Ngõ vào:</span>
+            <div className="flex items-center space-x-2 w-full sm:w-auto sm:ml-auto">
+              <span className="text-xs font-bold text-rose-600 uppercase tracking-wider shrink-0">Ngõ vào:</span>
               <select
                 value={sepsisSource || 'respiratory'}
                 onChange={e => onSelectSepsisSource(e.target.value as SepsisSource)}
-                className="text-xs border border-slate-300 rounded-lg px-2.5 py-1 bg-white font-medium focus:ring-1 focus:ring-teal-500 cursor-pointer"
+                className="text-xs border border-slate-300 rounded-lg px-2.5 py-1 bg-white font-medium focus:ring-1 focus:ring-teal-500 cursor-pointer flex-1 sm:flex-none"
               >
                 <option value="respiratory">Từ ổ Hô hấp (Phổi)</option>
                 <option value="urinary">Từ ổ Tiết niệu</option>
@@ -380,7 +380,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             </h3>
           </div>
           
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 flex-wrap gap-y-1">
             <div className={`px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center space-x-1 ${
               isCriteriaMet
                 ? 'bg-emerald-100 text-emerald-800'
@@ -411,18 +411,18 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         </div>
 
         {/* Quick Indication Status */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 mb-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 mb-3">
           <div className="flex items-center space-x-2.5">
             <CheckSquare className="w-4 h-4 text-teal-600 shrink-0" />
             <div className="text-xs text-slate-700">
               Bệnh nhân có hội chứng nhiễm khuẩn cấp tính, sốc nhiễm khuẩn hoặc tổn thương cơ quan rõ ràng:
             </div>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="grid grid-cols-2 gap-2 w-full sm:w-auto shrink-0">
             <button
               type="button"
               onClick={() => onConfirmIndication(true)}
-              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
                 indicationConfirmed
                   ? 'bg-teal-600 text-white shadow-xs'
                   : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
@@ -433,7 +433,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             <button
               type="button"
               onClick={() => onConfirmIndication(false)}
-              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
                 !indicationConfirmed
                   ? 'bg-amber-600 text-white shadow-xs'
                   : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
@@ -447,14 +447,14 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         {/* Expandable NHSN Criteria Checklist */}
         {showNhsnDetails && (
           <div className="space-y-3 pt-2">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <span className="text-xs font-bold text-slate-600">
                 Hội chứng đánh giá NHSN:
               </span>
               <select
                 value={selectedSyndrome}
                 onChange={e => setSelectedSyndrome(e.target.value)}
-                className="text-xs border border-slate-300 rounded-lg px-2.5 py-1 bg-white font-medium focus:ring-1 focus:ring-teal-500 cursor-pointer"
+                className="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white font-medium focus:ring-1 focus:ring-teal-500 cursor-pointer w-full sm:w-auto"
               >
                 {NHSN_CRITERIA_SECTIONS.map(sec => (
                   <option key={sec.id} value={sec.id}>
@@ -521,8 +521,8 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <div className="flex items-center space-x-2">
-                <Activity className="w-4 h-4 text-teal-600" />
+              <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+                <Activity className="w-4 h-4 text-teal-600 shrink-0" />
                 <span className="text-xs font-bold text-slate-900 uppercase tracking-wide">
                   {population === 'pediatric' ? 'Thang điểm pSOFA (Trẻ em)' : isChronicLiverDisease ? 'Thang điểm CLIF-SOFA (Xơ gan)' : 'Thang điểm SOFA (Người lớn)'}
                 </span>
@@ -542,38 +542,39 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             </div>
 
             {/* Quick Score Stepper & Calculator Trigger */}
-            <div className="flex items-center space-x-2">
-              <span className="text-xs text-slate-500 font-medium">Điểm số:</span>
-              <div className="flex items-center space-x-1">
-                {[0, 1, 2, 4, 6, 8, 12].map(scoreVal => {
-                  const currentScore = population === 'pediatric' ? psofaScore : isChronicLiverDisease ? clifSofaScore : sofaScore;
-                  const isCurrent = currentScore === scoreVal;
-                  return (
-                    <button
-                      key={scoreVal}
-                      type="button"
-                      onClick={() => {
-                        if (population === 'pediatric') onPsofaChange(scoreVal);
-                        else if (isChronicLiverDisease) onClifSofaChange(scoreVal);
-                        else onSofaChange(scoreVal);
-                      }}
-                      className={`w-7 h-7 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                        isCurrent
-                          ? 'bg-teal-600 text-white shadow-xs'
-                          : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
-                      }`}
-                    >
-                      {scoreVal}
-                    </button>
-                  );
-                })}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none">
+                <span className="text-xs text-slate-500 font-medium shrink-0">Điểm số:</span>
+                <div className="flex items-center gap-1 shrink-0">
+                  {[0, 1, 2, 4, 6, 8, 12].map(scoreVal => {
+                    const currentScore = population === 'pediatric' ? psofaScore : isChronicLiverDisease ? clifSofaScore : sofaScore;
+                    const isCurrent = currentScore === scoreVal;
+                    return (
+                      <button
+                        key={scoreVal}
+                        type="button"
+                        onClick={() => {
+                          if (population === 'pediatric') onPsofaChange(scoreVal);
+                          else if (isChronicLiverDisease) onClifSofaChange(scoreVal);
+                          else onSofaChange(scoreVal);
+                        }}
+                        className={`w-7 h-7 rounded-lg text-xs font-bold transition-all cursor-pointer shrink-0 ${
+                          isCurrent
+                            ? 'bg-teal-600 text-white shadow-xs'
+                            : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                        }`}
+                      >
+                        {scoreVal}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-
               {population === 'adult' && !isChronicLiverDisease && (
                 <button
                   type="button"
                   onClick={() => setShowSofaCalculator(!showSofaCalculator)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center space-x-1 transition-all cursor-pointer ${
+                  className={`w-full sm:w-auto px-2.5 py-1.5 rounded-lg text-xs font-bold flex items-center justify-center space-x-1 transition-all cursor-pointer ${
                     showSofaCalculator
                       ? 'bg-teal-700 text-white shadow-xs'
                       : 'bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200'
@@ -741,26 +742,26 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                       : 'border-slate-200 bg-white hover:border-slate-300'
                   }`}
                 >
-                  <div className="p-3 flex items-start justify-between gap-2">
-                    <label className="flex items-start space-x-2.5 cursor-pointer flex-1">
+                  <div className="p-3 flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
+                    <label className="flex items-start space-x-2.5 cursor-pointer flex-1 min-w-0">
                       <input
                         type="checkbox"
                         checked={isChecked}
                         onChange={() => onToggleSpecificRisk(spec.id)}
                         className="rounded text-rose-600 focus:ring-rose-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
                       />
-                      <div className="min-w-0">
-                        <div className="flex items-center space-x-1.5 flex-wrap">
-                          <span className={`text-xs font-bold ${isChecked ? 'text-rose-950 font-black' : 'text-slate-900'}`}>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center space-x-1.5 flex-wrap gap-y-1">
+                          <span className={`text-xs font-bold ${isChecked ? 'text-rose-950 font-black' : 'text-slate-900'} break-words`}>
                             {spec.title}
                           </span>
                           {spec.isSiteTarget && (
-                            <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800">
+                            <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800 break-words">
                               {spec.siteLabel}
                             </span>
                           )}
                         </div>
-                        <div className="text-[11px] text-slate-500 mt-0.5">
+                        <div className="text-[11px] text-slate-500 mt-1 leading-snug">
                           Thuốc bao phủ: <span className="font-semibold text-slate-700">{spec.sub}</span>
                         </div>
                       </div>
@@ -769,7 +770,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                     <button
                       type="button"
                       onClick={() => setExpandedPathogen(isExpanded ? null : spec.id)}
-                      className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center space-x-1 shrink-0 ${
+                      className={`self-start sm:self-auto px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center space-x-1 shrink-0 ${
                         isExpanded
                           ? 'bg-slate-200 text-slate-800'
                           : activeCount > 0
@@ -952,7 +953,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
           <button
             type="button"
             onClick={onNextStage}
-            className={`px-5 py-3 rounded-xl font-extrabold text-xs text-white shadow-md flex items-center justify-center space-x-2 transition-all cursor-pointer shrink-0 ${
+            className={`w-full md:w-auto px-5 py-3 rounded-xl font-extrabold text-xs text-white shadow-md flex items-center justify-center space-x-2 transition-all cursor-pointer shrink-0 min-h-[44px] ${
               isGroup2
                 ? 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/30'
                 : 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/30'

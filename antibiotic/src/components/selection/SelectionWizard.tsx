@@ -240,11 +240,11 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
           </div>
 
           {/* View mode toggle */}
-          <div className="inline-flex rounded-xl p-1 bg-slate-100 border border-slate-200 text-xs self-start md:self-auto">
+          <div className="w-full sm:w-auto grid grid-cols-2 sm:flex rounded-xl p-1 bg-slate-100 border border-slate-200 text-xs">
             <button
               type="button"
               onClick={() => setViewMode('stepper')}
-              className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer flex items-center space-x-1.5 ${
+              className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center justify-center space-x-1.5 ${
                 viewMode === 'stepper'
                   ? 'bg-white text-teal-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -256,7 +256,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
             <button
               type="button"
               onClick={() => setViewMode('all-in-one')}
-              className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer flex items-center space-x-1.5 ${
+              className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center justify-center space-x-1.5 ${
                 viewMode === 'all-in-one'
                   ? 'bg-white text-teal-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -309,19 +309,82 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
                       Giai đoạn {st.stage}
                     </span>
                     {isActive && (
-                      <span className="w-2 h-2 rounded-full bg-teal-500"></span>
+                      <span className="w-2 h-2 rounded-full bg-teal-500 shrink-0"></span>
                     )}
                   </div>
-                  <div className="text-xs font-bold text-slate-900 truncate mt-0.5">
+                  <div className="text-xs font-bold text-slate-900 mt-0.5 line-clamp-1 sm:truncate leading-tight">
                     {st.title}
                   </div>
-                  <div className="text-[11px] text-slate-500 truncate mt-0.5">
+                  <div className="text-[11px] text-slate-500 mt-0.5 line-clamp-2 leading-tight">
                     {st.desc}
                   </div>
                 </div>
               </button>
             );
           })}
+        </div>
+
+        {/* Mobile Quick-Decision Live Banner (Visible only on mobile/tablet < lg) */}
+        <div className="lg:hidden mt-3 p-3 rounded-xl border bg-slate-50 border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <div className="flex items-center space-x-2.5 min-w-0">
+            {riskResult.group === 'group_2' ? (
+              <ShieldAlert className="w-5 h-5 text-rose-600 shrink-0" />
+            ) : (
+              <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
+            )}
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-xs font-black text-slate-900 truncate">
+                  {riskResult.group === 'group_2' ? 'Nhóm 2: Nguy cơ cao VKĐK' : 'Nhóm 1: Ít nguy cơ VKĐK'}
+                </span>
+                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
+                  riskResult.group === 'group_2' ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
+                }`}>
+                  {riskResult.isHighSeverity ? 'Bệnh cảnh nặng' : 'Tiêu chuẩn'}
+                </span>
+              </div>
+              <div className="text-[11px] text-slate-500 truncate mt-0.5">
+                {population === 'adult' ? 'Người lớn' : 'Trẻ em'} • {site === 'respiratory' ? 'Hô hấp' : site === 'sepsis' ? 'Sepsis' : site === 'urinary' ? 'Tiết niệu' : site === 'skin_soft_tissue' ? 'Da mô mềm' : site === 'peritoneal' ? 'Dịch báng' : 'CNS'} • SOFA: {population === 'pediatric' ? psofaScore : isChronicLiverDisease ? clifSofaScore : sofaScore}đ
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            {currentStage === 1 ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentStage(2);
+                  window.scrollTo({ top: 120, behavior: 'smooth' });
+                }}
+                className="w-full sm:w-auto px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs flex items-center justify-center space-x-1"
+              >
+                <span>Xem Phác Đồ</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            ) : currentStage === 2 ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentStage(3);
+                  window.scrollTo({ top: 120, behavior: 'smooth' });
+                }}
+                className="w-full sm:w-auto px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs flex items-center justify-center space-x-1"
+              >
+                <span>Tái Đánh Giá 48-72h</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => onSelectDrugForDosing()}
+                className="w-full sm:w-auto px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs flex items-center justify-center space-x-1"
+              >
+                <span>Tính Liều Kháng Sinh</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
         </div>
       </div>
 

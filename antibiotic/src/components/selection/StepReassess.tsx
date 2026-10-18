@@ -117,57 +117,57 @@ export const StepReassess: React.FC<StepReassessProps> = ({
         </div>
 
         {/* Sub-tab Navigation */}
-        <div className="flex flex-wrap gap-2 pt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 pt-4">
           <button
             type="button"
             onClick={() => setSubTab('decision_tree')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer border ${
+            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
               subTab === 'decision_tree'
                 ? 'bg-teal-600 text-white border-teal-600 shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }`}
           >
-            <Clock className="w-3.5 h-3.5" />
+            <Clock className="w-3.5 h-3.5 shrink-0" />
             <span>1. Lưu đồ 48-72h (BVBND)</span>
           </button>
 
           <button
             type="button"
             onClick={() => setSubTab('mdr_pathways')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer border ${
+            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
               subTab === 'mdr_pathways'
                 ? 'bg-teal-600 text-white border-teal-600 shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }`}
           >
-            <Crosshair className="w-3.5 h-3.5" />
-            <span>2. Trúng Đích VKĐK (CRE / CRAB / DTR-PA)</span>
+            <Crosshair className="w-3.5 h-3.5 shrink-0" />
+            <span>2. Trúng Đích VKĐK</span>
           </button>
 
           <button
             type="button"
             onClick={() => setSubTab('stop_criteria')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer border ${
+            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
               subTab === 'stop_criteria'
                 ? 'bg-teal-600 text-white border-teal-600 shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }`}
           >
-            <Ban className="w-3.5 h-3.5" />
-            <span>3. Bảng Kiểm Ngưng Kháng Sinh</span>
+            <Ban className="w-3.5 h-3.5 shrink-0" />
+            <span>3. Bảng Kiểm Ngưng KS</span>
           </button>
 
           <button
             type="button"
             onClick={() => setSubTab('iv_to_po')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer border ${
+            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
               subTab === 'iv_to_po'
                 ? 'bg-teal-600 text-white border-teal-600 shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }`}
           >
-            <ArrowRightLeft className="w-3.5 h-3.5" />
-            <span>4. Chuyển Tiêm sang Uống (IV to PO)</span>
+            <ArrowRightLeft className="w-3.5 h-3.5 shrink-0" />
+            <span>4. Chuyển Tiêm sang Uống</span>
           </button>
         </div>
       </div>
@@ -700,7 +700,7 @@ export const StepReassess: React.FC<StepReassessProps> = ({
                 Danh mục Kháng sinh Chuyển đổi Thường dùng (Nhóm 1 - Sinh khả dụng cao &gt; 90%):
               </h4>
               <div className="overflow-x-auto rounded-xl border border-slate-200">
-                <table className="w-full text-xs text-left border-collapse">
+                <table className="w-full min-w-[500px] text-xs text-left border-collapse">
                   <thead>
                     <tr className="border-b border-slate-200 bg-slate-50 text-slate-700 font-bold">
                       <th className="py-2.5 px-3">Thuốc tiêm (IV)</th>
@@ -739,7 +739,7 @@ export const StepReassess: React.FC<StepReassessProps> = ({
         <button
           type="button"
           onClick={onPrevStep}
-          className="px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center space-x-1.5 cursor-pointer"
+          className="w-full sm:w-auto px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Quay lại Giai đoạn 2 (Phác đồ khởi đầu &amp; Vi sinh)</span>

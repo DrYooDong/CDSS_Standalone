@@ -49,7 +49,7 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 sticky top-16 space-y-4">
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 lg:sticky lg:top-16 space-y-4">
       <div className="flex items-center justify-between border-b border-slate-100 pb-3">
         <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center space-x-1.5">
           <Activity className="w-3.5 h-3.5 text-teal-600" />
@@ -76,14 +76,14 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
           ) : (
             <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0" />
           )}
-          <span className="text-xs font-bold text-slate-800 truncate">
+          <span className="text-xs font-bold text-slate-800 break-words">
             {state.indicationConfirmed ? 'Đủ tiêu chuẩn chỉ định' : 'Nghi ngờ / Cần theo dõi'}
           </span>
         </div>
 
         <div className="flex items-center space-x-1.5 text-xs text-slate-600 mt-1 pl-6">
-          <User className="w-3.5 h-3.5 text-slate-400" />
-          <span>{state.population === 'adult' ? 'Người lớn' : 'Trẻ em'} • {siteLabels[state.site] || state.site}</span>
+          <User className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+          <span className="break-words">{state.population === 'adult' ? 'Người lớn' : 'Trẻ em'} • {siteLabels[state.site] || state.site}</span>
         </div>
 
         {state.site === 'sepsis' && state.sepsisSource && (

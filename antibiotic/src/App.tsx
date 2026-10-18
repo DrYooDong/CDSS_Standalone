@@ -173,18 +173,18 @@ export default function App() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
 
         {/* Master Module Mode Switcher */}
-        <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-2 mb-6 no-print">
+        <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-2 mb-4 sm:mb-6 no-print">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <button
               type="button"
               onClick={() => setAppMode('selection')}
-              className={`p-3.5 rounded-xl border text-left transition-all flex items-start space-x-3.5 cursor-pointer relative overflow-hidden group ${
+              className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer relative overflow-hidden group ${
                 appMode === 'selection'
                   ? 'bg-gradient-to-br from-teal-50/95 via-teal-50/50 to-white border-teal-500 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
                   : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50/80'
               }`}
             >
-              <div className={`p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-105 ${
+              <div className={`p-2 sm:p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-105 ${
                 appMode === 'selection' 
                   ? 'bg-gradient-to-br from-teal-600 to-teal-700 text-white shadow-sm shadow-teal-600/30 ring-1 ring-white/30' 
                   : 'bg-slate-200 text-slate-600'
@@ -192,19 +192,21 @@ export default function App() {
                 <Workflow className="w-5 h-5" />
               </div>
               <div className="min-w-0 flex-1">
-                <div className="flex items-center space-x-2">
-                  <span className="text-xs font-black uppercase tracking-wider text-teal-600">Phân hệ 1</span>
-                  <span className="px-2 py-0.2 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800 border border-teal-200/60">
-                    Quy Trình Tinh Gọn 2026
-                  </span>
+                <div className="flex items-center justify-between gap-1.5 flex-wrap">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="text-xs font-black uppercase tracking-wider text-teal-600">Phân hệ 1</span>
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800 border border-teal-200/60">
+                      Quy Trình Tinh Gọn 2026
+                    </span>
+                  </div>
                   {appMode === 'selection' && (
-                    <span className="ml-auto w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+                    <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse shrink-0"></span>
                   )}
                 </div>
-                <div className="text-sm font-extrabold text-slate-900 mt-0.5 truncate">
+                <div className="text-sm font-extrabold text-slate-900 mt-1 leading-snug break-words">
                   Đánh Giá Nhiễm Trùng &amp; Phác Đồ Ban Đầu
                 </div>
-                <div className="text-[11px] text-slate-500 truncate mt-0.5 font-medium">
+                <div className="text-[11px] text-slate-500 mt-0.5 font-medium leading-relaxed line-clamp-2 sm:line-clamp-none">
                   3 Giai đoạn: Chỉ định NHSN &amp; Phân tầng VKĐK (SOFA) → Phác đồ &amp; Antibiogram → Tái đánh giá 48-72h
                 </div>
               </div>
@@ -213,13 +215,13 @@ export default function App() {
             <button
               type="button"
               onClick={() => setAppMode('dosing')}
-              className={`p-3.5 rounded-xl border text-left transition-all flex items-start space-x-3.5 cursor-pointer relative overflow-hidden group ${
+              className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer relative overflow-hidden group ${
                 appMode === 'dosing'
                   ? 'bg-gradient-to-br from-teal-50/95 via-teal-50/50 to-white border-teal-500 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
                   : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50/80'
               }`}
             >
-              <div className={`p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-105 ${
+              <div className={`p-2 sm:p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-105 ${
                 appMode === 'dosing' 
                   ? 'bg-gradient-to-br from-teal-600 to-teal-700 text-white shadow-sm shadow-teal-600/30 ring-1 ring-white/30' 
                   : 'bg-slate-200 text-slate-600'
@@ -227,19 +229,21 @@ export default function App() {
                 <Calculator className="w-5 h-5" />
               </div>
               <div className="min-w-0 flex-1">
-                <div className="flex items-center space-x-2">
-                  <span className="text-xs font-black uppercase tracking-wider text-slate-500">Phân hệ 2</span>
-                  <span className="px-2 py-0.2 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
-                    43 Kháng sinh
-                  </span>
+                <div className="flex items-center justify-between gap-1.5 flex-wrap">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="text-xs font-black uppercase tracking-wider text-slate-500">Phân hệ 2</span>
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                      43 Kháng sinh
+                    </span>
+                  </div>
                   {appMode === 'dosing' && (
-                    <span className="ml-auto w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+                    <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse shrink-0"></span>
                   )}
                 </div>
-                <div className="text-sm font-extrabold text-slate-900 mt-0.5 truncate">
+                <div className="text-sm font-extrabold text-slate-900 mt-1 leading-snug break-words">
                   Cá Thể Hóa Tính Liều &amp; Hiệu Chỉnh Thận
                 </div>
-                <div className="text-[11px] text-slate-500 truncate mt-0.5 font-medium">
+                <div className="text-[11px] text-slate-500 mt-0.5 font-medium leading-relaxed line-clamp-2 sm:line-clamp-none">
                   Cockcroft-Gault / CKD-EPI, Lọc máu HD/CRRT/CAPD, TDM &amp; Tương tác thuốc DDI
                 </div>
               </div>
