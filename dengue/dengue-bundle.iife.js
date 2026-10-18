@@ -1628,7 +1628,7 @@ var DengueBundle = (() => {
       effectiveWeight,
       customDurations
     );
-    const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, "dextran_40");
+    const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, "dextran40");
     const defaultHemodynamic = {
       cvpLevel: "low_normal",
       cardiacContractility: "normal",
@@ -1951,7 +1951,7 @@ var DengueBundle = (() => {
     activeWorkspaceMode = "fluid_schedule";
     activeRefractorySubTab = "tab-cpt";
     includeVasopressorInPrint = false;
-    selectedColloidType = "dextran_40";
+    selectedColloidType = "dextran40";
     currentHemodynamic = {
       cvpLevel: "low_normal",
       cardiacContractility: "normal",
@@ -2024,39 +2024,93 @@ var DengueBundle = (() => {
         </header>
 
         <!-- CA L\xC2M S\xC0NG PH\xC2N T\u1EA6NG (CLINICAL CASES BAR) -->
-        <div class="cdss-cases-bar">
-          <!-- Nh\xF3m 1: B\xF9 d\u1ECBch ban \u0111\u1EA7u -->
-          <div class="cdss-cases-group">
-            <div class="cdss-cases-group-title">
-              <i class="fa-solid fa-hand-holding-droplet text-primary"></i> B\xF9 D\u1ECBch Ban \u0110\u1EA7u:
+        <div class="cdss-cases-bar" id="cdss-cases-bar">
+          <!-- TOP TOOLBAR: DROPDOWN & QUICK ACTION -->
+          <header class="cdss-preset-selector-header">
+            <div class="cdss-preset-selector-left">
+              <div class="cdss-preset-icon-badge">
+                <i class="fa-solid fa-hospital-user"></i>
+              </div>
+              <div class="cdss-preset-title-wrap">
+                <span class="cdss-preset-bar-title">Ca B\u1EC7nh M\u1EABu B\u1ED9 Y T\u1EBF</span>
+                <span class="cdss-preset-bar-count">9 Ca L\xE2m S\xE0ng Chu\u1EA9n H\xF3a Q\u0110 2760</span>
+              </div>
             </div>
-            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+
+            <div class="cdss-preset-dropdown-container">
+              <div class="cdss-preset-select-wrapper">
+                <i class="fa-solid fa-stethoscope cdss-select-prefix-icon"></i>
+                <select id="cdss-preset-select" class="cdss-preset-select" aria-label="X\u1ED5 danh s\xE1ch ca l\xE2m s\xE0ng m\u1EABu">
+                  <optgroup label="\u{1F4CB} NH\xD3M 1: B\xD9 D\u1ECACH BAN \u0110\u1EA6U &amp; PH\xC2N T\u1EA6NG TH\u1EC2 TR\u1EA0NG">
+                    ${CLINICAL_SAMPLE_CASES.filter((c) => c.category === "initial").map((c) => `
+                      <option value="${c.id}" ${c.id === this.activeCaseId ? "selected" : ""}>
+                        ${c.label} \xB7 [${c.tag}]
+                      </option>
+                    `).join("")}
+                  </optgroup>
+                  <optgroup label="\u{1F6A8} NH\xD3M 2: S\u1ED0C TR\u01A0, BI\u1EBEN CH\u1EE8NG &amp; TH\u1EA4T B\u1EA0I B\xD9 D\u1ECACH">
+                    ${CLINICAL_SAMPLE_CASES.filter((c) => c.category === "refractory").map((c) => `
+                      <option value="${c.id}" ${c.id === this.activeCaseId ? "selected" : ""}>
+                        ${c.label} \xB7 [${c.tag}]
+                      </option>
+                    `).join("")}
+                  </optgroup>
+                </select>
+                <i class="fa-solid fa-chevron-down cdss-select-chevron"></i>
+              </div>
+
+              <button type="button" id="btn-toggle-cases-drawer" class="cdss-toggle-grid-btn" title="M\u1EDF r\u1ED9ng / Thu g\u1ECDn d\u1EA1ng th\u1EBB chi ti\u1EBFt" aria-expanded="false">
+                <i class="fa-solid fa-table-cells-large"></i>
+                <span>Xem D\u1EA1ng Th\u1EBB</span>
+                <i class="fa-solid fa-chevron-down toggle-chevron"></i>
+              </button>
+            </div>
+          </header>
+
+          <!-- ACTIVE CASE CLINICAL HIGHLIGHT BANNER -->
+          <section id="cdss-preset-highlight-row" class="cdss-preset-highlight-row">
+            <div class="cdss-highlight-tag" id="cdss-highlight-tag">
+              <i class="fa-solid fa-tag"></i>
+              <span id="cdss-highlight-tag-text">CDC 2014</span>
+            </div>
+            <div class="cdss-highlight-content">
+              <i class="fa-solid fa-lightbulb text-amber-500"></i>
+              <span id="cdss-highlight-text">Tr\u1EBB b\xE9o ph\xEC > 120% chu\u1EA9n: T\u1EF1 \u0111\u1ED9ng d\xF9ng c\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh CDC 2014 (26kg) tr\xE1nh ph\xF9 ph\u1ED5i c\u1EA5p.</span>
+            </div>
+          </section>
+
+          <!-- Nh\xF3m 1: B\xF9 d\u1ECBch ban \u0111\u1EA7u (div:nth-of-type(1)) -->
+          <div class="cdss-cases-group cdss-cases-group--initial" id="cases-group-initial">
+            <div class="cdss-cases-group-title">
+              <i class="fa-solid fa-hand-holding-droplet text-primary"></i> <span>B\xF9 D\u1ECBch Ban \u0110\u1EA7u:</span>
+            </div>
+            <div class="cdss-cases-pills-wrap">
               ${CLINICAL_SAMPLE_CASES.filter((c) => c.category === "initial").map((c) => `
                 <button type="button" 
                   class="cdss-case-pill ${c.isDanger ? "cdss-case-pill--danger" : ""} ${c.id === this.activeCaseId ? "active" : ""}" 
                   data-case-id="${c.id}"
                   title="${c.clinicalHighlight}">
                   <i class="${c.icon} cdss-case-pill-icon"></i>
-                  <span>${c.label}</span>
+                  <span class="cdss-case-label">${c.label}</span>
                   <span class="cdss-case-pill-tag">${c.tag}</span>
                 </button>
               `).join("")}
             </div>
           </div>
 
-          <!-- Nh\xF3m 2: S\u1ED1c tr\u01A1 & Kh\xF4ng \u0111\xE1p \u1EE9ng -->
-          <div class="cdss-cases-group" style="padding-top:0.4rem; border-top:1px dashed var(--cdss-border-subtle);">
+          <!-- Nh\xF3m 2: S\u1ED1c tr\u01A1 & Kh\xF4ng \u0111\xE1p \u1EE9ng (div:nth-of-type(2)) -->
+          <div class="cdss-cases-group cdss-cases-group--refractory" id="cases-group-refractory">
             <div class="cdss-cases-group-title" style="color:var(--cdss-danger);">
-              <i class="fa-solid fa-shield-virus text-danger"></i> S\u1ED1c Tr\u01A1 &amp; Bi\u1EBFn Ch\u1EE9ng:
+              <i class="fa-solid fa-shield-virus text-danger"></i> <span>S\u1ED1c Tr\u01A1 &amp; Bi\u1EBFn Ch\u1EE9ng:</span>
             </div>
-            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+            <div class="cdss-cases-pills-wrap">
               ${CLINICAL_SAMPLE_CASES.filter((c) => c.category === "refractory").map((c) => `
                 <button type="button" 
                   class="cdss-case-pill cdss-case-pill--danger ${c.id === this.activeCaseId ? "active" : ""}" 
                   data-case-id="${c.id}"
                   title="${c.clinicalHighlight}">
                   <i class="${c.icon} cdss-case-pill-icon"></i>
-                  <span>${c.label}</span>
+                  <span class="cdss-case-label">${c.label}</span>
                   <span class="cdss-case-pill-tag">${c.tag}</span>
                 </button>
               `).join("")}
@@ -2246,27 +2300,27 @@ var DengueBundle = (() => {
             <!-- WORKSPACE MODE SWITCHER TABS -->
             <div class="cdss-mode-switcher-wrap">
               <div class="cdss-mode-tabs" id="cdss-mode-tabs">
-                <button type="button" class="cdss-mode-btn active" data-mode="fluid_schedule">
-                  <i class="fa-solid fa-table-list"></i>
-                  <span>1. C\u1ECDc \u0110i\u1EC7n Gi\u1EA3i</span>
+                <button type="button" class="cdss-mode-btn active" data-mode="fluid_schedule" title="B\u1EA3ng \u0111i\u1EC1u ph\u1ED1i c\u1ECDc d\u1ECBch \u0111i\u1EC7n gi\u1EA3i n\u1EA5c thang chu\u1EA9n h\xF3a theo gi\u1EDD">
+                  <i class="fa-solid fa-table-list text-teal-600"></i>
+                  <span>C\u1ECDc \u0110i\u1EC7n Gi\u1EA3i</span>
                 </button>
-                <button type="button" class="cdss-mode-btn" data-mode="colloid_schedule" id="btn-mode-colloid">
-                  <i class="fa-solid fa-flask-vial"></i>
-                  <span>2. C\u1ECDc Cao Ph\xE2n T\u1EED (CPT)</span>
-                  <span id="colloid-alert-dot" style="display:none; width:8px; height:8px; border-radius:50%; background:#ef4444;"></span>
+                <button type="button" class="cdss-mode-btn" data-mode="colloid_schedule" id="btn-mode-colloid" title="Ph\xE1c \u0111\u1ED3 Cao ph\xE2n t\u1EED v\xE0 tr\u1EA7n an to\xE0n 60 ml/kg (Ph\u1EE5 l\u1EE5c 10)">
+                  <i class="fa-solid fa-flask-vial text-amber-500"></i>
+                  <span>C\u1ECDc CPT (Cao Ph\xE2n T\u1EED)</span>
+                  <span id="colloid-alert-dot" class="cdss-tab-badge" style="display:none;">!</span>
                 </button>
-                <button type="button" class="cdss-mode-btn" data-mode="refractory_suite" id="btn-mode-refractory">
-                  <i class="fa-solid fa-shield-virus"></i>
-                  <span>3. S\u1ED1c Tr\u01A1 &amp; Kh\xF4ng \u0110\xE1p \u1EE8ng</span>
-                  <span id="refractory-alert-dot" style="display:none; width:8px; height:8px; border-radius:50%; background:#ef4444;"></span>
+                <button type="button" class="cdss-mode-btn" data-mode="refractory_suite" id="btn-mode-refractory" title="6 Ph\xE2n nh\xE1nh x\u1EED tr\xED s\u1ED1c tr\u01A1 v\xE0 bi\u1EBFn ch\u1EE9ng nguy k\u1ECBch">
+                  <i class="fa-solid fa-shield-virus text-rose-500"></i>
+                  <span>S\u1ED1c Tr\u01A1 &amp; Bi\u1EBFn Ch\u1EE9ng</span>
+                  <span id="refractory-alert-dot" class="cdss-tab-badge" style="display:none;">!</span>
                 </button>
-                <button type="button" class="cdss-mode-btn" data-mode="vasopressors">
-                  <i class="fa-solid fa-syringe"></i>
-                  <span>4. V\u1EADn M\u1EA1ch 50ml (Ph\u1EE5 L\u1EE5c 15 &amp; 18)</span>
+                <button type="button" class="cdss-mode-btn" data-mode="vasopressors" title="L\u01B0u \u0111\u1ED3 v\u1EADn m\u1EA1ch v\xE0 t\xEDnh b\u01A1m ti\xEAm \u0111i\u1EC7n 50ml 2 chi\u1EC1u">
+                  <i class="fa-solid fa-syringe text-indigo-500"></i>
+                  <span>V\u1EADn M\u1EA1ch B\u01A1m 50ml</span>
                 </button>
-                <button type="button" class="cdss-mode-btn" data-mode="nursing_checklist">
-                  <i class="fa-solid fa-user-nurse"></i>
-                  <span>5. \u0110i\u1EC1u D\u01B0\u1EE1ng An To\xE0n</span>
+                <button type="button" class="cdss-mode-btn" data-mode="nursing_checklist" title="Checklist ki\u1EC3m so\xE1t an to\xE0n \u0111i\u1EC1u d\u01B0\u1EE1ng t\u1EA1i gi\u01B0\u1EDDng">
+                  <i class="fa-solid fa-user-nurse text-emerald-600"></i>
+                  <span>Checklist \u0110i\u1EC1u D\u01B0\u1EE1ng</span>
                 </button>
               </div>
 
@@ -2387,6 +2441,28 @@ var DengueBundle = (() => {
           this.recalculate();
         });
       });
+      const presetSelect = document.getElementById("cdss-preset-select");
+      if (presetSelect) {
+        presetSelect.addEventListener("change", (e) => {
+          const val = e.target.value;
+          if (val) {
+            this.applySampleCase(val);
+          }
+        });
+      }
+      const btnToggleDrawer = document.getElementById("btn-toggle-cases-drawer");
+      if (btnToggleDrawer) {
+        btnToggleDrawer.addEventListener("click", () => {
+          const casesBar = document.getElementById("cdss-cases-bar");
+          if (casesBar) {
+            const isExp = casesBar.classList.toggle("is-expanded");
+            btnToggleDrawer.setAttribute("aria-expanded", isExp ? "true" : "false");
+            btnToggleDrawer.classList.toggle("active", isExp);
+            const span = btnToggleDrawer.querySelector("span");
+            if (span) span.textContent = isExp ? "Thu G\u1ECDn Th\u1EBB" : "Xem D\u1EA1ng Th\u1EBB";
+          }
+        });
+      }
       const casePills = document.querySelectorAll(".cdss-case-pill");
       casePills.forEach((pill) => {
         pill.addEventListener("click", (e) => {
@@ -2526,6 +2602,14 @@ var DengueBundle = (() => {
         this.includeVasopressorInPrint = false;
         if (chkVaso) chkVaso.checked = false;
       }
+      const presetSelect = document.getElementById("cdss-preset-select");
+      if (presetSelect && presetSelect.value !== caseId) {
+        presetSelect.value = caseId;
+      }
+      const hlTag = document.getElementById("cdss-highlight-tag-text");
+      if (hlTag) hlTag.textContent = sample.tag;
+      const hlText = document.getElementById("cdss-highlight-text");
+      if (hlText) hlText.textContent = sample.clinicalHighlight;
       const ind = document.getElementById("case-status-indicator");
       if (ind) {
         ind.textContent = sample.label;
@@ -3034,27 +3118,49 @@ var DengueBundle = (() => {
 
         <!-- Thanh Th\u1EED Nghi\u1EC7m K\u1ECBch B\u1EA3n L\xE2m S\xE0ng 1 Ch\u1EA1m -->
         <div class="cdss-scenario-bar">
-          <span style="font-size:0.72rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); margin-right:4px;">
-            Th\u1EED nghi\u1EC7m k\u1ECBch b\u1EA3n:
-          </span>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === "good" ? "active" : ""}" onclick="window.__dengueSetScenario('good');">
-            \u{1F7E2} \u1ED4n \u0111\u1ECBnh
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === "refractory_hct_high" ? "active" : ""}" onclick="window.__dengueSetScenario('refractory_hct_high');">
-            \u{1F7E0} Hct cao \u226540% (\u0110\u1ED5i CPT)
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === "refractory_bleeding" ? "active" : ""}" onclick="window.__dengueSetScenario('refractory_bleeding');">
-            \u{1F534} Xu\u1EA5t huy\u1EBFt (Truy\u1EC1n M\xE1u)
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === "refractory_shock_cvp" ? "active" : ""}" onclick="window.__dengueSetScenario('refractory_shock_cvp');">
-            \u{1F7E3} \u0110o CVP &amp; V\u1EADn M\u1EA1ch
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === "liver_failure" ? "active" : ""}" onclick="window.__dengueSetScenario('liver_failure');">
-            \u{1F7E4} Suy Gan (NAC)
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === "fluid_overload" ? "active" : ""}" onclick="window.__dengueSetScenario('fluid_overload');">
-            \u26A0\uFE0F D\u01B0 D\u1ECBch / Ph\xF9 Ph\u1ED5i
-          </button>
+          <div class="cdss-scenario-bar-header">
+            <span class="cdss-scenario-title">
+              <i class="fa-solid fa-shuffle text-primary"></i> <span>Di\u1EC5n Ti\u1EBFn &amp; K\u1ECBch B\u1EA3n:</span>
+            </span>
+            <div class="cdss-scenario-select-wrap">
+              <select id="cdss-scenario-quick-select" class="cdss-scenario-quick-select" onchange="window.__dengueSetScenario(this.value);" aria-label="X\u1ED5 ch\u1ECDn nhanh k\u1ECBch b\u1EA3n di\u1EC5n ti\u1EBFn">
+                <option value="good" ${patient.clinicalResponse === "good" ? "selected" : ""}>\u{1F7E2} \u1ED4n \u0111\u1ECBnh (B\xF9 d\u1ECBch n\u1EA5c thang chu\u1EA9n)</option>
+                <option value="refractory_hct_high" ${patient.clinicalResponse === "refractory_hct_high" ? "selected" : ""}>\u{1F7E0} Hct cao \u226540% (\u0110\u1ED5i CPT Dextran 40)</option>
+                <option value="refractory_bleeding" ${patient.clinicalResponse === "refractory_bleeding" ? "selected" : ""}>\u{1F534} Xu\u1EA5t huy\u1EBFt \u1EA9n (Truy\u1EC1n M\xE1u HCL)</option>
+                <option value="refractory_shock_cvp" ${patient.clinicalResponse === "refractory_shock_cvp" ? "selected" : ""}>\u{1F7E3} S\u1ED1c tr\u01A1 d\u1ECBch (\u0110o CVP &amp; V\u1EADn M\u1EA1ch)</option>
+                <option value="liver_failure" ${patient.clinicalResponse === "liver_failure" ? "selected" : ""}>\u{1F7E4} T\u1ED5n th\u01B0\u01A1ng gan c\u1EA5p (NAC 4 pha)</option>
+                <option value="fluid_overload" ${patient.clinicalResponse === "fluid_overload" ? "selected" : ""}>\u26A0\uFE0F D\u01B0 d\u1ECBch / Ph\xF9 ph\u1ED5i c\u1EA5p</option>
+              </select>
+              <i class="fa-solid fa-chevron-down cdss-scenario-select-arrow"></i>
+            </div>
+          </div>
+
+          <div class="cdss-scenario-chips-row">
+            <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === "good" ? "active" : ""}" onclick="window.__dengueSetScenario('good');" title="\u0110\xE1p \u1EE9ng t\u1ED1t sau b\xF9 d\u1ECBch, ti\u1EBFp t\u1EE5c n\u1EA5c thang gi\u1EA3m d\u1EA7n">
+              <span class="cdss-scen-dot cdss-scen-dot--good"></span>
+              <span>\u1ED4n \u0111\u1ECBnh</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--warn ${patient.clinicalResponse === "refractory_hct_high" ? "active" : ""}" onclick="window.__dengueSetScenario('refractory_hct_high');" title="Hct c\xF2n cao \u2265 40%: Tho\xE1t huy\u1EBFt t\u01B0\u01A1ng n\u1EB7ng -> \u0110\u1ED5i Cao ph\xE2n t\u1EED Dextran 40">
+              <span class="cdss-scen-dot cdss-scen-dot--cpt"></span>
+              <span>Hct \u226540% (\u0110\u1ED5i CPT)</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--danger ${patient.clinicalResponse === "refractory_bleeding" ? "active" : ""}" onclick="window.__dengueSetScenario('refractory_bleeding');" title="Hct t\u1EE5t ho\u1EB7c nghi ng\u1EDD xu\u1EA5t huy\u1EBFt \u1EA9n -> B\xE1o \u0111\u1ED9ng \u0111\u1ECF truy\u1EC1n m\xE1u HCL">
+              <span class="cdss-scen-dot cdss-scen-dot--blood"></span>
+              <span>Xu\u1EA5t huy\u1EBFt (M\xE1u HCL)</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--cvp ${patient.clinicalResponse === "refractory_shock_cvp" ? "active" : ""}" onclick="window.__dengueSetScenario('refractory_shock_cvp');" title="S\u1ED1c tr\u01A1 d\u1ECBch CPT \u226560ml/kg -> \u0110o CVP v\xE0 ch\u1EC9 \u0111\u1ECBnh v\u1EADn m\u1EA1ch">
+              <span class="cdss-scen-dot cdss-scen-dot--cvp"></span>
+              <span>\u0110o CVP &amp; V\u1EADn M\u1EA1ch</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--liver ${patient.clinicalResponse === "liver_failure" ? "active" : ""}" onclick="window.__dengueSetScenario('liver_failure');" title="AST/ALT \u2265 1000 U/L -> Ph\xE1c \u0111\u1ED3 NAC 4 pha">
+              <span class="cdss-scen-dot cdss-scen-dot--liver"></span>
+              <span>Suy Gan (NAC)</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--overload ${patient.clinicalResponse === "fluid_overload" ? "active" : ""}" onclick="window.__dengueSetScenario('fluid_overload');" title="Qu\xE1 t\u1EA3i d\u1ECBch tu\u1EA7n ho\xE0n, gan to \u0111au, ran ph\u1ED5i -> Furosemide">
+              <span class="cdss-scen-dot cdss-scen-dot--overload"></span>
+              <span>D\u01B0 D\u1ECBch / Ph\xF9 Ph\u1ED5i</span>
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -3062,6 +3168,10 @@ var DengueBundle = (() => {
         const respEl = document.getElementById("input-response");
         if (respEl) {
           respEl.value = scenario;
+        }
+        const quickSel = document.getElementById("cdss-scenario-quick-select");
+        if (quickSel && quickSel.value !== scenario) {
+          quickSel.value = scenario;
         }
         if (scenario === "refractory_bleeding") {
           const bl = document.getElementById("input-bleeding");
@@ -3496,7 +3606,7 @@ var DengueBundle = (() => {
               <button type="button" class="cdss-case-pill ${isSel ? "active" : ""}" data-colloid-type="${key}" style="font-size:0.8rem; padding:0.5rem 0.85rem;">
                 <i class="fa-solid fa-droplet text-primary"></i>
                 <strong>${cMeta.shortName}</strong>
-                <span style="font-size:0.68rem; opacity:0.8;">(${cMeta.brandNames[0]})</span>
+                <span style="font-size:0.68rem; opacity:0.85;">(${cMeta.bytrank === "priority" ? "\u01AFu ti\xEAn BYT" : "Thay th\u1EBF"})</span>
               </button>
             `;
       }).join("")}
@@ -3513,26 +3623,26 @@ var DengueBundle = (() => {
 
           <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:0.6rem; margin-bottom:0.75rem;">
             <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
-              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Tr\u1ECDng L\u01B0\u1EE3ng Ph\xE2n T\u1EED</div>
-              <strong style="font-size:0.85rem;">${meta.molecularWeight}</strong>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">\xC1p L\u1EF1c Keo</div>
+              <strong style="font-size:0.82rem;">${meta.oncoticPower}</strong>
             </div>
             <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
-              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Th\u1EDDi Gian L\u01B0u L\xF2ng M\u1EA1ch</div>
-              <strong style="font-size:0.85rem; color:var(--cdss-primary);">${meta.intravascularPersistence}</strong>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Th\u1EDDi Gian B\xE1n Th\u1EA3i / L\u01B0u L\xF2ng M\u1EA1ch</div>
+              <strong style="font-size:0.82rem; color:var(--cdss-primary);">${meta.intravascularHalfLife}</strong>
             </div>
             <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
-              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">T\u0103ng Th\u1EC3 T\xEDch L\xF2ng M\u1EA1ch</div>
-              <strong style="font-size:0.85rem; color:var(--cdss-success);">${meta.plasmaExpansion}</strong>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">T\u1EF7 L\u1EC7 T\u0103ng Th\u1EC3 T\xEDch</div>
+              <strong style="font-size:0.82rem; color:var(--cdss-success);">${meta.volumeExpansionRatio}</strong>
             </div>
             <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
-              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Gi\u1EDBi H\u1EA1n T\u1ED1i \u0110a Li\u1EC1u</div>
-              <strong style="font-size:0.85rem; color:var(--cdss-danger);">${meta.maxSafeDose}</strong>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Li\u1EC1u T\u1ED1i \u0110a Khuy\u1EBFn C\xE1o</div>
+              <strong style="font-size:0.82rem; color:var(--cdss-danger);">${meta.maxTotalDose}</strong>
             </div>
           </div>
 
           <div style="font-size:0.78rem; line-height:1.45; color:var(--cdss-text-muted);">
-            <div><strong style="color:var(--cdss-text);">\u01AFu \u0111i\u1EC3m & Ch\u1EC9 \u0111\u1ECBnh:</strong> ${meta.pros}</div>
-            <div style="margin-top:2px;"><strong style="color:var(--cdss-danger);">C\u1EA3nh b\xE1o an to\xE0n:</strong> ${meta.cons}</div>
+            <div><strong style="color:var(--cdss-text);">H\u01B0\u1EDBng d\u1EABn &amp; Ch\u1EC9 \u0111\u1ECBnh:</strong> ${meta.notes}</div>
+            <div style="margin-top:4px;"><strong style="color:var(--cdss-danger);">Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh &amp; C\u1EA3nh b\xE1o:</strong> ${meta.contraindications}</div>
           </div>
         </div>
       </section>

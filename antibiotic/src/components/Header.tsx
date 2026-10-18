@@ -12,6 +12,7 @@ import {
   Info
 } from 'lucide-react';
 import { Language } from '../types';
+import { CdssLogo } from './CdssLogo';
 
 interface HeaderProps {
   language: Language;
@@ -42,8 +43,8 @@ export const Header: React.FC<HeaderProps> = ({
           
           {/* Logo & Identity */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 to-cyan-600 flex items-center justify-center text-white shadow-md shadow-teal-500/20">
-              <Activity className="w-6 h-6 animate-pulse" />
+            <div className="p-0.5 rounded-xl bg-gradient-to-br from-slate-900 to-teal-950 shadow-md shadow-teal-500/20 border border-teal-500/30 flex items-center justify-center">
+              <CdssLogo size="md" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
@@ -54,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({
                   v3.0 Pro
                 </span>
                 <span className="hidden xl:inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  NHSN • BVBND 2026
+                  BVBND 2026 • NHSN-CDC
                 </span>
               </div>
               <p className="text-xs text-slate-500 hidden sm:block">

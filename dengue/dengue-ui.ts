@@ -239,7 +239,7 @@ export class DengueCDSSController {
   private activeWorkspaceMode: WorkspaceMode = 'fluid_schedule';
   private activeRefractorySubTab: string = 'tab-cpt';
   private includeVasopressorInPrint: boolean = false;
-  private selectedColloidType: ColloidType = 'dextran_40';
+  private selectedColloidType: ColloidType = 'dextran40';
   private currentHemodynamic: HemodynamicProfile = {
     cvpLevel: 'low_normal',
     cardiacContractility: 'normal',
@@ -316,39 +316,93 @@ export class DengueCDSSController {
         </header>
 
         <!-- CA LÂM SÀNG PHÂN TẦNG (CLINICAL CASES BAR) -->
-        <div class="cdss-cases-bar">
-          <!-- Nhóm 1: Bù dịch ban đầu -->
-          <div class="cdss-cases-group">
-            <div class="cdss-cases-group-title">
-              <i class="fa-solid fa-hand-holding-droplet text-primary"></i> Bù Dịch Ban Đầu:
+        <div class="cdss-cases-bar" id="cdss-cases-bar">
+          <!-- TOP TOOLBAR: DROPDOWN & QUICK ACTION -->
+          <header class="cdss-preset-selector-header">
+            <div class="cdss-preset-selector-left">
+              <div class="cdss-preset-icon-badge">
+                <i class="fa-solid fa-hospital-user"></i>
+              </div>
+              <div class="cdss-preset-title-wrap">
+                <span class="cdss-preset-bar-title">Ca Bệnh Mẫu Bộ Y Tế</span>
+                <span class="cdss-preset-bar-count">9 Ca Lâm Sàng Chuẩn Hóa QĐ 2760</span>
+              </div>
             </div>
-            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+
+            <div class="cdss-preset-dropdown-container">
+              <div class="cdss-preset-select-wrapper">
+                <i class="fa-solid fa-stethoscope cdss-select-prefix-icon"></i>
+                <select id="cdss-preset-select" class="cdss-preset-select" aria-label="Xổ danh sách ca lâm sàng mẫu">
+                  <optgroup label="📋 NHÓM 1: BÙ DỊCH BAN ĐẦU &amp; PHÂN TẦNG THỂ TRẠNG">
+                    ${CLINICAL_SAMPLE_CASES.filter(c => c.category === 'initial').map(c => `
+                      <option value="${c.id}" ${c.id === this.activeCaseId ? 'selected' : ''}>
+                        ${c.label} · [${c.tag}]
+                      </option>
+                    `).join('')}
+                  </optgroup>
+                  <optgroup label="🚨 NHÓM 2: SỐC TRƠ, BIẾN CHỨNG &amp; THẤT BẠI BÙ DỊCH">
+                    ${CLINICAL_SAMPLE_CASES.filter(c => c.category === 'refractory').map(c => `
+                      <option value="${c.id}" ${c.id === this.activeCaseId ? 'selected' : ''}>
+                        ${c.label} · [${c.tag}]
+                      </option>
+                    `).join('')}
+                  </optgroup>
+                </select>
+                <i class="fa-solid fa-chevron-down cdss-select-chevron"></i>
+              </div>
+
+              <button type="button" id="btn-toggle-cases-drawer" class="cdss-toggle-grid-btn" title="Mở rộng / Thu gọn dạng thẻ chi tiết" aria-expanded="false">
+                <i class="fa-solid fa-table-cells-large"></i>
+                <span>Xem Dạng Thẻ</span>
+                <i class="fa-solid fa-chevron-down toggle-chevron"></i>
+              </button>
+            </div>
+          </header>
+
+          <!-- ACTIVE CASE CLINICAL HIGHLIGHT BANNER -->
+          <section id="cdss-preset-highlight-row" class="cdss-preset-highlight-row">
+            <div class="cdss-highlight-tag" id="cdss-highlight-tag">
+              <i class="fa-solid fa-tag"></i>
+              <span id="cdss-highlight-tag-text">CDC 2014</span>
+            </div>
+            <div class="cdss-highlight-content">
+              <i class="fa-solid fa-lightbulb text-amber-500"></i>
+              <span id="cdss-highlight-text">Trẻ béo phì > 120% chuẩn: Tự động dùng cân nặng hiệu chỉnh CDC 2014 (26kg) tránh phù phổi cấp.</span>
+            </div>
+          </section>
+
+          <!-- Nhóm 1: Bù dịch ban đầu (div:nth-of-type(1)) -->
+          <div class="cdss-cases-group cdss-cases-group--initial" id="cases-group-initial">
+            <div class="cdss-cases-group-title">
+              <i class="fa-solid fa-hand-holding-droplet text-primary"></i> <span>Bù Dịch Ban Đầu:</span>
+            </div>
+            <div class="cdss-cases-pills-wrap">
               ${CLINICAL_SAMPLE_CASES.filter(c => c.category === 'initial').map(c => `
                 <button type="button" 
                   class="cdss-case-pill ${c.isDanger ? 'cdss-case-pill--danger' : ''} ${c.id === this.activeCaseId ? 'active' : ''}" 
                   data-case-id="${c.id}"
                   title="${c.clinicalHighlight}">
                   <i class="${c.icon} cdss-case-pill-icon"></i>
-                  <span>${c.label}</span>
+                  <span class="cdss-case-label">${c.label}</span>
                   <span class="cdss-case-pill-tag">${c.tag}</span>
                 </button>
               `).join('')}
             </div>
           </div>
 
-          <!-- Nhóm 2: Sốc trơ & Không đáp ứng -->
-          <div class="cdss-cases-group" style="padding-top:0.4rem; border-top:1px dashed var(--cdss-border-subtle);">
+          <!-- Nhóm 2: Sốc trơ & Không đáp ứng (div:nth-of-type(2)) -->
+          <div class="cdss-cases-group cdss-cases-group--refractory" id="cases-group-refractory">
             <div class="cdss-cases-group-title" style="color:var(--cdss-danger);">
-              <i class="fa-solid fa-shield-virus text-danger"></i> Sốc Trơ &amp; Biến Chứng:
+              <i class="fa-solid fa-shield-virus text-danger"></i> <span>Sốc Trơ &amp; Biến Chứng:</span>
             </div>
-            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+            <div class="cdss-cases-pills-wrap">
               ${CLINICAL_SAMPLE_CASES.filter(c => c.category === 'refractory').map(c => `
                 <button type="button" 
                   class="cdss-case-pill cdss-case-pill--danger ${c.id === this.activeCaseId ? 'active' : ''}" 
                   data-case-id="${c.id}"
                   title="${c.clinicalHighlight}">
                   <i class="${c.icon} cdss-case-pill-icon"></i>
-                  <span>${c.label}</span>
+                  <span class="cdss-case-label">${c.label}</span>
                   <span class="cdss-case-pill-tag">${c.tag}</span>
                 </button>
               `).join('')}
@@ -538,27 +592,27 @@ export class DengueCDSSController {
             <!-- WORKSPACE MODE SWITCHER TABS -->
             <div class="cdss-mode-switcher-wrap">
               <div class="cdss-mode-tabs" id="cdss-mode-tabs">
-                <button type="button" class="cdss-mode-btn active" data-mode="fluid_schedule">
-                  <i class="fa-solid fa-table-list"></i>
-                  <span>1. Cọc Điện Giải</span>
+                <button type="button" class="cdss-mode-btn active" data-mode="fluid_schedule" title="Bảng điều phối cọc dịch điện giải nấc thang chuẩn hóa theo giờ">
+                  <i class="fa-solid fa-table-list text-teal-600"></i>
+                  <span>Cọc Điện Giải</span>
                 </button>
-                <button type="button" class="cdss-mode-btn" data-mode="colloid_schedule" id="btn-mode-colloid">
-                  <i class="fa-solid fa-flask-vial"></i>
-                  <span>2. Cọc Cao Phân Tử (CPT)</span>
-                  <span id="colloid-alert-dot" style="display:none; width:8px; height:8px; border-radius:50%; background:#ef4444;"></span>
+                <button type="button" class="cdss-mode-btn" data-mode="colloid_schedule" id="btn-mode-colloid" title="Phác đồ Cao phân tử và trần an toàn 60 ml/kg (Phụ lục 10)">
+                  <i class="fa-solid fa-flask-vial text-amber-500"></i>
+                  <span>Cọc CPT (Cao Phân Tử)</span>
+                  <span id="colloid-alert-dot" class="cdss-tab-badge" style="display:none;">!</span>
                 </button>
-                <button type="button" class="cdss-mode-btn" data-mode="refractory_suite" id="btn-mode-refractory">
-                  <i class="fa-solid fa-shield-virus"></i>
-                  <span>3. Sốc Trơ &amp; Không Đáp Ứng</span>
-                  <span id="refractory-alert-dot" style="display:none; width:8px; height:8px; border-radius:50%; background:#ef4444;"></span>
+                <button type="button" class="cdss-mode-btn" data-mode="refractory_suite" id="btn-mode-refractory" title="6 Phân nhánh xử trí sốc trơ và biến chứng nguy kịch">
+                  <i class="fa-solid fa-shield-virus text-rose-500"></i>
+                  <span>Sốc Trơ &amp; Biến Chứng</span>
+                  <span id="refractory-alert-dot" class="cdss-tab-badge" style="display:none;">!</span>
                 </button>
-                <button type="button" class="cdss-mode-btn" data-mode="vasopressors">
-                  <i class="fa-solid fa-syringe"></i>
-                  <span>4. Vận Mạch 50ml (Phụ Lục 15 &amp; 18)</span>
+                <button type="button" class="cdss-mode-btn" data-mode="vasopressors" title="Lưu đồ vận mạch và tính bơm tiêm điện 50ml 2 chiều">
+                  <i class="fa-solid fa-syringe text-indigo-500"></i>
+                  <span>Vận Mạch Bơm 50ml</span>
                 </button>
-                <button type="button" class="cdss-mode-btn" data-mode="nursing_checklist">
-                  <i class="fa-solid fa-user-nurse"></i>
-                  <span>5. Điều Dưỡng An Toàn</span>
+                <button type="button" class="cdss-mode-btn" data-mode="nursing_checklist" title="Checklist kiểm soát an toàn điều dưỡng tại giường">
+                  <i class="fa-solid fa-user-nurse text-emerald-600"></i>
+                  <span>Checklist Điều Dưỡng</span>
                 </button>
               </div>
 
@@ -687,7 +741,31 @@ export class DengueCDSSController {
       });
     });
 
-    // Clinical Sample Cases Pills
+    // Clinical Sample Cases Pills & Dropdown
+    const presetSelect = document.getElementById('cdss-preset-select') as HTMLSelectElement | null;
+    if (presetSelect) {
+      presetSelect.addEventListener('change', (e) => {
+        const val = (e.target as HTMLSelectElement).value;
+        if (val) {
+          this.applySampleCase(val);
+        }
+      });
+    }
+
+    const btnToggleDrawer = document.getElementById('btn-toggle-cases-drawer');
+    if (btnToggleDrawer) {
+      btnToggleDrawer.addEventListener('click', () => {
+        const casesBar = document.getElementById('cdss-cases-bar');
+        if (casesBar) {
+          const isExp = casesBar.classList.toggle('is-expanded');
+          btnToggleDrawer.setAttribute('aria-expanded', isExp ? 'true' : 'false');
+          btnToggleDrawer.classList.toggle('active', isExp);
+          const span = btnToggleDrawer.querySelector('span');
+          if (span) span.textContent = isExp ? 'Thu Gọn Thẻ' : 'Xem Dạng Thẻ';
+        }
+      });
+    }
+
     const casePills = document.querySelectorAll('.cdss-case-pill');
     casePills.forEach(pill => {
       pill.addEventListener('click', (e) => {
@@ -855,6 +933,17 @@ export class DengueCDSSController {
       this.includeVasopressorInPrint = false;
       if (chkVaso) chkVaso.checked = false;
     }
+
+    // Update Dropdown Selector & Highlight
+    const presetSelect = document.getElementById('cdss-preset-select') as HTMLSelectElement | null;
+    if (presetSelect && presetSelect.value !== caseId) {
+      presetSelect.value = caseId;
+    }
+
+    const hlTag = document.getElementById('cdss-highlight-tag-text');
+    if (hlTag) hlTag.textContent = sample.tag;
+    const hlText = document.getElementById('cdss-highlight-text');
+    if (hlText) hlText.textContent = sample.clinicalHighlight;
 
     // Update Status Indicator
     const ind = document.getElementById('case-status-indicator');
@@ -1430,27 +1519,49 @@ export class DengueCDSSController {
 
         <!-- Thanh Thử Nghiệm Kịch Bản Lâm Sàng 1 Chạm -->
         <div class="cdss-scenario-bar">
-          <span style="font-size:0.72rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); margin-right:4px;">
-            Thử nghiệm kịch bản:
-          </span>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === 'good' ? 'active' : ''}" onclick="window.__dengueSetScenario('good');">
-            🟢 Ổn định
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === 'refractory_hct_high' ? 'active' : ''}" onclick="window.__dengueSetScenario('refractory_hct_high');">
-            🟠 Hct cao ≥40% (Đổi CPT)
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === 'refractory_bleeding' ? 'active' : ''}" onclick="window.__dengueSetScenario('refractory_bleeding');">
-            🔴 Xuất huyết (Truyền Máu)
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === 'refractory_shock_cvp' ? 'active' : ''}" onclick="window.__dengueSetScenario('refractory_shock_cvp');">
-            🟣 Đo CVP &amp; Vận Mạch
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === 'liver_failure' ? 'active' : ''}" onclick="window.__dengueSetScenario('liver_failure');">
-            🟤 Suy Gan (NAC)
-          </button>
-          <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === 'fluid_overload' ? 'active' : ''}" onclick="window.__dengueSetScenario('fluid_overload');">
-            ⚠️ Dư Dịch / Phù Phổi
-          </button>
+          <div class="cdss-scenario-bar-header">
+            <span class="cdss-scenario-title">
+              <i class="fa-solid fa-shuffle text-primary"></i> <span>Diễn Tiến &amp; Kịch Bản:</span>
+            </span>
+            <div class="cdss-scenario-select-wrap">
+              <select id="cdss-scenario-quick-select" class="cdss-scenario-quick-select" onchange="window.__dengueSetScenario(this.value);" aria-label="Xổ chọn nhanh kịch bản diễn tiến">
+                <option value="good" ${patient.clinicalResponse === 'good' ? 'selected' : ''}>🟢 Ổn định (Bù dịch nấc thang chuẩn)</option>
+                <option value="refractory_hct_high" ${patient.clinicalResponse === 'refractory_hct_high' ? 'selected' : ''}>🟠 Hct cao ≥40% (Đổi CPT Dextran 40)</option>
+                <option value="refractory_bleeding" ${patient.clinicalResponse === 'refractory_bleeding' ? 'selected' : ''}>🔴 Xuất huyết ẩn (Truyền Máu HCL)</option>
+                <option value="refractory_shock_cvp" ${patient.clinicalResponse === 'refractory_shock_cvp' ? 'selected' : ''}>🟣 Sốc trơ dịch (Đo CVP &amp; Vận Mạch)</option>
+                <option value="liver_failure" ${patient.clinicalResponse === 'liver_failure' ? 'selected' : ''}>🟤 Tổn thương gan cấp (NAC 4 pha)</option>
+                <option value="fluid_overload" ${patient.clinicalResponse === 'fluid_overload' ? 'selected' : ''}>⚠️ Dư dịch / Phù phổi cấp</option>
+              </select>
+              <i class="fa-solid fa-chevron-down cdss-scenario-select-arrow"></i>
+            </div>
+          </div>
+
+          <div class="cdss-scenario-chips-row">
+            <button type="button" class="cdss-scenario-btn ${patient.clinicalResponse === 'good' ? 'active' : ''}" onclick="window.__dengueSetScenario('good');" title="Đáp ứng tốt sau bù dịch, tiếp tục nấc thang giảm dần">
+              <span class="cdss-scen-dot cdss-scen-dot--good"></span>
+              <span>Ổn định</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--warn ${patient.clinicalResponse === 'refractory_hct_high' ? 'active' : ''}" onclick="window.__dengueSetScenario('refractory_hct_high');" title="Hct còn cao ≥ 40%: Thoát huyết tương nặng -> Đổi Cao phân tử Dextran 40">
+              <span class="cdss-scen-dot cdss-scen-dot--cpt"></span>
+              <span>Hct ≥40% (Đổi CPT)</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--danger ${patient.clinicalResponse === 'refractory_bleeding' ? 'active' : ''}" onclick="window.__dengueSetScenario('refractory_bleeding');" title="Hct tụt hoặc nghi ngờ xuất huyết ẩn -> Báo động đỏ truyền máu HCL">
+              <span class="cdss-scen-dot cdss-scen-dot--blood"></span>
+              <span>Xuất huyết (Máu HCL)</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--cvp ${patient.clinicalResponse === 'refractory_shock_cvp' ? 'active' : ''}" onclick="window.__dengueSetScenario('refractory_shock_cvp');" title="Sốc trơ dịch CPT ≥60ml/kg -> Đo CVP và chỉ định vận mạch">
+              <span class="cdss-scen-dot cdss-scen-dot--cvp"></span>
+              <span>Đo CVP &amp; Vận Mạch</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--liver ${patient.clinicalResponse === 'liver_failure' ? 'active' : ''}" onclick="window.__dengueSetScenario('liver_failure');" title="AST/ALT ≥ 1000 U/L -> Phác đồ NAC 4 pha">
+              <span class="cdss-scen-dot cdss-scen-dot--liver"></span>
+              <span>Suy Gan (NAC)</span>
+            </button>
+            <button type="button" class="cdss-scenario-btn cdss-scenario-btn--overload ${patient.clinicalResponse === 'fluid_overload' ? 'active' : ''}" onclick="window.__dengueSetScenario('fluid_overload');" title="Quá tải dịch tuần hoàn, gan to đau, ran phổi -> Furosemide">
+              <span class="cdss-scen-dot cdss-scen-dot--overload"></span>
+              <span>Dư Dịch / Phù Phổi</span>
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -1460,6 +1571,10 @@ export class DengueCDSSController {
       const respEl = document.getElementById('input-response') as HTMLSelectElement | null;
       if (respEl) {
         respEl.value = scenario;
+      }
+      const quickSel = document.getElementById('cdss-scenario-quick-select') as HTMLSelectElement | null;
+      if (quickSel && quickSel.value !== scenario) {
+        quickSel.value = scenario;
       }
       if (scenario === 'refractory_bleeding') {
         const bl = document.getElementById('input-bleeding') as HTMLInputElement | null;
@@ -1914,7 +2029,7 @@ export class DengueCDSSController {
               <button type="button" class="cdss-case-pill ${isSel ? 'active' : ''}" data-colloid-type="${key}" style="font-size:0.8rem; padding:0.5rem 0.85rem;">
                 <i class="fa-solid fa-droplet text-primary"></i>
                 <strong>${cMeta.shortName}</strong>
-                <span style="font-size:0.68rem; opacity:0.8;">(${cMeta.brandNames[0]})</span>
+                <span style="font-size:0.68rem; opacity:0.85;">(${cMeta.bytrank === 'priority' ? 'Ưu tiên BYT' : 'Thay thế'})</span>
               </button>
             `;
           }).join('')}
@@ -1931,26 +2046,26 @@ export class DengueCDSSController {
 
           <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:0.6rem; margin-bottom:0.75rem;">
             <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
-              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Trọng Lượng Phân Tử</div>
-              <strong style="font-size:0.85rem;">${meta.molecularWeight}</strong>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Áp Lực Keo</div>
+              <strong style="font-size:0.82rem;">${meta.oncoticPower}</strong>
             </div>
             <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
-              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Thời Gian Lưu Lòng Mạch</div>
-              <strong style="font-size:0.85rem; color:var(--cdss-primary);">${meta.intravascularPersistence}</strong>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Thời Gian Bán Thải / Lưu Lòng Mạch</div>
+              <strong style="font-size:0.82rem; color:var(--cdss-primary);">${meta.intravascularHalfLife}</strong>
             </div>
             <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
-              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Tăng Thể Tích Lòng Mạch</div>
-              <strong style="font-size:0.85rem; color:var(--cdss-success);">${meta.plasmaExpansion}</strong>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Tỷ Lệ Tăng Thể Tích</div>
+              <strong style="font-size:0.82rem; color:var(--cdss-success);">${meta.volumeExpansionRatio}</strong>
             </div>
             <div style="background:var(--cdss-surface); border-radius:6px; padding:0.5rem; border:1px solid var(--cdss-border-subtle);">
-              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Giới Hạn Tối Đa Liều</div>
-              <strong style="font-size:0.85rem; color:var(--cdss-danger);">${meta.maxSafeDose}</strong>
+              <div style="font-size:0.68rem; color:var(--cdss-text-muted); text-transform:uppercase;">Liều Tối Đa Khuyến Cáo</div>
+              <strong style="font-size:0.82rem; color:var(--cdss-danger);">${meta.maxTotalDose}</strong>
             </div>
           </div>
 
           <div style="font-size:0.78rem; line-height:1.45; color:var(--cdss-text-muted);">
-            <div><strong style="color:var(--cdss-text);">Ưu điểm & Chỉ định:</strong> ${meta.pros}</div>
-            <div style="margin-top:2px;"><strong style="color:var(--cdss-danger);">Cảnh báo an toàn:</strong> ${meta.cons}</div>
+            <div><strong style="color:var(--cdss-text);">Hướng dẫn &amp; Chỉ định:</strong> ${meta.notes}</div>
+            <div style="margin-top:4px;"><strong style="color:var(--cdss-danger);">Chống chỉ định &amp; Cảnh báo:</strong> ${meta.contraindications}</div>
           </div>
         </div>
       </section>

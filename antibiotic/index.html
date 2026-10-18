@@ -14,20 +14,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../shared/cdss-logo.svg">
 
-    <!-- Instant Theme Sync (Auto Light Mode Default & Universal Synchronization) -->
+    <!-- Unified Clinical Light Theme for InfectoDose CDSS (BVBND Hospital & NHSN Standards) -->
     <script>
       (function () {
         try {
-          var params = new URLSearchParams(window.location.search);
-          var urlTheme = params.get('theme');
-          var saved = urlTheme || localStorage.getItem('cliniportal_theme') || localStorage.getItem('clinical_theme') || localStorage.getItem('theme');
-          var theme = (saved === 'dark' || saved === 'light') ? saved : 'light';
-          document.documentElement.setAttribute('data-theme', theme);
-          if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.documentElement.classList.remove('dark');
+          if (document.body) {
+            document.body.setAttribute('data-theme', 'light');
+            document.body.classList.remove('dark');
           }
         } catch (e) {}
       })();
@@ -37,15 +34,18 @@
     <link rel="stylesheet" href="../shared/cdss-shell.css">
     <script src="../shared/cdss-shell.js"></script>
 
-    <link rel="stylesheet" crossorigin href="./assets/index-vt4Cmq8g.css">
-    <script type="module" crossorigin src="./assets/index-BMtZug1u.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DVhYFEXB.css">
+    <script type="module" src="./src/main.tsx"></script>
   </head>
   <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-600 selection:text-white">
     <!-- CliniPortal Master Navigation Bar -->
     <header class="cdss-portal-navbar">
       <div class="cdss-portal-nav-breadcrumbs">
-      <a href="../index.html"><i class="fa-solid fa-microchip"></i> CDSS Platform Hub</a>
-      <i class="fa-solid fa-chevron-right separator"></i>
+        <a href="../index.html" class="cdss-brand-link flex items-center gap-2">
+          <img src="../shared/cdss-logo.svg" alt="CDSS Logo" class="cdss-brand-logo-img" style="width:22px; height:22px; display:inline-block;" />
+          <span class="font-bold">CDSS Platform Suite</span>
+        </a>
+        <i class="fa-solid fa-chevron-right separator"></i>
         <span class="active"><i class="fa-solid fa-viruses text-teal-600"></i> Đánh Giá Nhiễm Trùng &amp; Kháng Sinh (InfectoDose CDSS)</span>
       </div>
 

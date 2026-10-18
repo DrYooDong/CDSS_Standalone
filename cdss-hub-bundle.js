@@ -327,6 +327,18 @@
             </div>
           </div>
 
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; margin: 1rem auto 0.5rem auto;">
+            <img src="./shared/cdss-logo.svg" alt="CDSS Logo" style="width: 52px; height: 52px; filter: drop-shadow(0 4px 12px rgba(13, 148, 136, 0.4));" />
+            <div style="text-align: left;">
+              <div style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary, #0d9488);">
+                CDSS Platform Suite
+              </div>
+              <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-text-muted, #64748b);">
+                H\u1EC7 Th\u1ED1ng H\u1ED7 Tr\u1EE3 Quy\u1EBFt \u0110\u1ECBnh L\xE2m S\xE0ng \u0110\u1ED9c L\u1EADp
+              </div>
+            </div>
+          </div>
+
           <h1 class="cdss-hero-title">
             H\u1EC7 Sinh Th\xE1i Quy\u1EBFt \u0110\u1ECBnh L\xE2m S\xE0ng <span class="highlight">Chu\u1EA9n H\xF3a Y Khoa</span>
           </h1>

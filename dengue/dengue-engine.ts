@@ -883,7 +883,7 @@ export function generateDengueCDSSPlan(
     customDurations
   );
 
-  const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, 'dextran_40');
+  const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, 'dextran40');
   const defaultHemodynamic: HemodynamicProfile = {
     cvpLevel: 'low_normal',
     cardiacContractility: 'normal',

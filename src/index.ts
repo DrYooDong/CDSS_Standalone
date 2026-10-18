@@ -178,6 +178,18 @@ export function initCDSSHub(containerId: string): void {
             </div>
           </div>
 
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; margin: 1rem auto 0.5rem auto;">
+            <img src="./shared/cdss-logo.svg" alt="CDSS Logo" style="width: 52px; height: 52px; filter: drop-shadow(0 4px 12px rgba(13, 148, 136, 0.4));" />
+            <div style="text-align: left;">
+              <div style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary, #0d9488);">
+                CDSS Platform Suite
+              </div>
+              <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-text-muted, #64748b);">
+                Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập
+              </div>
+            </div>
+          </div>
+
           <h1 class="cdss-hero-title">
             Hệ Sinh Thái Quyết Định Lâm Sàng <span class="highlight">Chuẩn Hóa Y Khoa</span>
           </h1>

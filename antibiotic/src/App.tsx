@@ -178,25 +178,34 @@ export default function App() {
             <button
               type="button"
               onClick={() => setAppMode('selection')}
-              className={`p-3 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer ${
+              className={`p-3.5 rounded-xl border text-left transition-all flex items-start space-x-3.5 cursor-pointer relative overflow-hidden group ${
                 appMode === 'selection'
-                  ? 'bg-teal-50/90 border-teal-500 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
-                  : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50'
+                  ? 'bg-gradient-to-br from-teal-50/95 via-teal-50/50 to-white border-teal-500 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
+                  : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50/80'
               }`}
             >
-              <div className={`p-2 rounded-lg shrink-0 ${appMode === 'selection' ? 'bg-teal-600 text-white shadow-xs' : 'bg-slate-200 text-slate-600'}`}>
+              <div className={`p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-105 ${
+                appMode === 'selection' 
+                  ? 'bg-gradient-to-br from-teal-600 to-teal-700 text-white shadow-sm shadow-teal-600/30 ring-1 ring-white/30' 
+                  : 'bg-slate-200 text-slate-600'
+              }`}>
                 <Workflow className="w-5 h-5" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <div className="flex items-center space-x-2">
                   <span className="text-xs font-black uppercase tracking-wider text-teal-600">Phân hệ 1</span>
-                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-teal-100 text-teal-700">Mới • BVBND 2026</span>
+                  <span className="px-2 py-0.2 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800 border border-teal-200/60">
+                    Quy Trình Tinh Gọn 2026
+                  </span>
+                  {appMode === 'selection' && (
+                    <span className="ml-auto w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+                  )}
                 </div>
-                <div className="text-sm font-bold text-slate-900 mt-0.5 truncate">
-                  Đánh Giá Nhiễm Trùng & Phác Đồ Ban Đầu
+                <div className="text-sm font-extrabold text-slate-900 mt-0.5 truncate">
+                  Đánh Giá Nhiễm Trùng &amp; Phác Đồ Ban Đầu
                 </div>
-                <div className="text-[11px] text-slate-500 truncate mt-0.5">
-                  5 Bước: Tiêu chuẩn NHSN → Ổ nhiễm → Nguy cơ VKĐK (SOFA) → Phác đồ BVBND → Xuống thang 48-72h
+                <div className="text-[11px] text-slate-500 truncate mt-0.5 font-medium">
+                  3 Giai đoạn: Chỉ định NHSN &amp; Phân tầng VKĐK (SOFA) → Phác đồ &amp; Antibiogram → Tái đánh giá 48-72h
                 </div>
               </div>
             </button>
@@ -204,25 +213,34 @@ export default function App() {
             <button
               type="button"
               onClick={() => setAppMode('dosing')}
-              className={`p-3 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer ${
+              className={`p-3.5 rounded-xl border text-left transition-all flex items-start space-x-3.5 cursor-pointer relative overflow-hidden group ${
                 appMode === 'dosing'
-                  ? 'bg-teal-50/90 border-teal-500 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
-                  : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50'
+                  ? 'bg-gradient-to-br from-teal-50/95 via-teal-50/50 to-white border-teal-500 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
+                  : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50/80'
               }`}
             >
-              <div className={`p-2 rounded-lg shrink-0 ${appMode === 'dosing' ? 'bg-teal-600 text-white shadow-xs' : 'bg-slate-200 text-slate-600'}`}>
+              <div className={`p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-105 ${
+                appMode === 'dosing' 
+                  ? 'bg-gradient-to-br from-teal-600 to-teal-700 text-white shadow-sm shadow-teal-600/30 ring-1 ring-white/30' 
+                  : 'bg-slate-200 text-slate-600'
+              }`}>
                 <Calculator className="w-5 h-5" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <div className="flex items-center space-x-2">
                   <span className="text-xs font-black uppercase tracking-wider text-slate-500">Phân hệ 2</span>
-                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600">43 Kháng sinh</span>
+                  <span className="px-2 py-0.2 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                    43 Kháng sinh
+                  </span>
+                  {appMode === 'dosing' && (
+                    <span className="ml-auto w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+                  )}
                 </div>
-                <div className="text-sm font-bold text-slate-900 mt-0.5 truncate">
-                  Cá Thể Hóa Tính Liều & Hiệu Chỉnh Thận
+                <div className="text-sm font-extrabold text-slate-900 mt-0.5 truncate">
+                  Cá Thể Hóa Tính Liều &amp; Hiệu Chỉnh Thận
                 </div>
-                <div className="text-[11px] text-slate-500 truncate mt-0.5">
-                  Cockcroft-Gault / CKD-EPI, Lọc máu HD/CRRT/CAPD, TDM & Tương tác thuốc DDI
+                <div className="text-[11px] text-slate-500 truncate mt-0.5 font-medium">
+                  Cockcroft-Gault / CKD-EPI, Lọc máu HD/CRRT/CAPD, TDM &amp; Tương tác thuốc DDI
                 </div>
               </div>
             </button>

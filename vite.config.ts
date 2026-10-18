@@ -1,11 +1,15 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  plugins: [react(), tailwindcss()],
   base: './',
   server: {
     host: '0.0.0.0',
     port: 3000,
+    allowedHosts: true,
     hmr: process.env.DISABLE_HMR !== 'true',
     watch: process.env.DISABLE_HMR === 'true' ? null : {}
   },
