@@ -24,16 +24,21 @@ const IGNORE_PATTERNS = [
   '__pycache__',
   '.vscode',
   '.idea',
-  '.DS_Store'
+  '.DS_Store',
+  'src' // Do NOT copy raw TypeScript source directories into production dist
 ];
 
 function shouldIgnore(name) {
   if (IGNORE_PATTERNS.includes(name)) return true;
   if (name.endsWith('.pyc')) return true;
+  if (name.endsWith('.ts') && !name.endsWith('.d.ts')) return true; // Don't copy unbundled .ts files
   return false;
 }
 
-function copyRecursive(src, dest) {
+/**
+ * Copies static assets safely WITHOUT overwriting Vite-compiled production HTML/JS bundles
+ */
+function copyRecursiveSafe(src, dest, isModuleRoot = false) {
   if (!fs.existsSync(src)) return;
   const stat = fs.statSync(src);
   if (stat.isDirectory()) {
@@ -43,9 +48,17 @@ function copyRecursive(src, dest) {
     const entries = fs.readdirSync(src);
     for (const entry of entries) {
       if (shouldIgnore(entry)) continue;
-      copyRecursive(path.join(src, entry), path.join(dest, entry));
+      // Never overwrite Vite-compiled index.html in dist or module dist
+      if (entry === 'index.html' && fs.existsSync(path.join(dest, entry))) {
+        continue;
+      }
+      copyRecursiveSafe(path.join(src, entry), path.join(dest, entry), false);
     }
   } else {
+    // If destination is index.html and already exists in dist (built by Vite), preserve the compiled version!
+    if (path.basename(dest) === 'index.html' && fs.existsSync(dest)) {
+      return;
+    }
     const parent = path.dirname(dest);
     if (!fs.existsSync(parent)) {
       fs.mkdirSync(parent, { recursive: true });
@@ -54,9 +67,8 @@ function copyRecursive(src, dest) {
   }
 }
 
-// 2. Copy Root Entrypoints & Shell Assets
+// 2. Copy Root Shell Assets (Without overwriting compiled dist/index.html)
 const rootFilesToCopy = [
-  'index.html',
   'cdss-hub-bundle.js',
   'manifest.webmanifest',
   'sw.js',
@@ -73,20 +85,23 @@ for (const file of rootFilesToCopy) {
   }
 }
 
-// Also create 404.html from index.html for SPA / GitHub Pages fallback routing
-if (fs.existsSync(path.join(rootDir, 'index.html'))) {
+// Create 404.html from compiled dist/index.html for SPA / GitHub Pages fallback routing
+if (fs.existsSync(path.join(distDir, 'index.html'))) {
+  fs.copyFileSync(path.join(distDir, 'index.html'), path.join(distDir, '404.html'));
+  console.log('✓ Created dist/404.html from compiled dist/index.html');
+} else if (fs.existsSync(path.join(rootDir, 'index.html'))) {
   fs.copyFileSync(path.join(rootDir, 'index.html'), path.join(distDir, '404.html'));
-  console.log('✓ Created dist/404.html (GitHub Pages fallback)');
+  console.log('✓ Created dist/404.html from root index.html');
 }
 
 // Copy shared and css directories
-copyRecursive(path.join(rootDir, 'shared'), path.join(distDir, 'shared'));
+copyRecursiveSafe(path.join(rootDir, 'shared'), path.join(distDir, 'shared'));
 console.log('✓ Copied shared/ -> dist/shared/');
 
-copyRecursive(path.join(rootDir, 'css'), path.join(distDir, 'css'));
+copyRecursiveSafe(path.join(rootDir, 'css'), path.join(distDir, 'css'));
 console.log('✓ Copied css/ -> dist/css/');
 
-// 3. Copy all 9 CDSS Clinical Modules
+// 3. Sync all 9 CDSS Clinical Modules safely
 const CDSS_MODULES = [
   'dengue',
   'ecg',
@@ -99,7 +114,7 @@ const CDSS_MODULES = [
   'inpatient'
 ];
 
-console.log('[postbuild] Syncing 9 CDSS clinical modules...');
+console.log('[postbuild] Syncing supplementary assets for 9 CDSS clinical modules...');
 
 for (const mod of CDSS_MODULES) {
   const srcModDir = path.join(rootDir, mod);
@@ -110,12 +125,24 @@ for (const mod of CDSS_MODULES) {
     continue;
   }
 
-  copyRecursive(srcModDir, destModDir);
+  // Copy non-compiled assets (images, static css, presets) without overwriting Vite-compiled bundles
+  copyRecursiveSafe(srcModDir, destModDir, true);
 
-  // Validation: Check that index.html exists in module dist
+  // If Vite didn't output index.html for this module (e.g. pure static module), fallback copy
   const modIndex = path.join(destModDir, 'index.html');
+  if (!fs.existsSync(modIndex) && fs.existsSync(path.join(srcModDir, 'index.html'))) {
+    fs.copyFileSync(path.join(srcModDir, 'index.html'), modIndex);
+    console.log(`✓ Copied fallback static index.html for [${mod}]`);
+  }
+
+  // Validation: Check that index.html exists in module dist and verify it does NOT contain raw .tsx
   if (fs.existsSync(modIndex)) {
-    console.log(`✓ Synced module [${mod}] -> dist/${mod}/ (index.html verified)`);
+    const htmlContent = fs.readFileSync(modIndex, 'utf8');
+    if (htmlContent.includes('.tsx')) {
+      console.warn(`⚠ Warning: Module [${mod}] index.html still references raw .tsx in dist!`);
+    } else {
+      console.log(`✓ Validated production module [${mod}] -> dist/${mod}/ (Production bundle verified)`);
+    }
   } else {
     console.error(`✗ Warning: Module [${mod}] has NO index.html in dist!`);
   }
@@ -147,4 +174,4 @@ if (!allOk) {
   process.exit(1);
 }
 
-console.log('[postbuild] SUCCESS: All 9 CDSS modules, root hub, and assets successfully synced into dist/!');
+console.log('[postbuild] SUCCESS: All 9 CDSS modules, root hub, and assets verified and production-ready in dist/!');
