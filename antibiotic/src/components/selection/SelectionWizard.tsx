@@ -62,6 +62,11 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     'pseudo_acineto',
     'mrsa'
   ]);
+  const [checkedSpecificRiskFactorIds, setCheckedSpecificRiskFactorIds] = useState<string[]>([
+    'ps_icu_5d',
+    'ps_devices',
+    'mrsa_cvc_foley'
+  ]);
 
   // 48-72h State
   const [clinicalResponse, setClinicalResponse] = useState<ClinicalResponseStatus>('improved');
@@ -88,6 +93,12 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     );
   };
 
+  const handleToggleSpecificRiskFactor = (factorId: string) => {
+    setCheckedSpecificRiskFactorIds(prev =>
+      prev.includes(factorId) ? prev.filter(x => x !== factorId) : [...prev, factorId]
+    );
+  };
+
   // Presets handler
   const handleApplyPreset = (presetKey: string) => {
     if (presetKey === 'vap_severe') {
@@ -100,6 +111,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
       setSofaScore(8);
       setCheckedGeneralRiskIds(['hospital_90d', 'invasive_device', 'iv_abx_30d']);
       setCheckedSpecificRisks(['pseudo_acineto', 'mrsa']);
+      setCheckedSpecificRiskFactorIds(['ps_icu_5d', 'ps_devices', 'mrsa_cvc_foley']);
     } else if (presetKey === 'cap_standard') {
       setPopulation('adult');
       setIsChronicLiverDisease(false);
@@ -110,6 +122,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
       setSofaScore(0);
       setCheckedGeneralRiskIds([]);
       setCheckedSpecificRisks([]);
+      setCheckedSpecificRiskFactorIds([]);
     } else if (presetKey === 'sepsis_cirrhosis') {
       setPopulation('adult');
       setIsChronicLiverDisease(true);
@@ -120,6 +133,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
       setClifSofaScore(13);
       setCheckedGeneralRiskIds(['chronic_disease', 'hospital_90d']);
       setCheckedSpecificRisks(['esbl']);
+      setCheckedSpecificRiskFactorIds(['esbl_steroid', 'esbl_tubes']);
     } else if (presetKey === 'cauti_elderly') {
       setPopulation('adult');
       setIsChronicLiverDisease(false);
@@ -130,6 +144,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
       setSofaScore(1);
       setCheckedGeneralRiskIds(['invasive_device', 'age_over_60']);
       setCheckedSpecificRisks(['esbl', 'pseudo_acineto']);
+      setCheckedSpecificRiskFactorIds(['esbl_tubes', 'ps_devices']);
     } else if (presetKey === 'ssti_cellulitis') {
       setPopulation('adult');
       setIsChronicLiverDisease(false);
@@ -140,9 +155,11 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
       setSofaScore(0);
       setCheckedGeneralRiskIds([]);
       setCheckedSpecificRisks([]);
+      setCheckedSpecificRiskFactorIds([]);
     } else if (presetKey === 'custom') {
       setCheckedGeneralRiskIds([]);
       setCheckedSpecificRisks([]);
+      setCheckedSpecificRiskFactorIds([]);
       setSofaScore(0);
       setPsofaScore(0);
       setClifSofaScore(0);
@@ -159,7 +176,9 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     checkedGeneralRiskIds,
     activeSeverity,
     population,
-    checkedSpecificRisks
+    checkedSpecificRisks,
+    site,
+    checkedSpecificRiskFactorIds
   );
 
   // Compile wizard state object for DecisionSummaryCard
@@ -171,6 +190,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     site,
     sepsisSource,
     checkedGeneralRiskIds,
+    checkedSpecificRiskFactorIds,
     sofaScore,
     psofaScore,
     clifSofaScore,
@@ -334,6 +354,8 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
                 onSelectSepsisSource={setSepsisSource}
                 checkedGeneralRiskIds={checkedGeneralRiskIds}
                 onToggleGeneralRisk={handleToggleGeneralRisk}
+                checkedSpecificRiskFactorIds={checkedSpecificRiskFactorIds}
+                onToggleSpecificRiskFactor={handleToggleSpecificRiskFactor}
                 sofaScore={sofaScore}
                 onSofaChange={setSofaScore}
                 psofaScore={psofaScore}

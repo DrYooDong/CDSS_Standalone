@@ -14503,7 +14503,7 @@
         ["path", { d: "m8 2 1.88 1.88", key: "fmnt4t" }],
         ["path", { d: "M9 7.13V6a3 3 0 1 1 6 0v1.13", key: "1vgav8" }]
       ];
-      var Bug2 = createLucideIcon("bug", __iconNode$lU);
+      var Bug3 = createLucideIcon("bug", __iconNode$lU);
       var __iconNode$lT = [
         ["path", { d: "M10 12h4", key: "a56b0p" }],
         ["path", { d: "M10 8h4", key: "1sr2af" }],
@@ -14624,7 +14624,7 @@
         ["path", { d: "M12 18h.01", key: "mhygvu" }],
         ["path", { d: "M8 18h.01", key: "lrp35t" }]
       ];
-      var Calculator4 = createLucideIcon("calculator", __iconNode$lL);
+      var Calculator5 = createLucideIcon("calculator", __iconNode$lL);
       var __iconNode$lK = [
         ["path", { d: "M11 14h1v4", key: "fy54vd" }],
         ["path", { d: "M16 2v4", key: "4m81vk" }],
@@ -24651,7 +24651,7 @@
           }
         ]
       ];
-      var Shield = createLucideIcon("shield", __iconNode$5A);
+      var Shield2 = createLucideIcon("shield", __iconNode$5A);
       var __iconNode$5z = [
         [
           "path",
@@ -27982,7 +27982,7 @@
           }
         ]
       ];
-      var Zap = createLucideIcon("zap", __iconNode$2);
+      var Zap2 = createLucideIcon("zap", __iconNode$2);
       var __iconNode$1 = [
         ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }],
         ["line", { x1: "21", x2: "16.65", y1: "21", y2: "16.65", key: "13gj7c" }],
@@ -28233,7 +28233,7 @@
         Brush,
         BrushCleaning,
         Bubbles,
-        Bug: Bug2,
+        Bug: Bug3,
         BugOff,
         BugPlay,
         Building,
@@ -28244,7 +28244,7 @@
         CableCar,
         Cake,
         CakeSlice,
-        Calculator: Calculator4,
+        Calculator: Calculator5,
         Calendar,
         Calendar1,
         CalendarArrowDown,
@@ -29269,7 +29269,7 @@
         Share2,
         Sheet,
         Shell,
-        Shield,
+        Shield: Shield2,
         ShieldAlert: ShieldAlert12,
         ShieldBan,
         ShieldCheck: ShieldCheck8,
@@ -29632,7 +29632,7 @@
         Wrench,
         X: X7,
         Youtube,
-        Zap,
+        Zap: Zap2,
         ZapOff,
         ZoomIn,
         ZoomOut
@@ -30207,8 +30207,8 @@
       exports.BrushIcon = Brush;
       exports.Bubbles = Bubbles;
       exports.BubblesIcon = Bubbles;
-      exports.Bug = Bug2;
-      exports.BugIcon = Bug2;
+      exports.Bug = Bug3;
+      exports.BugIcon = Bug3;
       exports.BugOff = BugOff;
       exports.BugOffIcon = BugOff;
       exports.BugPlay = BugPlay;
@@ -30229,8 +30229,8 @@
       exports.CakeIcon = Cake;
       exports.CakeSlice = CakeSlice;
       exports.CakeSliceIcon = CakeSlice;
-      exports.Calculator = Calculator4;
-      exports.CalculatorIcon = Calculator4;
+      exports.Calculator = Calculator5;
+      exports.CalculatorIcon = Calculator5;
       exports.Calendar = Calendar;
       exports.Calendar1 = Calendar1;
       exports.Calendar1Icon = Calendar1;
@@ -31991,7 +31991,7 @@
       exports.LucideBrush = Brush;
       exports.LucideBrushCleaning = BrushCleaning;
       exports.LucideBubbles = Bubbles;
-      exports.LucideBug = Bug2;
+      exports.LucideBug = Bug3;
       exports.LucideBugOff = BugOff;
       exports.LucideBugPlay = BugPlay;
       exports.LucideBuilding = Building;
@@ -32002,7 +32002,7 @@
       exports.LucideCableCar = CableCar;
       exports.LucideCake = Cake;
       exports.LucideCakeSlice = CakeSlice;
-      exports.LucideCalculator = Calculator4;
+      exports.LucideCalculator = Calculator5;
       exports.LucideCalendar = Calendar;
       exports.LucideCalendar1 = Calendar1;
       exports.LucideCalendarArrowDown = CalendarArrowDown;
@@ -33158,7 +33158,7 @@
       exports.LucideShare2 = Share2;
       exports.LucideSheet = Sheet;
       exports.LucideShell = Shell;
-      exports.LucideShield = Shield;
+      exports.LucideShield = Shield2;
       exports.LucideShieldAlert = ShieldAlert12;
       exports.LucideShieldBan = ShieldBan;
       exports.LucideShieldCheck = ShieldCheck8;
@@ -33565,7 +33565,7 @@
       exports.LucideXOctagon = OctagonX;
       exports.LucideXSquare = SquareX;
       exports.LucideYoutube = Youtube;
-      exports.LucideZap = Zap;
+      exports.LucideZap = Zap2;
       exports.LucideZapOff = ZapOff;
       exports.LucideZoomIn = ZoomIn;
       exports.LucideZoomOut = ZoomOut;
@@ -34405,7 +34405,7 @@
       exports.SheetIcon = Sheet;
       exports.Shell = Shell;
       exports.ShellIcon = Shell;
-      exports.Shield = Shield;
+      exports.Shield = Shield2;
       exports.ShieldAlert = ShieldAlert12;
       exports.ShieldAlertIcon = ShieldAlert12;
       exports.ShieldBan = ShieldBan;
@@ -34418,7 +34418,7 @@
       exports.ShieldEllipsisIcon = ShieldEllipsis;
       exports.ShieldHalf = ShieldHalf;
       exports.ShieldHalfIcon = ShieldHalf;
-      exports.ShieldIcon = Shield;
+      exports.ShieldIcon = Shield2;
       exports.ShieldMinus = ShieldMinus;
       exports.ShieldMinusIcon = ShieldMinus;
       exports.ShieldOff = ShieldOff;
@@ -35219,8 +35219,8 @@
       exports.XSquareIcon = SquareX;
       exports.Youtube = Youtube;
       exports.YoutubeIcon = Youtube;
-      exports.Zap = Zap;
-      exports.ZapIcon = Zap;
+      exports.Zap = Zap2;
+      exports.ZapIcon = Zap2;
       exports.ZapOff = ZapOff;
       exports.ZapOffIcon = ZapOff;
       exports.ZoomIn = ZoomIn;
@@ -81876,6 +81876,258 @@
       source: { doc: "BVBND_PhanNhom", page: 2 }
     }
   ];
+  var MRSA_RISK_FACTORS = [
+    {
+      id: "mrsa_fq_90d",
+      labelVi: "C\xF3 d\xF9ng Fluoroquinolone \u0111\u01A1n tr\u1ECB trong v\xF2ng 90 ng\xE0y",
+      labelEn: "Fluoroquinolone monotherapy within past 90 days",
+      category: "mrsa",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "mrsa_hiv_cd4_low",
+      labelVi: "HIV/AIDS ch\u01B0a \u0111i\u1EC1u tr\u1ECB ho\u1EB7c CD4 < 50 t\u1EBF b\xE0o/\xB5L",
+      labelEn: "Untreated HIV/AIDS or CD4 count < 50 cells/\xB5L",
+      category: "mrsa",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "mrsa_cvc_foley",
+      labelVi: "\u0110\u1EB7t catheter t\u0129nh m\u1EA1ch trung t\xE2m ho\u1EB7c sonde ti\u1EC3u l\u01B0u",
+      labelEn: "Central venous catheter or indwelling Foley catheter",
+      category: "mrsa",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "mrsa_history",
+      labelVi: "Ti\u1EC1n c\u0103n nhi\u1EC5m ho\u1EB7c ph\u01A1i nhi\u1EC5m T\u1EE5 c\u1EA7u v\xE0ng kh\xE1ng Methicillin (MRSA)",
+      labelEn: "Prior infection or colonization with MRSA",
+      category: "mrsa",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "mrsa_ivdu",
+      labelVi: "S\u1EED d\u1EE5ng ma t\xFAy \u0111\u01B0\u1EDDng t\u0129nh m\u1EA1ch",
+      labelEn: "Intravenous drug use (IVDU)",
+      category: "mrsa",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "mrsa_unsafe_sex",
+      labelVi: "Quan h\u1EC7 t\xECnh d\u1EE5c kh\xF4ng an to\xE0n",
+      labelEn: "Unsafe sexual behavior",
+      category: "mrsa",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    }
+  ];
+  var ESBL_RISK_FACTORS = [
+    {
+      id: "esbl_steroid",
+      labelVi: "S\u1EED d\u1EE5ng corticosteroid k\xE9o d\xE0i (theo \u0111\u1ECBnh ngh\u0129a chung)",
+      labelEn: "Prolonged corticosteroid use",
+      category: "esbl",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "esbl_tubes",
+      labelVi: "\u0110\u1EB7t sonde d\u1EA1 d\xE0y nu\xF4i \u0103n, sonde ti\u1EC3u l\u01B0u",
+      labelEn: "Nasogastric feeding tube or indwelling urinary catheter",
+      category: "esbl",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "esbl_history",
+      labelVi: "Ti\u1EC1n c\u0103n nhi\u1EC5m ho\u1EB7c ph\u01A1i nhi\u1EC5m Enterobacterales sinh ESBL",
+      labelEn: "Prior infection or colonization with ESBL-producing Enterobacterales",
+      category: "esbl",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "esbl_long_term_care",
+      labelVi: "N\u1EB1m t\u1EA1i c\u01A1 s\u1EDF y t\u1EBF d\xE0i h\u1EA1n / trung t\xE2m \u0111i\u1EC1u d\u01B0\u1EE1ng",
+      labelEn: "Residence in long-term care facility or nursing home",
+      category: "esbl",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "esbl_hemodialysis",
+      labelVi: "Ch\u1EA1y th\u1EADn nh\xE2n t\u1EA1o \u0111\u1ECBnh k\u1EF3",
+      labelEn: "Chronic hemodialysis",
+      category: "esbl",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "esbl_cvc",
+      labelVi: "\u0110\u1EB7t catheter t\u0129nh m\u1EA1ch trung t\xE2m",
+      labelEn: "Central venous catheter in place",
+      category: "esbl",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    }
+  ];
+  var PSEUDO_ACINETO_RISK_FACTORS = [
+    {
+      id: "ps_icu_5d",
+      labelVi: "\u0110ang n\u1EB1m t\u1EA1i khoa H\u1ED3i s\u1EE9c t\xEDch c\u1EF1c (ICU) > 5 ng\xE0y",
+      labelEn: "Current ICU stay > 5 days",
+      category: "pseudo_acineto",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "ps_devices",
+      labelVi: "C\xF3 thi\u1EBFt b\u1ECB x\xE2m l\u1EA5n l\u01B0u (n\u1ED9i kh\xED qu\u1EA3n / th\u1EDF m\xE1y, CVC, d\u1EABn l\u01B0u)",
+      labelEn: "Presence of invasive devices (endotracheal tube/ventilator, CVC, drains)",
+      category: "pseudo_acineto",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "ps_bedridden",
+      labelVi: "Tr\u1EA1ng th\xE1i li\u1EC7t gi\u01B0\u1EDDng trong c\u01A1 s\u1EDF y t\u1EBF",
+      labelEn: "Bedridden status in healthcare facility",
+      category: "pseudo_acineto",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "ps_broad_abx",
+      labelVi: "\u0110\xE3 d\xF9ng Cephalosporin ph\u1ED5 r\u1ED9ng, Aminoglycoside, Carbapenem, FQ ho\u1EB7c nhi\u1EC1u lo\u1EA1i KS",
+      labelEn: "Prior broad-spectrum cephalosporins, aminoglycosides, carbapenems, FQs, or multi-antibiotics",
+      category: "pseudo_acineto",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "ps_selective_abx_7d",
+      labelVi: "\u0110ang d\xF9ng kh\xE1ng sinh c\xF3 nguy c\u01A1 ch\u1ECDn l\u1ECDc d\xF2ng kh\xE1ng (CG3, FQ, AG) \u2265 7 ng\xE0y",
+      labelEn: "Current use of high-risk selective antibiotics (3rd gen Ceph, FQ, AG) \u2265 7 days",
+      category: "pseudo_acineto",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "ps_diabetes",
+      labelVi: "B\u1EC7nh l\xFD \u0111\xE1i th\xE1o \u0111\u01B0\u1EDDng",
+      labelEn: "Diabetes mellitus",
+      category: "pseudo_acineto",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    },
+    {
+      id: "ps_surgery",
+      labelVi: "C\xF3 ph\u1EABu thu\u1EADt ho\u1EB7c th\u1EE7 thu\u1EADt can thi\u1EC7p g\u1EA7n \u0111\xE2y",
+      labelEn: "Recent surgery or interventional procedure",
+      category: "pseudo_acineto",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    }
+  ];
+  var ENTEROCOCCUS_RISK_FACTORS = [
+    {
+      id: "ent_foley_prior_abx",
+      labelVi: "Sonde ti\u1EC3u l\u01B0u k\xE9o d\xE0i HO\u1EB6C ti\u1EC1n s\u1EED d\xF9ng Cephalosporin / Vancomycin tr\u01B0\u1EDBc \u0111\xF3",
+      labelEn: "Indwelling Foley catheter OR prior cephalosporin/vancomycin exposure",
+      category: "enterococcus",
+      source: { doc: "BVBND_PhanNhom", page: 3 }
+    }
+  ];
+  var ALL_SPECIFIC_RISK_FACTORS = [
+    ...MRSA_RISK_FACTORS,
+    ...ESBL_RISK_FACTORS,
+    ...PSEUDO_ACINETO_RISK_FACTORS,
+    ...ENTEROCOCCUS_RISK_FACTORS
+  ];
+  function inferSpecificRisksFromFactorIds(factorIds) {
+    const risks = /* @__PURE__ */ new Set();
+    for (const id of factorIds) {
+      if (id.startsWith("mrsa_")) risks.add("mrsa");
+      else if (id.startsWith("esbl_")) risks.add("esbl");
+      else if (id.startsWith("ps_")) risks.add("pseudo_acineto");
+      else if (id.startsWith("ent_")) risks.add("enterococcus");
+    }
+    return Array.from(risks);
+  }
+  function getPrimaryTargetForSite(site) {
+    switch (site) {
+      case "skin_soft_tissue":
+        return "mrsa";
+      case "urinary":
+      case "gastrointestinal":
+      case "peritoneal":
+        return "esbl";
+      case "respiratory":
+      case "sepsis":
+      case "cns":
+      default:
+        return "pseudo_acineto";
+    }
+  }
+  function getSuggestedOrganisms(site, group, activeSpecificRisks = [], isNeutropenic = false) {
+    if (group === "group_1") {
+      const list2 = [];
+      switch (site) {
+        case "skin_soft_tissue":
+          list2.push("Streptococcus spp. (Li\xEAn c\u1EA7u tan huy\u1EBFt)", "Staphylococcus aureus nh\u1EA1y Methicillin (MSSA)");
+          break;
+        case "urinary":
+        case "gastrointestinal":
+        case "peritoneal":
+          list2.push("Tr\u1EF1c khu\u1EA9n Gram (-) \u0111\u01B0\u1EDDng ru\u1ED9t nh\u1EA1y c\u1EA3m (E. coli, Klebsiella spp., Proteus mirabilis)");
+          break;
+        case "respiratory":
+          list2.push("Streptococcus pneumoniae (Ph\u1EBF c\u1EA7u)", "Haemophilus influenzae", "Klebsiella pneumoniae nh\u1EA1y c\u1EA3m");
+          break;
+        case "sepsis":
+          list2.push("Tr\u1EF1c khu\u1EA9n Gram (-) \u0111\u01B0\u1EDDng ru\u1ED9t", "C\u1EA7u khu\u1EA9n Gram (+) nh\u1EA1y c\u1EA3m (Staphylococcus, Streptococcus)");
+          break;
+        case "cns":
+          list2.push("Streptococcus pneumoniae (Ph\u1EBF c\u1EA7u)", "Neisseria meningitidis (N\xE3o m\xF4 c\u1EA7u)", "Haemophilus influenzae");
+          break;
+      }
+      if (isNeutropenic) {
+        list2.push("L\u01B0u \xFD \u0111\u1EB7c bi\u1EC7t: B\u1EC7nh nh\xE2n gi\u1EA3m b\u1EA1ch c\u1EA7u h\u1EA1t c\u1EA7n c\u1EA3nh gi\xE1c th\xEAm Pseudomonas aeruginosa");
+      }
+      return list2;
+    }
+    const list = [];
+    if (activeSpecificRisks.includes("mrsa")) {
+      list.push("T\u1EE5 c\u1EA7u v\xE0ng kh\xE1ng Methicillin (MRSA)");
+    }
+    if (activeSpecificRisks.includes("esbl")) {
+      list.push("Tr\u1EF1c khu\u1EA9n Gram (-) Enterobacterales sinh ESBL (E. coli, K. pneumoniae)");
+    }
+    if (activeSpecificRisks.includes("pseudo_acineto")) {
+      list.push("Pseudomonas aeruginosa \u0111a kh\xE1ng (MDR-PA)", "Acinetobacter baumannii \u0111a kh\xE1ng (MDR-AB)");
+    }
+    if (activeSpecificRisks.includes("enterococcus")) {
+      list.push("Enterococcus spp. (VRE / Ampicillin-R)");
+    }
+    if (list.length === 0) {
+      const primary = getPrimaryTargetForSite(site);
+      if (primary === "mrsa") list.push("Nghi ng\u1EDD h\xE0ng \u0111\u1EA7u: T\u1EE5 c\u1EA7u v\xE0ng kh\xE1ng Methicillin (MRSA)");
+      else if (primary === "esbl") list.push("Nghi ng\u1EDD h\xE0ng \u0111\u1EA7u: Enterobacterales sinh ESBL");
+      else list.push("Nghi ng\u1EDD h\xE0ng \u0111\u1EA7u: Pseudomonas / Acinetobacter \u0111a kh\xE1ng");
+    }
+    return list;
+  }
+  function getCombinationGuidance(activeSpecificRisks) {
+    const hasGramPos = activeSpecificRisks.includes("mrsa") || activeSpecificRisks.includes("enterococcus");
+    const hasGramNeg = activeSpecificRisks.includes("esbl") || activeSpecificRisks.includes("pseudo_acineto");
+    const isGramPosGramNegCoRisk = hasGramPos && hasGramNeg;
+    const isDualGramNegRisk = activeSpecificRisks.includes("esbl") && activeSpecificRisks.includes("pseudo_acineto");
+    const guidanceVi = [];
+    if (isGramPosGramNegCoRisk) {
+      guidanceVi.push(
+        "QUY T\u1EAEC BVBND (Ghi ch\xFA b): B\u1EC7nh nh\xE2n c\xF3 \u0111\u1ED3ng th\u1EDDi nguy c\u01A1 Gram (+) (MRSA/VRE) v\xE0 Gram (-) (ESBL/Pseudomonas) \u2192 B\u1EAET BU\u1ED8C PH\u1ED0I H\u1EE2P KH\xC1NG SINH t\xE1c d\u1EE5ng tr\xEAn c\u1EA3 2 nh\xF3m (v\xED d\u1EE5: Vancomycin/Linezolid + Meropenem ho\u1EB7c Piperacillin-tazobactam)."
+      );
+    }
+    if (isDualGramNegRisk) {
+      guidanceVi.push(
+        "QUY T\u1EAEC BVBND (Ghi ch\xFA b): B\u1EC7nh nh\xE2n c\xF3 nguy c\u01A1 c\u1EE7a c\u1EA3 2 nh\xF3m Gram (-) (ESBL v\xE0 Pseudomonas/Acinetobacter) \u2192 \u01AFU TI\xCAN nh\xF3m kh\xE1ng sinh c\xF3 ph\u1ED5 tr\xEAn Acinetobacter / Pseudomonas (nh\u01B0 Meropenem, Cefepime, Piperacillin-tazobactam ho\u1EB7c Colistin) \u0111\u1EC3 bao ph\u1EE7 \u0111\u1ED3ng th\u1EDDi c\u1EA3 ch\u1EE7ng sinh ESBL. Tr\xE1nh d\xF9ng Ertapenem \u0111\u01A1n \u0111\u1ED9c (v\xEC Ertapenem kh\xF4ng di\u1EC7t \u0111\u01B0\u1EE3c Pseudomonas/Acinetobacter)."
+      );
+    }
+    guidanceVi.push(
+      "NGUY\xCAN T\u1EAEC BVBND (M\u1EE5c 9): Tr\xE1nh ph\u1ED1i h\u1EE3p nhi\u1EC1u KS kh\xF4ng c\u1EA7n thi\u1EBFt; c\xE1c thu\u1ED1c BL-BLI ph\u1ED5 r\u1ED9ng (nh\u01B0 Piperacillin-tazobactam) ho\u1EB7c Carbapenem (Meropenem, Imipenem) \u0111\xE3 c\xF3 ph\u1ED5 hi\u1EC7u qu\u1EA3 tr\xEAn vi khu\u1EA9n k\u1EF5 kh\xED, KH\xD4NG d\xF9ng Metronidazole ph\u1ED1i h\u1EE3p c\xF9ng."
+    );
+    return {
+      isGramPosGramNegCoRisk,
+      isDualGramNegRisk,
+      guidanceVi
+    };
+  }
 
   // antibiotic/src/selection/data/empiricRegimens.ts
   var EMPIRIC_REGIMENS = [
@@ -83408,9 +83660,13 @@
   }
 
   // antibiotic/src/selection/engine.ts
-  function classifyRisk(selectedGeneralRiskIds, severity, specificRisks = []) {
+  function classifyRisk(selectedGeneralRiskIds, severity, specificRisks = [], options) {
     const generalRiskCount = selectedGeneralRiskIds.length;
     const isHighSeverity = severity.isHighSeverity;
+    const site = options?.site || "respiratory";
+    const specificFactorIds = options?.specificRiskFactorIds || [];
+    const inferredRisks = inferSpecificRisksFromFactorIds(specificFactorIds);
+    const combinedSpecificRisks = Array.from(/* @__PURE__ */ new Set([...specificRisks, ...inferredRisks]));
     let group;
     const rationalesVi = [];
     const rationalesEn = [];
@@ -83446,16 +83702,25 @@
       );
     }
     const activeGeneralFactors = GENERAL_MDR_RISK_FACTORS.filter((f) => selectedGeneralRiskIds.includes(f.id)).map((f) => f.labelVi);
+    const isNeutropenic = options?.isNeutropenic ?? selectedGeneralRiskIds.includes("transplant_chemo");
+    const suggestedOrganismsVi = getSuggestedOrganisms(site, group, combinedSpecificRisks, isNeutropenic);
+    const combinationResult = getCombinationGuidance(combinedSpecificRisks);
     if (group === "group_2") {
       rationalesVi.push("KHUY\u1EBEN C\xC1O: B\u1EAFt bu\u1ED9c s\u1EED d\u1EE5ng ph\xE1c \u0111\u1ED3 kh\xE1ng sinh ph\u1ED5 r\u1ED9ng bao ph\u1EE7 vi khu\u1EA9n \u0111a kh\xE1ng.");
       rationalesEn.push("RECOMMENDATION: Broad-spectrum empiric regimen targeting MDR pathogens is required.");
-      if (specificRisks.length > 0) {
+      if (combinedSpecificRisks.length > 0) {
         const riskTags = [];
-        if (specificRisks.includes("mrsa")) riskTags.push("T\u1EE5 c\u1EA7u v\xE0ng kh\xE1ng Methicillin (MRSA)");
-        if (specificRisks.includes("esbl")) riskTags.push("Enterobacterales sinh ESBL");
-        if (specificRisks.includes("pseudo_acineto")) riskTags.push("Pseudomonas / Acinetobacter \u0111a kh\xE1ng");
-        if (specificRisks.includes("enterococcus")) riskTags.push("Enterococcus");
+        if (combinedSpecificRisks.includes("mrsa")) riskTags.push("T\u1EE5 c\u1EA7u v\xE0ng kh\xE1ng Methicillin (MRSA)");
+        if (combinedSpecificRisks.includes("esbl")) riskTags.push("Enterobacterales sinh ESBL");
+        if (combinedSpecificRisks.includes("pseudo_acineto")) riskTags.push("Pseudomonas / Acinetobacter \u0111a kh\xE1ng");
+        if (combinedSpecificRisks.includes("enterococcus")) riskTags.push("Enterococcus (VRE)");
         rationalesVi.push(`X\xE1c \u0111\u1ECBnh nguy c\u01A1 ri\xEAng cho t\xE1c nh\xE2n: ${riskTags.join("; ")}.`);
+      }
+      if (combinationResult.isGramPosGramNegCoRisk) {
+        rationalesVi.push("L\u01AFU \xDD PH\u1ED0I H\u1EE2P: C\xF3 \u0111\u1ED3ng th\u1EDDi nguy c\u01A1 Gram (+) v\xE0 Gram (-) \u2192 B\u1EAFt bu\u1ED9c ph\u1ED1i h\u1EE3p 2 nh\xF3m kh\xE1ng sinh.");
+      }
+      if (combinationResult.isDualGramNegRisk) {
+        rationalesVi.push("L\u01AFU \xDD PH\u1ED4 KH\xC1NG SINH: C\xF3 c\u1EA3 nguy c\u01A1 ESBL v\xE0 Pseudomonas/Acinetobacter \u2192 \u01AFu ti\xEAn KS di\u1EC7t Acinetobacter/Pseudomonas \u0111\u1EC3 bao ph\u1EE7 \u0111\u1ED3ng th\u1EDDi.");
       }
     } else {
       rationalesVi.push("KHUY\u1EBEN C\xC1O: Ch\u1EC9 \u0111\u1ECBnh kh\xE1ng sinh theo ph\xE1c \u0111\u1ED3 kinh nghi\u1EC7m th\xF4ng th\u01B0\u1EDDng (Nh\xF3m 1). Tr\xE1nh l\u1EA1m d\u1EE5ng Carbapenem/Vancomycin.");
@@ -83470,13 +83735,18 @@
       severityScoreType: severity.scoreType,
       severityScoreValue: severity.scoreValue,
       activeGeneralFactors,
-      activeSpecificRisks: specificRisks,
+      activeSpecificRisks: combinedSpecificRisks,
+      activeSpecificRiskFactorIds: specificFactorIds,
+      suggestedOrganismsVi,
+      isGramPosGramNegCoRisk: combinationResult.isGramPosGramNegCoRisk,
+      isDualGramNegRisk: combinationResult.isDualGramNegRisk,
+      combinationGuidanceVi: combinationResult.guidanceVi,
       rationalesVi,
       rationalesEn,
       source: { doc: "BVBND_PhanNhom", page: 2 }
     };
   }
-  function classifyRiskGroup(selectedGeneralRiskIds, severity, population, specificRisks = []) {
+  function classifyRiskGroup(selectedGeneralRiskIds, severity, population, specificRisks = [], site = "respiratory", specificRiskFactorIds = []) {
     const isHighSeverity = severity.scoreType === "psofa" ? severity.scoreValue >= 8 : severity.scoreType === "clif_sofa" ? severity.scoreValue >= 12 : severity.scoreValue >= 2;
     return classifyRisk(
       selectedGeneralRiskIds,
@@ -83485,7 +83755,12 @@
         scoreValue: severity.scoreValue,
         isHighSeverity
       },
-      specificRisks
+      specificRisks,
+      {
+        site,
+        specificRiskFactorIds,
+        isNeutropenic: selectedGeneralRiskIds.includes("transplant_chemo")
+      }
     );
   }
   function getEmpiricRegimens(site, population, riskGroup, sepsisSource, specificRisks = []) {
@@ -83877,6 +84152,8 @@
     onSelectSepsisSource,
     checkedGeneralRiskIds,
     onToggleGeneralRisk,
+    checkedSpecificRiskFactorIds = [],
+    onToggleSpecificRiskFactor,
     sofaScore,
     onSofaChange,
     psofaScore,
@@ -83894,6 +84171,8 @@
     const [showNhsnDetails, setShowNhsnDetails] = (0, import_react11.useState)(true);
     const [selectedSyndrome, setSelectedSyndrome] = (0, import_react11.useState)("nhsn_pneumonia_adult");
     const [activePreset, setActivePreset] = (0, import_react11.useState)("vap_severe");
+    const [showSofaCalculator, setShowSofaCalculator] = (0, import_react11.useState)(false);
+    const [expandedPathogen, setExpandedPathogen] = (0, import_react11.useState)(null);
     const isGroup2 = riskResult.group === "group_2";
     const sitesList = [
       {
@@ -84221,37 +84500,95 @@
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(SourceBadge, { source: { doc: "BVBND_PhanNhom", page: 2 } })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "p-3.5 rounded-xl bg-slate-50 border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.Activity, { className: "w-4 h-4 text-teal-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-900 uppercase tracking-wide", children: population === "pediatric" ? "Thang \u0111i\u1EC3m pSOFA (Tr\u1EBB em)" : isChronicLiverDisease ? "Thang \u0111i\u1EC3m CLIF-SOFA (X\u01A1 gan)" : "Thang \u0111i\u1EC3m SOFA (Ng\u01B0\u1EDDi l\u1EDBn)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: `px-2 py-0.5 rounded text-[10px] font-black uppercase ${riskResult.isHighSeverity ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: riskResult.isHighSeverity ? "M\u1EE9c \u0111\u1ED9 N\u1EB7ng / S\u1ED1c NK" : "M\u1EE9c \u0111\u1ED9 Nh\u1EB9 - Trung b\xECnh" })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.Activity, { className: "w-4 h-4 text-teal-600" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-900 uppercase tracking-wide", children: population === "pediatric" ? "Thang \u0111i\u1EC3m pSOFA (Tr\u1EBB em)" : isChronicLiverDisease ? "Thang \u0111i\u1EC3m CLIF-SOFA (X\u01A1 gan)" : "Thang \u0111i\u1EC3m SOFA (Ng\u01B0\u1EDDi l\u1EDBn)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: `px-2 py-0.5 rounded text-[10px] font-black uppercase ${riskResult.isHighSeverity ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: riskResult.isHighSeverity ? "M\u1EE9c \u0111\u1ED9 N\u1EB7ng / S\u1ED1c NK" : "M\u1EE9c \u0111\u1ED9 Nh\u1EB9 - Trung b\xECnh" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: population === "pediatric" ? "\u0110i\u1EC3m pSOFA \u2265 8 l\xE0 ch\u1EC9 d\u1EA5u b\u1EC7nh n\u1EB7ng (Sepsis-3 Nhi khoa)" : isChronicLiverDisease ? "\u0110i\u1EC3m CLIF-SOFA \u2265 12 l\xE0 ch\u1EC9 d\u1EA5u suy t\u1EA1ng n\u1EB7ng \u1EDF b\u1EC7nh nh\xE2n x\u01A1 gan" : "\u0110i\u1EC3m SOFA \u2265 2 ph\u1EA3n \xE1nh r\u1ED1i lo\u1EA1n ch\u1EE9c n\u0103ng t\u1EA1ng n\u1EB7ng li\xEAn quan nhi\u1EC5m khu\u1EA9n" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: population === "pediatric" ? "\u0110i\u1EC3m pSOFA \u2265 8 l\xE0 ch\u1EC9 d\u1EA5u b\u1EC7nh n\u1EB7ng" : isChronicLiverDisease ? "\u0110i\u1EC3m CLIF-SOFA \u2265 12 l\xE0 ch\u1EC9 d\u1EA5u suy \u0111a t\u1EA1ng \u1EDF b\u1EC7nh nh\xE2n x\u01A1 gan" : "\u0110i\u1EC3m SOFA \u2265 2 ph\u1EA3n \xE1nh r\u1ED1i lo\u1EA1n ch\u1EE9c n\u0103ng t\u1EA1ng n\u1EB7ng li\xEAn quan nhi\u1EC5m khu\u1EA9n" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs text-slate-500 font-medium", children: "\u0110i\u1EC3m s\u1ED1:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex items-center space-x-1", children: [0, 1, 2, 4, 6, 8, 12].map((scoreVal) => {
-              const currentScore = population === "pediatric" ? psofaScore : isChronicLiverDisease ? clifSofaScore : sofaScore;
-              const isCurrent = currentScore === scoreVal;
-              return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs text-slate-500 font-medium", children: "\u0110i\u1EC3m s\u1ED1:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex items-center space-x-1", children: [0, 1, 2, 4, 6, 8, 12].map((scoreVal) => {
+                const currentScore = population === "pediatric" ? psofaScore : isChronicLiverDisease ? clifSofaScore : sofaScore;
+                const isCurrent = currentScore === scoreVal;
+                return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+                  "button",
+                  {
+                    type: "button",
+                    onClick: () => {
+                      if (population === "pediatric") onPsofaChange(scoreVal);
+                      else if (isChronicLiverDisease) onClifSofaChange(scoreVal);
+                      else onSofaChange(scoreVal);
+                    },
+                    className: `w-7 h-7 rounded-lg text-xs font-bold transition-all cursor-pointer ${isCurrent ? "bg-teal-600 text-white shadow-xs" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"}`,
+                    children: scoreVal
+                  },
+                  scoreVal
+                );
+              }) }),
+              population === "adult" && !isChronicLiverDisease && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
                 "button",
                 {
                   type: "button",
-                  onClick: () => {
-                    if (population === "pediatric") onPsofaChange(scoreVal);
-                    else if (isChronicLiverDisease) onClifSofaChange(scoreVal);
-                    else onSofaChange(scoreVal);
-                  },
-                  className: `w-7 h-7 rounded-lg text-xs font-bold transition-all cursor-pointer ${isCurrent ? "bg-teal-600 text-white shadow-xs" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"}`,
-                  children: scoreVal
+                  onClick: () => setShowSofaCalculator(!showSofaCalculator),
+                  className: `px-2.5 py-1 rounded-lg text-xs font-bold flex items-center space-x-1 transition-all cursor-pointer ${showSofaCalculator ? "bg-teal-700 text-white shadow-xs" : "bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200"}`,
+                  title: "M\u1EDF m\xE1y t\xEDnh nhanh 6 h\u1EC7 c\u01A1 quan SOFA",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.Calculator, { className: "w-3.5 h-3.5" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: showSofaCalculator ? "\u0110\xF3ng t\xEDnh nhanh" : "M\xE1y t\xEDnh SOFA" })
+                  ]
+                }
+              )
+            ] })
+          ] }),
+          showSofaCalculator && population === "adult" && !isChronicLiverDisease && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "pt-2 border-t border-slate-200/80 space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "text-[11px] font-bold text-slate-700 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Ch\u1ECDn c\xE1c r\u1ED1i lo\u1EA1n ch\u1EE9c n\u0103ng c\u01A1 quan ghi nh\u1EADn \u1EDF b\u1EC7nh nh\xE2n:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { className: "text-teal-700 font-semibold", children: [
+                "SOFA hi\u1EC7n t\u1EA1i: ",
+                sofaScore,
+                " \u0111i\u1EC3m"
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1.5", children: [
+              { organ: "\u{1FAC1} H\xF4 h\u1EA5p", label: "PaO2/FiO2 \u2264 300 (ho\u1EB7c SpO2/FiO2 t\u01B0\u01A1ng \u0111\u01B0\u01A1ng)", pts: 2 },
+              { organ: "\u{1FAC1} H\xF4 h\u1EA5p th\u1EDF m\xE1y", label: "PaO2/FiO2 \u2264 200 c\xF3 h\u1ED7 tr\u1EE3 th\u1EDF m\xE1y", pts: 3 },
+              { organ: "\u{1FA78} \u0110\xF4ng m\xE1u", label: "Ti\u1EC3u c\u1EA7u < 100 x 10\u2079/L", pts: 2 },
+              { organ: "\u{1FA78} \u0110\xF4ng m\xE1u n\u1EB7ng", label: "Ti\u1EC3u c\u1EA7u < 50 x 10\u2079/L", pts: 3 },
+              { organ: "\u{1F9EA} Gan m\u1EADt", label: "Bilirubin \u2265 33 \xB5mol/L (\u2265 2.0 mg/dL)", pts: 2 },
+              { organ: "\u{1FAC0} Tim m\u1EA1ch", label: "T\u1EE5t HA c\u1EA7n b\xF9 d\u1ECBch / Dopamine \u2264 5 \xB5g/kg/p", pts: 2 },
+              { organ: "\u{1FAC0} Tim m\u1EA1ch n\u1EB7ng", label: "C\u1EA7n Noradrenaline / Dopamine > 5 \xB5g/kg/p", pts: 3 },
+              { organ: "\u{1F9E0} Th\u1EA7n kinh", label: "Glasgow 10 - 12 \u0111i\u1EC3m (l\u01A1 m\u01A1, r\u1ED1i lo\u1EA1n tri gi\xE1c)", pts: 2 },
+              { organ: "\u{1F4A7} Th\u1EADn", label: "Creatinine \u2265 171 \xB5mol/L (\u2265 2.0 mg/dL) / thi\u1EC3u ni\u1EC7u", pts: 2 }
+            ].map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: () => {
+                  const newScore = Math.min(24, Math.max(0, sofaScore + (sofaScore >= item.pts ? -item.pts : item.pts)));
+                  onSofaChange(newScore);
                 },
-                scoreVal
-              );
-            }) })
+                className: "p-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-left text-[11px] transition-all cursor-pointer flex flex-col justify-between",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "font-bold text-slate-800 flex items-center justify-between", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: item.organ }),
+                    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { className: "px-1.5 py-0.2 rounded bg-teal-50 text-teal-700 font-black", children: [
+                      "+",
+                      item.pts,
+                      "\u0111"
+                    ] })
+                  ] }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-slate-500 text-[10px] mt-0.5 leading-snug", children: item.label })
+                ]
+              },
+              idx
+            )) })
           ] })
-        ] }) }),
+        ] }),
         /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center justify-between mb-2", children: [
             /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-800", children: "8 Y\u1EBFu T\u1ED1 Nguy C\u01A1 Chung Nhi\u1EC5m VK\u0110K (BVBND 2026):" }),
@@ -84286,32 +84623,129 @@
             );
           }) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-800 block mb-2", children: "Nguy C\u01A1 T\xE1c Nh\xE2n \u0110a Kh\xE1ng \u0110\u1EB7c Hi\u1EC7u (C\u1EA7n Ph\u1ED1i H\u1EE3p Thu\u1ED1c):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2", children: [
-            { id: "mrsa", label: "T\u1EE5 c\u1EA7u MRSA", sub: "Vancomycin / Linezolid" },
-            { id: "pseudo_acineto", label: "Pseudomonas / Acinetobacter", sub: "Carbapenem / Colistin" },
-            { id: "esbl", label: "Enterobacterales sinh ESBL", sub: "Carbapenem / Aminoglycoside" },
-            { id: "enterococcus", label: "Enterococcus (VRE)", sub: "Ampicillin / Daptomycin" }
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "space-y-3 pt-2 border-t border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-800 block", children: "\u0110\xE1nh Gi\xE1 Y\u1EBFu T\u1ED1 Nguy C\u01A1 Ri\xEAng C\u1EE7a T\u1EEBng T\xE1c Nh\xE2n \u0110a Kh\xE1ng (BVBND 2026):" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-[11px] text-slate-500", children: "T\u1EF1 \u0111\u1ED9ng suy lu\u1EADn kh\xE1ng sinh bao ph\u1EE7 & hi\u1EC3n th\u1ECB c\u1EA3nh b\xE1o ph\u1ED1i h\u1EE3p thu\u1ED1c theo Ghi ch\xFA b" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { className: "text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200", children: [
+              "\u0110\xE3 nh\u1EADn di\u1EC7n: ",
+              checkedSpecificRisks.length,
+              " nh\xF3m t\xE1c nh\xE2n"
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
+            {
+              id: "mrsa",
+              title: "T\u1EE5 C\u1EA7u V\xE0ng Kh\xE1ng Methicillin (MRSA)",
+              sub: "Vancomycin / Linezolid",
+              color: "rose",
+              isSiteTarget: site === "skin_soft_tissue",
+              siteLabel: "\u{1F3AF} Khuy\xEAn ki\u1EC3m tra theo \u1ED5 Da & M\xF4 m\u1EC1m",
+              factors: MRSA_RISK_FACTORS
+            },
+            {
+              id: "esbl",
+              title: "Enterobacterales sinh ESBL (E. coli, Klebsiella)",
+              sub: "Carbapenem / Aminoglycoside",
+              color: "amber",
+              isSiteTarget: site === "urinary" || site === "gastrointestinal" || site === "peritoneal",
+              siteLabel: "\u{1F3AF} Khuy\xEAn ki\u1EC3m tra theo \u1ED5 Ti\u1EBFt ni\u1EC7u / Ti\xEAu h\xF3a",
+              factors: ESBL_RISK_FACTORS
+            },
+            {
+              id: "pseudo_acineto",
+              title: "Pseudomonas / Acinetobacter \u0110a Kh\xE1ng",
+              sub: "Carbapenem / Colistin / Cefepime / Piptaz",
+              color: "purple",
+              isSiteTarget: site === "respiratory" || site === "sepsis",
+              siteLabel: "\u{1F3AF} Khuy\xEAn ki\u1EC3m tra theo \u1ED5 H\xF4 h\u1EA5p / Nhi\u1EC5m tr\xF9ng huy\u1EBFt",
+              factors: PSEUDO_ACINETO_RISK_FACTORS
+            },
+            {
+              id: "enterococcus",
+              title: "Enterococcus spp. (VRE / Ampicillin-R)",
+              sub: "Ampicillin / Daptomycin / Linezolid",
+              color: "indigo",
+              isSiteTarget: site === "urinary" && checkedGeneralRiskIds.includes("invasive_device"),
+              siteLabel: "\u{1F3AF} Khuy\xEAn ki\u1EC3m tra khi c\xF3 sonde ti\u1EC3u l\u01B0u k\xE9o d\xE0i",
+              factors: ENTEROCOCCUS_RISK_FACTORS
+            }
           ].map((spec) => {
             const isChecked = checkedSpecificRisks.includes(spec.id);
+            const isExpanded = expandedPathogen === spec.id;
+            const activeCount = spec.factors.filter((f) => checkedSpecificRiskFactorIds.includes(f.id)).length;
             return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
-              "label",
+              "div",
               {
-                className: `p-2.5 rounded-xl border text-xs cursor-pointer transition-all flex items-start space-x-2 ${isChecked ? "border-rose-500 bg-rose-50/70 text-rose-950 font-bold" : "border-slate-200 hover:border-slate-300 bg-white text-slate-600"}`,
+                className: `rounded-xl border transition-all ${isChecked ? "border-rose-400 bg-rose-50/40 shadow-xs" : spec.isSiteTarget ? "border-sky-300 bg-sky-50/20" : "border-slate-200 bg-white hover:border-slate-300"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
-                    "input",
-                    {
-                      type: "checkbox",
-                      checked: isChecked,
-                      onChange: () => onToggleSpecificRisk(spec.id),
-                      className: "rounded text-rose-600 focus:ring-rose-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
-                    }
-                  ),
-                  /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { children: spec.label }),
-                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[10px] text-slate-400 font-normal", children: spec.sub })
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-3 flex items-start justify-between gap-2", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("label", { className: "flex items-start space-x-2.5 cursor-pointer flex-1", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+                        "input",
+                        {
+                          type: "checkbox",
+                          checked: isChecked,
+                          onChange: () => onToggleSpecificRisk(spec.id),
+                          className: "rounded text-rose-600 focus:ring-rose-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
+                        }
+                      ),
+                      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "min-w-0", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-1.5 flex-wrap", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: `text-xs font-bold ${isChecked ? "text-rose-950 font-black" : "text-slate-900"}`, children: spec.title }),
+                          spec.isSiteTarget && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800", children: spec.siteLabel })
+                        ] }),
+                        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "text-[11px] text-slate-500 mt-0.5", children: [
+                          "Thu\u1ED1c bao ph\u1EE7: ",
+                          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "font-semibold text-slate-700", children: spec.sub })
+                        ] })
+                      ] })
+                    ] }),
+                    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+                      "button",
+                      {
+                        type: "button",
+                        onClick: () => setExpandedPathogen(isExpanded ? null : spec.id),
+                        className: `px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center space-x-1 shrink-0 ${isExpanded ? "bg-slate-200 text-slate-800" : activeCount > 0 ? "bg-rose-100 text-rose-800 font-black" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`,
+                        children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: activeCount > 0 ? `${activeCount}/${spec.factors.length} y\u1EBFu t\u1ED1` : `Xem ${spec.factors.length} y\u1EBFu t\u1ED1` }),
+                          isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.ChevronUp, { className: "w-3 h-3" }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.ChevronDown, { className: "w-3 h-3" })
+                        ]
+                      }
+                    )
+                  ] }),
+                  isExpanded && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "px-3 pb-3 pt-1 border-t border-slate-100 space-y-1.5 bg-slate-50/50 rounded-b-xl", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1", children: "B\u1EA3ng ki\u1EC3m y\u1EBFu t\u1ED1 nguy c\u01A1 ri\xEAng (BVBND):" }),
+                    spec.factors.map((fact) => {
+                      const isFactorChecked = checkedSpecificRiskFactorIds.includes(fact.id);
+                      return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+                        "label",
+                        {
+                          className: `flex items-start space-x-2 p-1.5 rounded-lg border text-[11px] cursor-pointer transition-all ${isFactorChecked ? "bg-white border-rose-400 font-semibold text-slate-900 shadow-2xs" : "border-slate-200/80 bg-white/70 hover:bg-white text-slate-600"}`,
+                          children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+                              "input",
+                              {
+                                type: "checkbox",
+                                checked: isFactorChecked,
+                                onChange: () => {
+                                  onToggleSpecificRiskFactor?.(fact.id);
+                                  if (!isChecked) onToggleSpecificRisk(spec.id);
+                                },
+                                className: "rounded text-rose-600 focus:ring-rose-500 w-3.5 h-3.5 mt-0.5 cursor-pointer shrink-0"
+                              }
+                            ),
+                            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex-1 leading-snug", children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: fact.labelVi }),
+                              fact.noteVi && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[10px] text-slate-400 mt-0.5", children: fact.noteVi })
+                            ] })
+                          ]
+                        },
+                        fact.id
+                      );
+                    })
                   ] })
                 ]
               },
@@ -84320,7 +84754,62 @@
           }) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: `p-4 sm:p-5 rounded-2xl border transition-all ${isGroup2 ? "bg-rose-50/80 border-rose-300 text-rose-950 shadow-sm" : "bg-emerald-50/80 border-emerald-300 text-emerald-950 shadow-sm"}`, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: `p-4 rounded-2xl border transition-all ${isGroup2 ? "bg-rose-50/80 border-rose-200 text-rose-950" : "bg-emerald-50/80 border-emerald-200 text-emerald-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-start space-x-3", children: [
+          isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.Bug, { className: "w-5 h-5 text-rose-600 shrink-0 mt-0.5" }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0 mt-0.5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center justify-between flex-wrap gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-black uppercase tracking-wider", children: isGroup2 ? "T\xE1c Nh\xE2n Vi Khu\u1EA9n \u0110a Kh\xE1ng C\u1EA7n Bao Ph\u1EE7 (BVBND 2026):" : "T\xE1c Nh\xE2n Th\u01B0\u1EDDng G\u1EB7p C\u1EA7n Bao Ph\u1EE7 Theo \u1ED4 Nhi\u1EC5m (BVBND 2026):" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: `text-[10px] font-black px-2 py-0.5 rounded-full ${isGroup2 ? "bg-rose-200 text-rose-900" : "bg-emerald-200 text-emerald-900"}`, children: isGroup2 ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: \xCDt nguy c\u01A1 VK\u0110K" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex flex-wrap gap-1.5 mt-2", children: riskResult.suggestedOrganismsVi.map((org, idx) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+              "span",
+              {
+                className: `text-xs px-2.5 py-1 rounded-lg font-bold flex items-center space-x-1 ${isGroup2 ? "bg-white border border-rose-300 text-rose-900 shadow-2xs" : "bg-white border border-emerald-300 text-emerald-900 shadow-2xs"}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "\u2022" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: org })
+                ]
+              },
+              idx
+            )) })
+          ] })
+        ] }) }),
+        riskResult.isGramPosGramNegCoRisk && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-3.5 rounded-2xl bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-sm flex items-start space-x-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.AlertCircle, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "text-xs leading-relaxed", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "font-black text-sm uppercase tracking-wide text-amber-200 flex items-center space-x-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "\u26A0\uFE0F QUY T\u1EAEC BVBND (Ghi ch\xFA b): B\u1EAET BU\u1ED8C PH\u1ED0I H\u1EE2P KH\xC1NG SINH GRAM (+) V\xC0 GRAM (-)" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("p", { className: "mt-1 opacity-95", children: [
+              "B\u1EC7nh nh\xE2n c\xF3 \u0111\u1ED3ng th\u1EDDi nguy c\u01A1 nhi\u1EC5m c\u1EA7u khu\u1EA9n Gram (+) \u0111a kh\xE1ng (MRSA / VRE) V\xC0 tr\u1EF1c khu\u1EA9n Gram (-) \u0111a kh\xE1ng (ESBL / Pseudomonas / Acinetobacter).",
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: " B\u1EAFt bu\u1ED9c ch\u1EC9 \u0111\u1ECBnh ph\xE1c \u0111\u1ED3 ph\u1ED1i h\u1EE3p 2 nh\xF3m thu\u1ED1c" }),
+              " (v\xED d\u1EE5: Vancomycin ho\u1EB7c Linezolid K\u1EBET H\u1EE2P V\u1EDAI Meropenem ho\u1EB7c Piperacillin-tazobactam)."
+            ] })
+          ] })
+        ] }),
+        riskResult.isDualGramNegRisk && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-3.5 rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white shadow-sm flex items-start space-x-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.Zap, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "text-xs leading-relaxed", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "font-black text-sm uppercase tracking-wide text-amber-200 flex items-center space-x-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "\u26A1 QUY T\u1EAEC BVBND (Ghi ch\xFA b): \u01AFU TI\xCAN KH\xC1NG SINH DI\u1EC6T PSEUDOMONAS / ACINETOBACTER" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("p", { className: "mt-1 opacity-95", children: [
+              "B\u1EC7nh nh\xE2n c\xF3 nguy c\u01A1 \u0111\u1ED3ng th\u1EDDi c\u1EA3 2 nh\xF3m Gram (-) (Enterobacterales sinh ESBL v\xE0 Pseudomonas / Acinetobacter).",
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: " \u01AFU TI\xCAN ch\u1ECDn kh\xE1ng sinh c\xF3 ho\u1EA1t ph\u1ED5 tr\xEAn Acinetobacter / Pseudomonas" }),
+              " (nh\u01B0 Meropenem, Cefepime, Piperacillin-tazobactam ho\u1EB7c Colistin ph\u1ED1i h\u1EE3p) \u0111\u1EC3 bao ph\u1EE7 lu\xF4n c\u1EA3 c\xE1c ch\u1EE7ng sinh ESBL. ",
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("em", { children: "Tr\xE1nh d\xF9ng Ertapenem \u0111\u01A1n \u0111\u1ED9c" }),
+              " v\xEC Ertapenem kh\xF4ng c\xF3 ph\u1ED5 tr\xEAn Pseudomonas hay Acinetobacter."
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.Info, { className: "w-4 h-4 text-slate-500 shrink-0" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: "Nguy\xEAn t\u1EAFc s\u1ED1 9 BVBND:" }),
+            " C\xE1c kh\xE1ng sinh ph\u1ED5 r\u1ED9ng nh\xF3m BL-BLI (nh\u01B0 Piperacillin-tazobactam) ho\u1EB7c Carbapenem (Meropenem, Imipenem) \u0111\xE3 c\xF3 ph\u1ED5 k\u1EF5 kh\xED hi\u1EC7u qu\u1EA3, ",
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: "kh\xF4ng d\xF9ng Metronidazole ph\u1ED1i h\u1EE3p c\xF9ng" }),
+            "."
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: `p-4 sm:p-5 rounded-2xl border transition-all ${isGroup2 ? "bg-rose-50/90 border-rose-300 text-rose-950 shadow-sm" : "bg-emerald-50/90 border-emerald-300 text-emerald-950 shadow-sm"}`, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-4", children: [
         /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-start space-x-3", children: [
           isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.ShieldAlert, { className: "w-8 h-8 text-rose-600 shrink-0 mt-0.5" }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react14.ShieldCheck, { className: "w-8 h-8 text-emerald-600 shrink-0 mt-0.5" }),
           /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
@@ -85181,7 +85670,17 @@
                 ] })
               ] })
             ] }),
-            isGroup2 && state.checkedSpecificRisks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex flex-wrap gap-1 mt-2 pt-2 border-t border-rose-200/60", children: state.checkedSpecificRisks.map((r) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-200/80 text-rose-800", children: r === "mrsa" ? "MRSA" : r === "esbl" ? "ESBL" : r === "pseudo_acineto" ? "Pseudo/Acineto" : "Enterococcus" }, r)) })
+            isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-1.5 mt-2 pt-2 border-t border-rose-200/60", children: [
+              state.checkedSpecificRisks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex flex-wrap gap-1", children: state.checkedSpecificRisks.map((r) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-200/80 text-rose-800", children: r === "mrsa" ? "MRSA" : r === "esbl" ? "ESBL" : r === "pseudo_acineto" ? "Pseudo/Acineto" : "Enterococcus" }, r)) }),
+              riskResult.isGramPosGramNegCoRisk && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-800 border border-red-200 flex items-center space-x-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u26A0\uFE0F" }),
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "B\u1EAFt bu\u1ED9c ph\u1ED1i h\u1EE3p Gram(+) & Gram(-)" })
+              ] }),
+              riskResult.isDualGramNegRisk && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-200 flex items-center space-x-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u26A1" }),
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u01AFu ti\xEAn di\u1EC7t Pseudo / Acineto" })
+              ] })
+            ] })
           ]
         }
       ),
@@ -85256,6 +85755,11 @@
       "pseudo_acineto",
       "mrsa"
     ]);
+    const [checkedSpecificRiskFactorIds, setCheckedSpecificRiskFactorIds] = (0, import_react14.useState)([
+      "ps_icu_5d",
+      "ps_devices",
+      "mrsa_cvc_foley"
+    ]);
     const [clinicalResponse, setClinicalResponse] = (0, import_react14.useState)("improved");
     const [cultureStatus, setCultureStatus] = (0, import_react14.useState)("pending");
     const [susceptibilityStatus, setSusceptibilityStatus] = (0, import_react14.useState)("sensitive");
@@ -85275,6 +85779,11 @@
         (prev) => prev.includes(risk) ? prev.filter((x) => x !== risk) : [...prev, risk]
       );
     };
+    const handleToggleSpecificRiskFactor = (factorId) => {
+      setCheckedSpecificRiskFactorIds(
+        (prev) => prev.includes(factorId) ? prev.filter((x) => x !== factorId) : [...prev, factorId]
+      );
+    };
     const handleApplyPreset = (presetKey) => {
       if (presetKey === "vap_severe") {
         setPopulation("adult");
@@ -85286,6 +85795,7 @@
         setSofaScore(8);
         setCheckedGeneralRiskIds(["hospital_90d", "invasive_device", "iv_abx_30d"]);
         setCheckedSpecificRisks(["pseudo_acineto", "mrsa"]);
+        setCheckedSpecificRiskFactorIds(["ps_icu_5d", "ps_devices", "mrsa_cvc_foley"]);
       } else if (presetKey === "cap_standard") {
         setPopulation("adult");
         setIsChronicLiverDisease(false);
@@ -85296,6 +85806,7 @@
         setSofaScore(0);
         setCheckedGeneralRiskIds([]);
         setCheckedSpecificRisks([]);
+        setCheckedSpecificRiskFactorIds([]);
       } else if (presetKey === "sepsis_cirrhosis") {
         setPopulation("adult");
         setIsChronicLiverDisease(true);
@@ -85306,6 +85817,7 @@
         setClifSofaScore(13);
         setCheckedGeneralRiskIds(["chronic_disease", "hospital_90d"]);
         setCheckedSpecificRisks(["esbl"]);
+        setCheckedSpecificRiskFactorIds(["esbl_steroid", "esbl_tubes"]);
       } else if (presetKey === "cauti_elderly") {
         setPopulation("adult");
         setIsChronicLiverDisease(false);
@@ -85316,6 +85828,7 @@
         setSofaScore(1);
         setCheckedGeneralRiskIds(["invasive_device", "age_over_60"]);
         setCheckedSpecificRisks(["esbl", "pseudo_acineto"]);
+        setCheckedSpecificRiskFactorIds(["esbl_tubes", "ps_devices"]);
       } else if (presetKey === "ssti_cellulitis") {
         setPopulation("adult");
         setIsChronicLiverDisease(false);
@@ -85326,9 +85839,11 @@
         setSofaScore(0);
         setCheckedGeneralRiskIds([]);
         setCheckedSpecificRisks([]);
+        setCheckedSpecificRiskFactorIds([]);
       } else if (presetKey === "custom") {
         setCheckedGeneralRiskIds([]);
         setCheckedSpecificRisks([]);
+        setCheckedSpecificRiskFactorIds([]);
         setSofaScore(0);
         setPsofaScore(0);
         setClifSofaScore(0);
@@ -85342,7 +85857,9 @@
       checkedGeneralRiskIds,
       activeSeverity,
       population,
-      checkedSpecificRisks
+      checkedSpecificRisks,
+      site,
+      checkedSpecificRiskFactorIds
     );
     const wizardState = {
       currentStep: currentStage === 1 ? 1 : currentStage === 2 ? 4 : 5,
@@ -85352,6 +85869,7 @@
       site,
       sepsisSource,
       checkedGeneralRiskIds,
+      checkedSpecificRiskFactorIds,
       sofaScore,
       psofaScore,
       clifSofaScore,
@@ -85480,6 +85998,8 @@
                 onSelectSepsisSource: setSepsisSource,
                 checkedGeneralRiskIds,
                 onToggleGeneralRisk: handleToggleGeneralRisk,
+                checkedSpecificRiskFactorIds,
+                onToggleSpecificRiskFactor: handleToggleSpecificRiskFactor,
                 sofaScore,
                 onSofaChange: setSofaScore,
                 psofaScore,

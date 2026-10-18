@@ -19,7 +19,12 @@ import {
   Baby,
   Activity,
   Layers,
-  CheckSquare
+  CheckSquare,
+  Bug,
+  Calculator,
+  Shield,
+  Zap,
+  AlertCircle
 } from 'lucide-react';
 import {
   Population,
@@ -29,7 +34,14 @@ import {
   SpecificPathogenRisk
 } from '../../selection/types';
 import { NHSN_CRITERIA_SECTIONS } from '../../selection/data/nhsnCriteria';
-import { GENERAL_MDR_RISK_FACTORS } from '../../selection/data/riskFactors';
+import {
+  GENERAL_MDR_RISK_FACTORS,
+  MRSA_RISK_FACTORS,
+  ESBL_RISK_FACTORS,
+  PSEUDO_ACINETO_RISK_FACTORS,
+  ENTEROCOCCUS_RISK_FACTORS,
+  getPrimaryTargetForSite
+} from '../../selection/data/riskFactors';
 import { SourceBadge } from './SourceBadge';
 
 interface StepAssessmentStratificationProps {
@@ -45,6 +57,8 @@ interface StepAssessmentStratificationProps {
   onSelectSepsisSource: (src: SepsisSource) => void;
   checkedGeneralRiskIds: string[];
   onToggleGeneralRisk: (id: string) => void;
+  checkedSpecificRiskFactorIds?: string[];
+  onToggleSpecificRiskFactor?: (factorId: string) => void;
   sofaScore: number;
   onSofaChange: (val: number) => void;
   psofaScore: number;
@@ -73,6 +87,8 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
   onSelectSepsisSource,
   checkedGeneralRiskIds,
   onToggleGeneralRisk,
+  checkedSpecificRiskFactorIds = [],
+  onToggleSpecificRiskFactor,
   sofaScore,
   onSofaChange,
   psofaScore,
@@ -90,6 +106,8 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
   const [showNhsnDetails, setShowNhsnDetails] = useState<boolean>(true);
   const [selectedSyndrome, setSelectedSyndrome] = useState<string>('nhsn_pneumonia_adult');
   const [activePreset, setActivePreset] = useState<string>('vap_severe');
+  const [showSofaCalculator, setShowSofaCalculator] = useState<boolean>(false);
+  const [expandedPathogen, setExpandedPathogen] = useState<SpecificPathogenRisk | null>(null);
 
   const isGroup2 = riskResult.group === 'group_2';
 
@@ -500,7 +518,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         </div>
 
         {/* Severity Score Component */}
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center space-x-2">
@@ -516,14 +534,14 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
               </div>
               <p className="text-[11px] text-slate-500 mt-0.5">
                 {population === 'pediatric'
-                  ? 'Điểm pSOFA ≥ 8 là chỉ dấu bệnh nặng'
+                  ? 'Điểm pSOFA ≥ 8 là chỉ dấu bệnh nặng (Sepsis-3 Nhi khoa)'
                   : isChronicLiverDisease
-                  ? 'Điểm CLIF-SOFA ≥ 12 là chỉ dấu suy đa tạng ở bệnh nhân xơ gan'
+                  ? 'Điểm CLIF-SOFA ≥ 12 là chỉ dấu suy tạng nặng ở bệnh nhân xơ gan'
                   : 'Điểm SOFA ≥ 2 phản ánh rối loạn chức năng tạng nặng liên quan nhiễm khuẩn'}
               </p>
             </div>
 
-            {/* Quick Score Stepper */}
+            {/* Quick Score Stepper & Calculator Trigger */}
             <div className="flex items-center space-x-2">
               <span className="text-xs text-slate-500 font-medium">Điểm số:</span>
               <div className="flex items-center space-x-1">
@@ -550,8 +568,63 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                   );
                 })}
               </div>
+
+              {population === 'adult' && !isChronicLiverDisease && (
+                <button
+                  type="button"
+                  onClick={() => setShowSofaCalculator(!showSofaCalculator)}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center space-x-1 transition-all cursor-pointer ${
+                    showSofaCalculator
+                      ? 'bg-teal-700 text-white shadow-xs'
+                      : 'bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200'
+                  }`}
+                  title="Mở máy tính nhanh 6 hệ cơ quan SOFA"
+                >
+                  <Calculator className="w-3.5 h-3.5" />
+                  <span>{showSofaCalculator ? 'Đóng tính nhanh' : 'Máy tính SOFA'}</span>
+                </button>
+              )}
             </div>
           </div>
+
+          {/* Quick SOFA 6 Organ Criteria Panel */}
+          {showSofaCalculator && population === 'adult' && !isChronicLiverDisease && (
+            <div className="pt-2 border-t border-slate-200/80 space-y-2">
+              <div className="text-[11px] font-bold text-slate-700 flex items-center justify-between">
+                <span>Chọn các rối loạn chức năng cơ quan ghi nhận ở bệnh nhân:</span>
+                <span className="text-teal-700 font-semibold">SOFA hiện tại: {sofaScore} điểm</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1.5">
+                {[
+                  { organ: '🫁 Hô hấp', label: 'PaO2/FiO2 ≤ 300 (hoặc SpO2/FiO2 tương đương)', pts: 2 },
+                  { organ: '🫁 Hô hấp thở máy', label: 'PaO2/FiO2 ≤ 200 có hỗ trợ thở máy', pts: 3 },
+                  { organ: '🩸 Đông máu', label: 'Tiểu cầu < 100 x 10⁹/L', pts: 2 },
+                  { organ: '🩸 Đông máu nặng', label: 'Tiểu cầu < 50 x 10⁹/L', pts: 3 },
+                  { organ: '🧪 Gan mật', label: 'Bilirubin ≥ 33 µmol/L (≥ 2.0 mg/dL)', pts: 2 },
+                  { organ: '🫀 Tim mạch', label: 'Tụt HA cần bù dịch / Dopamine ≤ 5 µg/kg/p', pts: 2 },
+                  { organ: '🫀 Tim mạch nặng', label: 'Cần Noradrenaline / Dopamine > 5 µg/kg/p', pts: 3 },
+                  { organ: '🧠 Thần kinh', label: 'Glasgow 10 - 12 điểm (lơ mơ, rối loạn tri giác)', pts: 2 },
+                  { organ: '💧 Thận', label: 'Creatinine ≥ 171 µmol/L (≥ 2.0 mg/dL) / thiểu niệu', pts: 2 }
+                ].map((item, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      const newScore = Math.min(24, Math.max(0, sofaScore + (sofaScore >= item.pts ? -item.pts : item.pts)));
+                      onSofaChange(newScore);
+                    }}
+                    className="p-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-left text-[11px] transition-all cursor-pointer flex flex-col justify-between"
+                  >
+                    <div className="font-bold text-slate-800 flex items-center justify-between">
+                      <span>{item.organ}</span>
+                      <span className="px-1.5 py-0.2 rounded bg-teal-50 text-teal-700 font-black">+{item.pts}đ</span>
+                    </div>
+                    <div className="text-slate-500 text-[10px] mt-0.5 leading-snug">{item.label}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* 8 General MDR Risk Factors */}
@@ -597,50 +670,255 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
           </div>
         </div>
 
-        {/* Specific Pathogen Risks */}
-        <div>
-          <span className="text-xs font-bold text-slate-800 block mb-2">
-            Nguy Cơ Tác Nhân Đa Kháng Đặc Hiệu (Cần Phối Hợp Thuốc):
-          </span>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        {/* Specific Pathogen Risks with Granular Factor Checklist */}
+        <div className="space-y-3 pt-2 border-t border-slate-100">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span className="text-xs font-bold text-slate-800 block">
+                Đánh Giá Yếu Tố Nguy Cơ Riêng Của Từng Tác Nhân Đa Kháng (BVBND 2026):
+              </span>
+              <span className="text-[11px] text-slate-500">
+                Tự động suy luận kháng sinh bao phủ & hiển thị cảnh báo phối hợp thuốc theo Ghi chú b
+              </span>
+            </div>
+            <span className="text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200">
+              Đã nhận diện: {checkedSpecificRisks.length} nhóm tác nhân
+            </span>
+          </div>
+
+          {/* 4 Pathogen Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
-              { id: 'mrsa', label: 'Tụ cầu MRSA', sub: 'Vancomycin / Linezolid' },
-              { id: 'pseudo_acineto', label: 'Pseudomonas / Acinetobacter', sub: 'Carbapenem / Colistin' },
-              { id: 'esbl', label: 'Enterobacterales sinh ESBL', sub: 'Carbapenem / Aminoglycoside' },
-              { id: 'enterococcus', label: 'Enterococcus (VRE)', sub: 'Ampicillin / Daptomycin' }
+              {
+                id: 'mrsa' as SpecificPathogenRisk,
+                title: 'Tụ Cầu Vàng Kháng Methicillin (MRSA)',
+                sub: 'Vancomycin / Linezolid',
+                color: 'rose',
+                isSiteTarget: site === 'skin_soft_tissue',
+                siteLabel: '🎯 Khuyên kiểm tra theo ổ Da & Mô mềm',
+                factors: MRSA_RISK_FACTORS
+              },
+              {
+                id: 'esbl' as SpecificPathogenRisk,
+                title: 'Enterobacterales sinh ESBL (E. coli, Klebsiella)',
+                sub: 'Carbapenem / Aminoglycoside',
+                color: 'amber',
+                isSiteTarget: site === 'urinary' || site === 'gastrointestinal' || site === 'peritoneal',
+                siteLabel: '🎯 Khuyên kiểm tra theo ổ Tiết niệu / Tiêu hóa',
+                factors: ESBL_RISK_FACTORS
+              },
+              {
+                id: 'pseudo_acineto' as SpecificPathogenRisk,
+                title: 'Pseudomonas / Acinetobacter Đa Kháng',
+                sub: 'Carbapenem / Colistin / Cefepime / Piptaz',
+                color: 'purple',
+                isSiteTarget: site === 'respiratory' || site === 'sepsis',
+                siteLabel: '🎯 Khuyên kiểm tra theo ổ Hô hấp / Nhiễm trùng huyết',
+                factors: PSEUDO_ACINETO_RISK_FACTORS
+              },
+              {
+                id: 'enterococcus' as SpecificPathogenRisk,
+                title: 'Enterococcus spp. (VRE / Ampicillin-R)',
+                sub: 'Ampicillin / Daptomycin / Linezolid',
+                color: 'indigo',
+                isSiteTarget: site === 'urinary' && checkedGeneralRiskIds.includes('invasive_device'),
+                siteLabel: '🎯 Khuyên kiểm tra khi có sonde tiểu lưu kéo dài',
+                factors: ENTEROCOCCUS_RISK_FACTORS
+              }
             ].map(spec => {
-              const isChecked = checkedSpecificRisks.includes(spec.id as SpecificPathogenRisk);
+              const isChecked = checkedSpecificRisks.includes(spec.id);
+              const isExpanded = expandedPathogen === spec.id;
+              const activeCount = spec.factors.filter(f => checkedSpecificRiskFactorIds.includes(f.id)).length;
+
               return (
-                <label
+                <div
                   key={spec.id}
-                  className={`p-2.5 rounded-xl border text-xs cursor-pointer transition-all flex items-start space-x-2 ${
+                  className={`rounded-xl border transition-all ${
                     isChecked
-                      ? 'border-rose-500 bg-rose-50/70 text-rose-950 font-bold'
-                      : 'border-slate-200 hover:border-slate-300 bg-white text-slate-600'
+                      ? 'border-rose-400 bg-rose-50/40 shadow-xs'
+                      : spec.isSiteTarget
+                      ? 'border-sky-300 bg-sky-50/20'
+                      : 'border-slate-200 bg-white hover:border-slate-300'
                   }`}
                 >
-                  <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={() => onToggleSpecificRisk(spec.id as SpecificPathogenRisk)}
-                    className="rounded text-rose-600 focus:ring-rose-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
-                  />
-                  <div>
-                    <div>{spec.label}</div>
-                    <div className="text-[10px] text-slate-400 font-normal">{spec.sub}</div>
+                  <div className="p-3 flex items-start justify-between gap-2">
+                    <label className="flex items-start space-x-2.5 cursor-pointer flex-1">
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => onToggleSpecificRisk(spec.id)}
+                        className="rounded text-rose-600 focus:ring-rose-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
+                      />
+                      <div className="min-w-0">
+                        <div className="flex items-center space-x-1.5 flex-wrap">
+                          <span className={`text-xs font-bold ${isChecked ? 'text-rose-950 font-black' : 'text-slate-900'}`}>
+                            {spec.title}
+                          </span>
+                          {spec.isSiteTarget && (
+                            <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800">
+                              {spec.siteLabel}
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-[11px] text-slate-500 mt-0.5">
+                          Thuốc bao phủ: <span className="font-semibold text-slate-700">{spec.sub}</span>
+                        </div>
+                      </div>
+                    </label>
+
+                    <button
+                      type="button"
+                      onClick={() => setExpandedPathogen(isExpanded ? null : spec.id)}
+                      className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center space-x-1 shrink-0 ${
+                        isExpanded
+                          ? 'bg-slate-200 text-slate-800'
+                          : activeCount > 0
+                          ? 'bg-rose-100 text-rose-800 font-black'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      }`}
+                    >
+                      <span>{activeCount > 0 ? `${activeCount}/${spec.factors.length} yếu tố` : `Xem ${spec.factors.length} yếu tố`}</span>
+                      {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                    </button>
                   </div>
-                </label>
+
+                  {/* Granular Factors Checklist Expandable Panel */}
+                  {isExpanded && (
+                    <div className="px-3 pb-3 pt-1 border-t border-slate-100 space-y-1.5 bg-slate-50/50 rounded-b-xl">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+                        Bảng kiểm yếu tố nguy cơ riêng (BVBND):
+                      </div>
+                      {spec.factors.map(fact => {
+                        const isFactorChecked = checkedSpecificRiskFactorIds.includes(fact.id);
+                        return (
+                          <label
+                            key={fact.id}
+                            className={`flex items-start space-x-2 p-1.5 rounded-lg border text-[11px] cursor-pointer transition-all ${
+                              isFactorChecked
+                                ? 'bg-white border-rose-400 font-semibold text-slate-900 shadow-2xs'
+                                : 'border-slate-200/80 bg-white/70 hover:bg-white text-slate-600'
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isFactorChecked}
+                              onChange={() => {
+                                onToggleSpecificRiskFactor?.(fact.id);
+                                if (!isChecked) onToggleSpecificRisk(spec.id);
+                              }}
+                              className="rounded text-rose-600 focus:ring-rose-500 w-3.5 h-3.5 mt-0.5 cursor-pointer shrink-0"
+                            />
+                            <div className="flex-1 leading-snug">
+                              <span>{fact.labelVi}</span>
+                              {fact.noteVi && (
+                                <div className="text-[10px] text-slate-400 mt-0.5">{fact.noteVi}</div>
+                              )}
+                            </div>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
         </div>
       </div>
 
+      {/* SECTION 4: THẺ TÁC NHÂN GỢI Ý & CẢNH BÁO QUY TẮC BVBND (Ghi Chú b) */}
+      <div className="space-y-3">
+        {/* Suggested Organisms Card */}
+        <div className={`p-4 rounded-2xl border transition-all ${
+          isGroup2
+            ? 'bg-rose-50/80 border-rose-200 text-rose-950'
+            : 'bg-emerald-50/80 border-emerald-200 text-emerald-950'
+        }`}>
+          <div className="flex items-start space-x-3">
+            {isGroup2 ? (
+              <Bug className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+            ) : (
+              <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            )}
+            <div className="flex-1">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <span className="text-xs font-black uppercase tracking-wider">
+                  {isGroup2 ? 'Tác Nhân Vi Khuẩn Đa Kháng Cần Bao Phủ (BVBND 2026):' : 'Tác Nhân Thường Gặp Cần Bao Phủ Theo Ổ Nhiễm (BVBND 2026):'}
+                </span>
+                <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${
+                  isGroup2 ? 'bg-rose-200 text-rose-900' : 'bg-emerald-200 text-emerald-900'
+                }`}>
+                  {isGroup2 ? 'Nhóm 2: Nguy cơ cao VKĐK' : 'Nhóm 1: Ít nguy cơ VKĐK'}
+                </span>
+              </div>
+
+              {/* Organism Tags */}
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {riskResult.suggestedOrganismsVi.map((org, idx) => (
+                  <span
+                    key={idx}
+                    className={`text-xs px-2.5 py-1 rounded-lg font-bold flex items-center space-x-1 ${
+                      isGroup2
+                        ? 'bg-white border border-rose-300 text-rose-900 shadow-2xs'
+                        : 'bg-white border border-emerald-300 text-emerald-900 shadow-2xs'
+                    }`}
+                  >
+                    <span>•</span>
+                    <span>{org}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* BVBND Note b: Co-Risk Gram(+) and Gram(-) Alert Banner */}
+        {riskResult.isGramPosGramNegCoRisk && (
+          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-sm flex items-start space-x-3">
+            <AlertCircle className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />
+            <div className="text-xs leading-relaxed">
+              <div className="font-black text-sm uppercase tracking-wide text-amber-200 flex items-center space-x-1.5">
+                <span>⚠️ QUY TẮC BVBND (Ghi chú b): BẮT BUỘC PHỐI HỢP KHÁNG SINH GRAM (+) VÀ GRAM (-)</span>
+              </div>
+              <p className="mt-1 opacity-95">
+                Bệnh nhân có đồng thời nguy cơ nhiễm cầu khuẩn Gram (+) đa kháng (MRSA / VRE) VÀ trực khuẩn Gram (-) đa kháng (ESBL / Pseudomonas / Acinetobacter). 
+                <strong> Bắt buộc chỉ định phác đồ phối hợp 2 nhóm thuốc</strong> (ví dụ: Vancomycin hoặc Linezolid KẾT HỢP VỚI Meropenem hoặc Piperacillin-tazobactam).
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* BVBND Note b: Dual Gram(-) Risk Prioritization Banner */}
+        {riskResult.isDualGramNegRisk && (
+          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white shadow-sm flex items-start space-x-3">
+            <Zap className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />
+            <div className="text-xs leading-relaxed">
+              <div className="font-black text-sm uppercase tracking-wide text-amber-200 flex items-center space-x-1.5">
+                <span>⚡ QUY TẮC BVBND (Ghi chú b): ƯU TIÊN KHÁNG SINH DIỆT PSEUDOMONAS / ACINETOBACTER</span>
+              </div>
+              <p className="mt-1 opacity-95">
+                Bệnh nhân có nguy cơ đồng thời cả 2 nhóm Gram (-) (Enterobacterales sinh ESBL và Pseudomonas / Acinetobacter). 
+                <strong> ƯU TIÊN chọn kháng sinh có hoạt phổ trên Acinetobacter / Pseudomonas</strong> (như Meropenem, Cefepime, Piperacillin-tazobactam hoặc Colistin phối hợp) 
+                để bao phủ luôn cả các chủng sinh ESBL. <em>Tránh dùng Ertapenem đơn độc</em> vì Ertapenem không có phổ trên Pseudomonas hay Acinetobacter.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* BVBND Principle 9: Anaerobic Coverage Note */}
+        <div className="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs flex items-center space-x-2">
+          <Info className="w-4 h-4 text-slate-500 shrink-0" />
+          <span>
+            <strong>Nguyên tắc số 9 BVBND:</strong> Các kháng sinh phổ rộng nhóm BL-BLI (như Piperacillin-tazobactam) hoặc Carbapenem (Meropenem, Imipenem) đã có phổ kỵ khí hiệu quả, <strong>không dùng Metronidazole phối hợp cùng</strong>.
+          </span>
+        </div>
+      </div>
+
       {/* RESULT CARD & PROCEED BUTTON */}
       <div className={`p-4 sm:p-5 rounded-2xl border transition-all ${
         isGroup2
-          ? 'bg-rose-50/80 border-rose-300 text-rose-950 shadow-sm'
-          : 'bg-emerald-50/80 border-emerald-300 text-emerald-950 shadow-sm'
+          ? 'bg-rose-50/90 border-rose-300 text-rose-950 shadow-sm'
+          : 'bg-emerald-50/90 border-emerald-300 text-emerald-950 shadow-sm'
       }`}>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-start space-x-3">
@@ -688,3 +966,4 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
     </div>
   );
 };
+

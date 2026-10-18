@@ -61,7 +61,29 @@ function runTests() {
   assert(res7.group === 'group_2', '4 general risks -> Group 2');
   assert(res7.activeSpecificRisks.includes('mrsa') && res7.activeSpecificRisks.includes('esbl'), 'Retains specific risks tags');
 
-  // 2. EMPIRIC REGIMEN SELECTION TESTS (BVBND File 3)
+  // Case H: Auto-inference from granular factor IDs (mrsa_fq_90d -> mrsa, ps_icu_5d -> pseudo_acineto)
+  const res8 = classifyRisk(
+    ['hospital_90d', 'invasive_device'],
+    { scoreType: 'sofa', scoreValue: 2, isHighSeverity: true },
+    [],
+    { site: 'respiratory', specificRiskFactorIds: ['mrsa_fq_90d', 'ps_icu_5d'] }
+  );
+  assert(res8.activeSpecificRisks.includes('mrsa'), 'Auto-infers MRSA from mrsa_fq_90d');
+  assert(res8.activeSpecificRisks.includes('pseudo_acineto'), 'Auto-infers pseudo_acineto from ps_icu_5d');
+  assert(res8.isGramPosGramNegCoRisk === true, 'BVBND Note b: Triggers Gram(+) & Gram(-) co-risk alert');
+
+  // Case I: Dual Gram(-) risk (ESBL + Pseudo/Acineto) -> isDualGramNegRisk = true
+  const res9 = classifyRisk(
+    ['hospital_90d', 'invasive_device'],
+    { scoreType: 'sofa', scoreValue: 2, isHighSeverity: true },
+    ['esbl', 'pseudo_acineto']
+  );
+  assert(res9.isDualGramNegRisk === true, 'BVBND Note b: Triggers dual Gram(-) risk prioritization');
+
+  // Case J: Group 1 Suggested Organisms by Site
+  const res10 = classifyRisk([], { scoreType: 'sofa', scoreValue: 0, isHighSeverity: false }, [], { site: 'skin_soft_tissue' });
+  assert(res10.suggestedOrganismsVi.some(o => o.includes('Streptococcus')), 'Group 1 skin suggests Strep');
+  assert(res10.suggestedOrganismsVi.some(o => o.includes('Staphylococcus aureus')), 'Group 1 skin suggests MSSA');
   console.log('\n[TEST GROUP 2: Empiric Regimen Selection]');
   
   // Adult CAP Group 1

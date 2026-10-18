@@ -123,14 +123,32 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
           </div>
         </div>
 
-        {/* Specific pathogen tags if Group 2 */}
-        {isGroup2 && state.checkedSpecificRisks.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-2 pt-2 border-t border-rose-200/60">
-            {state.checkedSpecificRisks.map(r => (
-              <span key={r} className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-200/80 text-rose-800">
-                {r === 'mrsa' ? 'MRSA' : r === 'esbl' ? 'ESBL' : r === 'pseudo_acineto' ? 'Pseudo/Acineto' : 'Enterococcus'}
-              </span>
-            ))}
+        {/* Specific pathogen tags & BVBND Note b badges if Group 2 */}
+        {isGroup2 && (
+          <div className="space-y-1.5 mt-2 pt-2 border-t border-rose-200/60">
+            {state.checkedSpecificRisks.length > 0 && (
+              <div className="flex flex-wrap gap-1">
+                {state.checkedSpecificRisks.map(r => (
+                  <span key={r} className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-200/80 text-rose-800">
+                    {r === 'mrsa' ? 'MRSA' : r === 'esbl' ? 'ESBL' : r === 'pseudo_acineto' ? 'Pseudo/Acineto' : 'Enterococcus'}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {riskResult.isGramPosGramNegCoRisk && (
+              <div className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-800 border border-red-200 flex items-center space-x-1">
+                <span>⚠️</span>
+                <span>Bắt buộc phối hợp Gram(+) & Gram(-)</span>
+              </div>
+            )}
+
+            {riskResult.isDualGramNegRisk && (
+              <div className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-200 flex items-center space-x-1">
+                <span>⚡</span>
+                <span>Ưu tiên diệt Pseudo / Acineto</span>
+              </div>
+            )}
           </div>
         )}
       </div>

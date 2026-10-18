@@ -226,3 +226,150 @@ export const ENTEROCOCCUS_RISK_FACTORS: RiskFactorItem[] = [
     source: { doc: 'BVBND_PhanNhom', page: 3 }
   }
 ];
+
+/**
+ * Combined dictionary of all pathogen-specific risk factors
+ */
+export const ALL_SPECIFIC_RISK_FACTORS: RiskFactorItem[] = [
+  ...MRSA_RISK_FACTORS,
+  ...ESBL_RISK_FACTORS,
+  ...PSEUDO_ACINETO_RISK_FACTORS,
+  ...ENTEROCOCCUS_RISK_FACTORS
+];
+
+/**
+ * Automatically infers active SpecificPathogenRisk array from individual factor IDs
+ */
+export function inferSpecificRisksFromFactorIds(factorIds: string[]): import('../types').SpecificPathogenRisk[] {
+  const risks = new Set<import('../types').SpecificPathogenRisk>();
+  for (const id of factorIds) {
+    if (id.startsWith('mrsa_')) risks.add('mrsa');
+    else if (id.startsWith('esbl_')) risks.add('esbl');
+    else if (id.startsWith('ps_')) risks.add('pseudo_acineto');
+    else if (id.startsWith('ent_')) risks.add('enterococcus');
+  }
+  return Array.from(risks);
+}
+
+/**
+ * Maps infection site to primary MDR pathogen suspect according to BVBND flowchart
+ */
+export function getPrimaryTargetForSite(site: import('../types').InfectionSite): import('../types').SpecificPathogenRisk {
+  switch (site) {
+    case 'skin_soft_tissue':
+      return 'mrsa';
+    case 'urinary':
+    case 'gastrointestinal':
+    case 'peritoneal':
+      return 'esbl';
+    case 'respiratory':
+    case 'sepsis':
+    case 'cns':
+    default:
+      return 'pseudo_acineto';
+  }
+}
+
+/**
+ * Generates suggested organisms according to BVBND 2026 flowchart
+ */
+export function getSuggestedOrganisms(
+  site: import('../types').InfectionSite,
+  group: import('../types').RiskGroup,
+  activeSpecificRisks: import('../types').SpecificPathogenRisk[] = [],
+  isNeutropenic: boolean = false
+): string[] {
+  if (group === 'group_1') {
+    const list: string[] = [];
+    switch (site) {
+      case 'skin_soft_tissue':
+        list.push('Streptococcus spp. (Liên cầu tan huyết)', 'Staphylococcus aureus nhạy Methicillin (MSSA)');
+        break;
+      case 'urinary':
+      case 'gastrointestinal':
+      case 'peritoneal':
+        list.push('Trực khuẩn Gram (-) đường ruột nhạy cảm (E. coli, Klebsiella spp., Proteus mirabilis)');
+        break;
+      case 'respiratory':
+        list.push('Streptococcus pneumoniae (Phế cầu)', 'Haemophilus influenzae', 'Klebsiella pneumoniae nhạy cảm');
+        break;
+      case 'sepsis':
+        list.push('Trực khuẩn Gram (-) đường ruột', 'Cầu khuẩn Gram (+) nhạy cảm (Staphylococcus, Streptococcus)');
+        break;
+      case 'cns':
+        list.push('Streptococcus pneumoniae (Phế cầu)', 'Neisseria meningitidis (Não mô cầu)', 'Haemophilus influenzae');
+        break;
+    }
+    if (isNeutropenic) {
+      list.push('Lưu ý đặc biệt: Bệnh nhân giảm bạch cầu hạt cần cảnh giác thêm Pseudomonas aeruginosa');
+    }
+    return list;
+  }
+
+  // Group 2: High MDR Risk
+  const list: string[] = [];
+  if (activeSpecificRisks.includes('mrsa')) {
+    list.push('Tụ cầu vàng kháng Methicillin (MRSA)');
+  }
+  if (activeSpecificRisks.includes('esbl')) {
+    list.push('Trực khuẩn Gram (-) Enterobacterales sinh ESBL (E. coli, K. pneumoniae)');
+  }
+  if (activeSpecificRisks.includes('pseudo_acineto')) {
+    list.push('Pseudomonas aeruginosa đa kháng (MDR-PA)', 'Acinetobacter baumannii đa kháng (MDR-AB)');
+  }
+  if (activeSpecificRisks.includes('enterococcus')) {
+    list.push('Enterococcus spp. (VRE / Ampicillin-R)');
+  }
+
+  if (list.length === 0) {
+    // If no specific risk checked yet, suggest based on site
+    const primary = getPrimaryTargetForSite(site);
+    if (primary === 'mrsa') list.push('Nghi ngờ hàng đầu: Tụ cầu vàng kháng Methicillin (MRSA)');
+    else if (primary === 'esbl') list.push('Nghi ngờ hàng đầu: Enterobacterales sinh ESBL');
+    else list.push('Nghi ngờ hàng đầu: Pseudomonas / Acinetobacter đa kháng');
+  }
+
+  return list;
+}
+
+/**
+ * Evaluates combination rules & alerts according to BVBND Note b & Principle 9
+ */
+export function getCombinationGuidance(
+  activeSpecificRisks: import('../types').SpecificPathogenRisk[]
+): {
+  isGramPosGramNegCoRisk: boolean;
+  isDualGramNegRisk: boolean;
+  guidanceVi: string[];
+} {
+  const hasGramPos = activeSpecificRisks.includes('mrsa') || activeSpecificRisks.includes('enterococcus');
+  const hasGramNeg = activeSpecificRisks.includes('esbl') || activeSpecificRisks.includes('pseudo_acineto');
+  const isGramPosGramNegCoRisk = hasGramPos && hasGramNeg;
+  const isDualGramNegRisk = activeSpecificRisks.includes('esbl') && activeSpecificRisks.includes('pseudo_acineto');
+
+  const guidanceVi: string[] = [];
+
+  if (isGramPosGramNegCoRisk) {
+    guidanceVi.push(
+      'QUY TẮC BVBND (Ghi chú b): Bệnh nhân có đồng thời nguy cơ Gram (+) (MRSA/VRE) và Gram (-) (ESBL/Pseudomonas) → BẮT BUỘC PHỐI HỢP KHÁNG SINH tác dụng trên cả 2 nhóm (ví dụ: Vancomycin/Linezolid + Meropenem hoặc Piperacillin-tazobactam).'
+    );
+  }
+
+  if (isDualGramNegRisk) {
+    guidanceVi.push(
+      'QUY TẮC BVBND (Ghi chú b): Bệnh nhân có nguy cơ của cả 2 nhóm Gram (-) (ESBL và Pseudomonas/Acinetobacter) → ƯU TIÊN nhóm kháng sinh có phổ trên Acinetobacter / Pseudomonas (như Meropenem, Cefepime, Piperacillin-tazobactam hoặc Colistin) để bao phủ đồng thời cả chủng sinh ESBL. Tránh dùng Ertapenem đơn độc (vì Ertapenem không diệt được Pseudomonas/Acinetobacter).'
+    );
+  }
+
+  // Principle 9
+  guidanceVi.push(
+    'NGUYÊN TẮC BVBND (Mục 9): Tránh phối hợp nhiều KS không cần thiết; các thuốc BL-BLI phổ rộng (như Piperacillin-tazobactam) hoặc Carbapenem (Meropenem, Imipenem) đã có phổ hiệu quả trên vi khuẩn kỵ khí, KHÔNG dùng Metronidazole phối hợp cùng.'
+  );
+
+  return {
+    isGramPosGramNegCoRisk,
+    isDualGramNegRisk,
+    guidanceVi
+  };
+}
+

@@ -14,7 +14,12 @@ import {
   MdrPathogenCategory
 } from './types';
 
-import { GENERAL_MDR_RISK_FACTORS } from './data/riskFactors';
+import {
+  GENERAL_MDR_RISK_FACTORS,
+  inferSpecificRisksFromFactorIds,
+  getSuggestedOrganisms,
+  getCombinationGuidance
+} from './data/riskFactors';
 import { findEmpiricRegimens } from './data/empiricRegimens';
 import { 
   EVIDENCE_BASED_DURATIONS, 
@@ -36,10 +41,21 @@ import { MDR_PATHWAYS } from './data/mdrPathways';
 export function classifyRisk(
   selectedGeneralRiskIds: string[],
   severity: SeverityAssessment,
-  specificRisks: SpecificPathogenRisk[] = []
+  specificRisks: SpecificPathogenRisk[] = [],
+  options?: {
+    site?: InfectionSite;
+    specificRiskFactorIds?: string[];
+    isNeutropenic?: boolean;
+  }
 ): RiskClassificationResult {
   const generalRiskCount = selectedGeneralRiskIds.length;
   const isHighSeverity = severity.isHighSeverity;
+  const site = options?.site || 'respiratory';
+  const specificFactorIds = options?.specificRiskFactorIds || [];
+
+  // Inferred risks from granular factor IDs
+  const inferredRisks = inferSpecificRisksFromFactorIds(specificFactorIds);
+  const combinedSpecificRisks = Array.from(new Set([...specificRisks, ...inferredRisks]));
 
   let group: 'group_1' | 'group_2';
   const rationalesVi: string[] = [];
@@ -83,17 +99,28 @@ export function classifyRisk(
     .filter(f => selectedGeneralRiskIds.includes(f.id))
     .map(f => f.labelVi);
 
+  const isNeutropenic = options?.isNeutropenic ?? selectedGeneralRiskIds.includes('transplant_chemo');
+  const suggestedOrganismsVi = getSuggestedOrganisms(site, group, combinedSpecificRisks, isNeutropenic);
+  const combinationResult = getCombinationGuidance(combinedSpecificRisks);
+
   if (group === 'group_2') {
     rationalesVi.push('KHUYẾN CÁO: Bắt buộc sử dụng phác đồ kháng sinh phổ rộng bao phủ vi khuẩn đa kháng.');
     rationalesEn.push('RECOMMENDATION: Broad-spectrum empiric regimen targeting MDR pathogens is required.');
 
-    if (specificRisks.length > 0) {
+    if (combinedSpecificRisks.length > 0) {
       const riskTags: string[] = [];
-      if (specificRisks.includes('mrsa')) riskTags.push('Tụ cầu vàng kháng Methicillin (MRSA)');
-      if (specificRisks.includes('esbl')) riskTags.push('Enterobacterales sinh ESBL');
-      if (specificRisks.includes('pseudo_acineto')) riskTags.push('Pseudomonas / Acinetobacter đa kháng');
-      if (specificRisks.includes('enterococcus')) riskTags.push('Enterococcus');
+      if (combinedSpecificRisks.includes('mrsa')) riskTags.push('Tụ cầu vàng kháng Methicillin (MRSA)');
+      if (combinedSpecificRisks.includes('esbl')) riskTags.push('Enterobacterales sinh ESBL');
+      if (combinedSpecificRisks.includes('pseudo_acineto')) riskTags.push('Pseudomonas / Acinetobacter đa kháng');
+      if (combinedSpecificRisks.includes('enterococcus')) riskTags.push('Enterococcus (VRE)');
       rationalesVi.push(`Xác định nguy cơ riêng cho tác nhân: ${riskTags.join('; ')}.`);
+    }
+
+    if (combinationResult.isGramPosGramNegCoRisk) {
+      rationalesVi.push('LƯU Ý PHỐI HỢP: Có đồng thời nguy cơ Gram (+) và Gram (-) → Bắt buộc phối hợp 2 nhóm kháng sinh.');
+    }
+    if (combinationResult.isDualGramNegRisk) {
+      rationalesVi.push('LƯU Ý PHỔ KHÁNG SINH: Có cả nguy cơ ESBL và Pseudomonas/Acinetobacter → Ưu tiên KS diệt Acinetobacter/Pseudomonas để bao phủ đồng thời.');
     }
   } else {
     rationalesVi.push('KHUYẾN CÁO: Chỉ định kháng sinh theo phác đồ kinh nghiệm thông thường (Nhóm 1). Tránh lạm dụng Carbapenem/Vancomycin.');
@@ -109,7 +136,12 @@ export function classifyRisk(
     severityScoreType: severity.scoreType,
     severityScoreValue: severity.scoreValue,
     activeGeneralFactors,
-    activeSpecificRisks: specificRisks,
+    activeSpecificRisks: combinedSpecificRisks,
+    activeSpecificRiskFactorIds: specificFactorIds,
+    suggestedOrganismsVi,
+    isGramPosGramNegCoRisk: combinationResult.isGramPosGramNegCoRisk,
+    isDualGramNegRisk: combinationResult.isDualGramNegRisk,
+    combinationGuidanceVi: combinationResult.guidanceVi,
     rationalesVi,
     rationalesEn,
     source: { doc: 'BVBND_PhanNhom', page: 2 }
@@ -120,7 +152,9 @@ export function classifyRiskGroup(
   selectedGeneralRiskIds: string[],
   severity: { scoreType: 'sofa' | 'psofa' | 'clif_sofa'; scoreValue: number },
   population: Population,
-  specificRisks: SpecificPathogenRisk[] = []
+  specificRisks: SpecificPathogenRisk[] = [],
+  site: InfectionSite = 'respiratory',
+  specificRiskFactorIds: string[] = []
 ): RiskClassificationResult {
   const isHighSeverity =
     severity.scoreType === 'psofa'
@@ -136,7 +170,12 @@ export function classifyRiskGroup(
       scoreValue: severity.scoreValue,
       isHighSeverity
     },
-    specificRisks
+    specificRisks,
+    {
+      site,
+      specificRiskFactorIds,
+      isNeutropenic: selectedGeneralRiskIds.includes('transplant_chemo')
+    }
   );
 }
 

@@ -63,6 +63,11 @@ export interface RiskClassificationResult {
   severityScoreValue: number;
   activeGeneralFactors: string[];
   activeSpecificRisks: SpecificPathogenRisk[];
+  activeSpecificRiskFactorIds?: string[];
+  suggestedOrganismsVi: string[];
+  isGramPosGramNegCoRisk: boolean;
+  isDualGramNegRisk: boolean;
+  combinationGuidanceVi: string[];
   rationalesVi: string[];
   rationalesEn: string[];
   source: SourceRef;
@@ -211,6 +216,7 @@ export interface SelectionWizardState {
   site: InfectionSite;
   sepsisSource?: SepsisSource;
   checkedGeneralRiskIds: string[];
+  checkedSpecificRiskFactorIds?: string[];
   sofaScore: number;
   psofaScore: number;
   clifSofaScore: number;
