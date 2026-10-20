@@ -235,6 +235,8 @@ export class DengueCDSSController {
   private container: HTMLElement;
   private currentPlan: DengueCDSSPlan | null = null;
   private customDurations: Record<number, number> = {};
+  private customRates: Record<number, number> = {};
+  private infusionDeliveryMode: 'pump' | 'drip' = 'pump';
   private activeCaseId: string = 'child-obese';
   private activeWorkspaceMode: WorkspaceMode = 'fluid_schedule';
   private activeRefractorySubTab: string = 'tab-cpt';
@@ -1007,7 +1009,7 @@ export class DengueCDSSController {
 
   public recalculate(): void {
     const input = this.getFormData();
-    this.currentPlan = generateDengueCDSSPlan(input, this.customDurations);
+    this.currentPlan = generateDengueCDSSPlan(input, this.customDurations, this.customRates);
     this.renderPlan(this.currentPlan);
   }
 
@@ -1736,20 +1738,29 @@ export class DengueCDSSController {
         </div>
       </div>
 
-      <!-- BẢNG ĐIỀU PHỐI CỌC DỊCH 4 CỘT -->
+      <!-- BẢNG ĐIỀU PHỐI CỌC DỊCH 5 CỘT CHUẨN LÂM SÀNG -->
       <section class="cdss-table-card">
         <div class="cdss-table-header-wrap">
           <div class="cdss-table-title-area">
             <h2 class="cdss-table-title">
-              <i class="fa-solid fa-table-list"></i> Bảng Điều Phối Cọc Dịch 4 Cột Chuẩn Hóa
+              <i class="fa-solid fa-table-list"></i> Bảng Điều Phối Cọc Dịch Truyền Lâm Sàng
+              <span class="cdss-table-title-badge">
+                <i class="fa-solid fa-calculator"></i> Máy Infusomat® P &bull; KVO ${plan.fluidRows[0]?.kvoRateMlH || 3} ml/h
+              </span>
             </h2>
             <p class="cdss-table-desc">
-              Tự động gộp thể tích, tính giọt/phút (dây 20g/ml), chuyển dịch dư và tính số chai 500ml treo thêm tại cọc.
+              Cân nặng hiệu chỉnh: <strong>${plan.weightResult.adjustedWeightKg} kg</strong> (${plan.weightResult.isObese ? (plan.patient.ageYears >= 16 ? 'Phụ lục 9 BYT' : 'CDC 2014') : 'Cân thực tế'}). Cung cấp trực tiếp 2 thông số cài máy: <strong>Tốc độ (ml/h)</strong> &amp; <strong>Thể tích cữ VTBI (ml)</strong>.
             </p>
           </div>
-          <button id="btn-reset-durations-sub" class="cdss-action-btn cdss-action-btn--icon-only" title="Khôi phục thời lượng chuẩn Bộ Y Tế" aria-label="Đặt Lại Giờ Chuẩn">
-            <i class="fa-solid fa-clock-rotate-left"></i>
-          </button>
+          <div style="display: flex; gap: 0.45rem; align-items: center;">
+            <button id="btn-copy-emr-all" class="cdss-btn-copy-all" title="Copy toàn bộ y lệnh cách dùng các cữ vào Bệnh Án Điện Tử (EMR)" aria-label="Copy Y Lệnh EMR">
+              <i class="fa-regular fa-copy"></i>
+              <span>Copy Y Lệnh EMR</span>
+            </button>
+            <button id="btn-reset-durations-sub" class="cdss-action-btn cdss-action-btn--icon-only" title="Khôi phục thời lượng và tốc độ chuẩn Bộ Y Tế" aria-label="Đặt Lại Giờ Chuẩn">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </button>
+          </div>
         </div>
 
         <!-- Desktop / Tablet Table -->
@@ -1757,10 +1768,11 @@ export class DengueCDSSController {
           <table class="cdss-table">
             <thead>
               <tr>
-                <th style="width: 22%;">Cột 1: Mốc Giờ &amp; Thời Lượng</th>
-                <th style="width: 28%;">Cột 2: Tốc Độ &amp; Lượng Dịch Cần</th>
-                <th style="width: 26%;">Cột 3: Dịch Có SẴN / Treo Thêm</th>
-                <th style="width: 24%;">Cột 4: Tổng Cọc &amp; Giám Sát</th>
+                <th style="width: 17%;">Cột 1: Cữ &amp; Mốc Giờ</th>
+                <th style="width: 20%;">Cột 2: Tốc Độ Bơm (ml/h)</th>
+                <th style="width: 18%;">Cột 3: Thể Tích Cữ (VTBI)</th>
+                <th style="width: 21%;">Cột 4: Chuẩn Bị Tại Cọc</th>
+                <th style="width: 24%;">Cột 5: Theo Dõi &amp; Hct</th>
               </tr>
             </thead>
             <tbody>
@@ -1771,56 +1783,86 @@ export class DengueCDSSController {
                   <option value="${dur}" ${dur === r.durationHours ? 'selected' : ''}>${dur} giờ</option>
                 `).join('');
 
+                const rateOptions = tpl?.rateOptions || [r.rateMlKgH];
+                const hasRateChoices = rateOptions.length > 1;
+                const rateOptionsHtml = rateOptions.map(rt => `
+                  <option value="${rt}" ${rt === r.rateMlKgH ? 'selected' : ''}>${rt} ml/kg/h</option>
+                `).join('');
+
                 return `
                   <tr>
                     <td>
-                      <div class="cdss-step-badge">Cữ ${r.stepIndex}</div>
-                      <div class="cdss-time-window">${r.timeWindow}</div>
-                      <div class="cdss-duration-picker">
-                        <label><i class="fa-regular fa-clock"></i> Thời lượng:</label>
-                        <select class="cdss-duration-select" data-row-idx="${idx}">
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.35rem; margin-bottom: 0.35rem;">
+                        <span class="cdss-step-badge">Cữ ${r.stepIndex}</span>
+                        <button type="button" class="cdss-copy-icon-btn cdss-btn-copy-row" data-row-idx="${idx}" title="Copy cách dùng Cữ ${r.stepIndex} vào EMR: ${r.emrOrderText || ''}" aria-label="Copy Y Lệnh Cữ ${r.stepIndex}">
+                          <i class="fa-regular fa-copy"></i>
+                        </button>
+                      </div>
+                      <div class="cdss-time-bold">${r.timeWindow}</div>
+                      <div style="display: flex; align-items: center; gap: 0.35rem; margin-bottom: 0.35rem;">
+                        <select class="cdss-duration-select cdss-picker-clean" data-row-idx="${idx}" aria-label="Thời lượng cữ ${r.stepIndex}">
                           ${optionsHtml}
                         </select>
                       </div>
                       <div class="cdss-stage-title">${r.stageName}</div>
                     </td>
                     <td>
-                      <div class="cdss-rate-display">
-                        <span class="cdss-rate-number">${r.rateMlKgH}</span>
-                        <span class="cdss-rate-unit">ml/kg/giờ</span>
-                      </div>
-                      <div class="cdss-drops-box">
-                        <i class="fa-solid fa-water" style="color:var(--cdss-info);"></i> 
-                        <strong>${r.dropsPerMin}</strong> giọt/phút
-                        <small style="color:var(--cdss-text-muted);">${ageGroup === 'child' ? '(Dây vi giọt 60 g/ml)' : '(Dây chuẩn 20 g/ml)'}</small>
-                      </div>
-                      <div class="cdss-volume-calc">
-                        Thể tích cần: <strong>${r.totalMl.toLocaleString('vi-VN')} ml</strong>
-                        <div style="font-size:0.7rem; color:var(--cdss-text-muted);">
-                          (${r.rateMlKgH} × ${plan.weightResult.adjustedWeightKg}kg × ${r.durationHours}h)
+                      <div class="cdss-val-block">
+                        <div class="cdss-big-val">
+                          ${r.pumpRateMlH} <span class="cdss-big-unit">ml/h</span>
+                        </div>
+                        ${hasRateChoices ? `
+                          <div style="margin: 0.15rem 0;">
+                            <select class="cdss-rate-select cdss-picker-clean" data-row-idx="${idx}" aria-label="Liều cữ ${r.stepIndex}">
+                              ${rateOptionsHtml}
+                            </select>
+                          </div>
+                        ` : `
+                          <div class="cdss-sub-hint">${r.rateMlKgH} ml/kg/h &bull; Phím [RATE]</div>
+                        `}
+                        <div class="cdss-sub-drip">
+                          <i class="fa-solid fa-water text-info" style="font-size:0.65rem;"></i> ~${r.dropsPerMin} giọt/phút <small>(${ageGroup === 'child' ? 'dây 60g' : 'dây 20g'})</small>
                         </div>
                       </div>
                     </td>
                     <td>
-                      <div class="cdss-carry-over">
-                        Dịch sẵn từ cữ trước: <strong>${r.existingFluidMl} ml</strong>
-                      </div>
-                      <div>
-                        <span class="cdss-hang-badge ${r.bottlesToHang > 0 ? 'cdss-hang-badge--active' : ''}">
-                          <i class="fa-solid fa-plus"></i> Treo thêm: <strong>${r.bottlesToHang}</strong> chai 500ml
-                        </span>
+                      <div class="cdss-val-block">
+                        <div class="cdss-big-val text-primary">
+                          ${r.totalMl.toLocaleString('vi-VN')} <span class="cdss-big-unit">ml</span>
+                        </div>
+                        <div class="cdss-sub-hint">
+                          Phím [VOL] &bull; trong ${r.durationHours}h
+                        </div>
+                        <div style="margin-top: 0.25rem;">
+                          <span class="cdss-kvo-clean" title="Khi hết thể tích cữ, máy tự hãm KVO giữ ven chống phù phổi">
+                            <i class="fa-solid fa-shield-halved"></i> KVO: ${r.kvoRateMlH} ml/h
+                          </span>
+                        </div>
                       </div>
                     </td>
                     <td>
-                      <div class="cdss-pole-metric">
-                        Tổng có trên cọc: <strong>${r.totalAtPoleMl.toLocaleString('vi-VN')} ml</strong>
+                      <div class="cdss-val-block">
+                        ${r.bottlesToHang > 0 ? `
+                          <div class="cdss-hang-clean hang-active">
+                            <i class="fa-solid fa-plus-circle"></i> Treo thêm: <strong>${r.bottlesToHang}</strong> chai 500ml
+                          </div>
+                        ` : `
+                          <div class="cdss-hang-clean">
+                            <i class="fa-solid fa-circle-check text-success"></i> 0 (Dùng dịch sẵn)
+                          </div>
+                        `}
+                        <div style="font-size:0.74rem; color:var(--cdss-text-muted);">Có sẵn: <strong>${r.existingFluidMl} ml</strong></div>
+                        <div class="cdss-pole-clean">Trên cọc: <strong>${r.totalAtPoleMl.toLocaleString('vi-VN')} ml</strong></div>
+                        <div style="font-size:0.72rem; color:var(--cdss-text-muted);">Dư sau cữ: <strong>${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</strong></div>
                       </div>
+                    </td>
+                    <td>
                       ${r.hctCheckRequired ? `
-                        <div class="cdss-hct-pill">
-                          <i class="fa-solid fa-vial"></i> <strong>Đo lại Hct tại giường</strong>
+                        <div class="cdss-hct-pill-clean">
+                          <i class="fa-solid fa-vial"></i> Đo lại Hct (${r.durationHours}h)
                         </div>
                       ` : ''}
-                      <div class="cdss-monitor-tip">
+                      <div class="cdss-monitor-clean">
                         ${r.monitoringNotes}
                       </div>
                     </td>
@@ -1840,30 +1882,48 @@ export class DengueCDSSController {
               <option value="${dur}" ${dur === r.durationHours ? 'selected' : ''}>${dur} giờ</option>
             `).join('');
 
+            const rateOptions = tpl?.rateOptions || [r.rateMlKgH];
+            const hasRateChoices = rateOptions.length > 1;
+            const rateOptionsHtml = rateOptions.map(rt => `
+              <option value="${rt}" ${rt === r.rateMlKgH ? 'selected' : ''}>${rt} ml/kg/h</option>
+            `).join('');
+
             return `
               <div class="cdss-mfluid-card ${r.hctCheckRequired ? 'cdss-mfluid-card--hct' : ''}">
                 <div class="cdss-mfluid-card-header">
                   <div class="cdss-step-badge">Cữ ${r.stepIndex}</div>
+                  <button type="button" class="cdss-copy-icon-btn cdss-btn-copy-row" data-row-idx="${idx}" title="Copy cách dùng Cữ ${r.stepIndex} vào EMR: ${r.emrOrderText || ''}" style="margin-left: 0.35rem;" aria-label="Copy Y Lệnh Cữ ${r.stepIndex}">
+                    <i class="fa-regular fa-copy"></i>
+                  </button>
                   <div class="cdss-mfluid-timewindow">${r.timeWindow}</div>
                   <div class="cdss-duration-picker" style="margin-left:auto;">
-                    <select class="cdss-duration-select" data-row-idx="${idx}" aria-label="Thời lượng cữ ${r.stepIndex}">
+                    <select class="cdss-duration-select cdss-picker-clean" data-row-idx="${idx}" aria-label="Thời lượng cữ ${r.stepIndex}">
                       ${optionsHtml}
                     </select>
                   </div>
                 </div>
 
-                <div class="cdss-mfluid-stage-title">${r.stageName}</div>
+                ${hasRateChoices ? `
+                  <div style="margin: 0.25rem 0 0.4rem 0;">
+                    <label style="font-size:0.72rem; color:var(--cdss-text-muted);"><i class="fa-solid fa-sliders"></i> Liều:</label>
+                    <select class="cdss-rate-select cdss-picker-clean" data-row-idx="${idx}" aria-label="Liều cữ ${r.stepIndex}">
+                      ${rateOptionsHtml}
+                    </select>
+                  </div>
+                ` : ''}
+
+                <div class="cdss-mfluid-stage-title" style="margin-bottom:0.5rem;">${r.stageName}</div>
 
                 <div class="cdss-mfluid-stats-grid">
                   <div class="cdss-mfluid-stat">
-                    <span class="cdss-mfluid-stat-label">Tốc Độ</span>
-                    <strong class="cdss-mfluid-stat-val text-primary">${r.rateMlKgH} <small>ml/kg/h</small></strong>
-                    <span class="cdss-mfluid-stat-sub"><i class="fa-solid fa-water text-info"></i> ${r.dropsPerMin} giọt/ph (${ageGroup === 'child' ? 'Dây 60g' : 'Dây 20g'})</span>
+                    <span class="cdss-mfluid-stat-label"><i class="fa-solid fa-calculator"></i> Tốc độ (ml/h)</span>
+                    <strong class="cdss-mfluid-stat-val text-primary">${r.pumpRateMlH} <small>ml/h</small></strong>
+                    <span class="cdss-mfluid-stat-sub">${r.rateMlKgH} ml/kg/h &bull; ~${r.dropsPerMin} giọt/ph</span>
                   </div>
                   <div class="cdss-mfluid-stat">
-                    <span class="cdss-mfluid-stat-label">Lượng Dịch Cần</span>
+                    <span class="cdss-mfluid-stat-label"><i class="fa-solid fa-droplet text-primary"></i> Thể tích (VTBI)</span>
                     <strong class="cdss-mfluid-stat-val">${r.totalMl.toLocaleString('vi-VN')} <small>ml</small></strong>
-                    <span class="cdss-mfluid-stat-sub">${r.durationHours}h × ${plan.weightResult.adjustedWeightKg}kg</span>
+                    <span class="cdss-mfluid-stat-sub">${r.durationHours}h &bull; KVO: ${r.kvoRateMlH} ml/h</span>
                   </div>
                   <div class="cdss-mfluid-stat">
                     <span class="cdss-mfluid-stat-label">Treo Thêm</span>
@@ -1875,17 +1935,17 @@ export class DengueCDSSController {
                   <div class="cdss-mfluid-stat">
                     <span class="cdss-mfluid-stat-label">Tại Cọc</span>
                     <strong class="cdss-mfluid-stat-val text-teal-600">${r.totalAtPoleMl.toLocaleString('vi-VN')} <small>ml</small></strong>
-                    <span class="cdss-mfluid-stat-sub">Dư sau cữ: ${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</span>
+                    <span class="cdss-mfluid-stat-sub">Dư: ${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</span>
                   </div>
                 </div>
 
                 ${r.hctCheckRequired ? `
-                  <div class="cdss-hct-pill" style="margin-top:0.4rem; width:100%; justify-content:center;">
-                    <i class="fa-solid fa-vial"></i> <strong>BẮT BUỘC ĐO LẠI HCT SAU CỮ NÀY (${r.durationHours}h)</strong>
+                  <div class="cdss-hct-pill-clean" style="margin-top:0.45rem; width:100%; justify-content:center;">
+                    <i class="fa-solid fa-vial"></i> BẮT BUỘC ĐO LẠI HCT SAU CỮ NÀY (${r.durationHours}h)
                   </div>
                 ` : ''}
 
-                <div class="cdss-monitor-tip" style="margin-top:0.4rem;">
+                <div class="cdss-monitor-clean" style="margin-top:0.4rem;">
                   ${r.monitoringNotes}
                 </div>
               </div>
@@ -1895,7 +1955,7 @@ export class DengueCDSSController {
       </section>
     `;
 
-    // Attach row select events
+    // Attach row duration select events
     const selects = container.querySelectorAll('.cdss-duration-select');
     selects.forEach(sel => {
       sel.addEventListener('change', (e) => {
@@ -1907,12 +1967,66 @@ export class DengueCDSSController {
       });
     });
 
+    // Attach row rate select events (tinh chỉnh liều phác đồ)
+    const rateSelects = container.querySelectorAll('.cdss-rate-select');
+    rateSelects.forEach(sel => {
+      sel.addEventListener('change', (e) => {
+        const target = e.target as HTMLSelectElement;
+        const rowIdx = parseInt(target.getAttribute('data-row-idx') || '0', 10);
+        const newRate = parseFloat(target.value);
+        this.customRates[rowIdx] = newRate;
+        this.recalculate();
+      });
+    });
+
+    // Copy từng cữ vào clipboard
+    const copyRowBtns = container.querySelectorAll('.cdss-btn-copy-row');
+    copyRowBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const target = btn as HTMLButtonElement;
+        const rowIdx = parseInt(target.getAttribute('data-row-idx') || '0', 10);
+        const row = plan.fluidRows[rowIdx];
+        if (row && row.emrOrderText) {
+          this.copyToClipboard(row.emrOrderText, `Đã copy cách dùng Cữ ${row.stepIndex}: "${row.emrOrderText}"`);
+          const icon = target.querySelector('i');
+          if (icon) {
+            icon.className = 'fa-solid fa-check text-success';
+            target.classList.add('copied');
+            setTimeout(() => {
+              icon.className = 'fa-regular fa-copy';
+              target.classList.remove('copied');
+            }, 1500);
+          }
+        }
+      });
+    });
+
+    // Copy toàn bộ các cữ vào clipboard
+    const copyAllBtn = container.querySelector('#btn-copy-emr-all');
+    if (copyAllBtn) {
+      copyAllBtn.addEventListener('click', () => {
+        const allText = plan.fluidRows.map(r => r.emrOrderText).filter(Boolean).join('\n');
+        this.copyToClipboard(allText, `Đã copy toàn bộ ${plan.fluidRows.length} cữ y lệnh cách dùng EMR!`);
+        const icon = copyAllBtn.querySelector('i');
+        if (icon) {
+          icon.className = 'fa-solid fa-check text-success';
+          copyAllBtn.classList.add('copied');
+          setTimeout(() => {
+            icon.className = 'fa-regular fa-copy';
+            copyAllBtn.classList.remove('copied');
+          }, 1500);
+        }
+      });
+    }
+
     const btnSub = container.querySelector('#btn-reset-durations-sub');
     if (btnSub) {
       btnSub.addEventListener('click', () => {
         this.customDurations = {};
+        this.customRates = {};
         this.recalculate();
-        this.showToast('Đã khôi phục thời lượng cữ chuẩn theo Bộ Y Tế!');
+        this.showToast('Đã khôi phục thông số thời lượng và tốc độ chuẩn theo Bộ Y Tế!');
       });
     }
   }
@@ -2076,21 +2190,29 @@ export class DengueCDSSController {
           <div class="cdss-table-title-area">
             <h2 class="cdss-table-title">
               <i class="fa-solid fa-table-list"></i> Bảng Cọc Dịch Cao Phân Tử Nấc Thang &amp; Chuyển Điện Giải (Phụ Lục 10)
+              <span class="cdss-table-title-badge">
+                <i class="fa-solid fa-calculator"></i> Máy Infusomat® P &bull; KVO ${colloidPlan.rows[0]?.kvoRateMlH || 3} ml/h
+              </span>
             </h2>
             <p class="cdss-table-desc">
-              Tiến trình giảm liều từ 15-20 ml/kg/h ➜ 10 ml/kg/h ➜ 7.5-5 ml/kg/h ➜ 3 ml/kg/h ➜ Chuyển điện giải (Ringer Lactate / NaCl 0.9%).
+              Tiến trình giảm liều: 15-20 ml/kg/h ➔ 10 ml/kg/h ➔ 7.5-5 ml/kg/h ➔ 3 ml/kg/h ➔ Chuyển điện giải (Ringer Lactate / NaCl 0.9%).
             </p>
           </div>
+          <button id="btn-copy-colloid-emr-all" class="cdss-btn-copy-all" title="Copy toàn bộ y lệnh cách dùng CPT vào Bệnh Án Điện Tử (EMR)" aria-label="Copy Y Lệnh CPT EMR">
+            <i class="fa-regular fa-copy"></i>
+            <span>Copy Y Lệnh EMR</span>
+          </button>
         </div>
 
         <div class="cdss-table-scroll">
           <table class="cdss-table">
             <thead>
               <tr>
-                <th style="width: 24%;">Cột 1: Mốc Giờ &amp; Giai Đoạn</th>
-                <th style="width: 26%;">Cột 2: Tốc Độ &amp; Lượng Cần</th>
-                <th style="width: 26%;">Cột 3: Tích Lũy CPT &amp; Ngưỡng 60ml/kg</th>
-                <th style="width: 24%;">Cột 4: Yêu Cầu Đo Hct &amp; Giám Sát</th>
+                <th style="width: 17%;">Cột 1: Cữ &amp; Mốc Giờ</th>
+                <th style="width: 20%;">Cột 2: Tốc Độ Bơm (ml/h)</th>
+                <th style="width: 18%;">Cột 3: Thể Tích Cữ (VTBI)</th>
+                <th style="width: 21%;">Cột 4: Tích Lũy CPT (Trần 60ml/kg)</th>
+                <th style="width: 24%;">Cột 5: Đánh Giá &amp; Theo Dõi</th>
               </tr>
             </thead>
             <tbody>
@@ -2100,8 +2222,13 @@ export class DengueCDSSController {
                 return `
                   <tr class="${isStepOver ? 'cdss-row--danger' : ''}">
                     <td>
-                      <div class="cdss-step-badge">Cữ ${r.stepIndex}</div>
-                      <div class="cdss-time-window">${r.timeWindow}</div>
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.35rem; margin-bottom: 0.35rem;">
+                        <span class="cdss-step-badge">Cữ ${r.stepIndex}</span>
+                        <button type="button" class="cdss-copy-icon-btn cdss-btn-copy-colloid-row" data-row-idx="${r.stepIndex - 1}" title="Copy cách dùng Cữ ${r.stepIndex} vào EMR:\n${r.emrOrderText || ''}" aria-label="Copy Y Lệnh Cữ ${r.stepIndex}">
+                          <i class="fa-regular fa-copy"></i>
+                        </button>
+                      </div>
+                      <div class="cdss-time-bold">${r.timeWindow}</div>
                       <div class="cdss-stage-title" style="margin-top:2px; font-weight:700; color:${r.fluidKind === 'colloid' ? 'var(--cdss-primary)' : 'var(--cdss-teal)'};">
                         ${r.stageName}
                       </div>
@@ -2110,40 +2237,56 @@ export class DengueCDSSController {
                       </div>
                     </td>
                     <td>
-                      <div class="cdss-rate-display">
-                        <span class="cdss-rate-number">${r.rateMlKgH}</span>
-                        <span class="cdss-rate-unit">ml/kg/giờ</span>
-                      </div>
-                      <div class="cdss-drops-box">
-                        <i class="fa-solid fa-water" style="color:var(--cdss-info);"></i>
-                        <strong>${r.dropsPerMin}</strong> giọt/phút
-                        <small style="color:var(--cdss-text-muted);">${plan.ageGroup === 'child' ? '(Dây vi giọt)' : '(Dây 20 g/ml)'}</small>
-                      </div>
-                      <div class="cdss-volume-calc">
-                        Cần: <strong>${r.stepVolumeMl.toLocaleString('vi-VN')} ml</strong> (${r.durationHours}h)
+                      <div class="cdss-val-block">
+                        <div class="cdss-big-val">
+                          ${r.pumpRateMlH} <span class="cdss-big-unit">ml/h</span>
+                        </div>
+                        <div class="cdss-sub-hint">
+                          ${r.rateMlKgH} ml/kg/h &bull; Phím [RATE]
+                        </div>
+                        <div class="cdss-sub-drip">
+                          <i class="fa-solid fa-water text-info" style="font-size:0.65rem;"></i> ~${r.dropsPerMin} giọt/phút <small>(${plan.ageGroup === 'child' ? 'dây 60g' : 'dây 20g'})</small>
+                        </div>
                       </div>
                     </td>
                     <td>
-                      <div style="font-size:0.82rem; font-weight:800; color:${isStepOver ? 'var(--cdss-danger)' : 'var(--cdss-text)'};">
-                        Tích lũy: ${r.cumulativeColloidMlPerKg} ml/kg
+                      <div class="cdss-val-block">
+                        <div class="cdss-big-val text-primary">
+                          ${r.stepVolumeMl.toLocaleString('vi-VN')} <span class="cdss-big-unit">ml</span>
+                        </div>
+                        <div class="cdss-sub-hint">
+                          Phím [VOL] &bull; trong ${r.durationHours}h
+                        </div>
+                        <div style="margin-top: 0.25rem;">
+                          <span class="cdss-kvo-clean" title="Khi hết thể tích cữ, máy tự hãm KVO giữ ven">
+                            <i class="fa-solid fa-shield-halved"></i> KVO: ${r.kvoRateMlH} ml/h
+                          </span>
+                        </div>
                       </div>
-                      <div style="font-size:0.72rem; color:var(--cdss-text-muted);">
-                        Tổng thể tích: ${r.cumulativeColloidMl.toLocaleString('vi-VN')} ml
-                      </div>
-                      <div style="margin-top:4px; height:8px; width:100%; background:var(--cdss-surface-alt); border-radius:4px; overflow:hidden; border:1px solid var(--cdss-border-subtle);">
-                        <div style="height:100%; width:${Math.min(100, rowPct)}%; background:${isStepOver ? '#ef4444' : rowPct >= 75 ? '#f59e0b' : 'var(--cdss-primary)'};"></div>
-                      </div>
-                      <div style="font-size:0.68rem; margin-top:2px; color:${isStepOver ? 'var(--cdss-danger)' : 'var(--cdss-text-muted)'};">
-                        ${isStepOver ? '⚠️ Đã vượt 60 ml/kg' : `${rowPct}% trần an toàn`}
+                    </td>
+                    <td>
+                      <div class="cdss-val-block">
+                        <div style="font-size:0.85rem; font-weight:800; color:${isStepOver ? 'var(--cdss-danger)' : 'var(--cdss-text)'};">
+                          Tích lũy: ${r.cumulativeColloidMlPerKg} ml/kg
+                        </div>
+                        <div style="font-size:0.72rem; color:var(--cdss-text-muted);">
+                          Tổng CPT: ${r.cumulativeColloidMl.toLocaleString('vi-VN')} ml
+                        </div>
+                        <div style="margin-top:4px; height:6px; width:100%; background:var(--cdss-surface-alt); border-radius:3px; overflow:hidden; border:1px solid var(--cdss-border-subtle);">
+                          <div style="height:100%; width:${Math.min(100, rowPct)}%; background:${isStepOver ? '#ef4444' : rowPct >= 75 ? '#f59e0b' : 'var(--cdss-primary)'};"></div>
+                        </div>
+                        <div style="font-size:0.68rem; margin-top:2px; color:${isStepOver ? 'var(--cdss-danger)' : 'var(--cdss-text-muted)'};">
+                          ${isStepOver ? '⚠️ Đã vượt trần 60 ml/kg' : `${rowPct}% trần an toàn`}
+                        </div>
                       </div>
                     </td>
                     <td>
                       ${r.hctCheckRequired ? `
-                        <div class="cdss-hct-pill" style="margin-bottom:4px;">
-                          <i class="fa-solid fa-vial"></i> <strong>Đo lại Hct sau cữ này</strong>
+                        <div class="cdss-hct-pill-clean">
+                          <i class="fa-solid fa-vial"></i> Đo lại Hct (${r.durationHours}h)
                         </div>
                       ` : ''}
-                      <div class="cdss-monitor-tip">
+                      <div class="cdss-monitor-clean">
                         ${r.monitoringNotes}
                       </div>
                     </td>
@@ -2251,6 +2394,47 @@ export class DengueCDSSController {
         }
       });
     });
+
+    // Copy từng cữ CPT vào clipboard
+    const colloidCopyBtns = container.querySelectorAll('.cdss-btn-copy-colloid-row');
+    colloidCopyBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const target = btn as HTMLButtonElement;
+        const rowIdx = parseInt(target.getAttribute('data-row-idx') || '0', 10);
+        const row = colloidPlan.rows[rowIdx];
+        if (row && row.emrOrderText) {
+          this.copyToClipboard(row.emrOrderText, `Đã copy cách dùng Cữ ${row.stepIndex}: "${row.emrOrderText}"`);
+          const icon = target.querySelector('i');
+          if (icon) {
+            icon.className = 'fa-solid fa-check text-success';
+            target.classList.add('copied');
+            setTimeout(() => {
+              icon.className = 'fa-regular fa-copy';
+              target.classList.remove('copied');
+            }, 1500);
+          }
+        }
+      });
+    });
+
+    // Copy toàn bộ các cữ CPT vào clipboard
+    const copyColloidAllBtn = container.querySelector('#btn-copy-colloid-emr-all');
+    if (copyColloidAllBtn) {
+      copyColloidAllBtn.addEventListener('click', () => {
+        const allText = colloidPlan.rows.map(r => r.emrOrderText).filter(Boolean).join('\n');
+        this.copyToClipboard(allText, `Đã copy toàn bộ ${colloidPlan.rows.length} cữ y lệnh CPT vào EMR!`);
+        const icon = copyColloidAllBtn.querySelector('i');
+        if (icon) {
+          icon.className = 'fa-solid fa-check text-success';
+          copyColloidAllBtn.classList.add('copied');
+          setTimeout(() => {
+            icon.className = 'fa-regular fa-copy';
+            copyColloidAllBtn.classList.remove('copied');
+          }, 1500);
+        }
+      });
+    }
 
     // Attach de-escalation checkboxes
     const cbList = container.querySelectorAll('.cdss-de-esc-cb');
@@ -3471,9 +3655,9 @@ export class DengueCDSSController {
                   <div style="font-size: 0.8em; color: #444;">${stageShort}</div>
                 </td>
                 <td>
-                  <div>Tốc độ: <strong style="font-size: 1.15em;">${r.rateMlKgH} ml/kg/h</strong></div>
-                  <div style="font-size: 0.9em; margin-top: 1px;">Số giọt: <strong>${r.dropsPerMin} giọt/phút</strong></div>
-                  <div style="font-size: 0.88em; margin-top: 1px;">Lượng dịch: <strong>${r.totalMl.toLocaleString('vi-VN')} ml</strong></div>
+                  <div>Cài máy (RATE): <strong style="font-size: 1.15em; color: #0284c7;">${r.pumpRateMlH} ml/h</strong></div>
+                  <div style="font-size: 0.9em; margin-top: 1px;">Cài thể tích (VTBI): <strong>${r.totalMl.toLocaleString('vi-VN')} ml</strong> / ${r.durationHours}h</div>
+                  <div style="font-size: 0.78em; color: #555; margin-top: 1px;">Phác đồ: ${r.rateMlKgH} ml/kg/h &bull; KVO: ${r.kvoRateMlH} ml/h &bull; Tự do: ${r.dropsPerMin} g/p</div>
                 </td>
                 <td>
                   <div style="font-weight: 700; font-size: 0.95em;">
@@ -3567,7 +3751,7 @@ export class DengueCDSSController {
       `• Đánh giá đáp ứng: ${p.branchDecision.title}`,
       `• Hướng xử trí: ${p.branchDecision.recommendedFluid}`,
       `• Kế hoạch cọc dịch:`,
-      ...p.fluidRows.map(r => `  - Cữ ${r.stepIndex} (${r.timeWindow}): ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} giọt/phút) | Cần ${r.totalMl} ml | Treo thêm: ${r.bottlesToHang} chai | Tại cọc: ${r.totalAtPoleMl} ml`),
+      ...p.fluidRows.map(r => `  - Cữ ${r.stepIndex} (${r.timeWindow}): Cài máy ${r.pumpRateMlH} ml/h (VTBI: ${r.totalMl} ml, KVO: ${r.kvoRateMlH} ml/h) | Phác đồ: ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} giọt/phút) | Treo thêm: ${r.bottlesToHang} chai | Tại cọc: ${r.totalAtPoleMl} ml`),
       `• Tổng dịch: ${p.totalVolumeMl} ml trong ${p.totalDurationHours} giờ.`,
       `• Điều dưỡng lưu ý: Theo dõi nước tiểu mỗi giờ (đích ≥ 0.5-1 ml/kg/h), đo lại Hct trước khi giảm cữ dịch.`
     ].join('\n');
@@ -3582,6 +3766,36 @@ export class DengueCDSSController {
     navigator.clipboard.writeText(this.currentPlan.soapExportText).then(() => {
       this.showToast('Đã sao chép Kế hoạch SOAP Plan (Bệnh Án / DocSpace)!');
     });
+  }
+
+  private copyToClipboard(text: string, successMsg: string): void {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        this.showToast(successMsg);
+      }).catch(() => {
+        this.fallbackCopyText(text, successMsg);
+      });
+    } else {
+      this.fallbackCopyText(text, successMsg);
+    }
+  }
+
+  private fallbackCopyText(text: string, successMsg: string): void {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-9999px';
+    textArea.style.top = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      this.showToast(successMsg);
+    } catch (err) {
+      this.showToast('Không thể sao chép y lệnh, vui lòng thử lại!');
+    }
+    document.body.removeChild(textArea);
   }
 
   private showToast(msg: string): void {

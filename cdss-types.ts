@@ -43,6 +43,9 @@ export interface FluidScheduleRow {
   stageName: string;
   durationHours: number;
   rateMlKgH: number;
+  pumpRateMlH: number; // Tốc độ cài đặt máy truyền dịch (ml/h)
+  vtbiMl: number; // Tổng lượng dịch cài đặt máy (VTBI - Volume To Be Infused, ml)
+  kvoRateMlH: number; // Mức giữ ven KVO tự động của máy (ml/h)
   dropsPerMin: number;
   totalMl: number;
   timeWindow: string;
@@ -52,6 +55,7 @@ export interface FluidScheduleRow {
   totalAtPoleMl: number;
   monitoringNotes: string;
   hctCheckRequired: boolean;
+  emrOrderText?: string; // Câu y lệnh cách dùng EMR: e.g. "Chai 1 (TTM) tốc độ 156 ml/h (tổng dịch 312 ml ~ 6 ml/kg/h x 2h)"
 }
 
 export interface VasopressorDoseInfo {
@@ -132,6 +136,9 @@ export interface ColloidScheduleRow {
   fluidName: string;
   durationHours: number;
   rateMlKgH: number;
+  pumpRateMlH: number; // Tốc độ cài đặt máy truyền dịch (ml/h)
+  vtbiMl: number; // Tổng lượng dịch cài đặt máy (VTBI, ml)
+  kvoRateMlH: number; // Mức giữ ven KVO tự động của máy (ml/h)
   dropsPerMin: number;
   stepVolumeMl: number;
   cumulativeColloidMl: number;
@@ -142,6 +149,7 @@ export interface ColloidScheduleRow {
   monitoringNotes: string;
   hctCheckRequired: boolean;
   exceedsThreshold: boolean;
+  emrOrderText?: string; // Câu y lệnh cách dùng EMR cho CPT
 }
 
 export interface ColloidPlanResult {

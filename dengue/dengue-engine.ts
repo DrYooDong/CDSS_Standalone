@@ -178,7 +178,8 @@ function addHoursToTime(startTimeStr: string, hoursToAdd: number): string {
 export function calculateFluidSchedule(
   patient: DenguePatientInput,
   effectiveWeightKg: number,
-  customDurations?: Record<number, number>
+  customDurations?: Record<number, number>,
+  customRates?: Record<number, number>
 ): { rows: FluidScheduleRow[]; totalVolumeMl: number; totalDurationHours: number } {
   const ageGroup = classifyAgeGroup(patient.ageYears);
   const templates = DENGUE_FLUID_TEMPLATES[patient.severity][ageGroup];
@@ -187,25 +188,35 @@ export function calculateFluidSchedule(
   let carryingFluidMl = 0;
   let totalVolumeMl = 0;
   let totalDurationHours = 0;
+  let currentBottleIdx = 0;
+  let prevRemainingMl = 0;
+  let prevBottleIdx = 0;
 
   const rows: FluidScheduleRow[] = [];
 
   templates.forEach((tpl, idx) => {
     const duration = customDurations?.[idx] !== undefined ? customDurations[idx] : tpl.defaultDurationHours;
-    const rate = tpl.defaultRateMlKgH;
+    const rate = customRates?.[idx] !== undefined ? customRates[idx] : tpl.defaultRateMlKgH;
     
-    // Thể tích cần truyền trong cữ này (ml)
+    // Thể tích cần truyền trong cữ này (ml) = VTBI cài đặt máy
     const neededMl = Math.round(rate * effectiveWeightKg * duration);
     totalVolumeMl += neededMl;
     totalDurationHours += duration;
 
-    // Số giọt mỗi phút:
-    // Trẻ em / dây đếm giọt nhi khoa: 60 giọt/ml (microdrip) => Số giọt/phút = Tốc độ ml/giờ
+    // Tốc độ truyền máy cài đặt (ml/h) theo máy Infusomat P (chuẩn 1 chữ số thập phân hoặc số nguyên):
+    const pumpRateMlH = Math.round(rate * effectiveWeightKg * 10) / 10;
+    const vtbiMl = neededMl;
+    // Chế độ giữ vein KVO tự động theo chuẩn Infusomat P (Ảnh 2):
+    // Khi tốc độ > 10 ml/h -> KVO = 3 ml/h; Khi tốc độ <= 10 ml/h -> KVO = 1 ml/h
+    const kvoRateMlH = pumpRateMlH > 10 ? 3 : 1;
+
+    // Số giọt mỗi phút (khi chuyển sang chế độ truyền tự do / không dùng máy):
+    // Trẻ em / dây vi giọt nhi khoa: 60 giọt/ml (microdrip) => Số giọt/phút = Tốc độ ml/h
     // Người lớn / dây truyền tiêu chuẩn: 20 giọt/ml (macrodrip) => Số giọt/phút = (Tốc độ ml/h * 20) / 60 = Tốc độ / 3
     const isPediatric = ageGroup === 'child';
     const dropsPerMin = isPediatric
-      ? Math.round(rate * effectiveWeightKg)
-      : Math.round((rate * effectiveWeightKg) / 3);
+      ? Math.round(pumpRateMlH)
+      : Math.round(pumpRateMlH / 3);
 
     // Tính mốc thời gian
     const endClock = addHoursToTime(currentClock, duration);
@@ -219,13 +230,40 @@ export function calculateFluidSchedule(
     const totalAtPoleMl = existingFluidMl + addedFluidMl;
     
     // Dịch còn dư sau khi kết thúc cữ truyền chuyển sang cữ tiếp theo
-    carryingFluidMl = Math.max(0, totalAtPoleMl - neededMl);
+    const remainingAfterStep = Math.max(0, totalAtPoleMl - neededMl);
+    carryingFluidMl = remainingAfterStep;
+
+    // Tính số thứ tự chai và chuỗi y lệnh cách dùng EMR chuẩn hóa
+    const newBottles: number[] = [];
+    for (let b = 1; b <= bottlesToHang; b++) {
+      newBottles.push(currentBottleIdx + b);
+    }
+    currentBottleIdx += bottlesToHang;
+
+    let bottlePrefix = '';
+    if (prevRemainingMl > 0 && bottlesToHang > 0) {
+      bottlePrefix = `Chai ${prevBottleIdx} dư: ${prevRemainingMl} mL + Chai ${newBottles.join(', ')}`;
+    } else if (prevRemainingMl > 0 && bottlesToHang === 0) {
+      bottlePrefix = `Chai ${prevBottleIdx} dư: ${prevRemainingMl} mL`;
+    } else if (bottlesToHang > 0) {
+      bottlePrefix = `Chai ${newBottles.join(', ')}`;
+    } else {
+      bottlePrefix = `Duy trì đường truyền`;
+    }
+
+    const emrOrderText = `${bottlePrefix} (TTM) tốc độ ${pumpRateMlH} ml/h (tổng dịch ~ ${rate}ml/kg/h x ${duration}h)`;
+
+    prevRemainingMl = remainingAfterStep;
+    prevBottleIdx = bottlesToHang > 0 ? currentBottleIdx : prevBottleIdx;
 
     rows.push({
       stepIndex: idx + 1,
       stageName: tpl.stageName,
       durationHours: duration,
       rateMlKgH: rate,
+      pumpRateMlH,
+      vtbiMl,
+      kvoRateMlH,
       dropsPerMin,
       totalMl: neededMl,
       timeWindow,
@@ -234,7 +272,8 @@ export function calculateFluidSchedule(
       bottleType: '500ml',
       totalAtPoleMl,
       monitoringNotes: tpl.notes,
-      hctCheckRequired: tpl.hctCheckRequired
+      hctCheckRequired: tpl.hctCheckRequired,
+      emrOrderText
     });
 
     currentClock = endClock;
@@ -251,7 +290,8 @@ export function calculateColloidSchedule(
   patient: DenguePatientInput,
   effectiveWeightKg: number,
   selectedColloid: ColloidType = 'dextran40',
-  customDurations?: Record<number, number>
+  customDurations?: Record<number, number>,
+  customRates?: Record<number, number>
 ): ColloidPlanResult {
   const ageGroup = classifyAgeGroup(patient.ageYears);
   const templates = DENGUE_COLLOID_TEMPLATES[ageGroup];
@@ -260,13 +300,16 @@ export function calculateColloidSchedule(
   let currentClock = patient.startTime || '08:00';
   let carryingFluidMl = 0;
   let cumulativeColloidMl = 0;
+  let currentBottleIdx = 0;
+  let prevRemainingMl = 0;
+  let prevBottleIdx = 0;
   const safeLimitVolumeMl = Math.round(60 * effectiveWeightKg); // Giới hạn an toàn 60 ml/kg theo BYT 2023
 
   const rows: ColloidScheduleRow[] = [];
 
   templates.forEach((tpl, idx) => {
     const duration = customDurations?.[idx] !== undefined ? customDurations[idx] : tpl.defaultDurationHours;
-    const rate = tpl.defaultRateMlKgH;
+    const rate = customRates?.[idx] !== undefined ? customRates[idx] : tpl.defaultRateMlKgH;
     const stepVolumeMl = Math.round(rate * effectiveWeightKg * duration);
 
     if (tpl.fluidKind === 'colloid') {
@@ -276,10 +319,15 @@ export function calculateColloidSchedule(
     const cumulativeColloidMlPerKg = Math.round((cumulativeColloidMl / effectiveWeightKg) * 10) / 10;
     const exceedsThreshold = cumulativeColloidMlPerKg >= 60;
 
+    // Tốc độ truyền máy cài đặt (ml/h) và Thể tích cài đặt máy VTBI (ml)
+    const pumpRateMlH = Math.round(rate * effectiveWeightKg * 10) / 10;
+    const vtbiMl = stepVolumeMl;
+    const kvoRateMlH = pumpRateMlH > 10 ? 3 : 1;
+
     const isPediatric = ageGroup === 'child';
     const dropsPerMin = isPediatric
-      ? Math.round(rate * effectiveWeightKg)
-      : Math.round((rate * effectiveWeightKg) / 3);
+      ? Math.round(pumpRateMlH)
+      : Math.round(pumpRateMlH / 3);
 
     const endClock = addHoursToTime(currentClock, duration);
     const timeWindow = `${currentClock} - ${endClock} (${duration}h)`;
@@ -289,7 +337,32 @@ export function calculateColloidSchedule(
     const bottlesToHang = Math.ceil(deficitMl / 500);
     const addedFluidMl = bottlesToHang * 500;
     const totalAtPoleMl = existingFluidMl + addedFluidMl;
-    carryingFluidMl = Math.max(0, totalAtPoleMl - stepVolumeMl);
+    const remainingAfterStep = Math.max(0, totalAtPoleMl - stepVolumeMl);
+    carryingFluidMl = remainingAfterStep;
+
+    // Tính số thứ tự chai và chuỗi y lệnh cách dùng EMR
+    const newBottles: number[] = [];
+    for (let b = 1; b <= bottlesToHang; b++) {
+      newBottles.push(currentBottleIdx + b);
+    }
+    currentBottleIdx += bottlesToHang;
+
+    let bottlePrefix = '';
+    if (prevRemainingMl > 0 && bottlesToHang > 0) {
+      bottlePrefix = `Chai ${prevBottleIdx} dư: ${prevRemainingMl} mL + Chai ${newBottles.join(', ')}`;
+    } else if (prevRemainingMl > 0 && bottlesToHang === 0) {
+      bottlePrefix = `Chai ${prevBottleIdx} dư: ${prevRemainingMl} mL`;
+    } else if (bottlesToHang > 0) {
+      bottlePrefix = `Chai ${newBottles.join(', ')}`;
+    } else {
+      bottlePrefix = `Duy trì đường truyền`;
+    }
+
+    const fluidLabel = tpl.fluidKind === 'colloid' ? meta.shortName : 'Điện giải';
+    const emrOrderText = `${bottlePrefix} (TTM) tốc độ ${pumpRateMlH} ml/h (tổng dịch ~ ${rate}ml/kg/h x ${duration}h - ${fluidLabel})`;
+
+    prevRemainingMl = remainingAfterStep;
+    prevBottleIdx = bottlesToHang > 0 ? currentBottleIdx : prevBottleIdx;
 
     rows.push({
       stepIndex: idx + 1,
@@ -298,6 +371,9 @@ export function calculateColloidSchedule(
       fluidName: tpl.fluidKind === 'colloid' ? meta.shortName : 'Ringer Lactate / NaCl 0.9%',
       durationHours: duration,
       rateMlKgH: rate,
+      pumpRateMlH,
+      vtbiMl,
+      kvoRateMlH,
       dropsPerMin,
       stepVolumeMl,
       cumulativeColloidMl,
@@ -307,7 +383,8 @@ export function calculateColloidSchedule(
       totalAtPoleMl,
       monitoringNotes: tpl.notes,
       hctCheckRequired: tpl.hctCheckRequired,
-      exceedsThreshold
+      exceedsThreshold,
+      emrOrderText
     });
 
     currentClock = endClock;
@@ -871,7 +948,8 @@ export function calculateBranchDecision(
  */
 export function generateDengueCDSSPlan(
   patient: DenguePatientInput,
-  customDurations?: Record<number, number>
+  customDurations?: Record<number, number>,
+  customRates?: Record<number, number>
 ): DengueCDSSPlan {
   const ageGroup = classifyAgeGroup(patient.ageYears);
   const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg, patient.heightCm);
@@ -880,10 +958,11 @@ export function generateDengueCDSSPlan(
   const { rows, totalVolumeMl, totalDurationHours } = calculateFluidSchedule(
     patient,
     effectiveWeight,
-    customDurations
+    customDurations,
+    customRates
   );
 
-  const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, 'dextran40');
+  const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, 'dextran40', customDurations, customRates);
   const defaultHemodynamic: HemodynamicProfile = {
     cvpLevel: 'low_normal',
     cardiacContractility: 'normal',
@@ -998,12 +1077,12 @@ export function generateDengueCDSSPlan(
     `  • Hướng xử trí: ${branchDecision.recommendedFluid}`,
     `  • Lý luận lâm sàng: ${branchDecision.reasoning}`,
     `\n2. BẢNG CỌC DỊCH ĐIỀU TRỊ BAN ĐẦU:`,
-    ...rows.map(r => `  • Cữ ${r.stepIndex}: ${r.timeWindow} | Tốc độ ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} giọt/phút) | Cần ${r.totalMl} ml (Treo thêm ${r.bottlesToHang} chai 500ml) | Tại cọc: ${r.totalAtPoleMl} ml`),
+    ...rows.map(r => `  • Cữ ${r.stepIndex}: ${r.timeWindow} | Cài máy: ${r.pumpRateMlH} ml/h (VTBI: ${r.totalMl} ml, KVO: ${r.kvoRateMlH} ml/h) | Phác đồ: ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} giọt/phút) | Treo thêm ${r.bottlesToHang} chai 500ml | Tại cọc: ${r.totalAtPoleMl} ml`),
     `\n3. PHÁC ĐỒ CAO PHÂN TỬ (CPT) & GIẢM LIỀU (PHỤ LỤC 10):`,
     `  • Loại dịch khuyến cáo: ${colloidPlan.colloidName}`,
     `  • Giới hạn an toàn CPT: ${colloidPlan.safeLimitVolumeMl} ml (tương đương 60 ml/kg)`,
     `  • Bảng cọc dịch CPT nấc thang:`,
-    ...colloidPlan.rows.map(r => `    - Cữ ${r.stepIndex} (${r.fluidName}): ${r.timeWindow} | Tốc độ ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} giọt/phút) | ${r.stepVolumeMl} ml (Tích lũy CPT: ${r.cumulativeColloidMlPerKg} ml/kg)`),
+    ...colloidPlan.rows.map(r => `    - Cữ ${r.stepIndex} (${r.fluidName}): ${r.timeWindow} | Cài máy: ${r.pumpRateMlH} ml/h (VTBI: ${r.stepVolumeMl} ml, KVO: ${r.kvoRateMlH} ml/h) | Phác đồ: ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} giọt/phút) | ${r.stepVolumeMl} ml (Tích lũy CPT: ${r.cumulativeColloidMlPerKg} ml/kg)`),
     `  • 7 Tiêu chuẩn chuyển từ CPT sang Điện giải (Phụ lục 10): Mạch rõ, HA bình thường, Chi ấm CRT < 2s, Hct giảm dần, Nước tiểu ≥ 0.5-1 ml/kg/h, Gan thu nhỏ, CVP ổn định.`,
     `\n4. LƯU ĐỒ VẬN MẠCH & BƠM TIÊM ĐIỆN 50ML (PHỤ LỤC 15 & 18):`,
     `  • Test Dịch CPT (khi CVP ≤ 15 cmH2O): Bơm 5 ml/kg trong 30 phút (${vasopressorDecision.fluidTestMl} ml).`,

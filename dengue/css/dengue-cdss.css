@@ -1364,46 +1364,193 @@
   margin-top: 0.35rem;
 }
 
-/* Cột 2: Tốc Độ & Thể Tích */
-.cdss-rate-display {
-  display: flex;
-  align-items: baseline;
-  gap: 0.3rem;
-}
-
-.cdss-rate-number {
-  font-family: var(--cdss-font-mono);
-  font-size: 1.45rem;
-  font-weight: 800;
+/* ========================================================
+   BẢNG CỌC DỊCH TRUYỀN CHUYÊN NGHIỆP — ĐƠN GIẢN & CHÍNH XÁC
+   ======================================================== */
+.cdss-table-title-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
   color: var(--cdss-primary);
+  background: var(--cdss-primary-light);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--cdss-radius-full);
+  margin-left: 0.5rem;
+  vertical-align: middle;
 }
 
-.cdss-rate-unit {
-  font-size: 0.75rem;
+/* Khối hiển thị chỉ số chính */
+.cdss-val-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.cdss-big-val {
+  font-family: var(--cdss-font-mono);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.cdss-big-unit {
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--cdss-text-muted);
 }
 
-.cdss-drops-box {
+.cdss-sub-hint {
+  font-size: 0.73rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.3;
+}
+
+.cdss-sub-drip {
+  font-size: 0.73rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.3;
+}
+
+.cdss-time-bold {
+  font-family: var(--cdss-font-mono);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--cdss-text);
+  margin-bottom: 0.25rem;
+}
+
+/* KVO Tag tinh tế */
+.cdss-kvo-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.69rem;
+  font-weight: 700;
+  color: var(--cdss-success);
+  background: var(--cdss-success-light);
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+/* Picker tinh gọn phẳng */
+.cdss-picker-clean {
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid var(--cdss-border);
+  background: var(--cdss-surface);
+  color: var(--cdss-text);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.cdss-picker-clean:hover, .cdss-picker-clean:focus {
+  border-color: var(--cdss-primary);
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+}
+
+/* Treo thêm và tại cọc */
+.cdss-hang-clean {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--cdss-text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.cdss-hang-clean.hang-active {
+  color: var(--cdss-danger);
+}
+
+.cdss-pole-clean {
+  font-size: 0.8rem;
+  color: var(--cdss-text);
+  margin-bottom: 0.15rem;
+}
+
+/* Hct pill clean */
+.cdss-hct-pill-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+}
+
+.cdss-monitor-clean {
+  font-size: 0.75rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.35;
+}
+
+/* Nút copy icon y lệnh EMR */
+.cdss-copy-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 4px;
+  border: 1px solid var(--cdss-border);
+  background: var(--cdss-surface);
+  color: var(--cdss-text-muted);
+  cursor: pointer;
+  font-size: 0.72rem;
+  transition: all 0.15s ease;
+}
+
+.cdss-copy-icon-btn:hover {
+  color: var(--cdss-primary);
+  border-color: var(--cdss-primary);
+  background: var(--cdss-primary-light);
+  transform: translateY(-1px);
+}
+
+.cdss-copy-icon-btn.copied {
+  color: #ffffff;
+  border-color: var(--cdss-success);
+  background: var(--cdss-success);
+}
+
+.cdss-btn-copy-all {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background: var(--cdss-surface-alt);
-  padding: 0.25rem 0.6rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cdss-primary);
+  background: var(--cdss-primary-light);
+  border: 1px solid rgba(2, 132, 199, 0.25);
   border-radius: var(--cdss-radius-sm);
-  border: 1px solid var(--cdss-border);
-  font-size: 0.8rem;
-  margin: 0.35rem 0;
-  color: var(--cdss-text);
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
-.cdss-volume-calc {
-  font-size: 0.78rem;
-  color: var(--cdss-text-muted);
+.cdss-btn-copy-all:hover {
+  background: var(--cdss-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
 }
 
-.cdss-volume-calc strong {
-  color: var(--cdss-text);
+.cdss-btn-copy-all.copied {
+  background: var(--cdss-success);
+  color: #ffffff;
+  border-color: var(--cdss-success);
 }
 
 /* Cột 3: Dịch Có Sẵn & Treo Thêm */

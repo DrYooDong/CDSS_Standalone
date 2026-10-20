@@ -1097,22 +1097,28 @@ var DengueBundle = (() => {
     const newM = totalMinutes % 60;
     return `${newH.toString().padStart(2, "0")}:${newM.toString().padStart(2, "0")}`;
   }
-  function calculateFluidSchedule(patient, effectiveWeightKg, customDurations) {
+  function calculateFluidSchedule(patient, effectiveWeightKg, customDurations, customRates) {
     const ageGroup = classifyAgeGroup(patient.ageYears);
     const templates = DENGUE_FLUID_TEMPLATES[patient.severity][ageGroup];
     let currentClock = patient.startTime || "08:00";
     let carryingFluidMl = 0;
     let totalVolumeMl = 0;
     let totalDurationHours = 0;
+    let currentBottleIdx = 0;
+    let prevRemainingMl = 0;
+    let prevBottleIdx = 0;
     const rows = [];
     templates.forEach((tpl, idx) => {
       const duration = customDurations?.[idx] !== void 0 ? customDurations[idx] : tpl.defaultDurationHours;
-      const rate = tpl.defaultRateMlKgH;
+      const rate = customRates?.[idx] !== void 0 ? customRates[idx] : tpl.defaultRateMlKgH;
       const neededMl = Math.round(rate * effectiveWeightKg * duration);
       totalVolumeMl += neededMl;
       totalDurationHours += duration;
+      const pumpRateMlH = Math.round(rate * effectiveWeightKg * 10) / 10;
+      const vtbiMl = neededMl;
+      const kvoRateMlH = pumpRateMlH > 10 ? 3 : 1;
       const isPediatric = ageGroup === "child";
-      const dropsPerMin = isPediatric ? Math.round(rate * effectiveWeightKg) : Math.round(rate * effectiveWeightKg / 3);
+      const dropsPerMin = isPediatric ? Math.round(pumpRateMlH) : Math.round(pumpRateMlH / 3);
       const endClock = addHoursToTime(currentClock, duration);
       const timeWindow = `${currentClock} - ${endClock} (${duration}h)`;
       const existingFluidMl = carryingFluidMl;
@@ -1120,12 +1126,34 @@ var DengueBundle = (() => {
       const bottlesToHang = Math.ceil(deficitMl / 500);
       const addedFluidMl = bottlesToHang * 500;
       const totalAtPoleMl = existingFluidMl + addedFluidMl;
-      carryingFluidMl = Math.max(0, totalAtPoleMl - neededMl);
+      const remainingAfterStep = Math.max(0, totalAtPoleMl - neededMl);
+      carryingFluidMl = remainingAfterStep;
+      const newBottles = [];
+      for (let b = 1; b <= bottlesToHang; b++) {
+        newBottles.push(currentBottleIdx + b);
+      }
+      currentBottleIdx += bottlesToHang;
+      let bottlePrefix = "";
+      if (prevRemainingMl > 0 && bottlesToHang > 0) {
+        bottlePrefix = `Chai ${prevBottleIdx} d\u01B0: ${prevRemainingMl} mL + Chai ${newBottles.join(", ")}`;
+      } else if (prevRemainingMl > 0 && bottlesToHang === 0) {
+        bottlePrefix = `Chai ${prevBottleIdx} d\u01B0: ${prevRemainingMl} mL`;
+      } else if (bottlesToHang > 0) {
+        bottlePrefix = `Chai ${newBottles.join(", ")}`;
+      } else {
+        bottlePrefix = `Duy tr\xEC \u0111\u01B0\u1EDDng truy\u1EC1n`;
+      }
+      const emrOrderText = `${bottlePrefix} (TTM) t\u1ED1c \u0111\u1ED9 ${pumpRateMlH} ml/h (t\u1ED5ng d\u1ECBch ~ ${rate}ml/kg/h x ${duration}h)`;
+      prevRemainingMl = remainingAfterStep;
+      prevBottleIdx = bottlesToHang > 0 ? currentBottleIdx : prevBottleIdx;
       rows.push({
         stepIndex: idx + 1,
         stageName: tpl.stageName,
         durationHours: duration,
         rateMlKgH: rate,
+        pumpRateMlH,
+        vtbiMl,
+        kvoRateMlH,
         dropsPerMin,
         totalMl: neededMl,
         timeWindow,
@@ -1134,32 +1162,39 @@ var DengueBundle = (() => {
         bottleType: "500ml",
         totalAtPoleMl,
         monitoringNotes: tpl.notes,
-        hctCheckRequired: tpl.hctCheckRequired
+        hctCheckRequired: tpl.hctCheckRequired,
+        emrOrderText
       });
       currentClock = endClock;
     });
     return { rows, totalVolumeMl, totalDurationHours };
   }
-  function calculateColloidSchedule(patient, effectiveWeightKg, selectedColloid = "dextran40", customDurations) {
+  function calculateColloidSchedule(patient, effectiveWeightKg, selectedColloid = "dextran40", customDurations, customRates) {
     const ageGroup = classifyAgeGroup(patient.ageYears);
     const templates = DENGUE_COLLOID_TEMPLATES[ageGroup];
     const meta = DENGUE_COLLOID_METADATA[selectedColloid] || DENGUE_COLLOID_METADATA.dextran40;
     let currentClock = patient.startTime || "08:00";
     let carryingFluidMl = 0;
     let cumulativeColloidMl = 0;
+    let currentBottleIdx = 0;
+    let prevRemainingMl = 0;
+    let prevBottleIdx = 0;
     const safeLimitVolumeMl = Math.round(60 * effectiveWeightKg);
     const rows = [];
     templates.forEach((tpl, idx) => {
       const duration = customDurations?.[idx] !== void 0 ? customDurations[idx] : tpl.defaultDurationHours;
-      const rate = tpl.defaultRateMlKgH;
+      const rate = customRates?.[idx] !== void 0 ? customRates[idx] : tpl.defaultRateMlKgH;
       const stepVolumeMl = Math.round(rate * effectiveWeightKg * duration);
       if (tpl.fluidKind === "colloid") {
         cumulativeColloidMl += stepVolumeMl;
       }
       const cumulativeColloidMlPerKg = Math.round(cumulativeColloidMl / effectiveWeightKg * 10) / 10;
       const exceedsThreshold = cumulativeColloidMlPerKg >= 60;
+      const pumpRateMlH = Math.round(rate * effectiveWeightKg * 10) / 10;
+      const vtbiMl = stepVolumeMl;
+      const kvoRateMlH = pumpRateMlH > 10 ? 3 : 1;
       const isPediatric = ageGroup === "child";
-      const dropsPerMin = isPediatric ? Math.round(rate * effectiveWeightKg) : Math.round(rate * effectiveWeightKg / 3);
+      const dropsPerMin = isPediatric ? Math.round(pumpRateMlH) : Math.round(pumpRateMlH / 3);
       const endClock = addHoursToTime(currentClock, duration);
       const timeWindow = `${currentClock} - ${endClock} (${duration}h)`;
       const existingFluidMl = carryingFluidMl;
@@ -1167,7 +1202,27 @@ var DengueBundle = (() => {
       const bottlesToHang = Math.ceil(deficitMl / 500);
       const addedFluidMl = bottlesToHang * 500;
       const totalAtPoleMl = existingFluidMl + addedFluidMl;
-      carryingFluidMl = Math.max(0, totalAtPoleMl - stepVolumeMl);
+      const remainingAfterStep = Math.max(0, totalAtPoleMl - stepVolumeMl);
+      carryingFluidMl = remainingAfterStep;
+      const newBottles = [];
+      for (let b = 1; b <= bottlesToHang; b++) {
+        newBottles.push(currentBottleIdx + b);
+      }
+      currentBottleIdx += bottlesToHang;
+      let bottlePrefix = "";
+      if (prevRemainingMl > 0 && bottlesToHang > 0) {
+        bottlePrefix = `Chai ${prevBottleIdx} d\u01B0: ${prevRemainingMl} mL + Chai ${newBottles.join(", ")}`;
+      } else if (prevRemainingMl > 0 && bottlesToHang === 0) {
+        bottlePrefix = `Chai ${prevBottleIdx} d\u01B0: ${prevRemainingMl} mL`;
+      } else if (bottlesToHang > 0) {
+        bottlePrefix = `Chai ${newBottles.join(", ")}`;
+      } else {
+        bottlePrefix = `Duy tr\xEC \u0111\u01B0\u1EDDng truy\u1EC1n`;
+      }
+      const fluidLabel = tpl.fluidKind === "colloid" ? meta.shortName : "\u0110i\u1EC7n gi\u1EA3i";
+      const emrOrderText = `${bottlePrefix} (TTM) t\u1ED1c \u0111\u1ED9 ${pumpRateMlH} ml/h (t\u1ED5ng d\u1ECBch ~ ${rate}ml/kg/h x ${duration}h - ${fluidLabel})`;
+      prevRemainingMl = remainingAfterStep;
+      prevBottleIdx = bottlesToHang > 0 ? currentBottleIdx : prevBottleIdx;
       rows.push({
         stepIndex: idx + 1,
         stageName: tpl.stageName,
@@ -1175,6 +1230,9 @@ var DengueBundle = (() => {
         fluidName: tpl.fluidKind === "colloid" ? meta.shortName : "Ringer Lactate / NaCl 0.9%",
         durationHours: duration,
         rateMlKgH: rate,
+        pumpRateMlH,
+        vtbiMl,
+        kvoRateMlH,
         dropsPerMin,
         stepVolumeMl,
         cumulativeColloidMl,
@@ -1184,7 +1242,8 @@ var DengueBundle = (() => {
         totalAtPoleMl,
         monitoringNotes: tpl.notes,
         hctCheckRequired: tpl.hctCheckRequired,
-        exceedsThreshold
+        exceedsThreshold,
+        emrOrderText
       });
       currentClock = endClock;
     });
@@ -1619,16 +1678,17 @@ var DengueBundle = (() => {
       ]
     };
   }
-  function generateDengueCDSSPlan(patient, customDurations) {
+  function generateDengueCDSSPlan(patient, customDurations, customRates) {
     const ageGroup = classifyAgeGroup(patient.ageYears);
     const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg, patient.heightCm);
     const effectiveWeight = weightResult.adjustedWeightKg;
     const { rows, totalVolumeMl, totalDurationHours } = calculateFluidSchedule(
       patient,
       effectiveWeight,
-      customDurations
+      customDurations,
+      customRates
     );
-    const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, "dextran40");
+    const colloidPlan = calculateColloidSchedule(patient, effectiveWeight, "dextran40", customDurations, customRates);
     const defaultHemodynamic = {
       cvpLevel: "low_normal",
       cardiacContractility: "normal",
@@ -1728,13 +1788,13 @@ var DengueBundle = (() => {
       `  \u2022 L\xFD lu\u1EADn l\xE2m s\xE0ng: ${branchDecision.reasoning}`,
       `
 2. B\u1EA2NG C\u1ECCC D\u1ECACH \u0110I\u1EC0U TR\u1ECA BAN \u0110\u1EA6U:`,
-      ...rows.map((r) => `  \u2022 C\u1EEF ${r.stepIndex}: ${r.timeWindow} | T\u1ED1c \u0111\u1ED9 ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} gi\u1ECDt/ph\xFAt) | C\u1EA7n ${r.totalMl} ml (Treo th\xEAm ${r.bottlesToHang} chai 500ml) | T\u1EA1i c\u1ECDc: ${r.totalAtPoleMl} ml`),
+      ...rows.map((r) => `  \u2022 C\u1EEF ${r.stepIndex}: ${r.timeWindow} | C\xE0i m\xE1y: ${r.pumpRateMlH} ml/h (VTBI: ${r.totalMl} ml, KVO: ${r.kvoRateMlH} ml/h) | Ph\xE1c \u0111\u1ED3: ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} gi\u1ECDt/ph\xFAt) | Treo th\xEAm ${r.bottlesToHang} chai 500ml | T\u1EA1i c\u1ECDc: ${r.totalAtPoleMl} ml`),
       `
 3. PH\xC1C \u0110\u1ED2 CAO PH\xC2N T\u1EEC (CPT) & GI\u1EA2M LI\u1EC0U (PH\u1EE4 L\u1EE4C 10):`,
       `  \u2022 Lo\u1EA1i d\u1ECBch khuy\u1EBFn c\xE1o: ${colloidPlan.colloidName}`,
       `  \u2022 Gi\u1EDBi h\u1EA1n an to\xE0n CPT: ${colloidPlan.safeLimitVolumeMl} ml (t\u01B0\u01A1ng \u0111\u01B0\u01A1ng 60 ml/kg)`,
       `  \u2022 B\u1EA3ng c\u1ECDc d\u1ECBch CPT n\u1EA5c thang:`,
-      ...colloidPlan.rows.map((r) => `    - C\u1EEF ${r.stepIndex} (${r.fluidName}): ${r.timeWindow} | T\u1ED1c \u0111\u1ED9 ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} gi\u1ECDt/ph\xFAt) | ${r.stepVolumeMl} ml (T\xEDch l\u0169y CPT: ${r.cumulativeColloidMlPerKg} ml/kg)`),
+      ...colloidPlan.rows.map((r) => `    - C\u1EEF ${r.stepIndex} (${r.fluidName}): ${r.timeWindow} | C\xE0i m\xE1y: ${r.pumpRateMlH} ml/h (VTBI: ${r.stepVolumeMl} ml, KVO: ${r.kvoRateMlH} ml/h) | Ph\xE1c \u0111\u1ED3: ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} gi\u1ECDt/ph\xFAt) | ${r.stepVolumeMl} ml (T\xEDch l\u0169y CPT: ${r.cumulativeColloidMlPerKg} ml/kg)`),
       `  \u2022 7 Ti\xEAu chu\u1EA9n chuy\u1EC3n t\u1EEB CPT sang \u0110i\u1EC7n gi\u1EA3i (Ph\u1EE5 l\u1EE5c 10): M\u1EA1ch r\xF5, HA b\xECnh th\u01B0\u1EDDng, Chi \u1EA5m CRT < 2s, Hct gi\u1EA3m d\u1EA7n, N\u01B0\u1EDBc ti\u1EC3u \u2265 0.5-1 ml/kg/h, Gan thu nh\u1ECF, CVP \u1ED5n \u0111\u1ECBnh.`,
       `
 4. L\u01AFU \u0110\u1ED2 V\u1EACN M\u1EA0CH & B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML (PH\u1EE4 L\u1EE4C 15 & 18):`,
@@ -1947,6 +2007,8 @@ var DengueBundle = (() => {
     container;
     currentPlan = null;
     customDurations = {};
+    customRates = {};
+    infusionDeliveryMode = "pump";
     activeCaseId = "child-obese";
     activeWorkspaceMode = "fluid_schedule";
     activeRefractorySubTab = "tab-cpt";
@@ -2664,7 +2726,7 @@ var DengueBundle = (() => {
     }
     recalculate() {
       const input = this.getFormData();
-      this.currentPlan = generateDengueCDSSPlan(input, this.customDurations);
+      this.currentPlan = generateDengueCDSSPlan(input, this.customDurations, this.customRates);
       this.renderPlan(this.currentPlan);
     }
     renderPlan(plan) {
@@ -3323,20 +3385,29 @@ var DengueBundle = (() => {
         </div>
       </div>
 
-      <!-- B\u1EA2NG \u0110I\u1EC0U PH\u1ED0I C\u1ECCC D\u1ECACH 4 C\u1ED8T -->
+      <!-- B\u1EA2NG \u0110I\u1EC0U PH\u1ED0I C\u1ECCC D\u1ECACH 5 C\u1ED8T CHU\u1EA8N L\xC2M S\xC0NG -->
       <section class="cdss-table-card">
         <div class="cdss-table-header-wrap">
           <div class="cdss-table-title-area">
             <h2 class="cdss-table-title">
-              <i class="fa-solid fa-table-list"></i> B\u1EA3ng \u0110i\u1EC1u Ph\u1ED1i C\u1ECDc D\u1ECBch 4 C\u1ED9t Chu\u1EA9n H\xF3a
+              <i class="fa-solid fa-table-list"></i> B\u1EA3ng \u0110i\u1EC1u Ph\u1ED1i C\u1ECDc D\u1ECBch Truy\u1EC1n L\xE2m S\xE0ng
+              <span class="cdss-table-title-badge">
+                <i class="fa-solid fa-calculator"></i> M\xE1y Infusomat\xAE P &bull; KVO ${plan.fluidRows[0]?.kvoRateMlH || 3} ml/h
+              </span>
             </h2>
             <p class="cdss-table-desc">
-              T\u1EF1 \u0111\u1ED9ng g\u1ED9p th\u1EC3 t\xEDch, t\xEDnh gi\u1ECDt/ph\xFAt (d\xE2y 20g/ml), chuy\u1EC3n d\u1ECBch d\u01B0 v\xE0 t\xEDnh s\u1ED1 chai 500ml treo th\xEAm t\u1EA1i c\u1ECDc.
+              C\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh: <strong>${plan.weightResult.adjustedWeightKg} kg</strong> (${plan.weightResult.isObese ? plan.patient.ageYears >= 16 ? "Ph\u1EE5 l\u1EE5c 9 BYT" : "CDC 2014" : "C\xE2n th\u1EF1c t\u1EBF"}). Cung c\u1EA5p tr\u1EF1c ti\u1EBFp 2 th\xF4ng s\u1ED1 c\xE0i m\xE1y: <strong>T\u1ED1c \u0111\u1ED9 (ml/h)</strong> &amp; <strong>Th\u1EC3 t\xEDch c\u1EEF VTBI (ml)</strong>.
             </p>
           </div>
-          <button id="btn-reset-durations-sub" class="cdss-action-btn cdss-action-btn--icon-only" title="Kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng chu\u1EA9n B\u1ED9 Y T\u1EBF" aria-label="\u0110\u1EB7t L\u1EA1i Gi\u1EDD Chu\u1EA9n">
-            <i class="fa-solid fa-clock-rotate-left"></i>
-          </button>
+          <div style="display: flex; gap: 0.45rem; align-items: center;">
+            <button id="btn-copy-emr-all" class="cdss-btn-copy-all" title="Copy to\xE0n b\u1ED9 y l\u1EC7nh c\xE1ch d\xF9ng c\xE1c c\u1EEF v\xE0o B\u1EC7nh \xC1n \u0110i\u1EC7n T\u1EED (EMR)" aria-label="Copy Y L\u1EC7nh EMR">
+              <i class="fa-regular fa-copy"></i>
+              <span>Copy Y L\u1EC7nh EMR</span>
+            </button>
+            <button id="btn-reset-durations-sub" class="cdss-action-btn cdss-action-btn--icon-only" title="Kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng v\xE0 t\u1ED1c \u0111\u1ED9 chu\u1EA9n B\u1ED9 Y T\u1EBF" aria-label="\u0110\u1EB7t L\u1EA1i Gi\u1EDD Chu\u1EA9n">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </button>
+          </div>
         </div>
 
         <!-- Desktop / Tablet Table -->
@@ -3344,10 +3415,11 @@ var DengueBundle = (() => {
           <table class="cdss-table">
             <thead>
               <tr>
-                <th style="width: 22%;">C\u1ED9t 1: M\u1ED1c Gi\u1EDD &amp; Th\u1EDDi L\u01B0\u1EE3ng</th>
-                <th style="width: 28%;">C\u1ED9t 2: T\u1ED1c \u0110\u1ED9 &amp; L\u01B0\u1EE3ng D\u1ECBch C\u1EA7n</th>
-                <th style="width: 26%;">C\u1ED9t 3: D\u1ECBch C\xF3 S\u1EB4N / Treo Th\xEAm</th>
-                <th style="width: 24%;">C\u1ED9t 4: T\u1ED5ng C\u1ECDc &amp; Gi\xE1m S\xE1t</th>
+                <th style="width: 17%;">C\u1ED9t 1: C\u1EEF &amp; M\u1ED1c Gi\u1EDD</th>
+                <th style="width: 20%;">C\u1ED9t 2: T\u1ED1c \u0110\u1ED9 B\u01A1m (ml/h)</th>
+                <th style="width: 18%;">C\u1ED9t 3: Th\u1EC3 T\xEDch C\u1EEF (VTBI)</th>
+                <th style="width: 21%;">C\u1ED9t 4: Chu\u1EA9n B\u1ECB T\u1EA1i C\u1ECDc</th>
+                <th style="width: 24%;">C\u1ED9t 5: Theo D\xF5i &amp; Hct</th>
               </tr>
             </thead>
             <tbody>
@@ -3357,56 +3429,85 @@ var DengueBundle = (() => {
         const optionsHtml = durationOptions.map((dur) => `
                   <option value="${dur}" ${dur === r.durationHours ? "selected" : ""}>${dur} gi\u1EDD</option>
                 `).join("");
+        const rateOptions = tpl?.rateOptions || [r.rateMlKgH];
+        const hasRateChoices = rateOptions.length > 1;
+        const rateOptionsHtml = rateOptions.map((rt) => `
+                  <option value="${rt}" ${rt === r.rateMlKgH ? "selected" : ""}>${rt} ml/kg/h</option>
+                `).join("");
         return `
                   <tr>
                     <td>
-                      <div class="cdss-step-badge">C\u1EEF ${r.stepIndex}</div>
-                      <div class="cdss-time-window">${r.timeWindow}</div>
-                      <div class="cdss-duration-picker">
-                        <label><i class="fa-regular fa-clock"></i> Th\u1EDDi l\u01B0\u1EE3ng:</label>
-                        <select class="cdss-duration-select" data-row-idx="${idx}">
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.35rem; margin-bottom: 0.35rem;">
+                        <span class="cdss-step-badge">C\u1EEF ${r.stepIndex}</span>
+                        <button type="button" class="cdss-copy-icon-btn cdss-btn-copy-row" data-row-idx="${idx}" title="Copy c\xE1ch d\xF9ng C\u1EEF ${r.stepIndex} v\xE0o EMR: ${r.emrOrderText || ""}" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
+                          <i class="fa-regular fa-copy"></i>
+                        </button>
+                      </div>
+                      <div class="cdss-time-bold">${r.timeWindow}</div>
+                      <div style="display: flex; align-items: center; gap: 0.35rem; margin-bottom: 0.35rem;">
+                        <select class="cdss-duration-select cdss-picker-clean" data-row-idx="${idx}" aria-label="Th\u1EDDi l\u01B0\u1EE3ng c\u1EEF ${r.stepIndex}">
                           ${optionsHtml}
                         </select>
                       </div>
                       <div class="cdss-stage-title">${r.stageName}</div>
                     </td>
                     <td>
-                      <div class="cdss-rate-display">
-                        <span class="cdss-rate-number">${r.rateMlKgH}</span>
-                        <span class="cdss-rate-unit">ml/kg/gi\u1EDD</span>
-                      </div>
-                      <div class="cdss-drops-box">
-                        <i class="fa-solid fa-water" style="color:var(--cdss-info);"></i> 
-                        <strong>${r.dropsPerMin}</strong> gi\u1ECDt/ph\xFAt
-                        <small style="color:var(--cdss-text-muted);">${ageGroup === "child" ? "(D\xE2y vi gi\u1ECDt 60 g/ml)" : "(D\xE2y chu\u1EA9n 20 g/ml)"}</small>
-                      </div>
-                      <div class="cdss-volume-calc">
-                        Th\u1EC3 t\xEDch c\u1EA7n: <strong>${r.totalMl.toLocaleString("vi-VN")} ml</strong>
-                        <div style="font-size:0.7rem; color:var(--cdss-text-muted);">
-                          (${r.rateMlKgH} \xD7 ${plan.weightResult.adjustedWeightKg}kg \xD7 ${r.durationHours}h)
+                      <div class="cdss-val-block">
+                        <div class="cdss-big-val">
+                          ${r.pumpRateMlH} <span class="cdss-big-unit">ml/h</span>
+                        </div>
+                        ${hasRateChoices ? `
+                          <div style="margin: 0.15rem 0;">
+                            <select class="cdss-rate-select cdss-picker-clean" data-row-idx="${idx}" aria-label="Li\u1EC1u c\u1EEF ${r.stepIndex}">
+                              ${rateOptionsHtml}
+                            </select>
+                          </div>
+                        ` : `
+                          <div class="cdss-sub-hint">${r.rateMlKgH} ml/kg/h &bull; Ph\xEDm [RATE]</div>
+                        `}
+                        <div class="cdss-sub-drip">
+                          <i class="fa-solid fa-water text-info" style="font-size:0.65rem;"></i> ~${r.dropsPerMin} gi\u1ECDt/ph\xFAt <small>(${ageGroup === "child" ? "d\xE2y 60g" : "d\xE2y 20g"})</small>
                         </div>
                       </div>
                     </td>
                     <td>
-                      <div class="cdss-carry-over">
-                        D\u1ECBch s\u1EB5n t\u1EEB c\u1EEF tr\u01B0\u1EDBc: <strong>${r.existingFluidMl} ml</strong>
-                      </div>
-                      <div>
-                        <span class="cdss-hang-badge ${r.bottlesToHang > 0 ? "cdss-hang-badge--active" : ""}">
-                          <i class="fa-solid fa-plus"></i> Treo th\xEAm: <strong>${r.bottlesToHang}</strong> chai 500ml
-                        </span>
+                      <div class="cdss-val-block">
+                        <div class="cdss-big-val text-primary">
+                          ${r.totalMl.toLocaleString("vi-VN")} <span class="cdss-big-unit">ml</span>
+                        </div>
+                        <div class="cdss-sub-hint">
+                          Ph\xEDm [VOL] &bull; trong ${r.durationHours}h
+                        </div>
+                        <div style="margin-top: 0.25rem;">
+                          <span class="cdss-kvo-clean" title="Khi h\u1EBFt th\u1EC3 t\xEDch c\u1EEF, m\xE1y t\u1EF1 h\xE3m KVO gi\u1EEF ven ch\u1ED1ng ph\xF9 ph\u1ED5i">
+                            <i class="fa-solid fa-shield-halved"></i> KVO: ${r.kvoRateMlH} ml/h
+                          </span>
+                        </div>
                       </div>
                     </td>
                     <td>
-                      <div class="cdss-pole-metric">
-                        T\u1ED5ng c\xF3 tr\xEAn c\u1ECDc: <strong>${r.totalAtPoleMl.toLocaleString("vi-VN")} ml</strong>
+                      <div class="cdss-val-block">
+                        ${r.bottlesToHang > 0 ? `
+                          <div class="cdss-hang-clean hang-active">
+                            <i class="fa-solid fa-plus-circle"></i> Treo th\xEAm: <strong>${r.bottlesToHang}</strong> chai 500ml
+                          </div>
+                        ` : `
+                          <div class="cdss-hang-clean">
+                            <i class="fa-solid fa-circle-check text-success"></i> 0 (D\xF9ng d\u1ECBch s\u1EB5n)
+                          </div>
+                        `}
+                        <div style="font-size:0.74rem; color:var(--cdss-text-muted);">C\xF3 s\u1EB5n: <strong>${r.existingFluidMl} ml</strong></div>
+                        <div class="cdss-pole-clean">Tr\xEAn c\u1ECDc: <strong>${r.totalAtPoleMl.toLocaleString("vi-VN")} ml</strong></div>
+                        <div style="font-size:0.72rem; color:var(--cdss-text-muted);">D\u01B0 sau c\u1EEF: <strong>${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</strong></div>
                       </div>
+                    </td>
+                    <td>
                       ${r.hctCheckRequired ? `
-                        <div class="cdss-hct-pill">
-                          <i class="fa-solid fa-vial"></i> <strong>\u0110o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng</strong>
+                        <div class="cdss-hct-pill-clean">
+                          <i class="fa-solid fa-vial"></i> \u0110o l\u1EA1i Hct (${r.durationHours}h)
                         </div>
                       ` : ""}
-                      <div class="cdss-monitor-tip">
+                      <div class="cdss-monitor-clean">
                         ${r.monitoringNotes}
                       </div>
                     </td>
@@ -3425,30 +3526,47 @@ var DengueBundle = (() => {
         const optionsHtml = durationOptions.map((dur) => `
               <option value="${dur}" ${dur === r.durationHours ? "selected" : ""}>${dur} gi\u1EDD</option>
             `).join("");
+        const rateOptions = tpl?.rateOptions || [r.rateMlKgH];
+        const hasRateChoices = rateOptions.length > 1;
+        const rateOptionsHtml = rateOptions.map((rt) => `
+              <option value="${rt}" ${rt === r.rateMlKgH ? "selected" : ""}>${rt} ml/kg/h</option>
+            `).join("");
         return `
               <div class="cdss-mfluid-card ${r.hctCheckRequired ? "cdss-mfluid-card--hct" : ""}">
                 <div class="cdss-mfluid-card-header">
                   <div class="cdss-step-badge">C\u1EEF ${r.stepIndex}</div>
+                  <button type="button" class="cdss-copy-icon-btn cdss-btn-copy-row" data-row-idx="${idx}" title="Copy c\xE1ch d\xF9ng C\u1EEF ${r.stepIndex} v\xE0o EMR: ${r.emrOrderText || ""}" style="margin-left: 0.35rem;" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
+                    <i class="fa-regular fa-copy"></i>
+                  </button>
                   <div class="cdss-mfluid-timewindow">${r.timeWindow}</div>
                   <div class="cdss-duration-picker" style="margin-left:auto;">
-                    <select class="cdss-duration-select" data-row-idx="${idx}" aria-label="Th\u1EDDi l\u01B0\u1EE3ng c\u1EEF ${r.stepIndex}">
+                    <select class="cdss-duration-select cdss-picker-clean" data-row-idx="${idx}" aria-label="Th\u1EDDi l\u01B0\u1EE3ng c\u1EEF ${r.stepIndex}">
                       ${optionsHtml}
                     </select>
                   </div>
                 </div>
 
-                <div class="cdss-mfluid-stage-title">${r.stageName}</div>
+                ${hasRateChoices ? `
+                  <div style="margin: 0.25rem 0 0.4rem 0;">
+                    <label style="font-size:0.72rem; color:var(--cdss-text-muted);"><i class="fa-solid fa-sliders"></i> Li\u1EC1u:</label>
+                    <select class="cdss-rate-select cdss-picker-clean" data-row-idx="${idx}" aria-label="Li\u1EC1u c\u1EEF ${r.stepIndex}">
+                      ${rateOptionsHtml}
+                    </select>
+                  </div>
+                ` : ""}
+
+                <div class="cdss-mfluid-stage-title" style="margin-bottom:0.5rem;">${r.stageName}</div>
 
                 <div class="cdss-mfluid-stats-grid">
                   <div class="cdss-mfluid-stat">
-                    <span class="cdss-mfluid-stat-label">T\u1ED1c \u0110\u1ED9</span>
-                    <strong class="cdss-mfluid-stat-val text-primary">${r.rateMlKgH} <small>ml/kg/h</small></strong>
-                    <span class="cdss-mfluid-stat-sub"><i class="fa-solid fa-water text-info"></i> ${r.dropsPerMin} gi\u1ECDt/ph (${ageGroup === "child" ? "D\xE2y 60g" : "D\xE2y 20g"})</span>
+                    <span class="cdss-mfluid-stat-label"><i class="fa-solid fa-calculator"></i> T\u1ED1c \u0111\u1ED9 (ml/h)</span>
+                    <strong class="cdss-mfluid-stat-val text-primary">${r.pumpRateMlH} <small>ml/h</small></strong>
+                    <span class="cdss-mfluid-stat-sub">${r.rateMlKgH} ml/kg/h &bull; ~${r.dropsPerMin} gi\u1ECDt/ph</span>
                   </div>
                   <div class="cdss-mfluid-stat">
-                    <span class="cdss-mfluid-stat-label">L\u01B0\u1EE3ng D\u1ECBch C\u1EA7n</span>
+                    <span class="cdss-mfluid-stat-label"><i class="fa-solid fa-droplet text-primary"></i> Th\u1EC3 t\xEDch (VTBI)</span>
                     <strong class="cdss-mfluid-stat-val">${r.totalMl.toLocaleString("vi-VN")} <small>ml</small></strong>
-                    <span class="cdss-mfluid-stat-sub">${r.durationHours}h \xD7 ${plan.weightResult.adjustedWeightKg}kg</span>
+                    <span class="cdss-mfluid-stat-sub">${r.durationHours}h &bull; KVO: ${r.kvoRateMlH} ml/h</span>
                   </div>
                   <div class="cdss-mfluid-stat">
                     <span class="cdss-mfluid-stat-label">Treo Th\xEAm</span>
@@ -3460,17 +3578,17 @@ var DengueBundle = (() => {
                   <div class="cdss-mfluid-stat">
                     <span class="cdss-mfluid-stat-label">T\u1EA1i C\u1ECDc</span>
                     <strong class="cdss-mfluid-stat-val text-teal-600">${r.totalAtPoleMl.toLocaleString("vi-VN")} <small>ml</small></strong>
-                    <span class="cdss-mfluid-stat-sub">D\u01B0 sau c\u1EEF: ${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</span>
+                    <span class="cdss-mfluid-stat-sub">D\u01B0: ${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</span>
                   </div>
                 </div>
 
                 ${r.hctCheckRequired ? `
-                  <div class="cdss-hct-pill" style="margin-top:0.4rem; width:100%; justify-content:center;">
-                    <i class="fa-solid fa-vial"></i> <strong>B\u1EAET BU\u1ED8C \u0110O L\u1EA0I HCT SAU C\u1EEE N\xC0Y (${r.durationHours}h)</strong>
+                  <div class="cdss-hct-pill-clean" style="margin-top:0.45rem; width:100%; justify-content:center;">
+                    <i class="fa-solid fa-vial"></i> B\u1EAET BU\u1ED8C \u0110O L\u1EA0I HCT SAU C\u1EEE N\xC0Y (${r.durationHours}h)
                   </div>
                 ` : ""}
 
-                <div class="cdss-monitor-tip" style="margin-top:0.4rem;">
+                <div class="cdss-monitor-clean" style="margin-top:0.4rem;">
                   ${r.monitoringNotes}
                 </div>
               </div>
@@ -3489,12 +3607,60 @@ var DengueBundle = (() => {
           this.recalculate();
         });
       });
+      const rateSelects = container.querySelectorAll(".cdss-rate-select");
+      rateSelects.forEach((sel) => {
+        sel.addEventListener("change", (e) => {
+          const target = e.target;
+          const rowIdx = parseInt(target.getAttribute("data-row-idx") || "0", 10);
+          const newRate = parseFloat(target.value);
+          this.customRates[rowIdx] = newRate;
+          this.recalculate();
+        });
+      });
+      const copyRowBtns = container.querySelectorAll(".cdss-btn-copy-row");
+      copyRowBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const target = btn;
+          const rowIdx = parseInt(target.getAttribute("data-row-idx") || "0", 10);
+          const row = plan.fluidRows[rowIdx];
+          if (row && row.emrOrderText) {
+            this.copyToClipboard(row.emrOrderText, `\u0110\xE3 copy c\xE1ch d\xF9ng C\u1EEF ${row.stepIndex}: "${row.emrOrderText}"`);
+            const icon = target.querySelector("i");
+            if (icon) {
+              icon.className = "fa-solid fa-check text-success";
+              target.classList.add("copied");
+              setTimeout(() => {
+                icon.className = "fa-regular fa-copy";
+                target.classList.remove("copied");
+              }, 1500);
+            }
+          }
+        });
+      });
+      const copyAllBtn = container.querySelector("#btn-copy-emr-all");
+      if (copyAllBtn) {
+        copyAllBtn.addEventListener("click", () => {
+          const allText = plan.fluidRows.map((r) => r.emrOrderText).filter(Boolean).join("\n");
+          this.copyToClipboard(allText, `\u0110\xE3 copy to\xE0n b\u1ED9 ${plan.fluidRows.length} c\u1EEF y l\u1EC7nh c\xE1ch d\xF9ng EMR!`);
+          const icon = copyAllBtn.querySelector("i");
+          if (icon) {
+            icon.className = "fa-solid fa-check text-success";
+            copyAllBtn.classList.add("copied");
+            setTimeout(() => {
+              icon.className = "fa-regular fa-copy";
+              copyAllBtn.classList.remove("copied");
+            }, 1500);
+          }
+        });
+      }
       const btnSub = container.querySelector("#btn-reset-durations-sub");
       if (btnSub) {
         btnSub.addEventListener("click", () => {
           this.customDurations = {};
+          this.customRates = {};
           this.recalculate();
-          this.showToast("\u0110\xE3 kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng c\u1EEF chu\u1EA9n theo B\u1ED9 Y T\u1EBF!");
+          this.showToast("\u0110\xE3 kh\xF4i ph\u1EE5c th\xF4ng s\u1ED1 th\u1EDDi l\u01B0\u1EE3ng v\xE0 t\u1ED1c \u0111\u1ED9 chu\u1EA9n theo B\u1ED9 Y T\u1EBF!");
         });
       }
     }
@@ -3653,21 +3819,29 @@ var DengueBundle = (() => {
           <div class="cdss-table-title-area">
             <h2 class="cdss-table-title">
               <i class="fa-solid fa-table-list"></i> B\u1EA3ng C\u1ECDc D\u1ECBch Cao Ph\xE2n T\u1EED N\u1EA5c Thang &amp; Chuy\u1EC3n \u0110i\u1EC7n Gi\u1EA3i (Ph\u1EE5 L\u1EE5c 10)
+              <span class="cdss-table-title-badge">
+                <i class="fa-solid fa-calculator"></i> M\xE1y Infusomat\xAE P &bull; KVO ${colloidPlan.rows[0]?.kvoRateMlH || 3} ml/h
+              </span>
             </h2>
             <p class="cdss-table-desc">
-              Ti\u1EBFn tr\xECnh gi\u1EA3m li\u1EC1u t\u1EEB 15-20 ml/kg/h \u279C 10 ml/kg/h \u279C 7.5-5 ml/kg/h \u279C 3 ml/kg/h \u279C Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i (Ringer Lactate / NaCl 0.9%).
+              Ti\u1EBFn tr\xECnh gi\u1EA3m li\u1EC1u: 15-20 ml/kg/h \u2794 10 ml/kg/h \u2794 7.5-5 ml/kg/h \u2794 3 ml/kg/h \u2794 Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i (Ringer Lactate / NaCl 0.9%).
             </p>
           </div>
+          <button id="btn-copy-colloid-emr-all" class="cdss-btn-copy-all" title="Copy to\xE0n b\u1ED9 y l\u1EC7nh c\xE1ch d\xF9ng CPT v\xE0o B\u1EC7nh \xC1n \u0110i\u1EC7n T\u1EED (EMR)" aria-label="Copy Y L\u1EC7nh CPT EMR">
+            <i class="fa-regular fa-copy"></i>
+            <span>Copy Y L\u1EC7nh EMR</span>
+          </button>
         </div>
 
         <div class="cdss-table-scroll">
           <table class="cdss-table">
             <thead>
               <tr>
-                <th style="width: 24%;">C\u1ED9t 1: M\u1ED1c Gi\u1EDD &amp; Giai \u0110o\u1EA1n</th>
-                <th style="width: 26%;">C\u1ED9t 2: T\u1ED1c \u0110\u1ED9 &amp; L\u01B0\u1EE3ng C\u1EA7n</th>
-                <th style="width: 26%;">C\u1ED9t 3: T\xEDch L\u0169y CPT &amp; Ng\u01B0\u1EE1ng 60ml/kg</th>
-                <th style="width: 24%;">C\u1ED9t 4: Y\xEAu C\u1EA7u \u0110o Hct &amp; Gi\xE1m S\xE1t</th>
+                <th style="width: 17%;">C\u1ED9t 1: C\u1EEF &amp; M\u1ED1c Gi\u1EDD</th>
+                <th style="width: 20%;">C\u1ED9t 2: T\u1ED1c \u0110\u1ED9 B\u01A1m (ml/h)</th>
+                <th style="width: 18%;">C\u1ED9t 3: Th\u1EC3 T\xEDch C\u1EEF (VTBI)</th>
+                <th style="width: 21%;">C\u1ED9t 4: T\xEDch L\u0169y CPT (Tr\u1EA7n 60ml/kg)</th>
+                <th style="width: 24%;">C\u1ED9t 5: \u0110\xE1nh Gi\xE1 &amp; Theo D\xF5i</th>
               </tr>
             </thead>
             <tbody>
@@ -3677,8 +3851,14 @@ var DengueBundle = (() => {
         return `
                   <tr class="${isStepOver ? "cdss-row--danger" : ""}">
                     <td>
-                      <div class="cdss-step-badge">C\u1EEF ${r.stepIndex}</div>
-                      <div class="cdss-time-window">${r.timeWindow}</div>
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.35rem; margin-bottom: 0.35rem;">
+                        <span class="cdss-step-badge">C\u1EEF ${r.stepIndex}</span>
+                        <button type="button" class="cdss-copy-icon-btn cdss-btn-copy-colloid-row" data-row-idx="${r.stepIndex - 1}" title="Copy c\xE1ch d\xF9ng C\u1EEF ${r.stepIndex} v\xE0o EMR:
+${r.emrOrderText || ""}" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
+                          <i class="fa-regular fa-copy"></i>
+                        </button>
+                      </div>
+                      <div class="cdss-time-bold">${r.timeWindow}</div>
                       <div class="cdss-stage-title" style="margin-top:2px; font-weight:700; color:${r.fluidKind === "colloid" ? "var(--cdss-primary)" : "var(--cdss-teal)"};">
                         ${r.stageName}
                       </div>
@@ -3687,40 +3867,56 @@ var DengueBundle = (() => {
                       </div>
                     </td>
                     <td>
-                      <div class="cdss-rate-display">
-                        <span class="cdss-rate-number">${r.rateMlKgH}</span>
-                        <span class="cdss-rate-unit">ml/kg/gi\u1EDD</span>
-                      </div>
-                      <div class="cdss-drops-box">
-                        <i class="fa-solid fa-water" style="color:var(--cdss-info);"></i>
-                        <strong>${r.dropsPerMin}</strong> gi\u1ECDt/ph\xFAt
-                        <small style="color:var(--cdss-text-muted);">${plan.ageGroup === "child" ? "(D\xE2y vi gi\u1ECDt)" : "(D\xE2y 20 g/ml)"}</small>
-                      </div>
-                      <div class="cdss-volume-calc">
-                        C\u1EA7n: <strong>${r.stepVolumeMl.toLocaleString("vi-VN")} ml</strong> (${r.durationHours}h)
+                      <div class="cdss-val-block">
+                        <div class="cdss-big-val">
+                          ${r.pumpRateMlH} <span class="cdss-big-unit">ml/h</span>
+                        </div>
+                        <div class="cdss-sub-hint">
+                          ${r.rateMlKgH} ml/kg/h &bull; Ph\xEDm [RATE]
+                        </div>
+                        <div class="cdss-sub-drip">
+                          <i class="fa-solid fa-water text-info" style="font-size:0.65rem;"></i> ~${r.dropsPerMin} gi\u1ECDt/ph\xFAt <small>(${plan.ageGroup === "child" ? "d\xE2y 60g" : "d\xE2y 20g"})</small>
+                        </div>
                       </div>
                     </td>
                     <td>
-                      <div style="font-size:0.82rem; font-weight:800; color:${isStepOver ? "var(--cdss-danger)" : "var(--cdss-text)"};">
-                        T\xEDch l\u0169y: ${r.cumulativeColloidMlPerKg} ml/kg
+                      <div class="cdss-val-block">
+                        <div class="cdss-big-val text-primary">
+                          ${r.stepVolumeMl.toLocaleString("vi-VN")} <span class="cdss-big-unit">ml</span>
+                        </div>
+                        <div class="cdss-sub-hint">
+                          Ph\xEDm [VOL] &bull; trong ${r.durationHours}h
+                        </div>
+                        <div style="margin-top: 0.25rem;">
+                          <span class="cdss-kvo-clean" title="Khi h\u1EBFt th\u1EC3 t\xEDch c\u1EEF, m\xE1y t\u1EF1 h\xE3m KVO gi\u1EEF ven">
+                            <i class="fa-solid fa-shield-halved"></i> KVO: ${r.kvoRateMlH} ml/h
+                          </span>
+                        </div>
                       </div>
-                      <div style="font-size:0.72rem; color:var(--cdss-text-muted);">
-                        T\u1ED5ng th\u1EC3 t\xEDch: ${r.cumulativeColloidMl.toLocaleString("vi-VN")} ml
-                      </div>
-                      <div style="margin-top:4px; height:8px; width:100%; background:var(--cdss-surface-alt); border-radius:4px; overflow:hidden; border:1px solid var(--cdss-border-subtle);">
-                        <div style="height:100%; width:${Math.min(100, rowPct)}%; background:${isStepOver ? "#ef4444" : rowPct >= 75 ? "#f59e0b" : "var(--cdss-primary)"};"></div>
-                      </div>
-                      <div style="font-size:0.68rem; margin-top:2px; color:${isStepOver ? "var(--cdss-danger)" : "var(--cdss-text-muted)"};">
-                        ${isStepOver ? "\u26A0\uFE0F \u0110\xE3 v\u01B0\u1EE3t 60 ml/kg" : `${rowPct}% tr\u1EA7n an to\xE0n`}
+                    </td>
+                    <td>
+                      <div class="cdss-val-block">
+                        <div style="font-size:0.85rem; font-weight:800; color:${isStepOver ? "var(--cdss-danger)" : "var(--cdss-text)"};">
+                          T\xEDch l\u0169y: ${r.cumulativeColloidMlPerKg} ml/kg
+                        </div>
+                        <div style="font-size:0.72rem; color:var(--cdss-text-muted);">
+                          T\u1ED5ng CPT: ${r.cumulativeColloidMl.toLocaleString("vi-VN")} ml
+                        </div>
+                        <div style="margin-top:4px; height:6px; width:100%; background:var(--cdss-surface-alt); border-radius:3px; overflow:hidden; border:1px solid var(--cdss-border-subtle);">
+                          <div style="height:100%; width:${Math.min(100, rowPct)}%; background:${isStepOver ? "#ef4444" : rowPct >= 75 ? "#f59e0b" : "var(--cdss-primary)"};"></div>
+                        </div>
+                        <div style="font-size:0.68rem; margin-top:2px; color:${isStepOver ? "var(--cdss-danger)" : "var(--cdss-text-muted)"};">
+                          ${isStepOver ? "\u26A0\uFE0F \u0110\xE3 v\u01B0\u1EE3t tr\u1EA7n 60 ml/kg" : `${rowPct}% tr\u1EA7n an to\xE0n`}
+                        </div>
                       </div>
                     </td>
                     <td>
                       ${r.hctCheckRequired ? `
-                        <div class="cdss-hct-pill" style="margin-bottom:4px;">
-                          <i class="fa-solid fa-vial"></i> <strong>\u0110o l\u1EA1i Hct sau c\u1EEF n\xE0y</strong>
+                        <div class="cdss-hct-pill-clean">
+                          <i class="fa-solid fa-vial"></i> \u0110o l\u1EA1i Hct (${r.durationHours}h)
                         </div>
                       ` : ""}
-                      <div class="cdss-monitor-tip">
+                      <div class="cdss-monitor-clean">
                         ${r.monitoringNotes}
                       </div>
                     </td>
@@ -3826,6 +4022,43 @@ var DengueBundle = (() => {
           }
         });
       });
+      const colloidCopyBtns = container.querySelectorAll(".cdss-btn-copy-colloid-row");
+      colloidCopyBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const target = btn;
+          const rowIdx = parseInt(target.getAttribute("data-row-idx") || "0", 10);
+          const row = colloidPlan.rows[rowIdx];
+          if (row && row.emrOrderText) {
+            this.copyToClipboard(row.emrOrderText, `\u0110\xE3 copy c\xE1ch d\xF9ng C\u1EEF ${row.stepIndex}: "${row.emrOrderText}"`);
+            const icon = target.querySelector("i");
+            if (icon) {
+              icon.className = "fa-solid fa-check text-success";
+              target.classList.add("copied");
+              setTimeout(() => {
+                icon.className = "fa-regular fa-copy";
+                target.classList.remove("copied");
+              }, 1500);
+            }
+          }
+        });
+      });
+      const copyColloidAllBtn = container.querySelector("#btn-copy-colloid-emr-all");
+      if (copyColloidAllBtn) {
+        copyColloidAllBtn.addEventListener("click", () => {
+          const allText = colloidPlan.rows.map((r) => r.emrOrderText).filter(Boolean).join("\n");
+          this.copyToClipboard(allText, `\u0110\xE3 copy to\xE0n b\u1ED9 ${colloidPlan.rows.length} c\u1EEF y l\u1EC7nh CPT v\xE0o EMR!`);
+          const icon = copyColloidAllBtn.querySelector("i");
+          if (icon) {
+            icon.className = "fa-solid fa-check text-success";
+            copyColloidAllBtn.classList.add("copied");
+            setTimeout(() => {
+              icon.className = "fa-regular fa-copy";
+              copyColloidAllBtn.classList.remove("copied");
+            }, 1500);
+          }
+        });
+      }
       const cbList = container.querySelectorAll(".cdss-de-esc-cb");
       const updateVerdict = () => {
         const checkedCount = Object.values(this.deEscalationChecked).filter(Boolean).length;
@@ -4972,9 +5205,9 @@ var DengueBundle = (() => {
                   <div style="font-size: 0.8em; color: #444;">${stageShort}</div>
                 </td>
                 <td>
-                  <div>T\u1ED1c \u0111\u1ED9: <strong style="font-size: 1.15em;">${r.rateMlKgH} ml/kg/h</strong></div>
-                  <div style="font-size: 0.9em; margin-top: 1px;">S\u1ED1 gi\u1ECDt: <strong>${r.dropsPerMin} gi\u1ECDt/ph\xFAt</strong></div>
-                  <div style="font-size: 0.88em; margin-top: 1px;">L\u01B0\u1EE3ng d\u1ECBch: <strong>${r.totalMl.toLocaleString("vi-VN")} ml</strong></div>
+                  <div>C\xE0i m\xE1y (RATE): <strong style="font-size: 1.15em; color: #0284c7;">${r.pumpRateMlH} ml/h</strong></div>
+                  <div style="font-size: 0.9em; margin-top: 1px;">C\xE0i th\u1EC3 t\xEDch (VTBI): <strong>${r.totalMl.toLocaleString("vi-VN")} ml</strong> / ${r.durationHours}h</div>
+                  <div style="font-size: 0.78em; color: #555; margin-top: 1px;">Ph\xE1c \u0111\u1ED3: ${r.rateMlKgH} ml/kg/h &bull; KVO: ${r.kvoRateMlH} ml/h &bull; T\u1EF1 do: ${r.dropsPerMin} g/p</div>
                 </td>
                 <td>
                   <div style="font-weight: 700; font-size: 0.95em;">
@@ -5066,7 +5299,7 @@ var DengueBundle = (() => {
         `\u2022 \u0110\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng: ${p.branchDecision.title}`,
         `\u2022 H\u01B0\u1EDBng x\u1EED tr\xED: ${p.branchDecision.recommendedFluid}`,
         `\u2022 K\u1EBF ho\u1EA1ch c\u1ECDc d\u1ECBch:`,
-        ...p.fluidRows.map((r) => `  - C\u1EEF ${r.stepIndex} (${r.timeWindow}): ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} gi\u1ECDt/ph\xFAt) | C\u1EA7n ${r.totalMl} ml | Treo th\xEAm: ${r.bottlesToHang} chai | T\u1EA1i c\u1ECDc: ${r.totalAtPoleMl} ml`),
+        ...p.fluidRows.map((r) => `  - C\u1EEF ${r.stepIndex} (${r.timeWindow}): C\xE0i m\xE1y ${r.pumpRateMlH} ml/h (VTBI: ${r.totalMl} ml, KVO: ${r.kvoRateMlH} ml/h) | Ph\xE1c \u0111\u1ED3: ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} gi\u1ECDt/ph\xFAt) | Treo th\xEAm: ${r.bottlesToHang} chai | T\u1EA1i c\u1ECDc: ${r.totalAtPoleMl} ml`),
         `\u2022 T\u1ED5ng d\u1ECBch: ${p.totalVolumeMl} ml trong ${p.totalDurationHours} gi\u1EDD.`,
         `\u2022 \u0110i\u1EC1u d\u01B0\u1EE1ng l\u01B0u \xFD: Theo d\xF5i n\u01B0\u1EDBc ti\u1EC3u m\u1ED7i gi\u1EDD (\u0111\xEDch \u2265 0.5-1 ml/kg/h), \u0111o l\u1EA1i Hct tr\u01B0\u1EDBc khi gi\u1EA3m c\u1EEF d\u1ECBch.`
       ].join("\n");
@@ -5079,6 +5312,34 @@ var DengueBundle = (() => {
       navigator.clipboard.writeText(this.currentPlan.soapExportText).then(() => {
         this.showToast("\u0110\xE3 sao ch\xE9p K\u1EBF ho\u1EA1ch SOAP Plan (B\u1EC7nh \xC1n / DocSpace)!");
       });
+    }
+    copyToClipboard(text, successMsg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          this.showToast(successMsg);
+        }).catch(() => {
+          this.fallbackCopyText(text, successMsg);
+        });
+      } else {
+        this.fallbackCopyText(text, successMsg);
+      }
+    }
+    fallbackCopyText(text, successMsg) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      textArea.style.top = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        this.showToast(successMsg);
+      } catch (err) {
+        this.showToast("Kh\xF4ng th\u1EC3 sao ch\xE9p y l\u1EC7nh, vui l\xF2ng th\u1EED l\u1EA1i!");
+      }
+      document.body.removeChild(textArea);
     }
     showToast(msg) {
       const toast = document.getElementById("cdss-toast");
