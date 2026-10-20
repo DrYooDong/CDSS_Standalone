@@ -211,13 +211,13 @@ var DENGUE_FLUID_TEMPLATES = {
   shock: {
     child: [
       {
-        stageName: "C\u1EEF 1: T\u1EA3i d\u1ECBch ch\u1ED1ng s\u1ED1c gi\u1EDD \u0111\u1EA7u (20 ml/kg/h)",
+        stageName: "C\u1EEF 1: T\u1EA3i d\u1ECBch ch\u1ED1ng s\u1ED1c (20 ml/kg/1h ho\u1EB7c 20 ml/kg/30ph n\u1EBFu t\u1EE5t HA n\u1EB7ng)",
         defaultRateMlKgH: 20,
-        rateOptions: [15, 20],
+        rateOptions: [15, 20, 40],
         defaultDurationHours: 1,
-        durationOptions: [1],
+        durationOptions: [0.5, 1],
         hctCheckRequired: true,
-        notes: "D\u1ECBch tinh th\u1EC3 Ringer Lactate/NaCl 0.9%. \u0110\xE1nh gi\xE1 l\u1EA1i m\u1EA1ch, HA v\xE0 Hct ngay sau 1 gi\u1EDD."
+        notes: "D\u1ECBch tinh th\u1EC3 20 ml/kg/1h (ho\u1EB7c Ringer Acetate / NaCl 0.9% n\u1EBFu c\xF3 t\u1ED5n th\u01B0\u01A1ng gan). N\u1EBFu t\u1EE5t HA n\u1EB7ng (HATT < 70 + 2xTu\u1ED5i \u1EDF tr\u1EBB < 10T ho\u1EB7c < 90 mmHg \u1EDF tr\u1EBB \u2265 10T): B\u01A1m 20 ml/kg trong 30 ph\xFAt (t\u1ED1c \u0111\u1ED9 40 ml/kg/h x 0.5h theo Ph\u1EE5 l\u1EE5c 8 BYT 2023). \u0110\xE1nh gi\xE1 l\u1EA1i m\u1EA1ch, HA v\xE0 Hct ngay sau c\u1EEF."
       },
       {
         stageName: "C\u1EEF 2: Ra s\u1ED1c - Gi\u1EA3m xu\u1ED1ng 10 ml/kg/h",
@@ -1072,9 +1072,29 @@ function addHoursToTime(startTimeStr, hoursToAdd) {
   const newM = totalMinutes % 60;
   return `${newH.toString().padStart(2, "0")}:${newM.toString().padStart(2, "0")}`;
 }
+function resolveCrystalloidFluid(patient) {
+  const isLiverImpaired = !!(patient.liverEnzymesAST_ALT && patient.liverEnzymesAST_ALT >= 400 || patient.clinicalResponse === "liver_failure");
+  if (isLiverImpaired) {
+    const isNaCl = patient.preferredFluid === "nacl_09";
+    return {
+      id: isNaCl ? "nacl_09" : "ringer_acetate",
+      name: isNaCl ? "Natri Clorid 0.9%" : "Ringer Acetate",
+      isContraindicatedRL: true,
+      reason: `T\u1ED5n th\u01B0\u01A1ng gan c\u1EA5p (AST/ALT ${patient.liverEnzymesAST_ALT || "\u2265 400"} U/L): Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh Ringer Lactate (tr\xE1nh toan Lactic chuy\u1EC3n h\xF3a t\u1EED vong). Dung d\u1ECBch b\u1EAFt bu\u1ED9c thay th\u1EBF: Ringer Acetate ho\u1EB7c NaCl 0.9% theo Q\u0110 2760/Q\u0110-BYT.`
+    };
+  }
+  if (patient.preferredFluid === "ringer_acetate") {
+    return { id: "ringer_acetate", name: "Ringer Acetate", isContraindicatedRL: false };
+  }
+  if (patient.preferredFluid === "nacl_09") {
+    return { id: "nacl_09", name: "Natri Clorid 0.9%", isContraindicatedRL: false };
+  }
+  return { id: "ringer_lactate", name: "Ringer Lactate", isContraindicatedRL: false };
+}
 function calculateFluidSchedule(patient, effectiveWeightKg, customDurations, customRates) {
   const ageGroup = classifyAgeGroup(patient.ageYears);
   const templates = DENGUE_FLUID_TEMPLATES[patient.severity][ageGroup];
+  const fluidInfo = resolveCrystalloidFluid(patient);
   let currentClock = patient.startTime || "08:00";
   let carryingFluidMl = 0;
   let totalVolumeMl = 0;
@@ -1118,12 +1138,14 @@ function calculateFluidSchedule(patient, effectiveWeightKg, customDurations, cus
     } else {
       bottlePrefix = `Duy tr\xEC \u0111\u01B0\u1EDDng truy\u1EC1n`;
     }
-    const emrOrderText = `${bottlePrefix} (TTM) t\u1ED1c \u0111\u1ED9 ${pumpRateMlH} ml/h (t\u1ED5ng d\u1ECBch ~ ${rate}ml/kg/h x ${duration}h)`;
+    const contraNote = fluidInfo.isContraindicatedRL ? " - C\u1EA5m RL do men gan t\u0103ng" : "";
+    const emrOrderText = `${bottlePrefix} ${fluidInfo.name} (TTM) t\u1ED1c \u0111\u1ED9 ${pumpRateMlH} ml/h (t\u1ED5ng d\u1ECBch ~ ${rate}ml/kg/h x ${duration}h${contraNote})`;
     prevRemainingMl = remainingAfterStep;
     prevBottleIdx = bottlesToHang > 0 ? currentBottleIdx : prevBottleIdx;
     rows.push({
       stepIndex: idx + 1,
       stageName: tpl.stageName,
+      fluidName: fluidInfo.name,
       durationHours: duration,
       rateMlKgH: rate,
       pumpRateMlH,
@@ -1142,7 +1164,7 @@ function calculateFluidSchedule(patient, effectiveWeightKg, customDurations, cus
     });
     currentClock = endClock;
   });
-  return { rows, totalVolumeMl, totalDurationHours };
+  return { rows, totalVolumeMl, totalDurationHours, fluidInfo };
 }
 function calculateColloidSchedule(patient, effectiveWeightKg, selectedColloid = "dextran40", customDurations, customRates) {
   const ageGroup = classifyAgeGroup(patient.ageYears);
@@ -1194,7 +1216,9 @@ function calculateColloidSchedule(patient, effectiveWeightKg, selectedColloid = 
     } else {
       bottlePrefix = `Duy tr\xEC \u0111\u01B0\u1EDDng truy\u1EC1n`;
     }
-    const fluidLabel = tpl.fluidKind === "colloid" ? meta.shortName : "\u0110i\u1EC7n gi\u1EA3i";
+    const fluidInfo = resolveCrystalloidFluid(patient);
+    const crystalloidName = fluidInfo.isContraindicatedRL ? "Ringer Acetate / NaCl 0.9%" : "Ringer Lactate / NaCl 0.9%";
+    const fluidLabel = tpl.fluidKind === "colloid" ? meta.shortName : fluidInfo.isContraindicatedRL ? "Ringer Acetate (\u0110i\u1EC7n gi\u1EA3i)" : "\u0110i\u1EC7n gi\u1EA3i";
     const emrOrderText = `${bottlePrefix} (TTM) t\u1ED1c \u0111\u1ED9 ${pumpRateMlH} ml/h (t\u1ED5ng d\u1ECBch ~ ${rate}ml/kg/h x ${duration}h - ${fluidLabel})`;
     prevRemainingMl = remainingAfterStep;
     prevBottleIdx = bottlesToHang > 0 ? currentBottleIdx : prevBottleIdx;
@@ -1202,7 +1226,7 @@ function calculateColloidSchedule(patient, effectiveWeightKg, selectedColloid = 
       stepIndex: idx + 1,
       stageName: tpl.stageName,
       fluidKind: tpl.fluidKind,
-      fluidName: tpl.fluidKind === "colloid" ? meta.shortName : "Ringer Lactate / NaCl 0.9%",
+      fluidName: tpl.fluidKind === "colloid" ? meta.shortName : crystalloidName,
       durationHours: duration,
       rateMlKgH: rate,
       pumpRateMlH,
@@ -1640,13 +1664,14 @@ function calculateBranchDecision(patient, effectiveWeightKg) {
       ]
     };
   }
+  const fluidInfo = resolveCrystalloidFluid(patient);
   return {
     branchType: "standard",
     title: "PH\xC1C \u0110\u1ED2 B\xD9 D\u1ECACH CHU\u1EA8N THEO PH\xC2N \u0110\u1ED8 B\u1ED8 Y T\u1EBE 2023",
-    recommendedFluid: "Ringer Lactate ho\u1EB7c NaCl 0.9%",
+    recommendedFluid: fluidInfo.isContraindicatedRL ? "Ringer Acetate ho\u1EB7c NaCl 0.9% (Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh Ringer Lactate)" : "Ringer Lactate ho\u1EB7c NaCl 0.9%",
     rateMlKgH: patient.severity === "warning_signs" ? 6 : 15,
     durationHours: 2,
-    reasoning: "B\xF9 d\u1ECBch tinh th\u1EC3 theo ti\u1EBFn tr\xECnh n\u1EA5c thang gi\u1EA3m d\u1EA7n t\u1ED1c \u0111\u1ED9 k\u1EBFt h\u1EE3p theo d\xF5i s\xE1t sinh hi\u1EC7u v\xE0 Hct.",
+    reasoning: fluidInfo.isContraindicatedRL ? `B\u1EC7nh nh\xE2n c\xF3 t\u1ED5n th\u01B0\u01A1ng gan (AST/ALT ${patient.liverEnzymesAST_ALT || "\u2265 400"} U/L). B\u1EAFt bu\u1ED9c d\xF9ng Ringer Acetate ho\u1EB7c NaCl 0.9% \u0111\u1EC3 tr\xE1nh toan Lactic t\u1EED vong.` : "B\xF9 d\u1ECBch tinh th\u1EC3 theo ti\u1EBFn tr\xECnh n\u1EA5c thang gi\u1EA3m d\u1EA7n t\u1ED1c \u0111\u1ED9 k\u1EBFt h\u1EE3p theo d\xF5i s\xE1t sinh hi\u1EC7u v\xE0 Hct.",
     warnings: [
       "\u0110o l\u1EA1i Hct v\xE0 sinh hi\u1EC7u tr\u01B0\u1EDBc m\u1ED7i l\u1EA7n gi\u1EA3m t\u1ED1c \u0111\u1ED9.",
       "Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1 ml/kg/h."
@@ -1657,7 +1682,7 @@ function generateDengueCDSSPlan(patient, customDurations, customRates) {
   const ageGroup = classifyAgeGroup(patient.ageYears);
   const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg, patient.heightCm);
   const effectiveWeight = weightResult.adjustedWeightKg;
-  const { rows, totalVolumeMl, totalDurationHours } = calculateFluidSchedule(
+  const { rows, totalVolumeMl, totalDurationHours, fluidInfo } = calculateFluidSchedule(
     patient,
     effectiveWeight,
     customDurations,
@@ -1729,6 +1754,15 @@ function generateDengueCDSSPlan(patient, customDurations, customRates) {
       ruleCode: "CPT_ESCALATION_ALERT"
     });
   }
+  if (patient.liverEnzymesAST_ALT && patient.liverEnzymesAST_ALT >= 400 && patient.liverEnzymesAST_ALT < 1e3) {
+    alerts.push({
+      id: "alert_liver_moderate",
+      level: "warning",
+      title: "T\u1ED4N TH\u01AF\u01A0NG GAN TRUNG B\xCCNH (AST/ALT 400 - 1000 U/L): TR\xC1NH RINGER LACTATE",
+      message: `Men gan t\u0103ng cao (${patient.liverEnzymesAST_ALT} U/L). B\u1EAFt bu\u1ED9c chuy\u1EC3n sang Ringer Acetate ho\u1EB7c NaCl 0.9%, tr\xE1nh thu\u1ED1c \u0111\u1ED9c gan (Paracetamol, NSAIDs) v\xE0 theo d\xF5i s\xE1t \u0111\xF4ng m\xE1u theo Q\u0110 2760/BYT.`,
+      ruleCode: "LIVER_INJURY_MODERATE"
+    });
+  }
   if (nacProtocol.indicated && nacProtocol.severityLevel === "acute_liver_failure") {
     alerts.push({
       id: "alert_liver_failure",
@@ -1762,7 +1796,7 @@ function generateDengueCDSSPlan(patient, customDurations, customRates) {
     `  \u2022 H\u01B0\u1EDBng x\u1EED tr\xED: ${branchDecision.recommendedFluid}`,
     `  \u2022 L\xFD lu\u1EADn l\xE2m s\xE0ng: ${branchDecision.reasoning}`,
     `
-2. B\u1EA2NG C\u1ECCC D\u1ECACH \u0110I\u1EC0U TR\u1ECA BAN \u0110\u1EA6U:`,
+2. B\u1EA2NG C\u1ECCC D\u1ECACH \u0110I\u1EC0U TR\u1ECA BAN \u0110\u1EA6U (${fluidInfo.name}):`,
     ...rows.map((r) => `  \u2022 C\u1EEF ${r.stepIndex}: ${r.timeWindow} | C\xE0i m\xE1y: ${r.pumpRateMlH} ml/h (VTBI: ${r.totalMl} ml, KVO: ${r.kvoRateMlH} ml/h) | Ph\xE1c \u0111\u1ED3: ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} gi\u1ECDt/ph\xFAt) | Treo th\xEAm ${r.bottlesToHang} chai 500ml | T\u1EA1i c\u1ECDc: ${r.totalAtPoleMl} ml`),
     `
 3. PH\xC1C \u0110\u1ED2 CAO PH\xC2N T\u1EEC (CPT) & GI\u1EA2M LI\u1EC0U (PH\u1EE4 L\u1EE4C 10):`,
@@ -1793,6 +1827,7 @@ function generateDengueCDSSPlan(patient, customDurations, customRates) {
     fluidRows: rows,
     totalVolumeMl,
     totalDurationHours,
+    fluidInfo,
     colloidPlan,
     vasopressorDopamin: dopamin,
     vasopressorNoradrenalin: noradrenalin,
@@ -1973,9 +2008,10 @@ var CLINICAL_SAMPLE_CASES = [
       severity: "warning_signs",
       clinicalResponse: "liver_failure",
       liverEnzymesAST_ALT: 1650,
-      currentHctPercent: 40
+      currentHctPercent: 40,
+      preferredFluid: "ringer_acetate"
     },
-    clinicalHighlight: "AST 1650 U/L t\u1ED5n th\u01B0\u01A1ng gan c\u1EA5p: Ph\xE1c \u0111\u1ED3 NAC 4 pha, TUY\u1EC6T \u0110\u1ED0I C\u1EA4M Ringer Lactate & Paracetamol."
+    clinicalHighlight: "AST 1650 U/L t\u1ED5n th\u01B0\u01A1ng gan c\u1EA5p: Ph\xE1c \u0111\u1ED3 NAC 4 pha, TUY\u1EC6T \u0110\u1ED0I C\u1EA4M Ringer Lactate & Paracetamol (T\u1EF1 \u0111\u1ED9ng chuy\u1EC3n Ringer Acetate / NaCl 0.9%)."
   }
 ];
 var DengueCDSSController = class {
@@ -1988,6 +2024,8 @@ var DengueCDSSController = class {
   activeWorkspaceMode = "fluid_schedule";
   activeRefractorySubTab = "tab-cpt";
   includeVasopressorInPrint = false;
+  printProtocolType = "crystalloid";
+  printFluidChoice = "auto";
   selectedColloidType = "dextran40";
   currentHemodynamic = {
     cvpLevel: "low_normal",
@@ -2261,6 +2299,20 @@ var DengueCDSSController = class {
                       <option value="refractory_shock_cvp">\u{1F7E3} S\u1ED1c th\u1EA5t b\u1EA1i b\xF9 d\u1ECBch / T\xE1i s\u1ED1c \u2265 2 l\u1EA7n (\u0110o CVP & V\u1EADn M\u1EA1ch)</option>
                       <option value="fluid_overload">\u26A0\uFE0F Bi\u1EBFn ch\u1EE9ng D\u01B0 d\u1ECBch / Qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n / Ph\xF9 ph\u1ED5i c\u1EA5p</option>
                       <option value="liver_failure">\u{1F7E4} Bi\u1EBFn ch\u1EE9ng Suy gan c\u1EA5p / AST-ALT \u2265 1000 U/L (Ph\xE1c \u0111\u1ED3 NAC)</option>
+                    </select>
+                  </div>
+
+                  <!-- L\u1EF1a ch\u1ECDn D\u1ECBch Tinh Th\u1EC3 Kh\u1EDFi \u0110\u1EA7u (T\u1EF1 \u0111\u1ED9ng chuy\u1EC3n Ringer Acetate n\u1EBFu suy gan) -->
+                  <div class="cdss-form-group">
+                    <label class="cdss-form-label" for="input-preferred-fluid">
+                      <span>Lo\u1EA1i D\u1ECBch Tinh Th\u1EC3 Kh\u1EDFi \u0110\u1EA7u</span>
+                      <small style="font-size:0.68rem; color:var(--cdss-text-muted); font-weight:normal;">(T\u1EF1 \u0111\u1ED9ng \u0111\u1ED5i n\u1EBFu suy gan)</small>
+                    </label>
+                    <select id="input-preferred-fluid" class="cdss-select">
+                      <option value="auto">\u26A1 T\u1EF1 \u0111\u1ED9ng (Chu\u1EA9n h\xF3a theo men gan &amp; BYT)</option>
+                      <option value="ringer_lactate">Ringer Lactate (C\u01A1 b\u1EA3n n\u1EBFu gan b\xECnh th\u01B0\u1EDDng)</option>
+                      <option value="ringer_acetate">Ringer Acetate (\u01AFu ti\xEAn t\u1ED5n th\u01B0\u01A1ng gan/Thalassemia)</option>
+                      <option value="nacl_09">Natri Clorid 0.9% (\u0110\u1EB3ng tr\u01B0\u01A1ng)</option>
                     </select>
                   </div>
 
@@ -2544,7 +2596,7 @@ var DengueCDSSController = class {
       });
     }
     const btnPrint = document.getElementById("btn-print");
-    if (btnPrint) btnPrint.addEventListener("click", () => window.print());
+    if (btnPrint) btnPrint.addEventListener("click", () => this.openPrintModal());
     const btnOpenDrawer = document.getElementById("btn-open-drawer");
     const btnCloseDrawer = document.getElementById("btn-close-drawer");
     const drawerOverlay = document.getElementById("cdss-drawer-overlay");
@@ -2613,6 +2665,11 @@ var DengueCDSSController = class {
     } else {
       this.setInputValue("input-cvp", "");
     }
+    if (sample.input.preferredFluid) {
+      this.setInputValue("input-preferred-fluid", sample.input.preferredFluid);
+    } else {
+      this.setInputValue("input-preferred-fluid", "auto");
+    }
     const bleedCheckbox = document.getElementById("input-bleeding");
     if (bleedCheckbox) {
       bleedCheckbox.checked = !!sample.input.massiveBleeding;
@@ -2679,6 +2736,7 @@ var DengueCDSSController = class {
     const severity = document.getElementById("input-severity")?.value || "warning_signs";
     const startTime = document.getElementById("input-starttime")?.value || "08:00";
     const response = document.getElementById("input-response")?.value || "good";
+    const preferredFluid = document.getElementById("input-preferred-fluid")?.value || "auto";
     const currentHct = parseFloat(document.getElementById("input-current-hct")?.value) || void 0;
     const baselineHct = parseFloat(document.getElementById("input-baseline-hct")?.value) || void 0;
     const massiveBleeding = document.getElementById("input-bleeding")?.checked || false;
@@ -2692,6 +2750,7 @@ var DengueCDSSController = class {
       severity,
       startTime,
       clinicalResponse: response,
+      preferredFluid,
       currentHctPercent: currentHct,
       baselineHctPercent: baselineHct,
       massiveBleeding,
@@ -3326,7 +3385,7 @@ var DengueCDSSController = class {
           <div class="cdss-kpi-content">
             <span class="cdss-kpi-label">\u01AF\u1EDBc T\xEDnh S\u1ED1 Chai 500ml</span>
             <span class="cdss-kpi-value">${bottles500} <small>chai</small></span>
-            <span class="cdss-kpi-sub">Ringer Lactate / NaCl 0.9%</span>
+            <span class="cdss-kpi-sub" style="font-weight:700; color:${plan.fluidInfo?.isContraindicatedRL ? "var(--cdss-danger)" : "inherit"};">${plan.fluidInfo?.name || "Ringer Lactate"}</span>
           </div>
         </div>
       </div>
@@ -3338,7 +3397,7 @@ var DengueCDSSController = class {
             <i class="fa-solid fa-chart-gantt"></i> Ti\u1EBFn Tr\xECnh B\u1EADc D\u1ECBch Truy\u1EC1n Ban \u0110\u1EA7u Theo Gi\u1EDD
           </span>
           <span class="cdss-brand-badge" style="background:var(--cdss-primary-light); color:var(--cdss-primary); border-color:var(--cdss-primary);">
-            ${plan.totalDurationHours} Gi\u1EDD Truy\u1EC1n
+            ${plan.totalDurationHours} Gi\u1EDD Truy\u1EC1n &bull; ${plan.fluidInfo?.name || "\u0110i\u1EC7n gi\u1EA3i"}
           </span>
         </div>
         <div class="cdss-timeline-track" id="cdss-timeline-track">
@@ -3362,6 +3421,16 @@ var DengueCDSSController = class {
 
       <!-- B\u1EA2NG \u0110I\u1EC0U PH\u1ED0I C\u1ECCC D\u1ECACH 5 C\u1ED8T CHU\u1EA8N L\xC2M S\xC0NG -->
       <section class="cdss-table-card">
+        ${plan.fluidInfo?.isContraindicatedRL ? `
+          <div style="background: rgba(239, 68, 68, 0.08); border: 1.5px solid var(--cdss-danger); border-radius: 8px; padding: 0.65rem 0.9rem; margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.65rem; color: var(--cdss-danger); font-size: 0.8rem; line-height: 1.45;">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.15rem; margin-top: 0.15rem; flex-shrink: 0;"></i>
+            <div>
+              <div style="font-weight: 700; text-transform: uppercase; margin-bottom: 0.15rem;">C\u1EA3nh B\xE1o Ch\u1ED1ng Ch\u1EC9 \u0110\u1ECBnh Tuy\u1EC7t \u0110\u1ED1i Ringer Lactate!</div>
+              <div>${plan.fluidInfo.reason} H\u1EC7 th\u1ED1ng CDSS \u0111\xE3 <strong>t\u1EF1 \u0111\u1ED9ng chuy\u1EC3n to\xE0n b\u1ED9 d\u1ECBch tr\xEAn c\u1ECDc v\xE0 c\xE2u l\u1EC7nh EMR sang ${plan.fluidInfo.name}</strong>.</div>
+            </div>
+          </div>
+        ` : ""}
+
         <div class="cdss-table-header-wrap">
           <div class="cdss-table-title-area">
             <h2 class="cdss-table-title">
@@ -3375,6 +3444,10 @@ var DengueCDSSController = class {
             </p>
           </div>
           <div style="display: flex; gap: 0.45rem; align-items: center;">
+            <button type="button" id="btn-print-schedule-table" class="cdss-btn-copy-all" style="background:var(--cdss-surface); border:1px solid var(--cdss-border); color:var(--cdss-text); font-weight:600;" title="In phi\u1EBFu y l\u1EC7nh truy\u1EC1n d\u1ECBch tinh th\u1EC3 chu\u1EA9n A4" aria-label="In Phi\u1EBFu Y L\u1EC7nh">
+              <i class="fa-solid fa-print" style="color:var(--cdss-primary);"></i>
+              <span>In Phi\u1EBFu (A4)</span>
+            </button>
             <button id="btn-copy-emr-all" class="cdss-btn-copy-all" title="Copy to\xE0n b\u1ED9 y l\u1EC7nh c\xE1ch d\xF9ng c\xE1c c\u1EEF v\xE0o B\u1EC7nh \xC1n \u0110i\u1EC7n T\u1EED (EMR)" aria-label="Copy Y L\u1EC7nh EMR">
               <i class="fa-regular fa-copy"></i>
               <span>Copy Y L\u1EC7nh EMR</span>
@@ -3424,7 +3497,12 @@ var DengueCDSSController = class {
                           ${optionsHtml}
                         </select>
                       </div>
-                      <div class="cdss-stage-title">${r.stageName}</div>
+                      <div class="cdss-stage-title">
+                        ${r.stageName}
+                        <span style="display:inline-block; margin-top:0.2rem; padding:0.12rem 0.45rem; background:rgba(14,165,233,0.1); color:var(--cdss-primary); border-radius:4px; font-size:0.68rem; font-weight:700;">
+                          ${r.fluidName || plan.fluidInfo.name}
+                        </span>
+                      </div>
                     </td>
                     <td>
                       <div class="cdss-val-block">
@@ -3471,6 +3549,7 @@ var DengueCDSSController = class {
                             <i class="fa-solid fa-circle-check text-success"></i> 0 (D\xF9ng d\u1ECBch s\u1EB5n)
                           </div>
                         `}
+                        <div style="font-size:0.74rem; color:var(--cdss-text-muted);">Lo\u1EA1i d\u1ECBch: <strong>${r.fluidName || plan.fluidInfo.name}</strong></div>
                         <div style="font-size:0.74rem; color:var(--cdss-text-muted);">C\xF3 s\u1EB5n: <strong>${r.existingFluidMl} ml</strong></div>
                         <div class="cdss-pole-clean">Tr\xEAn c\u1ECDc: <strong>${r.totalAtPoleMl.toLocaleString("vi-VN")} ml</strong></div>
                         <div style="font-size:0.72rem; color:var(--cdss-text-muted);">D\u01B0 sau c\u1EEF: <strong>${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</strong></div>
@@ -3627,6 +3706,12 @@ var DengueCDSSController = class {
             copyAllBtn.classList.remove("copied");
           }, 1500);
         }
+      });
+    }
+    const printScheduleBtn = container.querySelector("#btn-print-schedule-table");
+    if (printScheduleBtn) {
+      printScheduleBtn.addEventListener("click", () => {
+        this.openPrintModal("crystalloid");
       });
     }
     const btnSub = container.querySelector("#btn-reset-durations-sub");
@@ -3799,13 +3884,19 @@ var DengueCDSSController = class {
               </span>
             </h2>
             <p class="cdss-table-desc">
-              Ti\u1EBFn tr\xECnh gi\u1EA3m li\u1EC1u: 15-20 ml/kg/h \u2794 10 ml/kg/h \u2794 7.5-5 ml/kg/h \u2794 3 ml/kg/h \u2794 Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i (Ringer Lactate / NaCl 0.9%).
+              Ti\u1EBFn tr\xECnh gi\u1EA3m li\u1EC1u: 15-20 ml/kg/h \u2794 10 ml/kg/h \u2794 7.5-5 ml/kg/h \u2794 3 ml/kg/h \u2794 Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i (${plan.fluidInfo?.isContraindicatedRL ? "Ringer Acetate / NaCl 0.9%" : "Ringer Lactate / NaCl 0.9%"}).
             </p>
           </div>
-          <button id="btn-copy-colloid-emr-all" class="cdss-btn-copy-all" title="Copy to\xE0n b\u1ED9 y l\u1EC7nh c\xE1ch d\xF9ng CPT v\xE0o B\u1EC7nh \xC1n \u0110i\u1EC7n T\u1EED (EMR)" aria-label="Copy Y L\u1EC7nh CPT EMR">
-            <i class="fa-regular fa-copy"></i>
-            <span>Copy Y L\u1EC7nh EMR</span>
-          </button>
+          <div style="display: flex; gap: 0.45rem; align-items: center;">
+            <button type="button" id="btn-print-colloid-table" class="cdss-btn-copy-all" style="background:var(--cdss-surface); border:1px solid var(--cdss-border); color:var(--cdss-text); font-weight:600;" title="In phi\u1EBFu y l\u1EC7nh b\xF9 d\u1ECBch cao ph\xE2n t\u1EED chu\u1EA9n A4" aria-label="In Phi\u1EBFu CPT">
+              <i class="fa-solid fa-print" style="color:var(--cdss-warning);"></i>
+              <span>In Phi\u1EBFu CPT (A4)</span>
+            </button>
+            <button id="btn-copy-colloid-emr-all" class="cdss-btn-copy-all" title="Copy to\xE0n b\u1ED9 y l\u1EC7nh c\xE1ch d\xF9ng CPT v\xE0o B\u1EC7nh \xC1n \u0110i\u1EC7n T\u1EED (EMR)" aria-label="Copy Y L\u1EC7nh CPT EMR">
+              <i class="fa-regular fa-copy"></i>
+              <span>Copy Y L\u1EC7nh EMR</span>
+            </button>
+          </div>
         </div>
 
         <div class="cdss-table-scroll">
@@ -3911,7 +4002,7 @@ ${r.emrOrderText || ""}" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
               <i class="fa-solid fa-list-check text-success"></i> 7 Ti\xEAu Chu\u1EA9n Gi\u1EA3m Li\u1EC1u &amp; Chuy\u1EC3n T\u1EEB CPT Sang \u0110i\u1EC7n Gi\u1EA3i (Ph\u1EE5 L\u1EE5c 10 - Q\u0110 2760)
             </h2>
             <div style="font-size:0.78rem; color:var(--cdss-text-muted); margin-top:2px;">
-              B\xE1c s\u0129 ki\u1EC3m tra t\u1EA1i gi\u01B0\u1EDDng tr\u01B0\u1EDBc khi quy\u1EBFt \u0111\u1ECBnh h\u1EA1 b\u1EADc t\u1ED1c \u0111\u1ED9 ho\u1EB7c chuy\u1EC3n sang Ringer Lactate / NaCl 0.9%.
+              B\xE1c s\u0129 ki\u1EC3m tra t\u1EA1i gi\u01B0\u1EDDng tr\u01B0\u1EDBc khi quy\u1EBFt \u0111\u1ECBnh h\u1EA1 b\u1EADc t\u1ED1c \u0111\u1ED9 ho\u1EB7c chuy\u1EC3n sang ${plan.fluidInfo?.isContraindicatedRL ? "Ringer Acetate / NaCl 0.9%" : "Ringer Lactate / NaCl 0.9%"}.
             </div>
           </div>
           <button type="button" id="btn-check-all-de-escalation" class="cdss-action-btn cdss-action-btn--icon-only" title="\u0110\xE1nh d\u1EA5u ch\u1ECDn t\u1EA5t c\u1EA3 ti\xEAu chu\u1EA9n h\u1EA1 b\u1EADc" aria-label="Ch\u1ECDn T\u1EA5t C\u1EA3">
@@ -4034,6 +4125,12 @@ ${r.emrOrderText || ""}" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
         }
       });
     }
+    const printColloidBtn = container.querySelector("#btn-print-colloid-table");
+    if (printColloidBtn) {
+      printColloidBtn.addEventListener("click", () => {
+        this.openPrintModal("colloid");
+      });
+    }
     const cbList = container.querySelectorAll(".cdss-de-esc-cb");
     const updateVerdict = () => {
       const checkedCount = Object.values(this.deEscalationChecked).filter(Boolean).length;
@@ -4046,7 +4143,7 @@ ${r.emrOrderText || ""}" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
               <i class="fa-solid fa-circle-check text-success" style="font-size:1.25rem;"></i>
               <div>
                 <strong style="color:var(--cdss-success); font-size:0.88rem;">\u0110\xC3 \u0110\u1EA0T ${checkedCount}/${totalCount} TI\xCAU CHU\u1EA8N DE-ESCALATION (PH\u1EE4 L\u1EE4C 10)</strong>
-                <div style="font-size:0.76rem; color:var(--cdss-text);">B\u1EC7nh nh\xE2n c\u1EA3i thi\u1EC7n t\u1ED1t. \u0110\u1EE7 \u0111i\u1EC1u ki\u1EC7n h\u1EA1 b\u1EADc t\u1ED1c \u0111\u1ED9 CPT ho\u1EB7c chuy\u1EC3n sang b\xF9 d\u1ECBch tinh th\u1EC3 \u0111i\u1EC7n gi\u1EA3i (Ringer Lactate / NaCl 0.9%).</div>
+                <div style="font-size:0.76rem; color:var(--cdss-text);">B\u1EC7nh nh\xE2n c\u1EA3i thi\u1EC7n t\u1ED1t. \u0110\u1EE7 \u0111i\u1EC1u ki\u1EC7n h\u1EA1 b\u1EADc t\u1ED1c \u0111\u1ED9 CPT ho\u1EB7c chuy\u1EC3n sang b\xF9 d\u1ECBch tinh th\u1EC3 \u0111i\u1EC7n gi\u1EA3i (${plan.fluidInfo?.isContraindicatedRL ? "Ringer Acetate / NaCl 0.9%" : "Ringer Lactate / NaCl 0.9%"}).</div>
               </div>
             </div>
           `;
@@ -5089,6 +5186,201 @@ ${r.emrOrderText || ""}" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
       elVolume.textContent = `T\u1ED5ng: ${plan.totalVolumeMl.toLocaleString("vi-VN")} ml (${plan.totalDurationHours}h)`;
     }
   }
+  openPrintModal(preferredProtocol) {
+    if (preferredProtocol) {
+      this.printProtocolType = preferredProtocol;
+    } else {
+      if (this.activeWorkspaceMode === "colloid_schedule" || this.currentPlan?.branchDecision.branchType === "cpt") {
+        this.printProtocolType = "colloid";
+      } else {
+        this.printProtocolType = "crystalloid";
+      }
+    }
+    let modal = document.getElementById("cdss-print-modal-overlay");
+    if (!modal) {
+      modal = document.createElement("div");
+      modal.id = "cdss-print-modal-overlay";
+      modal.className = "cdss-print-modal-overlay";
+      document.body.appendChild(modal);
+    }
+    this.renderPrintModalContent();
+    modal.classList.add("active");
+  }
+  closePrintModal() {
+    const modal = document.getElementById("cdss-print-modal-overlay");
+    if (modal) {
+      modal.classList.remove("active");
+    }
+  }
+  renderPrintModalContent() {
+    const modal = document.getElementById("cdss-print-modal-overlay");
+    if (!modal || !this.currentPlan) return;
+    const plan = this.currentPlan;
+    const isLiverImpaired = !!plan.fluidInfo?.isContraindicatedRL;
+    modal.innerHTML = `
+      <div class="cdss-print-modal-dialog" onclick="event.stopPropagation()">
+        <!-- Header -->
+        <div class="cdss-print-modal-header">
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <i class="fa-solid fa-print" style="color:var(--cdss-primary); font-size:1.15rem;"></i>
+            <div>
+              <h3 style="margin:0; font-size:0.96rem; font-weight:800; color:var(--cdss-text);">
+                In Phi\u1EBFu Y L\u1EC7nh Truy\u1EC1n D\u1ECBch (Chu\u1EA9n A4)
+              </h3>
+              <div style="font-size:0.73rem; color:var(--cdss-text-muted); margin-top:1px;">
+                \u0110\u1ECBnh d\u1EA1ng tinh g\u1ECDn 1 trang A4 &bull; T\u1ED1i \u01B0u h\xF3a c\xE0i m\xE1y Infusomat &bull; Chu\u1EA9n BYT 2023
+              </div>
+            </div>
+          </div>
+          <button type="button" class="cdss-weight-modal-close" id="btn-close-print-modal" title="\u0110\xF3ng">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="cdss-print-modal-body">
+          <!-- 1. CH\u1ECCN PH\xC1C \u0110\u1ED2 IN -->
+          <div>
+            <label style="font-weight:700; font-size:0.8rem; color:var(--cdss-text); display:block; margin-bottom:0.4rem;">
+              1. Ch\u1ECDn Ph\xE1c \u0110\u1ED3 B\xF9 D\u1ECBch C\u1EA7n In
+            </label>
+            <div class="cdss-print-proto-cards">
+              <div class="cdss-print-proto-card ${this.printProtocolType === "crystalloid" ? "active" : ""}" id="modal-card-proto-crystalloid">
+                <div class="cdss-print-proto-title">
+                  <i class="fa-solid fa-droplet text-teal-600"></i>
+                  <span>D\u1ECBch Tinh Th\u1EC3 (\u0110i\u1EC7n Gi\u1EA3i)</span>
+                </div>
+                <div class="cdss-print-proto-desc">
+                  Ph\xE1c \u0111\u1ED3 b\xF9 d\u1ECBch n\u1EA5c thang chu\u1EA9n B\u1ED9 Y T\u1EBF 2023 (Ringer Lactate / Ringer Acetate / NaCl 0.9%).
+                </div>
+              </div>
+
+              <div class="cdss-print-proto-card ${this.printProtocolType === "colloid" ? "active" : ""}" id="modal-card-proto-colloid">
+                <div class="cdss-print-proto-title">
+                  <i class="fa-solid fa-flask-vial text-amber-600"></i>
+                  <span>D\u1ECBch Cao Ph\xE2n T\u1EED (CPT)</span>
+                </div>
+                <div class="cdss-print-proto-desc">
+                  Ph\u1EE5 l\u1EE5c 10: Gi\u1EA3m li\u1EC1u CPT (Dextran 40 / HES 200) &amp; chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i khi \u0111\u1EA1t ti\xEAu chu\u1EA9n.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. L\u1EF0A CH\u1ECCN D\u1ECACH TRUY\u1EC0N CH\xCDNH X\xC1C -->
+          <div>
+            <label style="font-weight:700; font-size:0.8rem; color:var(--cdss-text); display:block; margin-bottom:0.4rem;">
+              2. Lo\u1EA1i D\u1ECBch Truy\u1EC1n In Tr\xEAn Phi\u1EBFu
+            </label>
+            ${this.printProtocolType === "crystalloid" ? `
+              <select id="modal-select-print-fluid" class="cdss-select" style="width:100%; font-weight:600; padding:0.5rem 0.65rem; border-radius:6px; border:1px solid var(--cdss-border); background:var(--cdss-surface); color:var(--cdss-text); font-size:0.82rem;">
+                <option value="auto" ${this.printFluidChoice === "auto" ? "selected" : ""}>
+                  \u26A1 T\u1EF1 \u0111\u1ED9ng chu\u1EA9n h\xF3a theo men gan &amp; BYT (${plan.fluidInfo?.name || "Ringer Lactate"})
+                </option>
+                <option value="ringer_acetate" ${this.printFluidChoice === "ringer_acetate" ? "selected" : ""}>
+                  Ringer Acetate ${isLiverImpaired ? "(B\u1EAFt bu\u1ED9c - T\u1ED5n th\u01B0\u01A1ng gan)" : ""}
+                </option>
+                <option value="ringer_lactate" ${this.printFluidChoice === "ringer_lactate" ? "selected" : ""} ${isLiverImpaired ? 'disabled style="color:#94a3b8;"' : ""}>
+                  Ringer Lactate ${isLiverImpaired ? "(CH\u1ED0NG CH\u1EC8 \u0110\u1ECANH do AST/ALT \u2265 400 U/L)" : ""}
+                </option>
+                <option value="nacl_09" ${this.printFluidChoice === "nacl_09" ? "selected" : ""}>
+                  Natri Clorid 0.9%
+                </option>
+              </select>
+              ${isLiverImpaired ? `
+                <div style="margin-top:0.4rem; font-size:0.75rem; color:var(--cdss-danger); background:rgba(239,68,68,0.08); padding:0.35rem 0.6rem; border-radius:6px; border:1px solid rgba(239,68,68,0.25);">
+                  <i class="fa-solid fa-triangle-exclamation"></i> <strong>L\u01B0u \xFD l\xE2m s\xE0ng:</strong> B\u1EC7nh nh\xE2n c\xF3 AST/ALT \u2265 400 U/L ho\u1EB7c suy gan c\u1EA5p. Phi\u1EBFu in \xE1p d\u1EE5ng <strong>Ringer Acetate</strong> ho\u1EB7c <strong>NaCl 0.9%</strong> \u0111\u1EC3 tr\xE1nh toan Lactic chuy\u1EC3n h\xF3a t\u1EED vong.
+                </div>
+              ` : ""}
+            ` : `
+              <select id="modal-select-print-colloid" class="cdss-select" style="width:100%; font-weight:600; padding:0.5rem 0.65rem; border-radius:6px; border:1px solid var(--cdss-border); background:var(--cdss-surface); color:var(--cdss-text); font-size:0.82rem;">
+                <option value="dextran40" ${this.selectedColloidType === "dextran40" ? "selected" : ""}>
+                  Dextran 40 10% trong NaCl 0.9% (Khuy\u1EBFn c\xE1o \u0111\u1EA7u tay BYT 2023)
+                </option>
+                <option value="hes200" ${this.selectedColloidType === "hes200" ? "selected" : ""}>
+                  6% Hydroxyethyl Starch (HES 200/0.5 ho\u1EB7c HES 130)
+                </option>
+              </select>
+              <div style="margin-top:0.4rem; font-size:0.75rem; color:var(--cdss-text-muted);">
+                Tr\u1EA7n an to\xE0n CPT: <strong>60 ml/kg/ng\xE0y</strong>. C\xE1c c\u1EEF sau t\u1EF1 \u0111\u1ED9ng chuy\u1EC3n sang \u0111i\u1EC7n gi\u1EA3i (<strong>${isLiverImpaired ? "Ringer Acetate / NaCl 0.9%" : "Ringer Lactate / NaCl 0.9%"}</strong>).
+              </div>
+            `}
+          </div>
+
+          <!-- 3. T\xD9Y CH\u1ECCN B\u1ED4 SUNG -->
+          <div style="padding-top:0.45rem; border-top:1px dashed var(--cdss-border);">
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; cursor:pointer; color:var(--cdss-text);">
+              <input type="checkbox" id="modal-chk-print-vaso" ${this.includeVasopressorInPrint ? "checked" : ""} style="cursor:pointer;" />
+              <span>In k\xE8m ph\xE1c \u0111\u1ED3 <strong>Thu\u1ED1c V\u1EADn M\u1EA1ch</strong> b\u01A1m ti\xEAm \u0111i\u1EC7n 50ml (Dopamin / Noradrenalin)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="cdss-print-modal-footer">
+          <button type="button" class="cdss-action-btn" id="btn-cancel-print" style="padding:0.45rem 0.9rem; font-size:0.82rem;">
+            \u0110\xF3ng
+          </button>
+          <button type="button" class="cdss-action-btn cdss-action-btn--primary" id="btn-execute-print" style="padding:0.45rem 1.25rem; font-size:0.84rem; font-weight:700; display:flex; align-items:center; gap:0.45rem;">
+            <i class="fa-solid fa-print"></i>
+            <span>In Phi\u1EBFu Ngay (A4)</span>
+          </button>
+        </div>
+      </div>
+    `;
+    modal.onclick = (e) => {
+      if (e.target === modal) this.closePrintModal();
+    };
+    const btnClose = document.getElementById("btn-close-print-modal");
+    if (btnClose) btnClose.onclick = () => this.closePrintModal();
+    const btnCancel = document.getElementById("btn-cancel-print");
+    if (btnCancel) btnCancel.onclick = () => this.closePrintModal();
+    const cardCryst = document.getElementById("modal-card-proto-crystalloid");
+    if (cardCryst) {
+      cardCryst.onclick = () => {
+        this.printProtocolType = "crystalloid";
+        this.renderPrintModalContent();
+      };
+    }
+    const cardColloid = document.getElementById("modal-card-proto-colloid");
+    if (cardColloid) {
+      cardColloid.onclick = () => {
+        this.printProtocolType = "colloid";
+        this.renderPrintModalContent();
+      };
+    }
+    const selFluid = document.getElementById("modal-select-print-fluid");
+    if (selFluid) {
+      selFluid.onchange = () => {
+        this.printFluidChoice = selFluid.value;
+      };
+    }
+    const selColloid = document.getElementById("modal-select-print-colloid");
+    if (selColloid) {
+      selColloid.onchange = () => {
+        this.selectedColloidType = selColloid.value;
+      };
+    }
+    const chkVaso = document.getElementById("modal-chk-print-vaso");
+    if (chkVaso) {
+      chkVaso.onchange = () => {
+        this.includeVasopressorInPrint = chkVaso.checked;
+        const mainChkVaso = document.getElementById("chk-include-vaso");
+        if (mainChkVaso) mainChkVaso.checked = chkVaso.checked;
+      };
+    }
+    const btnExecute = document.getElementById("btn-execute-print");
+    if (btnExecute) {
+      btnExecute.onclick = () => {
+        if (selFluid) this.printFluidChoice = selFluid.value;
+        if (selColloid) this.selectedColloidType = selColloid.value;
+        if (chkVaso) this.includeVasopressorInPrint = chkVaso.checked;
+        this.renderPrintSheet(plan);
+        this.closePrintModal();
+        setTimeout(() => {
+          window.print();
+        }, 150);
+      };
+    }
+  }
   renderPrintSheet(plan) {
     const el = document.getElementById("cdss-print-sheet");
     if (!el) return;
@@ -5100,127 +5392,193 @@ ${r.emrOrderText || ""}" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
       totalDurationHours,
       vasopressorDopamin: d,
       vasopressorNoradrenalin: n,
-      branchDecision
+      branchDecision,
+      colloidPlan
     } = plan;
     const now = /* @__PURE__ */ new Date();
     const dateFormatted = `${now.getDate().toString().padStart(2, "0")}/${(now.getMonth() + 1).toString().padStart(2, "0")}/${now.getFullYear()} ${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
     const severityText = patient.severity === "warning_signs" ? "C\xF3 D\u1EA5u Hi\u1EC7u C\u1EA3nh B\xE1o (DHCB)" : patient.severity === "shock" ? "S\u1ED1c SXHD (C\xF2n B\xF9)" : "S\u1ED1c SXHD Nguy K\u1ECBch (M\u1EA1ch 0, HA 0)";
     const genderText = patient.gender === "male" ? "Nam" : "N\u1EEF";
-    const mlPerKg = Math.round(totalVolumeMl / weightResult.adjustedWeightKg);
-    const bottles500 = Math.ceil(totalVolumeMl / 500);
-    const indicatedFluid = branchDecision.branchType === "cpt" ? "Cao Ph\xE2n T\u1EED: Dextran 40 ho\u1EB7c 6% HES 200" : branchDecision.branchType === "blood" ? "H\u1ED3ng C\u1EA7u L\u1EAFng (5-10 ml/kg) + Cao Ph\xE2n T\u1EED" : "Ringer Lactate ho\u1EB7c NaCl 0.9%";
+    const isColloid = this.printProtocolType === "colloid";
+    let indicatedFluidName = "";
+    let isContraindicatedRL = false;
+    if (isColloid) {
+      indicatedFluidName = this.selectedColloidType === "hes200" ? "6% Hydroxyethyl Starch (HES 200/0.5)" : "Dextran 40 10% trong NaCl 0.9%";
+    } else {
+      if (this.printFluidChoice === "ringer_acetate") {
+        indicatedFluidName = "Ringer Acetate";
+      } else if (this.printFluidChoice === "nacl_09") {
+        indicatedFluidName = "Natri Clorid 0.9%";
+      } else if (this.printFluidChoice === "ringer_lactate") {
+        indicatedFluidName = "Ringer Lactate";
+      } else {
+        indicatedFluidName = plan.fluidInfo?.name || "Ringer Lactate";
+      }
+      isContraindicatedRL = !!plan.fluidInfo?.isContraindicatedRL;
+    }
+    const sheetTitle = isColloid ? "PHI\u1EBEU THEO D\xD5I TRUY\u1EC0N D\u1ECACH CAO PH\xC2N T\u1EEC (CPT) SXHD DENGUE" : "PHI\u1EBEU THEO D\xD5I &amp; Y L\u1EC6NH TRUY\u1EC0N D\u1ECACH TINH TH\u1EC2 SXHD DENGUE";
+    const sheetSubtitle = isColloid ? "(Ph\xE1c \u0111\u1ED3 Gi\u1EA3m li\u1EC1u CPT &amp; Chuy\u1EC3n \u0110i\u1EC7n gi\u1EA3i theo Ph\u1EE5 l\u1EE5c 10 \u2014 Q\u0110 2760/Q\u0110-BYT 2023)" : "(Ph\xE1c \u0111\u1ED3 B\xF9 d\u1ECBch Tinh th\u1EC3 N\u1EA5c thang \u2014 Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT 2023)";
+    const displayRows = [];
+    if (isColloid) {
+      colloidPlan.rows.forEach((r) => {
+        const stageShort = r.stageName.replace(/^Cữ\s*\d+\s*:\s*/i, "").trim();
+        let monitorShort = r.monitoringNotes.replace(/Bù dịch cao phân tử đẳng trương\.?\s*/gi, "").replace(/Bù dịch tinh thể đẳng trương\.?\s*/gi, "").replace(/Đo Hct ngay kết thúc/gi, "\u0110o Hct sau").trim();
+        if (!monitorShort) monitorShort = "Theo d\xF5i M, HA, NT, l\u01B0\u1EE3ng n\u01B0\u1EDBc ti\u1EC3u";
+        const rowFluidName = r.fluidKind === "colloid" ? this.selectedColloidType === "hes200" ? "6% HES 200" : "Dextran 40" : plan.fluidInfo?.isContraindicatedRL ? "Ringer Acetate (\u0110i\u1EC7n gi\u1EA3i)" : "Ringer Lactate (\u0110i\u1EC7n gi\u1EA3i)";
+        displayRows.push({
+          stepIndex: r.stepIndex,
+          durationHours: r.durationHours,
+          timeWindow: r.timeWindow,
+          stageShort,
+          fluidName: rowFluidName,
+          pumpRateMlH: r.pumpRateMlH,
+          vtbiMl: r.vtbiMl,
+          rateMlKgH: r.rateMlKgH,
+          bottlesToHang: r.bottlesToHang,
+          totalAtPoleMl: r.totalAtPoleMl,
+          remainingAfterStep: Math.max(0, r.totalAtPoleMl - r.vtbiMl),
+          hctCheckRequired: !!r.hctCheckRequired,
+          monitorShort
+        });
+      });
+    } else {
+      fluidRows.forEach((r) => {
+        const stageShort = r.stageName.replace(/^Cữ\s*\d+\s*:\s*/i, "").trim();
+        let monitorShort = r.monitoringNotes.replace(/Bù dịch tinh thể đẳng trương\.?\s*/gi, "").replace(/Đo Hct ngay kết thúc/gi, "\u0110o Hct sau").trim();
+        if (!monitorShort) monitorShort = "Theo d\xF5i M, HA, NT, l\u01B0\u1EE3ng n\u01B0\u1EDBc ti\u1EC3u";
+        displayRows.push({
+          stepIndex: r.stepIndex,
+          durationHours: r.durationHours,
+          timeWindow: r.timeWindow,
+          stageShort,
+          fluidName: indicatedFluidName,
+          pumpRateMlH: r.pumpRateMlH,
+          vtbiMl: r.totalMl,
+          rateMlKgH: r.rateMlKgH,
+          bottlesToHang: r.bottlesToHang,
+          totalAtPoleMl: r.totalAtPoleMl,
+          remainingAfterStep: Math.max(0, r.totalAtPoleMl - r.totalMl),
+          hctCheckRequired: !!r.hctCheckRequired,
+          monitorShort
+        });
+      });
+    }
+    const totalVol = isColloid ? colloidPlan.totalScheduleMl : totalVolumeMl;
+    const totalDur = isColloid ? colloidPlan.totalDurationHours || 8 : totalDurationHours;
+    const mlPerKg = Math.round(totalVol / weightResult.adjustedWeightKg);
+    let bottlesSummary = "";
+    if (isColloid) {
+      const colloidShort = this.selectedColloidType === "hes200" ? "6% HES 200" : "Dextran 40";
+      const cBot = Math.ceil(colloidPlan.totalColloidMl / 500);
+      const cryBot = Math.max(0, Math.ceil((colloidPlan.totalScheduleMl - colloidPlan.totalColloidMl) / 500));
+      bottlesSummary = `${cBot} chai ${colloidShort} (500ml) + ${cryBot} chai \u0110i\u1EC7n gi\u1EA3i (${plan.fluidInfo?.name || "Ringer Lactate"})`;
+    } else {
+      const b500 = Math.ceil(totalVolumeMl / 500);
+      bottlesSummary = `${b500} chai 500ml (${indicatedFluidName})`;
+    }
     const isVasopressorNeeded = this.includeVasopressorInPrint || patient.clinicalResponse === "refractory_shock_cvp" || branchDecision.branchType === "refractory_shock";
     el.innerHTML = `
       <div class="cdss-print-page">
-        <!-- HEADER C\u01A0 QUAN & TI\xCAU \u0110\u1EC0 PHI\u1EBEU IN -->
-        <div class="cdss-print-meta-top">
-          <div class="cdss-print-left-org">
-            <div style="font-weight:700; text-transform:uppercase;">KHOA C\u1EA4P C\u1EE8U / H\u1ED2I S\u1EE8C</div>
-            <div>Ph\xF2ng/Gi\u01B0\u1EDDng: ................ | BA s\u1ED1: ................</div>
+        <!-- 1. HEADER C\u01A0 QUAN TINH GI\u1EA2N CHU\u1EA8N B\u1EC6NH VI\u1EC6N -->
+        <div class="cdss-print-header">
+          <div class="cdss-print-header-left">
+            <div class="cdss-print-dept">KHOA C\u1EA4P C\u1EE8U / H\u1ED2I S\u1EE8C T\xCDCH C\u1EF0C</div>
+            <div class="cdss-print-subdept">Bu\u1ED3ng/Gi\u01B0\u1EDDng: ................ | M\xE3 BA: ................</div>
           </div>
-          <div class="cdss-print-right-org">
-            <div style="font-weight:600;">C\u1ED8NG H\xD2A X\xC3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM</div>
-            <div style="font-style:italic; font-size:0.85em;">\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\xFAc</div>
-            <div style="font-size:0.85em; margin-top:2px;">Th\u1EDDi \u0111i\u1EC3m l\u1EADp phi\u1EBFu: <strong>${dateFormatted}</strong></div>
+          <div class="cdss-print-header-center">
+            <h1 class="cdss-print-main-title">${sheetTitle}</h1>
+            <div class="cdss-print-sub-title">${sheetSubtitle}</div>
+          </div>
+          <div class="cdss-print-header-right">
+            <div>Th\u1EDDi \u0111i\u1EC3m l\u1EADp: <strong>${dateFormatted}</strong></div>
+            <div>B\xE1c s\u0129 ch\u1EC9 \u0111\u1ECBnh: <strong>BS. ........................</strong></div>
           </div>
         </div>
 
-        <div class="cdss-print-title-area">
-          <h1 class="cdss-print-main-title">PHI\u1EBEU THEO D\xD5I TRUY\u1EC0N D\u1ECACH SXHD DENGUE</h1>
-          <div class="cdss-print-sub-title">(Theo H\u01B0\u1EDBng d\u1EABn Ch\u1EA9n \u0111o\xE1n &amp; \u0110i\u1EC1u tr\u1ECB SXHD \u2014 Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT 2023)</div>
-        </div>
-
-        <!-- TH\xD4NG TIN B\u1EC6NH NH\xC2N TINH G\u1ECCN CHU\u1EA8N L\xC2M S\xC0NG -->
+        <!-- 2. TH\xD4NG TIN B\u1EC6NH NH\xC2N & D\u1ECACH CH\u1EC8 \u0110\u1ECANH TINH G\u1ECCN -->
         <div class="cdss-print-patient-box">
           <div class="cdss-print-row">
             <span>H\u1ECD v\xE0 t\xEAn ng\u01B0\u1EDDi b\u1EC7nh: <strong>...........................................................................</strong></span>
             <span>Tu\u1ED5i: <strong>${patient.ageYears} tu\u1ED5i</strong></span>
-            <span>Gi\u1EDBi t\xEDnh: <strong>${genderText}</strong></span>
+            <span>Gi\u1EDBi: <strong>${genderText}</strong></span>
+            <span>C\xE2n th\u1EF1c: <strong>${weightResult.actualWeightKg} kg</strong></span>
             <span class="cdss-print-weight-highlight">
               C\xC2N T\xCDNH D\u1ECACH (CDSS): <strong>${weightResult.adjustedWeightKg} kg</strong>
-              ${weightResult.isObese ? patient.ageYears >= 16 ? '<em style="font-size:0.8em; color:#b91c1c;">(B\xC9O PH\xCC - PH\u1EE4 L\u1EE4C 9 BYT)</em>' : '<em style="font-size:0.8em; color:#b91c1c;">(B\xC9O PH\xCC - HI\u1EC6U CH\u1EC8NH CDC)</em>' : `<span style="font-size:0.82em; color:#555;">(Th\u1EF1c t\u1EBF: ${weightResult.actualWeightKg}kg)</span>`}
+              ${weightResult.isObese ? '<em style="font-size:0.8em; color:#b91c1c;">(B\xC9O PH\xCC - \u0110\xC3 HI\u1EC6U CH\u1EC8NH)</em>' : ""}
             </span>
           </div>
 
-          <div class="cdss-print-row" style="margin-top: 5px;">
+          <div class="cdss-print-row" style="margin-top: 4px; padding-top: 3px; border-top: 1px dashed #cbd5e1;">
             <span>Ch\u1EA9n \u0111o\xE1n: <strong style="text-transform:uppercase;">${severityText}</strong></span>
-            <span>D\u1ECBch ch\u1EC9 \u0111\u1ECBnh: <strong style="color:#0369a1;">${indicatedFluid}</strong></span>
+            <span>Ph\xE1c \u0111\u1ED3: <strong style="color:#0284c7;">${isColloid ? "B\xD9 D\u1ECACH CAO PH\xC2N T\u1EEC (PH\u1EE4 L\u1EE4C 10)" : "B\xD9 D\u1ECACH TINH TH\u1EC2 N\u1EA4C THANG"}</strong></span>
+            <span>
+              D\u1ECBch ch\u1EC9 \u0111\u1ECBnh: <strong style="font-size:1.02em; text-transform:uppercase; color:#0369a1;">${indicatedFluidName}</strong>
+              ${isContraindicatedRL ? '<span style="color:#b91c1c; font-weight:700; font-size:0.82em; margin-left:4px;">(C\u1EA4M RINGER LACTATE DO T\u1ED4N TH\u01AF\u01A0NG GAN)</span>' : ""}
+            </span>
           </div>
-
-          ${branchDecision.branchType !== "standard" ? `
-            <div style="margin-top: 5px; padding: 3px 8px; border: 1px dashed #c2410c; background: #fff7ed; font-size: 8.5pt;">
-              <strong style="color:#c2410c;">[!] H\u01B0\u1EDBng x\u1EED tr\xED:</strong> ${branchDecision.recommendedFluid} (${branchDecision.title})
-            </div>
-          ` : ""}
         </div>
 
-        <!-- B\u1EA2NG \u0110I\u1EC0U PH\u1ED0I C\u1ECCC D\u1ECACH CHU\u1EA8N \u0110I\u1EC0U D\u01AF\u1EE0NG (T\u1EACP TRUNG - R\xD5 R\xC0NG) -->
+        <!-- 3. B\u1EA2NG C\u1ECCC D\u1ECACH 5 C\u1ED8T CHU\u1EA8N L\xC2M S\xC0NG -->
         <table class="cdss-print-table">
           <thead>
             <tr>
               <th style="width: 17%;">C\u1EEE TRUY\u1EC0N &amp; GI\u1EDC</th>
-              <th style="width: 25%;">T\u1ED0C \u0110\u1ED8 &amp; L\u01AF\u1EE2NG D\u1ECACH</th>
-              <th style="width: 24%;">CHU\u1EA8N B\u1ECA T\u1EA0I C\u1ECCC</th>
-              <th style="width: 22%;">THEO D\xD5I &amp; HCT</th>
-              <th style="width: 12%;">\u0110D K\xDD</th>
+              <th style="width: 20%;">LO\u1EA0I D\u1ECACH TRUY\u1EC0N</th>
+              <th style="width: 25%;">C\xC0I M\xC1Y TRUY\u1EC0N D\u1ECACH</th>
+              <th style="width: 21%;">TREO D\u1ECACH T\u1EA0I C\u1ECCC</th>
+              <th style="width: 17%;">THEO D\xD5I &amp; \u0110D K\xDD</th>
             </tr>
           </thead>
           <tbody>
-            ${fluidRows.map((r) => {
-      const stageShort = r.stageName.replace(/^Cữ\s*\d+\s*:\s*/i, "").trim();
-      let monitorShort = r.monitoringNotes.replace(/Bù dịch tinh thể đẳng trương\.?\s*/gi, "").replace(/Bù dịch cao phân tử đẳng trương\.?\s*/gi, "").replace(/Đo Hct ngay kết thúc/gi, "\u0110o Hct sau").trim();
-      if (!monitorShort) {
-        monitorShort = "Theo d\xF5i M, HA, NT, l\u01B0\u1EE3ng n\u01B0\u1EDBc ti\u1EC3u";
-      }
-      return `
+            ${displayRows.map((r) => `
               <tr>
                 <td style="text-align: center;">
                   <div style="font-weight: 800; font-size: 1.05em;">C\u1EEF ${r.stepIndex} <span style="font-size:0.85em; font-weight:600;">(${r.durationHours}h)</span></div>
                   <div style="font-weight: 700; margin: 2px 0; font-size: 0.95em;">${r.timeWindow}</div>
-                  <div style="font-size: 0.8em; color: #444;">${stageShort}</div>
+                  <div style="font-size: 0.78em; color: #444;">${r.stageShort}</div>
                 </td>
                 <td>
-                  <div>C\xE0i m\xE1y (RATE): <strong style="font-size: 1.15em; color: #0284c7;">${r.pumpRateMlH} ml/h</strong></div>
-                  <div style="font-size: 0.9em; margin-top: 1px;">C\xE0i th\u1EC3 t\xEDch (VTBI): <strong>${r.totalMl.toLocaleString("vi-VN")} ml</strong> / ${r.durationHours}h</div>
-                  <div style="font-size: 0.78em; color: #555; margin-top: 1px;">Ph\xE1c \u0111\u1ED3: ${r.rateMlKgH} ml/kg/h &bull; KVO: ${r.kvoRateMlH} ml/h &bull; T\u1EF1 do: ${r.dropsPerMin} g/p</div>
+                  <div style="font-weight: 800; font-size: 0.98em; color: #0f172a;">${r.fluidName}</div>
+                  <div style="font-size: 0.76em; color: #555; margin-top: 1px;">Quy c\xE1ch: Chai 500ml</div>
                 </td>
                 <td>
-                  <div style="font-weight: 700; font-size: 0.95em;">
-                    ${r.bottlesToHang > 0 ? `Treo th\xEAm: +${r.bottlesToHang} chai (500ml)` : "D\xF9ng d\u1ECBch s\u1EB5n c\xF3"}
+                  <div>T\u1ED0C \u0110\u1ED8 C\xC0I M\xC1Y: <strong style="font-size: 1.15em; color: #0284c7;">${r.pumpRateMlH} ml/h</strong></div>
+                  <div style="font-size: 0.88em; margin-top: 1px;">TH\u1EC2 T\xCDCH (VTBI): <strong>${r.vtbiMl.toLocaleString("vi-VN")} ml</strong> / ${r.durationHours}h</div>
+                  <div style="font-size: 0.76em; color: #555; margin-top: 1px;">Ph\xE1c \u0111\u1ED3: ${r.rateMlKgH} ml/kg/h</div>
+                </td>
+                <td>
+                  <div style="font-weight: 700; font-size: 0.92em;">
+                    ${r.bottlesToHang > 0 ? `Treo th\xEAm: +${r.bottlesToHang} chai 500ml` : "D\xF9ng d\u1ECBch s\u1EB5n c\xF3"}
                   </div>
-                  <div style="font-size: 0.85em; margin-top: 2px;">
+                  <div style="font-size: 0.82em; margin-top: 1px;">
                     T\u1ED5ng t\u1EA1i c\u1ECDc: <strong>${r.totalAtPoleMl.toLocaleString("vi-VN")} ml</strong>
                   </div>
-                  ${r.existingFluidMl > 0 ? `
-                    <div style="font-size: 0.76em; color: #555;">(D\u01B0 c\u1EEF tr\u01B0\u1EDBc: ${r.existingFluidMl} ml)</div>
+                  ${r.remainingAfterStep > 0 ? `
+                    <div style="font-size: 0.76em; color: #555;">(D\u01B0 sau c\u1EEF: ${r.remainingAfterStep} ml)</div>
                   ` : ""}
                 </td>
                 <td>
                   ${r.hctCheckRequired ? `
-                    <div style="font-weight: 800; color: #b91c1c; font-size: 0.86em; margin-bottom: 2px;">
+                    <div style="font-weight: 800; color: #b91c1c; font-size: 0.84em; margin-bottom: 2px;">
                       [!] \u0110O L\u1EA0I HCT (${r.durationHours}h)
                     </div>
                   ` : ""}
-                  <div style="font-size: 0.82em; line-height: 1.3;">${monitorShort}</div>
-                </td>
-                <td style="text-align: center; vertical-align: middle;">
-                  <div style="font-size: 0.78em; color: #555;">Gi\u1EDD: ...h...</div>
-                  <div style="font-size: 0.78em; margin-top: 14px;">K\xFD: .........</div>
+                  <div style="font-size: 0.78em; color: #444; line-height: 1.25;">${r.monitorShort}</div>
+                  <div style="font-size: 0.76em; color: #555; margin-top: 4px;">\u0110D K\xFD: ............</div>
                 </td>
               </tr>
-            `;
-    }).join("")}
+            `).join("")}
           </tbody>
         </table>
 
-        <!-- T\u1ED4NG K\u1EBET D\u1ECACH TRUY\u1EC0N D\u1EF0 KI\u1EBEN -->
+        <!-- 4. D\u1EA2I T\u1ED4NG K\u1EBET D\u1ECACH -->
         <div class="cdss-print-summary-strip">
-          <span>T\u1ED5ng d\u1ECBch b\xF9: <strong>${totalVolumeMl.toLocaleString("vi-VN")} ml</strong> (~<strong>${mlPerKg} ml/kg</strong>)</span>
-          <span>Th\u1EDDi gian d\u1EF1 ki\u1EBFn: <strong>${totalDurationHours} gi\u1EDD</strong> (${fluidRows.length} c\u1EEF)</span>
-          <span>\u01AF\u1EDBc t\xEDnh: <strong>${bottles500} chai 500ml</strong> (${branchDecision.branchType === "cpt" ? "Cao Ph\xE2n T\u1EED" : "Ringer Lactate / NaCl 0.9%"})</span>
+          <span>T\u1ED5ng l\u01B0\u1EE3ng d\u1ECBch: <strong>${totalVol.toLocaleString("vi-VN")} ml</strong> (~<strong>${mlPerKg} ml/kg</strong>)</span>
+          <span>Th\u1EDDi gian d\u1EF1 ki\u1EBFn: <strong>${totalDur} gi\u1EDD</strong> (${displayRows.length} c\u1EEF)</span>
+          <span>D\u1EF1 tr\xF9 s\u1ED1 chai: <strong>${bottlesSummary}</strong></span>
         </div>
 
-        <!-- PH\xC1C \u0110\u1ED2 V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N (CH\u1EC8 HI\u1EC2N TH\u1ECA KHI C\xD3 CH\u1EC8 \u0110\u1ECANH HO\u1EB6C CH\u1ECCN IN K\xC8M) -->
+        <!-- 5. PH\xC1C \u0110\u1ED2 V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N (CH\u1EC8 HI\u1EC2N TH\u1ECA KHI C\xD3 CH\u1EC8 \u0110\u1ECANH HO\u1EB6C CH\u1ECCN IN K\xC8M) -->
         ${isVasopressorNeeded ? `
           <div class="cdss-print-vaso-box">
             <div style="font-weight: bold; text-transform: uppercase; font-size: 0.85em; margin-bottom: 2px; border-bottom: 1px dotted #666; padding-bottom: 2px;">
@@ -5239,25 +5597,25 @@ ${r.emrOrderText || ""}" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
           </div>
         ` : ""}
 
-        <!-- L\u01AFU \xDD \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N -->
+        <!-- 6. L\u01AFU \xDD \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N -->
         <div class="cdss-print-safety-notes">
           <strong>L\u01B0u \xFD \u0111i\u1EC1u d\u01B0\u1EE1ng an to\xE0n:</strong>
-          (1) Lu\xF4n \u0111o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng tr\u01B0\u1EDBc khi quy\u1EBFt \u0111\u1ECBnh gi\u1EA3m b\u1EADc d\u1ECBch theo y l\u1EC7nh.
+          (1) Lu\xF4n \u0111o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng tr\u01B0\u1EDBc khi quy\u1EBFt \u0111\u1ECBnh gi\u1EA3m t\u1ED1c \u0111\u1ED9 d\u1ECBch theo y l\u1EC7nh.
           (2) \u0110\xEDch n\u01B0\u1EDBc ti\u1EC3u &ge; 0.5 - 1 ml/kg/gi\u1EDD. B\xE1o B\xE1c s\u0129 ngay n\u1EBFu c\xF3 d\u1EA5u hi\u1EC7u ph\xF9 mi m\u1EAFt, th\u1EDF nhanh kh\xF3 th\u1EDF, ran \u1EA9m \u0111\xE1y ph\u1ED5i ho\u1EB7c t\xE1i s\u1ED1c.
           (3) Ng\u01B0ng truy\u1EC1n d\u1ECBch khi m\u1EA1ch, huy\u1EBFt \xE1p \u1ED5n \u0111\u1ECBnh, tho\xE1t s\u1ED1c sau 24-48 gi\u1EDD giai \u0111o\u1EA1n h\u1ED3i ph\u1EE5c.
         </div>
 
-        <!-- CH\u1EEE K\xDD X\xC1C NH\u1EACN Y L\u1EC6NH -->
+        <!-- 7. CH\u1EEE K\xDD X\xC1C NH\u1EACN Y L\u1EC6NH -->
         <div class="cdss-print-signatures">
           <div class="cdss-print-sign-col">
             <div style="font-weight: bold;">\u0110I\u1EC0U D\u01AF\u1EE0NG THEO D\xD5I</div>
-            <div style="font-style: italic; font-size: 0.85em;">(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)</div>
-            <div style="margin-top: 36px; font-weight: bold;">............................................................</div>
+            <div style="font-style: italic; font-size: 0.82em;">(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)</div>
+            <div style="margin-top: 30px; font-weight: bold;">............................................................</div>
           </div>
           <div class="cdss-print-sign-col">
             <div style="font-weight: bold;">B\xC1C S\u0128 CH\u1EC8 \u0110\u1ECANH Y L\u1EC6NH</div>
-            <div style="font-style: italic; font-size: 0.85em;">(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)</div>
-            <div style="margin-top: 36px; font-weight: bold;">............................................................</div>
+            <div style="font-style: italic; font-size: 0.82em;">(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)</div>
+            <div style="margin-top: 30px; font-weight: bold;">............................................................</div>
           </div>
         </div>
       </div>

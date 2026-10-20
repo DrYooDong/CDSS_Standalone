@@ -3097,6 +3097,115 @@
 /* ============================================================
    PRINT STYLES (Chỉ in nội dung cần thiết & Bảng điều phối cọc dịch)
    ============================================================ */
+/* ==========================================================================
+   PRINT OPTIONS MODAL & DIALOG
+   ========================================================================== */
+.cdss-print-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.cdss-print-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cdss-print-modal-dialog {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-lg);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(15px) scale(0.98);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cdss-print-modal-overlay.active .cdss-print-modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.cdss-print-modal-header {
+  padding: 0.9rem 1.25rem;
+  background: var(--cdss-surface-alt);
+  border-bottom: 1px solid var(--cdss-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cdss-print-modal-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.cdss-print-proto-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.cdss-print-proto-card {
+  border: 2px solid var(--cdss-border);
+  border-radius: 8px;
+  padding: 0.85rem;
+  cursor: pointer;
+  background: var(--cdss-surface);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cdss-print-proto-card:hover {
+  border-color: var(--cdss-primary);
+}
+
+.cdss-print-proto-card.active {
+  border-color: var(--cdss-primary);
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.cdss-print-proto-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--cdss-text);
+}
+
+.cdss-print-proto-desc {
+  font-size: 0.74rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.35;
+}
+
+.cdss-print-modal-footer {
+  padding: 0.85rem 1.25rem;
+  background: var(--cdss-surface-alt);
+  border-top: 1px solid var(--cdss-border);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
 .cdss-print-sheet {
   display: none;
 }
@@ -3104,15 +3213,15 @@
 @media print {
   @page {
     size: A4 portrait;
-    margin: 8mm 10mm;
+    margin: 8mm 10mm 6mm 10mm;
   }
 
   body {
     background: #ffffff !important;
     color: #000000 !important;
     font-family: 'Times New Roman', 'DejaVu Serif', serif !important;
-    font-size: 10pt !important;
-    line-height: 1.3 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.25 !important;
     margin: 0 !important;
     padding: 0 !important;
     -webkit-print-color-adjust: exact !important;
@@ -3129,14 +3238,11 @@
   .cdss-drawer-overlay,
   .cdss-mobile-drawer,
   .cdss-toast,
+  .cdss-weight-modal-overlay,
+  .cdss-print-modal-overlay,
   header,
   footer {
     display: none !important;
-  }
-
-  @page {
-    size: A4 portrait;
-    margin: 8mm 10mm 6mm 10mm;
   }
 
   /* Hiển thị DUY NHẤT phiếu y lệnh lâm sàng chuẩn */
@@ -3154,32 +3260,41 @@
     page-break-inside: avoid !important;
   }
 
-  .cdss-print-meta-top {
+  /* Header 3 cột chuẩn bệnh viện */
+  .cdss-print-header {
     display: flex !important;
     justify-content: space-between !important;
     align-items: flex-start !important;
+    border-bottom: 1.5px solid #000 !important;
+    padding-bottom: 4px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .cdss-print-header-left {
+    text-align: left !important;
     font-size: 8pt !important;
-    border-bottom: 1.2px solid #000 !important;
-    padding-bottom: 3px !important;
-    margin-bottom: 5px !important;
     line-height: 1.25 !important;
   }
 
-  .cdss-print-left-org {
-    text-align: left !important;
+  .cdss-print-dept {
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    font-size: 8.5pt !important;
   }
 
-  .cdss-print-right-org {
-    text-align: right !important;
+  .cdss-print-subdept {
+    font-size: 8pt !important;
+    margin-top: 1px !important;
   }
 
-  .cdss-print-title-area {
+  .cdss-print-header-center {
     text-align: center !important;
-    margin: 4px 0 6px 0 !important;
+    flex: 1 !important;
+    padding: 0 8px !important;
   }
 
   .cdss-print-main-title {
-    font-size: 13pt !important;
+    font-size: 12pt !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
     margin: 0 !important;
@@ -3188,19 +3303,25 @@
   }
 
   .cdss-print-sub-title {
-    font-size: 8pt !important;
+    font-size: 7.8pt !important;
     font-style: italic !important;
-    margin-top: 2px !important;
+    margin-top: 1px !important;
     color: #333 !important;
+  }
+
+  .cdss-print-header-right {
+    text-align: right !important;
+    font-size: 8pt !important;
+    line-height: 1.25 !important;
   }
 
   .cdss-print-patient-box {
     border: 1px solid #000 !important;
-    padding: 4px 6px !important;
-    margin-bottom: 6px !important;
-    font-size: 8.8pt !important;
+    padding: 3px 6px !important;
+    margin-bottom: 5px !important;
+    font-size: 8.4pt !important;
     background: #fafafa !important;
-    line-height: 1.3 !important;
+    line-height: 1.25 !important;
   }
 
   .cdss-print-row {
@@ -3215,14 +3336,14 @@
     border: 1px solid #16a34a !important;
     padding: 1px 5px !important;
     border-radius: 3px !important;
-    font-size: 8.5pt !important;
+    font-size: 8.2pt !important;
   }
 
   /* BẢNG TRUYỀN DỊCH CHUẨN IN */
   .cdss-print-table {
     width: 100% !important;
     border-collapse: collapse !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 4px !important;
     page-break-inside: avoid !important;
   }
 
@@ -3230,29 +3351,29 @@
   .cdss-print-table td {
     border: 1px solid #000 !important;
     padding: 3px 5px !important;
-    font-size: 8.5pt !important;
-    vertical-align: top !important;
+    font-size: 8.2pt !important;
+    vertical-align: middle !important;
     color: #000 !important;
-    line-height: 1.25 !important;
+    line-height: 1.2 !important;
   }
 
   .cdss-print-table th {
-    background: #e5e7eb !important;
+    background: #f1f5f9 !important;
     font-weight: 800 !important;
     text-align: center !important;
     text-transform: uppercase !important;
-    font-size: 8pt !important;
+    font-size: 7.8pt !important;
   }
 
   .cdss-print-summary-strip {
     display: flex !important;
     justify-content: space-between !important;
-    background: #f3f4f6 !important;
-    border: 1px solid #4b5563 !important;
+    background: #f8fafc !important;
+    border: 1px solid #000 !important;
     padding: 3px 6px !important;
-    font-size: 8.5pt !important;
+    font-size: 8.2pt !important;
     font-weight: 600 !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 4px !important;
   }
 
   .cdss-print-vaso-box {

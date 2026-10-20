@@ -173,6 +173,39 @@ function addHoursToTime(startTimeStr: string, hoursToAdd: number): string {
 }
 
 /**
+ * Xác định loại dịch tinh thể chống sốc chuẩn theo tình trạng lâm sàng & tổn thương gan (QĐ 2760/QĐ-BYT)
+ */
+export function resolveCrystalloidFluid(patient: DenguePatientInput): {
+  id: 'ringer_lactate' | 'ringer_acetate' | 'nacl_09';
+  name: string;
+  isContraindicatedRL: boolean;
+  reason?: string;
+} {
+  const isLiverImpaired = !!(
+    (patient.liverEnzymesAST_ALT && patient.liverEnzymesAST_ALT >= 400) ||
+    patient.clinicalResponse === 'liver_failure'
+  );
+
+  if (isLiverImpaired) {
+    const isNaCl = patient.preferredFluid === 'nacl_09';
+    return {
+      id: isNaCl ? 'nacl_09' : 'ringer_acetate',
+      name: isNaCl ? 'Natri Clorid 0.9%' : 'Ringer Acetate',
+      isContraindicatedRL: true,
+      reason: `Tổn thương gan cấp (AST/ALT ${patient.liverEnzymesAST_ALT || '≥ 400'} U/L): Chống chỉ định Ringer Lactate (tránh toan Lactic chuyển hóa tử vong). Dung dịch bắt buộc thay thế: Ringer Acetate hoặc NaCl 0.9% theo QĐ 2760/QĐ-BYT.`
+    };
+  }
+
+  if (patient.preferredFluid === 'ringer_acetate') {
+    return { id: 'ringer_acetate', name: 'Ringer Acetate', isContraindicatedRL: false };
+  }
+  if (patient.preferredFluid === 'nacl_09') {
+    return { id: 'nacl_09', name: 'Natri Clorid 0.9%', isContraindicatedRL: false };
+  }
+  return { id: 'ringer_lactate', name: 'Ringer Lactate', isContraindicatedRL: false };
+}
+
+/**
  * Tính toán Bảng Kế Hoạch Cọc Dịch 4 Cột
  */
 export function calculateFluidSchedule(
@@ -180,9 +213,10 @@ export function calculateFluidSchedule(
   effectiveWeightKg: number,
   customDurations?: Record<number, number>,
   customRates?: Record<number, number>
-): { rows: FluidScheduleRow[]; totalVolumeMl: number; totalDurationHours: number } {
+): { rows: FluidScheduleRow[]; totalVolumeMl: number; totalDurationHours: number; fluidInfo: ReturnType<typeof resolveCrystalloidFluid> } {
   const ageGroup = classifyAgeGroup(patient.ageYears);
   const templates = DENGUE_FLUID_TEMPLATES[patient.severity][ageGroup];
+  const fluidInfo = resolveCrystalloidFluid(patient);
 
   let currentClock = patient.startTime || '08:00';
   let carryingFluidMl = 0;
@@ -251,7 +285,8 @@ export function calculateFluidSchedule(
       bottlePrefix = `Duy trì đường truyền`;
     }
 
-    const emrOrderText = `${bottlePrefix} (TTM) tốc độ ${pumpRateMlH} ml/h (tổng dịch ~ ${rate}ml/kg/h x ${duration}h)`;
+    const contraNote = fluidInfo.isContraindicatedRL ? ' - Cấm RL do men gan tăng' : '';
+    const emrOrderText = `${bottlePrefix} ${fluidInfo.name} (TTM) tốc độ ${pumpRateMlH} ml/h (tổng dịch ~ ${rate}ml/kg/h x ${duration}h${contraNote})`;
 
     prevRemainingMl = remainingAfterStep;
     prevBottleIdx = bottlesToHang > 0 ? currentBottleIdx : prevBottleIdx;
@@ -259,6 +294,7 @@ export function calculateFluidSchedule(
     rows.push({
       stepIndex: idx + 1,
       stageName: tpl.stageName,
+      fluidName: fluidInfo.name,
       durationHours: duration,
       rateMlKgH: rate,
       pumpRateMlH,
@@ -279,7 +315,7 @@ export function calculateFluidSchedule(
     currentClock = endClock;
   });
 
-  return { rows, totalVolumeMl, totalDurationHours };
+  return { rows, totalVolumeMl, totalDurationHours, fluidInfo };
 }
 
 /**
@@ -358,7 +394,9 @@ export function calculateColloidSchedule(
       bottlePrefix = `Duy trì đường truyền`;
     }
 
-    const fluidLabel = tpl.fluidKind === 'colloid' ? meta.shortName : 'Điện giải';
+    const fluidInfo = resolveCrystalloidFluid(patient);
+    const crystalloidName = fluidInfo.isContraindicatedRL ? 'Ringer Acetate / NaCl 0.9%' : 'Ringer Lactate / NaCl 0.9%';
+    const fluidLabel = tpl.fluidKind === 'colloid' ? meta.shortName : (fluidInfo.isContraindicatedRL ? 'Ringer Acetate (Điện giải)' : 'Điện giải');
     const emrOrderText = `${bottlePrefix} (TTM) tốc độ ${pumpRateMlH} ml/h (tổng dịch ~ ${rate}ml/kg/h x ${duration}h - ${fluidLabel})`;
 
     prevRemainingMl = remainingAfterStep;
@@ -368,7 +406,7 @@ export function calculateColloidSchedule(
       stepIndex: idx + 1,
       stageName: tpl.stageName,
       fluidKind: tpl.fluidKind,
-      fluidName: tpl.fluidKind === 'colloid' ? meta.shortName : 'Ringer Lactate / NaCl 0.9%',
+      fluidName: tpl.fluidKind === 'colloid' ? meta.shortName : crystalloidName,
       durationHours: duration,
       rateMlKgH: rate,
       pumpRateMlH,
@@ -929,13 +967,16 @@ export function calculateBranchDecision(
   }
 
   // Mặc định: Phác đồ chuẩn
+  const fluidInfo = resolveCrystalloidFluid(patient);
   return {
     branchType: 'standard',
     title: 'PHÁC ĐỒ BÙ DỊCH CHUẨN THEO PHÂN ĐỘ BỘ Y TẾ 2023',
-    recommendedFluid: 'Ringer Lactate hoặc NaCl 0.9%',
+    recommendedFluid: fluidInfo.isContraindicatedRL ? 'Ringer Acetate hoặc NaCl 0.9% (Chống chỉ định Ringer Lactate)' : 'Ringer Lactate hoặc NaCl 0.9%',
     rateMlKgH: patient.severity === 'warning_signs' ? 6 : 15,
     durationHours: 2,
-    reasoning: 'Bù dịch tinh thể theo tiến trình nấc thang giảm dần tốc độ kết hợp theo dõi sát sinh hiệu và Hct.',
+    reasoning: fluidInfo.isContraindicatedRL
+      ? `Bệnh nhân có tổn thương gan (AST/ALT ${patient.liverEnzymesAST_ALT || '≥ 400'} U/L). Bắt buộc dùng Ringer Acetate hoặc NaCl 0.9% để tránh toan Lactic tử vong.`
+      : 'Bù dịch tinh thể theo tiến trình nấc thang giảm dần tốc độ kết hợp theo dõi sát sinh hiệu và Hct.',
     warnings: [
       'Đo lại Hct và sinh hiệu trước mỗi lần giảm tốc độ.',
       'Duy trì nước tiểu ≥ 0.5 - 1 ml/kg/h.'
@@ -955,7 +996,7 @@ export function generateDengueCDSSPlan(
   const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg, patient.heightCm);
   const effectiveWeight = weightResult.adjustedWeightKg;
 
-  const { rows, totalVolumeMl, totalDurationHours } = calculateFluidSchedule(
+  const { rows, totalVolumeMl, totalDurationHours, fluidInfo } = calculateFluidSchedule(
     patient,
     effectiveWeight,
     customDurations,
@@ -1040,6 +1081,16 @@ export function generateDengueCDSSPlan(
     });
   }
 
+  if (patient.liverEnzymesAST_ALT && patient.liverEnzymesAST_ALT >= 400 && patient.liverEnzymesAST_ALT < 1000) {
+    alerts.push({
+      id: 'alert_liver_moderate',
+      level: 'warning',
+      title: 'TỔN THƯƠNG GAN TRUNG BÌNH (AST/ALT 400 - 1000 U/L): TRÁNH RINGER LACTATE',
+      message: `Men gan tăng cao (${patient.liverEnzymesAST_ALT} U/L). Bắt buộc chuyển sang Ringer Acetate hoặc NaCl 0.9%, tránh thuốc độc gan (Paracetamol, NSAIDs) và theo dõi sát đông máu theo QĐ 2760/BYT.`,
+      ruleCode: 'LIVER_INJURY_MODERATE'
+    });
+  }
+
   if (nacProtocol.indicated && nacProtocol.severityLevel === 'acute_liver_failure') {
     alerts.push({
       id: 'alert_liver_failure',
@@ -1076,7 +1127,7 @@ export function generateDengueCDSSPlan(
     `\n1. NHÁNH XỬ TRÍ LÂM SÀNG: ${branchDecision.title}`,
     `  • Hướng xử trí: ${branchDecision.recommendedFluid}`,
     `  • Lý luận lâm sàng: ${branchDecision.reasoning}`,
-    `\n2. BẢNG CỌC DỊCH ĐIỀU TRỊ BAN ĐẦU:`,
+    `\n2. BẢNG CỌC DỊCH ĐIỀU TRỊ BAN ĐẦU (${fluidInfo.name}):`,
     ...rows.map(r => `  • Cữ ${r.stepIndex}: ${r.timeWindow} | Cài máy: ${r.pumpRateMlH} ml/h (VTBI: ${r.totalMl} ml, KVO: ${r.kvoRateMlH} ml/h) | Phác đồ: ${r.rateMlKgH} ml/kg/h (${r.dropsPerMin} giọt/phút) | Treo thêm ${r.bottlesToHang} chai 500ml | Tại cọc: ${r.totalAtPoleMl} ml`),
     `\n3. PHÁC ĐỒ CAO PHÂN TỬ (CPT) & GIẢM LIỀU (PHỤ LỤC 10):`,
     `  • Loại dịch khuyến cáo: ${colloidPlan.colloidName}`,
@@ -1104,6 +1155,7 @@ export function generateDengueCDSSPlan(
     fluidRows: rows,
     totalVolumeMl,
     totalDurationHours,
+    fluidInfo,
     colloidPlan,
     vasopressorDopamin: dopamin,
     vasopressorNoradrenalin: noradrenalin,

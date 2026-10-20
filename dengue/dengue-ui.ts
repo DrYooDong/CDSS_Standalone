@@ -225,9 +225,10 @@ const CLINICAL_SAMPLE_CASES: ClinicalSampleCase[] = [
       severity: 'warning_signs',
       clinicalResponse: 'liver_failure',
       liverEnzymesAST_ALT: 1650,
-      currentHctPercent: 40
+      currentHctPercent: 40,
+      preferredFluid: 'ringer_acetate'
     },
-    clinicalHighlight: 'AST 1650 U/L tổn thương gan cấp: Phác đồ NAC 4 pha, TUYỆT ĐỐI CẤM Ringer Lactate & Paracetamol.'
+    clinicalHighlight: 'AST 1650 U/L tổn thương gan cấp: Phác đồ NAC 4 pha, TUYỆT ĐỐI CẤM Ringer Lactate & Paracetamol (Tự động chuyển Ringer Acetate / NaCl 0.9%).'
   }
 ];
 
@@ -241,6 +242,8 @@ export class DengueCDSSController {
   private activeWorkspaceMode: WorkspaceMode = 'fluid_schedule';
   private activeRefractorySubTab: string = 'tab-cpt';
   private includeVasopressorInPrint: boolean = false;
+  private printProtocolType: 'crystalloid' | 'colloid' = 'crystalloid';
+  private printFluidChoice: string = 'auto';
   private selectedColloidType: ColloidType = 'dextran40';
   private currentHemodynamic: HemodynamicProfile = {
     cvpLevel: 'low_normal',
@@ -518,6 +521,20 @@ export class DengueCDSSController {
                       <option value="refractory_shock_cvp">🟣 Sốc thất bại bù dịch / Tái sốc ≥ 2 lần (Đo CVP & Vận Mạch)</option>
                       <option value="fluid_overload">⚠️ Biến chứng Dư dịch / Quá tải tuần hoàn / Phù phổi cấp</option>
                       <option value="liver_failure">🟤 Biến chứng Suy gan cấp / AST-ALT ≥ 1000 U/L (Phác đồ NAC)</option>
+                    </select>
+                  </div>
+
+                  <!-- Lựa chọn Dịch Tinh Thể Khởi Đầu (Tự động chuyển Ringer Acetate nếu suy gan) -->
+                  <div class="cdss-form-group">
+                    <label class="cdss-form-label" for="input-preferred-fluid">
+                      <span>Loại Dịch Tinh Thể Khởi Đầu</span>
+                      <small style="font-size:0.68rem; color:var(--cdss-text-muted); font-weight:normal;">(Tự động đổi nếu suy gan)</small>
+                    </label>
+                    <select id="input-preferred-fluid" class="cdss-select">
+                      <option value="auto">⚡ Tự động (Chuẩn hóa theo men gan &amp; BYT)</option>
+                      <option value="ringer_lactate">Ringer Lactate (Cơ bản nếu gan bình thường)</option>
+                      <option value="ringer_acetate">Ringer Acetate (Ưu tiên tổn thương gan/Thalassemia)</option>
+                      <option value="nacl_09">Natri Clorid 0.9% (Đẳng trương)</option>
                     </select>
                   </div>
 
@@ -823,7 +840,7 @@ export class DengueCDSSController {
     }
 
     const btnPrint = document.getElementById('btn-print');
-    if (btnPrint) btnPrint.addEventListener('click', () => window.print());
+    if (btnPrint) btnPrint.addEventListener('click', () => this.openPrintModal());
 
     // Mobile Drawer
     const btnOpenDrawer = document.getElementById('btn-open-drawer');
@@ -903,6 +920,12 @@ export class DengueCDSSController {
       this.setInputValue('input-cvp', sample.input.cvpValue.toString());
     } else {
       this.setInputValue('input-cvp', '');
+    }
+
+    if (sample.input.preferredFluid) {
+      this.setInputValue('input-preferred-fluid', sample.input.preferredFluid);
+    } else {
+      this.setInputValue('input-preferred-fluid', 'auto');
     }
 
     const bleedCheckbox = document.getElementById('input-bleeding') as HTMLInputElement | null;
@@ -985,6 +1008,7 @@ export class DengueCDSSController {
     const severity = ((document.getElementById('input-severity') as HTMLSelectElement)?.value as DengueSeverity) || 'warning_signs';
     const startTime = (document.getElementById('input-starttime') as HTMLInputElement)?.value || '08:00';
     const response = ((document.getElementById('input-response') as HTMLSelectElement)?.value) || 'good';
+    const preferredFluid = ((document.getElementById('input-preferred-fluid') as HTMLSelectElement)?.value as any) || 'auto';
     const currentHct = parseFloat((document.getElementById('input-current-hct') as HTMLInputElement)?.value) || undefined;
     const baselineHct = parseFloat((document.getElementById('input-baseline-hct') as HTMLInputElement)?.value) || undefined;
     const massiveBleeding = (document.getElementById('input-bleeding') as HTMLInputElement)?.checked || false;
@@ -999,6 +1023,7 @@ export class DengueCDSSController {
       severity,
       startTime,
       clinicalResponse: response,
+      preferredFluid,
       currentHctPercent: currentHct,
       baselineHctPercent: baselineHct,
       massiveBleeding,
@@ -1704,7 +1729,7 @@ export class DengueCDSSController {
           <div class="cdss-kpi-content">
             <span class="cdss-kpi-label">Ước Tính Số Chai 500ml</span>
             <span class="cdss-kpi-value">${bottles500} <small>chai</small></span>
-            <span class="cdss-kpi-sub">Ringer Lactate / NaCl 0.9%</span>
+            <span class="cdss-kpi-sub" style="font-weight:700; color:${plan.fluidInfo?.isContraindicatedRL ? 'var(--cdss-danger)' : 'inherit'};">${plan.fluidInfo?.name || 'Ringer Lactate'}</span>
           </div>
         </div>
       </div>
@@ -1716,7 +1741,7 @@ export class DengueCDSSController {
             <i class="fa-solid fa-chart-gantt"></i> Tiến Trình Bậc Dịch Truyền Ban Đầu Theo Giờ
           </span>
           <span class="cdss-brand-badge" style="background:var(--cdss-primary-light); color:var(--cdss-primary); border-color:var(--cdss-primary);">
-            ${plan.totalDurationHours} Giờ Truyền
+            ${plan.totalDurationHours} Giờ Truyền &bull; ${plan.fluidInfo?.name || 'Điện giải'}
           </span>
         </div>
         <div class="cdss-timeline-track" id="cdss-timeline-track">
@@ -1740,6 +1765,16 @@ export class DengueCDSSController {
 
       <!-- BẢNG ĐIỀU PHỐI CỌC DỊCH 5 CỘT CHUẨN LÂM SÀNG -->
       <section class="cdss-table-card">
+        ${plan.fluidInfo?.isContraindicatedRL ? `
+          <div style="background: rgba(239, 68, 68, 0.08); border: 1.5px solid var(--cdss-danger); border-radius: 8px; padding: 0.65rem 0.9rem; margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.65rem; color: var(--cdss-danger); font-size: 0.8rem; line-height: 1.45;">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.15rem; margin-top: 0.15rem; flex-shrink: 0;"></i>
+            <div>
+              <div style="font-weight: 700; text-transform: uppercase; margin-bottom: 0.15rem;">Cảnh Báo Chống Chỉ Định Tuyệt Đối Ringer Lactate!</div>
+              <div>${plan.fluidInfo.reason} Hệ thống CDSS đã <strong>tự động chuyển toàn bộ dịch trên cọc và câu lệnh EMR sang ${plan.fluidInfo.name}</strong>.</div>
+            </div>
+          </div>
+        ` : ''}
+
         <div class="cdss-table-header-wrap">
           <div class="cdss-table-title-area">
             <h2 class="cdss-table-title">
@@ -1753,6 +1788,10 @@ export class DengueCDSSController {
             </p>
           </div>
           <div style="display: flex; gap: 0.45rem; align-items: center;">
+            <button type="button" id="btn-print-schedule-table" class="cdss-btn-copy-all" style="background:var(--cdss-surface); border:1px solid var(--cdss-border); color:var(--cdss-text); font-weight:600;" title="In phiếu y lệnh truyền dịch tinh thể chuẩn A4" aria-label="In Phiếu Y Lệnh">
+              <i class="fa-solid fa-print" style="color:var(--cdss-primary);"></i>
+              <span>In Phiếu (A4)</span>
+            </button>
             <button id="btn-copy-emr-all" class="cdss-btn-copy-all" title="Copy toàn bộ y lệnh cách dùng các cữ vào Bệnh Án Điện Tử (EMR)" aria-label="Copy Y Lệnh EMR">
               <i class="fa-regular fa-copy"></i>
               <span>Copy Y Lệnh EMR</span>
@@ -1804,7 +1843,12 @@ export class DengueCDSSController {
                           ${optionsHtml}
                         </select>
                       </div>
-                      <div class="cdss-stage-title">${r.stageName}</div>
+                      <div class="cdss-stage-title">
+                        ${r.stageName}
+                        <span style="display:inline-block; margin-top:0.2rem; padding:0.12rem 0.45rem; background:rgba(14,165,233,0.1); color:var(--cdss-primary); border-radius:4px; font-size:0.68rem; font-weight:700;">
+                          ${r.fluidName || plan.fluidInfo.name}
+                        </span>
+                      </div>
                     </td>
                     <td>
                       <div class="cdss-val-block">
@@ -1851,6 +1895,7 @@ export class DengueCDSSController {
                             <i class="fa-solid fa-circle-check text-success"></i> 0 (Dùng dịch sẵn)
                           </div>
                         `}
+                        <div style="font-size:0.74rem; color:var(--cdss-text-muted);">Loại dịch: <strong>${r.fluidName || plan.fluidInfo.name}</strong></div>
                         <div style="font-size:0.74rem; color:var(--cdss-text-muted);">Có sẵn: <strong>${r.existingFluidMl} ml</strong></div>
                         <div class="cdss-pole-clean">Trên cọc: <strong>${r.totalAtPoleMl.toLocaleString('vi-VN')} ml</strong></div>
                         <div style="font-size:0.72rem; color:var(--cdss-text-muted);">Dư sau cữ: <strong>${Math.max(0, r.totalAtPoleMl - r.totalMl)} ml</strong></div>
@@ -2017,6 +2062,13 @@ export class DengueCDSSController {
             copyAllBtn.classList.remove('copied');
           }, 1500);
         }
+      });
+    }
+
+    const printScheduleBtn = container.querySelector('#btn-print-schedule-table');
+    if (printScheduleBtn) {
+      printScheduleBtn.addEventListener('click', () => {
+        this.openPrintModal('crystalloid');
       });
     }
 
@@ -2195,13 +2247,19 @@ export class DengueCDSSController {
               </span>
             </h2>
             <p class="cdss-table-desc">
-              Tiến trình giảm liều: 15-20 ml/kg/h ➔ 10 ml/kg/h ➔ 7.5-5 ml/kg/h ➔ 3 ml/kg/h ➔ Chuyển điện giải (Ringer Lactate / NaCl 0.9%).
+              Tiến trình giảm liều: 15-20 ml/kg/h ➔ 10 ml/kg/h ➔ 7.5-5 ml/kg/h ➔ 3 ml/kg/h ➔ Chuyển điện giải (${plan.fluidInfo?.isContraindicatedRL ? 'Ringer Acetate / NaCl 0.9%' : 'Ringer Lactate / NaCl 0.9%'}).
             </p>
           </div>
-          <button id="btn-copy-colloid-emr-all" class="cdss-btn-copy-all" title="Copy toàn bộ y lệnh cách dùng CPT vào Bệnh Án Điện Tử (EMR)" aria-label="Copy Y Lệnh CPT EMR">
-            <i class="fa-regular fa-copy"></i>
-            <span>Copy Y Lệnh EMR</span>
-          </button>
+          <div style="display: flex; gap: 0.45rem; align-items: center;">
+            <button type="button" id="btn-print-colloid-table" class="cdss-btn-copy-all" style="background:var(--cdss-surface); border:1px solid var(--cdss-border); color:var(--cdss-text); font-weight:600;" title="In phiếu y lệnh bù dịch cao phân tử chuẩn A4" aria-label="In Phiếu CPT">
+              <i class="fa-solid fa-print" style="color:var(--cdss-warning);"></i>
+              <span>In Phiếu CPT (A4)</span>
+            </button>
+            <button id="btn-copy-colloid-emr-all" class="cdss-btn-copy-all" title="Copy toàn bộ y lệnh cách dùng CPT vào Bệnh Án Điện Tử (EMR)" aria-label="Copy Y Lệnh CPT EMR">
+              <i class="fa-regular fa-copy"></i>
+              <span>Copy Y Lệnh EMR</span>
+            </button>
+          </div>
         </div>
 
         <div class="cdss-table-scroll">
@@ -2306,7 +2364,7 @@ export class DengueCDSSController {
               <i class="fa-solid fa-list-check text-success"></i> 7 Tiêu Chuẩn Giảm Liều &amp; Chuyển Từ CPT Sang Điện Giải (Phụ Lục 10 - QĐ 2760)
             </h2>
             <div style="font-size:0.78rem; color:var(--cdss-text-muted); margin-top:2px;">
-              Bác sĩ kiểm tra tại giường trước khi quyết định hạ bậc tốc độ hoặc chuyển sang Ringer Lactate / NaCl 0.9%.
+              Bác sĩ kiểm tra tại giường trước khi quyết định hạ bậc tốc độ hoặc chuyển sang ${plan.fluidInfo?.isContraindicatedRL ? 'Ringer Acetate / NaCl 0.9%' : 'Ringer Lactate / NaCl 0.9%'}.
             </div>
           </div>
           <button type="button" id="btn-check-all-de-escalation" class="cdss-action-btn cdss-action-btn--icon-only" title="Đánh dấu chọn tất cả tiêu chuẩn hạ bậc" aria-label="Chọn Tất Cả">
@@ -2436,6 +2494,13 @@ export class DengueCDSSController {
       });
     }
 
+    const printColloidBtn = container.querySelector('#btn-print-colloid-table');
+    if (printColloidBtn) {
+      printColloidBtn.addEventListener('click', () => {
+        this.openPrintModal('colloid');
+      });
+    }
+
     // Attach de-escalation checkboxes
     const cbList = container.querySelectorAll('.cdss-de-esc-cb');
     const updateVerdict = () => {
@@ -2449,7 +2514,7 @@ export class DengueCDSSController {
               <i class="fa-solid fa-circle-check text-success" style="font-size:1.25rem;"></i>
               <div>
                 <strong style="color:var(--cdss-success); font-size:0.88rem;">ĐÃ ĐẠT ${checkedCount}/${totalCount} TIÊU CHUẨN DE-ESCALATION (PHỤ LỤC 10)</strong>
-                <div style="font-size:0.76rem; color:var(--cdss-text);">Bệnh nhân cải thiện tốt. Đủ điều kiện hạ bậc tốc độ CPT hoặc chuyển sang bù dịch tinh thể điện giải (Ringer Lactate / NaCl 0.9%).</div>
+                <div style="font-size:0.76rem; color:var(--cdss-text);">Bệnh nhân cải thiện tốt. Đủ điều kiện hạ bậc tốc độ CPT hoặc chuyển sang bù dịch tinh thể điện giải (${plan.fluidInfo?.isContraindicatedRL ? 'Ringer Acetate / NaCl 0.9%' : 'Ringer Lactate / NaCl 0.9%'}).</div>
               </div>
             </div>
           `;
@@ -3537,6 +3602,228 @@ export class DengueCDSSController {
     }
   }
 
+  public openPrintModal(preferredProtocol?: 'crystalloid' | 'colloid'): void {
+    if (preferredProtocol) {
+      this.printProtocolType = preferredProtocol;
+    } else {
+      // Tự động theo tab làm việc hiện tại hoặc nhánh sốc trơ
+      if (this.activeWorkspaceMode === 'colloid_schedule' || this.currentPlan?.branchDecision.branchType === 'cpt') {
+        this.printProtocolType = 'colloid';
+      } else {
+        this.printProtocolType = 'crystalloid';
+      }
+    }
+
+    let modal = document.getElementById('cdss-print-modal-overlay');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'cdss-print-modal-overlay';
+      modal.className = 'cdss-print-modal-overlay';
+      document.body.appendChild(modal);
+    }
+
+    this.renderPrintModalContent();
+    modal.classList.add('active');
+  }
+
+  public closePrintModal(): void {
+    const modal = document.getElementById('cdss-print-modal-overlay');
+    if (modal) {
+      modal.classList.remove('active');
+    }
+  }
+
+  private renderPrintModalContent(): void {
+    const modal = document.getElementById('cdss-print-modal-overlay');
+    if (!modal || !this.currentPlan) return;
+
+    const plan = this.currentPlan;
+    const isLiverImpaired = !!plan.fluidInfo?.isContraindicatedRL;
+
+    modal.innerHTML = `
+      <div class="cdss-print-modal-dialog" onclick="event.stopPropagation()">
+        <!-- Header -->
+        <div class="cdss-print-modal-header">
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <i class="fa-solid fa-print" style="color:var(--cdss-primary); font-size:1.15rem;"></i>
+            <div>
+              <h3 style="margin:0; font-size:0.96rem; font-weight:800; color:var(--cdss-text);">
+                In Phiếu Y Lệnh Truyền Dịch (Chuẩn A4)
+              </h3>
+              <div style="font-size:0.73rem; color:var(--cdss-text-muted); margin-top:1px;">
+                Định dạng tinh gọn 1 trang A4 &bull; Tối ưu hóa cài máy Infusomat &bull; Chuẩn BYT 2023
+              </div>
+            </div>
+          </div>
+          <button type="button" class="cdss-weight-modal-close" id="btn-close-print-modal" title="Đóng">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="cdss-print-modal-body">
+          <!-- 1. CHỌN PHÁC ĐỒ IN -->
+          <div>
+            <label style="font-weight:700; font-size:0.8rem; color:var(--cdss-text); display:block; margin-bottom:0.4rem;">
+              1. Chọn Phác Đồ Bù Dịch Cần In
+            </label>
+            <div class="cdss-print-proto-cards">
+              <div class="cdss-print-proto-card ${this.printProtocolType === 'crystalloid' ? 'active' : ''}" id="modal-card-proto-crystalloid">
+                <div class="cdss-print-proto-title">
+                  <i class="fa-solid fa-droplet text-teal-600"></i>
+                  <span>Dịch Tinh Thể (Điện Giải)</span>
+                </div>
+                <div class="cdss-print-proto-desc">
+                  Phác đồ bù dịch nấc thang chuẩn Bộ Y Tế 2023 (Ringer Lactate / Ringer Acetate / NaCl 0.9%).
+                </div>
+              </div>
+
+              <div class="cdss-print-proto-card ${this.printProtocolType === 'colloid' ? 'active' : ''}" id="modal-card-proto-colloid">
+                <div class="cdss-print-proto-title">
+                  <i class="fa-solid fa-flask-vial text-amber-600"></i>
+                  <span>Dịch Cao Phân Tử (CPT)</span>
+                </div>
+                <div class="cdss-print-proto-desc">
+                  Phụ lục 10: Giảm liều CPT (Dextran 40 / HES 200) &amp; chuyển điện giải khi đạt tiêu chuẩn.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. LỰA CHỌN DỊCH TRUYỀN CHÍNH XÁC -->
+          <div>
+            <label style="font-weight:700; font-size:0.8rem; color:var(--cdss-text); display:block; margin-bottom:0.4rem;">
+              2. Loại Dịch Truyền In Trên Phiếu
+            </label>
+            ${this.printProtocolType === 'crystalloid' ? `
+              <select id="modal-select-print-fluid" class="cdss-select" style="width:100%; font-weight:600; padding:0.5rem 0.65rem; border-radius:6px; border:1px solid var(--cdss-border); background:var(--cdss-surface); color:var(--cdss-text); font-size:0.82rem;">
+                <option value="auto" ${this.printFluidChoice === 'auto' ? 'selected' : ''}>
+                  ⚡ Tự động chuẩn hóa theo men gan &amp; BYT (${plan.fluidInfo?.name || 'Ringer Lactate'})
+                </option>
+                <option value="ringer_acetate" ${this.printFluidChoice === 'ringer_acetate' ? 'selected' : ''}>
+                  Ringer Acetate ${isLiverImpaired ? '(Bắt buộc - Tổn thương gan)' : ''}
+                </option>
+                <option value="ringer_lactate" ${this.printFluidChoice === 'ringer_lactate' ? 'selected' : ''} ${isLiverImpaired ? 'disabled style="color:#94a3b8;"' : ''}>
+                  Ringer Lactate ${isLiverImpaired ? '(CHỐNG CHỈ ĐỊNH do AST/ALT ≥ 400 U/L)' : ''}
+                </option>
+                <option value="nacl_09" ${this.printFluidChoice === 'nacl_09' ? 'selected' : ''}>
+                  Natri Clorid 0.9%
+                </option>
+              </select>
+              ${isLiverImpaired ? `
+                <div style="margin-top:0.4rem; font-size:0.75rem; color:var(--cdss-danger); background:rgba(239,68,68,0.08); padding:0.35rem 0.6rem; border-radius:6px; border:1px solid rgba(239,68,68,0.25);">
+                  <i class="fa-solid fa-triangle-exclamation"></i> <strong>Lưu ý lâm sàng:</strong> Bệnh nhân có AST/ALT ≥ 400 U/L hoặc suy gan cấp. Phiếu in áp dụng <strong>Ringer Acetate</strong> hoặc <strong>NaCl 0.9%</strong> để tránh toan Lactic chuyển hóa tử vong.
+                </div>
+              ` : ''}
+            ` : `
+              <select id="modal-select-print-colloid" class="cdss-select" style="width:100%; font-weight:600; padding:0.5rem 0.65rem; border-radius:6px; border:1px solid var(--cdss-border); background:var(--cdss-surface); color:var(--cdss-text); font-size:0.82rem;">
+                <option value="dextran40" ${this.selectedColloidType === 'dextran40' ? 'selected' : ''}>
+                  Dextran 40 10% trong NaCl 0.9% (Khuyến cáo đầu tay BYT 2023)
+                </option>
+                <option value="hes200" ${this.selectedColloidType === 'hes200' ? 'selected' : ''}>
+                  6% Hydroxyethyl Starch (HES 200/0.5 hoặc HES 130)
+                </option>
+              </select>
+              <div style="margin-top:0.4rem; font-size:0.75rem; color:var(--cdss-text-muted);">
+                Trần an toàn CPT: <strong>60 ml/kg/ngày</strong>. Các cữ sau tự động chuyển sang điện giải (<strong>${isLiverImpaired ? 'Ringer Acetate / NaCl 0.9%' : 'Ringer Lactate / NaCl 0.9%'}</strong>).
+              </div>
+            `}
+          </div>
+
+          <!-- 3. TÙY CHỌN BỔ SUNG -->
+          <div style="padding-top:0.45rem; border-top:1px dashed var(--cdss-border);">
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; cursor:pointer; color:var(--cdss-text);">
+              <input type="checkbox" id="modal-chk-print-vaso" ${this.includeVasopressorInPrint ? 'checked' : ''} style="cursor:pointer;" />
+              <span>In kèm phác đồ <strong>Thuốc Vận Mạch</strong> bơm tiêm điện 50ml (Dopamin / Noradrenalin)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="cdss-print-modal-footer">
+          <button type="button" class="cdss-action-btn" id="btn-cancel-print" style="padding:0.45rem 0.9rem; font-size:0.82rem;">
+            Đóng
+          </button>
+          <button type="button" class="cdss-action-btn cdss-action-btn--primary" id="btn-execute-print" style="padding:0.45rem 1.25rem; font-size:0.84rem; font-weight:700; display:flex; align-items:center; gap:0.45rem;">
+            <i class="fa-solid fa-print"></i>
+            <span>In Phiếu Ngay (A4)</span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    // Click outside to close
+    modal.onclick = (e) => {
+      if (e.target === modal) this.closePrintModal();
+    };
+
+    // Close buttons
+    const btnClose = document.getElementById('btn-close-print-modal');
+    if (btnClose) btnClose.onclick = () => this.closePrintModal();
+
+    const btnCancel = document.getElementById('btn-cancel-print');
+    if (btnCancel) btnCancel.onclick = () => this.closePrintModal();
+
+    // Toggle protocol card
+    const cardCryst = document.getElementById('modal-card-proto-crystalloid');
+    if (cardCryst) {
+      cardCryst.onclick = () => {
+        this.printProtocolType = 'crystalloid';
+        this.renderPrintModalContent();
+      };
+    }
+
+    const cardColloid = document.getElementById('modal-card-proto-colloid');
+    if (cardColloid) {
+      cardColloid.onclick = () => {
+        this.printProtocolType = 'colloid';
+        this.renderPrintModalContent();
+      };
+    }
+
+    // Change fluid selection
+    const selFluid = document.getElementById('modal-select-print-fluid') as HTMLSelectElement | null;
+    if (selFluid) {
+      selFluid.onchange = () => {
+        this.printFluidChoice = selFluid.value;
+      };
+    }
+
+    const selColloid = document.getElementById('modal-select-print-colloid') as HTMLSelectElement | null;
+    if (selColloid) {
+      selColloid.onchange = () => {
+        this.selectedColloidType = selColloid.value as ColloidType;
+      };
+    }
+
+    // Checkbox vaso
+    const chkVaso = document.getElementById('modal-chk-print-vaso') as HTMLInputElement | null;
+    if (chkVaso) {
+      chkVaso.onchange = () => {
+        this.includeVasopressorInPrint = chkVaso.checked;
+        const mainChkVaso = document.getElementById('chk-include-vaso') as HTMLInputElement | null;
+        if (mainChkVaso) mainChkVaso.checked = chkVaso.checked;
+      };
+    }
+
+    // Execute Print
+    const btnExecute = document.getElementById('btn-execute-print');
+    if (btnExecute) {
+      btnExecute.onclick = () => {
+        if (selFluid) this.printFluidChoice = selFluid.value;
+        if (selColloid) this.selectedColloidType = selColloid.value as ColloidType;
+        if (chkVaso) this.includeVasopressorInPrint = chkVaso.checked;
+
+        // Render sheet with current options
+        this.renderPrintSheet(plan);
+        this.closePrintModal();
+
+        // Trigger native print dialog
+        setTimeout(() => {
+          window.print();
+        }, 150);
+      };
+    }
+  }
+
   private renderPrintSheet(plan: DengueCDSSPlan): void {
     const el = document.getElementById('cdss-print-sheet');
     if (!el) return;
@@ -3549,7 +3836,8 @@ export class DengueCDSSController {
       totalDurationHours,
       vasopressorDopamin: d,
       vasopressorNoradrenalin: n,
-      branchDecision
+      branchDecision,
+      colloidPlan
     } = plan;
 
     const now = new Date();
@@ -3562,139 +3850,237 @@ export class DengueCDSSController {
         : 'Sốc SXHD Nguy Kịch (Mạch 0, HA 0)';
 
     const genderText = patient.gender === 'male' ? 'Nam' : 'Nữ';
-    const mlPerKg = Math.round(totalVolumeMl / weightResult.adjustedWeightKg);
-    const bottles500 = Math.ceil(totalVolumeMl / 500);
+    const isColloid = this.printProtocolType === 'colloid';
 
-    // Xác định tên loại dịch truyền chỉ định
-    const indicatedFluid = branchDecision.branchType === 'cpt'
-      ? 'Cao Phân Tử: Dextran 40 hoặc 6% HES 200'
-      : branchDecision.branchType === 'blood'
-        ? 'Hồng Cầu Lắng (5-10 ml/kg) + Cao Phân Tử'
-        : 'Ringer Lactate hoặc NaCl 0.9%';
+    // 1. Xác định tên dịch truyền chỉ định chính xác
+    let indicatedFluidName = '';
+    let isContraindicatedRL = false;
 
-    // Chỉ hiển thị khối vận mạch khi có chỉ định sốc trơ hoặc bác sĩ chủ động chọn in kèm
+    if (isColloid) {
+      indicatedFluidName = this.selectedColloidType === 'hes200'
+        ? '6% Hydroxyethyl Starch (HES 200/0.5)'
+        : 'Dextran 40 10% trong NaCl 0.9%';
+    } else {
+      if (this.printFluidChoice === 'ringer_acetate') {
+        indicatedFluidName = 'Ringer Acetate';
+      } else if (this.printFluidChoice === 'nacl_09') {
+        indicatedFluidName = 'Natri Clorid 0.9%';
+      } else if (this.printFluidChoice === 'ringer_lactate') {
+        indicatedFluidName = 'Ringer Lactate';
+      } else {
+        indicatedFluidName = plan.fluidInfo?.name || 'Ringer Lactate';
+      }
+      isContraindicatedRL = !!plan.fluidInfo?.isContraindicatedRL;
+    }
+
+    // 2. Tiêu đề phiếu in
+    const sheetTitle = isColloid
+      ? 'PHIẾU THEO DÕI TRUYỀN DỊCH CAO PHÂN TỬ (CPT) SXHD DENGUE'
+      : 'PHIẾU THEO DÕI &amp; Y LỆNH TRUYỀN DỊCH TINH THỂ SXHD DENGUE';
+    const sheetSubtitle = isColloid
+      ? '(Phác đồ Giảm liều CPT &amp; Chuyển Điện giải theo Phụ lục 10 — QĐ 2760/QĐ-BYT 2023)'
+      : '(Phác đồ Bù dịch Tinh thể Nấc thang — Quyết định 2760/QĐ-BYT 2023)';
+
+    // 3. Chuẩn bị danh sách hàng hiển thị
+    interface PrintRowDisplay {
+      stepIndex: number;
+      durationHours: number;
+      timeWindow: string;
+      stageShort: string;
+      fluidName: string;
+      pumpRateMlH: number;
+      vtbiMl: number;
+      rateMlKgH: number;
+      bottlesToHang: number;
+      totalAtPoleMl: number;
+      remainingAfterStep: number;
+      hctCheckRequired: boolean;
+      monitorShort: string;
+    }
+
+    const displayRows: PrintRowDisplay[] = [];
+
+    if (isColloid) {
+      colloidPlan.rows.forEach(r => {
+        const stageShort = r.stageName.replace(/^Cữ\s*\d+\s*:\s*/i, '').trim();
+        let monitorShort = r.monitoringNotes
+          .replace(/Bù dịch cao phân tử đẳng trương\.?\s*/gi, '')
+          .replace(/Bù dịch tinh thể đẳng trương\.?\s*/gi, '')
+          .replace(/Đo Hct ngay kết thúc/gi, 'Đo Hct sau')
+          .trim();
+        if (!monitorShort) monitorShort = 'Theo dõi M, HA, NT, lượng nước tiểu';
+
+        // Xác định tên dịch trên từng hàng CPT
+        const rowFluidName = r.fluidKind === 'colloid'
+          ? (this.selectedColloidType === 'hes200' ? '6% HES 200' : 'Dextran 40')
+          : (plan.fluidInfo?.isContraindicatedRL ? 'Ringer Acetate (Điện giải)' : 'Ringer Lactate (Điện giải)');
+
+        displayRows.push({
+          stepIndex: r.stepIndex,
+          durationHours: r.durationHours,
+          timeWindow: r.timeWindow,
+          stageShort,
+          fluidName: rowFluidName,
+          pumpRateMlH: r.pumpRateMlH,
+          vtbiMl: r.vtbiMl,
+          rateMlKgH: r.rateMlKgH,
+          bottlesToHang: r.bottlesToHang,
+          totalAtPoleMl: r.totalAtPoleMl,
+          remainingAfterStep: Math.max(0, r.totalAtPoleMl - r.vtbiMl),
+          hctCheckRequired: !!r.hctCheckRequired,
+          monitorShort
+        });
+      });
+    } else {
+      fluidRows.forEach(r => {
+        const stageShort = r.stageName.replace(/^Cữ\s*\d+\s*:\s*/i, '').trim();
+        let monitorShort = r.monitoringNotes
+          .replace(/Bù dịch tinh thể đẳng trương\.?\s*/gi, '')
+          .replace(/Đo Hct ngay kết thúc/gi, 'Đo Hct sau')
+          .trim();
+        if (!monitorShort) monitorShort = 'Theo dõi M, HA, NT, lượng nước tiểu';
+
+        displayRows.push({
+          stepIndex: r.stepIndex,
+          durationHours: r.durationHours,
+          timeWindow: r.timeWindow,
+          stageShort,
+          fluidName: indicatedFluidName,
+          pumpRateMlH: r.pumpRateMlH,
+          vtbiMl: r.totalMl,
+          rateMlKgH: r.rateMlKgH,
+          bottlesToHang: r.bottlesToHang,
+          totalAtPoleMl: r.totalAtPoleMl,
+          remainingAfterStep: Math.max(0, r.totalAtPoleMl - r.totalMl),
+          hctCheckRequired: !!r.hctCheckRequired,
+          monitorShort
+        });
+      });
+    }
+
+    // 4. Tổng kết số liệu
+    const totalVol = isColloid ? colloidPlan.totalScheduleMl : totalVolumeMl;
+    const totalDur = isColloid ? (colloidPlan.totalDurationHours || 8) : totalDurationHours;
+    const mlPerKg = Math.round(totalVol / weightResult.adjustedWeightKg);
+
+    let bottlesSummary = '';
+    if (isColloid) {
+      const colloidShort = this.selectedColloidType === 'hes200' ? '6% HES 200' : 'Dextran 40';
+      const cBot = Math.ceil(colloidPlan.totalColloidMl / 500);
+      const cryBot = Math.max(0, Math.ceil((colloidPlan.totalScheduleMl - colloidPlan.totalColloidMl) / 500));
+      bottlesSummary = `${cBot} chai ${colloidShort} (500ml) + ${cryBot} chai Điện giải (${plan.fluidInfo?.name || 'Ringer Lactate'})`;
+    } else {
+      const b500 = Math.ceil(totalVolumeMl / 500);
+      bottlesSummary = `${b500} chai 500ml (${indicatedFluidName})`;
+    }
+
+    // Chỉ hiển thị khối vận mạch khi có chỉ định sốc trơ hoặc bác sĩ chọn in kèm
     const isVasopressorNeeded = this.includeVasopressorInPrint ||
       patient.clinicalResponse === 'refractory_shock_cvp' ||
       branchDecision.branchType === 'refractory_shock';
 
     el.innerHTML = `
       <div class="cdss-print-page">
-        <!-- HEADER CƠ QUAN & TIÊU ĐỀ PHIẾU IN -->
-        <div class="cdss-print-meta-top">
-          <div class="cdss-print-left-org">
-            <div style="font-weight:700; text-transform:uppercase;">KHOA CẤP CỨU / HỒI SỨC</div>
-            <div>Phòng/Giường: ................ | BA số: ................</div>
+        <!-- 1. HEADER CƠ QUAN TINH GIẢN CHUẨN BỆNH VIỆN -->
+        <div class="cdss-print-header">
+          <div class="cdss-print-header-left">
+            <div class="cdss-print-dept">KHOA CẤP CỨU / HỒI SỨC TÍCH CỰC</div>
+            <div class="cdss-print-subdept">Buồng/Giường: ................ | Mã BA: ................</div>
           </div>
-          <div class="cdss-print-right-org">
-            <div style="font-weight:600;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
-            <div style="font-style:italic; font-size:0.85em;">Độc lập - Tự do - Hạnh phúc</div>
-            <div style="font-size:0.85em; margin-top:2px;">Thời điểm lập phiếu: <strong>${dateFormatted}</strong></div>
+          <div class="cdss-print-header-center">
+            <h1 class="cdss-print-main-title">${sheetTitle}</h1>
+            <div class="cdss-print-sub-title">${sheetSubtitle}</div>
+          </div>
+          <div class="cdss-print-header-right">
+            <div>Thời điểm lập: <strong>${dateFormatted}</strong></div>
+            <div>Bác sĩ chỉ định: <strong>BS. ........................</strong></div>
           </div>
         </div>
 
-        <div class="cdss-print-title-area">
-          <h1 class="cdss-print-main-title">PHIẾU THEO DÕI TRUYỀN DỊCH SXHD DENGUE</h1>
-          <div class="cdss-print-sub-title">(Theo Hướng dẫn Chẩn đoán &amp; Điều trị SXHD — Quyết định 2760/QĐ-BYT 2023)</div>
-        </div>
-
-        <!-- THÔNG TIN BỆNH NHÂN TINH GỌN CHUẨN LÂM SÀNG -->
+        <!-- 2. THÔNG TIN BỆNH NHÂN & DỊCH CHỈ ĐỊNH TINH GỌN -->
         <div class="cdss-print-patient-box">
           <div class="cdss-print-row">
             <span>Họ và tên người bệnh: <strong>...........................................................................</strong></span>
             <span>Tuổi: <strong>${patient.ageYears} tuổi</strong></span>
-            <span>Giới tính: <strong>${genderText}</strong></span>
+            <span>Giới: <strong>${genderText}</strong></span>
+            <span>Cân thực: <strong>${weightResult.actualWeightKg} kg</strong></span>
             <span class="cdss-print-weight-highlight">
               CÂN TÍNH DỊCH (CDSS): <strong>${weightResult.adjustedWeightKg} kg</strong>
-              ${weightResult.isObese ? (patient.ageYears >= 16 ? '<em style="font-size:0.8em; color:#b91c1c;">(BÉO PHÌ - PHỤ LỤC 9 BYT)</em>' : '<em style="font-size:0.8em; color:#b91c1c;">(BÉO PHÌ - HIỆU CHỈNH CDC)</em>') : `<span style="font-size:0.82em; color:#555;">(Thực tế: ${weightResult.actualWeightKg}kg)</span>`}
+              ${weightResult.isObese ? '<em style="font-size:0.8em; color:#b91c1c;">(BÉO PHÌ - ĐÃ HIỆU CHỈNH)</em>' : ''}
             </span>
           </div>
 
-          <div class="cdss-print-row" style="margin-top: 5px;">
+          <div class="cdss-print-row" style="margin-top: 4px; padding-top: 3px; border-top: 1px dashed #cbd5e1;">
             <span>Chẩn đoán: <strong style="text-transform:uppercase;">${severityText}</strong></span>
-            <span>Dịch chỉ định: <strong style="color:#0369a1;">${indicatedFluid}</strong></span>
+            <span>Phác đồ: <strong style="color:#0284c7;">${isColloid ? 'BÙ DỊCH CAO PHÂN TỬ (PHỤ LỤC 10)' : 'BÙ DỊCH TINH THỂ NẤC THANG'}</strong></span>
+            <span>
+              Dịch chỉ định: <strong style="font-size:1.02em; text-transform:uppercase; color:#0369a1;">${indicatedFluidName}</strong>
+              ${isContraindicatedRL ? '<span style="color:#b91c1c; font-weight:700; font-size:0.82em; margin-left:4px;">(CẤM RINGER LACTATE DO TỔN THƯƠNG GAN)</span>' : ''}
+            </span>
           </div>
-
-          ${branchDecision.branchType !== 'standard' ? `
-            <div style="margin-top: 5px; padding: 3px 8px; border: 1px dashed #c2410c; background: #fff7ed; font-size: 8.5pt;">
-              <strong style="color:#c2410c;">[!] Hướng xử trí:</strong> ${branchDecision.recommendedFluid} (${branchDecision.title})
-            </div>
-          ` : ''}
         </div>
 
-        <!-- BẢNG ĐIỀU PHỐI CỌC DỊCH CHUẨN ĐIỀU DƯỠNG (TẬP TRUNG - RÕ RÀNG) -->
+        <!-- 3. BẢNG CỌC DỊCH 5 CỘT CHUẨN LÂM SÀNG -->
         <table class="cdss-print-table">
           <thead>
             <tr>
               <th style="width: 17%;">CỮ TRUYỀN &amp; GIỜ</th>
-              <th style="width: 25%;">TỐC ĐỘ &amp; LƯỢNG DỊCH</th>
-              <th style="width: 24%;">CHUẨN BỊ TẠI CỌC</th>
-              <th style="width: 22%;">THEO DÕI &amp; HCT</th>
-              <th style="width: 12%;">ĐD KÝ</th>
+              <th style="width: 20%;">LOẠI DỊCH TRUYỀN</th>
+              <th style="width: 25%;">CÀI MÁY TRUYỀN DỊCH</th>
+              <th style="width: 21%;">TREO DỊCH TẠI CỌC</th>
+              <th style="width: 17%;">THEO DÕI &amp; ĐD KÝ</th>
             </tr>
           </thead>
           <tbody>
-            ${fluidRows.map(r => {
-              // Rút gọn stageName (loại bỏ tiền tố lặp 'Cữ X:')
-              const stageShort = r.stageName.replace(/^Cữ\s*\d+\s*:\s*/i, '').trim();
-
-              // Rút gọn monitoring notes: bỏ câu dông dài lý thuyết
-              let monitorShort = r.monitoringNotes
-                .replace(/Bù dịch tinh thể đẳng trương\.?\s*/gi, '')
-                .replace(/Bù dịch cao phân tử đẳng trương\.?\s*/gi, '')
-                .replace(/Đo Hct ngay kết thúc/gi, 'Đo Hct sau')
-                .trim();
-              if (!monitorShort) {
-                monitorShort = 'Theo dõi M, HA, NT, lượng nước tiểu';
-              }
-
-              return `
+            ${displayRows.map(r => `
               <tr>
                 <td style="text-align: center;">
                   <div style="font-weight: 800; font-size: 1.05em;">Cữ ${r.stepIndex} <span style="font-size:0.85em; font-weight:600;">(${r.durationHours}h)</span></div>
                   <div style="font-weight: 700; margin: 2px 0; font-size: 0.95em;">${r.timeWindow}</div>
-                  <div style="font-size: 0.8em; color: #444;">${stageShort}</div>
+                  <div style="font-size: 0.78em; color: #444;">${r.stageShort}</div>
                 </td>
                 <td>
-                  <div>Cài máy (RATE): <strong style="font-size: 1.15em; color: #0284c7;">${r.pumpRateMlH} ml/h</strong></div>
-                  <div style="font-size: 0.9em; margin-top: 1px;">Cài thể tích (VTBI): <strong>${r.totalMl.toLocaleString('vi-VN')} ml</strong> / ${r.durationHours}h</div>
-                  <div style="font-size: 0.78em; color: #555; margin-top: 1px;">Phác đồ: ${r.rateMlKgH} ml/kg/h &bull; KVO: ${r.kvoRateMlH} ml/h &bull; Tự do: ${r.dropsPerMin} g/p</div>
+                  <div style="font-weight: 800; font-size: 0.98em; color: #0f172a;">${r.fluidName}</div>
+                  <div style="font-size: 0.76em; color: #555; margin-top: 1px;">Quy cách: Chai 500ml</div>
                 </td>
                 <td>
-                  <div style="font-weight: 700; font-size: 0.95em;">
-                    ${r.bottlesToHang > 0 ? `Treo thêm: +${r.bottlesToHang} chai (500ml)` : 'Dùng dịch sẵn có'}
+                  <div>TỐC ĐỘ CÀI MÁY: <strong style="font-size: 1.15em; color: #0284c7;">${r.pumpRateMlH} ml/h</strong></div>
+                  <div style="font-size: 0.88em; margin-top: 1px;">THỂ TÍCH (VTBI): <strong>${r.vtbiMl.toLocaleString('vi-VN')} ml</strong> / ${r.durationHours}h</div>
+                  <div style="font-size: 0.76em; color: #555; margin-top: 1px;">Phác đồ: ${r.rateMlKgH} ml/kg/h</div>
+                </td>
+                <td>
+                  <div style="font-weight: 700; font-size: 0.92em;">
+                    ${r.bottlesToHang > 0 ? `Treo thêm: +${r.bottlesToHang} chai 500ml` : 'Dùng dịch sẵn có'}
                   </div>
-                  <div style="font-size: 0.85em; margin-top: 2px;">
+                  <div style="font-size: 0.82em; margin-top: 1px;">
                     Tổng tại cọc: <strong>${r.totalAtPoleMl.toLocaleString('vi-VN')} ml</strong>
                   </div>
-                  ${r.existingFluidMl > 0 ? `
-                    <div style="font-size: 0.76em; color: #555;">(Dư cữ trước: ${r.existingFluidMl} ml)</div>
+                  ${r.remainingAfterStep > 0 ? `
+                    <div style="font-size: 0.76em; color: #555;">(Dư sau cữ: ${r.remainingAfterStep} ml)</div>
                   ` : ''}
                 </td>
                 <td>
                   ${r.hctCheckRequired ? `
-                    <div style="font-weight: 800; color: #b91c1c; font-size: 0.86em; margin-bottom: 2px;">
+                    <div style="font-weight: 800; color: #b91c1c; font-size: 0.84em; margin-bottom: 2px;">
                       [!] ĐO LẠI HCT (${r.durationHours}h)
                     </div>
                   ` : ''}
-                  <div style="font-size: 0.82em; line-height: 1.3;">${monitorShort}</div>
-                </td>
-                <td style="text-align: center; vertical-align: middle;">
-                  <div style="font-size: 0.78em; color: #555;">Giờ: ...h...</div>
-                  <div style="font-size: 0.78em; margin-top: 14px;">Ký: .........</div>
+                  <div style="font-size: 0.78em; color: #444; line-height: 1.25;">${r.monitorShort}</div>
+                  <div style="font-size: 0.76em; color: #555; margin-top: 4px;">ĐD Ký: ............</div>
                 </td>
               </tr>
-            `}).join('')}
+            `).join('')}
           </tbody>
         </table>
 
-        <!-- TỔNG KẾT DỊCH TRUYỀN DỰ KIẾN -->
+        <!-- 4. DẢI TỔNG KẾT DỊCH -->
         <div class="cdss-print-summary-strip">
-          <span>Tổng dịch bù: <strong>${totalVolumeMl.toLocaleString('vi-VN')} ml</strong> (~<strong>${mlPerKg} ml/kg</strong>)</span>
-          <span>Thời gian dự kiến: <strong>${totalDurationHours} giờ</strong> (${fluidRows.length} cữ)</span>
-          <span>Ước tính: <strong>${bottles500} chai 500ml</strong> (${branchDecision.branchType === 'cpt' ? 'Cao Phân Tử' : 'Ringer Lactate / NaCl 0.9%'})</span>
+          <span>Tổng lượng dịch: <strong>${totalVol.toLocaleString('vi-VN')} ml</strong> (~<strong>${mlPerKg} ml/kg</strong>)</span>
+          <span>Thời gian dự kiến: <strong>${totalDur} giờ</strong> (${displayRows.length} cữ)</span>
+          <span>Dự trù số chai: <strong>${bottlesSummary}</strong></span>
         </div>
 
-        <!-- PHÁC ĐỒ VẬN MẠCH BƠM TIÊM ĐIỆN (CHỈ HIỂN THỊ KHI CÓ CHỈ ĐỊNH HOẶC CHỌN IN KÈM) -->
+        <!-- 5. PHÁC ĐỒ VẬN MẠCH BƠM TIÊM ĐIỆN (CHỈ HIỂN THỊ KHI CÓ CHỈ ĐỊNH HOẶC CHỌN IN KÈM) -->
         ${isVasopressorNeeded ? `
           <div class="cdss-print-vaso-box">
             <div style="font-weight: bold; text-transform: uppercase; font-size: 0.85em; margin-bottom: 2px; border-bottom: 1px dotted #666; padding-bottom: 2px;">
@@ -3713,25 +4099,25 @@ export class DengueCDSSController {
           </div>
         ` : ''}
 
-        <!-- LƯU Ý ĐIỀU DƯỠNG AN TOÀN -->
+        <!-- 6. LƯU Ý ĐIỀU DƯỠNG AN TOÀN -->
         <div class="cdss-print-safety-notes">
           <strong>Lưu ý điều dưỡng an toàn:</strong>
-          (1) Luôn đo lại Hct tại giường trước khi quyết định giảm bậc dịch theo y lệnh.
+          (1) Luôn đo lại Hct tại giường trước khi quyết định giảm tốc độ dịch theo y lệnh.
           (2) Đích nước tiểu &ge; 0.5 - 1 ml/kg/giờ. Báo Bác sĩ ngay nếu có dấu hiệu phù mi mắt, thở nhanh khó thở, ran ẩm đáy phổi hoặc tái sốc.
           (3) Ngưng truyền dịch khi mạch, huyết áp ổn định, thoát sốc sau 24-48 giờ giai đoạn hồi phục.
         </div>
 
-        <!-- CHỮ KÝ XÁC NHẬN Y LỆNH -->
+        <!-- 7. CHỮ KÝ XÁC NHẬN Y LỆNH -->
         <div class="cdss-print-signatures">
           <div class="cdss-print-sign-col">
             <div style="font-weight: bold;">ĐIỀU DƯỠNG THEO DÕI</div>
-            <div style="font-style: italic; font-size: 0.85em;">(Ký và ghi rõ họ tên)</div>
-            <div style="margin-top: 36px; font-weight: bold;">............................................................</div>
+            <div style="font-style: italic; font-size: 0.82em;">(Ký và ghi rõ họ tên)</div>
+            <div style="margin-top: 30px; font-weight: bold;">............................................................</div>
           </div>
           <div class="cdss-print-sign-col">
             <div style="font-weight: bold;">BÁC SĨ CHỈ ĐỊNH Y LỆNH</div>
-            <div style="font-style: italic; font-size: 0.85em;">(Ký và ghi rõ họ tên)</div>
-            <div style="margin-top: 36px; font-weight: bold;">............................................................</div>
+            <div style="font-style: italic; font-size: 0.82em;">(Ký và ghi rõ họ tên)</div>
+            <div style="margin-top: 30px; font-weight: bold;">............................................................</div>
           </div>
         </div>
       </div>

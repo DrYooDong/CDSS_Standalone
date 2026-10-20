@@ -216,13 +216,13 @@ export const DENGUE_FLUID_TEMPLATES = {
   shock: {
     child: [
       {
-        stageName: 'Cữ 1: Tải dịch chống sốc giờ đầu (20 ml/kg/h)',
+        stageName: 'Cữ 1: Tải dịch chống sốc (20 ml/kg/1h hoặc 20 ml/kg/30ph nếu tụt HA nặng)',
         defaultRateMlKgH: 20,
-        rateOptions: [15, 20],
+        rateOptions: [15, 20, 40],
         defaultDurationHours: 1,
-        durationOptions: [1],
+        durationOptions: [0.5, 1],
         hctCheckRequired: true,
-        notes: 'Dịch tinh thể Ringer Lactate/NaCl 0.9%. Đánh giá lại mạch, HA và Hct ngay sau 1 giờ.'
+        notes: 'Dịch tinh thể 20 ml/kg/1h (hoặc Ringer Acetate / NaCl 0.9% nếu có tổn thương gan). Nếu tụt HA nặng (HATT < 70 + 2xTuổi ở trẻ < 10T hoặc < 90 mmHg ở trẻ ≥ 10T): Bơm 20 ml/kg trong 30 phút (tốc độ 40 ml/kg/h x 0.5h theo Phụ lục 8 BYT 2023). Đánh giá lại mạch, HA và Hct ngay sau cữ.'
       },
       {
         stageName: 'Cữ 2: Ra sốc - Giảm xuống 10 ml/kg/h',

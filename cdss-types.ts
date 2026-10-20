@@ -22,6 +22,7 @@ export interface DenguePatientInput {
   fibrinogenGL?: number;
   inrValue?: number;
   cvpValue?: number;
+  preferredFluid?: 'auto' | 'ringer_lactate' | 'ringer_acetate' | 'nacl_09';
 }
 
 export interface WeightCalculationResult {
@@ -41,6 +42,7 @@ export interface WeightCalculationResult {
 export interface FluidScheduleRow {
   stepIndex: number;
   stageName: string;
+  fluidName?: string; // Tên loại dịch truyền cữ (VD: Ringer Acetate, Ringer Lactate, NaCl 0.9%)
   durationHours: number;
   rateMlKgH: number;
   pumpRateMlH: number; // Tốc độ cài đặt máy truyền dịch (ml/h)
@@ -193,6 +195,12 @@ export interface DengueCDSSPlan {
   fluidRows: FluidScheduleRow[];
   totalVolumeMl: number;
   totalDurationHours: number;
+  fluidInfo: {
+    id: 'ringer_lactate' | 'ringer_acetate' | 'nacl_09';
+    name: string;
+    isContraindicatedRL: boolean;
+    reason?: string;
+  };
   colloidPlan: ColloidPlanResult;
   vasopressorDopamin: VasopressorDoseInfo;
   vasopressorNoradrenalin: VasopressorDoseInfo;
