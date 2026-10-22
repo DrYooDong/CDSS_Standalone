@@ -29,10 +29,12 @@ import {
 
 interface SelectionWizardProps {
   onSelectDrugForDosing: (drugId?: string) => void;
+  onOpenGuidelineAtlas?: (imageId?: string) => void;
 }
 
 export const SelectionWizard: React.FC<SelectionWizardProps> = ({
-  onSelectDrugForDosing
+  onSelectDrugForDosing,
+  onOpenGuidelineAtlas
 }) => {
   // 3-Stage Master Workflow: 1 = Đánh giá & Phân tầng, 2 = Phác đồ & Antibiogram, 3 = Tái đánh giá 48-72h
   const [currentStage, setCurrentStage] = useState<1 | 2 | 3>(1);
@@ -457,6 +459,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
                 sepsisSource={sepsisSource}
                 specificRisks={checkedSpecificRisks}
                 onSelectDrugForDosing={(drugId) => onSelectDrugForDosing(drugId)}
+                onOpenGuidelineAtlas={onOpenGuidelineAtlas}
                 onNextStep={() => {
                   setCurrentStage(3);
                   window.scrollTo({ top: 120, behavior: 'smooth' });
@@ -482,6 +485,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
               )}
               <StepReassess
                 site={site}
+                onOpenGuidelineAtlas={onOpenGuidelineAtlas}
                 onSelectDrugForDosing={(drugId) => onSelectDrugForDosing(drugId)}
                 onPrevStep={() => {
                   setCurrentStage(2);

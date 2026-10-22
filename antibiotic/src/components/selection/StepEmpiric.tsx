@@ -20,7 +20,8 @@ import {
   Calculator,
   Clock,
   ShieldAlert,
-  Info
+  Info,
+  BookOpen
 } from 'lucide-react';
 
 interface StepEmpiricProps {
@@ -32,6 +33,7 @@ interface StepEmpiricProps {
   onSelectDrugForDosing: (drugId: string) => void;
   onNextStep: () => void;
   onPrevStep: () => void;
+  onOpenGuidelineAtlas?: (imageId?: string) => void;
 }
 
 export const StepEmpiric: React.FC<StepEmpiricProps> = ({
@@ -42,9 +44,37 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
   specificRisks,
   onSelectDrugForDosing,
   onNextStep,
-  onPrevStep
+  onPrevStep,
+  onOpenGuidelineAtlas
 }) => {
   const [activeTab, setActiveTab] = useState<'regimens' | 'antibiogram'>('regimens');
+
+  const getTargetImageId = (tab: 'regimens' | 'antibiogram') => {
+    const isAdult = population === 'adult';
+    if (tab === 'antibiogram') {
+      if (site === 'respiratory') return isAdult ? 'adult_resp_antibiogram' : 'peds_resp_antibiogram';
+      if (site === 'sepsis') return isAdult ? 'adult_blood_antibiogram' : 'peds_blood_antibiogram';
+      if (site === 'skin_soft_tissue') return isAdult ? 'adult_ssti_antibiogram' : 'peds_ssti_antibiogram';
+      if (site === 'urinary') return isAdult ? 'adult_uti_antibiogram' : 'peds_uti_antibiogram';
+      return 'adult_sbp_antibiogram';
+    } else {
+      if (site === 'respiratory') return isAdult ? 'adult_resp_regimen' : 'peds_resp_regimen';
+      if (site === 'sepsis') return isAdult ? 'adult_blood_regimen' : 'peds_blood_regimen';
+      if (site === 'skin_soft_tissue') return isAdult ? 'adult_ssti_regimen' : 'peds_ssti_regimen';
+      if (site === 'urinary') return isAdult ? 'adult_uti_regimen' : 'peds_uti_regimen';
+      return 'adult_sbp_regimen';
+    }
+  };
+
+  const currentPdfPage = site === 'respiratory' 
+    ? (population === 'adult' ? (activeTab === 'antibiogram' ? 8 : 9) : 4) 
+    : site === 'sepsis' 
+    ? (population === 'adult' ? (activeTab === 'antibiogram' ? 12 : 13) : (activeTab === 'antibiogram' ? 5 : 6)) 
+    : site === 'skin_soft_tissue' 
+    ? (population === 'adult' ? (activeTab === 'antibiogram' ? 9 : 10) : (activeTab === 'antibiogram' ? 6 : 7)) 
+    : site === 'urinary' 
+    ? (population === 'adult' ? (activeTab === 'antibiogram' ? 10 : 11) : (activeTab === 'antibiogram' ? 7 : 8)) 
+    : (activeTab === 'antibiogram' ? 11 : 12);
 
   // Lấy danh sách phác đồ khởi đầu theo phân tầng
   const regimens: EmpiricRegimen[] = getEmpiricRegimens(
@@ -77,6 +107,20 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
             </p>
           </div>
 
+          <div className="flex flex-wrap items-center gap-2">
+            {onOpenGuidelineAtlas && (
+              <button
+                id="btn-open-site-flowchart"
+                type="button"
+                onClick={() => onOpenGuidelineAtlas(getTargetImageId(activeTab))}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
+                title="Xem ảnh lưu đồ phác đồ / vi sinh gốc từ Hướng dẫn Bệnh viện Bệnh Nhiệt Đới 2026"
+              >
+                <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Xem Lưu Đồ Gốc BVBND (Trang {currentPdfPage})</span>
+              </button>
+            )}
+
           {/* Tab switch */}
           <div className="w-full sm:w-auto grid grid-cols-2 sm:flex p-1 bg-slate-100 rounded-xl border border-slate-200">
             <button
@@ -103,6 +147,7 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
               <FlaskConical className="w-3.5 h-3.5 text-teal-600" />
               <span>Vi sinh &amp; KSĐ Tại Chỗ</span>
             </button>
+          </div>
           </div>
         </div>
 

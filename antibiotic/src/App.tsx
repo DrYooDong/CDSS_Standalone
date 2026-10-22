@@ -16,6 +16,7 @@ import { ReferencesList } from './components/ReferencesList';
 import { AmrModal } from './components/AmrModal';
 import { OriginalPreviewModal } from './components/OriginalPreviewModal';
 import { PdfConsultationModal } from './components/PdfConsultationModal';
+import { GuidelineImageModal } from './components/selection/GuidelineImageModal';
 
 import { 
   Pill, 
@@ -69,6 +70,13 @@ export default function App() {
   const [isAmrOpen, setIsAmrOpen] = useState(false);
   const [isOriginalOpen, setIsOriginalOpen] = useState(false);
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+  const [isGuidelineAtlasOpen, setIsGuidelineAtlasOpen] = useState(false);
+  const [guidelineAtlasImageId, setGuidelineAtlasImageId] = useState<string | undefined>(undefined);
+
+  const handleOpenGuidelineAtlas = (imageId?: string) => {
+    setGuidelineAtlasImageId(imageId);
+    setIsGuidelineAtlasOpen(true);
+  };
 
   const activeDrug = useMemo(() => {
     return ANTIBIOTICS.find(a => a.id === selectedDrugId) || ANTIBIOTICS[0];
@@ -166,6 +174,7 @@ export default function App() {
         onOpenAmr={() => setIsAmrOpen(true)}
         onOpenOriginal={() => setIsOriginalOpen(true)}
         onOpenPdfModal={() => setIsPdfModalOpen(true)}
+        onOpenGuidelineAtlas={() => handleOpenGuidelineAtlas()}
         selectedDrugName={activeDrug.name}
       />
 
@@ -255,6 +264,7 @@ export default function App() {
         {appMode === 'selection' && (
           <SelectionWizard
             onSelectDrugForDosing={handleSelectDrugFromSelection}
+            onOpenGuidelineAtlas={handleOpenGuidelineAtlas}
           />
         )}
 
@@ -518,6 +528,12 @@ export default function App() {
         onClose={() => setIsPdfModalOpen(false)}
         reportData={reportData}
         language={language}
+      />
+
+      <GuidelineImageModal
+        isOpen={isGuidelineAtlasOpen}
+        onClose={() => setIsGuidelineAtlasOpen(false)}
+        initialImageId={guidelineAtlasImageId}
       />
 
       {/* Footer */}

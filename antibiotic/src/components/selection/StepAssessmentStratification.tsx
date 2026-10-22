@@ -412,9 +412,9 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
 
         {/* Quick Indication Status */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 mb-3">
-          <div className="flex items-center space-x-2.5">
+          <div className="flex items-center space-x-2.5 flex-1 min-w-0">
             <CheckSquare className="w-4 h-4 text-teal-600 shrink-0" />
-            <div className="text-xs text-slate-700">
+            <div className="text-xs text-slate-700 font-medium">
               Bệnh nhân có hội chứng nhiễm khuẩn cấp tính, sốc nhiễm khuẩn hoặc tổn thương cơ quan rõ ràng:
             </div>
           </div>
@@ -922,7 +922,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
           : 'bg-emerald-50/90 border-emerald-300 text-emerald-950 shadow-sm'
       }`}>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="flex items-start space-x-3">
+          <div className="flex items-start space-x-3 flex-1 min-w-0">
             {isGroup2 ? (
               <ShieldAlert className="w-8 h-8 text-rose-600 shrink-0 mt-0.5" />
             ) : (

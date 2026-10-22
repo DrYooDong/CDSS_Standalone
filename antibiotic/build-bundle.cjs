@@ -1,4 +1,9 @@
-const esbuild = require('esbuild');
+let esbuild;
+try {
+  esbuild = require('C:/Users/nguye/AppData/Roaming/npm/node_modules/esbuild');
+} catch (e) {
+  esbuild = require('esbuild');
+}
 const path = require('path');
 
 const ignoreCssPlugin = {
@@ -23,6 +28,9 @@ const ignoreCssPlugin = {
       jsx: 'automatic',
       minify: false,
       plugins: [ignoreCssPlugin],
+      alias: {
+        'jspdf': path.resolve(__dirname, 'node_modules/jspdf/dist/jspdf.umd.min.js')
+      },
       define: {
         'process.env.NODE_ENV': '"production"'
       }
@@ -39,6 +47,9 @@ const ignoreCssPlugin = {
       jsx: 'automatic',
       minify: false,
       plugins: [ignoreCssPlugin],
+      alias: {
+        'jspdf': path.resolve(__dirname, 'node_modules/jspdf/dist/jspdf.umd.min.js')
+      },
       define: {
         'process.env.NODE_ENV': '"production"'
       }

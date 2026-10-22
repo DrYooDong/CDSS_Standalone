@@ -31,19 +31,22 @@ import {
   Calculator,
   ShieldCheck,
   ShieldAlert,
-  Info
+  Info,
+  BookOpen
 } from 'lucide-react';
 
 interface StepReassessProps {
   site: InfectionSite;
   onSelectDrugForDosing: (drugId: string) => void;
   onPrevStep: () => void;
+  onOpenGuidelineAtlas?: (imageId?: string) => void;
 }
 
 export const StepReassess: React.FC<StepReassessProps> = ({
   site,
   onSelectDrugForDosing,
-  onPrevStep
+  onPrevStep,
+  onOpenGuidelineAtlas
 }) => {
   // Sub-tabs in Step 3
   const [subTab, setSubTab] = useState<'decision_tree' | 'mdr_pathways' | 'stop_criteria' | 'iv_to_po'>('decision_tree');
@@ -358,7 +361,27 @@ export const StepReassess: React.FC<StepReassessProps> = ({
                     {mdrData.definitionVi}
                   </p>
                 </div>
-                <SourceBadge source={{ doc: 'BVBND_HDSDKS_2026', page: 15 }} />
+                <div className="flex items-center gap-2">
+                  {onOpenGuidelineAtlas && (
+                    <button
+                      id="btn-open-mdr-flowchart"
+                      type="button"
+                      onClick={() => {
+                        let mdrImg = 'mdr_cre_flowchart';
+                        if (selectedMdr === 'cre') mdrImg = 'mdr_cre_flowchart';
+                        else if (selectedMdr === 'dtr_pseudo') mdrImg = 'mdr_pseudo_flowchart';
+                        else if (selectedMdr === 'crab' || selectedMdr === 's_maltophilia') mdrImg = 'mdr_acineto_flowchart';
+                        onOpenGuidelineAtlas(mdrImg);
+                      }}
+                      className="px-2.5 py-1 text-xs font-bold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                      title="Xem ảnh lưu đồ gốc BVBND cho vi khuẩn đa kháng này"
+                    >
+                      <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Xem Lưu Đồ Gốc MDR</span>
+                    </button>
+                  )}
+                  <SourceBadge source={{ doc: 'BVBND_HDSDKS_2026', page: selectedMdr === 'cre' ? 15 : selectedMdr === 'dtr_pseudo' ? 18 : 21 }} />
+                </div>
               </div>
 
               {/* Nếu là CRE: phân loại Carbapenemase */}
