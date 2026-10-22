@@ -98,7 +98,7 @@ export function analyzeCSF(input: CSFInput): CSFAnalysisResult {
     }
   }
 
-  // 6. Spanos JAMA 1989 Rule (>99% certainty for Bacterial Meningitis)
+  // 6. Spanos JAMA 1989 Rule (>99% certainty for Bacterial vs Viral Meningitis in acute presentations)
   const pmnCount = Math.round(input.wbc * (input.neutrophilPercent / 100));
   const spanosDetails: string[] = [];
   if (csfGlucoseMgDl < 34) {
@@ -113,7 +113,14 @@ export function analyzeCSF(input: CSFInput): CSFAnalysisResult {
   if (pmnCount > 1180) {
     spanosDetails.push(`Bạch cầu đa nhân trung tính (PMN) > 1,180 /µL (${pmnCount.toLocaleString()} /µL)`);
   }
-  const spanosCriteriaMet = spanosDetails.length > 0;
+
+  // Spanos criteria were specifically established for acute bacterial vs acute viral meningitis.
+  // It does NOT apply when specific microbiological evidence indicates TB or fungus,
+  // or when cellular response is clearly lymphocytic and subacute.
+  const isSpecificOtherPathogen = input.tbPcrOrAfb === 'positive' || input.crAgOrIndiaInk === 'positive';
+  const isLymphocytePredominant = (input.lymphocytePercent >= 60 && input.neutrophilPercent < 40 && pmnCount < 1180) ||
+                                  (input.daysSinceOnset > 7 && input.lymphocytePercent > input.neutrophilPercent);
+  const spanosCriteriaMet = spanosDetails.length > 0 && !isSpecificOtherPathogen && !isLymphocytePredominant;
 
   // 7. Albuminocytologic Dissociation
   const albuminocytologicDissociation = proteinMgDl > 50 && correctedWbc <= 10;
@@ -126,11 +133,17 @@ export function analyzeCSF(input: CSFInput): CSFAnalysisResult {
   if (input.hasFocalDeficitOrSeizure || input.hasAlteredMentalStatus) {
     urgentAlerts.push(`Có dấu thần kinh khu trú / Rối loạn tri giác — Bắt buộc loại trừ tổn thương khối choán chỗ trước chọc dò hoặc chụp CT sọ não cấp.`);
   }
-  if (input.viralPcr === 'hsv_positive' || (!input.viralPcr && input.neutrophilPercent < 50 && proteinMgDl > 60 && input.hasAlteredMentalStatus)) {
+  if (input.viralPcr === 'hsv_positive' || (!input.viralPcr && input.neutrophilPercent < 50 && proteinMgDl > 60 && input.hasAlteredMentalStatus && !isSpecificOtherPathogen)) {
     urgentAlerts.push(`Nghi ngờ hoặc xác định Viêm não HSV — Khẩn cấp chỉ định Acyclovir truyền tĩnh mạch ngay, không được trì hoãn.`);
   }
-  if (spanosCriteriaMet || input.gramStain.startsWith('gram_') || (correctedWbc > 500 && input.neutrophilPercent > 70)) {
+  if (spanosCriteriaMet || input.gramStain.startsWith('gram_') || (correctedWbc > 500 && input.neutrophilPercent > 70 && !isSpecificOtherPathogen)) {
     urgentAlerts.push(`Độ đặc hiệu rất cao cho Viêm màng não mủ! Bắt đầu NGAY kháng sinh theo kinh nghiệm (Cephalosporin thế hệ 3 + Vancomycin ± Ampicillin nếu >50t) và Dexamethasone trước/cùng lúc với liều kháng sinh đầu.`);
+  }
+  if (input.tbPcrOrAfb === 'positive' || (input.adaLevel && input.adaLevel > 10 && input.lymphocytePercent >= 60)) {
+    urgentAlerts.push(`XÁC ĐỊNH / NGHI NGỜ CAO LAO MÀNG NÃO (TBM): Khẩn cấp hội chẩn chuyên khoa Lao khởi động phác đồ kháng lao chuẩn (RHZE) phối hợp Corticoid (Dexamethasone) ngay để giảm di chứng thần kinh và tử vong!`);
+  }
+  if (input.crAgOrIndiaInk === 'positive') {
+    urgentAlerts.push(`XÁC ĐỊNH VIÊM MÀNG NÃO CRYPTOCOCCUS (Kháng nguyên CrAg dương tính): Khởi động ngay Amphotericin B + Flucytosine và theo dõi sát áp lực DNT!`);
   }
   if (sahLikelihoodFromZinganell === 'high' || (input.supernatant === 'xanthochromic' && input.hasThunderclapHeadache)) {
     urgentAlerts.push(`Nghi ngờ cao Xuất huyết dưới nhện (SAH) với dịch vàng chanh / hồng cầu tăng cao — Hội chẩn can thiệp mạch / Ngoại thần kinh khẩn cấp (CTA/DSA).`);
@@ -169,37 +182,60 @@ export function analyzeCSF(input: CSFInput): CSFAnalysisResult {
     scores.bacterial.score += 15;
   }
   if (input.neutrophilPercent >= 80) {
-    scores.bacterial.score += 20;
+    scores.bacterial.score += 25;
     scores.bacterial.features.push(`Ưu thế bạch cầu đa nhân trung tính PMN (${input.neutrophilPercent}%) rất cao.`);
   } else if (input.neutrophilPercent >= 50) {
     scores.bacterial.score += 10;
+  } else if (input.lymphocytePercent >= 60) {
+    // Lymphocyte predominance strongly argues AGAINST acute pyogenic bacterial meningitis
+    scores.bacterial.score -= 30;
+    scores.bacterial.caveats.push(`Ưu thế dòng Lymphocyte (${input.lymphocytePercent}%) không điển hình cho viêm mủ cấp, cần nghĩ nhiều đến Lao, Vi rút hoặc Vi nấm.`);
   }
-  if (glucoseRatio !== null && glucoseRatio < 0.4) {
-    scores.bacterial.score += 20;
-    scores.bacterial.features.push(`Tỷ số Glucose DNT/Máu < 0.4 (${glucoseRatio}) - độ nhạy 80%, độ đặc hiệu 98% cho viêm mủ.`);
-  } else if (csfGlucoseMgDl < 40) {
-    scores.bacterial.score += 15;
-    scores.bacterial.features.push(`Nồng độ Glucose DNT hạ thấp < 40 mg/dL (${csfGlucoseMgDl.toFixed(1)} mg/dL).`);
+
+  if (!isSpecificOtherPathogen && !isLymphocytePredominant) {
+    if (glucoseRatio !== null && glucoseRatio < 0.4) {
+      scores.bacterial.score += 20;
+      scores.bacterial.features.push(`Tỷ số Glucose DNT/Máu < 0.4 (${glucoseRatio}) - độ nhạy 80%, độ đặc hiệu 98% cho viêm mủ.`);
+    } else if (csfGlucoseMgDl < 40) {
+      scores.bacterial.score += 15;
+      scores.bacterial.features.push(`Nồng độ Glucose DNT hạ thấp < 40 mg/dL (${csfGlucoseMgDl.toFixed(1)} mg/dL).`);
+    }
+    if (proteinMgDl > 150) {
+      scores.bacterial.score += 15;
+      scores.bacterial.features.push(`Protein DNT tăng cao > 150 mg/dL (${proteinMgDl.toFixed(1)} mg/dL).`);
+    }
+    if (lactateMmol && lactateMmol > 3.9) {
+      scores.bacterial.score += 25;
+      scores.bacterial.features.push(`Lactate DNT > 3.9 mmol/L (${lactateMmol.toFixed(1)} mmol/L) - độ đặc hiệu 94-99% phân biệt mủ vs vô khuẩn.`);
+    }
+  } else {
+    // If TB/Cryptococcus confirmed or lymphocytic predominant, high protein & low glucose reflect TB/fungal inflammation
+    if (proteinMgDl > 150) {
+      scores.bacterial.score += 5;
+    }
   }
-  if (proteinMgDl > 150) {
-    scores.bacterial.score += 15;
-    scores.bacterial.features.push(`Protein DNT tăng cao > 150 mg/dL (${proteinMgDl.toFixed(1)} mg/dL).`);
-  }
-  if (lactateMmol && lactateMmol > 3.9) {
-    scores.bacterial.score += 25;
-    scores.bacterial.features.push(`Lactate DNT > 3.9 mmol/L (${lactateMmol.toFixed(1)} mmol/L) - độ đặc hiệu 94-99% phân biệt mủ vs vô khuẩn.`);
-  }
+
   if (input.color === 'turbid' || input.color === 'purulent') {
     scores.bacterial.score += 15;
     scores.bacterial.features.push('Dịch não tủy đục hoặc mủ như nước vo gạo.');
   }
   if (input.gramStain !== 'negative' && input.gramStain !== 'not_done') {
-    scores.bacterial.score += 40;
+    scores.bacterial.score += 50;
     scores.bacterial.features.push(`Nhuộm soi Gram dương tính (${input.gramStain.replace(/_/g, ' ')}).`);
   }
   if (input.hasPriorAntibiotics) {
     scores.bacterial.caveats.push('Bệnh nhân đã dùng kháng sinh trước chọc dò: Kết quả soi tươi và cấy vi khuẩn có thể âm tính giả từ 10 - 20%, protein và bạch cầu có thể bị lu mờ một phần.');
   }
+
+  // Severe discount if another specific pathogen is definitively confirmed
+  if (input.tbPcrOrAfb === 'positive' && !input.gramStain.startsWith('gram_')) {
+    scores.bacterial.score = Math.min(15, Math.max(0, scores.bacterial.score - 50));
+    scores.bacterial.caveats.push('Xét nghiệm khẳng định căn nguyên Lao (GeneXpert/AFB dương tính), loại trừ viêm màng não vi khuẩn cấp tính đơn thuần.');
+  } else if (input.crAgOrIndiaInk === 'positive' && !input.gramStain.startsWith('gram_')) {
+    scores.bacterial.score = Math.min(15, Math.max(0, scores.bacterial.score - 50));
+    scores.bacterial.caveats.push('Xét nghiệm khẳng định vi nấm Cryptococcus, loại trừ viêm màng não mủ vi khuẩn.');
+  }
+
   scores.bacterial.actions = [
     'Kháng sinh tĩnh mạch liều màng não ngay lập tức (không đợi cấy): Ceftriaxone 2g IV q12h (hoặc Cefotaxime) + Vancomycin 15-20 mg/kg q8-12h.',
     'Bổ sung Ampicillin 2g IV q4h nếu bệnh nhân > 50 tuổi hoặc suy giảm miễn dịch (để bao phủ Listeria monocytogenes).',
@@ -245,34 +281,59 @@ export function analyzeCSF(input: CSFInput): CSFAnalysisResult {
   ];
 
   // --- Tuberculous Meningitis Scoring ---
-  if (input.lymphocytePercent >= 60) {
-    scores.tuberculous.score += 15;
-    scores.tuberculous.features.push('Ưu thế dòng tế bào Lymphocyte điển hình cho viêm bán cấp/mạn tính.');
+  // TBM requires either pleocytosis (correctedWbc > 10), hypoglycorrhachia (glucose ratio < 0.5), or specific TB marker
+  const hasTbPlausibility = correctedWbc > 10 || 
+                            csfGlucoseMgDl < 45 || 
+                            (glucoseRatio !== null && glucoseRatio < 0.5) || 
+                            input.tbPcrOrAfb === 'positive' || 
+                            input.pellicleFormation || 
+                            (input.adaLevel !== undefined && input.adaLevel > 10);
+
+  if (hasTbPlausibility) {
+    if (input.lymphocytePercent >= 60) {
+      scores.tuberculous.score += 25;
+      scores.tuberculous.features.push(`Ưu thế dòng tế bào Lymphocyte (${input.lymphocytePercent}%) điển hình cho viêm màng não bán cấp/mạn tính.`);
+    } else if (input.lymphocytePercent >= 50) {
+      scores.tuberculous.score += 15;
+    }
+    if (correctedWbc >= 20 && correctedWbc <= 1000) {
+      scores.tuberculous.score += 20;
+      scores.tuberculous.features.push(`Bạch cầu DNT tăng vừa phải (${correctedWbc}/µL), điển hình trong viêm màng não Lao.`);
+    }
+    if (proteinMgDl > 150) {
+      scores.tuberculous.score += 25;
+      scores.tuberculous.features.push(`Protein DNT tăng rất cao (${proteinMgDl.toFixed(1)} mg/dL), phản ánh tổn thương viêm dày màng não đáy sọ và tắc nghẽn lưu thông DNT.`);
+    }
+    if (csfGlucoseMgDl < 40 || (glucoseRatio !== null && glucoseRatio < 0.4)) {
+      scores.tuberculous.score += 25;
+      scores.tuberculous.features.push(`Đường DNT hạ thấp rõ rệt (Tỷ số: ${glucoseRatio ?? (csfGlucoseMgDl/100).toFixed(2)}), vi khuẩn lao tiêu thụ glucose mạnh.`);
+    }
+    if (lactateMmol && lactateMmol > 3.5) {
+      scores.tuberculous.score += 15;
+      scores.tuberculous.features.push(`Lactate DNT tăng (${lactateMmol.toFixed(1)} mmol/L), phù hợp với chuyển hóa kỵ khí tại màng não.`);
+    }
+    if (input.daysSinceOnset >= 7) {
+      scores.tuberculous.score += 15;
+      scores.tuberculous.features.push(`Khởi phát bán cấp kéo dài (${input.daysSinceOnset} ngày), rất điển hình cho bệnh cảnh Lao màng não so với vi khuẩn cấp.`);
+    }
+    if (input.hasFocalDeficitOrSeizure) {
+      scores.tuberculous.score += 15;
+      scores.tuberculous.features.push('Dấu thần kinh khu trú / Liệt dây thần kinh sọ do tổn thương màng não đáy sọ (Basilar meningitis) thường gặp trong Lao.');
+    }
+    if (input.pellicleFormation) {
+      scores.tuberculous.score += 40;
+      scores.tuberculous.features.push('Hình thành màng mạng nhện (Pellicle/Cobweb clot) khi để lắng DNT - dấu hiệu kinh điển đặc trưng của Lao màng não.');
+    }
+    if (input.adaLevel && input.adaLevel > 10) {
+      scores.tuberculous.score += 40;
+      scores.tuberculous.features.push(`Hoạt độ men ADA DNT > 10 U/L (${input.adaLevel} U/L) - độ nhạy ~90% và độ đặc hiệu ~92% cho Lao thần kinh.`);
+    }
+    if (input.tbPcrOrAfb === 'positive') {
+      scores.tuberculous.score += 80;
+      scores.tuberculous.features.push('TIÊU CHUẨN VÀNG: Xét nghiệm AFB hoặc GenXpert / PCR Lao DƯƠNG TÍNH trong DNT.');
+    }
   }
-  if (correctedWbc >= 20 && correctedWbc <= 1000) {
-    scores.tuberculous.score += 15;
-    scores.tuberculous.features.push(`Bạch cầu DNT tăng vừa phải (${correctedWbc}/µL).`);
-  }
-  if (proteinMgDl > 150) {
-    scores.tuberculous.score += 25;
-    scores.tuberculous.features.push(`Protein DNT tăng rất cao (${proteinMgDl.toFixed(1)} mg/dL), phản ánh tổn thương màng não đáy sọ và tắc nghẽn lưu thông DNT.`);
-  }
-  if (csfGlucoseMgDl < 40 || (glucoseRatio !== null && glucoseRatio < 0.4)) {
-    scores.tuberculous.score += 25;
-    scores.tuberculous.features.push(`Đường DNT hạ thấp rõ rệt (Tỷ số: ${glucoseRatio ?? (csfGlucoseMgDl/100).toFixed(2)}), vi khuẩn lao tiêu thụ glucose mạnh.`);
-  }
-  if (input.pellicleFormation) {
-    scores.tuberculous.score += 35;
-    scores.tuberculous.features.push('Hình thành màng mạng nhện (Pellicle/Cobweb clot) khi để lắng DNT - dấu hiệu kinh điển của Lao màng não.');
-  }
-  if (input.adaLevel && input.adaLevel > 10) {
-    scores.tuberculous.score += 35;
-    scores.tuberculous.features.push(`Hoạt độ men ADA DNT > 10 U/L (${input.adaLevel} U/L) - độ nhạy và độ đặc hiệu cao cho Lao.`);
-  }
-  if (input.tbPcrOrAfb === 'positive') {
-    scores.tuberculous.score += 55;
-    scores.tuberculous.features.push('Xét nghiệm AFB hoặc GenXpert / PCR Lao dương tính trong DNT.');
-  }
+
   scores.tuberculous.caveats.push('Độ nhạy soi kính hiển vi tìm trực khuẩn kháng cồn toan (AFB) trên 1 mẫu DNT thường rất thấp (< 30%). Cần lấy thể tích lớn (>= 10 mL) và xét nghiệm nhiều lần hoặc dùng Real-time PCR / GeneXpert MTB.');
   scores.tuberculous.actions = [
     'Hội chẩn chuyên khoa Lao và Bệnh Phổi để khởi động phác đồ kháng lao chuẩn (RHEZ / RHZE).',
@@ -354,11 +415,19 @@ export function analyzeCSF(input: CSFInput): CSFAnalysisResult {
 
   // --- Guillain-Barré Syndrome Scoring ---
   if (albuminocytologicDissociation) {
-    scores.guillain_barre.score += 65;
+    scores.guillain_barre.score += 75;
     scores.guillain_barre.features.push(`Hiện tượng phân ly Đạm - Tế bào kinh điển (Albuminocytological dissociation): Protein tăng cao (${proteinMgDl.toFixed(1)} mg/dL) trong khi tế bào bạch cầu hoàn toàn bình thường (${correctedWbc}/µL).`);
   }
   if (csfGlucoseMgDl >= 45 && input.color === 'clear') {
     scores.guillain_barre.score += 15;
+  }
+  if (input.daysSinceOnset >= 7 && albuminocytologicDissociation) {
+    scores.guillain_barre.score += 15;
+    scores.guillain_barre.features.push(`Thời điểm chọc dò ngày thứ ${input.daysSinceOnset} sau khởi phát phù hợp với diễn tiến phân ly đạm tế bào đạt đỉnh tuần 2-3.`);
+  }
+  if (input.hasFocalDeficitOrSeizure && albuminocytologicDissociation) {
+    scores.guillain_barre.score += 10;
+    scores.guillain_barre.features.push('Triệu chứng yếu liệt vận động / tổn thương thần kinh tương thích lâm sàng GBS.');
   }
   scores.guillain_barre.caveats.push('Trong 5-7 ngày đầu của hội chứng Guillain-Barré, có tới 50% bệnh nhân vẫn có nồng độ Protein DNT bình thường; nồng độ này sẽ tăng dần và đạt đỉnh ở tuần thứ 2 - 3.');
   scores.guillain_barre.actions = [
@@ -464,7 +533,8 @@ export function analyzeCSF(input: CSFInput): CSFAnalysisResult {
     .filter(([_, item]) => item.score > 0)
     .map(([key, item]) => {
       const meta = categoryMeta[key] || { nameVi: key, nameEn: key, summaryVi: '' };
-      const normalizedScore = Math.min(100, item.score);
+      const rawScore = item.score;
+      const normalizedScore = Math.min(100, Math.max(0, rawScore));
       let confidence: 'very_high' | 'high' | 'moderate' | 'low' = 'low';
       if (normalizedScore >= 75) confidence = 'very_high';
       else if (normalizedScore >= 50) confidence = 'high';
@@ -475,6 +545,7 @@ export function analyzeCSF(input: CSFInput): CSFAnalysisResult {
         nameVi: meta.nameVi,
         nameEn: meta.nameEn,
         score: normalizedScore,
+        rawScore,
         confidence,
         summaryVi: meta.summaryVi,
         keyFeatures: item.features,
@@ -482,7 +553,12 @@ export function analyzeCSF(input: CSFInput): CSFAnalysisResult {
         recommendedActions: item.actions,
       };
     })
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+      return ((b as any).rawScore ?? 0) - ((a as any).rawScore ?? 0);
+    });
 
   const topDiagnosis: DiagnosticLikelihood = likelihoods.length > 0 
     ? likelihoods[0] 

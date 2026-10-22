@@ -25,9 +25,9 @@
     mod
   ));
 
-  // ../node_modules/scheduler/cjs/scheduler.production.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/scheduler/cjs/scheduler.production.js
   var require_scheduler_production = __commonJS({
-    "../node_modules/scheduler/cjs/scheduler.production.js"(exports) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/scheduler/cjs/scheduler.production.js"(exports) {
       "use strict";
       function push(heap, node) {
         var index = heap.length;
@@ -298,9 +298,9 @@
     }
   });
 
-  // ../node_modules/scheduler/index.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/scheduler/index.js
   var require_scheduler = __commonJS({
-    "../node_modules/scheduler/index.js"(exports, module) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/scheduler/index.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_scheduler_production();
@@ -310,9 +310,9 @@
     }
   });
 
-  // ../node_modules/react/cjs/react.production.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/cjs/react.production.js
   var require_react_production = __commonJS({
-    "../node_modules/react/cjs/react.production.js"(exports) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/cjs/react.production.js"(exports) {
       "use strict";
       var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
       var REACT_PORTAL_TYPE = Symbol.for("react.portal");
@@ -762,9 +762,9 @@
     }
   });
 
-  // ../node_modules/react/index.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/index.js
   var require_react = __commonJS({
-    "../node_modules/react/index.js"(exports, module) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/index.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_react_production();
@@ -774,9 +774,9 @@
     }
   });
 
-  // ../node_modules/react-dom/cjs/react-dom.production.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/cjs/react-dom.production.js
   var require_react_dom_production = __commonJS({
-    "../node_modules/react-dom/cjs/react-dom.production.js"(exports) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
       "use strict";
       var React7 = require_react();
       function formatProdErrorMessage(code) {
@@ -931,9 +931,9 @@
     }
   });
 
-  // ../node_modules/react-dom/index.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/index.js
   var require_react_dom = __commonJS({
-    "../node_modules/react-dom/index.js"(exports, module) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/index.js"(exports, module) {
       "use strict";
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -957,9 +957,9 @@
     }
   });
 
-  // ../node_modules/react-dom/cjs/react-dom-client.production.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/cjs/react-dom-client.production.js
   var require_react_dom_client_production = __commonJS({
-    "../node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
       "use strict";
       var Scheduler = require_scheduler();
       var React7 = require_react();
@@ -14503,9 +14503,9 @@
     }
   });
 
-  // ../node_modules/react-dom/client.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/client.js
   var require_client = __commonJS({
-    "../node_modules/react-dom/client.js"(exports, module) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/client.js"(exports, module) {
       "use strict";
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -14529,9 +14529,9 @@
     }
   });
 
-  // ../node_modules/react/cjs/react-jsx-runtime.production.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/cjs/react-jsx-runtime.production.js
   var require_react_jsx_runtime_production = __commonJS({
-    "../node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
       "use strict";
       var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
       var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -14559,9 +14559,9 @@
     }
   });
 
-  // ../node_modules/react/jsx-runtime.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/jsx-runtime.js
   var require_jsx_runtime = __commonJS({
-    "../node_modules/react/jsx-runtime.js"(exports, module) {
+    "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/jsx-runtime.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_react_jsx_runtime_production();
@@ -14660,7 +14660,9 @@
     if (pmnCount > 1180) {
       spanosDetails.push(`B\u1EA1ch c\u1EA7u \u0111a nh\xE2n trung t\xEDnh (PMN) > 1,180 /\xB5L (${pmnCount.toLocaleString()} /\xB5L)`);
     }
-    const spanosCriteriaMet = spanosDetails.length > 0;
+    const isSpecificOtherPathogen = input.tbPcrOrAfb === "positive" || input.crAgOrIndiaInk === "positive";
+    const isLymphocytePredominant = input.lymphocytePercent >= 60 && input.neutrophilPercent < 40 && pmnCount < 1180 || input.daysSinceOnset > 7 && input.lymphocytePercent > input.neutrophilPercent;
+    const spanosCriteriaMet = spanosDetails.length > 0 && !isSpecificOtherPathogen && !isLymphocytePredominant;
     const albuminocytologicDissociation = proteinMgDl > 50 && correctedWbc <= 10;
     const urgentAlerts = [];
     if (input.openingPressure && input.openingPressure > 250) {
@@ -14669,11 +14671,17 @@
     if (input.hasFocalDeficitOrSeizure || input.hasAlteredMentalStatus) {
       urgentAlerts.push(`C\xF3 d\u1EA5u th\u1EA7n kinh khu tr\xFA / R\u1ED1i lo\u1EA1n tri gi\xE1c \u2014 B\u1EAFt bu\u1ED9c lo\u1EA1i tr\u1EEB t\u1ED5n th\u01B0\u01A1ng kh\u1ED1i cho\xE1n ch\u1ED7 tr\u01B0\u1EDBc ch\u1ECDc d\xF2 ho\u1EB7c ch\u1EE5p CT s\u1ECD n\xE3o c\u1EA5p.`);
     }
-    if (input.viralPcr === "hsv_positive" || !input.viralPcr && input.neutrophilPercent < 50 && proteinMgDl > 60 && input.hasAlteredMentalStatus) {
+    if (input.viralPcr === "hsv_positive" || !input.viralPcr && input.neutrophilPercent < 50 && proteinMgDl > 60 && input.hasAlteredMentalStatus && !isSpecificOtherPathogen) {
       urgentAlerts.push(`Nghi ng\u1EDD ho\u1EB7c x\xE1c \u0111\u1ECBnh Vi\xEAm n\xE3o HSV \u2014 Kh\u1EA9n c\u1EA5p ch\u1EC9 \u0111\u1ECBnh Acyclovir truy\u1EC1n t\u0129nh m\u1EA1ch ngay, kh\xF4ng \u0111\u01B0\u1EE3c tr\xEC ho\xE3n.`);
     }
-    if (spanosCriteriaMet || input.gramStain.startsWith("gram_") || correctedWbc > 500 && input.neutrophilPercent > 70) {
+    if (spanosCriteriaMet || input.gramStain.startsWith("gram_") || correctedWbc > 500 && input.neutrophilPercent > 70 && !isSpecificOtherPathogen) {
       urgentAlerts.push(`\u0110\u1ED9 \u0111\u1EB7c hi\u1EC7u r\u1EA5t cao cho Vi\xEAm m\xE0ng n\xE3o m\u1EE7! B\u1EAFt \u0111\u1EA7u NGAY kh\xE1ng sinh theo kinh nghi\u1EC7m (Cephalosporin th\u1EBF h\u1EC7 3 + Vancomycin \xB1 Ampicillin n\u1EBFu >50t) v\xE0 Dexamethasone tr\u01B0\u1EDBc/c\xF9ng l\xFAc v\u1EDBi li\u1EC1u kh\xE1ng sinh \u0111\u1EA7u.`);
+    }
+    if (input.tbPcrOrAfb === "positive" || input.adaLevel && input.adaLevel > 10 && input.lymphocytePercent >= 60) {
+      urgentAlerts.push(`X\xC1C \u0110\u1ECANH / NGHI NG\u1EDC CAO LAO M\xC0NG N\xC3O (TBM): Kh\u1EA9n c\u1EA5p h\u1ED9i ch\u1EA9n chuy\xEAn khoa Lao kh\u1EDFi \u0111\u1ED9ng ph\xE1c \u0111\u1ED3 kh\xE1ng lao chu\u1EA9n (RHZE) ph\u1ED1i h\u1EE3p Corticoid (Dexamethasone) ngay \u0111\u1EC3 gi\u1EA3m di ch\u1EE9ng th\u1EA7n kinh v\xE0 t\u1EED vong!`);
+    }
+    if (input.crAgOrIndiaInk === "positive") {
+      urgentAlerts.push(`X\xC1C \u0110\u1ECANH VI\xCAM M\xC0NG N\xC3O CRYPTOCOCCUS (Kh\xE1ng nguy\xEAn CrAg d\u01B0\u01A1ng t\xEDnh): Kh\u1EDFi \u0111\u1ED9ng ngay Amphotericin B + Flucytosine v\xE0 theo d\xF5i s\xE1t \xE1p l\u1EF1c DNT!`);
     }
     if (sahLikelihoodFromZinganell === "high" || input.supernatant === "xanthochromic" && input.hasThunderclapHeadache) {
       urgentAlerts.push(`Nghi ng\u1EDD cao Xu\u1EA5t huy\u1EBFt d\u01B0\u1EDBi nh\u1EC7n (SAH) v\u1EDBi d\u1ECBch v\xE0ng chanh / h\u1ED3ng c\u1EA7u t\u0103ng cao \u2014 H\u1ED9i ch\u1EA9n can thi\u1EC7p m\u1EA1ch / Ngo\u1EA1i th\u1EA7n kinh kh\u1EA9n c\u1EA5p (CTA/DSA).`);
@@ -14706,36 +14714,52 @@
       scores.bacterial.score += 15;
     }
     if (input.neutrophilPercent >= 80) {
-      scores.bacterial.score += 20;
+      scores.bacterial.score += 25;
       scores.bacterial.features.push(`\u01AFu th\u1EBF b\u1EA1ch c\u1EA7u \u0111a nh\xE2n trung t\xEDnh PMN (${input.neutrophilPercent}%) r\u1EA5t cao.`);
     } else if (input.neutrophilPercent >= 50) {
       scores.bacterial.score += 10;
+    } else if (input.lymphocytePercent >= 60) {
+      scores.bacterial.score -= 30;
+      scores.bacterial.caveats.push(`\u01AFu th\u1EBF d\xF2ng Lymphocyte (${input.lymphocytePercent}%) kh\xF4ng \u0111i\u1EC3n h\xECnh cho vi\xEAm m\u1EE7 c\u1EA5p, c\u1EA7n ngh\u0129 nhi\u1EC1u \u0111\u1EBFn Lao, Vi r\xFAt ho\u1EB7c Vi n\u1EA5m.`);
     }
-    if (glucoseRatio !== null && glucoseRatio < 0.4) {
-      scores.bacterial.score += 20;
-      scores.bacterial.features.push(`T\u1EF7 s\u1ED1 Glucose DNT/M\xE1u < 0.4 (${glucoseRatio}) - \u0111\u1ED9 nh\u1EA1y 80%, \u0111\u1ED9 \u0111\u1EB7c hi\u1EC7u 98% cho vi\xEAm m\u1EE7.`);
-    } else if (csfGlucoseMgDl < 40) {
-      scores.bacterial.score += 15;
-      scores.bacterial.features.push(`N\u1ED3ng \u0111\u1ED9 Glucose DNT h\u1EA1 th\u1EA5p < 40 mg/dL (${csfGlucoseMgDl.toFixed(1)} mg/dL).`);
-    }
-    if (proteinMgDl > 150) {
-      scores.bacterial.score += 15;
-      scores.bacterial.features.push(`Protein DNT t\u0103ng cao > 150 mg/dL (${proteinMgDl.toFixed(1)} mg/dL).`);
-    }
-    if (lactateMmol && lactateMmol > 3.9) {
-      scores.bacterial.score += 25;
-      scores.bacterial.features.push(`Lactate DNT > 3.9 mmol/L (${lactateMmol.toFixed(1)} mmol/L) - \u0111\u1ED9 \u0111\u1EB7c hi\u1EC7u 94-99% ph\xE2n bi\u1EC7t m\u1EE7 vs v\xF4 khu\u1EA9n.`);
+    if (!isSpecificOtherPathogen && !isLymphocytePredominant) {
+      if (glucoseRatio !== null && glucoseRatio < 0.4) {
+        scores.bacterial.score += 20;
+        scores.bacterial.features.push(`T\u1EF7 s\u1ED1 Glucose DNT/M\xE1u < 0.4 (${glucoseRatio}) - \u0111\u1ED9 nh\u1EA1y 80%, \u0111\u1ED9 \u0111\u1EB7c hi\u1EC7u 98% cho vi\xEAm m\u1EE7.`);
+      } else if (csfGlucoseMgDl < 40) {
+        scores.bacterial.score += 15;
+        scores.bacterial.features.push(`N\u1ED3ng \u0111\u1ED9 Glucose DNT h\u1EA1 th\u1EA5p < 40 mg/dL (${csfGlucoseMgDl.toFixed(1)} mg/dL).`);
+      }
+      if (proteinMgDl > 150) {
+        scores.bacterial.score += 15;
+        scores.bacterial.features.push(`Protein DNT t\u0103ng cao > 150 mg/dL (${proteinMgDl.toFixed(1)} mg/dL).`);
+      }
+      if (lactateMmol && lactateMmol > 3.9) {
+        scores.bacterial.score += 25;
+        scores.bacterial.features.push(`Lactate DNT > 3.9 mmol/L (${lactateMmol.toFixed(1)} mmol/L) - \u0111\u1ED9 \u0111\u1EB7c hi\u1EC7u 94-99% ph\xE2n bi\u1EC7t m\u1EE7 vs v\xF4 khu\u1EA9n.`);
+      }
+    } else {
+      if (proteinMgDl > 150) {
+        scores.bacterial.score += 5;
+      }
     }
     if (input.color === "turbid" || input.color === "purulent") {
       scores.bacterial.score += 15;
       scores.bacterial.features.push("D\u1ECBch n\xE3o t\u1EE7y \u0111\u1EE5c ho\u1EB7c m\u1EE7 nh\u01B0 n\u01B0\u1EDBc vo g\u1EA1o.");
     }
     if (input.gramStain !== "negative" && input.gramStain !== "not_done") {
-      scores.bacterial.score += 40;
+      scores.bacterial.score += 50;
       scores.bacterial.features.push(`Nhu\u1ED9m soi Gram d\u01B0\u01A1ng t\xEDnh (${input.gramStain.replace(/_/g, " ")}).`);
     }
     if (input.hasPriorAntibiotics) {
       scores.bacterial.caveats.push("B\u1EC7nh nh\xE2n \u0111\xE3 d\xF9ng kh\xE1ng sinh tr\u01B0\u1EDBc ch\u1ECDc d\xF2: K\u1EBFt qu\u1EA3 soi t\u01B0\u01A1i v\xE0 c\u1EA5y vi khu\u1EA9n c\xF3 th\u1EC3 \xE2m t\xEDnh gi\u1EA3 t\u1EEB 10 - 20%, protein v\xE0 b\u1EA1ch c\u1EA7u c\xF3 th\u1EC3 b\u1ECB lu m\u1EDD m\u1ED9t ph\u1EA7n.");
+    }
+    if (input.tbPcrOrAfb === "positive" && !input.gramStain.startsWith("gram_")) {
+      scores.bacterial.score = Math.min(15, Math.max(0, scores.bacterial.score - 50));
+      scores.bacterial.caveats.push("X\xE9t nghi\u1EC7m kh\u1EB3ng \u0111\u1ECBnh c\u0103n nguy\xEAn Lao (GeneXpert/AFB d\u01B0\u01A1ng t\xEDnh), lo\u1EA1i tr\u1EEB vi\xEAm m\xE0ng n\xE3o vi khu\u1EA9n c\u1EA5p t\xEDnh \u0111\u01A1n thu\u1EA7n.");
+    } else if (input.crAgOrIndiaInk === "positive" && !input.gramStain.startsWith("gram_")) {
+      scores.bacterial.score = Math.min(15, Math.max(0, scores.bacterial.score - 50));
+      scores.bacterial.caveats.push("X\xE9t nghi\u1EC7m kh\u1EB3ng \u0111\u1ECBnh vi n\u1EA5m Cryptococcus, lo\u1EA1i tr\u1EEB vi\xEAm m\xE0ng n\xE3o m\u1EE7 vi khu\u1EA9n.");
     }
     scores.bacterial.actions = [
       "Kh\xE1ng sinh t\u0129nh m\u1EA1ch li\u1EC1u m\xE0ng n\xE3o ngay l\u1EADp t\u1EE9c (kh\xF4ng \u0111\u1EE3i c\u1EA5y): Ceftriaxone 2g IV q12h (ho\u1EB7c Cefotaxime) + Vancomycin 15-20 mg/kg q8-12h.",
@@ -14778,33 +14802,50 @@
       "Ch\u1EE5p MRI s\u1ECD n\xE3o c\xF3 ti\xEAm \u0111\u1ED1i quang t\u1EEB (\u0111\xE1nh gi\xE1 t\u1ED5n th\u01B0\u01A1ng th\xF9y th\xE1i d\u01B0\u01A1ng trong vi\xEAm n\xE3o Herpes).",
       "\u0110i\u1EC1u tr\u1ECB n\xE2ng \u0111\u1EE1, gi\u1EA3m \u0111au, h\u1EA1 s\u1ED1t, b\xF9 d\u1ECBch."
     ];
-    if (input.lymphocytePercent >= 60) {
-      scores.tuberculous.score += 15;
-      scores.tuberculous.features.push("\u01AFu th\u1EBF d\xF2ng t\u1EBF b\xE0o Lymphocyte \u0111i\u1EC3n h\xECnh cho vi\xEAm b\xE1n c\u1EA5p/m\u1EA1n t\xEDnh.");
-    }
-    if (correctedWbc >= 20 && correctedWbc <= 1e3) {
-      scores.tuberculous.score += 15;
-      scores.tuberculous.features.push(`B\u1EA1ch c\u1EA7u DNT t\u0103ng v\u1EEBa ph\u1EA3i (${correctedWbc}/\xB5L).`);
-    }
-    if (proteinMgDl > 150) {
-      scores.tuberculous.score += 25;
-      scores.tuberculous.features.push(`Protein DNT t\u0103ng r\u1EA5t cao (${proteinMgDl.toFixed(1)} mg/dL), ph\u1EA3n \xE1nh t\u1ED5n th\u01B0\u01A1ng m\xE0ng n\xE3o \u0111\xE1y s\u1ECD v\xE0 t\u1EAFc ngh\u1EBDn l\u01B0u th\xF4ng DNT.`);
-    }
-    if (csfGlucoseMgDl < 40 || glucoseRatio !== null && glucoseRatio < 0.4) {
-      scores.tuberculous.score += 25;
-      scores.tuberculous.features.push(`\u0110\u01B0\u1EDDng DNT h\u1EA1 th\u1EA5p r\xF5 r\u1EC7t (T\u1EF7 s\u1ED1: ${glucoseRatio ?? (csfGlucoseMgDl / 100).toFixed(2)}), vi khu\u1EA9n lao ti\xEAu th\u1EE5 glucose m\u1EA1nh.`);
-    }
-    if (input.pellicleFormation) {
-      scores.tuberculous.score += 35;
-      scores.tuberculous.features.push("H\xECnh th\xE0nh m\xE0ng m\u1EA1ng nh\u1EC7n (Pellicle/Cobweb clot) khi \u0111\u1EC3 l\u1EAFng DNT - d\u1EA5u hi\u1EC7u kinh \u0111i\u1EC3n c\u1EE7a Lao m\xE0ng n\xE3o.");
-    }
-    if (input.adaLevel && input.adaLevel > 10) {
-      scores.tuberculous.score += 35;
-      scores.tuberculous.features.push(`Ho\u1EA1t \u0111\u1ED9 men ADA DNT > 10 U/L (${input.adaLevel} U/L) - \u0111\u1ED9 nh\u1EA1y v\xE0 \u0111\u1ED9 \u0111\u1EB7c hi\u1EC7u cao cho Lao.`);
-    }
-    if (input.tbPcrOrAfb === "positive") {
-      scores.tuberculous.score += 55;
-      scores.tuberculous.features.push("X\xE9t nghi\u1EC7m AFB ho\u1EB7c GenXpert / PCR Lao d\u01B0\u01A1ng t\xEDnh trong DNT.");
+    const hasTbPlausibility = correctedWbc > 10 || csfGlucoseMgDl < 45 || glucoseRatio !== null && glucoseRatio < 0.5 || input.tbPcrOrAfb === "positive" || input.pellicleFormation || input.adaLevel !== void 0 && input.adaLevel > 10;
+    if (hasTbPlausibility) {
+      if (input.lymphocytePercent >= 60) {
+        scores.tuberculous.score += 25;
+        scores.tuberculous.features.push(`\u01AFu th\u1EBF d\xF2ng t\u1EBF b\xE0o Lymphocyte (${input.lymphocytePercent}%) \u0111i\u1EC3n h\xECnh cho vi\xEAm m\xE0ng n\xE3o b\xE1n c\u1EA5p/m\u1EA1n t\xEDnh.`);
+      } else if (input.lymphocytePercent >= 50) {
+        scores.tuberculous.score += 15;
+      }
+      if (correctedWbc >= 20 && correctedWbc <= 1e3) {
+        scores.tuberculous.score += 20;
+        scores.tuberculous.features.push(`B\u1EA1ch c\u1EA7u DNT t\u0103ng v\u1EEBa ph\u1EA3i (${correctedWbc}/\xB5L), \u0111i\u1EC3n h\xECnh trong vi\xEAm m\xE0ng n\xE3o Lao.`);
+      }
+      if (proteinMgDl > 150) {
+        scores.tuberculous.score += 25;
+        scores.tuberculous.features.push(`Protein DNT t\u0103ng r\u1EA5t cao (${proteinMgDl.toFixed(1)} mg/dL), ph\u1EA3n \xE1nh t\u1ED5n th\u01B0\u01A1ng vi\xEAm d\xE0y m\xE0ng n\xE3o \u0111\xE1y s\u1ECD v\xE0 t\u1EAFc ngh\u1EBDn l\u01B0u th\xF4ng DNT.`);
+      }
+      if (csfGlucoseMgDl < 40 || glucoseRatio !== null && glucoseRatio < 0.4) {
+        scores.tuberculous.score += 25;
+        scores.tuberculous.features.push(`\u0110\u01B0\u1EDDng DNT h\u1EA1 th\u1EA5p r\xF5 r\u1EC7t (T\u1EF7 s\u1ED1: ${glucoseRatio ?? (csfGlucoseMgDl / 100).toFixed(2)}), vi khu\u1EA9n lao ti\xEAu th\u1EE5 glucose m\u1EA1nh.`);
+      }
+      if (lactateMmol && lactateMmol > 3.5) {
+        scores.tuberculous.score += 15;
+        scores.tuberculous.features.push(`Lactate DNT t\u0103ng (${lactateMmol.toFixed(1)} mmol/L), ph\xF9 h\u1EE3p v\u1EDBi chuy\u1EC3n h\xF3a k\u1EF5 kh\xED t\u1EA1i m\xE0ng n\xE3o.`);
+      }
+      if (input.daysSinceOnset >= 7) {
+        scores.tuberculous.score += 15;
+        scores.tuberculous.features.push(`Kh\u1EDFi ph\xE1t b\xE1n c\u1EA5p k\xE9o d\xE0i (${input.daysSinceOnset} ng\xE0y), r\u1EA5t \u0111i\u1EC3n h\xECnh cho b\u1EC7nh c\u1EA3nh Lao m\xE0ng n\xE3o so v\u1EDBi vi khu\u1EA9n c\u1EA5p.`);
+      }
+      if (input.hasFocalDeficitOrSeizure) {
+        scores.tuberculous.score += 15;
+        scores.tuberculous.features.push("D\u1EA5u th\u1EA7n kinh khu tr\xFA / Li\u1EC7t d\xE2y th\u1EA7n kinh s\u1ECD do t\u1ED5n th\u01B0\u01A1ng m\xE0ng n\xE3o \u0111\xE1y s\u1ECD (Basilar meningitis) th\u01B0\u1EDDng g\u1EB7p trong Lao.");
+      }
+      if (input.pellicleFormation) {
+        scores.tuberculous.score += 40;
+        scores.tuberculous.features.push("H\xECnh th\xE0nh m\xE0ng m\u1EA1ng nh\u1EC7n (Pellicle/Cobweb clot) khi \u0111\u1EC3 l\u1EAFng DNT - d\u1EA5u hi\u1EC7u kinh \u0111i\u1EC3n \u0111\u1EB7c tr\u01B0ng c\u1EE7a Lao m\xE0ng n\xE3o.");
+      }
+      if (input.adaLevel && input.adaLevel > 10) {
+        scores.tuberculous.score += 40;
+        scores.tuberculous.features.push(`Ho\u1EA1t \u0111\u1ED9 men ADA DNT > 10 U/L (${input.adaLevel} U/L) - \u0111\u1ED9 nh\u1EA1y ~90% v\xE0 \u0111\u1ED9 \u0111\u1EB7c hi\u1EC7u ~92% cho Lao th\u1EA7n kinh.`);
+      }
+      if (input.tbPcrOrAfb === "positive") {
+        scores.tuberculous.score += 80;
+        scores.tuberculous.features.push("TI\xCAU CHU\u1EA8N V\xC0NG: X\xE9t nghi\u1EC7m AFB ho\u1EB7c GenXpert / PCR Lao D\u01AF\u01A0NG T\xCDNH trong DNT.");
+      }
     }
     scores.tuberculous.caveats.push("\u0110\u1ED9 nh\u1EA1y soi k\xEDnh hi\u1EC3n vi t\xECm tr\u1EF1c khu\u1EA9n kh\xE1ng c\u1ED3n toan (AFB) tr\xEAn 1 m\u1EABu DNT th\u01B0\u1EDDng r\u1EA5t th\u1EA5p (< 30%). C\u1EA7n l\u1EA5y th\u1EC3 t\xEDch l\u1EDBn (>= 10 mL) v\xE0 x\xE9t nghi\u1EC7m nhi\u1EC1u l\u1EA7n ho\u1EB7c d\xF9ng Real-time PCR / GeneXpert MTB.");
     scores.tuberculous.actions = [
@@ -14879,11 +14920,19 @@
       "N\u1EBFu v\u1EABn c\xF2n nghi ng\u1EDD xu\u1EA5t huy\u1EBFt d\u01B0\u1EDBi nh\u1EC7n tr\xEAn l\xE2m s\xE0ng, th\u1EF1c hi\u1EC7n ch\u1EE5p CTA s\u1ECD n\xE3o ho\u1EB7c \u0111o Bilirubin quang ph\u1ED5 DNT sau 12 gi\u1EDD."
     ];
     if (albuminocytologicDissociation) {
-      scores.guillain_barre.score += 65;
+      scores.guillain_barre.score += 75;
       scores.guillain_barre.features.push(`Hi\u1EC7n t\u01B0\u1EE3ng ph\xE2n ly \u0110\u1EA1m - T\u1EBF b\xE0o kinh \u0111i\u1EC3n (Albuminocytological dissociation): Protein t\u0103ng cao (${proteinMgDl.toFixed(1)} mg/dL) trong khi t\u1EBF b\xE0o b\u1EA1ch c\u1EA7u ho\xE0n to\xE0n b\xECnh th\u01B0\u1EDDng (${correctedWbc}/\xB5L).`);
     }
     if (csfGlucoseMgDl >= 45 && input.color === "clear") {
       scores.guillain_barre.score += 15;
+    }
+    if (input.daysSinceOnset >= 7 && albuminocytologicDissociation) {
+      scores.guillain_barre.score += 15;
+      scores.guillain_barre.features.push(`Th\u1EDDi \u0111i\u1EC3m ch\u1ECDc d\xF2 ng\xE0y th\u1EE9 ${input.daysSinceOnset} sau kh\u1EDFi ph\xE1t ph\xF9 h\u1EE3p v\u1EDBi di\u1EC5n ti\u1EBFn ph\xE2n ly \u0111\u1EA1m t\u1EBF b\xE0o \u0111\u1EA1t \u0111\u1EC9nh tu\u1EA7n 2-3.`);
+    }
+    if (input.hasFocalDeficitOrSeizure && albuminocytologicDissociation) {
+      scores.guillain_barre.score += 10;
+      scores.guillain_barre.features.push("Tri\u1EC7u ch\u1EE9ng y\u1EBFu li\u1EC7t v\u1EADn \u0111\u1ED9ng / t\u1ED5n th\u01B0\u01A1ng th\u1EA7n kinh t\u01B0\u01A1ng th\xEDch l\xE2m s\xE0ng GBS.");
     }
     scores.guillain_barre.caveats.push("Trong 5-7 ng\xE0y \u0111\u1EA7u c\u1EE7a h\u1ED9i ch\u1EE9ng Guillain-Barr\xE9, c\xF3 t\u1EDBi 50% b\u1EC7nh nh\xE2n v\u1EABn c\xF3 n\u1ED3ng \u0111\u1ED9 Protein DNT b\xECnh th\u01B0\u1EDDng; n\u1ED3ng \u0111\u1ED9 n\xE0y s\u1EBD t\u0103ng d\u1EA7n v\xE0 \u0111\u1EA1t \u0111\u1EC9nh \u1EDF tu\u1EA7n th\u1EE9 2 - 3.");
     scores.guillain_barre.actions = [
@@ -14978,7 +15027,8 @@
     };
     const likelihoods = Object.entries(scores).filter(([_, item]) => item.score > 0).map(([key, item]) => {
       const meta = categoryMeta[key] || { nameVi: key, nameEn: key, summaryVi: "" };
-      const normalizedScore = Math.min(100, item.score);
+      const rawScore = item.score;
+      const normalizedScore = Math.min(100, Math.max(0, rawScore));
       let confidence = "low";
       if (normalizedScore >= 75) confidence = "very_high";
       else if (normalizedScore >= 50) confidence = "high";
@@ -14988,13 +15038,19 @@
         nameVi: meta.nameVi,
         nameEn: meta.nameEn,
         score: normalizedScore,
+        rawScore,
         confidence,
         summaryVi: meta.summaryVi,
         keyFeatures: item.features,
         caveats: item.caveats,
         recommendedActions: item.actions
       };
-    }).sort((a, b) => b.score - a.score);
+    }).sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+      return (b.rawScore ?? 0) - (a.rawScore ?? 0);
+    });
     const topDiagnosis = likelihoods.length > 0 ? likelihoods[0] : {
       category: "normal",
       nameVi: "Ch\u01B0a \u0111\u1EE7 b\u1EB1ng ch\u1EE9ng k\u1EBFt lu\u1EADn",
@@ -15309,10 +15365,10 @@
   // src/components/CSFInputForm.tsx
   var import_react3 = __toESM(require_react(), 1);
 
-  // ../node_modules/lucide-react/dist/esm/createLucideIcon.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/createLucideIcon.js
   var import_react2 = __toESM(require_react());
 
-  // ../node_modules/lucide-react/dist/esm/shared/src/utils.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/shared/src/utils.js
   var toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
   var toCamelCase = (string) => string.replace(
     /^([A-Z])|[\s-_]+(\w)/g,
@@ -15333,10 +15389,10 @@
     }
   };
 
-  // ../node_modules/lucide-react/dist/esm/Icon.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/Icon.js
   var import_react = __toESM(require_react());
 
-  // ../node_modules/lucide-react/dist/esm/defaultAttributes.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/defaultAttributes.js
   var defaultAttributes = {
     xmlns: "http://www.w3.org/2000/svg",
     width: 24,
@@ -15349,7 +15405,7 @@
     strokeLinejoin: "round"
   };
 
-  // ../node_modules/lucide-react/dist/esm/Icon.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/Icon.js
   var Icon = (0, import_react.forwardRef)(
     ({
       color = "currentColor",
@@ -15380,7 +15436,7 @@
     )
   );
 
-  // ../node_modules/lucide-react/dist/esm/createLucideIcon.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/createLucideIcon.js
   var createLucideIcon = (iconName, iconNode) => {
     const Component = (0, import_react2.forwardRef)(
       ({ className, ...props }, ref) => (0, import_react2.createElement)(Icon, {
@@ -15398,7 +15454,7 @@
     return Component;
   };
 
-  // ../node_modules/lucide-react/dist/esm/icons/activity.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/activity.js
   var __iconNode = [
     [
       "path",
@@ -15410,14 +15466,14 @@
   ];
   var Activity = createLucideIcon("activity", __iconNode);
 
-  // ../node_modules/lucide-react/dist/esm/icons/arrow-left.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/arrow-left.js
   var __iconNode2 = [
     ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
     ["path", { d: "M19 12H5", key: "x3x0zl" }]
   ];
   var ArrowLeft = createLucideIcon("arrow-left", __iconNode2);
 
-  // ../node_modules/lucide-react/dist/esm/icons/award.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/award.js
   var __iconNode3 = [
     [
       "path",
@@ -15430,7 +15486,7 @@
   ];
   var Award = createLucideIcon("award", __iconNode3);
 
-  // ../node_modules/lucide-react/dist/esm/icons/book-marked.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/book-marked.js
   var __iconNode4 = [
     ["path", { d: "M10 2v8l3-3 3 3V2", key: "sqw3rj" }],
     [
@@ -15443,7 +15499,7 @@
   ];
   var BookMarked = createLucideIcon("book-marked", __iconNode4);
 
-  // ../node_modules/lucide-react/dist/esm/icons/book-open.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/book-open.js
   var __iconNode5 = [
     ["path", { d: "M12 7v14", key: "1akyts" }],
     [
@@ -15456,7 +15512,7 @@
   ];
   var BookOpen = createLucideIcon("book-open", __iconNode5);
 
-  // ../node_modules/lucide-react/dist/esm/icons/chart-column.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/chart-column.js
   var __iconNode6 = [
     ["path", { d: "M3 3v16a2 2 0 0 0 2 2h16", key: "c24i48" }],
     ["path", { d: "M18 17V9", key: "2bz60n" }],
@@ -15465,30 +15521,30 @@
   ];
   var ChartColumn = createLucideIcon("chart-column", __iconNode6);
 
-  // ../node_modules/lucide-react/dist/esm/icons/check.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/check.js
   var __iconNode7 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
   var Check = createLucideIcon("check", __iconNode7);
 
-  // ../node_modules/lucide-react/dist/esm/icons/chevron-down.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/chevron-down.js
   var __iconNode8 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
   var ChevronDown = createLucideIcon("chevron-down", __iconNode8);
 
-  // ../node_modules/lucide-react/dist/esm/icons/chevron-right.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/chevron-right.js
   var __iconNode9 = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
   var ChevronRight = createLucideIcon("chevron-right", __iconNode9);
 
-  // ../node_modules/lucide-react/dist/esm/icons/chevron-up.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/chevron-up.js
   var __iconNode10 = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
   var ChevronUp = createLucideIcon("chevron-up", __iconNode10);
 
-  // ../node_modules/lucide-react/dist/esm/icons/circle-check.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/circle-check.js
   var __iconNode11 = [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
     ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
   ];
   var CircleCheck = createLucideIcon("circle-check", __iconNode11);
 
-  // ../node_modules/lucide-react/dist/esm/icons/clipboard-list.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/clipboard-list.js
   var __iconNode12 = [
     ["rect", { width: "8", height: "4", x: "8", y: "2", rx: "1", ry: "1", key: "tgr4d6" }],
     [
@@ -15505,21 +15561,21 @@
   ];
   var ClipboardList = createLucideIcon("clipboard-list", __iconNode12);
 
-  // ../node_modules/lucide-react/dist/esm/icons/clock.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/clock.js
   var __iconNode13 = [
     ["path", { d: "M12 6v6l4 2", key: "mmk7yg" }],
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
   ];
   var Clock = createLucideIcon("clock", __iconNode13);
 
-  // ../node_modules/lucide-react/dist/esm/icons/copy.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/copy.js
   var __iconNode14 = [
     ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
     ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
   ];
   var Copy = createLucideIcon("copy", __iconNode14);
 
-  // ../node_modules/lucide-react/dist/esm/icons/crosshair.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/crosshair.js
   var __iconNode15 = [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
     ["line", { x1: "22", x2: "18", y1: "12", y2: "12", key: "l9bcsi" }],
@@ -15529,7 +15585,7 @@
   ];
   var Crosshair = createLucideIcon("crosshair", __iconNode15);
 
-  // ../node_modules/lucide-react/dist/esm/icons/dna.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/dna.js
   var __iconNode16 = [
     ["path", { d: "m10 16 1.5 1.5", key: "11lckj" }],
     ["path", { d: "m14 8-1.5-1.5", key: "1ohn8i" }],
@@ -15545,7 +15601,7 @@
   ];
   var Dna = createLucideIcon("dna", __iconNode16);
 
-  // ../node_modules/lucide-react/dist/esm/icons/droplet.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/droplet.js
   var __iconNode17 = [
     [
       "path",
@@ -15557,7 +15613,7 @@
   ];
   var Droplet = createLucideIcon("droplet", __iconNode17);
 
-  // ../node_modules/lucide-react/dist/esm/icons/eye.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/eye.js
   var __iconNode18 = [
     [
       "path",
@@ -15570,7 +15626,7 @@
   ];
   var Eye = createLucideIcon("eye", __iconNode18);
 
-  // ../node_modules/lucide-react/dist/esm/icons/file-text.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/file-text.js
   var __iconNode19 = [
     ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
     ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
@@ -15580,7 +15636,7 @@
   ];
   var FileText = createLucideIcon("file-text", __iconNode19);
 
-  // ../node_modules/lucide-react/dist/esm/icons/flask-conical.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/flask-conical.js
   var __iconNode20 = [
     [
       "path",
@@ -15594,14 +15650,14 @@
   ];
   var FlaskConical = createLucideIcon("flask-conical", __iconNode20);
 
-  // ../node_modules/lucide-react/dist/esm/icons/gauge.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/gauge.js
   var __iconNode21 = [
     ["path", { d: "m12 14 4-4", key: "9kzdfg" }],
     ["path", { d: "M3.34 19a10 10 0 1 1 17.32 0", key: "19p75a" }]
   ];
   var Gauge = createLucideIcon("gauge", __iconNode21);
 
-  // ../node_modules/lucide-react/dist/esm/icons/grid-3x3.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/grid-3x3.js
   var __iconNode22 = [
     ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
     ["path", { d: "M3 9h18", key: "1pudct" }],
@@ -15611,7 +15667,7 @@
   ];
   var Grid3x3 = createLucideIcon("grid-3x3", __iconNode22);
 
-  // ../node_modules/lucide-react/dist/esm/icons/info.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/info.js
   var __iconNode23 = [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
     ["path", { d: "M12 16v-4", key: "1dtifu" }],
@@ -15619,7 +15675,7 @@
   ];
   var Info = createLucideIcon("info", __iconNode23);
 
-  // ../node_modules/lucide-react/dist/esm/icons/layers.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/layers.js
   var __iconNode24 = [
     [
       "path",
@@ -15645,8 +15701,17 @@
   ];
   var Layers = createLucideIcon("layers", __iconNode24);
 
-  // ../node_modules/lucide-react/dist/esm/icons/microscope.js
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/maximize-2.js
   var __iconNode25 = [
+    ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
+    ["path", { d: "m21 3-7 7", key: "1l2asr" }],
+    ["path", { d: "m3 21 7-7", key: "tjx5ai" }],
+    ["path", { d: "M9 21H3v-6", key: "wtvkvv" }]
+  ];
+  var Maximize2 = createLucideIcon("maximize-2", __iconNode25);
+
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/microscope.js
+  var __iconNode26 = [
     ["path", { d: "M6 18h8", key: "1borvv" }],
     ["path", { d: "M3 22h18", key: "8prr45" }],
     ["path", { d: "M14 22a7 7 0 1 0 0-14h-1", key: "1jwaiy" }],
@@ -15654,10 +15719,10 @@
     ["path", { d: "M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z", key: "1bmzmy" }],
     ["path", { d: "M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3", key: "1drr47" }]
   ];
-  var Microscope = createLucideIcon("microscope", __iconNode25);
+  var Microscope = createLucideIcon("microscope", __iconNode26);
 
-  // ../node_modules/lucide-react/dist/esm/icons/moon.js
-  var __iconNode26 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/moon.js
+  var __iconNode27 = [
     [
       "path",
       {
@@ -15666,10 +15731,10 @@
       }
     ]
   ];
-  var Moon = createLucideIcon("moon", __iconNode26);
+  var Moon = createLucideIcon("moon", __iconNode27);
 
-  // ../node_modules/lucide-react/dist/esm/icons/octagon-alert.js
-  var __iconNode27 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/octagon-alert.js
+  var __iconNode28 = [
     ["path", { d: "M12 16h.01", key: "1drbdi" }],
     ["path", { d: "M12 8v4", key: "1got3b" }],
     [
@@ -15680,10 +15745,10 @@
       }
     ]
   ];
-  var OctagonAlert = createLucideIcon("octagon-alert", __iconNode27);
+  var OctagonAlert = createLucideIcon("octagon-alert", __iconNode28);
 
-  // ../node_modules/lucide-react/dist/esm/icons/printer.js
-  var __iconNode28 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/printer.js
+  var __iconNode29 = [
     [
       "path",
       {
@@ -15694,34 +15759,34 @@
     ["path", { d: "M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6", key: "1itne7" }],
     ["rect", { x: "6", y: "14", width: "12", height: "8", rx: "1", key: "1ue0tg" }]
   ];
-  var Printer = createLucideIcon("printer", __iconNode28);
+  var Printer = createLucideIcon("printer", __iconNode29);
 
-  // ../node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
-  var __iconNode29 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
+  var __iconNode30 = [
     ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
     ["path", { d: "M3 3v5h5", key: "1xhq8a" }]
   ];
-  var RotateCcw = createLucideIcon("rotate-ccw", __iconNode29);
+  var RotateCcw = createLucideIcon("rotate-ccw", __iconNode30);
 
-  // ../node_modules/lucide-react/dist/esm/icons/scale.js
-  var __iconNode30 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/scale.js
+  var __iconNode31 = [
     ["path", { d: "m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z", key: "7g6ntu" }],
     ["path", { d: "m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z", key: "ijws7r" }],
     ["path", { d: "M7 21h10", key: "1b0cd5" }],
     ["path", { d: "M12 3v18", key: "108xh3" }],
     ["path", { d: "M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2", key: "3gwbw2" }]
   ];
-  var Scale = createLucideIcon("scale", __iconNode30);
+  var Scale = createLucideIcon("scale", __iconNode31);
 
-  // ../node_modules/lucide-react/dist/esm/icons/search.js
-  var __iconNode31 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/search.js
+  var __iconNode32 = [
     ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
     ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
   ];
-  var Search = createLucideIcon("search", __iconNode31);
+  var Search = createLucideIcon("search", __iconNode32);
 
-  // ../node_modules/lucide-react/dist/esm/icons/shield-alert.js
-  var __iconNode32 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/shield-alert.js
+  var __iconNode33 = [
     [
       "path",
       {
@@ -15732,10 +15797,10 @@
     ["path", { d: "M12 8v4", key: "1got3b" }],
     ["path", { d: "M12 16h.01", key: "1drbdi" }]
   ];
-  var ShieldAlert = createLucideIcon("shield-alert", __iconNode32);
+  var ShieldAlert = createLucideIcon("shield-alert", __iconNode33);
 
-  // ../node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
-  var __iconNode33 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
+  var __iconNode34 = [
     ["path", { d: "M10 5H3", key: "1qgfaw" }],
     ["path", { d: "M12 19H3", key: "yhmn1j" }],
     ["path", { d: "M14 3v4", key: "1sua03" }],
@@ -15746,10 +15811,10 @@
     ["path", { d: "M8 10v4", key: "tgpxqk" }],
     ["path", { d: "M8 12H3", key: "a7s4jb" }]
   ];
-  var SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode33);
+  var SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode34);
 
-  // ../node_modules/lucide-react/dist/esm/icons/sparkles.js
-  var __iconNode34 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/sparkles.js
+  var __iconNode35 = [
     [
       "path",
       {
@@ -15761,20 +15826,20 @@
     ["path", { d: "M22 4h-4", key: "gwowj6" }],
     ["circle", { cx: "4", cy: "20", r: "2", key: "6kqj1y" }]
   ];
-  var Sparkles = createLucideIcon("sparkles", __iconNode34);
+  var Sparkles = createLucideIcon("sparkles", __iconNode35);
 
-  // ../node_modules/lucide-react/dist/esm/icons/stethoscope.js
-  var __iconNode35 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/stethoscope.js
+  var __iconNode36 = [
     ["path", { d: "M11 2v2", key: "1539x4" }],
     ["path", { d: "M5 2v2", key: "1yf1q8" }],
     ["path", { d: "M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1", key: "rb5t3r" }],
     ["path", { d: "M8 15a6 6 0 0 0 12 0v-3", key: "x18d4x" }],
     ["circle", { cx: "20", cy: "10", r: "2", key: "ts1r5v" }]
   ];
-  var Stethoscope = createLucideIcon("stethoscope", __iconNode35);
+  var Stethoscope = createLucideIcon("stethoscope", __iconNode36);
 
-  // ../node_modules/lucide-react/dist/esm/icons/sun.js
-  var __iconNode36 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/sun.js
+  var __iconNode37 = [
     ["circle", { cx: "12", cy: "12", r: "4", key: "4exip2" }],
     ["path", { d: "M12 2v2", key: "tus03m" }],
     ["path", { d: "M12 20v2", key: "1lh1kg" }],
@@ -15785,10 +15850,10 @@
     ["path", { d: "m6.34 17.66-1.41 1.41", key: "1m8zz5" }],
     ["path", { d: "m19.07 4.93-1.41 1.41", key: "1shlcs" }]
   ];
-  var Sun = createLucideIcon("sun", __iconNode36);
+  var Sun = createLucideIcon("sun", __iconNode37);
 
-  // ../node_modules/lucide-react/dist/esm/icons/syringe.js
-  var __iconNode37 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/syringe.js
+  var __iconNode38 = [
     ["path", { d: "m18 2 4 4", key: "22kx64" }],
     ["path", { d: "m17 7 3-3", key: "1w1zoj" }],
     ["path", { d: "M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5", key: "1exhtz" }],
@@ -15796,10 +15861,10 @@
     ["path", { d: "m5 19-3 3", key: "59f2uf" }],
     ["path", { d: "m14 4 6 6", key: "yqp9t2" }]
   ];
-  var Syringe = createLucideIcon("syringe", __iconNode37);
+  var Syringe = createLucideIcon("syringe", __iconNode38);
 
-  // ../node_modules/lucide-react/dist/esm/icons/triangle-alert.js
-  var __iconNode38 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/triangle-alert.js
+  var __iconNode39 = [
     [
       "path",
       {
@@ -15810,20 +15875,22 @@
     ["path", { d: "M12 9v4", key: "juzpu7" }],
     ["path", { d: "M12 17h.01", key: "p32p05" }]
   ];
-  var TriangleAlert = createLucideIcon("triangle-alert", __iconNode38);
+  var TriangleAlert = createLucideIcon("triangle-alert", __iconNode39);
 
-  // ../node_modules/lucide-react/dist/esm/icons/x.js
-  var __iconNode39 = [
+  // C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/x.js
+  var __iconNode40 = [
     ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
     ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
   ];
-  var X = createLucideIcon("x", __iconNode39);
+  var X = createLucideIcon("x", __iconNode40);
 
   // src/components/CSFInputForm.tsx
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
     const [viewMode, setViewMode] = (0, import_react3.useState)("standard");
     const [showAdvancedTests, setShowAdvancedTests] = (0, import_react3.useState)(false);
+    const hasAdvancedData = input.tbPcrOrAfb !== "not_done" || input.crAgOrIndiaInk !== "not_done" || input.viralPcr !== "not_done" || input.gramStain !== "not_done" || input.adaLevel !== void 0 || input.pellicleFormation || input.tube1Rbc !== void 0 || input.tube4Rbc !== void 0;
+    const isAdvancedOpen = viewMode === "full" || showAdvancedTests || hasAdvancedData;
     const updateField = (field, value) => {
       onChange({ ...input, [field]: value });
     };
@@ -16285,7 +16352,7 @@
             }) })
           ] })
         ] }),
-        viewMode === "full" || showAdvancedTests ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "bg-slate-50/70 dark:bg-slate-800/40 rounded-xl p-3.5 border border-slate-200/80 dark:border-slate-800 space-y-3", children: [
+        isAdvancedOpen ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "bg-slate-50/70 dark:bg-slate-800/40 rounded-xl p-3.5 border border-slate-200/80 dark:border-slate-800 space-y-3", children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex items-center justify-between", children: [
             /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { className: "text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wide flex items-center gap-1.5", children: [
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Microscope, { className: "w-3.5 h-3.5 text-indigo-500" }),
@@ -17099,15 +17166,17 @@ ${top.recommendedActions.map((a, i) => `${i + 1}. ${a}`).join("\n")}`;
     const [subTab, setSubTab] = (0, import_react6.useState)("anatomy");
     const [activeLayer, setActiveLayer] = (0, import_react6.useState)(null);
     const [anatomyFocus, setAnatomyFocus] = (0, import_react6.useState)("all");
+    const [viewStyle, setViewStyle] = (0, import_react6.useState)("both");
+    const [selectedPhotoModal, setSelectedPhotoModal] = (0, import_react6.useState)(null);
     const layersData = [
-      { num: 1, name: "1. Da (Skin)", desc: "S\xE1t khu\u1EA9n k\u1EF9 h\xECnh xo\u1EAFn \u1ED1c v\xE0 g\xE2y t\xEA n\u1ED1t ph\u1ED3ng da b\u1EB1ng Lidocaine 1%.", color: "fill-amber-200 stroke-amber-500" },
-      { num: 2, name: "2. M\xF4 d\u01B0\u1EDBi da (Subcutaneous tissue)", desc: "M\xF4 m\u1EE1 l\u1ECFng l\u1EBBo. G\xE2y t\xEA s\xE2u theo tr\u1EE5c h\u01B0\u1EDBng v\u1EC1 ph\xEDa r\u1ED1n.", color: "fill-amber-100 stroke-amber-400" },
-      { num: 3, name: "3. D\xE2y ch\u1EB1ng tr\xEAn gai (Supraspinous ligament)", desc: "D\u1EA3i x\u01A1 ch\u1EAFc k\u1EBFt n\u1ED1i c\xE1c \u0111\u1EC9nh m\u1ECFm gai \u0111\u1ED1t s\u1ED1ng t\u1EEB C7 \u0111\u1EBFn x\u01B0\u01A1ng c\xF9ng.", color: "fill-blue-200 stroke-blue-500" },
-      { num: 4, name: "4. D\xE2y ch\u1EB1ng li\xEAn gai (Interspinous ligament)", desc: "N\u1EB1m gi\u1EEFa c\xE1c m\u1ECFm gai, kim \u0111i ch\xEDnh gi\u1EEFa \u0111\u01B0\u1EDDng gi\u1EEFa (Midline).", color: "fill-indigo-200 stroke-indigo-500" },
-      { num: 5, name: "5. D\xE2y ch\u1EB1ng v\xE0ng (Ligamentum flavum)", desc: "M\xF4 \u0111\xE0n h\u1ED3i d\xE0y n\u1ED1i c\xE1c cung \u0111\u1ED1t s\u1ED1ng. B\xE1c s\u0129 c\u1EA3m nh\u1EADn r\xF5 s\u1EE9c c\u1EA3n t\u0103ng l\xEAn r\xF5 r\u1EC7t (Tough resistance).", color: "fill-yellow-300 stroke-yellow-600" },
-      { num: 6, name: "6. Khoang ngo\xE0i m\xE0ng c\u1EE9ng (Epidural space)", desc: "Khoang \u1EA3o ch\u1EE9a m\u1EE1 v\xE0 \u0111\xE1m r\u1ED1i t\u0129nh m\u1EA1ch \u0111\u1ED1t s\u1ED1ng trong. Ch\u1ECDc l\u1EC7ch d\u1EC5 g\xE2y ch\u1EA1m m\u1EA1ch t\u1EA1i \u0111\xE2y.", color: "fill-rose-100 stroke-rose-400" },
-      { num: 7, name: "7. M\xE0ng c\u1EE9ng & M\xE0ng nh\u1EC7n (Dura & Arachnoid)", desc: 'Kho\u1EA3nh kh\u1EAFc quy\u1EBFt \u0111\u1ECBnh: C\u1EA3m gi\xE1c "S\u1EE5p h\u1EABng" ho\u1EB7c "Pop sensation" khi kim xuy\xEAn th\u1EE7ng m\xE0ng c\u1EE9ng.', color: "fill-purple-200 stroke-purple-600" },
-      { num: 8, name: "8. Khoang d\u01B0\u1EDBi nh\u1EC7n (Subarachnoid space)", desc: "\u0110\xEDch \u0111\u1EBFn an to\xE0n: Ch\u1EE9a d\u1ECBch n\xE3o t\u1EE7y (CSF) v\xE0 r\u1EC5 ch\xF9m \u0111u\xF4i ng\u1EF1a (Cauda equina). R\xFAt n\xF2ng stylet d\u1ECBch s\u1EBD ch\u1EA3y t\u1EF1 nhi\xEAn.", color: "fill-cyan-100 stroke-cyan-500" }
+      { num: 1, name: "1. Da (Skin)", depth: "0 - 2 mm", desc: "S\xE1t khu\u1EA9n k\u1EF9 h\xECnh xo\u1EAFn \u1ED1c b\u1EB1ng Povidone-Iodine ho\u1EB7c Chlorhexidine. G\xE2y t\xEA n\u1ED1t ph\u1ED3ng da (wheal) b\u1EB1ng Lidocaine 1%.", sensation: "Ch\xE2m kim ti\xEAm t\xEA", color: "fill-amber-200 stroke-amber-500" },
+      { num: 2, name: "2. M\xF4 d\u01B0\u1EDBi da (Subcutaneous tissue)", depth: "2 - 20 mm", desc: "M\xF4 m\u1EE1 l\u1ECFng l\u1EBBo. G\xE2y t\xEA s\xE2u d\u1ECDc theo \u0111\u01B0\u1EDDng kim d\u1EF1 ki\u1EBFn, h\u01B0\u1EDBng nh\u1EB9 v\u1EC1 ph\xEDa r\u1ED1n (rostral).", sensation: "S\u1EE9c c\u1EA3n nh\u1EB9, kim \u0111i \xEAm", color: "fill-amber-100 stroke-amber-400" },
+      { num: 3, name: "3. D\xE2y ch\u1EB1ng tr\xEAn gai (Supraspinous)", depth: "20 - 25 mm", desc: "D\u1EA3i x\u01A1 ch\u1EAFc k\u1EBFt n\u1ED1i c\xE1c \u0111\u1EC9nh m\u1ECFm gai \u0111\u1ED1t s\u1ED1ng t\u1EEB C7 \u0111\u1EBFn x\u01B0\u01A1ng c\xF9ng. Gi\u1EEF kim \u0111i ch\xEDnh gi\u1EEFa \u0111\u01B0\u1EDDng gi\u1EEFa (Midline).", sensation: "C\u1EA3m gi\xE1c b\u1EAFt \u0111\u1EA7u ch\u1EAFc tay", color: "fill-blue-200 stroke-blue-500" },
+      { num: 4, name: "4. D\xE2y ch\u1EB1ng li\xEAn gai (Interspinous)", depth: "25 - 35 mm", desc: "N\u1EB1m gi\u1EEFa hai m\u1ECFm gai k\u1EBF c\u1EADn, d\u1EABn \u0111\u01B0\u1EDDng cho kim ti\u1EBFn th\u1EB3ng vu\xF4ng g\xF3c m\u1EB7t ph\u1EB3ng l\u01B0ng.", sensation: "S\u1EE9c c\u1EA3n x\u01A1 v\u1EEBa ph\u1EA3i", color: "fill-indigo-200 stroke-indigo-500" },
+      { num: 5, name: "5. D\xE2y ch\u1EB1ng v\xE0ng (Ligamentum flavum) \u2605", depth: "35 - 42 mm", desc: "M\xF4 \u0111\xE0n h\u1ED3i d\xE0y n\u1ED1i c\xE1c cung \u0111\u1ED1t s\u1ED1ng. B\xE1c s\u0129 c\u1EA3m nh\u1EADn r\xF5 s\u1EE9c c\u1EA3n t\u0103ng l\xEAn r\xF5 r\u1EC7t (Tough resistance) nh\u01B0 xuy\xEAn qua da d\xE0y cao su.", sensation: "S\u1EE8C C\u1EA2N DAI N\u1EB6NG TAY", color: "fill-yellow-300 stroke-yellow-600" },
+      { num: 6, name: "6. Khoang ngo\xE0i m\xE0ng c\u1EE9ng (Epidural space)", depth: "42 - 44 mm", desc: "Khoang \u1EA3o ch\u1EE9a m\u1EE1 l\u1ECFng v\xE0 \u0111\xE1m r\u1ED1i t\u0129nh m\u1EA1ch \u0111\u1ED1t s\u1ED1ng trong. Ch\u1ECDc l\u1EC7ch tr\u1EE5c d\u1EC5 g\xE2y ch\u1EA1m m\u1EA1ch (Traumatic tap) t\u1EA1i \u0111\xE2y.", sensation: "S\u1EE9c c\u1EA3n gi\u1EA3m tho\xE1ng qua", color: "fill-rose-100 stroke-rose-400" },
+      { num: 7, name: "7. M\xE0ng c\u1EE9ng & M\xE0ng nh\u1EC7n (Dura & Arachnoid) \u2605", depth: "44 - 47 mm", desc: 'Kho\u1EA3nh kh\u1EAFc quy\u1EBFt \u0111\u1ECBnh: B\xE1c s\u0129 c\u1EA3m nh\u1EADn ti\u1EBFng "S\u1EE5p h\u1EABng" ho\u1EB7c "Pop sensation" r\xF5 r\u1EC7t khi m\u0169i kim xuy\xEAn th\u1EE7ng l\xE1 m\xE0ng c\u1EE9ng ch\u1EAFc.', sensation: 'TI\u1EBENG "POP" S\u1EE4P H\u1EAANG', color: "fill-purple-200 stroke-purple-600" },
+      { num: 8, name: "8. Khoang d\u01B0\u1EDBi nh\u1EC7n (Subarachnoid space) \u{1F3AF}", depth: "45 - 55 mm", desc: "\u0110\xCDCH \u0110\u1EBEN AN TO\xC0N: B\u1EC3 DNT th\u1EAFt l\u01B0ng (Lumbar cistern) ch\u1EE9a d\u1ECBch n\xE3o t\u1EE7y v\xE0 r\u1EC5 ch\xF9m \u0111u\xF4i ng\u1EF1a l\u01A1 l\u1EEDng. R\xFAt n\xF2ng stylet d\u1ECBch s\u1EBD nh\u1ECF gi\u1ECDt t\u1EF1 nhi\xEAn.", sensation: "DNT ch\u1EA3y nh\u1ECF gi\u1ECDt", color: "fill-cyan-100 stroke-cyan-500" }
     ];
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "space-y-5", children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-gradient-to-r from-teal-800 via-slate-800 to-indigo-900 text-white rounded-2xl p-4 sm:p-5 shadow-sm border border-teal-700/50", children: [
@@ -17118,10 +17187,16 @@ ${top.recommendedActions.map((a, i) => `${i + 1}. ${a}`).join("\n")}`;
               "Th\u1EE7 Thu\u1EADt L\xE2m S\xE0ng Chuy\xEAn S\xE2u"
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h3", { className: "text-base sm:text-lg md:text-xl font-bold flex items-center gap-2", children: "Quy Tr\xECnh K\u1EF9 Thu\u1EADt Ch\u1ECDc D\xF2 D\u1ECBch N\xE3o T\u1EE7y (Lumbar Puncture)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-[11px] sm:text-xs text-slate-300 max-w-2xl", children: "T\u1ED5ng h\u1EE3p chi ti\u1EBFt theo H\u01B0\u1EDBng d\u1EABn Encephalitis 2022 (Keun Tae Kim) v\xE0 Gi\xE1o tr\xECnh L\xE2m s\xE0ng Dr Chandra Vaidyanath (2014)." })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-[11px] sm:text-xs text-slate-300 max-w-2xl", children: [
+              "T\xEDch h\u1EE3p Atlas gi\u1EA3i ph\u1EABu th\u1EF1c t\u1EBF v\xE0 s\u01A1 \u0111\u1ED3 chu\u1EA9n theo H\u01B0\u1EDBng d\u1EABn ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Encephalitis 2022 (Kim KT)" }),
+              " v\xE0 Gi\xE1o tr\xECnh ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Dr Chandra Vaidyanath (2014)" }),
+              "."
+            ] })
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-1.5 self-start sm:self-auto shrink-0 bg-white/10 p-1 rounded-xl", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[11px] font-semibold text-teal-200 px-2", children: "V\u1ECB tr\xED chu\u1EA9n:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[11px] font-semibold text-teal-200 px-2", children: "V\u1ECB tr\xED ch\u1ECDc chu\u1EA9n:" }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[11px] font-bold bg-teal-600 text-white px-2.5 py-0.5 rounded-lg shadow-2xs font-mono", children: "Khe L3 - L4 ho\u1EB7c L4 - L5" })
           ] })
         ] }),
@@ -17149,550 +17224,610 @@ ${top.recommendedActions.map((a, i) => `${i + 1}. ${a}`).join("\n")}`;
         }) })
       ] }),
       subTab === "anatomy" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "space-y-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-wrap items-center gap-1.5 bg-slate-100 dark:bg-slate-800/80 p-1.5 rounded-xl text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-[11px] font-bold text-slate-500 dark:text-slate-400 px-2 flex items-center gap-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Eye, { className: "w-3.5 h-3.5 text-teal-600 dark:text-teal-400" }),
-            "Xem nhanh m\u1ED1c:"
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 bg-slate-100 dark:bg-slate-800/80 p-2 rounded-xl text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-wrap items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-[11px] font-bold text-slate-500 dark:text-slate-400 px-1 flex items-center gap-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Eye, { className: "w-3.5 h-3.5 text-teal-600 dark:text-teal-400" }),
+              "M\u1ED1c quan s\xE1t:"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                onClick: () => setAnatomyFocus("all"),
+                className: `px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${anatomyFocus === "all" ? "bg-white dark:bg-slate-900 text-teal-700 dark:text-teal-300 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+                children: "To\xE0n c\u1EA3nh"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                onClick: () => setAnatomyFocus("tuffier"),
+                className: `px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${anatomyFocus === "tuffier" ? "bg-amber-500 text-white shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-amber-600"}`,
+                children: "1. \u0110\u01B0\u1EDDng Tuffier (M\xE0o ch\u1EADu \u2194 L4)"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                onClick: () => setAnatomyFocus("safe_gap"),
+                className: `px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${anatomyFocus === "safe_gap" ? "bg-emerald-600 text-white shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-emerald-600"}`,
+                children: "2. \u0110i\u1EC3m ch\u1ECDc L3 - L4 \u2605"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                onClick: () => setAnatomyFocus("conus"),
+                className: `px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${anatomyFocus === "conus" ? "bg-rose-600 text-white shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-rose-600"}`,
+                children: "3. N\xF3n t\u1EE7y L1 - L2 (Nguy hi\u1EC3m)"
+              }
+            )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-            "button",
-            {
-              onClick: () => setAnatomyFocus("all"),
-              className: `px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${anatomyFocus === "all" ? "bg-white dark:bg-slate-900 text-teal-700 dark:text-teal-300 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
-              children: "To\xE0n c\u1EA3nh"
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-            "button",
-            {
-              onClick: () => setAnatomyFocus("tuffier"),
-              className: `px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${anatomyFocus === "tuffier" ? "bg-amber-500 text-white shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-amber-600"}`,
-              children: "1. \u0110\u01B0\u1EDDng Tuffier (M\xE0o ch\u1EADu)"
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-            "button",
-            {
-              onClick: () => setAnatomyFocus("safe_gap"),
-              className: `px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${anatomyFocus === "safe_gap" ? "bg-emerald-600 text-white shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-emerald-600"}`,
-              children: "2. \u0110i\u1EC3m ch\u1ECDc L3 - L4 \u2605"
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-            "button",
-            {
-              onClick: () => setAnatomyFocus("conus"),
-              className: `px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${anatomyFocus === "conus" ? "bg-rose-600 text-white shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-rose-600"}`,
-              children: "3. N\xF3n t\u1EE7y L1 - L2 (V\xF9ng nguy hi\u1EC3m)"
-            }
-          )
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-1 bg-white dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700 text-[11px]", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                onClick: () => setViewStyle("both"),
+                className: `px-2 py-0.5 rounded font-bold cursor-pointer ${viewStyle === "both" ? "bg-teal-600 text-white" : "text-slate-600 dark:text-slate-300"}`,
+                children: "T\u1EA5t c\u1EA3"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                onClick: () => setViewStyle("photo"),
+                className: `px-2 py-0.5 rounded font-bold cursor-pointer ${viewStyle === "photo" ? "bg-teal-600 text-white" : "text-slate-600 dark:text-slate-300"}`,
+                children: "\u1EA2nh Th\u1EF1c T\u1EBF"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+              "button",
+              {
+                onClick: () => setViewStyle("diagram"),
+                className: `px-2 py-0.5 rounded font-bold cursor-pointer ${viewStyle === "diagram" ? "bg-teal-600 text-white" : "text-slate-600 dark:text-slate-300"}`,
+                children: "S\u01A1 \u0110\u1ED3 Vector"
+              }
+            )
+          ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 lg:grid-cols-12 gap-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "lg:col-span-7 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 flex flex-col justify-between space-y-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center justify-between", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "font-bold text-xs uppercase tracking-wide text-slate-700 dark:text-slate-200 flex items-center gap-1.5", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Crosshair, { className: "w-4 h-4 text-teal-600 dark:text-teal-400" }),
-                "S\u01A1 \u0110\u1ED3 \u0110\u1ED1i Chi\u1EBFu: Ngo\xE0i Da vs Tr\u1EE5c T\u1EE7y S\u1ED1ng"
+        (viewStyle === "both" || viewStyle === "photo") && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "p-1 bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 rounded-lg text-xs font-bold font-mono", children: "H\xECnh 1" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200", children: "M\u1ED1c \u0110\u01B0\u1EDDng Tuffier Tr\xEAn Ng\u01B0\u1EDDi B\u1EC7nh Th\u1EF1c T\u1EBF" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 px-2 py-0.5 rounded-full font-bold", children: "D\u1EC5 hi\u1EC3u \u2022 Tr\u1EF1c quan 2 g\xF3c nh\xECn" })
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] text-slate-400 font-medium", children: "Vaidyanath (2014)" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "w-full bg-white dark:bg-slate-900 rounded-xl p-3 border border-slate-200 dark:border-slate-800 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("svg", { viewBox: "0 0 620 270", className: "w-full h-auto max-h-[260px]", xmlns: "http://www.w3.org/2000/svg", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("defs", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("linearGradient", { id: "safeGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("stop", { offset: "0%", stopColor: "#10b981", stopOpacity: "0.2" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("stop", { offset: "100%", stopColor: "#059669", stopOpacity: "0.3" })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("linearGradient", { id: "dangerGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("stop", { offset: "0%", stopColor: "#ef4444", stopOpacity: "0.25" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("stop", { offset: "100%", stopColor: "#dc2626", stopOpacity: "0.35" })
-                ] })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { transform: "translate(10, 10)", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "0", y: "0", width: "285", height: "250", rx: "10", fill: "#f8fafc", className: "dark:fill-slate-800/40", stroke: "#e2e8f0", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "12", y: "10", width: "180", height: "20", rx: "4", fill: "#0f766e" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "102", y: "23", textAnchor: "middle", fill: "#ffffff", fontSize: "9", fontWeight: "bold", children: "1. NH\xCCN T\u1EEA NGO\xC0I L\u01AFNG (T\u01AF TH\u1EBE)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-                  "path",
-                  {
-                    d: "M 60 40 C 40 100 40 180 80 230 C 130 240 220 240 260 210",
-                    fill: "none",
-                    stroke: "#cbd5e1",
-                    className: "dark:stroke-slate-700",
-                    strokeWidth: "28",
-                    strokeLinecap: "round"
-                  }
-                ),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-                  "path",
-                  {
-                    d: "M 60 40 C 40 100 40 180 80 230 C 130 240 220 240 260 210",
-                    fill: "none",
-                    stroke: "#0d9488",
-                    strokeWidth: "2",
-                    strokeDasharray: "4 3",
-                    opacity: "0.4"
-                  }
-                ),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "56", cy: "65", r: "5", fill: "#94a3b8" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "38", y: "68", fill: "#64748b", fontSize: "8", fontWeight: "bold", children: "L1" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "53", cy: "98", r: "5", fill: "#94a3b8" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "35", y: "101", fill: "#64748b", fontSize: "8", fontWeight: "bold", children: "L2" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "53", cy: "132", r: "6", fill: anatomyFocus === "safe_gap" ? "#0d9488" : "#64748b", stroke: "#fff", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "33", y: "135", fill: "#0d9488", fontSize: "8.5", fontWeight: "bold", children: "L3" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "56", cy: "166", r: "6", fill: anatomyFocus === "tuffier" ? "#f59e0b" : "#64748b", stroke: "#fff", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "36", y: "169", fill: "#d97706", fontSize: "8.5", fontWeight: "bold", children: "L4" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "63", cy: "200", r: "5", fill: "#94a3b8" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "43", y: "203", fill: "#64748b", fontSize: "8", fontWeight: "bold", children: "L5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { opacity: anatomyFocus === "all" || anatomyFocus === "tuffier" ? 1 : 0.25, className: "transition-opacity", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "56", cy: "166", r: "14", fill: "#f59e0b", fillOpacity: "0.2", stroke: "#f59e0b", strokeWidth: "1.5", strokeDasharray: "2 2" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "15", y1: "166", x2: "270", y2: "166", stroke: "#f59e0b", strokeWidth: "2.5", strokeDasharray: "5 3" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "155", y: "156", width: "115", height: "18", rx: "4", fill: "#fef3c7", stroke: "#f59e0b", strokeWidth: "1" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "212", y: "168", textAnchor: "middle", fill: "#92400e", fontSize: "7.5", fontWeight: "bold", children: "\u0110\u01B0\u1EDDng Tuffier (M\xE0o ch\u1EADu \u2194 L4)" })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { opacity: anatomyFocus === "all" || anatomyFocus === "safe_gap" ? 1 : 0.25, className: "transition-opacity", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "54", cy: "149", r: "8", fill: "#10b981", fillOpacity: "0.3", stroke: "#059669", strokeWidth: "2" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "54", cy: "149", r: "3", fill: "#059669" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "160", y1: "140", x2: "57", y2: "148", stroke: "#0284c7", strokeWidth: "3" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("polygon", { points: "57,148 66,145 64,151", fill: "#0284c7" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "160", y: "133", width: "30", height: "14", rx: "3", fill: "#0284c7" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "175", y: "143", textAnchor: "middle", fill: "#fff", fontSize: "7.5", fontWeight: "bold", children: "Kim LP" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "85", y: "118", width: "95", height: "16", rx: "4", fill: "#d1fae5", stroke: "#10b981", strokeWidth: "1" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "132", y: "129", textAnchor: "middle", fill: "#065f46", fontSize: "8", fontWeight: "bold", children: "\u2605 \u0110i\u1EC3m ch\u1ECDc L3 - L4" })
-                ] })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { transform: "translate(305, 10)", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "0", y: "0", width: "305", height: "250", rx: "10", fill: "#f8fafc", className: "dark:fill-slate-800/40", stroke: "#e2e8f0", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "12", y: "10", width: "210", height: "20", rx: "4", fill: "#312e81" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "117", y: "23", textAnchor: "middle", fill: "#ffffff", fontSize: "9", fontWeight: "bold", children: "2. TR\u1EE4C T\u1EE6Y S\u1ED0NG & V\xD9NG AN TO\xC0N (C\u1EAET D\u1ECCC)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { opacity: anatomyFocus === "all" || anatomyFocus === "conus" ? 1 : 0.2, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "15", y: "38", width: "275", height: "74", rx: "6", fill: "url(#dangerGrad)", stroke: "#f87171", strokeWidth: "1", strokeDasharray: "3 2" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "210", y: "55", fill: "#dc2626", fontSize: "8.5", fontWeight: "bold", children: "\u26D4 C\u1EA4M CH\u1ECCC (C\xD3 T\u1EE6Y S\u1ED0NG)" })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { opacity: anatomyFocus === "all" || anatomyFocus === "safe_gap" ? 1 : 0.2, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "15", y: "118", width: "275", height: "120", rx: "6", fill: "url(#safeGrad)", stroke: "#34d399", strokeWidth: "1.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "205", y: "133", fill: "#059669", fontSize: "8.5", fontWeight: "bold", children: "\u2714 V\xD9NG AN TO\xC0N (CH\u1EC8 C\xD3 DNT)" })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "30", y: "42", width: "46", height: "18", rx: "3", fill: "#94a3b8" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "53", y: "54", textAnchor: "middle", fill: "#fff", fontSize: "8", fontWeight: "bold", children: "T12" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "30", y: "66", width: "46", height: "18", rx: "3", fill: "#94a3b8" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "53", y: "78", textAnchor: "middle", fill: "#fff", fontSize: "8", fontWeight: "bold", children: "L1" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "30", y: "90", width: "46", height: "18", rx: "3", fill: "#94a3b8" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "53", y: "102", textAnchor: "middle", fill: "#fff", fontSize: "8", fontWeight: "bold", children: "L2" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "30", y: "122", width: "46", height: "20", rx: "3", fill: "#0d9488", stroke: "#14b8a6", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "53", y: "135", textAnchor: "middle", fill: "#fff", fontSize: "9", fontWeight: "bold", children: "L3" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "30", y: "156", width: "46", height: "20", rx: "3", fill: "#0d9488", stroke: "#14b8a6", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "53", y: "169", textAnchor: "middle", fill: "#fff", fontSize: "9", fontWeight: "bold", children: "L4" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "30", y: "190", width: "46", height: "18", rx: "3", fill: "#64748b" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "53", y: "202", textAnchor: "middle", fill: "#fff", fontSize: "8", fontWeight: "bold", children: "L5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M 30 216 L 76 216 L 70 234 L 36 234 Z", fill: "#475569" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "53", y: "227", textAnchor: "middle", fill: "#fff", fontSize: "7.5", fontWeight: "bold", children: "X\u01B0\u01A1ng c\xF9ng" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "88", y: "40", width: "10", height: "65", rx: "3", fill: "#ef4444" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("polygon", { points: "88,105 98,105 93,116", fill: "#dc2626" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "93", y1: "114", x2: "135", y2: "92", stroke: "#dc2626", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "135", y: "82", width: "145", height: "18", rx: "4", fill: "#fee2e2", stroke: "#ef4444", strokeWidth: "1" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "207", y: "94", textAnchor: "middle", fill: "#991b1b", fontSize: "7.5", fontWeight: "bold", children: "N\xF3n t\u1EE7y k\u1EBFt th\xFAc \u1EDF L1-L2" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "86", y: "116", width: "14", height: "115", rx: "4", fill: "#38bdf8", fillOpacity: "0.4", stroke: "#0ea5e9", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "90", y1: "116", x2: "89", y2: "225", stroke: "#0284c7", strokeWidth: "1", strokeDasharray: "3 3" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "93", y1: "116", x2: "93", y2: "225", stroke: "#0284c7", strokeWidth: "1", strokeDasharray: "3 3" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "96", y1: "116", x2: "97", y2: "225", stroke: "#0284c7", strokeWidth: "1", strokeDasharray: "3 3" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { transform: "translate(0, 5)", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "0", y1: "140", x2: "89", y2: "140", stroke: "#059669", strokeWidth: "2.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("polygon", { points: "89,140 82,137 82,143", fill: "#059669" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "105", y: "145", width: "140", height: "18", rx: "4", fill: "#ecfdf5", stroke: "#059669", strokeWidth: "1" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "175", y: "157", textAnchor: "middle", fill: "#047857", fontSize: "7.5", fontWeight: "bold", children: "M\u0169i kim v\xE0o khoang DNT khe L3-L4" })
-                ] })
-              ] })
-            ] }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-2.5 rounded-xl border text-xs transition-all bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800", children: [
-              anatomyFocus === "all" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-slate-600 dark:text-slate-300", children: [
-                "\u{1F4A1} ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Nguy\xEAn l\xFD then ch\u1ED1t:" }),
-                " T\u1EE7y s\u1ED1ng t\u1EADn c\xF9ng \u1EDF \u0111\u1ED1t ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "L1 - L2" }),
-                ". Khi ch\u1ECDc kim t\u1EA1i khe ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "L3 - L4 ho\u1EB7c L4 - L5" }),
-                " (ngay m\u1EE9c \u0111\u01B0\u1EDDng Tuffier), kim \u0111i v\xE0o b\u1EC3 d\u1ECBch n\xE3o t\u1EE7y ch\u1EC9 ch\u1EE9a r\u1EC5 ch\xF9m \u0111u\xF4i ng\u1EF1a l\u01A1 l\u1EEDng, tr\xE1nh 100% nguy c\u01A1 ch\u1ECDc v\xE0o nhu m\xF4 t\u1EE7y s\u1ED1ng."
-              ] }),
-              anatomyFocus === "tuffier" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-amber-800 dark:text-amber-300", children: [
-                "\u{1F4CD} ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "\u0110\u01B0\u1EDDng Tuffier (Intercristal line):" }),
-                " N\u1ED1i 2 m\xE0o ch\u1EADu, c\u1EAFt c\u1ED9t s\u1ED1ng t\u1EA1i gai L4. \u0110\xE2y l\xE0 m\u1ED1c s\u1EDD n\u1EAFn \u0111\u1EA7u ti\xEAn. ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("em", { children: "L\u01B0u \xFD:" }),
-                " \u0110\u1ECBnh v\u1ECB b\u1EB1ng tay c\xF3 th\u1EC3 ch\u1EC7ch l\xEAn tr\xEAn 1 \u0111\u1ED1t, do \u0111\xF3 ch\u1ECDn khe L3-L4 ho\u1EB7c L4-L5 l\xE0 kho\u1EA3ng an to\xE0n tuy\u1EC7t \u0111\u1ED1i."
-              ] }),
-              anatomyFocus === "safe_gap" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-emerald-800 dark:text-emerald-300", children: [
-                "\u{1F3AF} ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Khe L3 - L4 (V\u1ECB tr\xED v\xE0ng):" }),
-                " N\u1EB1m ngay ph\xEDa tr\xEAn \u0111\u01B0\u1EDDng Tuffier 1 khoang li\xEAn gai. Khe n\xE0y r\u1ED9ng, d\u1EC5 s\u1EDD th\u1EA5y v\xE0 n\u1EB1m xa n\xF3n t\u1EE7y nh\u1EA5t, l\xE0 l\u1EF1a ch\u1ECDn s\u1ED1 1 c\u1EE7a c\xE1c b\xE1c s\u0129 th\u1EA7n kinh."
-              ] }),
-              anatomyFocus === "conus" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-rose-800 dark:text-rose-300", children: [
-                "\u26A0\uFE0F ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "N\xF3n t\u1EE7y (Conus Medullaris):" }),
-                " K\u1EBFt th\xFAc \u1EDF \u0111\u0129a \u0111\u1EC7m L1-L2 (\u1EDF tr\u1EBB s\u01A1 sinh k\xE9o d\xE0i \u0111\u1EBFn L3). Tuy\u1EC7t \u0111\u1ED1i ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "kh\xF4ng ch\u1ECDc d\xF2 \u1EDF L1 - L2 ho\u1EB7c cao h\u01A1n" }),
-                " v\xEC s\u1EBD g\xE2y t\u1ED5n th\u01B0\u01A1ng tr\u1EF1c ti\u1EBFp t\u1EE7y s\u1ED1ng, d\u1EABn \u0111\u1EBFn li\u1EC7t hai chi d\u01B0\u1EDBi v\u0129nh vi\u1EC5n."
-              ] })
-            ] })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+              "div",
+              {
+                className: "relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group",
+                onClick: () => setSelectedPhotoModal({
+                  src: "./assets/lp_guide/lp_tuffier_line.png",
+                  title: "H\xECnh 1: X\xE1c \u0111\u1ECBnh \u0111\u01B0\u1EDDng Tuffier tr\xEAn b\u1EC7nh nh\xE2n n\u1EB1m nghi\xEAng",
+                  desc: "\u0110\u01B0\u1EDDng ngang n\u1ED1i hai \u0111i\u1EC3m cao nh\u1EA5t c\u1EE7a m\xE0o ch\u1EADu (Iliac crest) c\u1EAFt ngang m\u1ECFm gai L4. Kho\u1EA3ng li\xEAn gai L3-L4 n\u1EB1m ngay ph\xEDa tr\xEAn l\xE0 v\u1ECB tr\xED ch\u1ECDc d\xF2 t\u1ED1i \u01B0u.",
+                  source: "Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)"
+                }),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                    "img",
+                    {
+                      src: "./assets/lp_guide/lp_tuffier_line.png",
+                      alt: "\u0110\u01B0\u1EDDng Tuffier n\u1ED1i hai m\xE0o ch\u1EADu v\xE0 khe li\xEAn gai L3-L4",
+                      className: "max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Maximize2, { className: "w-3.5 h-3.5" }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
+              "\u{1F4CD} ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "\u0110\u01B0\u1EDDng Tuffier (Intercristal line):" }),
+              " \u0110\u01B0\u1EDDng n\u1ED1i 2 m\xE0o ch\u1EADu c\u1EAFt ngang \u0111\u1ED1t s\u1ED1ng L4. Khi s\u1EDD n\u1EAFn b\u1EB1ng tay, b\xE1c s\u0129 \u0111\u1ECBnh v\u1ECB gai L4 r\u1ED3i ch\u1ECDn khe ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "L3 - L4" }),
+              " (ngay tr\xEAn) ho\u1EB7c ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "L4 - L5" }),
+              " (ngay d\u01B0\u1EDBi) \u0111\u1EC3 \u0111\u01B0a kim v\xE0o."
+            ] }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "lg:col-span-5 space-y-3 flex flex-col justify-between", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 space-y-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("h4", { className: "font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm flex items-center gap-1.5", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CircleCheck, { className: "w-4 h-4 text-emerald-600 dark:text-emerald-400" }),
-                "M\u1ED1c V\xE0ng: \u0110\u01B0\u1EDDng Tuffier (Intercristal Line)"
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "p-1 bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 rounded-lg text-xs font-bold font-mono", children: "H\xECnh 2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200", children: "MRI C\u1ED9t S\u1ED1ng: T\u1EADn C\xF9ng T\u1EE7y S\u1ED1ng \u1EDE L1 - L2" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-xs text-slate-600 dark:text-slate-300 leading-relaxed", children: [
-                "\u0110\u01B0\u1EDDng ngang n\u1ED1i li\u1EC1n \u0111i\u1EC3m cao nh\u1EA5t c\u1EE7a ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "hai m\xE0o ch\u1EADu (iliac crests)" }),
-                ". \u0110\u01B0\u1EDDng n\xE0y th\u01B0\u1EDDng c\u1EAFt qua m\u1ECFm gai L4 ho\u1EB7c khe li\xEAn gai ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "L4 - L5" }),
-                "."
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] text-slate-400 font-medium", children: "Vaidyanath (2014)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+              "div",
+              {
+                className: "relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group",
+                onClick: () => setSelectedPhotoModal({
+                  src: "./assets/lp_guide/lp_mri_conus.png",
+                  title: "H\xECnh 2: Phim MRI ch\u1EE9ng minh v\u1ECB tr\xED n\xF3n t\u1EE7y v\xE0 v\xF9ng an to\xE0n L3-L4",
+                  desc: "T\u1EE7y s\u1ED1ng ng\u01B0\u1EDDi tr\u01B0\u1EDFng th\xE0nh t\u1EADn c\xF9ng \u1EDF \u0111\u1ED1t L1-L2 (1: N\xF3n t\u1EE7y). B\xEAn d\u01B0\u1EDBi l\xE0 b\u1EC3 DNT th\u1EAFt l\u01B0ng k\xE9o d\xE0i \u0111\u1EBFn S2 (3: Th\xE2n \u0111\u1ED1t L5). Do \u0111\xF3, ch\u1ECDc d\xF2 \u1EDF L3-L4 ho\u1EB7c L4-L5 an to\xE0n tuy\u1EC7t \u0111\u1ED1i, kh\xF4ng th\u1EC3 ch\u1EA1m v\xE0o t\u1EE7y s\u1ED1ng.",
+                  source: "Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)"
+                }),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                    "img",
+                    {
+                      src: "./assets/lp_guide/lp_mri_conus.png",
+                      alt: "Phim MRI c\u1ED9t s\u1ED1ng th\u1EAFt l\u01B0ng minh ch\u1EE9ng n\xF3n t\u1EE7y t\u1EADn c\xF9ng \u1EDF L1-L2",
+                      className: "max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Maximize2, { className: "w-3.5 h-3.5" }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
+              "\u26A0\uFE0F ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "C\u01A1 s\u1EDF an to\xE0n t\u1EE7y s\u1ED1ng:" }),
+              " T\u1EE7y s\u1ED1ng t\u1EADn c\xF9ng b\u1EB1ng n\xF3n t\u1EE7y \u1EDF ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "L1 - L2" }),
+              ". T\u1EEB L2 tr\u1EDF xu\u1ED1ng ch\u1EC9 c\xF3 d\u1ECBch n\xE3o t\u1EE7y v\xE0 r\u1EC5 th\u1EA7n kinh ch\xF9m \u0111u\xF4i ng\u1EF1a l\u01A1 l\u1EEDng t\u1EF1 do. Tuy\u1EC7t \u0111\u1ED1i ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("em", { children: "kh\xF4ng ch\u1ECDc \u1EDF L1-L2 ho\u1EB7c cao h\u01A1n" }),
+              "."
+            ] }) })
+          ] })
+        ] }),
+        (viewStyle === "both" || viewStyle === "diagram") && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "font-bold text-xs uppercase tracking-wide text-slate-700 dark:text-slate-200 flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Crosshair, { className: "w-4 h-4 text-teal-600 dark:text-teal-400" }),
+              "S\u01A1 \u0110\u1ED3 Gi\u1EA3i Ph\u1EABu Chu\u1EA9n X\xE1c: Tr\u1EE5c \u0110\u1ED1t S\u1ED1ng vs H\u01B0\u1EDBng \u0110\xE2m Kim T\u1EEB Ph\xEDa L\u01B0ng"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 px-2 py-0.5 rounded-full font-bold", children: "Gi\u1EA3i ph\u1EABu \u0111\xFAng chi\u1EC1u: Kim \u0111\xE2m t\u1EEB sau l\u01B0ng (ph\u1EA3i) v\xE0o khoang DNT" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "w-full bg-white dark:bg-slate-900 rounded-xl p-3 border border-slate-200 dark:border-slate-800 flex items-center justify-center overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("svg", { viewBox: "0 0 680 290", className: "w-full min-w-[580px] h-auto max-h-[290px]", xmlns: "http://www.w3.org/2000/svg", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("defs", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("linearGradient", { id: "safeGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("stop", { offset: "0%", stopColor: "#10b981", stopOpacity: "0.2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("stop", { offset: "100%", stopColor: "#059669", stopOpacity: "0.3" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-2 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 rounded-lg text-[11px] text-amber-900 dark:text-amber-300", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "C\u1EA3nh b\xE1o l\xE2m s\xE0ng (Encephalitis 2022):" }),
-                " \u0110\u1ECBnh v\u1ECB \u0111\u01B0\u1EDDng Tuffier b\u1EB1ng tay c\xF3 \u0111\u1ED9 ch\xEDnh x\xE1c 30% - 60%. C\xF3 t\u1EDBi 50% tr\u01B0\u1EDDng h\u1EE3p ch\u1ECDc v\xE0o v\u1ECB tr\xED ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("em", { children: "cao h\u01A1n 1 t\u1EA7ng \u0111\u1ED1t" }),
-                " so v\u1EDBi d\u1EF1 ki\u1EBFn. V\xEC v\u1EADy, l\u1EF1a ch\u1ECDn khe ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "L3 - L4 ho\u1EB7c L4 - L5" }),
-                " l\xE0 an to\xE0n nh\u1EA5t \u0111\u1EC3 tr\xE1nh t\u1ED5n th\u01B0\u01A1ng n\xF3n t\u1EE7y."
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("linearGradient", { id: "dangerGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("stop", { offset: "0%", stopColor: "#ef4444", stopOpacity: "0.25" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("stop", { offset: "100%", stopColor: "#dc2626", stopOpacity: "0.35" })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 space-y-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("h4", { className: "font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm flex items-center gap-1.5", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Info, { className: "w-4 h-4 text-teal-600 dark:text-teal-400" }),
-                "T\u01B0 Th\u1EBF B\u1EC7nh Nh\xE2n Chu\u1EA9n (Positioning)"
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "15", y: "10", width: "160", height: "22", rx: "4", fill: "#0f766e" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "95", y: "25", textAnchor: "middle", fill: "#ffffff", fontSize: "9.5", fontWeight: "bold", children: "PH\xCDA TR\u01AF\u1EDAC (B\u1EE4NG / TH\xC2N \u0110\u1ED0T)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "490", y: "10", width: "170", height: "22", rx: "4", fill: "#312e81" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "575", y: "25", textAnchor: "middle", fill: "#ffffff", fontSize: "9.5", fontWeight: "bold", children: "PH\xCDA SAU (L\u01AFNG / M\u1ECEM GAI & DA)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { opacity: anatomyFocus === "all" || anatomyFocus === "conus" ? 1 : 0.2, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "15", y: "40", width: "650", height: "75", rx: "6", fill: "url(#dangerGrad)", stroke: "#f87171", strokeWidth: "1", strokeDasharray: "3 2" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "350", y: "58", textAnchor: "middle", fill: "#dc2626", fontSize: "9", fontWeight: "bold", children: "\u26D4 V\xD9NG C\u1EA4M CH\u1ECCC: C\xD3 T\u1EE6Y S\u1ED0NG (N\xD3N T\u1EE6Y T\u1EACN C\xD9NG \u1EDE L1-L2)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { opacity: anatomyFocus === "all" || anatomyFocus === "safe_gap" ? 1 : 0.2, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "15", y: "122", width: "650", height: "150", rx: "6", fill: "url(#safeGrad)", stroke: "#34d399", strokeWidth: "1.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "350", y: "137", textAnchor: "middle", fill: "#059669", fontSize: "9", fontWeight: "bold", children: "\u2714 V\xD9NG AN TO\xC0N TUY\u1EC6T \u0110\u1ED0I (L3-L4 HO\u1EB6C L4-L5): CH\u1EC8 CH\u1EE8A DNT V\xC0 R\u1EC4 CH\xD9M \u0110U\xD4I NG\u1EF0A" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "40", y: "45", width: "70", height: "18", rx: "3", fill: "#94a3b8" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "58", textAnchor: "middle", fill: "#fff", fontSize: "8.5", fontWeight: "bold", children: "Th\xE2n T12" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "40", y: "68", width: "70", height: "18", rx: "3", fill: "#94a3b8" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "81", textAnchor: "middle", fill: "#fff", fontSize: "8.5", fontWeight: "bold", children: "Th\xE2n L1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "40", y: "91", width: "70", height: "18", rx: "3", fill: "#94a3b8" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "104", textAnchor: "middle", fill: "#fff", fontSize: "8.5", fontWeight: "bold", children: "Th\xE2n L2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "40", y: "145", width: "70", height: "22", rx: "3", fill: "#0d9488", stroke: "#14b8a6", strokeWidth: "1.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "160", textAnchor: "middle", fill: "#fff", fontSize: "9.5", fontWeight: "bold", children: "Th\xE2n L3" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "40", y: "185", width: "70", height: "22", rx: "3", fill: "#0d9488", stroke: "#14b8a6", strokeWidth: "1.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "200", textAnchor: "middle", fill: "#fff", fontSize: "9.5", fontWeight: "bold", children: "Th\xE2n L4" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "40", y: "222", width: "70", height: "20", rx: "3", fill: "#64748b" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "236", textAnchor: "middle", fill: "#fff", fontSize: "8.5", fontWeight: "bold", children: "Th\xE2n L5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M 40 248 L 110 248 L 95 268 L 55 268 Z", fill: "#475569" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "261", textAnchor: "middle", fill: "#fff", fontSize: "7.5", fontWeight: "bold", children: "X\u01B0\u01A1ng c\xF9ng" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "145", y: "42", width: "50", height: "225", rx: "6", fill: "#e0f2fe", stroke: "#38bdf8", strokeWidth: "1.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "170", y: "260", textAnchor: "middle", fill: "#0284c7", fontSize: "8", fontWeight: "bold", children: "Khoang DNT" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "155", y: "42", width: "30", height: "60", rx: "4", fill: "#ef4444" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("polygon", { points: "155,102 185,102 170,118", fill: "#dc2626" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "170", y: "75", textAnchor: "middle", fill: "#fff", fontSize: "7.5", fontWeight: "bold", children: "T\u1EE6Y S\u1ED0NG" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "170", y: "112", textAnchor: "middle", fill: "#fff", fontSize: "7", fontWeight: "bold", children: "N\xF3n t\u1EE7y" }),
+            [152, 160, 168, 176, 184].map((lx, idx) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: lx, y1: "120", x2: lx + (idx % 2 === 0 ? 3 : -3), y2: "250", stroke: "#0284c7", strokeWidth: "1.5", strokeDasharray: "4 3" }, idx)),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M 195 72 L 280 82 L 275 92 L 195 80 Z", fill: "#cbd5e1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "290", y: "88", fill: "#64748b", fontSize: "8", fontWeight: "bold", children: "Gai L1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M 195 95 L 285 106 L 280 116 L 195 103 Z", fill: "#cbd5e1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "295", y: "112", fill: "#64748b", fontSize: "8", fontWeight: "bold", children: "Gai L2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M 195 148 L 300 160 L 295 172 L 195 158 Z", fill: "#0d9488", opacity: "0.8" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "310", y: "167", fill: "#0f766e", fontSize: "9", fontWeight: "bold", children: "Gai L3" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M 195 188 L 305 202 L 300 214 L 195 198 Z", fill: "#0d9488", opacity: "0.8" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "315", y: "209", fill: "#0f766e", fontSize: "9", fontWeight: "bold", children: "Gai L4 (M\xE0o ch\u1EADu)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M 195 225 L 290 238 L 285 248 L 195 233 Z", fill: "#cbd5e1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "300", y: "244", fill: "#64748b", fontSize: "8", fontWeight: "bold", children: "Gai L5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("polygon", { points: "195,160 295,172 300,202 195,188", fill: "#fda4af", opacity: "0.5", stroke: "#f43f5e", strokeWidth: "1", strokeDasharray: "2 2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "250", y: "185", textAnchor: "middle", fill: "#be123c", fontSize: "7.5", fontWeight: "bold", children: "D.C li\xEAn gai" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "195", y: "125", width: "8", height: "125", rx: "2", fill: "#eab308", stroke: "#ca8a04", strokeWidth: "1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "207", y: "152", fill: "#a16207", fontSize: "7.5", fontWeight: "bold", children: "D.C V\xC0NG" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "450", y1: "40", x2: "450", y2: "265", stroke: "#f59e0b", strokeWidth: "6", strokeLinecap: "round" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "460", y: "60", fill: "#d97706", fontSize: "8.5", fontWeight: "bold", children: "M\u1EB7t da l\u01B0ng" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { opacity: anatomyFocus === "all" || anatomyFocus === "tuffier" ? 1 : 0.25, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "20", y1: "209", x2: "470", y2: "209", stroke: "#f59e0b", strokeWidth: "2", strokeDasharray: "5 3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "475", y: "198", width: "175", height: "20", rx: "4", fill: "#fef3c7", stroke: "#f59e0b", strokeWidth: "1" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "562", y: "212", textAnchor: "middle", fill: "#92400e", fontSize: "8", fontWeight: "bold", children: "\u0110\u01B0\u1EDDng Tuffier (2 m\xE0o ch\u1EADu \u2194 L4)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { opacity: anatomyFocus === "all" || anatomyFocus === "safe_gap" ? 1 : 0.25, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "580", y1: "182", x2: "185", y2: "177", stroke: "#0284c7", strokeWidth: "3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("polygon", { points: "185,177 195,174 195,180", fill: "#0284c7" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "580", y: "173", width: "35", height: "18", rx: "4", fill: "#0284c7" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "597", y: "185", textAnchor: "middle", fill: "#fff", fontSize: "8", fontWeight: "bold", children: "\u0110\u1ED1c kim" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "185", cy: "177", r: "9", fill: "#10b981", fillOpacity: "0.3", stroke: "#059669", strokeWidth: "2" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "185", cy: "177", r: "3.5", fill: "#059669" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "330", y: "148", width: "130", height: "20", rx: "4", fill: "#ecfdf5", stroke: "#10b981", strokeWidth: "1" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "395", y: "161", textAnchor: "middle", fill: "#065f46", fontSize: "8", fontWeight: "bold", children: "\u2605 M\u0169i kim v\xE0o b\u1EC3 DNT khe L3-L4" })
+            ] })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3 rounded-xl border text-xs transition-all bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800", children: [
+            anatomyFocus === "all" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-slate-600 dark:text-slate-300", children: [
+              "\u{1F4A1} ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Nguy\xEAn t\u1EAFc v\xE0ng:" }),
+              " Kim ch\u1ECDc t\u1EEB ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "m\u1EB7t da sau l\u01B0ng" }),
+              " \u0111i xuy\xEAn qua kho\u1EA3ng li\xEAn gai gi\u1EEFa hai m\u1ECFm gai L3 v\xE0 L4, xuy\xEAn qua d\xE2y ch\u1EB1ng v\xE0ng v\xE0 m\xE0ng c\u1EE9ng \u0111\u1EC3 v\xE0o ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "b\u1EC3 d\u1ECBch n\xE3o t\u1EE7y th\u1EAFt l\u01B0ng" }),
+              ". Th\xE2n \u0111\u1ED1t s\u1ED1ng n\u1EB1m \u1EDF ph\xEDa tr\u01B0\u1EDBc \u0111\xF3ng vai tr\xF2 nh\u01B0 th\xE0nh ch\u1EB7n an to\xE0n n\u1EBFu kim \u0111i qu\xE1 s\xE2u."
+            ] }),
+            anatomyFocus === "tuffier" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-amber-800 dark:text-amber-300", children: [
+              "\u{1F4CD} ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "\u0110\u01B0\u1EDDng Tuffier (Intercristal line):" }),
+              " N\u1ED1i 2 m\xE0o ch\u1EADu c\u1EAFt c\u1ED9t s\u1ED1ng t\u1EA1i gai L4. Ch\u1ECDn khe L3-L4 ngay ph\xEDa tr\xEAn \u0111\u1EC3 \u0111\u1EA3m b\u1EA3o an to\xE0n tuy\u1EC7t \u0111\u1ED1i, v\xEC s\u1EDD n\u1EAFn b\u1EB1ng tay c\xF3 th\u1EC3 ch\u1EC7ch l\xEAn tr\xEAn 1 \u0111\u1ED1t s\u1ED1ng."
+            ] }),
+            anatomyFocus === "safe_gap" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-emerald-800 dark:text-emerald-300", children: [
+              "\u{1F3AF} ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Khe L3 - L4 (V\u1ECB tr\xED l\u1EF1a ch\u1ECDn #1):" }),
+              " N\u1EB1m c\xE1ch xa n\xF3n t\u1EE7y, khoang li\xEAn gai r\u1ED9ng r\xE3i, kim \u0111i v\xE0o ch\u1EC9 g\u1EB7p c\xE1c r\u1EC5 ch\xF9m \u0111u\xF4i ng\u1EF1a l\u01A1 l\u1EEDng trong d\u1ECBch n\xE3o t\u1EE7y, ho\xE0n to\xE0n kh\xF4ng g\xE2y t\u1ED5n th\u01B0\u01A1ng th\u1EA7n kinh v\u0129nh vi\u1EC5n."
+            ] }),
+            anatomyFocus === "conus" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-rose-800 dark:text-rose-300", children: [
+              "\u26A0\uFE0F ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "N\xF3n t\u1EE7y (Conus Medullaris):" }),
+              " K\u1EBFt th\xFAc \u1EDF m\u1EE9c \u0111\u0129a \u0111\u1EC7m L1-L2 (nh\u01B0 th\u1EA5y tr\xEAn phim MRI \u1EDF H\xECnh 2). Tuy\u1EC7t \u0111\u1ED1i ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "kh\xF4ng ch\u1ECDc d\xF2 \u1EDF L1 - L2 ho\u1EB7c cao h\u01A1n" }),
+              " v\xEC c\xF3 th\u1EC3 \u0111\xE2m tr\u1EF1c ti\u1EBFp v\xE0o nhu m\xF4 t\u1EE7y s\u1ED1ng g\xE2y li\u1EC7t hai chi d\u01B0\u1EDBi."
+            ] })
+          ] })
+        ] })
+      ] }),
+      subTab === "layers" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "p-1 bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 rounded-lg text-xs font-bold font-mono", children: "H\xECnh 3" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200", children: "\u0110\u01B0\u1EDDng \u0110i Kim Qua C\xE1c L\u1EDBp V\xE0o Khoang D\u01B0\u1EDBi Nh\u1EC7n" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("ul", { className: "text-xs text-slate-600 dark:text-slate-300 space-y-1.5", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("li", { className: "flex items-start gap-1.5", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-teal-600 dark:text-teal-400 font-bold", children: "\u2022" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "T\u01B0 th\u1EBF n\u1EB1m nghi\xEAng co (Lateral Recumbent - \u01AFu ti\xEAn #1):" }),
-                    ' L\u01B0ng vu\xF4ng g\xF3c v\u1EDBi m\xE9p gi\u01B0\u1EDDng, c\u1ED5 g\u1EADp nh\u1EB9, 2 g\u1ED1i co s\xE1t ng\u1EF1c b\u1EE5ng ("t\u01B0 th\u1EBF con t\xF4m"). Vai v\xE0 h\xF4ng tr\xEAn c\xF9ng m\u1ED9t m\u1EB7t ph\u1EB3ng th\u1EB3ng \u0111\u1EE9ng (kh\xF4ng v\u1EB7n xo\u1EAFn).'
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] text-slate-400 font-medium", children: "Vaidyanath (2014)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+              "div",
+              {
+                className: "relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group",
+                onClick: () => setSelectedPhotoModal({
+                  src: "./assets/lp_guide/lp_needle_trajectory.png",
+                  title: "H\xECnh 3: \u0110\u01B0\u1EDDng \u0111i c\u1EE7a kim t\u1EE7y s\u1ED1ng qua m\u1ECFm gai v\xE0 d\xE2y ch\u1EB1ng v\xE0ng",
+                  desc: "Kim t\u1EE7y s\u1ED1ng \u0111i t\u1EEB ph\xEDa sau qua d\xE2y ch\u1EB1ng li\xEAn gai, v\u01B0\u1EE3t qua d\xE2y ch\u1EB1ng v\xE0ng (Ligamentum flavum), xuy\xEAn th\u1EE7ng m\xE0ng c\u1EE9ng (Dura) v\xE0 v\xE0o khoang d\u01B0\u1EDBi nh\u1EC7n (Subarachnoid space).",
+                  source: "Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)"
+                }),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                    "img",
+                    {
+                      src: "./assets/lp_guide/lp_needle_trajectory.png",
+                      alt: "Kim t\u1EE7y s\u1ED1ng \u0111\u1EB7t trong khoang d\u01B0\u1EDBi nh\u1EC7n",
+                      className: "max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Maximize2, { className: "w-3.5 h-3.5" }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
+              "\u{1F3AF} ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "M\u0169i kim d\u1EEBng \u1EDF khoang d\u01B0\u1EDBi nh\u1EC7n:" }),
+              " Chi\u1EC1u s\xE2u trung b\xECnh \u1EDF ng\u01B0\u1EDDi tr\u01B0\u1EDFng th\xE0nh l\xE0 ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "4 - 5 cm (kho\u1EA3ng 2/3 chi\u1EC1u d\xE0i kim)" }),
+              '. Khi qua m\xE0ng c\u1EE9ng s\u1EBD c\u1EA3m nh\u1EADn r\xF5 ti\u1EBFng "s\u1EE5p h\u1EABng" (pop sensation).'
+            ] }) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "p-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 rounded-lg text-xs font-bold font-mono", children: "H\xECnh 4" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200", children: "C\u1EAFt D\u1ECDc Gi\u1EA3i Ph\u1EABu D\xE2y Ch\u1EB1ng & \u0110\u1ED1t S\u1ED1ng" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] text-slate-400 font-medium", children: "Vaidyanath (2014)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+              "div",
+              {
+                className: "relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group",
+                onClick: () => setSelectedPhotoModal({
+                  src: "./assets/lp_guide/lp_sagittal_anatomy.png",
+                  title: "H\xECnh 4: Thi\u1EBFt \u0111\u1ED3 c\u1EAFt d\u1ECDc gi\u1EA3i ph\u1EABu c\u1ED9t s\u1ED1ng th\u1EAFt l\u01B0ng",
+                  desc: "1: D\xE2y ch\u1EB1ng tr\xEAn gai; 2: M\u1ECFm gai \u0111\u1ED1t s\u1ED1ng; 3: D\xE2y ch\u1EB1ng li\xEAn gai; 4: D\xE2y ch\u1EB1ng v\xE0ng; 5: D\xE2y ch\u1EB1ng d\u1ECDc tr\u01B0\u1EDBc; 6: D\xE2y ch\u1EB1ng d\u1ECDc sau; 7: \u0110\u0129a \u0111\u1EC7m.",
+                  source: "Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)"
+                }),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                    "img",
+                    {
+                      src: "./assets/lp_guide/lp_sagittal_anatomy.png",
+                      alt: "C\u1EAFt d\u1ECDc gi\u1EA3i ph\u1EABu c\xE1c d\xE2y ch\u1EB1ng c\u1ED9t s\u1ED1ng th\u1EAFt l\u01B0ng",
+                      className: "max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Maximize2, { className: "w-3.5 h-3.5" }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
+              "\u{1F4D6} ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "C\u1EA5u tr\xFAc d\xE2y ch\u1EB1ng li\xEAn k\u1EBFt:" }),
+              " D\xE2y ch\u1EB1ng tr\xEAn gai v\xE0 li\xEAn gai gi\u1EEF tr\u1EE5c kim \u1ED5n \u0111\u1ECBnh \u1EDF \u0111\u01B0\u1EDDng gi\u1EEFa. D\xE2y ch\u1EB1ng v\xE0ng l\xE0 ranh gi\u1EDBi \u0111\xE0n h\u1ED3i cu\u1ED1i c\xF9ng tr\u01B0\u1EDBc khi v\xE0o khoang m\xE0ng c\u1EE9ng."
+            ] }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("h4", { className: "font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Layers, { className: "w-4 h-4 text-indigo-600 dark:text-indigo-400" }),
+              "B\u1EA3ng Tra C\u1EE9u 8 L\u1EDBp Gi\u1EA3i Ph\u1EABu Kim \u0110i Qua & C\u1EA3m Gi\xE1c C\u1EA3n Tay"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-xs text-slate-500 dark:text-slate-400 mt-0.5", children: "B\u1EA5m v\xE0o t\u1EEBng l\u1EDBp \u0111\u1EC3 xem c\u1EA3m gi\xE1c x\xFAc gi\xE1c (tactile sensation) v\xE0 l\u01B0u \xFD th\u1EF1c h\xE0nh l\xE2m s\xE0ng." })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5", children: layersData.map((layer) => {
+            const isSelected = activeLayer === layer.num;
+            return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+              "div",
+              {
+                onClick: () => setActiveLayer(isSelected ? null : layer.num),
+                className: `p-3 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${isSelected ? "bg-teal-50 dark:bg-teal-950/70 border-teal-500 shadow-xs ring-2 ring-teal-500/20" : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center justify-between gap-1 mb-1", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-bold text-xs text-slate-900 dark:text-slate-100", children: layer.name }),
+                      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] font-mono text-slate-400 dark:text-slate-500", children: layer.depth })
+                    ] }),
+                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed", children: layer.desc })
+                  ] }),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "mt-2 pt-2 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] font-bold text-teal-700 dark:text-teal-400", children: "C\u1EA3m gi\xE1c tay:" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: `text-[10px] font-bold px-1.5 py-0.2 rounded ${layer.num === 5 ? "bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300" : layer.num === 7 ? "bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300" : layer.num === 8 ? "bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300" : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"}`, children: layer.sensation })
                   ] })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("li", { className: "flex items-start gap-1.5", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-teal-600 dark:text-teal-400 font-bold", children: "\u2022" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "L\u1EE3i \xEDch n\u1EB1m nghi\xEAng:" }),
-                    " \u0110o \xE1p l\u1EF1c m\u1EDF (Opening Pressure) ch\xEDnh x\xE1c nh\u1EA5t (60 - 250 mmH2O) v\xE0 h\u1EA1 th\u1EA5p \u0111\u1EA7u gi\xFAp gi\u1EA3m t\u1EF7 l\u1EC7 \u0111au \u0111\u1EA7u sau ch\u1ECDc (PDPH)."
-                  ] })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("li", { className: "flex items-start gap-1.5", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-teal-600 dark:text-teal-400 font-bold", children: "\u2022" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "T\u01B0 th\u1EBF ng\u1ED3i c\xFAi (Sitting):" }),
-                    " D\xE0nh cho ng\u01B0\u1EDDi b\xE9o ph\xEC ho\u1EB7c kh\xF3 t\xECm khe kh\u1EDBp, nh\u01B0ng \xE1p l\u1EF1c m\u1EDF s\u1EBD cao gi\u1EA3 t\u1EA1o (200 - 300 mmH2O)."
-                  ] })
+                ]
+              },
+              layer.num
+            );
+          }) })
+        ] })
+      ] }),
+      subTab === "bevel" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "p-1 bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 rounded-lg text-xs font-bold font-mono", children: "H\xECnh 5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200", children: "C\u01A1 Ch\u1EBF T\u1ED5n Th\u01B0\u01A1ng M\xE0ng C\u1EE9ng & H\u01B0\u1EDBng M\u1EB7t V\xE1t" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] text-slate-400 font-medium", children: "Encephalitis (2022)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+              "div",
+              {
+                className: "relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group",
+                onClick: () => setSelectedPhotoModal({
+                  src: "./assets/lp_guide/lp_bevel_orientation.jpg",
+                  title: "H\xECnh 5: M\u0169i kim Quincke v\xE0 c\u01A1 ch\u1EBF t\u1ED5n th\u01B0\u01A1ng m\xE0ng c\u1EE9ng",
+                  desc: "A: M\u0169i v\xE1t kim Quincke s\u1EAFc nh\u1ECDn. B: H\u01B0\u1EDBng c\xE1c th\u1EDB s\u1EE3i collagen m\xE0ng c\u1EE9ng ch\u1EA1y d\u1ECDc. Ch\u1ECDc song song (Parallel insertion) ch\u1EC9 t\xE1ch c\xE1c th\u1EDB s\u1EE3i, l\u1ED7 t\u1EF1 \u0111\xF3ng l\u1EA1i khi r\xFAt kim. Ch\u1ECDc vu\xF4ng g\xF3c (Vertical insertion) c\u1EAFt \u0111\u1EE9t c\xE1c s\u1EE3i collagen l\xE0m d\u1ECBch n\xE3o t\u1EE7y r\xF2 r\u1EC9 k\xE9o d\xE0i d\u1EABn \u0111\u1EBFn \u0111au \u0111\u1EA7u sau ch\u1ECDc (PDPH).",
+                  source: "Kim KT. Lumbar puncture: considerations, procedure, and complications. Encephalitis 2022;2(4):93-97."
+                }),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                    "img",
+                    {
+                      src: "./assets/lp_guide/lp_bevel_orientation.jpg",
+                      alt: "H\u01B0\u1EDBng m\u1EB7t v\xE1t kim v\xE0 c\u01A1 ch\u1EBF r\xE1ch m\xE0ng c\u1EE9ng theo Encephalitis 2022",
+                      className: "max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Maximize2, { className: "w-3.5 h-3.5" }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 space-y-1", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
+              "\u2714 ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Nguy\xEAn t\u1EAFc m\u1EB7t v\xE1t song song (Parallel Bevel):" }),
+              " Khi b\u1EC7nh nh\xE2n n\u1EB1m nghi\xEAng, \u0111\u1EB7t m\u1EB7t v\xE1t h\u01B0\u1EDBng ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "l\xEAn tr\u1EA7n nh\xE0" }),
+              " (ho\u1EB7c song song v\u1EDBi tr\u1EE5c c\u1ED9t s\u1ED1ng). M\u0169i kim s\u1EBD l\xE1ch gi\u1EEFa c\xE1c th\u1EDB s\u1EE3i collagen m\xE0 kh\xF4ng l\xE0m \u0111\u1EE9t s\u1EE3i."
+            ] }) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "p-1 bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 rounded-lg text-xs font-bold font-mono", children: "H\xECnh 6 & 7" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200", children: "Kim Quincke & K\u1EF9 Thu\u1EADt S\u1EED D\u1EE5ng N\xF2ng Th\xF4ng (Stylet)" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] text-slate-400 font-medium", children: "Encephalitis (2022)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+              "div",
+              {
+                className: "relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group",
+                onClick: () => setSelectedPhotoModal({
+                  src: "./assets/lp_guide/lp_stylet_tip.jpg",
+                  title: "H\xECnh 6 & 7: Kim Quincke c\xF3 v\xE0 kh\xF4ng c\xF3 n\xF2ng th\xF4ng (Stylet)",
+                  desc: "A: \u0110\u1EA7u kim c\xF3 n\xF2ng th\xF4ng stylet l\u1EA5p k\xEDn l\xF2ng kim. B: \u0110\u1EA7u kim r\u1ED7ng khi r\xFAt n\xF2ng. Lu\xF4n \u0111\xFAt l\u1EA1i n\xF2ng th\xF4ng tr\u01B0\u1EDBc khi r\xFAt kim ra \u0111\u1EC3 tr\xE1nh s\u1EE3i m\xE0ng nh\u1EC7n b\u1ECB k\xE9o k\u1EB9t ra ngo\xE0i m\xE0ng c\u1EE9ng g\xE2y r\xF2 DNT.",
+                  source: "Kim KT. Lumbar puncture: considerations, procedure, and complications. Encephalitis 2022;2(4):93-97."
+                }),
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                    "img",
+                    {
+                      src: "./assets/lp_guide/lp_stylet_tip.jpg",
+                      alt: "\u0110\u1EA7u kim ch\u1ECDc t\u1EE7y s\u1ED1ng c\xF3 v\xE0 kh\xF4ng c\xF3 n\xF2ng th\xF4ng stylet",
+                      className: "max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Maximize2, { className: "w-3.5 h-3.5" }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 space-y-1", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
+              "\u2B50 ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Nghi\xEAn c\u1EE9u Strupp (JAMA, 600 b\u1EC7nh nh\xE2n):" }),
+              " \u0110\xFAt l\u1EA1i n\xF2ng th\xF4ng (Stylet) ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("em", { children: "tr\u01B0\u1EDBc khi r\xFAt kim" }),
+              " gi\xFAp gi\u1EA3m t\u1EDBi 50% nguy c\u01A1 \u0111au \u0111\u1EA7u sau ch\u1ECDc (PDPH) nh\u1EDD ng\u0103n ch\u1EB7n b\u1EA5c d\u1EABn l\u01B0u s\u1EE3i m\xE0ng nh\u1EC7n."
+            ] }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xs grid grid-cols-1 md:grid-cols-12 gap-4 items-center", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "md:col-span-5 flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+            "div",
+            {
+              className: "relative p-2 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer group",
+              onClick: () => setSelectedPhotoModal({
+                src: "./assets/lp_guide/lp_manometer_setup.png",
+                title: "H\xECnh 8: H\u1EC7 th\u1ED1ng \u0111o \xE1p l\u1EF1c m\u1EDF b\u1EB1ng \xE1p k\u1EBF th\u1EE7y t\u0129nh Manometer",
+                desc: "Kim t\u1EE7y s\u1ED1ng \u0111\u01B0\u1EE3c k\u1EBFt n\u1ED1i v\u1EDBi kh\xF3a 3 ng\u1EA3 v\xE0 c\u1ED9t \xE1p k\u1EBF th\u1EE7y t\u0129nh Manometer \u0111\u1EB7t vu\xF4ng g\xF3c th\u1EB3ng \u0111\u1EE9ng \u0111\u1EC3 \u0111o ch\xEDnh x\xE1c \xE1p l\u1EF1c m\u1EDF DNT ban \u0111\u1EA7u.",
+                source: "Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)"
+              }),
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                  "img",
+                  {
+                    src: "./assets/lp_guide/lp_manometer_setup.png",
+                    alt: "Kim ch\u1ECDc d\xF2 n\u1ED1i v\u1EDBi \xE1p k\u1EBF Manometer qua kh\xF3a ba ch\u1EA1c",
+                    className: "max-h-[220px] w-auto object-contain rounded-lg shadow-xs group-hover:scale-[1.02] transition-transform"
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Maximize2, { className: "w-3.5 h-3.5" }) })
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "md:col-span-7 space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "inline-flex items-center gap-1.5 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Gauge, { className: "w-3.5 h-3.5" }),
+              " K\u1EF9 Thu\u1EADt \u0110o \xC1p L\u1EF1c M\u1EDF (Opening Pressure)"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base", children: "Quy Tr\xECnh \u0110o \xC1p L\u1EF1c Chu\u1EA9n B\u1EB1ng \xC1p K\u1EBF Manometer" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("ul", { className: "text-xs text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("li", { className: "flex items-start gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-teal-600 dark:text-teal-400 font-bold", children: "\u2022" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "T\u01B0 th\u1EBF b\u1EC7nh nh\xE2n:" }),
+                  " B\u1EAFt bu\u1ED9c n\u1EB1m nghi\xEAng, ",
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("em", { children: "du\u1ED7i nh\u1EB9 hai ch\xE2n" }),
+                  " v\xE0 th\u1EDF \u0111\u1EC1u t\u1EF1 nhi\xEAn. Co g\u1EADp g\u1ED1i qu\xE1 ch\u1EB7t ho\u1EB7c g\u1ED3ng b\u1EE5ng s\u1EBD l\xE0m t\u0103ng \xE1p l\u1EF1c \u1ED5 b\u1EE5ng v\xE0 t\u0103ng gi\u1EA3 t\u1EA1o \xE1p l\u1EF1c DNT."
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("li", { className: "flex items-start gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-teal-600 dark:text-teal-400 font-bold", children: "\u2022" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "K\u1EBFt n\u1ED1i kh\xF3a 3 ch\u1EA1c (Stopcock):" }),
+                  " L\u1EAFp c\u1ED9t \xE1p k\u1EBF th\u1EB3ng \u0111\u1EE9ng vu\xF4ng g\xF3c v\u1EDBi m\u1EB7t gi\u01B0\u1EDDng. M\u1EDF kh\xF3a cho d\u1ECBch d\xE2ng l\xEAn trong c\u1ED9t \xE1p k\u1EBF v\xE0 quan s\xE1t m\u1EF1c d\u1ECBch \u0111\u1EADp nh\u1EB9 theo nh\u1ECBp th\u1EDF."
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("li", { className: "flex items-start gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-teal-600 dark:text-teal-400 font-bold", children: "\u2022" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Gi\xE1 tr\u1ECB b\xECnh th\u01B0\u1EDDng:" }),
+                  " 60 - 250 mmH2O \u1EDF ng\u01B0\u1EDDi l\u1EDBn. N\u1EBFu > 250 mmH2O: C\u1EA3nh b\xE1o t\u0103ng \xE1p l\u1EF1c n\u1ED9i s\u1ECD c\u1EA5p. N\u1EBFu < 60 mmH2O: H\u1EA1 \xE1p l\u1EF1c n\u1ED9i s\u1ECD t\u1EF1 ph\xE1t (SIH)."
                 ] })
               ] })
             ] })
           ] })
         ] })
       ] }),
-      subTab === "layers" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("h4", { className: "font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Layers, { className: "w-4 h-4 text-indigo-600 dark:text-indigo-400" }),
-            "8 L\u1EDBp C\u1EA5u Tr\xFAc Gi\u1EA3i Ph\u1EABu Kim Ch\u1ECDc T\u1EE7y S\u1ED1ng \u0110i Qua"
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-xs text-slate-500 dark:text-slate-400 mt-0.5", children: [
-            "Chi\u1EC1u s\xE2u trung b\xECnh \u0111\u1EC3 kim ch\u1EA1m khoang d\u01B0\u1EDBi nh\u1EC7n \u1EDF ng\u01B0\u1EDDi tr\u01B0\u1EDFng th\xE0nh l\xE0 ",
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "4 - 5 cm (t\u01B0\u01A1ng \u0111\u01B0\u01A1ng 2/3 chi\u1EC1u d\xE0i kim)" }),
-            "."
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("svg", { viewBox: "0 0 760 140", className: "w-full min-w-[650px] h-auto", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { transform: "translate(0, 70)", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "0", y: "-12", width: "55", height: "24", rx: "4", fill: "#0284c7" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "27", y: "4", textAnchor: "middle", fill: "#fff", fontSize: "9", fontWeight: "bold", children: "\u0110\u1ED1c kim" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "2", cy: "0", r: "5", fill: "#f8fafc", stroke: "#0284c7", strokeWidth: "2" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "55", y: "-2", width: "620", height: "4", fill: "#94a3b8" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "55", y: "-1", width: "620", height: "2", fill: "#f8fafc" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("polygon", { points: "675,-2 690,0 675,2", fill: "#0284c7" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "g",
-            {
-              className: "cursor-pointer transition-opacity hover:opacity-90",
-              onClick: () => setActiveLayer(1),
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "70", y: "15", width: "40", height: "110", rx: "3", fill: "#fde68a", stroke: "#d97706", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "90", y: "35", textAnchor: "middle", fill: "#78350f", fontSize: "10", fontWeight: "bold", children: "1. Da" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "90", y: "110", textAnchor: "middle", fill: "#92400e", fontSize: "8 font-mono", children: "0-2mm" })
-              ]
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "g",
-            {
-              className: "cursor-pointer transition-opacity hover:opacity-90",
-              onClick: () => setActiveLayer(2),
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "115", y: "15", width: "70", height: "110", rx: "3", fill: "#fef3c7", stroke: "#f59e0b", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "150", y: "35", textAnchor: "middle", fill: "#78350f", fontSize: "10", fontWeight: "bold", children: "2. D\u01B0\u1EDBi da" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "150", y: "55", textAnchor: "middle", fill: "#b45309", fontSize: "8", children: "M\xF4 m\u1EE1 l\u1ECFng" })
-              ]
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "g",
-            {
-              className: "cursor-pointer transition-opacity hover:opacity-90",
-              onClick: () => setActiveLayer(3),
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "190", y: "15", width: "70", height: "110", rx: "3", fill: "#bfdbfe", stroke: "#3b82f6", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "225", y: "35", textAnchor: "middle", fill: "#1e3a8a", fontSize: "9.5", fontWeight: "bold", children: "3. Tr\xEAn gai" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "225", y: "55", textAnchor: "middle", fill: "#1d4ed8", fontSize: "8", children: "D\u1EA3i x\u01A1 d\u1ECDc" })
-              ]
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "g",
-            {
-              className: "cursor-pointer transition-opacity hover:opacity-90",
-              onClick: () => setActiveLayer(4),
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "265", y: "15", width: "80", height: "110", rx: "3", fill: "#c7d2fe", stroke: "#6366f1", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "305", y: "35", textAnchor: "middle", fill: "#312e81", fontSize: "9.5", fontWeight: "bold", children: "4. Li\xEAn gai" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "305", y: "55", textAnchor: "middle", fill: "#4338ca", fontSize: "8", children: "Gi\u1EEFa 2 m\u1ECFm gai" })
-              ]
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "g",
-            {
-              className: "cursor-pointer transition-opacity hover:opacity-90",
-              onClick: () => setActiveLayer(5),
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "350", y: "15", width: "75", height: "110", rx: "3", fill: "#fef08a", stroke: "#ca8a04", strokeWidth: "2", strokeDasharray: "3 1" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "387", y: "35", textAnchor: "middle", fill: "#713f12", fontSize: "9.5", fontWeight: "bold", children: "5. D.C V\xE0ng \u2605" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "387", y: "55", textAnchor: "middle", fill: "#854d0e", fontSize: "8", children: "S\u1EE9c c\u1EA3n r\xF5 r\u1EC7t" })
-              ]
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "g",
-            {
-              className: "cursor-pointer transition-opacity hover:opacity-90",
-              onClick: () => setActiveLayer(6),
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "430", y: "15", width: "60", height: "110", rx: "3", fill: "#ffe4e6", stroke: "#f43f5e", strokeWidth: "1.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "460", y: "35", textAnchor: "middle", fill: "#881337", fontSize: "9", fontWeight: "bold", children: "6. Ngo\xE0i MC" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "460", y: "55", textAnchor: "middle", fill: "#be123c", fontSize: "7.5", children: "\u0110\xE1m r\u1ED1i TM" })
-              ]
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "g",
-            {
-              className: "cursor-pointer transition-opacity hover:opacity-90",
-              onClick: () => setActiveLayer(7),
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "495", y: "15", width: "70", height: "110", rx: "3", fill: "#e9d5ff", stroke: "#9333ea", strokeWidth: "2" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "530", y: "35", textAnchor: "middle", fill: "#581c87", fontSize: "9.5", fontWeight: "bold", children: "7. M\xE0ng C\u1EE9ng \u2605" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "530", y: "55", textAnchor: "middle", fill: "#7e22ce", fontSize: "8 font-bold", children: '"POP" Sensation' })
-              ]
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "g",
-            {
-              className: "cursor-pointer transition-opacity hover:opacity-90",
-              onClick: () => setActiveLayer(8),
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "570", y: "15", width: "165", height: "110", rx: "6", fill: "#cffafe", stroke: "#06b6d4", strokeWidth: "2.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "652", y: "35", textAnchor: "middle", fill: "#164e63", fontSize: "10.5", fontWeight: "bold", children: "8. KHOANG D\u01AF\u1EDAI NH\u1EC6N" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "652", y: "55", textAnchor: "middle", fill: "#0891b2", fontSize: "8.5", children: "Ch\u1EE9a DNT & R\u1EC5 Ch\xF9m \u0110u\xF4i Ng\u1EF1a" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M 580 85 Q 610 80 640 85 T 700 85", fill: "none", stroke: "#0891b2", strokeWidth: "2", strokeDasharray: "3 2" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M 580 100 Q 610 95 640 100 T 700 100", fill: "none", stroke: "#0891b2", strokeWidth: "2", strokeDasharray: "3 2" })
-              ]
-            }
-          )
-        ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5", children: layersData.map((layer) => {
-          const isSelected = activeLayer === layer.num;
-          return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+      subTab === "steps" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-xs grid grid-cols-1 md:grid-cols-12 gap-4 items-center", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "md:col-span-4 flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
             "div",
             {
-              onClick: () => setActiveLayer(isSelected ? null : layer.num),
-              className: `p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected ? "bg-teal-50 dark:bg-teal-950/60 border-teal-500 shadow-xs" : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"}`,
+              className: "relative p-2 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer group",
+              onClick: () => setSelectedPhotoModal({
+                src: "./assets/lp_guide/lp_equipment.png",
+                title: "H\xECnh 9: B\xE0n d\u1EE5ng c\u1EE5 v\xF4 khu\u1EA9n chu\u1EA9n b\u1ECB ch\u1ECDc d\xF2 DNT",
+                desc: "Bao g\u1ED3m dung d\u1ECBch s\xE1t khu\u1EA9n Chlorhexidine/Povidone-Iodine, g\u1EA1c v\xF4 khu\u1EA9n, s\u0103ng c\xF3 l\u1ED7, kim ch\u1ECDc t\u1EE7y s\u1ED1ng Quincke 20-22G c\xF3 n\xF2ng, kh\xF3a 3 ng\u1EA3, \xE1p k\u1EBF Manometer, thu\u1ED1c t\xEA Lidocaine 1%, b\u01A1m ti\xEAm v\xE0 c\xE1c l\u1ECD x\xE9t nghi\u1EC7m.",
+                source: "Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)"
+              }),
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center justify-between", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-bold text-xs text-slate-900 dark:text-slate-100", children: layer.name }),
-                  layer.num === 5 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[9px] bg-amber-100 text-amber-800 px-1 rounded font-bold", children: "C\u1EA3n n\u1EB7ng" }),
-                  layer.num === 7 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[9px] bg-purple-100 text-purple-800 px-1 rounded font-bold", children: "Pop!" }),
-                  layer.num === 8 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[9px] bg-cyan-100 text-cyan-800 px-1 rounded font-bold", children: "\u0110\xEDch \u0111\u1EBFn" })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-[11px] text-slate-600 dark:text-slate-300 mt-1 leading-relaxed", children: layer.desc })
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                  "img",
+                  {
+                    src: "./assets/lp_guide/lp_equipment.png",
+                    alt: "B\u1ED9 d\u1EE5ng c\u1EE5 ch\u1ECDc d\xF2 th\u1EAFt l\u01B0ng",
+                    className: "max-h-[190px] w-auto object-contain rounded-lg shadow-xs group-hover:scale-[1.02] transition-transform"
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Maximize2, { className: "w-3.5 h-3.5" }) })
               ]
-            },
-            layer.num
-          );
-        }) })
-      ] }) }),
-      subTab === "bevel" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/60 px-2 py-0.5 rounded-full", children: "K\u1EF9 Thu\u1EADt Ph\xF2ng Ng\u1EEBa \u0110au \u0110\u1EA7u PDPH" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("h4", { className: "font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base mt-1 flex items-center gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Eye, { className: "w-4 h-4 text-teal-600 dark:text-teal-400" }),
-              "Nguy\xEAn T\u1EAFc H\u01B0\u1EDBng M\u1EB7t V\xE1t Kim (Bevel Orientation)"
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-xs text-slate-500 dark:text-slate-400 mt-0.5", children: "C\xE1c s\u1EE3i collagen m\xE0ng c\u1EE9ng ch\u1EA1y d\u1ECDc theo chi\u1EC1u d\xE0i c\u1ED9t s\u1ED1ng (Longitudinal dural fibers)." })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("svg", { viewBox: "0 0 340 180", className: "w-full h-auto", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { transform: "translate(10, 10)", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "0", y: "0", width: "150", height: "150", rx: "8", fill: "#f0fdf4", stroke: "#86efac", strokeWidth: "1.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "18", textAnchor: "middle", fill: "#166534", fontSize: "10", fontWeight: "bold", children: "M\u1EB6T V\xC1T SONG SONG (\u0110\xDANG)" }),
-              [25, 45, 65, 85, 105, 125].map((x, i) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: x, y1: "30", x2: x, y2: "140", stroke: "#86efac", strokeWidth: "1.5", strokeDasharray: "3 2" }, i)),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("ellipse", { cx: "75", cy: "85", rx: "8", ry: "24", fill: "#0284c7", opacity: "0.8" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "75", y1: "55", x2: "75", y2: "115", stroke: "#fff", strokeWidth: "2" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "15", y: "125", width: "120", height: "18", rx: "4", fill: "#22c55e" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "137", textAnchor: "middle", fill: "#fff", fontSize: "8", fontWeight: "bold", children: "T\xC1CH S\u1EE2I \u2192 T\u1EF0 \u0110\xD3NG L\u1ED6 L\u1EA0I" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { transform: "translate(180, 10)", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "0", y: "0", width: "150", height: "150", rx: "8", fill: "#fff1f2", stroke: "#fca5a5", strokeWidth: "1.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "18", textAnchor: "middle", fill: "#991b1b", fontSize: "10", fontWeight: "bold", children: "M\u1EB6T V\xC1T VU\xD4NG G\xD3C (SAI)" }),
-              [25, 45, 65, 85, 105, 125].map((x, i) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: x, y1: "30", x2: x, y2: "140", stroke: "#fca5a5", strokeWidth: "1.5", strokeDasharray: "3 2" }, i)),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("ellipse", { cx: "75", cy: "85", rx: "24", ry: "8", fill: "#ef4444", opacity: "0.8" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "50", y1: "85", x2: "100", y2: "85", stroke: "#fff", strokeWidth: "2" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "15", y: "125", width: "120", height: "18", rx: "4", fill: "#e11d48" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "75", y: "137", textAnchor: "middle", fill: "#fff", fontSize: "8", fontWeight: "bold", children: "C\u1EAET \u0110\u1EE8T S\u1EE2I \u2192 R\xD2 DNT / PDPH" })
-            ] })
-          ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-xs text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-start gap-1.5", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CircleCheck, { className: "w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "T\u01B0 th\u1EBF n\u1EB1m nghi\xEAng:" }),
-                " \u0110\u1EB7t m\u1EB7t v\xE1t kim h\u01B0\u1EDBng l\xEAn tr\u1EA7n nh\xE0 (ho\u1EB7c sang b\xEAn song song tr\u1EE5c th\xE2n) \u0111\u1EC3 kim l\xE1ch d\u1ECDc gi\u1EEFa c\xE1c s\u1EE3i m\xE0ng c\u1EE9ng."
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-start gap-1.5", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CircleCheck, { className: "w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "L\u1EAFp l\u1EA1i n\xF2ng th\xF4ng (Stylet) tr\u01B0\u1EDBc khi r\xFAt kim:" }),
-                " Nghi\xEAn c\u1EE9u Strupp (600 b\u1EC7nh nh\xE2n, JAMA) ch\u1EE9ng minh vi\u1EC7c \u0111\xFAt l\u1EA1i n\xF2ng tr\u01B0\u1EDBc khi r\xFAt kim l\xE0m gi\u1EA3m t\u1EDBi 50% nguy c\u01A1 \u0111au \u0111\u1EA7u PDPH v\xEC ng\u0103n s\u1EE3i m\xE0ng nh\u1EC7n b\u1ECB h\xFAt k\u1EB9t ra ngo\xE0i."
-              ] })
-            ] })
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "md:col-span-8 space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] font-bold text-teal-800 dark:text-teal-300 bg-teal-100 dark:bg-teal-950 px-2.5 py-0.5 rounded-full uppercase", children: "Chu\u1EA9n b\u1ECB d\u1EE5ng c\u1EE5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-bold text-slate-800 dark:text-slate-100 text-sm sm:text-base", children: "B\u1ED9 D\u1EE5ng C\u1EE5 V\xF4 Khu\u1EA9n Ch\u1ECDc D\xF2 Ti\xEAu Chu\u1EA9n (Sterile LP Tray)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-xs text-slate-600 dark:text-slate-300 leading-relaxed", children: "\u0110\u1EA7y \u0111\u1EE7: Dung d\u1ECBch s\xE1t khu\u1EA9n Povidone-Iodine/Chlorhexidine, s\u0103ng l\u1ED7 v\xF4 khu\u1EA9n, Lidocaine 1%, b\u01A1m ti\xEAm 5ml kim 25G g\xE2y t\xEA, kim Quincke 20-22G c\xF3 n\xF2ng stylet, kh\xF3a 3 ng\u1EA3, c\u1ED9t \xE1p k\u1EBF Manometer, 4 l\u1ECD \u0111\u1EF1ng m\u1EABu DNT v\xF4 khu\u1EA9n c\xF3 n\u1EAFp v\u1EB7n v\xE0 b\u0103ng \xE9p g\u1EA1c v\xF4 khu\u1EA9n." })
           ] })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded-full", children: "K\u1EF9 Thu\u1EADt \u0110o \xC1p L\u1EF1c M\u1EDF" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("h4", { className: "font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base mt-1 flex items-center gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Gauge, { className: "w-4 h-4 text-indigo-600 dark:text-indigo-400" }),
-              "\u0110o \xC1p L\u1EF1c DNT B\u1EB1ng \xC1p K\u1EBF (Manometer)"
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-xs text-slate-500 dark:text-slate-400 mt-0.5", children: "K\u1EBFt n\u1ED1i c\u1ED9t \xE1p k\u1EBF th\u1EE7y ng\xE2n/n\u01B0\u1EDBc qua kh\xF3a ba ch\u1EA1c (3-way Stopcock)." })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("svg", { viewBox: "0 0 320 180", className: "w-full h-auto max-h-[170px]", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { transform: "translate(140, 10)", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "0", y: "0", width: "22", height: "135", rx: "3", fill: "#f1f5f9", stroke: "#64748b", strokeWidth: "1.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "2", y: "65", width: "18", height: "68", fill: "#38bdf8", opacity: "0.75" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "2", y1: "65", x2: "20", y2: "65", stroke: "#0284c7", strokeWidth: "2" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "30", y: "20", fill: "#dc2626", fontSize: "7.5", fontWeight: "bold", children: "300 (T\u0103ng n\u1EB7ng)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "16", y1: "18", x2: "22", y2: "18", stroke: "#dc2626", strokeWidth: "1.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "30", y: "50", fill: "#ea580c", fontSize: "7.5", fontWeight: "bold", children: "250 (Ng\u01B0\u1EE1ng t\u0103ng \xE1p l\u1EF1c)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "14", y1: "48", x2: "22", y2: "48", stroke: "#ea580c", strokeWidth: "1.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "30", y: "80", fill: "#16a34a", fontSize: "7.5", fontWeight: "bold", children: "150 mmH2O (B\xECnh th\u01B0\u1EDDng)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "12", y1: "78", x2: "22", y2: "78", stroke: "#16a34a", strokeWidth: "2" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "30", y: "115", fill: "#ca8a04", fontSize: "7.5", fontWeight: "bold", children: "60 mmH2O (H\u1EA1 \xE1p)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "14", y1: "113", x2: "22", y2: "113", stroke: "#ca8a04", strokeWidth: "1.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "30", y: "134", fill: "#64748b", fontSize: "7", children: "0 mmH2O" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { transform: "translate(130, 140)", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("circle", { cx: "21", cy: "15", r: "10", fill: "#0284c7" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "21", y1: "5", x2: "21", y2: "25", stroke: "#fff", strokeWidth: "2.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("line", { x1: "11", y1: "15", x2: "31", y2: "15", stroke: "#fff", strokeWidth: "2.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "40", y: "18", fill: "#0284c7", fontSize: "8", fontWeight: "bold", children: "Kh\xF3a 3 ch\u1EA1c" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("g", { transform: "translate(20, 150)", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { x: "0", y: "0", width: "115", height: "4", fill: "#94a3b8" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("polygon", { points: "0,-3 -8,2 0,7", fill: "#0369a1" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("text", { x: "50", y: "-5", fill: "#475569", fontSize: "8", fontWeight: "bold", children: "Kim t\u1EE7y s\u1ED1ng" })
-            ] })
-          ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-xs text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-start gap-1.5", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-indigo-600 dark:text-indigo-400 font-bold", children: "\u2022" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "T\u01B0 th\u1EBF chu\u1EA9n \u0111\u1EC3 \u0111o \xE1p l\u1EF1c:" }),
-                " B\u1EC7nh nh\xE2n n\u1EB1m nghi\xEAng, ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("em", { children: "du\u1ED7i nh\u1EB9 2 ch\xE2n" }),
-                " v\xE0 th\u1EA3 l\u1ECFng nh\u1ECBp th\u1EDF (co g\u1EADp g\u1ED1i qu\xE1 m\u1EE9c ho\u1EB7c g\u1ED3ng b\u1EE5ng s\u1EBD l\xE0m t\u0103ng \xE1p l\u1EF1c \u1ED5 b\u1EE5ng v\xE0 t\u0103ng gi\u1EA3 t\u1EA1o \xE1p l\u1EF1c DNT)."
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-start gap-1.5", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-indigo-600 dark:text-indigo-400 font-bold", children: "\u2022" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Passive Drainage:" }),
-                " Sau khi \u0111o \xE1p l\u1EF1c, chuy\u1EC3n kh\xF3a 3 ch\u1EA1c cho d\u1ECBch nh\u1ECF gi\u1ECDt t\u1EF1 nhi\xEAn v\xE0o c\xE1c \u1ED1ng nghi\u1EC7m. ",
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("em", { children: "Tuy\u1EC7t \u0111\u1ED1i kh\xF4ng d\xF9ng b\u01A1m ti\xEAm h\xFAt" }),
-                " v\xEC c\xF3 th\u1EC3 l\xE0m t\u1ED5n th\u01B0\u01A1ng ch\xF9m \u0111u\xF4i ng\u1EF1a ho\u1EB7c g\xE2y xu\u1EA5t huy\u1EBFt."
-              ] })
-            ] })
-          ] })
-        ] })
-      ] }) }),
-      subTab === "steps" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700/80 pb-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700/80 pb-2.5", children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("h4", { className: "font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2", children: [
               /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CircleCheck, { className: "w-4 h-4 text-teal-600 dark:text-teal-400" }),
               "B\u1EA3ng Ki\u1EC3m Quy Tr\xECnh Th\u1EF1c H\xE0nh 6 B\u01B0\u1EDBc (Procedure Checklist)"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-xs text-slate-500 dark:text-slate-400", children: "Chu\u1EA9n h\xF3a theo t\xE0i li\u1EC7u h\u01B0\u1EDBng d\u1EABn l\xE2m s\xE0ng cho b\xE1c s\u0129 n\u1ED9i th\u1EA7n kinh v\xE0 c\u1EA5p c\u1EE9u." })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] font-bold text-teal-800 dark:text-teal-300 bg-teal-100 dark:bg-teal-950 px-2 py-0.5 rounded-lg", children: "V\xF4 khu\u1EA9n ngo\u1EA1i khoa tuy\u1EC7t \u0111\u1ED1i" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[11px] font-bold text-teal-800 dark:text-teal-300 bg-teal-100 dark:bg-teal-950 px-2.5 py-1 rounded-xl self-start sm:self-auto", children: "V\xF4 khu\u1EA9n tuy\u1EC7t \u0111\u1ED1i (Strict Aseptic)" })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "space-y-3", children: [
-          {
-            step: "B\u01AF\u1EDAC 1",
-            title: "Chu\u1EA9n b\u1ECB b\u1EC7nh nh\xE2n & \u0110\u1EB7t t\u01B0 th\u1EBF",
-            details: "Gi\u1EA3i th\xEDch th\u1EE7 thu\u1EADt, k\xFD cam k\u1EBFt. L\u1EADp \u0111\u01B0\u1EDDng truy\u1EC1n t\u0129nh m\u1EA1ch ngo\u1EA1i vi s\u1EB5n s\xE0ng. \u0110\u1EB7t b\u1EC7nh nh\xE2n n\u1EB1m nghi\xEAng m\xE9p gi\u01B0\u1EDDng, cong l\u01B0ng t\u1ED1i \u0111a (\u0111\u1EA7u g\u1ED1i ch\u1EA1m ng\u1EF1c, c\u1EB1m ch\u1EA1m ng\u1EF1c). Gi\u1EEF tr\u1EE5c c\u1ED9t s\u1ED1ng th\u1EB3ng song song m\u1EB7t gi\u01B0\u1EDDng, kh\xF4ng v\u1EB7n xo\u1EAFn x\u01B0\u01A1ng ch\u1EADu.",
-            badge: "T\u01B0 th\u1EBF con t\xF4m"
-          },
-          {
-            step: "B\u01AF\u1EDAC 2",
-            title: "X\xE1c \u0111\u1ECBnh m\u1ED1c gi\u1EA3i ph\u1EABu & Khe ch\u1ECDc an to\xE0n",
-            details: "S\u1EDD t\xECm hai m\xE0o ch\u1EADu (iliac crests), k\u1EBB \u0111\u01B0\u1EDDng ngang Tuffier c\u1EAFt c\u1ED9t s\u1ED1ng \u1EDF m\u1ECFm gai L4. Ch\u1ECDn khe L3-L4 ho\u1EB7c L4-L5 ngay d\u01B0\u1EDBi ho\u1EB7c tr\xEAn \u0111\u01B0\u1EDDng n\xE0y. \u0110\xE1nh d\u1EA5u v\u1ECB tr\xED kim \u0111i v\xE0o ch\xEDnh gi\u1EEFa \u0111\u01B0\u1EDDng gi\u1EEFa (Midline).",
-            badge: "Khe L3-L4 / L4-L5"
-          },
-          {
-            step: "B\u01AF\u1EDAC 3",
-            title: "S\xE1t khu\u1EA9n & G\xE2y t\xEA t\u1EEBng l\u1EDBp",
-            details: "\u0110\u1ED9i m\u0169, \u0111eo kh\u1EA9u trang, r\u1EEDa tay ngo\u1EA1i khoa, mang g\u0103ng v\xF4 khu\u1EA9n. S\xE1t khu\u1EA9n Povidone-Iodine ho\u1EB7c Chlorhexidine t\u1EEB t\xE2m ra ngo\xE0i theo h\xECnh xo\u1EAFn \u1ED1c (b\xE1n k\xEDnh \u2265 15 cm). Tr\u1EA3i s\u0103ng c\xF3 l\u1ED7 v\xF4 khu\u1EA9n. Ti\xEAm t\xEA Lidocaine 1% t\u1EA1o n\u1ED1t ph\u1ED3ng trong da, sau \u0111\xF3 g\xE2y t\xEA s\xE2u theo h\u01B0\u1EDBng ch\u1ECDc kim v\xE0o d\xE2y ch\u1EB1ng li\xEAn gai.",
-            badge: "Lidocaine 1%"
-          },
-          {
-            step: "B\u01AF\u1EDAC 4",
-            title: "Ch\u1ECDc kim c\xF3 n\xF2ng th\xF4ng (Stylet) & H\u01B0\u1EDBng kim",
-            details: "C\u1EA7m kim ch\u1ECDc t\u1EE7y s\u1ED1ng (Quincke 20-22G) c\xF3 n\xF2ng th\xF4ng gi\u1EEFa ng\xF3n c\xE1i v\xE0 ng\xF3n tr\u1ECF. H\u01B0\u1EDBng m\u1EB7t v\xE1t kim song song v\u1EDBi c\xE1c s\u1EE3i d\u1ECDc m\xE0ng c\u1EE9ng (h\u01B0\u1EDBng l\xEAn tr\u1EA7n nh\xE0 khi n\u1EB1m nghi\xEAng). \u0110\xE2m kim ch\u1EADm r\xE3i nghi\xEAng nh\u1EB9 10-15 \u0111\u1ED9 v\u1EC1 ph\xEDa r\u1ED1n (rostral direction).",
-            badge: "M\u1EB7t v\xE1t song song"
-          },
-          {
-            step: "B\u01AF\u1EDAC 5",
-            title: 'C\u1EA3m gi\xE1c "S\u1EE5p h\u1EABng" (Pop) & \u0110o \xE1p l\u1EF1c m\u1EDF',
-            details: 'C\u1EA3m nh\u1EADn s\u1EE9c c\u1EA3n qua d\xE2y ch\u1EB1ng v\xE0ng, sau \u0111\xF3 c\xF3 c\u1EA3m gi\xE1c "s\u1EE5p h\u1EABng" khi qua m\xE0ng c\u1EE9ng v\xE0o khoang d\u01B0\u1EDBi nh\u1EC7n (~4-5 cm). R\xFAt n\xF2ng stylet quan s\xE1t d\u1ECBch n\xE3o t\u1EE7y ch\u1EA3y ra. L\u1EAFp ngay kh\xF3a 3 ch\u1EA1c v\xE0 c\u1ED9t \xE1p k\u1EBF Manometer, y\xEAu c\u1EA7u b\u1EC7nh nh\xE2n th\u1EA3 l\u1ECFng ch\xE2n \u0111\u1EC3 \u0111o \xE1p l\u1EF1c m\u1EDF ch\xEDnh x\xE1c.',
-            badge: "\xC1p k\u1EBF Manometer"
-          },
-          {
-            step: "B\u01AF\u1EDAC 6",
-            title: "Thu th\u1EADp 4 l\u1ECD m\u1EABu DNT & Ch\u0103m s\xF3c sau ch\u1ECDc",
-            details: "Chuy\u1EC3n kh\xF3a cho d\u1ECBch ch\u1EA3y t\u1EF1 nhi\xEAn (kh\xF4ng h\xFAt) v\xE0o 4 l\u1ECD x\xE9t nghi\u1EC7m ti\xEAu chu\u1EA9n (\u1ED0ng 1: T\u1EBF b\xE0o; \u1ED0ng 2: H\xF3a sinh; \u1ED0ng 3: Vi sinh/C\u1EA5y; \u1ED0ng 4: \u0110\u1ED1i chi\u1EBFu/PCR). L\u1EAFp l\u1EA1i n\xF2ng th\xF4ng Stylet TR\u01AF\u1EDAC KHI r\xFAt kim ra. B\u0103ng \xE9p g\u1EA1c v\xF4 khu\u1EA9n. Cho b\u1EC7nh nh\xE2n n\u1EB1m b\u1EA5t \u0111\u1ED9ng t\u1EA1i gi\u01B0\u1EDDng 4-6 gi\u1EDD.",
-            badge: "N\u1EB1m ngh\u1EC9 4-6h"
-          }
-        ].map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-start justify-between gap-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "space-y-1 flex-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] font-black bg-teal-600 text-white px-2 py-0.5 rounded-md font-mono", children: item.step }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h5", { className: "font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm", children: item.title })
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "space-y-2.5", children: [
+            {
+              step: "B\u01AF\u1EDAC 1",
+              title: "Chu\u1EA9n b\u1ECB b\u1EC7nh nh\xE2n & \u0110\u1EB7t t\u01B0 th\u1EBF",
+              details: "Gi\u1EA3i th\xEDch m\u1EE5c \u0111\xEDch, tai bi\u1EBFn, k\xFD cam k\u1EBFt. L\u1EADp \u0111\u01B0\u1EDDng truy\u1EC1n t\u0129nh m\u1EA1ch s\u1EB5n s\xE0ng. \u0110\u1EB7t b\u1EC7nh nh\xE2n n\u1EB1m nghi\xEAng s\xE1t m\xE9p gi\u01B0\u1EDDng, cong l\u01B0ng t\u1ED1i \u0111a (\u0111\u1EA7u g\u1ED1i g\u1EADp s\xE1t ng\u1EF1c, c\u1EB1m ch\u1EA1m ng\u1EF1c - t\u01B0 th\u1EBF con t\xF4m). Tr\u1EE5c c\u1ED9t s\u1ED1ng th\u1EB3ng song song m\u1EB7t gi\u01B0\u1EDDng, kh\xF4ng v\u1EB7n xo\u1EAFn khung ch\u1EADu.",
+              badge: "T\u01B0 th\u1EBF con t\xF4m"
+            },
+            {
+              step: "B\u01AF\u1EDAC 2",
+              title: "X\xE1c \u0111\u1ECBnh m\u1ED1c gi\u1EA3i ph\u1EABu & Khe ch\u1ECDc an to\xE0n",
+              details: "S\u1EDD t\xECm hai m\xE0o ch\u1EADu (iliac crests), k\u1EBB \u0111\u01B0\u1EDDng ngang Tuffier c\u1EAFt c\u1ED9t s\u1ED1ng \u1EDF m\u1ECFm gai L4. Ch\u1ECDn khe L3-L4 ho\u1EB7c L4-L5 ngay ph\xEDa tr\xEAn ho\u1EB7c d\u01B0\u1EDBi \u0111\u01B0\u1EDDng n\xE0y. \u0110\xE1nh d\u1EA5u v\u1ECB tr\xED kim \u0111i v\xE0o ch\xEDnh gi\u1EEFa \u0111\u01B0\u1EDDng gi\u1EEFa (Midline).",
+              badge: "Khe L3-L4 / L4-L5"
+            },
+            {
+              step: "B\u01AF\u1EDAC 3",
+              title: "S\xE1t khu\u1EA9n & G\xE2y t\xEA t\u1EEBng l\u1EDBp",
+              details: "\u0110\u1ED9i m\u0169, \u0111eo kh\u1EA9u trang, r\u1EEDa tay ngo\u1EA1i khoa, mang g\u0103ng v\xF4 khu\u1EA9n. S\xE1t khu\u1EA9n Povidone-Iodine ho\u1EB7c Chlorhexidine t\u1EEB t\xE2m ra ngo\xE0i theo h\xECnh xo\u1EAFn \u1ED1c (b\xE1n k\xEDnh \u2265 15 cm). Tr\u1EA3i s\u0103ng c\xF3 l\u1ED7. Ti\xEAm t\xEA Lidocaine 1% t\u1EA1o n\u1ED1t ph\u1ED3ng trong da, sau \u0111\xF3 \u0111\u1ED5i kim d\xE0i g\xE2y t\xEA s\xE2u theo h\u01B0\u1EDBng ch\u1ECDc v\xE0o d\xE2y ch\u1EB1ng li\xEAn gai.",
+              badge: "Lidocaine 1%"
+            },
+            {
+              step: "B\u01AF\u1EDAC 4",
+              title: "Ch\u1ECDc kim c\xF3 n\xF2ng th\xF4ng (Stylet) & H\u01B0\u1EDBng m\u1EB7t v\xE1t",
+              details: "C\u1EA7m kim Quincke 20-22G c\xF3 n\xF2ng th\xF4ng gi\u1EEFa ng\xF3n c\xE1i v\xE0 ng\xF3n tr\u1ECF. H\u01B0\u1EDBng m\u1EB7t v\xE1t kim song song v\u1EDBi c\xE1c s\u1EE3i d\u1ECDc m\xE0ng c\u1EE9ng (m\u1EB7t v\xE1t h\u01B0\u1EDBng l\xEAn tr\u1EA7n nh\xE0 khi n\u1EB1m nghi\xEAng). \u0110\xE2m kim ch\u1EADm r\xE3i nghi\xEAng nh\u1EB9 10-15 \u0111\u1ED9 v\u1EC1 ph\xEDa r\u1ED1n (rostral direction).",
+              badge: "M\u1EB7t v\xE1t song song"
+            },
+            {
+              step: "B\u01AF\u1EDAC 5",
+              title: 'C\u1EA3m gi\xE1c "S\u1EE5p h\u1EABng" (Pop) & \u0110o \xE1p l\u1EF1c m\u1EDF',
+              details: 'C\u1EA3m nh\u1EADn s\u1EE9c c\u1EA3n qua d\xE2y ch\u1EB1ng v\xE0ng, sau \u0111\xF3 c\xF3 c\u1EA3m gi\xE1c "s\u1EE5p h\u1EABng" khi qua m\xE0ng c\u1EE9ng v\xE0o khoang d\u01B0\u1EDBi nh\u1EC7n (~4-5 cm). R\xFAt n\xF2ng stylet quan s\xE1t d\u1ECBch n\xE3o t\u1EE7y ch\u1EA3y ra. L\u1EAFp ngay kh\xF3a 3 ch\u1EA1c v\xE0 c\u1ED9t \xE1p k\u1EBF Manometer, y\xEAu c\u1EA7u b\u1EC7nh nh\xE2n du\u1ED7i nh\u1EB9 ch\xE2n \u0111\u1EC3 \u0111o \xE1p l\u1EF1c m\u1EDF ch\xEDnh x\xE1c.',
+              badge: "\xC1p k\u1EBF Manometer"
+            },
+            {
+              step: "B\u01AF\u1EDAC 6",
+              title: "Thu th\u1EADp 4 l\u1ECD m\u1EABu DNT & Ch\u0103m s\xF3c sau ch\u1ECDc",
+              details: "Chuy\u1EC3n kh\xF3a cho d\u1ECBch ch\u1EA3y t\u1EF1 nhi\xEAn (kh\xF4ng h\xFAt) v\xE0o 4 l\u1ECD x\xE9t nghi\u1EC7m ti\xEAu chu\u1EA9n (\u1ED0ng 1: T\u1EBF b\xE0o; \u1ED0ng 2: H\xF3a sinh; \u1ED0ng 3: Vi sinh/C\u1EA5y; \u1ED0ng 4: \u0110\u1ED1i chi\u1EBFu/PCR). L\u1EAFp l\u1EA1i n\xF2ng th\xF4ng Stylet TR\u01AF\u1EDAC KHI r\xFAt kim ra. B\u0103ng \xE9p g\u1EA1c v\xF4 khu\u1EA9n. Cho b\u1EC7nh nh\xE2n n\u1EB1m b\u1EA5t \u0111\u1ED9ng t\u1EA1i gi\u01B0\u1EDDng 4-6 gi\u1EDD.",
+              badge: "N\u1EB1m ngh\u1EC9 4-6h"
+            }
+          ].map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3 flex flex-col sm:flex-row sm:items-start justify-between gap-2.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "space-y-1 flex-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] font-black bg-teal-600 text-white px-2 py-0.5 rounded-md font-mono", children: item.step }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h5", { className: "font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm", children: item.title })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-0.5", children: item.details })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-0.5", children: item.details })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "self-start text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-1 rounded-lg shrink-0 border border-slate-200/60 dark:border-slate-700", children: item.badge })
-        ] }, idx)) })
-      ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "self-start text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-1 rounded-lg shrink-0 border border-slate-200/60 dark:border-slate-700", children: item.badge })
+          ] }, idx)) })
+        ] })
+      ] }),
       subTab === "complications" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
         /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/60 rounded-2xl p-4 space-y-3", children: [
           /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-2 text-rose-800 dark:text-rose-300 font-bold text-xs sm:text-sm", children: [
@@ -17743,7 +17878,49 @@ ${top.recommendedActions.map((a, i) => `${i + 1}. ${a}`).join("\n")}`;
             ] })
           ] })
         ] })
-      ] }) })
+      ] }) }),
+      selectedPhotoModal && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+        "div",
+        {
+          className: "fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-200",
+          onClick: () => setSelectedPhotoModal(null),
+          children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+            "div",
+            {
+              className: "bg-white dark:bg-slate-900 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col max-h-[90vh]",
+              onClick: (e) => e.stopPropagation(),
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-800/60", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { className: "font-bold text-sm text-slate-900 dark:text-white truncate", children: selectedPhotoModal.title }),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                    "button",
+                    {
+                      onClick: () => setSelectedPhotoModal(null),
+                      className: "p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-800 cursor-pointer",
+                      children: "\u2715"
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "p-4 bg-slate-950 flex items-center justify-center overflow-auto flex-1 min-h-[300px]", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+                  "img",
+                  {
+                    src: selectedPhotoModal.src,
+                    alt: selectedPhotoModal.title,
+                    className: "max-h-[60vh] max-w-full object-contain rounded-lg shadow-lg"
+                  }
+                ) }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-1", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "font-medium leading-relaxed", children: selectedPhotoModal.desc }),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { className: "text-[10px] text-teal-700 dark:text-teal-400 font-mono", children: [
+                    "Ngu\u1ED3n: ",
+                    selectedPhotoModal.source
+                  ] })
+                ] })
+              ]
+            }
+          )
+        }
+      )
     ] });
   };
 
@@ -18785,6 +18962,7 @@ lucide-react/dist/esm/icons/gauge.js:
 lucide-react/dist/esm/icons/grid-3x3.js:
 lucide-react/dist/esm/icons/info.js:
 lucide-react/dist/esm/icons/layers.js:
+lucide-react/dist/esm/icons/maximize-2.js:
 lucide-react/dist/esm/icons/microscope.js:
 lucide-react/dist/esm/icons/moon.js:
 lucide-react/dist/esm/icons/octagon-alert.js:

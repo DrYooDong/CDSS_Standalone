@@ -23,6 +23,19 @@ export const CSFInputForm: React.FC<Props> = ({ input, onChange, onReset, onOpen
   const [viewMode, setViewMode] = useState<'standard' | 'full'>('standard');
   const [showAdvancedTests, setShowAdvancedTests] = useState<boolean>(false);
 
+  // Check if current input contains any non-default advanced/microbiology values
+  const hasAdvancedData = 
+    input.tbPcrOrAfb !== 'not_done' ||
+    input.crAgOrIndiaInk !== 'not_done' ||
+    input.viralPcr !== 'not_done' ||
+    input.gramStain !== 'not_done' ||
+    input.adaLevel !== undefined ||
+    input.pellicleFormation ||
+    input.tube1Rbc !== undefined ||
+    input.tube4Rbc !== undefined;
+
+  const isAdvancedOpen = viewMode === 'full' || showAdvancedTests || hasAdvancedData;
+
   const updateField = <K extends keyof CSFInput>(field: K, value: CSFInput[K]) => {
     onChange({ ...input, [field]: value });
   };
@@ -508,7 +521,7 @@ export const CSFInputForm: React.FC<Props> = ({ input, onChange, onReset, onOpen
         </div>
 
         {/* BLOCK 4: VI SINH & XÉT NGHIỆM MỞ RỘNG (GỌN GÀNG TRONG 1 ACCORDION) */}
-        {(viewMode === 'full' || showAdvancedTests) ? (
+        {isAdvancedOpen ? (
           <div className="bg-slate-50/70 dark:bg-slate-800/40 rounded-xl p-3.5 border border-slate-200/80 dark:border-slate-800 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wide flex items-center gap-1.5">

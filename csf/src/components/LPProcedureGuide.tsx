@@ -13,23 +13,27 @@ import {
   Sparkles,
   ArrowRight,
   ShieldCheck,
-  Eye
+  Eye,
+  Maximize2,
+  Image as ImageIcon
 } from 'lucide-react';
 
 export const LPProcedureGuide: React.FC = () => {
   const [subTab, setSubTab] = useState<'anatomy' | 'layers' | 'bevel' | 'steps' | 'complications'>('anatomy');
   const [activeLayer, setActiveLayer] = useState<number | null>(null);
   const [anatomyFocus, setAnatomyFocus] = useState<'all' | 'tuffier' | 'safe_gap' | 'conus'>('all');
+  const [viewStyle, setViewStyle] = useState<'both' | 'photo' | 'diagram'>('both');
+  const [selectedPhotoModal, setSelectedPhotoModal] = useState<{ src: string; title: string; desc: string; source: string } | null>(null);
 
   const layersData = [
-    { num: 1, name: '1. Da (Skin)', desc: 'Sát khuẩn kỹ hình xoắn ốc và gây tê nốt phồng da bằng Lidocaine 1%.', color: 'fill-amber-200 stroke-amber-500' },
-    { num: 2, name: '2. Mô dưới da (Subcutaneous tissue)', desc: 'Mô mỡ lỏng lẻo. Gây tê sâu theo trục hướng về phía rốn.', color: 'fill-amber-100 stroke-amber-400' },
-    { num: 3, name: '3. Dây chằng trên gai (Supraspinous ligament)', desc: 'Dải xơ chắc kết nối các đỉnh mỏm gai đốt sống từ C7 đến xương cùng.', color: 'fill-blue-200 stroke-blue-500' },
-    { num: 4, name: '4. Dây chằng liên gai (Interspinous ligament)', desc: 'Nằm giữa các mỏm gai, kim đi chính giữa đường giữa (Midline).', color: 'fill-indigo-200 stroke-indigo-500' },
-    { num: 5, name: '5. Dây chằng vàng (Ligamentum flavum)', desc: 'Mô đàn hồi dày nối các cung đốt sống. Bác sĩ cảm nhận rõ sức cản tăng lên rõ rệt (Tough resistance).', color: 'fill-yellow-300 stroke-yellow-600' },
-    { num: 6, name: '6. Khoang ngoài màng cứng (Epidural space)', desc: 'Khoang ảo chứa mỡ và đám rối tĩnh mạch đốt sống trong. Chọc lệch dễ gây chạm mạch tại đây.', color: 'fill-rose-100 stroke-rose-400' },
-    { num: 7, name: '7. Màng cứng & Màng nhện (Dura & Arachnoid)', desc: 'Khoảnh khắc quyết định: Cảm giác "Sụp hẫng" hoặc "Pop sensation" khi kim xuyên thủng màng cứng.', color: 'fill-purple-200 stroke-purple-600' },
-    { num: 8, name: '8. Khoang dưới nhện (Subarachnoid space)', desc: 'Đích đến an toàn: Chứa dịch não tủy (CSF) và rễ chùm đuôi ngựa (Cauda equina). Rút nòng stylet dịch sẽ chảy tự nhiên.', color: 'fill-cyan-100 stroke-cyan-500' },
+    { num: 1, name: '1. Da (Skin)', depth: '0 - 2 mm', desc: 'Sát khuẩn kỹ hình xoắn ốc bằng Povidone-Iodine hoặc Chlorhexidine. Gây tê nốt phồng da (wheal) bằng Lidocaine 1%.', sensation: 'Châm kim tiêm tê', color: 'fill-amber-200 stroke-amber-500' },
+    { num: 2, name: '2. Mô dưới da (Subcutaneous tissue)', depth: '2 - 20 mm', desc: 'Mô mỡ lỏng lẻo. Gây tê sâu dọc theo đường kim dự kiến, hướng nhẹ về phía rốn (rostral).', sensation: 'Sức cản nhẹ, kim đi êm', color: 'fill-amber-100 stroke-amber-400' },
+    { num: 3, name: '3. Dây chằng trên gai (Supraspinous)', depth: '20 - 25 mm', desc: 'Dải xơ chắc kết nối các đỉnh mỏm gai đốt sống từ C7 đến xương cùng. Giữ kim đi chính giữa đường giữa (Midline).', sensation: 'Cảm giác bắt đầu chắc tay', color: 'fill-blue-200 stroke-blue-500' },
+    { num: 4, name: '4. Dây chằng liên gai (Interspinous)', depth: '25 - 35 mm', desc: 'Nằm giữa hai mỏm gai kế cận, dẫn đường cho kim tiến thẳng vuông góc mặt phẳng lưng.', sensation: 'Sức cản xơ vừa phải', color: 'fill-indigo-200 stroke-indigo-500' },
+    { num: 5, name: '5. Dây chằng vàng (Ligamentum flavum) ★', depth: '35 - 42 mm', desc: 'Mô đàn hồi dày nối các cung đốt sống. Bác sĩ cảm nhận rõ sức cản tăng lên rõ rệt (Tough resistance) như xuyên qua da dày cao su.', sensation: 'SỨC CẢN DAI NẶNG TAY', color: 'fill-yellow-300 stroke-yellow-600' },
+    { num: 6, name: '6. Khoang ngoài màng cứng (Epidural space)', depth: '42 - 44 mm', desc: 'Khoang ảo chứa mỡ lỏng và đám rối tĩnh mạch đốt sống trong. Chọc lệch trục dễ gây chạm mạch (Traumatic tap) tại đây.', sensation: 'Sức cản giảm thoáng qua', color: 'fill-rose-100 stroke-rose-400' },
+    { num: 7, name: '7. Màng cứng & Màng nhện (Dura & Arachnoid) ★', depth: '44 - 47 mm', desc: 'Khoảnh khắc quyết định: Bác sĩ cảm nhận tiếng "Sụp hẫng" hoặc "Pop sensation" rõ rệt khi mũi kim xuyên thủng lá màng cứng chắc.', sensation: 'TIẾNG "POP" SỤP HẪNG', color: 'fill-purple-200 stroke-purple-600' },
+    { num: 8, name: '8. Khoang dưới nhện (Subarachnoid space) 🎯', depth: '45 - 55 mm', desc: 'ĐÍCH ĐẾN AN TOÀN: Bể DNT thắt lưng (Lumbar cistern) chứa dịch não tủy và rễ chùm đuôi ngựa lơ lửng. Rút nòng stylet dịch sẽ nhỏ giọt tự nhiên.', sensation: 'DNT chảy nhỏ giọt', color: 'fill-cyan-100 stroke-cyan-500' },
   ];
 
   return (
@@ -46,12 +50,12 @@ export const LPProcedureGuide: React.FC = () => {
               Quy Trình Kỹ Thuật Chọc Dò Dịch Não Tủy (Lumbar Puncture)
             </h3>
             <p className="text-[11px] sm:text-xs text-slate-300 max-w-2xl">
-              Tổng hợp chi tiết theo Hướng dẫn Encephalitis 2022 (Keun Tae Kim) và Giáo trình Lâm sàng Dr Chandra Vaidyanath (2014).
+              Tích hợp Atlas giải phẫu thực tế và sơ đồ chuẩn theo Hướng dẫn <strong>Encephalitis 2022 (Kim KT)</strong> và Giáo trình <strong>Dr Chandra Vaidyanath (2014)</strong>.
             </p>
           </div>
 
           <div className="flex items-center gap-1.5 self-start sm:self-auto shrink-0 bg-white/10 p-1 rounded-xl">
-            <span className="text-[11px] font-semibold text-teal-200 px-2">Vị trí chuẩn:</span>
+            <span className="text-[11px] font-semibold text-teal-200 px-2">Vị trí chọc chuẩn:</span>
             <span className="text-[11px] font-bold bg-teal-600 text-white px-2.5 py-0.5 rounded-lg shadow-2xs font-mono">
               Khe L3 - L4 hoặc L4 - L5
             </span>
@@ -91,69 +95,177 @@ export const LPProcedureGuide: React.FC = () => {
       {subTab === 'anatomy' && (
         <div className="space-y-4">
           {/* Interactive Landmark Filters */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 dark:bg-slate-800/80 p-1.5 rounded-xl text-xs">
-            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 px-2 flex items-center gap-1">
-              <Eye className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
-              Xem nhanh mốc:
-            </span>
-            <button
-              onClick={() => setAnatomyFocus('all')}
-              className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                anatomyFocus === 'all'
-                  ? 'bg-white dark:bg-slate-900 text-teal-700 dark:text-teal-300 shadow-2xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-              }`}
-            >
-              Toàn cảnh
-            </button>
-            <button
-              onClick={() => setAnatomyFocus('tuffier')}
-              className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                anatomyFocus === 'tuffier'
-                  ? 'bg-amber-500 text-white shadow-2xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-amber-600'
-              }`}
-            >
-              1. Đường Tuffier (Mào chậu)
-            </button>
-            <button
-              onClick={() => setAnatomyFocus('safe_gap')}
-              className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                anatomyFocus === 'safe_gap'
-                  ? 'bg-emerald-600 text-white shadow-2xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600'
-              }`}
-            >
-              2. Điểm chọc L3 - L4 ★
-            </button>
-            <button
-              onClick={() => setAnatomyFocus('conus')}
-              className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                anatomyFocus === 'conus'
-                  ? 'bg-rose-600 text-white shadow-2xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-rose-600'
-              }`}
-            >
-              3. Nón tủy L1 - L2 (Vùng nguy hiểm)
-            </button>
+          <div className="flex flex-wrap items-center justify-between gap-2 bg-slate-100 dark:bg-slate-800/80 p-2 rounded-xl text-xs">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 px-1 flex items-center gap-1">
+                <Eye className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                Mốc quan sát:
+              </span>
+              <button
+                onClick={() => setAnatomyFocus('all')}
+                className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  anatomyFocus === 'all'
+                    ? 'bg-white dark:bg-slate-900 text-teal-700 dark:text-teal-300 shadow-2xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                }`}
+              >
+                Toàn cảnh
+              </button>
+              <button
+                onClick={() => setAnatomyFocus('tuffier')}
+                className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  anatomyFocus === 'tuffier'
+                    ? 'bg-amber-500 text-white shadow-2xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-amber-600'
+                }`}
+              >
+                1. Đường Tuffier (Mào chậu ↔ L4)
+              </button>
+              <button
+                onClick={() => setAnatomyFocus('safe_gap')}
+                className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  anatomyFocus === 'safe_gap'
+                    ? 'bg-emerald-600 text-white shadow-2xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600'
+                }`}
+              >
+                2. Điểm chọc L3 - L4 ★
+              </button>
+              <button
+                onClick={() => setAnatomyFocus('conus')}
+                className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  anatomyFocus === 'conus'
+                    ? 'bg-rose-600 text-white shadow-2xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-rose-600'
+                }`}
+              >
+                3. Nón tủy L1 - L2 (Nguy hiểm)
+              </button>
+            </div>
+
+            <div className="flex items-center gap-1 bg-white dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700 text-[11px]">
+              <button
+                onClick={() => setViewStyle('both')}
+                className={`px-2 py-0.5 rounded font-bold cursor-pointer ${viewStyle === 'both' ? 'bg-teal-600 text-white' : 'text-slate-600 dark:text-slate-300'}`}
+              >
+                Tất cả
+              </button>
+              <button
+                onClick={() => setViewStyle('photo')}
+                className={`px-2 py-0.5 rounded font-bold cursor-pointer ${viewStyle === 'photo' ? 'bg-teal-600 text-white' : 'text-slate-600 dark:text-slate-300'}`}
+              >
+                Ảnh Thực Tế
+              </button>
+              <button
+                onClick={() => setViewStyle('diagram')}
+                className={`px-2 py-0.5 rounded font-bold cursor-pointer ${viewStyle === 'diagram' ? 'bg-teal-600 text-white' : 'text-slate-600 dark:text-slate-300'}`}
+              >
+                Sơ Đồ Vector
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-            {/* High-Clarity Dual-Panel Diagram */}
-            <div className="lg:col-span-7 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 flex flex-col justify-between space-y-3">
+          {/* SECTION 1A: REAL CLINICAL ATLAS PHOTOS FROM LITERATURE */}
+          {(viewStyle === 'both' || viewStyle === 'photo') && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Photo 1: Tuffier's Line on patient */}
+              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between">
+                <div className="p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="p-1 bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 rounded-lg text-xs font-bold font-mono">
+                      Hình 1
+                    </span>
+                    <h4 className="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+                      Mốc Đường Tuffier Trên Người Bệnh Thực Tế
+                    </h4>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-medium">Vaidyanath (2014)</span>
+                </div>
+
+                <div 
+                  className="relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group"
+                  onClick={() => setSelectedPhotoModal({
+                    src: './assets/lp_guide/lp_tuffier_line.png',
+                    title: 'Hình 1: Xác định đường Tuffier trên bệnh nhân nằm nghiêng',
+                    desc: 'Đường ngang nối hai điểm cao nhất của mào chậu (Iliac crest) cắt ngang mỏm gai L4. Khoảng liên gai L3-L4 nằm ngay phía trên là vị trí chọc dò tối ưu.',
+                    source: 'Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)'
+                  })}
+                >
+                  <img 
+                    src="./assets/lp_guide/lp_tuffier_line.png" 
+                    alt="Đường Tuffier nối hai mào chậu và khe liên gai L3-L4"
+                    className="max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]" 
+                  />
+                  <div className="absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Maximize2 className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+
+                <div className="p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800">
+                  <p>
+                    📍 <strong>Đường Tuffier (Intercristal line):</strong> Đường nối 2 mào chậu cắt ngang đốt sống L4. Khi sờ nắn bằng tay, bác sĩ định vị gai L4 rồi chọn khe <strong>L3 - L4</strong> (ngay trên) hoặc <strong>L4 - L5</strong> (ngay dưới) để đưa kim vào.
+                  </p>
+                </div>
+              </div>
+
+              {/* Photo 2: MRI scan of conus medullaris */}
+              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between">
+                <div className="p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="p-1 bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 rounded-lg text-xs font-bold font-mono">
+                      Hình 2
+                    </span>
+                    <h4 className="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+                      MRI Cột Sống: Tận Cùng Tủy Sống Ở L1 - L2
+                    </h4>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-medium">Vaidyanath (2014)</span>
+                </div>
+
+                <div 
+                  className="relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group"
+                  onClick={() => setSelectedPhotoModal({
+                    src: './assets/lp_guide/lp_mri_conus.png',
+                    title: 'Hình 2: Phim MRI chứng minh vị trí nón tủy và vùng an toàn L3-L4',
+                    desc: 'Tủy sống người trưởng thành tận cùng ở đốt L1-L2 (1: Nón tủy). Bên dưới là bể DNT thắt lưng kéo dài đến S2 (3: Thân đốt L5). Do đó, chọc dò ở L3-L4 hoặc L4-L5 an toàn tuyệt đối, không thể chạm vào tủy sống.',
+                    source: 'Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)'
+                  })}
+                >
+                  <img 
+                    src="./assets/lp_guide/lp_mri_conus.png" 
+                    alt="Phim MRI cột sống thắt lưng minh chứng nón tủy tận cùng ở L1-L2"
+                    className="max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]" 
+                  />
+                  <div className="absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Maximize2 className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+
+                <div className="p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800">
+                  <p>
+                    ⚠️ <strong>Cơ sở an toàn tủy sống:</strong> Tủy sống tận cùng bằng nón tủy ở <strong>L1 - L2</strong>. Từ L2 trở xuống chỉ có dịch não tủy và rễ thần kinh chùm đuôi ngựa lơ lửng tự do. Tuyệt đối <em>không chọc ở L1-L2 hoặc cao hơn</em>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* SECTION 1B: ANATOMICALLY CORRECT INTERACTIVE VECTOR SCHEMATIC */}
+          {(viewStyle === 'both' || viewStyle === 'diagram') && (
+            <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-xs uppercase tracking-wide text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
                   <Crosshair className="w-4 h-4 text-teal-600 dark:text-teal-400" />
-                  Sơ Đồ Đối Chiếu: Ngoài Da vs Trục Tủy Sống
+                  Sơ Đồ Giải Phẫu Chuẩn Xác: Trục Đốt Sống vs Hướng Đâm Kim Từ Phía Lưng
                 </span>
-                <span className="text-[10px] bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 px-2 py-0.5 rounded-full font-bold">
-                  Dễ hiểu • Trực quan 2 góc nhìn
+                <span className="text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 px-2 py-0.5 rounded-full font-bold">
+                  Giải phẫu đúng chiều: Kim đâm từ sau lưng (phải) vào khoang DNT
                 </span>
               </div>
 
-              {/* Redesigned Clean Vector SVG */}
-              <div className="w-full bg-white dark:bg-slate-900 rounded-xl p-3 border border-slate-200 dark:border-slate-800 flex items-center justify-center">
-                <svg viewBox="0 0 620 270" className="w-full h-auto max-h-[260px]" xmlns="http://www.w3.org/2000/svg">
+              {/* Corrected Vector SVG: Anterior (Vertebrae) on LEFT, Posterior (Skin/Needle) on RIGHT */}
+              <div className="w-full bg-white dark:bg-slate-900 rounded-xl p-3 border border-slate-200 dark:border-slate-800 flex items-center justify-center overflow-x-auto">
+                <svg viewBox="0 0 680 290" className="w-full min-w-[580px] h-auto max-h-[290px]" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="safeGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#10b981" stopOpacity="0.2" />
@@ -165,345 +277,250 @@ export const LPProcedureGuide: React.FC = () => {
                     </linearGradient>
                   </defs>
 
-                  {/* ================= PANEL 1: SURFACE VIEW (BỀ MẶT LƯNG) ================= */}
-                  <g transform="translate(10, 10)">
-                    {/* Background card */}
-                    <rect x="0" y="0" width="285" height="250" rx="10" fill="#f8fafc" className="dark:fill-slate-800/40" stroke="#e2e8f0" strokeWidth="1.5" />
-                    
-                    {/* Title */}
-                    <rect x="12" y="10" width="180" height="20" rx="4" fill="#0f766e" />
-                    <text x="102" y="23" textAnchor="middle" fill="#ffffff" fontSize="9" fontWeight="bold">1. NHÌN TỪ NGOÀI LƯNG (TƯ THẾ)</text>
+                  {/* Orientation Guide Headers */}
+                  <rect x="15" y="10" width="160" height="22" rx="4" fill="#0f766e" />
+                  <text x="95" y="25" textAnchor="middle" fill="#ffffff" fontSize="9.5" fontWeight="bold">PHÍA TRƯỚC (BỤNG / THÂN ĐỐT)</text>
 
-                    {/* Patient Back Silhouette (Clean, curved aesthetic) */}
-                    <path 
-                      d="M 60 40 C 40 100 40 180 80 230 C 130 240 220 240 260 210" 
-                      fill="none" 
-                      stroke="#cbd5e1" 
-                      className="dark:stroke-slate-700" 
-                      strokeWidth="28" 
-                      strokeLinecap="round" 
-                    />
-                    <path 
-                      d="M 60 40 C 40 100 40 180 80 230 C 130 240 220 240 260 210" 
-                      fill="none" 
-                      stroke="#0d9488" 
-                      strokeWidth="2" 
-                      strokeDasharray="4 3" 
-                      opacity="0.4"
-                    />
+                  <rect x="490" y="10" width="170" height="22" rx="4" fill="#312e81" />
+                  <text x="575" y="25" textAnchor="middle" fill="#ffffff" fontSize="9.5" fontWeight="bold">PHÍA SAU (LƯNG / MỎM GAI &amp; DA)</text>
 
-                    {/* Midline spine nodes (Spinous processes palpated) */}
-                    {/* L1 */}
-                    <circle cx="56" cy="65" r="5" fill="#94a3b8" />
-                    <text x="38" y="68" fill="#64748b" fontSize="8" fontWeight="bold">L1</text>
-                    {/* L2 */}
-                    <circle cx="53" cy="98" r="5" fill="#94a3b8" />
-                    <text x="35" y="101" fill="#64748b" fontSize="8" fontWeight="bold">L2</text>
-                    {/* L3 */}
-                    <circle cx="53" cy="132" r="6" fill={anatomyFocus === 'safe_gap' ? '#0d9488' : '#64748b'} stroke="#fff" strokeWidth="1.5" />
-                    <text x="33" y="135" fill="#0d9488" fontSize="8.5" fontWeight="bold">L3</text>
-                    
-                    {/* L4 (Intersects Tuffier's line) */}
-                    <circle cx="56" cy="166" r="6" fill={anatomyFocus === 'tuffier' ? '#f59e0b' : '#64748b'} stroke="#fff" strokeWidth="1.5" />
-                    <text x="36" y="169" fill="#d97706" fontSize="8.5" fontWeight="bold">L4</text>
-
-                    {/* L5 */}
-                    <circle cx="63" cy="200" r="5" fill="#94a3b8" />
-                    <text x="43" y="203" fill="#64748b" fontSize="8" fontWeight="bold">L5</text>
-
-                    {/* Tuffier's Line (Connects Iliac crests at y=166) */}
-                    <g opacity={anatomyFocus === 'all' || anatomyFocus === 'tuffier' ? 1 : 0.25} className="transition-opacity">
-                      {/* Left & Right Iliac crest palpation bumps */}
-                      <circle cx="56" cy="166" r="14" fill="#f59e0b" fillOpacity="0.2" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="2 2" />
-                      <line x1="15" y1="166" x2="270" y2="166" stroke="#f59e0b" strokeWidth="2.5" strokeDasharray="5 3" />
-                      
-                      {/* Iliac Crest Label Pin */}
-                      <rect x="155" y="156" width="115" height="18" rx="4" fill="#fef3c7" stroke="#f59e0b" strokeWidth="1" />
-                      <text x="212" y="168" textAnchor="middle" fill="#92400e" fontSize="7.5" fontWeight="bold">Đường Tuffier (Mào chậu ↔ L4)</text>
-                    </g>
-
-                    {/* Safe Needle Entry Gap: L3-L4 */}
-                    <g opacity={anatomyFocus === 'all' || anatomyFocus === 'safe_gap' ? 1 : 0.25} className="transition-opacity">
-                      {/* Target bullseye at gap between L3 (y=132) and L4 (y=166) -> y=149 */}
-                      <circle cx="54" cy="149" r="8" fill="#10b981" fillOpacity="0.3" stroke="#059669" strokeWidth="2" />
-                      <circle cx="54" cy="149" r="3" fill="#059669" />
-
-                      {/* Needle coming in from right */}
-                      <line x1="160" y1="140" x2="57" y2="148" stroke="#0284c7" strokeWidth="3" />
-                      <polygon points="57,148 66,145 64,151" fill="#0284c7" />
-                      
-                      {/* Needle handle */}
-                      <rect x="160" y="133" width="30" height="14" rx="3" fill="#0284c7" />
-                      <text x="175" y="143" textAnchor="middle" fill="#fff" fontSize="7.5" fontWeight="bold">Kim LP</text>
-
-                      {/* Callout Tag */}
-                      <rect x="85" y="118" width="95" height="16" rx="4" fill="#d1fae5" stroke="#10b981" strokeWidth="1" />
-                      <text x="132" y="129" textAnchor="middle" fill="#065f46" fontSize="8" fontWeight="bold">★ Điểm chọc L3 - L4</text>
-                    </g>
+                  {/* Danger Zone (T12 - L2) */}
+                  <g opacity={anatomyFocus === 'all' || anatomyFocus === 'conus' ? 1 : 0.2}>
+                    <rect x="15" y="40" width="650" height="75" rx="6" fill="url(#dangerGrad)" stroke="#f87171" strokeWidth="1" strokeDasharray="3 2" />
+                    <text x="350" y="58" textAnchor="middle" fill="#dc2626" fontSize="9" fontWeight="bold">⛔ VÙNG CẤM CHỌC: CÓ TỦY SỐNG (NÓN TỦY TẬN CÙNG Ở L1-L2)</text>
                   </g>
 
-                  {/* ================= PANEL 2: INTERNAL ANATOMY (TRỤC CỘT SỐNG & TỦY) ================= */}
-                  <g transform="translate(305, 10)">
-                    {/* Background card */}
-                    <rect x="0" y="0" width="305" height="250" rx="10" fill="#f8fafc" className="dark:fill-slate-800/40" stroke="#e2e8f0" strokeWidth="1.5" />
+                  {/* Safe Zone (L3 - L5) */}
+                  <g opacity={anatomyFocus === 'all' || anatomyFocus === 'safe_gap' ? 1 : 0.2}>
+                    <rect x="15" y="122" width="650" height="150" rx="6" fill="url(#safeGrad)" stroke="#34d399" strokeWidth="1.5" />
+                    <text x="350" y="137" textAnchor="middle" fill="#059669" fontSize="9" fontWeight="bold">✔ VÙNG AN TOÀN TUYỆT ĐỐI (L3-L4 HOẶC L4-L5): CHỈ CHỨA DNT VÀ RỄ CHÙM ĐUÔI NGỰA</text>
+                  </g>
+
+                  {/* Vertebral Bodies Column (ANTERIOR: x=40 to x=110) */}
+                  {/* T12 */}
+                  <rect x="40" y="45" width="70" height="18" rx="3" fill="#94a3b8" />
+                  <text x="75" y="58" textAnchor="middle" fill="#fff" fontSize="8.5" fontWeight="bold">Thân T12</text>
+                  {/* L1 */}
+                  <rect x="40" y="68" width="70" height="18" rx="3" fill="#94a3b8" />
+                  <text x="75" y="81" textAnchor="middle" fill="#fff" fontSize="8.5" fontWeight="bold">Thân L1</text>
+                  {/* L2 */}
+                  <rect x="40" y="91" width="70" height="18" rx="3" fill="#94a3b8" />
+                  <text x="75" y="104" textAnchor="middle" fill="#fff" fontSize="8.5" fontWeight="bold">Thân L2</text>
+
+                  {/* L3 */}
+                  <rect x="40" y="145" width="70" height="22" rx="3" fill="#0d9488" stroke="#14b8a6" strokeWidth="1.5" />
+                  <text x="75" y="160" textAnchor="middle" fill="#fff" fontSize="9.5" fontWeight="bold">Thân L3</text>
+                  {/* L4 */}
+                  <rect x="40" y="185" width="70" height="22" rx="3" fill="#0d9488" stroke="#14b8a6" strokeWidth="1.5" />
+                  <text x="75" y="200" textAnchor="middle" fill="#fff" fontSize="9.5" fontWeight="bold">Thân L4</text>
+                  {/* L5 */}
+                  <rect x="40" y="222" width="70" height="20" rx="3" fill="#64748b" />
+                  <text x="75" y="236" textAnchor="middle" fill="#fff" fontSize="8.5" fontWeight="bold">Thân L5</text>
+                  {/* Sacrum */}
+                  <path d="M 40 248 L 110 248 L 95 268 L 55 268 Z" fill="#475569" />
+                  <text x="75" y="261" textAnchor="middle" fill="#fff" fontSize="7.5" fontWeight="bold">Xương cùng</text>
+
+                  {/* Spinal Canal (Subarachnoid Space / Dural Sac: x=145 to x=195) */}
+                  {/* Dural Tube outline */}
+                  <rect x="145" y="42" width="50" height="225" rx="6" fill="#e0f2fe" stroke="#38bdf8" strokeWidth="1.5" />
+                  <text x="170" y="260" textAnchor="middle" fill="#0284c7" fontSize="8" fontWeight="bold">Khoang DNT</text>
+
+                  {/* Spinal Cord (Solid Red ending at L1-L2) */}
+                  <rect x="155" y="42" width="30" height="60" rx="4" fill="#ef4444" />
+                  <polygon points="155,102 185,102 170,118" fill="#dc2626" />
+                  <text x="170" y="75" textAnchor="middle" fill="#fff" fontSize="7.5" fontWeight="bold">TỦY SỐNG</text>
+                  <text x="170" y="112" textAnchor="middle" fill="#fff" fontSize="7" fontWeight="bold">Nón tủy</text>
+
+                  {/* Cauda Equina Rootlets (Floating below L2) */}
+                  {[152, 160, 168, 176, 184].map((lx, idx) => (
+                    <line key={idx} x1={lx} y1="120" x2={lx + (idx % 2 === 0 ? 3 : -3)} y2="250" stroke="#0284c7" strokeWidth="1.5" strokeDasharray="4 3" />
+                  ))}
+
+                  {/* Posterior Spinous Processes (x=240 to x=360) */}
+                  {/* L1 Spinous */}
+                  <path d="M 195 72 L 280 82 L 275 92 L 195 80 Z" fill="#cbd5e1" />
+                  <text x="290" y="88" fill="#64748b" fontSize="8" fontWeight="bold">Gai L1</text>
+                  {/* L2 Spinous */}
+                  <path d="M 195 95 L 285 106 L 280 116 L 195 103 Z" fill="#cbd5e1" />
+                  <text x="295" y="112" fill="#64748b" fontSize="8" fontWeight="bold">Gai L2</text>
+                  {/* L3 Spinous */}
+                  <path d="M 195 148 L 300 160 L 295 172 L 195 158 Z" fill="#0d9488" opacity="0.8" />
+                  <text x="310" y="167" fill="#0f766e" fontSize="9" fontWeight="bold">Gai L3</text>
+                  {/* L4 Spinous (Intersecting Tuffier) */}
+                  <path d="M 195 188 L 305 202 L 300 214 L 195 198 Z" fill="#0d9488" opacity="0.8" />
+                  <text x="315" y="209" fill="#0f766e" fontSize="9" fontWeight="bold">Gai L4 (Mào chậu)</text>
+                  {/* L5 Spinous */}
+                  <path d="M 195 225 L 290 238 L 285 248 L 195 233 Z" fill="#cbd5e1" />
+                  <text x="300" y="244" fill="#64748b" fontSize="8" fontWeight="bold">Gai L5</text>
+
+                  {/* Interspinous Ligaments (Pink bands between spines) */}
+                  <polygon points="195,160 295,172 300,202 195,188" fill="#fda4af" opacity="0.5" stroke="#f43f5e" strokeWidth="1" strokeDasharray="2 2" />
+                  <text x="250" y="185" textAnchor="middle" fill="#be123c" fontSize="7.5" fontWeight="bold">D.C liên gai</text>
+
+                  {/* Ligamentum Flavum (Yellow band on posterior dural wall) */}
+                  <rect x="195" y="125" width="8" height="125" rx="2" fill="#eab308" stroke="#ca8a04" strokeWidth="1" />
+                  <text x="207" y="152" fill="#a16207" fontSize="7.5" fontWeight="bold">D.C VÀNG</text>
+
+                  {/* Back Skin Layer (x=450) */}
+                  <line x1="450" y1="40" x2="450" y2="265" stroke="#f59e0b" strokeWidth="6" strokeLinecap="round" />
+                  <text x="460" y="60" fill="#d97706" fontSize="8.5" fontWeight="bold">Mặt da lưng</text>
+
+                  {/* Tuffier's Line (Connects Iliac crests at L4 level y=209) */}
+                  <g opacity={anatomyFocus === 'all' || anatomyFocus === 'tuffier' ? 1 : 0.25}>
+                    <line x1="20" y1="209" x2="470" y2="209" stroke="#f59e0b" strokeWidth="2" strokeDasharray="5 3" />
+                    <rect x="475" y="198" width="175" height="20" rx="4" fill="#fef3c7" stroke="#f59e0b" strokeWidth="1" />
+                    <text x="562" y="212" textAnchor="middle" fill="#92400e" fontSize="8" fontWeight="bold">Đường Tuffier (2 mào chậu ↔ L4)</text>
+                  </g>
+
+                  {/* NEEDLE ENTERING SAFELY FROM POSTERIOR (RIGHT) THROUGH L3-L4 GAP */}
+                  <g opacity={anatomyFocus === 'all' || anatomyFocus === 'safe_gap' ? 1 : 0.25}>
+                    {/* Entry path line from x=590 through skin x=450 into canal x=185 at y=177 */}
+                    <line x1="580" y1="182" x2="185" y2="177" stroke="#0284c7" strokeWidth="3" />
+                    <polygon points="185,177 195,174 195,180" fill="#0284c7" />
                     
-                    {/* Title */}
-                    <rect x="12" y="10" width="210" height="20" rx="4" fill="#312e81" />
-                    <text x="117" y="23" textAnchor="middle" fill="#ffffff" fontSize="9" fontWeight="bold">2. TRỤC TỦY SỐNG &amp; VÙNG AN TOÀN (CẮT DỌC)</text>
+                    {/* Needle Hub on the right */}
+                    <rect x="580" y="173" width="35" height="18" rx="4" fill="#0284c7" />
+                    <text x="597" y="185" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">Đốc kim</text>
 
-                    {/* DANGER ZONE (Above L2) background highlight */}
-                    <g opacity={anatomyFocus === 'all' || anatomyFocus === 'conus' ? 1 : 0.2}>
-                      <rect x="15" y="38" width="275" height="74" rx="6" fill="url(#dangerGrad)" stroke="#f87171" strokeWidth="1" strokeDasharray="3 2" />
-                      <text x="210" y="55" fill="#dc2626" fontSize="8.5" fontWeight="bold">⛔ CẤM CHỌC (CÓ TỦY SỐNG)</text>
-                    </g>
+                    {/* Target Entry Bullseye at L3-L4 gap */}
+                    <circle cx="185" cy="177" r="9" fill="#10b981" fillOpacity="0.3" stroke="#059669" strokeWidth="2" />
+                    <circle cx="185" cy="177" r="3.5" fill="#059669" />
 
-                    {/* SAFE ZONE (Below L2) background highlight */}
-                    <g opacity={anatomyFocus === 'all' || anatomyFocus === 'safe_gap' ? 1 : 0.2}>
-                      <rect x="15" y="118" width="275" height="120" rx="6" fill="url(#safeGrad)" stroke="#34d399" strokeWidth="1.5" />
-                      <text x="205" y="133" fill="#059669" fontSize="8.5" fontWeight="bold">✔ VÙNG AN TOÀN (CHỈ CÓ DNT)</text>
-                    </g>
-
-                    {/* Vertebrae Blocks column */}
-                    {/* T12 */}
-                    <rect x="30" y="42" width="46" height="18" rx="3" fill="#94a3b8" />
-                    <text x="53" y="54" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">T12</text>
-                    
-                    {/* L1 */}
-                    <rect x="30" y="66" width="46" height="18" rx="3" fill="#94a3b8" />
-                    <text x="53" y="78" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">L1</text>
-                    
-                    {/* L2 */}
-                    <rect x="30" y="90" width="46" height="18" rx="3" fill="#94a3b8" />
-                    <text x="53" y="102" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">L2</text>
-
-                    {/* L3 (Target upper) */}
-                    <rect x="30" y="122" width="46" height="20" rx="3" fill="#0d9488" stroke="#14b8a6" strokeWidth="1.5" />
-                    <text x="53" y="135" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="bold">L3</text>
-
-                    {/* L4 (Target lower - Tuffier level) */}
-                    <rect x="30" y="156" width="46" height="20" rx="3" fill="#0d9488" stroke="#14b8a6" strokeWidth="1.5" />
-                    <text x="53" y="169" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="bold">L4</text>
-
-                    {/* L5 */}
-                    <rect x="30" y="190" width="46" height="18" rx="3" fill="#64748b" />
-                    <text x="53" y="202" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">L5</text>
-
-                    {/* Sacrum S1 */}
-                    <path d="M 30 216 L 76 216 L 70 234 L 36 234 Z" fill="#475569" />
-                    <text x="53" y="227" textAnchor="middle" fill="#fff" fontSize="7.5" fontWeight="bold">Xương cùng</text>
-
-                    {/* Spinal Cord (Solid Red tube ending at L1-L2) */}
-                    <rect x="88" y="40" width="10" height="65" rx="3" fill="#ef4444" />
-                    {/* Conus medullaris tapered tip at L1-L2 */}
-                    <polygon points="88,105 98,105 93,116" fill="#dc2626" />
-                    
-                    {/* Conus Pin Callout */}
-                    <line x1="93" y1="114" x2="135" y2="92" stroke="#dc2626" strokeWidth="1.5" />
-                    <rect x="135" y="82" width="145" height="18" rx="4" fill="#fee2e2" stroke="#ef4444" strokeWidth="1" />
-                    <text x="207" y="94" textAnchor="middle" fill="#991b1b" fontSize="7.5" fontWeight="bold">Nón tủy kết thúc ở L1-L2</text>
-
-                    {/* Subarachnoid Space with CSF (Cyan transparent column) */}
-                    <rect x="86" y="116" width="14" height="115" rx="4" fill="#38bdf8" fillOpacity="0.4" stroke="#0ea5e9" strokeWidth="1.5" />
-                    
-                    {/* Cauda Equina fibers (Nerve rootlets floating harmlessly) */}
-                    <line x1="90" y1="116" x2="89" y2="225" stroke="#0284c7" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="93" y1="116" x2="93" y2="225" stroke="#0284c7" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="96" y1="116" x2="97" y2="225" stroke="#0284c7" strokeWidth="1" strokeDasharray="3 3" />
-
-                    {/* NEEDLE INSERTING SAFELY INTO L3-L4 GAP */}
-                    <g transform="translate(0, 5)">
-                      <line x1="0" y1="140" x2="89" y2="140" stroke="#059669" strokeWidth="2.5" />
-                      <polygon points="89,140 82,137 82,143" fill="#059669" />
-                      <rect x="105" y="145" width="140" height="18" rx="4" fill="#ecfdf5" stroke="#059669" strokeWidth="1" />
-                      <text x="175" y="157" textAnchor="middle" fill="#047857" fontSize="7.5" fontWeight="bold">Mũi kim vào khoang DNT khe L3-L4</text>
-                    </g>
+                    {/* Needle Callout */}
+                    <rect x="330" y="148" width="130" height="20" rx="4" fill="#ecfdf5" stroke="#10b981" strokeWidth="1" />
+                    <text x="395" y="161" textAnchor="middle" fill="#065f46" fontSize="8" fontWeight="bold">★ Mũi kim vào bể DNT khe L3-L4</text>
                   </g>
                 </svg>
               </div>
 
               {/* Dynamic Landmark Clinical Insights */}
-              <div className="p-2.5 rounded-xl border text-xs transition-all bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800">
+              <div className="p-3 rounded-xl border text-xs transition-all bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800">
                 {anatomyFocus === 'all' && (
                   <p className="text-slate-600 dark:text-slate-300">
-                    💡 <strong>Nguyên lý then chốt:</strong> Tủy sống tận cùng ở đốt <strong>L1 - L2</strong>. Khi chọc kim tại khe <strong>L3 - L4 hoặc L4 - L5</strong> (ngay mức đường Tuffier), kim đi vào bể dịch não tủy chỉ chứa rễ chùm đuôi ngựa lơ lửng, tránh 100% nguy cơ chọc vào nhu mô tủy sống.
+                    💡 <strong>Nguyên tắc vàng:</strong> Kim chọc từ <strong>mặt da sau lưng</strong> đi xuyên qua khoảng liên gai giữa hai mỏm gai L3 và L4, xuyên qua dây chằng vàng và màng cứng để vào <strong>bể dịch não tủy thắt lưng</strong>. Thân đốt sống nằm ở phía trước đóng vai trò như thành chặn an toàn nếu kim đi quá sâu.
                   </p>
                 )}
                 {anatomyFocus === 'tuffier' && (
                   <p className="text-amber-800 dark:text-amber-300">
-                    📍 <strong>Đường Tuffier (Intercristal line):</strong> Nối 2 mào chậu, cắt cột sống tại gai L4. Đây là mốc sờ nắn đầu tiên. <em>Lưu ý:</em> Định vị bằng tay có thể chệch lên trên 1 đốt, do đó chọn khe L3-L4 hoặc L4-L5 là khoảng an toàn tuyệt đối.
+                    📍 <strong>Đường Tuffier (Intercristal line):</strong> Nối 2 mào chậu cắt cột sống tại gai L4. Chọn khe L3-L4 ngay phía trên để đảm bảo an toàn tuyệt đối, vì sờ nắn bằng tay có thể chệch lên trên 1 đốt sống.
                   </p>
                 )}
                 {anatomyFocus === 'safe_gap' && (
                   <p className="text-emerald-800 dark:text-emerald-300">
-                    🎯 <strong>Khe L3 - L4 (Vị trí vàng):</strong> Nằm ngay phía trên đường Tuffier 1 khoang liên gai. Khe này rộng, dễ sờ thấy và nằm xa nón tủy nhất, là lựa chọn số 1 của các bác sĩ thần kinh.
+                    🎯 <strong>Khe L3 - L4 (Vị trí lựa chọn #1):</strong> Nằm cách xa nón tủy, khoang liên gai rộng rãi, kim đi vào chỉ gặp các rễ chùm đuôi ngựa lơ lửng trong dịch não tủy, hoàn toàn không gây tổn thương thần kinh vĩnh viễn.
                   </p>
                 )}
                 {anatomyFocus === 'conus' && (
                   <p className="text-rose-800 dark:text-rose-300">
-                    ⚠️ <strong>Nón tủy (Conus Medullaris):</strong> Kết thúc ở đĩa đệm L1-L2 (ở trẻ sơ sinh kéo dài đến L3). Tuyệt đối <strong>không chọc dò ở L1 - L2 hoặc cao hơn</strong> vì sẽ gây tổn thương trực tiếp tủy sống, dẫn đến liệt hai chi dưới vĩnh viễn.
+                    ⚠️ <strong>Nón tủy (Conus Medullaris):</strong> Kết thúc ở mức đĩa đệm L1-L2 (như thấy trên phim MRI ở Hình 2). Tuyệt đối <strong>không chọc dò ở L1 - L2 hoặc cao hơn</strong> vì có thể đâm trực tiếp vào nhu mô tủy sống gây liệt hai chi dưới.
                   </p>
                 )}
               </div>
             </div>
-
-            {/* Practical Landmark Anatomy Notes */}
-            <div className="lg:col-span-5 space-y-3 flex flex-col justify-between">
-              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 space-y-2">
-                <h4 className="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                  Mốc Vàng: Đường Tuffier (Intercristal Line)
-                </h4>
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Đường ngang nối liền điểm cao nhất của <strong>hai mào chậu (iliac crests)</strong>. Đường này thường cắt qua mỏm gai L4 hoặc khe liên gai <strong>L4 - L5</strong>.
-                </p>
-                <div className="p-2 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 rounded-lg text-[11px] text-amber-900 dark:text-amber-300">
-                  <strong>Cảnh báo lâm sàng (Encephalitis 2022):</strong> Định vị đường Tuffier bằng tay có độ chính xác 30% - 60%. Có tới 50% trường hợp chọc vào vị trí <em>cao hơn 1 tầng đốt</em> so với dự kiến. Vì vậy, lựa chọn khe <strong>L3 - L4 hoặc L4 - L5</strong> là an toàn nhất để tránh tổn thương nón tủy.
-                </div>
-              </div>
-
-              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 space-y-2">
-                <h4 className="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm flex items-center gap-1.5">
-                  <Info className="w-4 h-4 text-teal-600 dark:text-teal-400" />
-                  Tư Thế Bệnh Nhân Chuẩn (Positioning)
-                </h4>
-                <ul className="text-xs text-slate-600 dark:text-slate-300 space-y-1.5">
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-teal-600 dark:text-teal-400 font-bold">•</span>
-                    <span><strong>Tư thế nằm nghiêng co (Lateral Recumbent - Ưu tiên #1):</strong> Lưng vuông góc với mép giường, cổ gập nhẹ, 2 gối co sát ngực bụng ("tư thế con tôm"). Vai và hông trên cùng một mặt phẳng thẳng đứng (không vặn xoắn).</span>
-                  </li>
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-teal-600 dark:text-teal-400 font-bold">•</span>
-                    <span><strong>Lợi ích nằm nghiêng:</strong> Đo áp lực mở (Opening Pressure) chính xác nhất (60 - 250 mmH2O) và hạ thấp đầu giúp giảm tỷ lệ đau đầu sau chọc (PDPH).</span>
-                  </li>
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-teal-600 dark:text-teal-400 font-bold">•</span>
-                    <span><strong>Tư thế ngồi cúi (Sitting):</strong> Dành cho người béo phì hoặc khó tìm khe khớp, nhưng áp lực mở sẽ cao giả tạo (200 - 300 mmH2O).</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       )}
 
       {/* SUB-TAB 2: 8 ANATOMICAL LAYERS */}
       {subTab === 'layers' && (
         <div className="space-y-4">
+          {/* Real Clinical Atlas Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Figure 5: Spinal needle trajectory */}
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="p-1 bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300 rounded-lg text-xs font-bold font-mono">
+                    Hình 3
+                  </span>
+                  <h4 className="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+                    Đường Đi Kim Qua Các Lớp Vào Khoang Dưới Nhện
+                  </h4>
+                </div>
+                <span className="text-[10px] text-slate-400 font-medium">Vaidyanath (2014)</span>
+              </div>
+
+              <div 
+                className="relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group"
+                onClick={() => setSelectedPhotoModal({
+                  src: './assets/lp_guide/lp_needle_trajectory.png',
+                  title: 'Hình 3: Đường đi của kim tủy sống qua mỏm gai và dây chằng vàng',
+                  desc: 'Kim tủy sống đi từ phía sau qua dây chằng liên gai, vượt qua dây chằng vàng (Ligamentum flavum), xuyên thủng màng cứng (Dura) và vào khoang dưới nhện (Subarachnoid space).',
+                  source: 'Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)'
+                })}
+              >
+                <img 
+                  src="./assets/lp_guide/lp_needle_trajectory.png" 
+                  alt="Kim tủy sống đặt trong khoang dưới nhện"
+                  className="max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]" 
+                />
+                <div className="absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-3.5 h-3.5" />
+                </div>
+              </div>
+
+              <div className="p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800">
+                <p>
+                  🎯 <strong>Mũi kim dừng ở khoang dưới nhện:</strong> Chiều sâu trung bình ở người trưởng thành là <strong>4 - 5 cm (khoảng 2/3 chiều dài kim)</strong>. Khi qua màng cứng sẽ cảm nhận rõ tiếng "sụp hẫng" (pop sensation).
+                </p>
+              </div>
+            </div>
+
+            {/* Figure 2: Sagittal section */}
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="p-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 rounded-lg text-xs font-bold font-mono">
+                    Hình 4
+                  </span>
+                  <h4 className="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+                    Cắt Dọc Giải Phẫu Dây Chằng &amp; Đốt Sống
+                  </h4>
+                </div>
+                <span className="text-[10px] text-slate-400 font-medium">Vaidyanath (2014)</span>
+              </div>
+
+              <div 
+                className="relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group"
+                onClick={() => setSelectedPhotoModal({
+                  src: './assets/lp_guide/lp_sagittal_anatomy.png',
+                  title: 'Hình 4: Thiết đồ cắt dọc giải phẫu cột sống thắt lưng',
+                  desc: '1: Dây chằng trên gai; 2: Mỏm gai đốt sống; 3: Dây chằng liên gai; 4: Dây chằng vàng; 5: Dây chằng dọc trước; 6: Dây chằng dọc sau; 7: Đĩa đệm.',
+                  source: 'Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)'
+                })}
+              >
+                <img 
+                  src="./assets/lp_guide/lp_sagittal_anatomy.png" 
+                  alt="Cắt dọc giải phẫu các dây chằng cột sống thắt lưng"
+                  className="max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]" 
+                />
+                <div className="absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-3.5 h-3.5" />
+                </div>
+              </div>
+
+              <div className="p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800">
+                <p>
+                  📖 <strong>Cấu trúc dây chằng liên kết:</strong> Dây chằng trên gai và liên gai giữ trục kim ổn định ở đường giữa. Dây chằng vàng là ranh giới đàn hồi cuối cùng trước khi vào khoang màng cứng.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive 8 Layers Detail Cards */}
           <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-4">
-            <div>
-              <h4 className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2">
-                <Layers className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                8 Lớp Cấu Trúc Giải Phẫu Kim Chọc Tủy Sống Đi Qua
-              </h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Chiều sâu trung bình để kim chạm khoang dưới nhện ở người trưởng thành là <strong>4 - 5 cm (tương đương 2/3 chiều dài kim)</strong>.
-              </p>
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                  Bảng Tra Cứu 8 Lớp Giải Phẫu Kim Đi Qua &amp; Cảm Giác Cản Tay
+                </h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  Bấm vào từng lớp để xem cảm giác xúc giác (tactile sensation) và lưu ý thực hành lâm sàng.
+                </p>
+              </div>
             </div>
 
-            {/* Interactive SVG Cross-Section Layers Diagram */}
-            <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 overflow-x-auto">
-              <svg viewBox="0 0 760 140" className="w-full min-w-[650px] h-auto">
-                {/* Needle advancing horizontally */}
-                <g transform="translate(0, 70)">
-                  {/* Needle handle & hub */}
-                  <rect x="0" y="-12" width="55" height="24" rx="4" fill="#0284c7" />
-                  <text x="27" y="4" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="bold">Đốc kim</text>
-                  <circle cx="2" cy="0" r="5" fill="#f8fafc" stroke="#0284c7" strokeWidth="2" />
-                  
-                  {/* Needle shaft */}
-                  <rect x="55" y="-2" width="620" height="4" fill="#94a3b8" />
-                  <rect x="55" y="-1" width="620" height="2" fill="#f8fafc" />
-                  {/* Bevel tip */}
-                  <polygon points="675,-2 690,0 675,2" fill="#0284c7" />
-                </g>
-
-                {/* 8 Anatomical Layer Slices */}
-                {/* Layer 1: Skin */}
-                <g 
-                  className="cursor-pointer transition-opacity hover:opacity-90"
-                  onClick={() => setActiveLayer(1)}
-                >
-                  <rect x="70" y="15" width="40" height="110" rx="3" fill="#fde68a" stroke="#d97706" strokeWidth="1.5" />
-                  <text x="90" y="35" textAnchor="middle" fill="#78350f" fontSize="10" fontWeight="bold">1. Da</text>
-                  <text x="90" y="110" textAnchor="middle" fill="#92400e" fontSize="8 font-mono">0-2mm</text>
-                </g>
-
-                {/* Layer 2: Subcutaneous */}
-                <g 
-                  className="cursor-pointer transition-opacity hover:opacity-90"
-                  onClick={() => setActiveLayer(2)}
-                >
-                  <rect x="115" y="15" width="70" height="110" rx="3" fill="#fef3c7" stroke="#f59e0b" strokeWidth="1.5" />
-                  <text x="150" y="35" textAnchor="middle" fill="#78350f" fontSize="10" fontWeight="bold">2. Dưới da</text>
-                  <text x="150" y="55" textAnchor="middle" fill="#b45309" fontSize="8">Mô mỡ lỏng</text>
-                </g>
-
-                {/* Layer 3: Supraspinous */}
-                <g 
-                  className="cursor-pointer transition-opacity hover:opacity-90"
-                  onClick={() => setActiveLayer(3)}
-                >
-                  <rect x="190" y="15" width="70" height="110" rx="3" fill="#bfdbfe" stroke="#3b82f6" strokeWidth="1.5" />
-                  <text x="225" y="35" textAnchor="middle" fill="#1e3a8a" fontSize="9.5" fontWeight="bold">3. Trên gai</text>
-                  <text x="225" y="55" textAnchor="middle" fill="#1d4ed8" fontSize="8">Dải xơ dọc</text>
-                </g>
-
-                {/* Layer 4: Interspinous */}
-                <g 
-                  className="cursor-pointer transition-opacity hover:opacity-90"
-                  onClick={() => setActiveLayer(4)}
-                >
-                  <rect x="265" y="15" width="80" height="110" rx="3" fill="#c7d2fe" stroke="#6366f1" strokeWidth="1.5" />
-                  <text x="305" y="35" textAnchor="middle" fill="#312e81" fontSize="9.5" fontWeight="bold">4. Liên gai</text>
-                  <text x="305" y="55" textAnchor="middle" fill="#4338ca" fontSize="8">Giữa 2 mỏm gai</text>
-                </g>
-
-                {/* Layer 5: Ligamentum Flavum */}
-                <g 
-                  className="cursor-pointer transition-opacity hover:opacity-90"
-                  onClick={() => setActiveLayer(5)}
-                >
-                  <rect x="350" y="15" width="75" height="110" rx="3" fill="#fef08a" stroke="#ca8a04" strokeWidth="2" strokeDasharray="3 1" />
-                  <text x="387" y="35" textAnchor="middle" fill="#713f12" fontSize="9.5" fontWeight="bold">5. D.C Vàng ★</text>
-                  <text x="387" y="55" textAnchor="middle" fill="#854d0e" fontSize="8">Sức cản rõ rệt</text>
-                </g>
-
-                {/* Layer 6: Epidural Space */}
-                <g 
-                  className="cursor-pointer transition-opacity hover:opacity-90"
-                  onClick={() => setActiveLayer(6)}
-                >
-                  <rect x="430" y="15" width="60" height="110" rx="3" fill="#ffe4e6" stroke="#f43f5e" strokeWidth="1.5" />
-                  <text x="460" y="35" textAnchor="middle" fill="#881337" fontSize="9" fontWeight="bold">6. Ngoài MC</text>
-                  <text x="460" y="55" textAnchor="middle" fill="#be123c" fontSize="7.5">Đám rối TM</text>
-                </g>
-
-                {/* Layer 7: Dura & Arachnoid */}
-                <g 
-                  className="cursor-pointer transition-opacity hover:opacity-90"
-                  onClick={() => setActiveLayer(7)}
-                >
-                  <rect x="495" y="15" width="70" height="110" rx="3" fill="#e9d5ff" stroke="#9333ea" strokeWidth="2" />
-                  <text x="530" y="35" textAnchor="middle" fill="#581c87" fontSize="9.5" fontWeight="bold">7. Màng Cứng ★</text>
-                  <text x="530" y="55" textAnchor="middle" fill="#7e22ce" fontSize="8 font-bold">"POP" Sensation</text>
-                </g>
-
-                {/* Layer 8: Subarachnoid Space */}
-                <g 
-                  className="cursor-pointer transition-opacity hover:opacity-90"
-                  onClick={() => setActiveLayer(8)}
-                >
-                  <rect x="570" y="15" width="165" height="110" rx="6" fill="#cffafe" stroke="#06b6d4" strokeWidth="2.5" />
-                  <text x="652" y="35" textAnchor="middle" fill="#164e63" fontSize="10.5" fontWeight="bold">8. KHOANG DƯỚI NHỆN</text>
-                  <text x="652" y="55" textAnchor="middle" fill="#0891b2" fontSize="8.5">Chứa DNT &amp; Rễ Chùm Đuôi Ngựa</text>
-                  {/* CSF Waves */}
-                  <path d="M 580 85 Q 610 80 640 85 T 700 85" fill="none" stroke="#0891b2" strokeWidth="2" strokeDasharray="3 2" />
-                  <path d="M 580 100 Q 610 95 640 100 T 700 100" fill="none" stroke="#0891b2" strokeWidth="2" strokeDasharray="3 2" />
-                </g>
-              </svg>
-            </div>
-
-            {/* Click to inspect layer cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
               {layersData.map((layer) => {
                 const isSelected = activeLayer === layer.num;
@@ -511,21 +528,38 @@ export const LPProcedureGuide: React.FC = () => {
                   <div 
                     key={layer.num}
                     onClick={() => setActiveLayer(isSelected ? null : layer.num)}
-                    className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
+                    className={`p-3 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                       isSelected
-                        ? 'bg-teal-50 dark:bg-teal-950/60 border-teal-500 shadow-xs'
+                        ? 'bg-teal-50 dark:bg-teal-950/70 border-teal-500 shadow-xs ring-2 ring-teal-500/20'
                         : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                     }`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="font-bold text-xs text-slate-900 dark:text-slate-100">{layer.name}</span>
-                      {layer.num === 5 && <span className="text-[9px] bg-amber-100 text-amber-800 px-1 rounded font-bold">Cản nặng</span>}
-                      {layer.num === 7 && <span className="text-[9px] bg-purple-100 text-purple-800 px-1 rounded font-bold">Pop!</span>}
-                      {layer.num === 8 && <span className="text-[9px] bg-cyan-100 text-cyan-800 px-1 rounded font-bold">Đích đến</span>}
+                    <div>
+                      <div className="flex items-center justify-between gap-1 mb-1">
+                        <span className="font-bold text-xs text-slate-900 dark:text-slate-100">{layer.name}</span>
+                        <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500">{layer.depth}</span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                        {layer.desc}
+                      </p>
                     </div>
-                    <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
-                      {layer.desc}
-                    </p>
+
+                    <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between">
+                      <span className="text-[10px] font-bold text-teal-700 dark:text-teal-400">
+                        Cảm giác tay:
+                      </span>
+                      <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
+                        layer.num === 5 
+                          ? 'bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300' 
+                          : layer.num === 7 
+                          ? 'bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300'
+                          : layer.num === 8
+                          ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300'
+                          : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                      }`}>
+                        {layer.sensation}
+                      </span>
+                    </div>
                   </div>
                 );
               })}
@@ -538,147 +572,131 @@ export const LPProcedureGuide: React.FC = () => {
       {subTab === 'bevel' && (
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Bevel Orientation Card */}
-            <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-3">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/60 px-2 py-0.5 rounded-full">
-                  Kỹ Thuật Phòng Ngừa Đau Đầu PDPH
-                </span>
-                <h4 className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base mt-1 flex items-center gap-2">
-                  <Eye className="w-4 h-4 text-teal-600 dark:text-teal-400" />
-                  Nguyên Tắc Hướng Mặt Vát Kim (Bevel Orientation)
-                </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Các sợi collagen màng cứng chạy dọc theo chiều dài cột sống (Longitudinal dural fibers).
+            {/* Real Atlas Figure 1 from Encephalitis 2022: Bevel & Dural Injury */}
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="p-1 bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 rounded-lg text-xs font-bold font-mono">
+                    Hình 5
+                  </span>
+                  <h4 className="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+                    Cơ Chế Tổn Thương Màng Cứng &amp; Hướng Mặt Vát
+                  </h4>
+                </div>
+                <span className="text-[10px] text-slate-400 font-medium">Encephalitis (2022)</span>
+              </div>
+
+              <div 
+                className="relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group"
+                onClick={() => setSelectedPhotoModal({
+                  src: './assets/lp_guide/lp_bevel_orientation.jpg',
+                  title: 'Hình 5: Mũi kim Quincke và cơ chế tổn thương màng cứng',
+                  desc: 'A: Mũi vát kim Quincke sắc nhọn. B: Hướng các thớ sợi collagen màng cứng chạy dọc. Chọc song song (Parallel insertion) chỉ tách các thớ sợi, lỗ tự đóng lại khi rút kim. Chọc vuông góc (Vertical insertion) cắt đứt các sợi collagen làm dịch não tủy rò rỉ kéo dài dẫn đến đau đầu sau chọc (PDPH).',
+                  source: 'Kim KT. Lumbar puncture: considerations, procedure, and complications. Encephalitis 2022;2(4):93-97.'
+                })}
+              >
+                <img 
+                  src="./assets/lp_guide/lp_bevel_orientation.jpg" 
+                  alt="Hướng mặt vát kim và cơ chế rách màng cứng theo Encephalitis 2022"
+                  className="max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]" 
+                />
+                <div className="absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-3.5 h-3.5" />
+                </div>
+              </div>
+
+              <div className="p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 space-y-1">
+                <p>
+                  ✔ <strong>Nguyên tắc mặt vát song song (Parallel Bevel):</strong> Khi bệnh nhân nằm nghiêng, đặt mặt vát hướng <strong>lên trần nhà</strong> (hoặc song song với trục cột sống). Mũi kim sẽ lách giữa các thớ sợi collagen mà không làm đứt sợi.
                 </p>
               </div>
+            </div>
 
-              {/* SVG Bevel Comparison */}
-              <div className="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
-                <svg viewBox="0 0 340 180" className="w-full h-auto">
-                  {/* Left: Parallel (CORRECT) */}
-                  <g transform="translate(10, 10)">
-                    {/* Dural fibers */}
-                    <rect x="0" y="0" width="150" height="150" rx="8" fill="#f0fdf4" stroke="#86efac" strokeWidth="1.5" />
-                    <text x="75" y="18" textAnchor="middle" fill="#166534" fontSize="10" fontWeight="bold">MẶT VÁT SONG SONG (ĐÚNG)</text>
-                    
-                    {/* Longitudinal fibers lines */}
-                    {[25, 45, 65, 85, 105, 125].map((x, i) => (
-                      <line key={i} x1={x} y1="30" x2={x} y2="140" stroke="#86efac" strokeWidth="1.5" strokeDasharray="3 2" />
-                    ))}
-
-                    {/* Needle with bevel parallel */}
-                    <ellipse cx="75" cy="85" rx="8" ry="24" fill="#0284c7" opacity="0.8" />
-                    <line x1="75" y1="55" x2="75" y2="115" stroke="#fff" strokeWidth="2" />
-                    
-                    {/* Outcome Badge */}
-                    <rect x="15" y="125" width="120" height="18" rx="4" fill="#22c55e" />
-                    <text x="75" y="137" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">TÁCH SỢI &rarr; TỰ ĐÓNG LỖ LẠI</text>
-                  </g>
-
-                  {/* Right: Perpendicular (INCORRECT) */}
-                  <g transform="translate(180, 10)">
-                    {/* Dural fibers */}
-                    <rect x="0" y="0" width="150" height="150" rx="8" fill="#fff1f2" stroke="#fca5a5" strokeWidth="1.5" />
-                    <text x="75" y="18" textAnchor="middle" fill="#991b1b" fontSize="10" fontWeight="bold">MẶT VÁT VUÔNG GÓC (SAI)</text>
-                    
-                    {/* Longitudinal fibers lines */}
-                    {[25, 45, 65, 85, 105, 125].map((x, i) => (
-                      <line key={i} x1={x} y1="30" x2={x} y2="140" stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="3 2" />
-                    ))}
-
-                    {/* Needle with bevel perpendicular (cuts fibers) */}
-                    <ellipse cx="75" cy="85" rx="24" ry="8" fill="#ef4444" opacity="0.8" />
-                    <line x1="50" y1="85" x2="100" y2="85" stroke="#fff" strokeWidth="2" />
-
-                    {/* Outcome Badge */}
-                    <rect x="15" y="125" width="120" height="18" rx="4" fill="#e11d48" />
-                    <text x="75" y="137" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">CẮT ĐỨT SỢI &rarr; RÒ DNT / PDPH</text>
-                  </g>
-                </svg>
+            {/* Real Atlas Figures 2 & 3 from Encephalitis 2022: Spinal Needle & Stylet */}
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between">
+              <div className="p-3 bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="p-1 bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 rounded-lg text-xs font-bold font-mono">
+                    Hình 6 &amp; 7
+                  </span>
+                  <h4 className="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+                    Kim Quincke &amp; Kỹ Thuật Sử Dụng Nòng Thông (Stylet)
+                  </h4>
+                </div>
+                <span className="text-[10px] text-slate-400 font-medium">Encephalitis (2022)</span>
               </div>
 
-              <div className="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed">
-                <div className="flex items-start gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Tư thế nằm nghiêng:</strong> Đặt mặt vát kim hướng lên trần nhà (hoặc sang bên song song trục thân) để kim lách dọc giữa các sợi màng cứng.</span>
+              <div 
+                className="relative p-2 bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center cursor-pointer group"
+                onClick={() => setSelectedPhotoModal({
+                  src: './assets/lp_guide/lp_stylet_tip.jpg',
+                  title: 'Hình 6 & 7: Kim Quincke có và không có nòng thông (Stylet)',
+                  desc: 'A: Đầu kim có nòng thông stylet lấp kín lòng kim. B: Đầu kim rỗng khi rút nòng. Luôn đút lại nòng thông trước khi rút kim ra để tránh sợi màng nhện bị kéo kẹt ra ngoài màng cứng gây rò DNT.',
+                  source: 'Kim KT. Lumbar puncture: considerations, procedure, and complications. Encephalitis 2022;2(4):93-97.'
+                })}
+              >
+                <img 
+                  src="./assets/lp_guide/lp_stylet_tip.jpg" 
+                  alt="Đầu kim chọc tủy sống có và không có nòng thông stylet"
+                  className="max-h-[220px] w-auto object-contain rounded-xl shadow-xs transition-transform group-hover:scale-[1.01]" 
+                />
+                <div className="absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-3.5 h-3.5" />
                 </div>
-                <div className="flex items-start gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Lắp lại nòng thông (Stylet) trước khi rút kim:</strong> Nghiên cứu Strupp (600 bệnh nhân, JAMA) chứng minh việc đút lại nòng trước khi rút kim làm giảm tới 50% nguy cơ đau đầu PDPH vì ngăn sợi màng nhện bị hút kẹt ra ngoài.</span>
+              </div>
+
+              <div className="p-3 text-xs text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 space-y-1">
+                <p>
+                  ⭐ <strong>Nghiên cứu Strupp (JAMA, 600 bệnh nhân):</strong> Đút lại nòng thông (Stylet) <em>trước khi rút kim</em> giúp giảm tới 50% nguy cơ đau đầu sau chọc (PDPH) nhờ ngăn chặn bấc dẫn lưu sợi màng nhện.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Manometer Clinical Setup Card */}
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xs grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+            <div className="md:col-span-5 flex justify-center">
+              <div 
+                className="relative p-2 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer group"
+                onClick={() => setSelectedPhotoModal({
+                  src: './assets/lp_guide/lp_manometer_setup.png',
+                  title: 'Hình 8: Hệ thống đo áp lực mở bằng áp kế thủy tĩnh Manometer',
+                  desc: 'Kim tủy sống được kết nối với khóa 3 ngả và cột áp kế thủy tĩnh Manometer đặt vuông góc thẳng đứng để đo chính xác áp lực mở DNT ban đầu.',
+                  source: 'Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)'
+                })}
+              >
+                <img 
+                  src="./assets/lp_guide/lp_manometer_setup.png" 
+                  alt="Kim chọc dò nối với áp kế Manometer qua khóa ba chạc"
+                  className="max-h-[220px] w-auto object-contain rounded-lg shadow-xs group-hover:scale-[1.02] transition-transform" 
+                />
+                <div className="absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-3.5 h-3.5" />
                 </div>
               </div>
             </div>
 
-            {/* Manometer & Pressure Measurement Card */}
-            <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-3">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded-full">
-                  Kỹ Thuật Đo Áp Lực Mở
-                </span>
-                <h4 className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base mt-1 flex items-center gap-2">
-                  <Gauge className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                  Đo Áp Lực DNT Bằng Áp Kế (Manometer)
-                </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Kết nối cột áp kế thủy ngân/nước qua khóa ba chạc (3-way Stopcock).
-                </p>
+            <div className="md:col-span-7 space-y-3">
+              <div className="inline-flex items-center gap-1.5 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase">
+                <Gauge className="w-3.5 h-3.5" /> Kỹ Thuật Đo Áp Lực Mở (Opening Pressure)
               </div>
-
-              {/* Manometer Diagram */}
-              <div className="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center">
-                <svg viewBox="0 0 320 180" className="w-full h-auto max-h-[170px]">
-                  {/* Manometer glass column */}
-                  <g transform="translate(140, 10)">
-                    <rect x="0" y="0" width="22" height="135" rx="3" fill="#f1f5f9" stroke="#64748b" strokeWidth="1.5" />
-                    
-                    {/* Liquid Column (CSF rising to ~150 mmH2O) */}
-                    <rect x="2" y="65" width="18" height="68" fill="#38bdf8" opacity="0.75" />
-                    <line x1="2" y1="65" x2="20" y2="65" stroke="#0284c7" strokeWidth="2" />
-                    
-                    {/* Scale tick marks */}
-                    <text x="30" y="20" fill="#dc2626" fontSize="7.5" fontWeight="bold">300 (Tăng nặng)</text>
-                    <line x1="16" y1="18" x2="22" y2="18" stroke="#dc2626" strokeWidth="1.5" />
-
-                    <text x="30" y="50" fill="#ea580c" fontSize="7.5" fontWeight="bold">250 (Ngưỡng tăng áp lực)</text>
-                    <line x1="14" y1="48" x2="22" y2="48" stroke="#ea580c" strokeWidth="1.5" />
-
-                    <text x="30" y="80" fill="#16a34a" fontSize="7.5" fontWeight="bold">150 mmH2O (Bình thường)</text>
-                    <line x1="12" y1="78" x2="22" y2="78" stroke="#16a34a" strokeWidth="2" />
-
-                    <text x="30" y="115" fill="#ca8a04" fontSize="7.5" fontWeight="bold">60 mmH2O (Hạ áp)</text>
-                    <line x1="14" y1="113" x2="22" y2="113" stroke="#ca8a04" strokeWidth="1.5" />
-
-                    <text x="30" y="134" fill="#64748b" fontSize="7">0 mmH2O</text>
-                  </g>
-
-                  {/* 3-way Stopcock */}
-                  <g transform="translate(130, 140)">
-                    <circle cx="21" cy="15" r="10" fill="#0284c7" />
-                    <line x1="21" y1="5" x2="21" y2="25" stroke="#fff" strokeWidth="2.5" />
-                    <line x1="11" y1="15" x2="31" y2="15" stroke="#fff" strokeWidth="2.5" />
-                    <text x="40" y="18" fill="#0284c7" fontSize="8" fontWeight="bold">Khóa 3 chạc</text>
-                  </g>
-
-                  {/* Spinal Needle connected to left */}
-                  <g transform="translate(20, 150)">
-                    <rect x="0" y="0" width="115" height="4" fill="#94a3b8" />
-                    <polygon points="0,-3 -8,2 0,7" fill="#0369a1" />
-                    <text x="50" y="-5" fill="#475569" fontSize="8" fontWeight="bold">Kim tủy sống</text>
-                  </g>
-                </svg>
-              </div>
-
-              <div className="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed">
-                <div className="flex items-start gap-1.5">
-                  <span className="text-indigo-600 dark:text-indigo-400 font-bold">•</span>
-                  <span><strong>Tư thế chuẩn để đo áp lực:</strong> Bệnh nhân nằm nghiêng, <em>duỗi nhẹ 2 chân</em> và thả lỏng nhịp thở (co gập gối quá mức hoặc gồng bụng sẽ làm tăng áp lực ổ bụng và tăng giả tạo áp lực DNT).</span>
-                </div>
-                <div className="flex items-start gap-1.5">
-                  <span className="text-indigo-600 dark:text-indigo-400 font-bold">•</span>
-                  <span><strong>Passive Drainage:</strong> Sau khi đo áp lực, chuyển khóa 3 chạc cho dịch nhỏ giọt tự nhiên vào các ống nghiệm. <em>Tuyệt đối không dùng bơm tiêm hút</em> vì có thể làm tổn thương chùm đuôi ngựa hoặc gây xuất huyết.</span>
-                </div>
-              </div>
+              <h4 className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base">
+                Quy Trình Đo Áp Lực Chuẩn Bằng Áp Kế Manometer
+              </h4>
+              <ul className="text-xs text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="text-teal-600 dark:text-teal-400 font-bold">•</span>
+                  <span><strong>Tư thế bệnh nhân:</strong> Bắt buộc nằm nghiêng, <em>duỗi nhẹ hai chân</em> và thở đều tự nhiên. Co gập gối quá chặt hoặc gồng bụng sẽ làm tăng áp lực ổ bụng và tăng giả tạo áp lực DNT.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-teal-600 dark:text-teal-400 font-bold">•</span>
+                  <span><strong>Kết nối khóa 3 chạc (Stopcock):</strong> Lắp cột áp kế thẳng đứng vuông góc với mặt giường. Mở khóa cho dịch dâng lên trong cột áp kế và quan sát mực dịch đập nhẹ theo nhịp thở.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-teal-600 dark:text-teal-400 font-bold">•</span>
+                  <span><strong>Giá trị bình thường:</strong> 60 - 250 mmH2O ở người lớn. Nếu &gt; 250 mmH2O: Cảnh báo tăng áp lực nội sọ cấp. Nếu &lt; 60 mmH2O: Hạ áp lực nội sọ tự phát (SIH).</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -687,52 +705,84 @@ export const LPProcedureGuide: React.FC = () => {
       {/* SUB-TAB 4: STEP-BY-STEP CHECKLIST */}
       {subTab === 'steps' && (
         <div className="space-y-4">
-          <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700/80 pb-3">
-              <div>
-                <h4 className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400" />
-                  Bảng Kiểm Quy Trình Thực Hành 6 Bước (Procedure Checklist)
-                </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Chuẩn hóa theo tài liệu hướng dẫn lâm sàng cho bác sĩ nội thần kinh và cấp cứu.
-                </p>
+          {/* Equipment Photo Card */}
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-xs grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+            <div className="md:col-span-4 flex justify-center">
+              <div 
+                className="relative p-2 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer group"
+                onClick={() => setSelectedPhotoModal({
+                  src: './assets/lp_guide/lp_equipment.png',
+                  title: 'Hình 9: Bàn dụng cụ vô khuẩn chuẩn bị chọc dò DNT',
+                  desc: 'Bao gồm dung dịch sát khuẩn Chlorhexidine/Povidone-Iodine, gạc vô khuẩn, săng có lỗ, kim chọc tủy sống Quincke 20-22G có nòng, khóa 3 ngả, áp kế Manometer, thuốc tê Lidocaine 1%, bơm tiêm và các lọ xét nghiệm.',
+                  source: 'Dr Chandra Vaidyanath - Essence of clinical procedures for medical students (2014)'
+                })}
+              >
+                <img 
+                  src="./assets/lp_guide/lp_equipment.png" 
+                  alt="Bộ dụng cụ chọc dò thắt lưng"
+                  className="max-h-[190px] w-auto object-contain rounded-lg shadow-xs group-hover:scale-[1.02] transition-transform" 
+                />
+                <div className="absolute top-3 right-3 bg-slate-900/70 text-white p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-3.5 h-3.5" />
+                </div>
               </div>
-              <span className="text-[11px] font-bold text-teal-800 dark:text-teal-300 bg-teal-100 dark:bg-teal-950 px-2.5 py-1 rounded-xl self-start sm:self-auto">
-                Vô khuẩn tuyệt đối (Strict Aseptic)
+            </div>
+
+            <div className="md:col-span-8 space-y-2">
+              <span className="text-[10px] font-bold text-teal-800 dark:text-teal-300 bg-teal-100 dark:bg-teal-950 px-2.5 py-0.5 rounded-full uppercase">
+                Chuẩn bị dụng cụ
+              </span>
+              <h4 className="font-bold text-slate-800 dark:text-slate-100 text-sm sm:text-base">
+                Bộ Dụng Cụ Vô Khuẩn Chọc Dò Tiêu Chuẩn (Sterile LP Tray)
+              </h4>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                Đầy đủ: Dung dịch sát khuẩn Povidone-Iodine/Chlorhexidine, săng lỗ vô khuẩn, Lidocaine 1%, bơm tiêm 5ml kim 25G gây tê, kim Quincke 20-22G có nòng stylet, khóa 3 ngả, cột áp kế Manometer, 4 lọ đựng mẫu DNT vô khuẩn có nắp vặn và băng ép gạc vô khuẩn.
+              </p>
+            </div>
+          </div>
+
+          {/* 6 Steps Checklist */}
+          <div className="bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700/80 pb-2.5">
+              <h4 className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                Bảng Kiểm Quy Trình Thực Hành 6 Bước (Procedure Checklist)
+              </h4>
+              <span className="text-[10px] font-bold text-teal-800 dark:text-teal-300 bg-teal-100 dark:bg-teal-950 px-2 py-0.5 rounded-lg">
+                Vô khuẩn ngoại khoa tuyệt đối
               </span>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {[
                 {
                   step: 'BƯỚC 1',
                   title: 'Chuẩn bị bệnh nhân & Đặt tư thế',
-                  details: 'Giải thích thủ thuật, ký cam kết. Lập đường truyền tĩnh mạch ngoại vi sẵn sàng. Đặt bệnh nhân nằm nghiêng mép giường, cong lưng tối đa (đầu gối chạm ngực, cằm chạm ngực). Giữ trục cột sống thẳng song song mặt giường, không vặn xoắn xương chậu.',
+                  details: 'Giải thích mục đích, tai biến, ký cam kết. Lập đường truyền tĩnh mạch sẵn sàng. Đặt bệnh nhân nằm nghiêng sát mép giường, cong lưng tối đa (đầu gối gập sát ngực, cằm chạm ngực - tư thế con tôm). Trục cột sống thẳng song song mặt giường, không vặn xoắn khung chậu.',
                   badge: 'Tư thế con tôm'
                 },
                 {
                   step: 'BƯỚC 2',
                   title: 'Xác định mốc giải phẫu & Khe chọc an toàn',
-                  details: 'Sờ tìm hai mào chậu (iliac crests), kẻ đường ngang Tuffier cắt cột sống ở mỏm gai L4. Chọn khe L3-L4 hoặc L4-L5 ngay dưới hoặc trên đường này. Đánh dấu vị trí kim đi vào chính giữa đường giữa (Midline).',
+                  details: 'Sờ tìm hai mào chậu (iliac crests), kẻ đường ngang Tuffier cắt cột sống ở mỏm gai L4. Chọn khe L3-L4 hoặc L4-L5 ngay phía trên hoặc dưới đường này. Đánh dấu vị trí kim đi vào chính giữa đường giữa (Midline).',
                   badge: 'Khe L3-L4 / L4-L5'
                 },
                 {
                   step: 'BƯỚC 3',
                   title: 'Sát khuẩn & Gây tê từng lớp',
-                  details: 'Đội mũ, đeo khẩu trang, rửa tay ngoại khoa, mang găng vô khuẩn. Sát khuẩn Povidone-Iodine hoặc Chlorhexidine từ tâm ra ngoài theo hình xoắn ốc (bán kính ≥ 15 cm). Trải săng có lỗ vô khuẩn. Tiêm tê Lidocaine 1% tạo nốt phồng trong da, sau đó gây tê sâu theo hướng chọc kim vào dây chằng liên gai.',
+                  details: 'Đội mũ, đeo khẩu trang, rửa tay ngoại khoa, mang găng vô khuẩn. Sát khuẩn Povidone-Iodine hoặc Chlorhexidine từ tâm ra ngoài theo hình xoắn ốc (bán kính ≥ 15 cm). Trải săng có lỗ. Tiêm tê Lidocaine 1% tạo nốt phồng trong da, sau đó đổi kim dài gây tê sâu theo hướng chọc vào dây chằng liên gai.',
                   badge: 'Lidocaine 1%'
                 },
                 {
                   step: 'BƯỚC 4',
-                  title: 'Chọc kim có nòng thông (Stylet) & Hướng kim',
-                  details: 'Cầm kim chọc tủy sống (Quincke 20-22G) có nòng thông giữa ngón cái và ngón trỏ. Hướng mặt vát kim song song với các sợi dọc màng cứng (hướng lên trần nhà khi nằm nghiêng). Đâm kim chậm rãi nghiêng nhẹ 10-15 độ về phía rốn (rostral direction).',
+                  title: 'Chọc kim có nòng thông (Stylet) & Hướng mặt vát',
+                  details: 'Cầm kim Quincke 20-22G có nòng thông giữa ngón cái và ngón trỏ. Hướng mặt vát kim song song với các sợi dọc màng cứng (mặt vát hướng lên trần nhà khi nằm nghiêng). Đâm kim chậm rãi nghiêng nhẹ 10-15 độ về phía rốn (rostral direction).',
                   badge: 'Mặt vát song song'
                 },
                 {
                   step: 'BƯỚC 5',
                   title: 'Cảm giác "Sụp hẫng" (Pop) & Đo áp lực mở',
-                  details: 'Cảm nhận sức cản qua dây chằng vàng, sau đó có cảm giác "sụp hẫng" khi qua màng cứng vào khoang dưới nhện (~4-5 cm). Rút nòng stylet quan sát dịch não tủy chảy ra. Lắp ngay khóa 3 chạc và cột áp kế Manometer, yêu cầu bệnh nhân thả lỏng chân để đo áp lực mở chính xác.',
+                  details: 'Cảm nhận sức cản qua dây chằng vàng, sau đó có cảm giác "sụp hẫng" khi qua màng cứng vào khoang dưới nhện (~4-5 cm). Rút nòng stylet quan sát dịch não tủy chảy ra. Lắp ngay khóa 3 chạc và cột áp kế Manometer, yêu cầu bệnh nhân duỗi nhẹ chân để đo áp lực mở chính xác.',
                   badge: 'Áp kế Manometer'
                 },
                 {
@@ -742,7 +792,7 @@ export const LPProcedureGuide: React.FC = () => {
                   badge: 'Nằm nghỉ 4-6h'
                 }
               ].map((item, idx) => (
-                <div key={idx} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                <div key={idx} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-3 flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
                   <div className="space-y-1 flex-1">
                     <div className="flex items-center gap-2">
                       <span className="text-[10px] font-black bg-teal-600 text-white px-2 py-0.5 rounded-md font-mono">
@@ -831,6 +881,44 @@ export const LPProcedureGuide: React.FC = () => {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL FULL-VIEW LIGHTBOX FOR CLINICAL ATLAS PHOTOS */}
+      {selectedPhotoModal && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-200"
+          onClick={() => setSelectedPhotoModal(null)}
+        >
+          <div 
+            className="bg-white dark:bg-slate-900 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-800/60">
+              <h4 className="font-bold text-sm text-slate-900 dark:text-white truncate">
+                {selectedPhotoModal.title}
+              </h4>
+              <button
+                onClick={() => setSelectedPhotoModal(null)}
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-800 cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-4 bg-slate-950 flex items-center justify-center overflow-auto flex-1 min-h-[300px]">
+              <img 
+                src={selectedPhotoModal.src} 
+                alt={selectedPhotoModal.title}
+                className="max-h-[60vh] max-w-full object-contain rounded-lg shadow-lg" 
+              />
+            </div>
+
+            <div className="p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+              <p className="font-medium leading-relaxed">{selectedPhotoModal.desc}</p>
+              <p className="text-[10px] text-teal-700 dark:text-teal-400 font-mono">Nguồn: {selectedPhotoModal.source}</p>
             </div>
           </div>
         </div>
