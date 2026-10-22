@@ -101,7 +101,7 @@ console.log('✓ Copied shared/ -> dist/shared/');
 copyRecursiveSafe(path.join(rootDir, 'css'), path.join(distDir, 'css'));
 console.log('✓ Copied css/ -> dist/css/');
 
-// 3. Sync all 9 CDSS Clinical Modules safely
+// 3. Sync all 10 CDSS Clinical Modules safely
 const CDSS_MODULES = [
   'dengue',
   'ecg',
@@ -111,10 +111,11 @@ const CDSS_MODULES = [
   'antibiotic',
   'vancomycin',
   'diacare',
-  'inpatient'
+  'inpatient',
+  'csf'
 ];
 
-console.log('[postbuild] Syncing supplementary assets for 9 CDSS clinical modules...');
+console.log('[postbuild] Syncing supplementary assets for 10 CDSS clinical modules...');
 
 for (const mod of CDSS_MODULES) {
   const srcModDir = path.join(rootDir, mod);
@@ -174,4 +175,4 @@ if (!allOk) {
   process.exit(1);
 }
 
-console.log('[postbuild] SUCCESS: All 9 CDSS modules, root hub, and assets verified and production-ready in dist/!');
+console.log('[postbuild] SUCCESS: All 10 CDSS modules, root hub, and assets verified and production-ready in dist/!');

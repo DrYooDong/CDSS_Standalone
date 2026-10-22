@@ -3,7 +3,7 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "description": "Hệ thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập (CDSS Standalone Suite) - 9 Modules Chuyên Sâu",
+  "description": "Hệ thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập (CDSS Standalone Suite) - 10 Modules Chuyên Sâu",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
     "build": "npm run build:hub && npm run build:dengue && npm run build:ecg && vite build && node scripts/postbuild.js",

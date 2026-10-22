@@ -1,0 +1,6 @@
+{
+  "name": "CDSS Phân Tích Dịch Não Tủy (CSF Decision Support)",
+  "description": "Hệ thống hỗ trợ quyết định lâm sàng phân tích dịch não tủy (CSF Analysis CDSS), biểu đồ so sánh tự động và cẩm nang hướng dẫn biện giải y khoa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

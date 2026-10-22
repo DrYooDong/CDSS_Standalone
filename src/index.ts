@@ -1,7 +1,7 @@
 /**
  * CDSS Standalone Suite — Master Hub Application
- * Redesigned Modern Clinical Command Center & Multi-View Decision Support Portal
- * Styled according to HepaCDSS Medical Aesthetics & Evidence-Based Guidelines
+ * Modern Medical Command Center & Bedside Decision Support Portal
+ * Aligned with HepaCDSS & SepsisCDSS Clinical Aesthetics
  */
 import { CDSS_MODULES, getCDSSModuleById, getCDSSModuleBySlug } from './cdss-registry';
 import { CDSSModuleMeta } from './cdss-types';
@@ -9,91 +9,46 @@ import { CDSSModuleMeta } from './cdss-types';
 export * from './cdss-types';
 export * from './cdss-registry';
 
-type ViewMode = 'grid' | 'grouped' | 'matrix';
+type ViewMode = 'grid' | 'list' | 'grouped';
 
-interface ClinicalScenario {
+interface ClinicalTriageChip {
   id: string;
-  icon: string;
   label: string;
-  trigger: string;
-  targetSlug: string;
-  colorClass: string;
+  slug: string;
+  icon: string;
+  urgency: 'stat' | 'urgent' | 'routine';
+  highlightText: string;
 }
 
-const CLINICAL_SCENARIOS: ClinicalScenario[] = [
-  {
-    id: 'sepsis-shock',
-    icon: 'fa-solid fa-biohazard',
-    label: 'Nhiễm Khuẩn Huyết & Sốc',
-    trigger: 'Sốt cao, tụt huyết áp, lactate > 2 mmol/L, SOFA/Phoenix tăng',
-    targetSlug: 'sepsis',
-    colorClass: 'cdss-emblem--resuscitation'
-  },
-  {
-    id: 'abg-acidbase',
-    icon: 'fa-solid fa-lungs',
-    label: 'Khí Máu Động Mạch & Toan Kiềm',
-    trigger: 'Khó thở, PaO2/PaCO2 biến thiên, toan chuyển hóa Anion Gap',
-    targetSlug: 'abg',
-    colorClass: 'cdss-emblem--respiratory'
-  },
-  {
-    id: 'hepa-biochem',
-    icon: 'fa-solid fa-virus',
-    label: 'Sinh Hóa Gan & Vàng Da Ứ Mật',
-    trigger: 'ALT/AST tăng vọt, De Ritis, tính tỷ số R-ratio, xơ hóa FIB-4/APRI',
-    targetSlug: 'hepa',
-    colorClass: 'cdss-emblem--gastroenterology'
-  },
-  {
-    id: 'abx-renal',
-    icon: 'fa-solid fa-viruses',
-    label: 'Kháng Sinh & Chỉnh Liều Thận',
-    trigger: 'Tiêu chuẩn NHSN, vi khuẩn đa kháng MDR & chỉnh 43 KS theo CrCl',
-    targetSlug: 'antibiotic',
-    colorClass: 'cdss-emblem--pharmacology'
-  },
-  {
-    id: 'vancomycin-tdm',
-    icon: 'fa-solid fa-syringe',
-    label: 'Vancomycin PK & Giám Sát TDM',
-    trigger: 'Liều nạp 25-35 mg/kg, mục tiêu AUC24/MIC 400-600, lọc máu IHD',
-    targetSlug: 'vancomycin',
-    colorClass: 'cdss-emblem--pharmacology'
-  },
-  {
-    id: 'diacare-insulin',
-    icon: 'fa-solid fa-syringe',
-    label: 'Đường Huyết & Insulin Nội Viện',
-    trigger: 'Phác đồ Basal-Bolus, phác đồ trượt SSI, cấp cứu toan ceton DKA/HHS',
-    targetSlug: 'diacare',
-    colorClass: 'cdss-emblem--endocrinology'
-  },
-  {
-    id: 'dengue-shock',
-    icon: 'fa-solid fa-droplet',
-    label: 'SXHD Dengue & Chống Sốc',
-    trigger: 'SXHD ngày 4-6, cô đặc máu Hct cao, cọc dịch 4 cột động học BYT',
-    targetSlug: 'dengue',
-    colorClass: 'cdss-emblem--cardiology'
-  },
-  {
-    id: 'ecg-stemi',
-    icon: 'fa-solid fa-heart-pulse',
-    label: 'Điện Tim 12 Đạo Trình & STEMI',
-    trigger: 'Đo trục điện tim, QT/QTc, thước Caliper, định khu nhồi máu & Brugada',
-    targetSlug: 'ecg',
-    colorClass: 'cdss-emblem--cardiology'
-  },
-  {
-    id: 'inpatient-exam',
-    icon: 'fa-solid fa-stethoscope',
-    label: 'Khám Lâm Sàng & Bệnh Sử Nội Trú',
-    trigger: 'Hỏi bệnh 7 thuộc tính (OPQRST), khám hệ cơ quan Bates & Macleod',
-    targetSlug: 'inpatient',
-    colorClass: 'cdss-emblem--internal'
-  }
+const TRIAGE_CHIPS: ClinicalTriageChip[] = [
+  { id: 'triage-dengue', label: 'Sốc SXHD Dengue', slug: 'dengue', icon: 'fa-solid fa-droplet', urgency: 'stat', highlightText: 'Hct cao, cô đặc máu, sốc tụt HA' },
+  { id: 'triage-sepsis', label: 'Sepsis / Sốc Nhiễm Khuẩn', slug: 'sepsis', icon: 'fa-solid fa-biohazard', urgency: 'stat', highlightText: 'Sốt cao, tụt HA, Lactate > 2, SOFA' },
+  { id: 'triage-abg', label: 'Khí Máu & Toan Kiềm ABG', slug: 'abg', icon: 'fa-solid fa-lungs', urgency: 'stat', highlightText: 'Toan chuyển hóa, PaO2/PaCO2, Anion Gap' },
+  { id: 'triage-ecg', label: 'STEMI & Đo ECG Caliper', slug: 'ecg', icon: 'fa-solid fa-heart-pulse', urgency: 'stat', highlightText: 'Đau ngực, STEMI định khu, QTc, Caliper' },
+  { id: 'triage-abx', label: 'Kháng Sinh & Lọc Máu', slug: 'antibiotic', icon: 'fa-solid fa-viruses', urgency: 'urgent', highlightText: '43 KS, chỉnh thận CrCl, vi khuẩn MDR' },
+  { id: 'triage-vanco', label: 'Vancomycin AUC/MIC', slug: 'vancomycin', icon: 'fa-solid fa-syringe', urgency: 'urgent', highlightText: 'Liều nạp, AUC 400-600, lọc máu IHD' },
+  { id: 'triage-diacare', label: 'Cấp Cứu DKA & Insulin', slug: 'diacare', icon: 'fa-solid fa-vial-circle-check', urgency: 'urgent', highlightText: 'Basal-Bolus, phác đồ trượt SSI, toan ceton' },
+  { id: 'triage-hepa', label: 'Sinh Hóa Gan ACG', slug: 'hepa', icon: 'fa-solid fa-virus', urgency: 'routine', highlightText: 'Tỷ số R-ratio, De Ritis, FIB-4, DILI' },
+  { id: 'triage-csf', label: 'Dịch Não Tủy CSF', slug: 'csf', icon: 'fa-solid fa-brain', urgency: 'stat', highlightText: 'Viêm màng não, chạm mạch vs SAH, LP' },
+  { id: 'triage-bates', label: 'Khám Bệnh Bates & Macleod', slug: 'inpatient', icon: 'fa-solid fa-stethoscope', urgency: 'routine', highlightText: 'Hỏi bệnh 7 thuộc tính OPQRST, 30+ hội chứng' }
 ];
+
+const PINNED_STORAGE_KEY = 'cdss_pinned_module_slugs';
+
+function getPinnedSlugs(): string[] {
+  try {
+    const raw = localStorage.getItem(PINNED_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function setPinnedSlugs(slugs: string[]): void {
+  try {
+    localStorage.setItem(PINNED_STORAGE_KEY, JSON.stringify(slugs));
+  } catch (e) {}
+}
 
 export function initCDSSHub(containerId: string): void {
   const container = document.getElementById(containerId);
@@ -102,209 +57,231 @@ export function initCDSSHub(containerId: string): void {
   let activeCategory = 'all';
   let searchQuery = '';
   let viewMode: ViewMode = 'grid';
+  let pinnedSlugs: string[] = getPinnedSlugs();
 
   const categories = [
-    { id: 'all', name: 'Tất Cả (9 CDSS)', icon: 'fa-solid fa-shapes' },
+    { id: 'all', name: 'Tất Cả (10 CDSS)', icon: 'fa-solid fa-shapes' },
+    { id: 'stat', name: '🚨 Cấp Cứu STAT (5)', icon: 'fa-solid fa-bolt-lightning', isStat: true },
     { id: 'resuscitation', name: 'Hồi Sức Cấp Cứu', icon: 'fa-solid fa-biohazard' },
-    { id: 'cardiology', name: 'Tim Mạch & Điện Tim', icon: 'fa-solid fa-heart-pulse' },
-    { id: 'respiratory', name: 'Hô Hấp & Khí Máu', icon: 'fa-solid fa-lungs' },
+    { id: 'cardio-resp', name: 'Tim Mạch & Hô Hấp', icon: 'fa-solid fa-heart-pulse' },
     { id: 'pharmacology', name: 'Kháng Sinh & Dược Lý', icon: 'fa-solid fa-viruses' },
-    { id: 'gastroenterology', name: 'Tiêu Hóa & Gan Mật', icon: 'fa-solid fa-virus' },
-    { id: 'endocrinology', name: 'Nội Tiết & Đường Huyết', icon: 'fa-solid fa-syringe' },
-    { id: 'internal', name: 'Khám Bệnh Nội Khoa', icon: 'fa-solid fa-stethoscope' }
+    { id: 'gastro-endo', name: 'Tiêu Hóa & Nội Tiết', icon: 'fa-solid fa-virus' },
+    { id: 'neuro-internal', name: 'Thần Kinh & Nội Trú', icon: 'fa-solid fa-brain' }
   ];
 
   const specialtyGroups = [
     {
       id: 'resus-emer',
-      title: 'Hồi Sức Cấp Cứu & Bệnh Nhiễm Trùng Nguy Kịch',
-      desc: 'Phác đồ hồi sức chống sốc SXHD, phân tầng nhiễm khuẩn huyết và hướng dẫn kháng sinh ban đầu',
+      title: 'Hồi Sức Cấp Cứu & Nhiễm Trùng Nguy Kịch',
+      desc: 'Phác đồ hồi sức chống sốc SXHD Dengue, phân tầng nhiễm khuẩn huyết và khí máu động mạch',
       icon: 'fa-solid fa-truck-medical',
-      slugs: ['sepsis', 'dengue', 'antibiotic']
+      slugs: ['dengue', 'sepsis', 'abg']
     },
     {
       id: 'cardio-resp',
-      title: 'Tim Mạch, Hô Hấp & Cân Bằng Nội Môi',
-      desc: 'Phân tích điện tâm đồ 12 chuyển đạo, khí máu động mạch và thăng bằng toan kiềm',
+      title: 'Tim Mạch, Hô Hấp & Điện Tim Chuyên Sâu',
+      desc: 'Phân tích điện tâm đồ 12 đạo trình trực quan và thăng bằng toan kiềm cơ thể',
       icon: 'fa-solid fa-heart-pulse',
       slugs: ['ecg', 'abg']
     },
     {
-      id: 'hepato-endocrine',
-      title: 'Tiêu Hóa - Gan Mật & Chuyển Hóa Nội Tiết',
-      desc: 'Tiếp cận sinh hóa gan theo ACG, định lượng R-ratio và kiểm soát insulin nội viện',
-      icon: 'fa-solid fa-virus',
-      slugs: ['hepa', 'diacare']
+      id: 'pharma-care',
+      title: 'Dược Động Học Kháng Sinh & Tối Ưu Hóa Liều',
+      desc: 'Cá thể hóa liều 43 kháng sinh theo chức năng thận lọc máu và giám sát nồng độ Vancomycin AUC/MIC',
+      icon: 'fa-solid fa-viruses',
+      slugs: ['antibiotic', 'vancomycin']
     },
     {
-      id: 'pharma-internal',
-      title: 'Dược Động Học Kháng Sinh & Khám Bệnh Nội Khoa',
-      desc: 'Cá thể hóa liều Vancomycin TDM và kỹ năng tiếp cận triệu chứng lâm sàng nội trú Bates',
-      icon: 'fa-solid fa-stethoscope',
-      slugs: ['vancomycin', 'inpatient']
+      id: 'internal-specialty',
+      title: 'Tiêu Hóa - Gan Mật, Chuyển Hóa & Thần Kinh',
+      desc: 'Biện giải sinh hóa gan ACG, quản lý insulin nội viện, chọc dò dịch não tủy và kỹ năng khám lâm sàng Bates',
+      icon: 'fa-solid fa-hospital-user',
+      slugs: ['hepa', 'diacare', 'csf', 'inpatient']
     }
   ];
 
-  function render() {
+  function filterModules(modules: CDSSModuleMeta[]): CDSSModuleMeta[] {
     const q = searchQuery.toLowerCase().trim();
-    const filtered = CDSS_MODULES.filter(m => {
-      const matchCat = activeCategory === 'all' || m.category === activeCategory;
-      const matchSearch = !q || 
+    return modules.filter(m => {
+      // Category filter
+      let matchCat = false;
+      if (activeCategory === 'all') {
+        matchCat = true;
+      } else if (activeCategory === 'stat') {
+        matchCat = m.urgency === 'stat';
+      } else if (activeCategory === 'resuscitation') {
+        matchCat = m.category === 'resuscitation';
+      } else if (activeCategory === 'cardio-resp') {
+        matchCat = m.category === 'cardiology' || m.category === 'respiratory';
+      } else if (activeCategory === 'pharmacology') {
+        matchCat = m.category === 'pharmacology';
+      } else if (activeCategory === 'gastro-endo') {
+        matchCat = m.category === 'gastroenterology' || m.category === 'endocrinology';
+      } else if (activeCategory === 'neuro-internal') {
+        matchCat = m.category === 'neurology' || m.category === 'internal';
+      } else {
+        matchCat = m.category === activeCategory;
+      }
+
+      // Search filter
+      const matchSearch = !q ||
         m.title.toLowerCase().includes(q) ||
         (m.titleEn && m.titleEn.toLowerCase().includes(q)) ||
+        (m.shortTitle && m.shortTitle.toLowerCase().includes(q)) ||
+        (m.brandCode && m.brandCode.toLowerCase().includes(q)) ||
+        (m.department && m.department.toLowerCase().includes(q)) ||
+        (m.statTrigger && m.statTrigger.toLowerCase().includes(q)) ||
         m.shortDesc.toLowerCase().includes(q) ||
         m.guidelineSource.toLowerCase().includes(q) ||
         (m.features && m.features.some(f => f.toLowerCase().includes(q))) ||
         (m.icd10 && m.icd10.some(c => c.toLowerCase().includes(q)));
+
       return matchCat && matchSearch;
     });
+  }
+
+  function render() {
+    const filtered = filterModules(CDSS_MODULES);
+    const pinnedModules = CDSS_MODULES.filter(m => pinnedSlugs.includes(m.slug));
+    const activeCategoryObj = categories.find(c => c.id === activeCategory);
 
     container.innerHTML = `
       <div class="cdss-hub-workspace">
-        
+
         <!-- ================================================================
-             1. HERO COMMAND CENTER (HepaCDSS Light Medical Aesthetics)
+             1. BEDSIDE CLINICAL COMMAND CENTER (Clean HepaCDSS / Sepsis Style)
              ================================================================ -->
-        <section class="cdss-hero-container">
-          <div class="cdss-hero-top">
-            <div class="cdss-hero-pill">
-              <span class="cdss-hero-pulse-dot"></span>
-              <span>HỆ THỐNG CDSS BEDSIDE • CHUẨN Y HỌC CHỨNG CỨ (EBM)</span>
+        <header class="cdss-command-header">
+          <div class="cdss-command-head-row">
+            <div class="cdss-command-brand-block">
+              <div class="cdss-command-logo-wrap">
+                <img src="./shared/cdss-logo.svg" alt="CDSS Suite Logo" class="cdss-command-logo" />
+              </div>
+              <div>
+                <div class="cdss-command-subtag">
+                  <span class="cdss-live-dot"></span>
+                  <span>Hệ Thống CDSS Độc Lập • Bedside Ready</span>
+                  <span class="cdss-ver-tag">v2.5</span>
+                </div>
+                <h1 class="cdss-command-title">
+                  Trung Tâm Hỗ Trợ Quyết Định Lâm Sàng
+                </h1>
+              </div>
             </div>
 
-            <div class="cdss-hero-meta-badge">
-              <i class="fa-solid fa-shield-halved"></i>
-              <span>100% Xử Lý Trực Tiếp Tại Trình Duyệt • Không Lưu Trữ PII</span>
+            <!-- EBM & Privacy Telemetry Strip -->
+            <div class="cdss-command-telemetry">
+              <div class="cdss-telemetry-item">
+                <i class="fa-solid fa-shapes text-teal-600"></i>
+                <div>
+                  <div class="cdss-telemetry-val">10 Module</div>
+                  <div class="cdss-telemetry-lbl">Chuyên Khoa Sâu</div>
+                </div>
+              </div>
+              <div class="cdss-telemetry-item">
+                <i class="fa-solid fa-pills text-emerald-600"></i>
+                <div>
+                  <div class="cdss-telemetry-val">43 Kháng Sinh</div>
+                  <div class="cdss-telemetry-lbl">Chỉnh Thận &amp; Lọc Máu</div>
+                </div>
+              </div>
+              <div class="cdss-telemetry-item">
+                <i class="fa-solid fa-shield-halved text-cyan-600"></i>
+                <div>
+                  <div class="cdss-telemetry-val">100% Client-Side</div>
+                  <div class="cdss-telemetry-lbl">Bảo Mật Y Khoa</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; margin: 1rem auto 0.5rem auto;">
-            <img src="./shared/cdss-logo.svg" alt="CDSS Logo" style="width: 52px; height: 52px; filter: drop-shadow(0 4px 12px rgba(13, 148, 136, 0.4));" />
-            <div style="text-align: left;">
-              <div style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary, #0d9488);">
-                CDSS Platform Suite
-              </div>
-              <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-text-muted, #64748b);">
-                Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập
-              </div>
-            </div>
-          </div>
-
-          <h1 class="cdss-hero-title">
-            Hệ Sinh Thái Quyết Định Lâm Sàng <span class="highlight">Chuẩn Hóa Y Khoa</span>
-          </h1>
-
-          <p class="cdss-hero-desc">
-            Nền tảng tích hợp 9 module CDSS độc lập chuyên sâu với giao diện chuẩn hóa: tính toán liều 43 kháng sinh, phác đồ dịch truyền chống sốc SXHD Dengue, phân tích khí máu ABG 6 bước, đánh giá sinh hóa gan theo ACG, phân tầng Sepsis, quản lý Vancomycin AUC/MIC, kiểm soát insulin nội viện và khám bệnh nội trú Bates &amp; Macleod.
+          <!-- Concise Scope Description -->
+          <p class="cdss-command-desc">
+            Bộ công cụ CDSS hỗ trợ chẩn đoán và điều trị tại giường bệnh chuẩn Y học chứng cứ (EBM) và Bộ Y tế: 
+            phác đồ dịch truyền chống sốc SXHD Dengue, phân tích khí máu ABG 6 bước, điện tim 12 chuyển đạo STEMI, 
+            sinh hóa gan HepaCDSS theo ACG, phân tầng Sepsis &amp; sốc nhiễm khuẩn NICE/Phoenix, 
+            tính liều 43 kháng sinh InfectoDose, Vancomycin PK AUC/MIC, insulin nội viện DiaCare, 
+            khám bệnh nội trú Bates &amp; Macleod và biện giải dịch não tủy CSF CDSS.
           </p>
 
-          <!-- Suite Bedside Metrics Strip -->
-          <div class="cdss-metrics-strip">
-            <div class="cdss-metric-card">
-              <div class="cdss-metric-icon cdss-metric-icon--teal">
-                <i class="fa-solid fa-shapes"></i>
-              </div>
-              <div>
-                <div class="cdss-metric-num">9</div>
-                <div class="cdss-metric-label">Module Chuyên Khoa</div>
-              </div>
+          <!-- ================================================================
+               2. RAPID STAT / CLINICAL EMERGENCY ACCESS BAR
+               ================================================================ -->
+          <div class="cdss-rapid-bar" id="cdss-rapid-bar">
+            <div class="cdss-rapid-label">
+              <i class="fa-solid fa-bolt-lightning text-amber-500"></i>
+              <span>Truy Cập Nhanh Theo Tình Huống:</span>
             </div>
-
-            <div class="cdss-metric-card">
-              <div class="cdss-metric-icon cdss-metric-icon--emerald">
-                <i class="fa-solid fa-pills"></i>
-              </div>
-              <div>
-                <div class="cdss-metric-num">43</div>
-                <div class="cdss-metric-label">Kháng Sinh Chỉnh Liều</div>
-              </div>
-            </div>
-
-            <div class="cdss-metric-card">
-              <div class="cdss-metric-icon cdss-metric-icon--cyan">
-                <i class="fa-solid fa-book-medical"></i>
-              </div>
-              <div>
-                <div class="cdss-metric-num">45+</div>
-                <div class="cdss-metric-label">Ca Lâm Sàng Mẫu</div>
-              </div>
-            </div>
-
-            <div class="cdss-metric-card">
-              <div class="cdss-metric-icon cdss-metric-icon--amber">
-                <i class="fa-solid fa-hospital-user"></i>
-              </div>
-              <div>
-                <div class="cdss-metric-num">100%</div>
-                <div class="cdss-metric-label">Bảo Mật Người Bệnh</div>
-              </div>
+            <div class="cdss-rapid-chips">
+              ${TRIAGE_CHIPS.map(chip => `
+                <button 
+                  class="cdss-rapid-chip cdss-rapid-chip--${chip.urgency}" 
+                  data-target-slug="${chip.slug}"
+                  title="${chip.label} — ${chip.highlightText}"
+                >
+                  <i class="${chip.icon}"></i>
+                  <span>${chip.label}</span>
+                </button>
+              `).join('')}
             </div>
           </div>
-        </section>
+        </header>
 
         <!-- ================================================================
-             2. CLINICAL EMERGENCY & TRIAGE SCENARIOS (Quick Bedside Launcher)
+             3. PINNED / FAVORITES SECTION (If user pinned any module)
              ================================================================ -->
-        <section class="cdss-triage-panel" id="cdss-clinical-scenarios">
-          <div class="cdss-triage-top">
-            <div class="cdss-triage-heading">
-              <i class="fa-solid fa-bolt-lightning"></i>
-              <span>Tra Cứu Nhanh Theo Tình Huống Lâm Sàng Khẩn Cấp</span>
+        ${pinnedModules.length > 0 ? `
+          <section class="cdss-pinned-section">
+            <div class="cdss-pinned-head">
+              <div class="cdss-pinned-title">
+                <i class="fa-solid fa-star text-amber-400"></i>
+                <span>Công Cụ Thường Dùng Đã Ghim (${pinnedModules.length})</span>
+              </div>
+              <button id="cdss-clear-pinned-btn" class="cdss-clear-pinned-link" title="Bỏ ghim tất cả">
+                <i class="fa-regular fa-trash-can"></i> Bỏ ghim tất cả
+              </button>
             </div>
-            <span class="cdss-triage-tag">9 Tình Huống Phổ Biến</span>
-          </div>
-
-          <div class="cdss-scenarios-grid">
-            ${CLINICAL_SCENARIOS.map(sc => `
-              <a href="${sc.targetSlug}/index.html" class="cdss-scenario-card" title="Mở module ${sc.label}">
-                <div class="cdss-scenario-icon ${sc.colorClass}">
-                  <i class="${sc.icon}"></i>
-                </div>
-                <div class="cdss-scenario-content">
-                  <div class="cdss-scenario-title">${sc.label}</div>
-                  <div class="cdss-scenario-desc">${sc.trigger}</div>
-                </div>
-                <i class="fa-solid fa-arrow-right cdss-scenario-arrow"></i>
-              </a>
-            `).join('')}
-          </div>
-        </section>
+            <div class="cdss-cards-grid cdss-cards-grid--pinned">
+              ${pinnedModules.map(m => renderModuleCard(m, true)).join('')}
+            </div>
+          </section>
+        ` : ''}
 
         <!-- ================================================================
-             3. SEARCH & CATEGORY FILTER TOOLBAR
+             4. UNIFIED SEARCH & CLINICAL FILTER TOOLBAR
              ================================================================ -->
         <section class="cdss-toolbar">
-          <!-- Search Box -->
+          <!-- Search Row -->
           <div class="cdss-search-wrap">
             <i class="fa-solid fa-magnifying-glass cdss-search-icon"></i>
             <input 
               id="cdss-search-input" 
               type="text" 
               class="cdss-search-input"
-              placeholder="Tra cứu theo tên CDSS, thuốc, bệnh lý, phác đồ, ICD-10 (nhấn / để tìm nhanh)..." 
+              placeholder="Tra cứu nhanh theo tên CDSS, thuốc, bệnh lý, triệu chứng, mã ICD-10 (nhấn / để tìm)..." 
               value="${searchQuery}"
               autocomplete="off"
+              spellcheck="false"
             />
             ${searchQuery ? `
-              <button id="cdss-clear-search" class="cdss-search-clear" title="Xóa tìm kiếm">
+              <button id="cdss-clear-search" class="cdss-search-clear" title="Xóa từ khóa tìm kiếm" aria-label="Xóa tìm kiếm">
                 <i class="fa-solid fa-xmark"></i>
               </button>
             ` : `
-              <span class="cdss-search-hint">/</span>
+              <span class="cdss-search-hint" title="Phím tắt tìm kiếm">/</span >
             `}
           </div>
 
-          <!-- Controls Row: Category Tabs & View Switcher -->
-          <div class="cdss-controls-row">
+          <!-- Controls Bar: Category Segmented Tabs + View Switcher -->
+          <div class="cdss-controls-bar">
             <div class="cdss-cat-tabs">
               ${categories.map(cat => `
                 <button 
-                  class="cdss-cat-btn ${activeCategory === cat.id ? 'active' : ''}" 
+                  class="cdss-cat-btn ${activeCategory === cat.id ? 'active' : ''} ${cat.isStat ? 'cdss-cat-btn--stat' : ''}" 
                   data-cat="${cat.id}"
                 >
                   <i class="${cat.icon}"></i>
                   <span>${cat.name}</span>
-                  ${cat.id === 'all' ? `<span class="cdss-cat-badge">${CDSS_MODULES.length}</span>` : ''}
                 </button>
               `).join('')}
             </div>
@@ -313,73 +290,171 @@ export function initCDSSHub(containerId: string): void {
               <button 
                 class="cdss-view-btn ${viewMode === 'grid' ? 'active' : ''}" 
                 data-mode="grid"
-                title="Xem dạng Lưới Thẻ Chuẩn HepaCDSS"
+                title="Xem dạng Lưới Thẻ Chuyên Khoa"
                 aria-label="Xem dạng Lưới"
               >
                 <i class="fa-solid fa-table-cells-large"></i>
+                <span class="cdss-view-btn-text">Lưới</span>
+              </button>
+
+              <button 
+                class="cdss-view-btn ${viewMode === 'list' ? 'active' : ''}" 
+                data-mode="list"
+                title="Xem dạng Bảng Giường Bệnh Tối Giản"
+                aria-label="Xem dạng Bảng"
+              >
+                <i class="fa-solid fa-table-list"></i>
+                <span class="cdss-view-btn-text">Bảng Gọn</span>
               </button>
 
               <button 
                 class="cdss-view-btn ${viewMode === 'grouped' ? 'active' : ''}" 
                 data-mode="grouped"
-                title="Xem theo Khối Chuyên Khoa Điều Trị"
-                aria-label="Xem theo Phân Khoa"
+                title="Xem theo Khối Khoa Lâm Sàng"
+                aria-label="Xem theo Khối Khoa"
               >
                 <i class="fa-solid fa-layer-group"></i>
-              </button>
-
-              <button 
-                class="cdss-view-btn ${viewMode === 'matrix' ? 'active' : ''}" 
-                data-mode="matrix"
-                title="Xem Bảng Ma Trận Lâm Sàng & ICD-10"
-                aria-label="Xem Bảng Ma Trận"
-              >
-                <i class="fa-solid fa-table-list"></i>
+                <span class="cdss-view-btn-text">Nhóm Khoa</span>
               </button>
             </div>
           </div>
         </section>
 
-        <!-- Results Counter & Reset Action -->
+        <!-- Results Counter & Reset Filter Indicator -->
         <div class="cdss-results-strip">
-          <div>
-            Hiển thị <strong>${filtered.length}</strong> / <strong>${CDSS_MODULES.length}</strong> công cụ hỗ trợ quyết định
-            ${activeCategory !== 'all' ? ` • Chuyên khoa: <em>${categories.find(c => c.id === activeCategory)?.name}</em>` : ''}
-            ${q ? ` • Từ khóa: "<em>${q}</em>"` : ''}
+          <div class="cdss-results-info">
+            <span>Hiển thị <strong>${filtered.length}</strong> / <strong>${CDSS_MODULES.length}</strong> công cụ CDSS</span>
+            ${activeCategory !== 'all' ? `
+              <span class="cdss-filter-tag">
+                ${activeCategoryObj?.name}
+                <i class="fa-solid fa-xmark cdss-tag-remove" data-reset="category"></i>
+              </span>
+            ` : ''}
+            ${searchQuery ? `
+              <span class="cdss-filter-tag">
+                "${searchQuery}"
+                <i class="fa-solid fa-xmark cdss-tag-remove" data-reset="search"></i>
+              </span>
+            ` : ''}
           </div>
-          ${(activeCategory !== 'all' || q) ? `
-            <button id="cdss-reset-filters" class="cdss-reset-btn" title="Đặt lại bộ lọc (Hiển thị tất cả)" aria-label="Đặt lại bộ lọc">
-              <i class="fa-solid fa-rotate-left"></i>
+
+          ${(activeCategory !== 'all' || searchQuery) ? `
+            <button id="cdss-reset-filters" class="cdss-reset-link" title="Xem lại tất cả công cụ">
+              <i class="fa-solid fa-rotate-left"></i> Đặt lại bộ lọc
             </button>
           ` : ''}
         </div>
 
         <!-- ================================================================
-             4. MAIN WORKSPACE CONTENT (CARD GRID / GROUPED / MATRIX)
+             5. MAIN WORKSPACE CONTENT (GRID / LIST / GROUPED)
              ================================================================ -->
         ${filtered.length === 0 ? `
-          <div style="text-align:center; padding: 4rem 1rem; background: var(--color-surface); border: 1px dashed var(--color-border); border-radius: 20px;">
-            <i class="fa-solid fa-magnifying-glass" style="font-size: 2.5rem; color: var(--color-text-muted); opacity: 0.5; margin-bottom: 1rem;"></i>
-            <h3 style="font-family: var(--cdss-font-display); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Không tìm thấy công cụ CDSS phù hợp</h3>
-            <p style="color: var(--color-text-muted); max-width: 500px; margin: 0 auto 1.5rem; font-size: 0.9rem;">
-              Thử tìm kiếm với tên thuốc (Vancomycin, Meropenem), chỉ số lâm sàng (R-ratio, FIB-4, SOFA, PaO2) hoặc mã ICD-10.
+          <div class="cdss-empty-state">
+            <div class="cdss-empty-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3 class="cdss-empty-title">Không tìm thấy công cụ CDSS phù hợp</h3>
+            <p class="cdss-empty-desc">
+              Không có kết quả nào khớp với "<strong>${searchQuery}</strong>". Thử tìm với từ khóa khác như <em>Dengue, Vancomycin, SOFA, FIB-4, PaO2, Kháng sinh</em> hoặc chọn chuyên khoa bên trên.
             </p>
-            <button id="cdss-empty-reset-btn" class="cdss-btn-teal">
-              <i class="fa-solid fa-arrows-rotate"></i> Xem lại tất cả 9 CDSS
+            <button id="cdss-empty-reset-btn" class="cdss-btn-primary">
+              <i class="fa-solid fa-arrows-rotate"></i> Xem lại tất cả 10 CDSS
             </button>
           </div>
         ` : ''}
 
-        <!-- VIEW 1: MODERN GRID VIEW (DEFAULT - HepaCDSS Standard) -->
+        <!-- VIEW 1: MODERN 3-COLUMN CLINICAL GRID (DEFAULT) -->
         ${viewMode === 'grid' && filtered.length > 0 ? `
           <div class="cdss-cards-grid">
-            ${filtered.map(m => renderModuleCard(m)).join('')}
+            ${filtered.map(m => renderModuleCard(m, false)).join('')}
           </div>
         ` : ''}
 
-        <!-- VIEW 2: GROUPED SPECIALTY VIEW -->
+        <!-- VIEW 2: BEDSIDE COMPACT LIST / TABLE VIEW -->
+        ${viewMode === 'list' && filtered.length > 0 ? `
+          <div class="cdss-list-wrapper">
+            <table class="cdss-list-table">
+              <thead>
+                <tr>
+                  <th style="width: 44px; text-align: center;">★</th>
+                  <th style="width: 28%;">Công Cụ CDSS</th>
+                  <th style="width: 14%;">Chuyên Khoa &amp; Mức</th>
+                  <th style="width: 32%;">Chỉ Định &amp; Năng Lực Tính Toán</th>
+                  <th style="width: 16%;">Cơ Sở Pháp Lý</th>
+                  <th style="width: 10%; text-align: right;">Hành Động</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${filtered.map(m => {
+                  const isPinned = pinnedSlugs.includes(m.slug);
+                  return `
+                    <tr class="cdss-list-row" id="cdss-row-${m.slug}">
+                      <td style="text-align: center;">
+                        <button 
+                          class="cdss-pin-btn ${isPinned ? 'pinned' : ''}" 
+                          data-pin-slug="${m.slug}" 
+                          title="${isPinned ? 'Bỏ ghim' : 'Ghim lên đầu'}"
+                        >
+                          <i class="${isPinned ? 'fa-solid' : 'fa-regular'} fa-star"></i>
+                        </button>
+                      </td>
+                      <td>
+                        <div class="cdss-list-cell-tool">
+                          <div class="cdss-card-emblem cdss-emblem--${m.category}" style="width: 38px; height: 38px; font-size: 1.05rem; border-radius: 9px;">
+                            <i class="${m.icon}"></i>
+                          </div>
+                          <div>
+                            <a href="${m.standaloneUrl}" class="cdss-list-tool-name">
+                              ${m.title}
+                            </a>
+                            <div class="cdss-list-tool-code">
+                              <span class="cdss-code-pill">${m.brandCode || m.slug.toUpperCase()}</span>
+                              ${m.titleEn ? `<span class="cdss-list-tool-en">${m.titleEn}</span>` : ''}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="cdss-list-dept">${m.department || m.categoryName}</div>
+                        <span class="cdss-urgency-badge cdss-urgency--${m.urgency}">
+                          ${m.urgency === 'stat' ? '🚨 STAT Cấp Cứu' : m.urgency === 'urgent' ? '⚡ Khẩn Cấp' : 'Thường Quy'}
+                        </span>
+                      </td>
+                      <td>
+                        <div class="cdss-list-desc">${m.shortDesc}</div>
+                        ${m.features ? `
+                          <div class="cdss-list-features">
+                            ${m.features.slice(0, 3).map(f => `<span class="cdss-feature-chip">${f}</span>`).join('')}
+                          </div>
+                        ` : ''}
+                      </td>
+                      <td>
+                        <div class="cdss-list-guideline" title="${m.guidelineSource}">
+                          <i class="fa-solid fa-book-medical text-teal-600"></i> ${m.badge || m.guidelineSource}
+                        </div>
+                        ${m.icd10 && m.icd10.length > 0 ? `
+                          <div class="cdss-list-icd">
+                            ${m.icd10.slice(0, 3).map(c => `<span class="cdss-icd-pill">${c}</span>`).join('')}
+                          </div>
+                        ` : ''}
+                      </td>
+                      <td style="text-align: right;">
+                        <a href="${m.standaloneUrl}" class="cdss-list-launch-btn">
+                          <span>Mở</span>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        ` : ''}
+
+        <!-- VIEW 3: SPECIALTY DEPARTMENT GROUPS -->
         ${viewMode === 'grouped' && filtered.length > 0 ? `
-          <div>
+          <div class="cdss-groups-container">
             ${specialtyGroups.map(grp => {
               const groupModules = filtered.filter(m => grp.slugs.includes(m.slug));
               if (groupModules.length === 0) return '';
@@ -395,11 +470,11 @@ export function initCDSSHub(containerId: string): void {
                         <p class="cdss-group-desc">${grp.desc}</p>
                       </div>
                     </div>
-                    <span class="cdss-badge cdss-badge--teal">${groupModules.length} Modules</span>
+                    <span class="cdss-group-counter">${groupModules.length} Modules</span>
                   </div>
 
                   <div class="cdss-cards-grid" style="margin-bottom:0;">
-                    ${groupModules.map(m => renderModuleCard(m)).join('')}
+                    ${groupModules.map(m => renderModuleCard(m, false)).join('')}
                   </div>
                 </div>
               `;
@@ -407,110 +482,48 @@ export function initCDSSHub(containerId: string): void {
           </div>
         ` : ''}
 
-        <!-- VIEW 3: CLINICAL MATRIX TABLE VIEW -->
-        ${viewMode === 'matrix' && filtered.length > 0 ? `
-          <div class="cdss-matrix-wrapper">
-            <table class="cdss-matrix-table">
-              <thead>
-                <tr>
-                  <th style="width: 25%;">Công Cụ CDSS</th>
-                  <th style="width: 14%;">Chuyên Khoa</th>
-                  <th style="width: 32%;">Năng Lực Tính Toán &amp; Thuật Toán</th>
-                  <th style="width: 17%;">Cơ Sở Pháp Lý &amp; EBM</th>
-                  <th style="width: 12%; text-align: right;">Khởi Chạy</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${filtered.map(m => `
-                  <tr>
-                    <td>
-                      <div style="display:flex; align-items:center; gap:0.75rem;">
-                        <div class="cdss-card-emblem cdss-emblem--${m.category}" style="width:36px; height:36px; font-size:1rem; border-radius:8px;">
-                          <i class="${m.icon}"></i>
-                        </div>
-                        <div>
-                          <a href="${m.standaloneUrl}" style="font-weight:700; color:var(--color-text); text-decoration:none;">
-                            ${m.title}
-                          </a>
-                          ${m.titleEn ? `<div style="font-size:0.75rem; color:var(--color-text-muted); font-style:italic;">${m.titleEn}</div>` : ''}
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <span class="cdss-badge cdss-badge--teal">${m.categoryName}</span>
-                    </td>
-                    <td>
-                      <p style="margin:0 0 0.5rem; font-size:0.82rem; color:var(--color-text-muted); line-height:1.5;">${m.shortDesc}</p>
-                      ${m.features ? `
-                        <div style="display:flex; flex-wrap:wrap; gap:0.3rem;">
-                          ${m.features.slice(0, 3).map(f => `<span class="cdss-feature-chip">${f}</span>`).join('')}
-                        </div>
-                      ` : ''}
-                    </td>
-                    <td>
-                      <div style="font-size:0.78rem; color:var(--color-text-muted); line-height:1.5;">
-                        <i class="fa-solid fa-book-medical text-teal-600"></i> ${m.guidelineSource}
-                      </div>
-                      ${m.icd10 && m.icd10.length > 0 ? `
-                        <div style="margin-top:0.35rem; font-size:0.72rem; color:var(--color-text-muted);">
-                          ICD-10: ${m.icd10.slice(0, 3).map(c => `<span class="cdss-icd-pill">${c}</span>`).join('')}
-                        </div>
-                      ` : ''}
-                    </td>
-                    <td style="text-align: right;">
-                      <a href="${m.standaloneUrl}" class="cdss-launch-link" style="padding:0.35rem 0.75rem; font-size:0.78rem;">
-                        <span>Mở</span> <i class="fa-solid fa-arrow-right"></i>
-                      </a>
-                    </td>
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          </div>
-        ` : ''}
-
         <!-- ================================================================
-             5. CLINICAL PRACTICE STANDARDS ACCORDION & EBM FOOTER
+             6. CLINICAL PRACTICE STANDARDS ACCORDION & EBM FOOTER
              ================================================================ -->
         <section class="cdss-ebm-footer-card">
           <div class="cdss-ebm-top-row">
             <div class="cdss-ebm-head">
               <i class="fa-solid fa-shield-halved"></i>
-              <span>Tiêu Chuẩn Thực Hành Lâm Sàng &amp; Cơ Sở Pháp Lý Y Khoa</span>
+              <span>Cơ Sở Pháp Lý Y Khoa &amp; Chuẩn Mực Bằng Chứng (EBM)</span>
             </div>
-            <span class="cdss-badge cdss-badge--emerald">
-              <i class="fa-solid fa-check"></i> Tuân thủ Hướng Dẫn Bộ Y Tế &amp; Quốc Tế
+            <span class="cdss-ebm-badge-ok">
+              <i class="fa-solid fa-circle-check"></i> Tuân thủ Hướng Dẫn Bộ Y Tế &amp; Quốc Tế
             </span>
           </div>
 
           <div class="cdss-ebm-columns">
             <div class="cdss-ebm-col">
               <h4 class="cdss-ebm-col-title">
-                <i class="fa-solid fa-certificate"></i>
+                <i class="fa-solid fa-certificate text-teal-600"></i>
                 <span>Bộ Y Tế Việt Nam</span>
               </h4>
               <p>
-                Tuân thủ Quyết định 2760/QĐ-BYT (Phác đồ SXHD Dengue), Quyết định 5631/QĐ-BYT (Sử dụng kháng sinh), Hướng dẫn Bệnh viện Bệnh Nhiệt Đới eMed 2026 và BVĐK Cà Mau.
+                Tuân thủ nghiêm ngặt Quyết định 2760/QĐ-BYT (Phác đồ SXHD Dengue 2023), Quyết định 5631/QĐ-BYT (Sử dụng kháng sinh), Hướng dẫn Bệnh viện Bệnh Nhiệt Đới eMed 2026 và BVĐK Cà Mau.
               </p>
             </div>
 
             <div class="cdss-ebm-col">
               <h4 class="cdss-ebm-col-title">
-                <i class="fa-solid fa-globe"></i>
-                <span>Khuyến Cáo Quốc Tế (EBM)</span>
+                <i class="fa-solid fa-globe text-cyan-600"></i>
+                <span>Hướng Dẫn Quốc Tế (EBM)</span>
               </h4>
               <p>
-                NICE NG253 (2024/2026), Surviving Sepsis Campaign (SSC), Phoenix Sepsis Criteria 2024, ASHP/IDSA 2020 (Vancomycin AUC/MIC), ADA Standards of Care 2026 và ACG 2017 (Men gan).
+                Cập nhật chuẩn NICE NG253 (2024/2026), Surviving Sepsis Campaign (SSC), Phoenix Sepsis Criteria 2024, ASHP/IDSA 2020 (Vancomycin AUC/MIC), ADA Standards of Care 2026, EFNS và ACG 2017.
               </p>
             </div>
 
             <div class="cdss-ebm-col">
               <h4 class="cdss-ebm-col-title">
-                <i class="fa-solid fa-laptop-medical"></i>
-                <span>Độc Lập &amp; An Toàn Dữ Liệu</span>
+                <i class="fa-solid fa-laptop-medical text-emerald-600"></i>
+                <span>Độc Lập &amp; An Toàn Tuyệt Đối</span>
               </h4>
               <p>
-                Toàn bộ thuật toán chạy client-side 100% không gửi dữ liệu người bệnh lên máy chủ bên ngoài, đảm bảo an toàn bí mật y khoa và sẵn sàng sử dụng tại buồng bệnh nội trú hoặc khoa ICU.
+                Toàn bộ thuật toán chạy 100% tại trình duyệt bác sĩ (Client-side), không truyền gửi thông tin nhận diện người bệnh (No PII), hoạt động mượt mà ngoại tuyến (Offline Ready) tại khoa cấp cứu và ICU.
               </p>
             </div>
           </div>
@@ -519,58 +532,88 @@ export function initCDSSHub(containerId: string): void {
       </div>
     `;
 
-    // Render individual module card following HepaCDSS refined styling
-    function renderModuleCard(m: CDSSModuleMeta): string {
+    // Render individual module card with refined clinical layout
+    function renderModuleCard(m: CDSSModuleMeta, isPinnedSection: boolean = false): string {
+      const isPinned = pinnedSlugs.includes(m.slug);
+      const isStat = m.urgency === 'stat';
+
       return `
-        <article class="cdss-module-card" data-slug="${m.slug}">
-          <!-- Top Row: Badges & Emblem -->
-          <div class="cdss-card-top-row">
-            <div class="cdss-card-badges-wrap">
-              <span class="cdss-badge cdss-badge--teal">${m.categoryName}</span>
-              ${m.badge ? `<span class="cdss-badge cdss-badge--emerald">${m.badge}</span>` : ''}
+        <article class="cdss-module-card ${isStat ? 'cdss-module-card--stat' : ''}" id="cdss-card-${m.slug}" data-slug="${m.slug}">
+          <!-- Card Top Bar: Urgency/Department + Star Pin + Emblem -->
+          <div class="cdss-card-top-bar">
+            <div class="cdss-card-badges-group">
+              <span class="cdss-urgency-badge cdss-urgency--${m.urgency}">
+                ${m.urgency === 'stat' ? '<i class="fa-solid fa-bolt-lightning"></i> STAT Cấp Cứu' : m.urgency === 'urgent' ? '<i class="fa-solid fa-clock-rotate-left"></i> Khẩn Cấp' : '<i class="fa-solid fa-stethoscope"></i> Thường Quy'}
+              </span>
+              <span class="cdss-dept-tag">${m.department || m.categoryName}</span>
             </div>
 
-            <div class="cdss-card-emblem cdss-emblem--${m.category}">
-              <i class="${m.icon}"></i>
+            <div class="cdss-card-actions-top">
+              <button 
+                class="cdss-pin-btn ${isPinned ? 'pinned' : ''}" 
+                data-pin-slug="${m.slug}" 
+                title="${isPinned ? 'Bỏ ghim khỏi Bàn làm việc' : 'Ghim lên đầu Bàn làm việc'}"
+                aria-label="${isPinned ? 'Bỏ ghim' : 'Ghim'}"
+              >
+                <i class="${isPinned ? 'fa-solid' : 'fa-regular'} fa-star"></i>
+              </button>
+              
+              <div class="cdss-card-emblem cdss-emblem--${m.category}">
+                <i class="${m.icon}"></i>
+              </div>
             </div>
           </div>
 
-          <!-- Title & Subtitle -->
+          <!-- Title & Brand Acronym Group -->
           <div class="cdss-card-title-group">
+            <div class="cdss-brand-row">
+              <span class="cdss-brand-code">${m.brandCode || m.slug.toUpperCase()}</span>
+              ${m.badge ? `<span class="cdss-badge-evidence">${m.badge}</span>` : ''}
+            </div>
             <h3 class="cdss-card-title">
               <a href="${m.standaloneUrl}">${m.title}</a>
             </h3>
             ${m.titleEn ? `<p class="cdss-card-title-en">${m.titleEn}</p>` : ''}
           </div>
 
-          <!-- Description -->
-          <p class="cdss-card-desc">${m.shortDesc}</p>
-
-          <!-- Core Clinical Features Chips (HepaCDSS Style) -->
-          ${m.features && m.features.length > 0 ? `
-            <div class="cdss-feature-chips">
-              ${m.features.map(f => `<span class="cdss-feature-chip">${f}</span>`).join('')}
+          <!-- STAT Symptom Trigger Bar (For rapid bedside visual identification) -->
+          ${m.statTrigger ? `
+            <div class="cdss-trigger-box">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span>${m.statTrigger}</span>
             </div>
           ` : ''}
 
-          <!-- Evidence & ICD-10 Metadata Box -->
-          <div class="cdss-evidence-box">
-            <div class="cdss-evidence-row">
+          <!-- Core Clinical Description -->
+          <p class="cdss-card-desc">${m.shortDesc}</p>
+
+          <!-- Core Clinical Features Chips -->
+          ${m.features && m.features.length > 0 ? `
+            <div class="cdss-feature-chips">
+              ${m.features.slice(0, 4).map(f => `<span class="cdss-feature-chip">${f}</span>`).join('')}
+            </div>
+          ` : ''}
+
+          <!-- Guideline Source & ICD-10 Metadata Strip -->
+          <div class="cdss-card-meta-strip">
+            <div class="cdss-meta-item" title="${m.guidelineSource}">
               <i class="fa-solid fa-book-medical"></i>
-              <span title="${m.guidelineSource}">${m.guidelineSource}</span>
+              <span>${m.guidelineSource}</span>
             </div>
             ${m.icd10 && m.icd10.length > 0 ? `
-              <div class="cdss-evidence-row">
-                <i class="fa-solid fa-barcode" style="color:var(--color-text-muted);"></i>
-                <span>Mã ICD-10: ${m.icd10.slice(0, 4).map(c => `<span class="cdss-icd-pill">${c}</span>`).join('')}</span>
+              <div class="cdss-meta-item cdss-meta-icd">
+                <i class="fa-solid fa-barcode"></i>
+                <span>ICD-10: ${m.icd10.slice(0, 3).map(c => `<span class="cdss-icd-pill">${c}</span>`).join('')}</span>
               </div>
             ` : ''}
           </div>
 
           <!-- Action Footer -->
           <div class="cdss-card-footer">
-            <span class="cdss-card-version">${m.version}</span>
-            <a href="${m.standaloneUrl}" class="cdss-launch-link">
+            <div class="cdss-card-ver-wrap">
+              <span class="cdss-card-version">${m.version}</span>
+            </div>
+            <a href="${m.standaloneUrl}" class="cdss-launch-btn">
               <span>Mở CDSS</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -584,7 +627,7 @@ export function initCDSSHub(containerId: string): void {
   }
 
   function attachEvents() {
-    // 1. Live Search
+    // 1. Live Search Input
     const searchInput = document.getElementById('cdss-search-input') as HTMLInputElement;
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
@@ -598,7 +641,7 @@ export function initCDSSHub(containerId: string): void {
       });
     }
 
-    // 2. Clear Search
+    // 2. Clear Search Button
     const clearBtn = document.getElementById('cdss-clear-search');
     if (clearBtn) {
       clearBtn.addEventListener('click', () => {
@@ -607,7 +650,7 @@ export function initCDSSHub(containerId: string): void {
       });
     }
 
-    // 3. Category Buttons
+    // 3. Category Filter Buttons
     const catBtns = container.querySelectorAll('.cdss-cat-btn');
     catBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -629,7 +672,64 @@ export function initCDSSHub(containerId: string): void {
       });
     });
 
-    // 5. Reset Filter Buttons
+    // 5. STAT Triage Chips Click Handler (Smooth Scroll & Highlight Pulse)
+    const triageChips = container.querySelectorAll('.cdss-rapid-chip');
+    triageChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const targetSlug = chip.getAttribute('data-target-slug');
+        if (!targetSlug) return;
+
+        // If in filtered state where module is hidden, reset filter to 'all'
+        if (activeCategory !== 'all' || searchQuery) {
+          activeCategory = 'all';
+          searchQuery = '';
+          render();
+        }
+
+        // Scroll to the target card
+        setTimeout(() => {
+          const targetCard = document.getElementById(`cdss-card-${targetSlug}`) || document.getElementById(`cdss-row-${targetSlug}`);
+          if (targetCard) {
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetCard.classList.remove('cdss-pulse-highlight');
+            // Trigger animation restart
+            void targetCard.offsetWidth;
+            targetCard.classList.add('cdss-pulse-highlight');
+          }
+        }, 50);
+      });
+    });
+
+    // 6. Pin / Unpin Favorite Star Toggle
+    const pinBtns = container.querySelectorAll('.cdss-pin-btn');
+    pinBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const slug = btn.getAttribute('data-pin-slug');
+        if (!slug) return;
+
+        if (pinnedSlugs.includes(slug)) {
+          pinnedSlugs = pinnedSlugs.filter(s => s !== slug);
+        } else {
+          pinnedSlugs = [...pinnedSlugs, slug];
+        }
+        setPinnedSlugs(pinnedSlugs);
+        render();
+      });
+    });
+
+    // 7. Clear All Pinned
+    const clearPinnedBtn = document.getElementById('cdss-clear-pinned-btn');
+    if (clearPinnedBtn) {
+      clearPinnedBtn.addEventListener('click', () => {
+        pinnedSlugs = [];
+        setPinnedSlugs([]);
+        render();
+      });
+    }
+
+    // 8. Reset Filters Links
     const resetBtn = document.getElementById('cdss-reset-filters');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
@@ -647,6 +747,17 @@ export function initCDSSHub(containerId: string): void {
         render();
       });
     }
+
+    // 9. Tag remove click
+    const tagRemovers = container.querySelectorAll('.cdss-tag-remove');
+    tagRemovers.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const resetType = btn.getAttribute('data-reset');
+        if (resetType === 'category') activeCategory = 'all';
+        if (resetType === 'search') searchQuery = '';
+        render();
+      });
+    });
   }
 
   // Keyboard shortcut listener ('/' to focus search)
@@ -656,6 +767,7 @@ export function initCDSSHub(containerId: string): void {
       const input = document.getElementById('cdss-search-input') as HTMLInputElement;
       if (input) {
         input.focus();
+        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
   });

@@ -9,13 +9,19 @@ export type CDSSCategory =
   | 'infectious' 
   | 'pharmacology' 
   | 'endocrinology' 
-  | 'internal';
+  | 'internal'
+  | 'neurology';
 
 export interface CDSSModuleMeta {
   id: string;
   slug: string;
   title: string;
   titleEn?: string;
+  shortTitle?: string;
+  brandCode?: string;
+  department?: string;
+  urgency?: 'stat' | 'urgent' | 'routine';
+  statTrigger?: string;
   shortDesc: string;
   category: CDSSCategory;
   categoryName: string;
@@ -30,3 +36,4 @@ export interface CDSSModuleMeta {
   isStandalone: boolean;
   standaloneUrl: string;
 }
+

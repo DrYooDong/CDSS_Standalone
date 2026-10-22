@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CDSS Phân Tích Dịch Não Tủy &amp; Viêm Màng Não (CSF CDSS) | CliniPortal CDSS</title>
+    <meta name="description" content="Hệ thống hỗ trợ quyết định lâm sàng phân tích dịch não tủy (CSF Analysis CDSS), phân tầng viêm màng não vi khuẩn, virus, lao, nấm Cryptococcus, xuất huyết dưới nhện SAH vs chạm mạch và cẩm nang chọc dò thắt lưng." />
+    <meta property="og:title" content="CDSS Phân Tích Dịch Não Tủy &amp; Viêm Màng Não (CSF CDSS) | CliniPortal CDSS" />
+    <meta property="og:description" content="Hệ thống hỗ trợ quyết định lâm sàng phân tích dịch não tủy (CSF Analysis CDSS), phân tầng viêm màng não vi khuẩn, virus, lao, nấm Cryptococcus, xuất huyết dưới nhện SAH vs chạm mạch và cẩm nang chọc dò thắt lưng." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../shared/cdss-logo.svg">
+
+    <!-- Instant Theme Sync (Auto Light Mode Default & Universal Synchronization) -->
+    <script>
+      (function () {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var urlTheme = params.get('theme');
+          var saved = urlTheme || localStorage.getItem('cliniportal_theme') || localStorage.getItem('clinical_theme') || localStorage.getItem('theme');
+          var theme = (saved === 'dark' || saved === 'light') ? saved : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- CliniPortal CDSS Shell Styles & Theme Script -->
+    <link rel="stylesheet" href="../shared/cdss-shell.css">
+    <script src="../shared/cdss-shell.js"></script>
+    <script type="module" crossorigin src="./assets/index-BnZJokFk.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Ds5c46ZT.css">
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-600 selection:text-white">
+    <!-- CliniPortal Master Navigation Bar -->
+    <header class="cdss-portal-navbar">
+      <div class="cdss-portal-nav-breadcrumbs">
+        <a href="../index.html" class="cdss-brand-link flex items-center gap-2">
+          <img src="../shared/cdss-logo.svg" alt="CDSS Logo" class="cdss-brand-logo-img" style="width:22px; height:22px; display:inline-block;" />
+          <span class="font-bold">CDSS Platform Suite</span>
+        </a>
+        <i class="fa-solid fa-chevron-right separator"></i>
+        <span class="active"><i class="fa-solid fa-brain text-indigo-600"></i> Phân Tích Dịch Não Tủy (CSF CDSS)</span>
+      </div>
+
+      <div class="cdss-portal-nav-right">
+        <a href="../index.html" class="cdss-portal-nav-btn cdss-portal-icon-btn" title="Trở về Danh Mục CDSS" aria-label="Trở về Danh Mục CDSS">
+          <i class="fa-solid fa-th-large"></i>
+        </a>
+        <button id="theme-toggle" class="cdss-portal-theme-btn" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mount Point for Full React Application -->
+    <div id="root"></div>
+
+
+    <!-- Offline file:/// Fallback Loader -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const rootEl = document.getElementById('root');
+          if (rootEl && rootEl.children.length === 0) {
+            console.info('Module blocked or pending under file:///, activating standalone IIFE bundle...');
+            const s = document.createElement('script');
+            s.src = './assets/csf-app.iife.js?v=' + Date.now();
+            document.body.appendChild(s);
+          }
+        }, 300);
+      });
+    </script>
+  </body>
+</html>

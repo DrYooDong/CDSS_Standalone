@@ -18,10 +18,10 @@
   var THEME_KEY = 'cliniportal_theme';
 
   // Determine relative prefix depending on current page depth
-  var isSubModule = /[\/\\](dengue|ecg|abg|hepa|sepsis|antibiotic|vancomycin|diacare|inpatient)[\/\\]/i.test(window.location.pathname);
+  var isSubModule = /[\/\\](dengue|ecg|abg|hepa|sepsis|antibiotic|vancomycin|diacare|inpatient|csf)[\/\\]/i.test(window.location.pathname);
   var rootPrefix = isSubModule ? '../' : './';
 
-  // Master Registry of 9 CDSS Modules
+  // Master Registry of 10 CDSS Modules
   var MODULES = [
     {
       id: 'dengue',
@@ -130,6 +130,18 @@
       icon: 'fa-solid fa-stethoscope',
       color: '#059669',
       badge: 'Bates & Macleod'
+    },
+    {
+      id: 'csf',
+      num: 10,
+      title: 'Phân Tích Dịch Não Tủy & Viêm Màng Não (CSF CDSS)',
+      short: 'Dịch Não Tủy',
+      desc: 'Phân tầng Vi khuẩn/Virus/Lao/Nấm, chạm mạch vs SAH, tỷ số glucose DNT & cẩm nang LP',
+      slug: 'csf',
+      url: rootPrefix + (isSubModule ? 'csf/index.html' : 'csf/index.html'),
+      icon: 'fa-solid fa-brain',
+      color: '#4f46e5',
+      badge: 'EFNS + LP Guide'
     }
   ];
 
@@ -190,6 +202,13 @@
       targetUrl: rootPrefix + 'diacare/index.html',
       icon: 'fa-solid fa-vial-circle-check',
       tag: 'Nội Tiết'
+    },
+    {
+      title: 'Hội Chứng Màng Não & Phân Tích Dịch Não Tủy (CSF)',
+      desc: 'Phân tầng Vi khuẩn vs Virus vs Lao vs Nấm, phân biệt Chạm mạch vs SAH',
+      targetUrl: rootPrefix + 'csf/index.html',
+      icon: 'fa-solid fa-brain',
+      tag: 'Thần Kinh'
     }
   ];
 

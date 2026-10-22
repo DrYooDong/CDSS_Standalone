@@ -26,7 +26,8 @@ export default defineConfig({
         antibiotic: resolve(__dirname, 'antibiotic/index.html'),
         vancomycin: resolve(__dirname, 'vancomycin/index.html'),
         diacare: resolve(__dirname, 'diacare/index.html'),
-        inpatient: resolve(__dirname, 'inpatient/index.html')
+        inpatient: resolve(__dirname, 'inpatient/index.html'),
+        csf: resolve(__dirname, 'csf/index.html')
       }
     }
   }
