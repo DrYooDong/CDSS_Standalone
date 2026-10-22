@@ -404,11 +404,10 @@
 
           <!-- Concise Scope Description -->
           <p class="cdss-command-desc">
-            B\u1ED9 c\xF4ng c\u1EE5 CDSS h\u1ED7 tr\u1EE3 ch\u1EA9n \u0111o\xE1n v\xE0 \u0111i\u1EC1u tr\u1ECB t\u1EA1i gi\u01B0\u1EDDng b\u1EC7nh chu\u1EA9n Y h\u1ECDc ch\u1EE9ng c\u1EE9 (EBM) v\xE0 B\u1ED9 Y t\u1EBF: 
+            H\u1EC7 sinh th\xE1i 10 module CDSS h\u1ED7 tr\u1EE3 ch\u1EA9n \u0111o\xE1n v\xE0 \u0111i\u1EC1u tr\u1ECB t\u1EA1i gi\u01B0\u1EDDng b\u1EC7nh chu\u1EA9n H\u01B0\u1EDBng d\u1EABn B\u1ED9 Y T\u1EBF &amp; Y h\u1ECDc ch\u1EE9ng c\u1EE9 (EBM): 
             ph\xE1c \u0111\u1ED3 d\u1ECBch truy\u1EC1n ch\u1ED1ng s\u1ED1c SXHD Dengue, ph\xE2n t\xEDch kh\xED m\xE1u ABG 6 b\u01B0\u1EDBc, \u0111i\u1EC7n tim 12 chuy\u1EC3n \u0111\u1EA1o STEMI, 
-            sinh h\xF3a gan HepaCDSS theo ACG, ph\xE2n t\u1EA7ng Sepsis &amp; s\u1ED1c nhi\u1EC5m khu\u1EA9n NICE/Phoenix, 
-            t\xEDnh li\u1EC1u 43 kh\xE1ng sinh InfectoDose, Vancomycin PK AUC/MIC, insulin n\u1ED9i vi\u1EC7n DiaCare, 
-            kh\xE1m b\u1EC7nh n\u1ED9i tr\xFA Bates &amp; Macleod v\xE0 bi\u1EC7n gi\u1EA3i d\u1ECBch n\xE3o t\u1EE7y CSF CDSS.
+            sinh h\xF3a gan HepaCDSS theo ACG, ph\xE2n t\u1EA7ng Sepsis NICE/Phoenix, t\xEDnh li\u1EC1u 43 kh\xE1ng sinh InfectoDose, 
+            Vancomycin PK AUC/MIC, insulin n\u1ED9i vi\u1EC7n DiaCare, kh\xE1m b\u1EC7nh n\u1ED9i tr\xFA Bates &amp; Macleod v\xE0 d\u1ECBch n\xE3o t\u1EE7y CSF CDSS.
           </p>
 
           <!-- ================================================================
@@ -417,7 +416,7 @@
           <div class="cdss-rapid-bar" id="cdss-rapid-bar">
             <div class="cdss-rapid-label">
               <i class="fa-solid fa-bolt-lightning text-amber-500"></i>
-              <span>Truy C\u1EADp Nhanh Theo T\xECnh Hu\u1ED1ng:</span>
+              <span>Truy C\u1EADp Nhanh:</span>
             </div>
             <div class="cdss-rapid-chips">
               ${TRIAGE_CHIPS.map((chip) => `
@@ -432,27 +431,36 @@
               `).join("")}
             </div>
           </div>
-        </header>
 
-        <!-- ================================================================
-             3. PINNED / FAVORITES SECTION (If user pinned any module)
-             ================================================================ -->
-        ${pinnedModules.length > 0 ? `
-          <section class="cdss-pinned-section">
-            <div class="cdss-pinned-head">
-              <div class="cdss-pinned-title">
+          <!-- ================================================================
+               3. PINNED QUICK-ACCESS STRIP (Sleek 1-line bar, no duplicate cards!)
+               ================================================================ -->
+          ${pinnedModules.length > 0 ? `
+            <div class="cdss-pinned-strip">
+              <div class="cdss-pinned-strip-label">
                 <i class="fa-solid fa-star text-amber-400"></i>
-                <span>C\xF4ng C\u1EE5 Th\u01B0\u1EDDng D\xF9ng \u0110\xE3 Ghim (${pinnedModules.length})</span>
+                <span>\u0110\xE3 Ghim (${pinnedModules.length}):</span>
               </div>
-              <button id="cdss-clear-pinned-btn" class="cdss-clear-pinned-link" title="B\u1ECF ghim t\u1EA5t c\u1EA3">
-                <i class="fa-regular fa-trash-can"></i> B\u1ECF ghim t\u1EA5t c\u1EA3
-              </button>
+              <div class="cdss-pinned-pills">
+                ${pinnedModules.map((m) => `
+                  <div class="cdss-pinned-pill" title="M\u1EDF nhanh ${m.shortTitle || m.title}">
+                    <a href="${m.standaloneUrl}" class="cdss-pinned-link">
+                      <i class="${m.icon}"></i>
+                      <span>${m.shortTitle || m.title}</span>
+                    </a>
+                    <button class="cdss-pinned-remove" data-unpin-slug="${m.slug}" title="B\u1ECF ghim">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                `).join("")}
+                <button id="cdss-clear-pinned-btn" class="cdss-pinned-clear-all" title="B\u1ECF ghim t\u1EA5t c\u1EA3">
+                  X\xF3a t\u1EA5t c\u1EA3
+                </button>
+              </div>
             </div>
-            <div class="cdss-cards-grid cdss-cards-grid--pinned">
-              ${pinnedModules.map((m) => renderModuleCard(m, true)).join("")}
-            </div>
-          </section>
-        ` : ""}
+          ` : ""}
+
+        </header>
 
         <!-- ================================================================
              4. UNIFIED SEARCH & CLINICAL FILTER TOOLBAR
@@ -570,10 +578,10 @@
           </div>
         ` : ""}
 
-        <!-- VIEW 1: MODERN 3-COLUMN CLINICAL GRID (DEFAULT) -->
+        <!-- VIEW 1: MODERN RESPONSIVE CLINICAL GRID (DEFAULT) -->
         ${viewMode === "grid" && filtered.length > 0 ? `
           <div class="cdss-cards-grid">
-            ${filtered.map((m) => renderModuleCard(m, false)).join("")}
+            ${filtered.map((m) => renderModuleCard(m)).join("")}
           </div>
         ` : ""}
 
@@ -600,7 +608,7 @@
                         <button 
                           class="cdss-pin-btn ${isPinned ? "pinned" : ""}" 
                           data-pin-slug="${m.slug}" 
-                          title="${isPinned ? "B\u1ECF ghim" : "Ghim l\xEAn \u0111\u1EA7u"}"
+                          title="${isPinned ? "B\u1ECF ghim" : "Ghim l\xEAn thanh y\xEAu th\xEDch"}"
                         >
                           <i class="${isPinned ? "fa-solid" : "fa-regular"} fa-star"></i>
                         </button>
@@ -681,7 +689,7 @@
                   </div>
 
                   <div class="cdss-cards-grid" style="margin-bottom:0;">
-                    ${groupModules.map((m) => renderModuleCard(m, false)).join("")}
+                    ${groupModules.map((m) => renderModuleCard(m)).join("")}
                   </div>
                 </div>
               `;
@@ -738,7 +746,7 @@
 
       </div>
     `;
-      function renderModuleCard(m, isPinnedSection = false) {
+      function renderModuleCard(m) {
         const isPinned = pinnedSlugs.includes(m.slug);
         const isStat = m.urgency === "stat";
         return `
@@ -756,7 +764,7 @@
               <button 
                 class="cdss-pin-btn ${isPinned ? "pinned" : ""}" 
                 data-pin-slug="${m.slug}" 
-                title="${isPinned ? "B\u1ECF ghim kh\u1ECFi B\xE0n l\xE0m vi\u1EC7c" : "Ghim l\xEAn \u0111\u1EA7u B\xE0n l\xE0m vi\u1EC7c"}"
+                title="${isPinned ? "B\u1ECF ghim kh\u1ECFi thanh y\xEAu th\xEDch" : "Ghim l\xEAn thanh y\xEAu th\xEDch"}"
                 aria-label="${isPinned ? "B\u1ECF ghim" : "Ghim"}"
               >
                 <i class="${isPinned ? "fa-solid" : "fa-regular"} fa-star"></i>
@@ -898,6 +906,18 @@
           } else {
             pinnedSlugs = [...pinnedSlugs, slug];
           }
+          setPinnedSlugs(pinnedSlugs);
+          render();
+        });
+      });
+      const unpinBtns = container.querySelectorAll(".cdss-pinned-remove");
+      unpinBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const slug = btn.getAttribute("data-unpin-slug");
+          if (!slug) return;
+          pinnedSlugs = pinnedSlugs.filter((s) => s !== slug);
           setPinnedSlugs(pinnedSlugs);
           render();
         });

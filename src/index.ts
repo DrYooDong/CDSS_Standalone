@@ -197,11 +197,10 @@ export function initCDSSHub(containerId: string): void {
 
           <!-- Concise Scope Description -->
           <p class="cdss-command-desc">
-            Bộ công cụ CDSS hỗ trợ chẩn đoán và điều trị tại giường bệnh chuẩn Y học chứng cứ (EBM) và Bộ Y tế: 
+            Hệ sinh thái 10 module CDSS hỗ trợ chẩn đoán và điều trị tại giường bệnh chuẩn Hướng dẫn Bộ Y Tế &amp; Y học chứng cứ (EBM): 
             phác đồ dịch truyền chống sốc SXHD Dengue, phân tích khí máu ABG 6 bước, điện tim 12 chuyển đạo STEMI, 
-            sinh hóa gan HepaCDSS theo ACG, phân tầng Sepsis &amp; sốc nhiễm khuẩn NICE/Phoenix, 
-            tính liều 43 kháng sinh InfectoDose, Vancomycin PK AUC/MIC, insulin nội viện DiaCare, 
-            khám bệnh nội trú Bates &amp; Macleod và biện giải dịch não tủy CSF CDSS.
+            sinh hóa gan HepaCDSS theo ACG, phân tầng Sepsis NICE/Phoenix, tính liều 43 kháng sinh InfectoDose, 
+            Vancomycin PK AUC/MIC, insulin nội viện DiaCare, khám bệnh nội trú Bates &amp; Macleod và dịch não tủy CSF CDSS.
           </p>
 
           <!-- ================================================================
@@ -210,7 +209,7 @@ export function initCDSSHub(containerId: string): void {
           <div class="cdss-rapid-bar" id="cdss-rapid-bar">
             <div class="cdss-rapid-label">
               <i class="fa-solid fa-bolt-lightning text-amber-500"></i>
-              <span>Truy Cập Nhanh Theo Tình Huống:</span>
+              <span>Truy Cập Nhanh:</span>
             </div>
             <div class="cdss-rapid-chips">
               ${TRIAGE_CHIPS.map(chip => `
@@ -225,27 +224,36 @@ export function initCDSSHub(containerId: string): void {
               `).join('')}
             </div>
           </div>
-        </header>
 
-        <!-- ================================================================
-             3. PINNED / FAVORITES SECTION (If user pinned any module)
-             ================================================================ -->
-        ${pinnedModules.length > 0 ? `
-          <section class="cdss-pinned-section">
-            <div class="cdss-pinned-head">
-              <div class="cdss-pinned-title">
+          <!-- ================================================================
+               3. PINNED QUICK-ACCESS STRIP (Sleek 1-line bar, no duplicate cards!)
+               ================================================================ -->
+          ${pinnedModules.length > 0 ? `
+            <div class="cdss-pinned-strip">
+              <div class="cdss-pinned-strip-label">
                 <i class="fa-solid fa-star text-amber-400"></i>
-                <span>Công Cụ Thường Dùng Đã Ghim (${pinnedModules.length})</span>
+                <span>Đã Ghim (${pinnedModules.length}):</span>
               </div>
-              <button id="cdss-clear-pinned-btn" class="cdss-clear-pinned-link" title="Bỏ ghim tất cả">
-                <i class="fa-regular fa-trash-can"></i> Bỏ ghim tất cả
-              </button>
+              <div class="cdss-pinned-pills">
+                ${pinnedModules.map(m => `
+                  <div class="cdss-pinned-pill" title="Mở nhanh ${m.shortTitle || m.title}">
+                    <a href="${m.standaloneUrl}" class="cdss-pinned-link">
+                      <i class="${m.icon}"></i>
+                      <span>${m.shortTitle || m.title}</span>
+                    </a>
+                    <button class="cdss-pinned-remove" data-unpin-slug="${m.slug}" title="Bỏ ghim">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                `).join('')}
+                <button id="cdss-clear-pinned-btn" class="cdss-pinned-clear-all" title="Bỏ ghim tất cả">
+                  Xóa tất cả
+                </button>
+              </div>
             </div>
-            <div class="cdss-cards-grid cdss-cards-grid--pinned">
-              ${pinnedModules.map(m => renderModuleCard(m, true)).join('')}
-            </div>
-          </section>
-        ` : ''}
+          ` : ''}
+
+        </header>
 
         <!-- ================================================================
              4. UNIFIED SEARCH & CLINICAL FILTER TOOLBAR
@@ -363,10 +371,10 @@ export function initCDSSHub(containerId: string): void {
           </div>
         ` : ''}
 
-        <!-- VIEW 1: MODERN 3-COLUMN CLINICAL GRID (DEFAULT) -->
+        <!-- VIEW 1: MODERN RESPONSIVE CLINICAL GRID (DEFAULT) -->
         ${viewMode === 'grid' && filtered.length > 0 ? `
           <div class="cdss-cards-grid">
-            ${filtered.map(m => renderModuleCard(m, false)).join('')}
+            ${filtered.map(m => renderModuleCard(m)).join('')}
           </div>
         ` : ''}
 
@@ -393,7 +401,7 @@ export function initCDSSHub(containerId: string): void {
                         <button 
                           class="cdss-pin-btn ${isPinned ? 'pinned' : ''}" 
                           data-pin-slug="${m.slug}" 
-                          title="${isPinned ? 'Bỏ ghim' : 'Ghim lên đầu'}"
+                          title="${isPinned ? 'Bỏ ghim' : 'Ghim lên thanh yêu thích'}"
                         >
                           <i class="${isPinned ? 'fa-solid' : 'fa-regular'} fa-star"></i>
                         </button>
@@ -474,7 +482,7 @@ export function initCDSSHub(containerId: string): void {
                   </div>
 
                   <div class="cdss-cards-grid" style="margin-bottom:0;">
-                    ${groupModules.map(m => renderModuleCard(m, false)).join('')}
+                    ${groupModules.map(m => renderModuleCard(m)).join('')}
                   </div>
                 </div>
               `;
@@ -532,8 +540,8 @@ export function initCDSSHub(containerId: string): void {
       </div>
     `;
 
-    // Render individual module card with refined clinical layout
-    function renderModuleCard(m: CDSSModuleMeta, isPinnedSection: boolean = false): string {
+    // Render individual module card with refined, compact, ergonomic clinical layout
+    function renderModuleCard(m: CDSSModuleMeta): string {
       const isPinned = pinnedSlugs.includes(m.slug);
       const isStat = m.urgency === 'stat';
 
@@ -552,7 +560,7 @@ export function initCDSSHub(containerId: string): void {
               <button 
                 class="cdss-pin-btn ${isPinned ? 'pinned' : ''}" 
                 data-pin-slug="${m.slug}" 
-                title="${isPinned ? 'Bỏ ghim khỏi Bàn làm việc' : 'Ghim lên đầu Bàn làm việc'}"
+                title="${isPinned ? 'Bỏ ghim khỏi thanh yêu thích' : 'Ghim lên thanh yêu thích'}"
                 aria-label="${isPinned ? 'Bỏ ghim' : 'Ghim'}"
               >
                 <i class="${isPinned ? 'fa-solid' : 'fa-regular'} fa-star"></i>
@@ -719,7 +727,21 @@ export function initCDSSHub(containerId: string): void {
       });
     });
 
-    // 7. Clear All Pinned
+    // 7. Unpin single item from Pinned Strip
+    const unpinBtns = container.querySelectorAll('.cdss-pinned-remove');
+    unpinBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const slug = btn.getAttribute('data-unpin-slug');
+        if (!slug) return;
+        pinnedSlugs = pinnedSlugs.filter(s => s !== slug);
+        setPinnedSlugs(pinnedSlugs);
+        render();
+      });
+    });
+
+    // 8. Clear All Pinned
     const clearPinnedBtn = document.getElementById('cdss-clear-pinned-btn');
     if (clearPinnedBtn) {
       clearPinnedBtn.addEventListener('click', () => {
@@ -729,7 +751,7 @@ export function initCDSSHub(containerId: string): void {
       });
     }
 
-    // 8. Reset Filters Links
+    // 9. Reset Filters Links
     const resetBtn = document.getElementById('cdss-reset-filters');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
@@ -748,7 +770,7 @@ export function initCDSSHub(containerId: string): void {
       });
     }
 
-    // 9. Tag remove click
+    // 10. Tag remove click
     const tagRemovers = container.querySelectorAll('.cdss-tag-remove');
     tagRemovers.forEach(btn => {
       btn.addEventListener('click', () => {

@@ -1,5 +1,5 @@
 // CliniPortal CDSS Service Worker
-const CACHE_NAME = 'cliniportal-cdss-v2';
+const CACHE_NAME = 'cliniportal-cdss-v3';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
