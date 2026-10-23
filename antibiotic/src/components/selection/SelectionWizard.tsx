@@ -39,6 +39,7 @@ interface SelectionWizardProps {
   renal?: CalculatedRenalMetrics;
   onCalculateDoseForDrug?: (drugId: string) => void;
   onPatientChange?: (updated: Partial<PatientState>) => void;
+  children?: React.ReactNode;
 }
 
 export const SelectionWizard: React.FC<SelectionWizardProps> = ({
@@ -49,7 +50,8 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
   patient,
   renal,
   onCalculateDoseForDrug,
-  onPatientChange
+  onPatientChange,
+  children
 }) => {
   // 3-Stage Master Workflow: 1 = Đánh giá & Phân tầng, 2 = Phác đồ & Antibiogram, 3 = Tái đánh giá 48-72h
   const [currentStage, setCurrentStage] = useState<1 | 2 | 3>(1);
@@ -405,131 +407,117 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
         </div>
       </div>
 
-      {/* Main Grid: Content Area + Sticky Decision Summary Card */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-        {/* Left Column (2 Cols): Active Stage Content or All-in-one */}
-        <div className="lg:col-span-2 space-y-6">
-          
-          {/* STAGE 1: ASSESSMENT & STRATIFICATION */}
-          {(viewMode === 'all-in-one' || currentStage === 1) && (
-            <div id="section-stage-1" className="space-y-4">
-              {viewMode === 'all-in-one' && (
-                <div className="flex items-center space-x-2 pt-2 pb-1 border-b border-slate-200">
-                  <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">1</span>
-                  <h2 className="text-base font-extrabold text-slate-900">
-                    Giai Đoạn 1: Đánh Giá Lâm Sàng &amp; Phân Tầng Nguy Cơ VKĐK
-                  </h2>
-                </div>
-              )}
-              <StepAssessmentStratification
-                indicationConfirmed={indicationConfirmed}
-                onConfirmIndication={setIndicationConfirmed}
-                checkedNhsnIds={checkedNhsnIds}
-                onToggleNhsnId={handleToggleNhsnId}
-                population={population}
-                onSelectPopulation={setPopulation}
-                site={site}
-                onSelectSite={setSite}
-                sepsisSource={sepsisSource}
-                onSelectSepsisSource={setSepsisSource}
-                checkedGeneralRiskIds={checkedGeneralRiskIds}
-                onToggleGeneralRisk={handleToggleGeneralRisk}
-                checkedSpecificRiskFactorIds={checkedSpecificRiskFactorIds}
-                onToggleSpecificRiskFactor={handleToggleSpecificRiskFactor}
-                sofaScore={sofaScore}
-                onSofaChange={setSofaScore}
-                psofaScore={psofaScore}
-                onPsofaChange={setPsofaScore}
-                clifSofaScore={clifSofaScore}
-                onClifSofaChange={setClifSofaScore}
-                isChronicLiverDisease={isChronicLiverDisease}
-                onToggleChronicLiver={setIsChronicLiverDisease}
-                checkedSpecificRisks={checkedSpecificRisks}
-                onToggleSpecificRisk={handleToggleSpecificRisk}
-                riskResult={riskResult}
-                onApplyPreset={handleApplyPreset}
-                onNextStage={() => {
-                  setCurrentStage(2);
-                  window.scrollTo({ top: 120, behavior: 'smooth' });
-                }}
-              />
-            </div>
-          )}
+      {/* Active Stage Content or All-in-one */}
+      <div className="w-full space-y-6">
+        
+        {/* STAGE 1: ASSESSMENT & STRATIFICATION */}
+        {(viewMode === 'all-in-one' || currentStage === 1) && (
+          <div id="section-stage-1" className="space-y-4">
+            {viewMode === 'all-in-one' && (
+              <div className="flex items-center space-x-2 pt-2 pb-1 border-b border-slate-200">
+                <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">1</span>
+                <h2 className="text-base font-extrabold text-slate-900">
+                  Giai Đoạn 1: Đánh Giá Lâm Sàng &amp; Phân Tầng Nguy Cơ VKĐK
+                </h2>
+              </div>
+            )}
+            <StepAssessmentStratification
+              indicationConfirmed={indicationConfirmed}
+              onConfirmIndication={setIndicationConfirmed}
+              checkedNhsnIds={checkedNhsnIds}
+              onToggleNhsnId={handleToggleNhsnId}
+              population={population}
+              onSelectPopulation={setPopulation}
+              site={site}
+              onSelectSite={setSite}
+              sepsisSource={sepsisSource}
+              onSelectSepsisSource={setSepsisSource}
+              checkedGeneralRiskIds={checkedGeneralRiskIds}
+              onToggleGeneralRisk={handleToggleGeneralRisk}
+              checkedSpecificRiskFactorIds={checkedSpecificRiskFactorIds}
+              onToggleSpecificRiskFactor={handleToggleSpecificRiskFactor}
+              sofaScore={sofaScore}
+              onSofaChange={setSofaScore}
+              psofaScore={psofaScore}
+              onPsofaChange={setPsofaScore}
+              clifSofaScore={clifSofaScore}
+              onClifSofaChange={setClifSofaScore}
+              isChronicLiverDisease={isChronicLiverDisease}
+              onToggleChronicLiver={setIsChronicLiverDisease}
+              checkedSpecificRisks={checkedSpecificRisks}
+              onToggleSpecificRisk={handleToggleSpecificRisk}
+              riskResult={riskResult}
+              onApplyPreset={handleApplyPreset}
+              onNextStage={() => {
+                setCurrentStage(2);
+                window.scrollTo({ top: 80, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
 
-          {/* STAGE 2: EMPIRIC REGIMEN & ANTIBIOGRAM */}
-          {(viewMode === 'all-in-one' || currentStage === 2) && (
-            <div id="section-stage-2" className="space-y-4">
-              {viewMode === 'all-in-one' && (
-                <div className="flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200">
-                  <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">2</span>
-                  <h2 className="text-base font-extrabold text-slate-900">
-                    Giai Đoạn 2: Lựa Chọn Phác Đồ Kháng Sinh Khởi Đầu &amp; Antibiogram
-                  </h2>
-                </div>
-              )}
-              <StepEmpiric
-                site={site}
-                population={population}
-                riskGroup={riskResult.group}
-                sepsisSource={sepsisSource}
-                specificRisks={checkedSpecificRisks}
-                onSelectDrugForDosing={(drugId) => onSelectDrugForDosing(drugId)}
-                onOpenGuidelineAtlas={onOpenGuidelineAtlas}
-                dosingResult={dosingResult}
-                selectedDrugId={selectedDrugId}
-                patient={patient}
-                renal={renal}
-                onCalculateDoseForDrug={onCalculateDoseForDrug}
-                onPatientChange={onPatientChange}
-                onNextStep={() => {
-                  setCurrentStage(3);
-                  window.scrollTo({ top: 120, behavior: 'smooth' });
-                }}
-                onPrevStep={() => {
-                  setCurrentStage(1);
-                  window.scrollTo({ top: 120, behavior: 'smooth' });
-                }}
-              />
-            </div>
-          )}
+        {/* STAGE 2: EMPIRIC REGIMEN & ANTIBIOGRAM + EMBEDDED DOSING */}
+        {(viewMode === 'all-in-one' || currentStage === 2) && (
+          <div id="section-stage-2" className="space-y-6">
+            {viewMode === 'all-in-one' && (
+              <div className="flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200">
+                <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">2</span>
+                <h2 className="text-base font-extrabold text-slate-900">
+                  Giai Đoạn 2: Lựa Chọn Phác Đồ Kháng Sinh Khởi Đầu &amp; Tính Liều Cá Thể Hóa
+                </h2>
+              </div>
+            )}
+            <StepEmpiric
+              site={site}
+              population={population}
+              riskGroup={riskResult.group}
+              sepsisSource={sepsisSource}
+              specificRisks={checkedSpecificRisks}
+              onSelectDrugForDosing={(drugId) => onSelectDrugForDosing(drugId)}
+              onOpenGuidelineAtlas={onOpenGuidelineAtlas}
+              dosingResult={dosingResult}
+              selectedDrugId={selectedDrugId}
+              patient={patient}
+              renal={renal}
+              onCalculateDoseForDrug={onCalculateDoseForDrug}
+              onPatientChange={onPatientChange}
+              onNextStep={() => {
+                setCurrentStage(3);
+                window.scrollTo({ top: 80, behavior: 'smooth' });
+              }}
+              onPrevStep={() => {
+                setCurrentStage(1);
+                window.scrollTo({ top: 80, behavior: 'smooth' });
+              }}
+            />
 
-          {/* STAGE 3: 48-72h REASSESSMENT & STEWARDSHIP */}
-          {(viewMode === 'all-in-one' || currentStage === 3) && (
-            <div id="section-stage-3" className="space-y-4">
-              {viewMode === 'all-in-one' && (
-                <div className="flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200">
-                  <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">3</span>
-                  <h2 className="text-base font-extrabold text-slate-900">
-                    Giai Đoạn 3: Tái Đánh Giá 48-72h, Xuống Thang &amp; Quản Lý Kháng Sinh (AMS)
-                  </h2>
-                </div>
-              )}
-              <StepReassess
-                site={site}
-                onOpenGuidelineAtlas={onOpenGuidelineAtlas}
-                onSelectDrugForDosing={(drugId) => onSelectDrugForDosing(drugId)}
-                onPrevStep={() => {
-                  setCurrentStage(2);
-                  window.scrollTo({ top: 120, behavior: 'smooth' });
-                }}
-              />
-            </div>
-          )}
-        </div>
+            {/* Seamless Integrated Dosing & Safety Workspace */}
+            {children}
+          </div>
+        )}
 
-        {/* Right Column (1 Col): Sticky Decision Summary Card */}
-        <div className="lg:col-span-1">
-          <DecisionSummaryCard
-            state={wizardState}
-            riskResult={riskResult}
-            currentStage={currentStage}
-            onNavigateStep={(s) => {
-              setCurrentStage(s);
-              window.scrollTo({ top: 120, behavior: 'smooth' });
-            }}
-            onSwitchToDosing={(drugId) => onSelectDrugForDosing(drugId)}
-          />
-        </div>
+        {/* STAGE 3: 48-72h REASSESSMENT & STEWARDSHIP */}
+        {(viewMode === 'all-in-one' || currentStage === 3) && (
+          <div id="section-stage-3" className="space-y-4">
+            {viewMode === 'all-in-one' && (
+              <div className="flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200">
+                <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">3</span>
+                <h2 className="text-base font-extrabold text-slate-900">
+                  Giai Đoạn 3: Tái Đánh Giá 48-72h, Xuống Thang &amp; Quản Lý Kháng Sinh (AMS)
+                </h2>
+              </div>
+            )}
+            <StepReassess
+              site={site}
+              onOpenGuidelineAtlas={onOpenGuidelineAtlas}
+              onSelectDrugForDosing={(drugId) => onSelectDrugForDosing(drugId)}
+              onPrevStep={() => {
+                setCurrentStage(2);
+                window.scrollTo({ top: 80, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

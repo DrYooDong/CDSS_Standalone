@@ -399,9 +399,9 @@ export default function App() {
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
 
-        {/* CDSS Clinical Patient Glance & Quick-Jump Stepper Ribbon */}
+        {/* CDSS Clinical Patient Glance Ribbon */}
         <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-3.5 mb-5 no-print">
-          <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             {/* Left: Patient Glance Metrics */}
             <div className="flex items-center gap-3 flex-wrap min-w-0">
               <div className="p-2.5 rounded-xl bg-teal-50 border border-teal-200/80 text-teal-800 shrink-0">
@@ -410,10 +410,13 @@ export default function App() {
               <div className="min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-xs font-black uppercase tracking-wider text-teal-800">
-                    Quy Trình Lâm Sàng Hợp Nhất (CDSS)
+                    InfectoDose CDSS
                   </span>
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-900 border border-teal-200/70">
-                    BVBND 2026 &bull; 43 Kháng sinh
+                    Phác Đồ BVBND 2026 &bull; 43 Kháng Sinh
+                  </span>
+                  <span className="text-[11px] font-bold text-slate-500">
+                    Đang chọn: <strong className="text-teal-700">{activeDrug.name}</strong> ({activeDrug.group})
                   </span>
                 </div>
                 <div className="text-xs text-slate-700 font-semibold mt-1 flex items-center gap-2 flex-wrap">
@@ -424,14 +427,14 @@ export default function App() {
                   <span>{patient.weight} kg</span>
                   <span className="text-slate-300">•</span>
                   <span>
-                    CrCl: <strong className="text-teal-700">{renal.crcl} mL/phút</strong>{' '}
+                    CrCl: <strong className="text-teal-700 font-black">{renal.crcl} mL/phút</strong>{' '}
                     <span className="text-[11px] font-medium text-slate-500">({renal.categoryLabelVi})</span>
                   </span>
                   {patient.dialysis !== 'none' && (
                     <>
                       <span className="text-slate-300">•</span>
                       <span className="px-1.5 py-0.2 rounded text-[10px] font-black bg-purple-100 text-purple-800 uppercase">
-                        {patient.dialysis}
+                        Lọc máu: {patient.dialysis}
                       </span>
                     </>
                   )}
@@ -439,61 +442,36 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right: Quick Jump Workflow Stepper Pills */}
-            <div className="flex items-center gap-1.5 flex-wrap">
+            {/* Right: Quick Tools */}
+            <div className="flex items-center gap-1.5 flex-wrap shrink-0">
               <button
                 type="button"
-                onClick={() => {
-                  const el = document.getElementById('unified-step1-selection');
-                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  else window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200/80 transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
-                title="Đến Bước 1: Đánh giá lâm sàng & Phân tầng SOFA"
+                onClick={() => handleOpenGuidelineAtlas()}
+                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
+                title="Xem Atlas Lưu Đồ BVBND 2026"
               >
-                <span className="w-4 h-4 rounded-full bg-teal-600 text-white text-[10px] font-black flex items-center justify-center shrink-0">
-                  1
-                </span>
-                <span>Phân tầng SOFA</span>
+                <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
+                <span className="hidden sm:inline">Atlas BVBND</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => {
-                  const el = document.getElementById('unified-step1-selection');
-                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  else window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200/80 transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
-                title="Đến Bước 2: Phác đồ khởi đầu BVBND 2026 & Antibiogram"
+                onClick={() => setIsAmrOpen(true)}
+                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200/80 transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
+                title="Dữ liệu Đề kháng AMR Vi sinh"
               >
-                <span className="w-4 h-4 rounded-full bg-teal-700 text-white text-[10px] font-black flex items-center justify-center shrink-0">
-                  2
-                </span>
-                <span>Phác đồ BVBND</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  const el = document.getElementById('unified-dosing-workspace');
-                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }}
-                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-white bg-teal-700 hover:bg-teal-800 transition-all cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                title={`Đến Bảng tính liều & Dược lâm sàng cho ${activeDrug.name}`}
-              >
-                <Calculator className="w-3.5 h-3.5 text-amber-300" />
-                <span>Tính liều ({activeDrug.name})</span>
+                <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
+                <span className="hidden sm:inline">Dữ liệu AMR</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setIsPdfModalOpen(true)}
-                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
+                className="px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-teal-700 hover:bg-teal-800 transition-all cursor-pointer flex items-center gap-1.5 shadow-2xs"
                 title="Xuất phiếu hội chẩn lâm sàng PDF"
               >
-                <FileText className="w-3.5 h-3.5 text-emerald-600" />
-                <span className="hidden sm:inline">Phiếu Hội Chẩn</span>
+                <FileText className="w-3.5 h-3.5 text-teal-100" />
+                <span>Phiếu Hội Chẩn PDF</span>
               </button>
             </div>
           </div>
@@ -545,55 +523,19 @@ export default function App() {
               />
             </div>
 
-            {/* 2. Step 1: Selection Wizard (BVBND 2026, NHSN, Antibiogram) */}
-            <div id="unified-step1-selection" className="space-y-3">
-              <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-teal-900 via-teal-800 to-teal-950 text-white p-3.5 rounded-2xl shadow-xs">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 bg-teal-700/80 rounded-xl text-teal-100">
-                    <Workflow className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-xs font-black uppercase tracking-wider bg-teal-500/30 text-teal-200 px-2 py-0.5 rounded-full border border-teal-400/30">
-                        Bước 1
-                      </span>
-                      <h2 className="text-sm font-extrabold text-white">
-                        Đánh Giá Lâm Sàng &amp; Lựa Chọn Phác Đồ Ban Đầu (BVBND 2026)
-                      </h2>
-                    </div>
-                    <p className="text-[11px] text-teal-100/90 mt-0.5">
-                      Chỉ định NHSN &bull; Phân tầng SOFA &bull; 7 Vị trí ổ nhiễm &bull; Antibiogram 2024 &bull; Tái đánh giá 48-72h
-                    </p>
-                  </div>
-                </div>
-                
-                <button
-                  type="button"
-                  onClick={() => {
-                    const el = document.getElementById('unified-dosing-workspace');
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
-                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-700/80 hover:bg-teal-600 text-teal-100 text-xs font-bold transition-all cursor-pointer shrink-0"
-                >
-                  <span>Xem Bảng Tính Liều ({activeDrug.name})</span>
-                  <ChevronDown className="w-3.5 h-3.5" />
-                </button>
-              </div>
-
-              <SelectionWizard
-                onSelectDrugForDosing={handleSelectDrugFromSelection}
-                onOpenGuidelineAtlas={handleOpenGuidelineAtlas}
-                dosingResult={dosingResult}
-                selectedDrugId={selectedDrugId}
-                patient={patient}
-                renal={renal}
-                onCalculateDoseForDrug={handleCalculateDoseInSelection}
-                onPatientChange={handlePatientChange}
-              />
-            </div>
-
-            {/* 3. Step 2: Live Active Dosing & Drug Safety Workspace */}
-            {renderDosingWorkspace(true)}
+            {/* 2. Unified Clinical Flow (BVBND 2026 Selection + Precision Dosing Workspace) */}
+            <SelectionWizard
+              onSelectDrugForDosing={handleSelectDrugFromSelection}
+              onOpenGuidelineAtlas={handleOpenGuidelineAtlas}
+              dosingResult={dosingResult}
+              selectedDrugId={selectedDrugId}
+              patient={patient}
+              renal={renal}
+              onCalculateDoseForDrug={handleCalculateDoseInSelection}
+              onPatientChange={handlePatientChange}
+            >
+              {renderDosingWorkspace(true)}
+            </SelectionWizard>
           </div>
         </div>
 

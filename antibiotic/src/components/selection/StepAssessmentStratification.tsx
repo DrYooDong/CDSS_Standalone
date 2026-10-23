@@ -39,8 +39,7 @@ import {
   MRSA_RISK_FACTORS,
   ESBL_RISK_FACTORS,
   PSEUDO_ACINETO_RISK_FACTORS,
-  ENTEROCOCCUS_RISK_FACTORS,
-  getPrimaryTargetForSite
+  ENTEROCOCCUS_RISK_FACTORS
 } from '../../selection/data/riskFactors';
 import { SourceBadge } from './SourceBadge';
 
@@ -103,7 +102,8 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
   onApplyPreset,
   onNextStage
 }) => {
-  const [showNhsnDetails, setShowNhsnDetails] = useState<boolean>(true);
+  const [showNhsnDetails, setShowNhsnDetails] = useState<boolean>(false);
+  const [showGeneralRisks, setShowGeneralRisks] = useState<boolean>(false);
   const [selectedSyndrome, setSelectedSyndrome] = useState<string>('nhsn_pneumonia_adult');
   const [activePreset, setActivePreset] = useState<string>('vap_severe');
   const [showSofaCalculator, setShowSofaCalculator] = useState<boolean>(false);
@@ -191,31 +191,49 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
     onApplyPreset(presetId);
   };
 
+  // Quick 1-click group adjustment
+  const handleQuickGroupSelect = (targetGroup: 'group_1' | 'group_2') => {
+    if (targetGroup === 'group_1') {
+      // Clear all general risks and specific risks
+      checkedGeneralRiskIds.forEach(id => onToggleGeneralRisk(id));
+      checkedSpecificRisks.forEach(risk => onToggleSpecificRisk(risk));
+      onSofaChange(0);
+      onPsofaChange(0);
+      onClifSofaChange(0);
+    } else {
+      // Select Group 2 essentials
+      if (!checkedGeneralRiskIds.includes('hospital_90d')) onToggleGeneralRisk('hospital_90d');
+      if (!checkedGeneralRiskIds.includes('iv_abx_30d')) onToggleGeneralRisk('iv_abx_30d');
+      if (!checkedSpecificRisks.includes('pseudo_acineto')) onToggleSpecificRisk('pseudo_acineto');
+      if (sofaScore < 2) onSofaChange(4);
+    }
+  };
+
   return (
-    <div className="space-y-5">
+    <div className="space-y-4">
       {/* Top Banner: Quick Preset Picker Bar */}
-      <div className="bg-gradient-to-r from-teal-900 via-slate-900 to-sky-950 text-white rounded-2xl p-4 shadow-sm border border-teal-500/30">
+      <div className="bg-gradient-to-r from-teal-900 via-slate-900 to-sky-950 text-white rounded-2xl p-3.5 shadow-sm border border-teal-500/30">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300">
+            <div className="w-8 h-8 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0">
               <Sparkles className="w-4 h-4" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
                 <span className="text-xs font-black uppercase tracking-wider text-teal-400">
-                  Mẫu Ca Lâm Sàng Nhanh
+                  Mẫu Ca Lâm Sàng Điển Hình
                 </span>
                 <span className="text-[10px] bg-teal-500/20 text-teal-200 px-2 py-0.5 rounded-full border border-teal-400/20">
-                  1-Click Điền Tức Thì
+                  1-Click Nhanh
                 </span>
               </div>
-              <p className="text-xs text-slate-300 mt-0.5">
-                Tải kịch bản mẫu điển hình để rút ngắn thời gian đánh giá bệnh nhân
+              <p className="text-[11px] text-slate-300 mt-0.5">
+                Nạp nhanh thông số ca bệnh mẫu để kiểm thử và phân tầng tức thì
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 max-w-full scrollbar-none sm:flex-wrap">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full scrollbar-none sm:flex-wrap">
             {presets.map(p => {
               const isSelected = activePreset === p.id;
               return (
@@ -237,7 +255,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             <button
               type="button"
               onClick={() => handleSelectPreset('custom')}
-              className="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-1 shrink-0 whitespace-nowrap"
+              className="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-1 shrink-0 whitespace-nowrap cursor-pointer"
               title="Làm mới để tự nhập ca bệnh"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -247,9 +265,9 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         </div>
       </div>
 
-      {/* SECTION 1: Ổ NHIỄM & DÂN SỐ */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-xs">
-        <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+      {/* SECTION A: Ổ NHIỄM & DÂN SỐ */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+        <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-slate-100">
           <div className="flex items-center space-x-2">
             <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">
               A
@@ -262,7 +280,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         </div>
 
         {/* Site Selector Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-3.5">
           {sitesList.map(s => {
             const isSelected = site === s.id;
             return (
@@ -284,7 +302,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                     : 'border-slate-200 hover:border-slate-300 bg-slate-50/50 hover:bg-white'
                 }`}
               >
-                <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center justify-between mb-1">
                   <div className={`p-1.5 rounded-lg ${s.color}`}>
                     {s.icon}
                   </div>
@@ -293,10 +311,10 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                   )}
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-900 leading-snug break-words">
+                  <div className="text-xs font-bold text-slate-900 leading-snug">
                     {s.titleVi}
                   </div>
-                  <div className="text-[10px] text-slate-500 mt-0.5 leading-snug break-words line-clamp-1 sm:line-clamp-none">
+                  <div className="text-[10px] text-slate-500 mt-0.5 line-clamp-1">
                     {s.subVi}
                   </div>
                 </div>
@@ -306,7 +324,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         </div>
 
         {/* Population & Sepsis Source row */}
-        <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-100">
+        <div className="flex flex-wrap items-center gap-3 pt-2.5 border-t border-slate-100">
           <div className="flex items-center space-x-2">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Đối tượng:</span>
             <div className="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-50">
@@ -345,7 +363,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
               className="rounded text-teal-600 focus:ring-teal-500 w-4 h-4 cursor-pointer"
             />
             <span className="text-xs font-semibold text-slate-700">
-              Bệnh gan mạn / Xơ gan (Áp dụng thang điểm CLIF-SOFA)
+              Bệnh gan mạn / Xơ gan (Thang điểm CLIF-SOFA)
             </span>
           </label>
 
@@ -368,19 +386,19 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         </div>
       </div>
 
-      {/* SECTION 2: BẢNG KIỂM CHỈ ĐỊNH & TIÊU CHUẨN NHSN-CDC */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-xs">
-        <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-100">
+      {/* SECTION B: BẢNG KIỂM CHỈ ĐỊNH & TIÊU CHUẨN NHSN-CDC */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-slate-100">
           <div className="flex items-center space-x-2">
             <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">
               B
             </span>
             <h3 className="text-sm font-extrabold text-slate-900">
-              Xác Nhận Chỉ Định & Bảng Kiểm NHSN-CDC 2019
+              Chỉ Định Kháng Sinh Cấp Tính (Tiêu chuẩn NHSN-CDC 2019)
             </h3>
           </div>
           
-          <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+          <div className="flex items-center space-x-2">
             <div className={`px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center space-x-1 ${
               isCriteriaMet
                 ? 'bg-emerald-100 text-emerald-800'
@@ -402,17 +420,17 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             <button
               type="button"
               onClick={() => setShowNhsnDetails(!showNhsnDetails)}
-              className="text-slate-500 hover:text-slate-800 p-1 rounded-md text-xs font-medium flex items-center space-x-1 cursor-pointer"
+              className="text-slate-600 hover:text-slate-900 px-2 py-1 rounded-md text-xs font-semibold flex items-center space-x-1 border border-slate-200 bg-slate-50 cursor-pointer"
             >
-              <span>{showNhsnDetails ? 'Thu gọn' : 'Xem chi tiết'}</span>
+              <span>{showNhsnDetails ? 'Thu gọn bảng kiểm' : 'Chi tiết bảng kiểm'}</span>
               {showNhsnDetails ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
             </button>
           </div>
         </div>
 
         {/* Quick Indication Status */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 mb-3">
-          <div className="flex items-center space-x-2.5 flex-1 min-w-0">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+          <div className="flex items-center space-x-2 flex-1 min-w-0">
             <CheckSquare className="w-4 h-4 text-teal-600 shrink-0" />
             <div className="text-xs text-slate-700 font-medium">
               Bệnh nhân có hội chứng nhiễm khuẩn cấp tính, sốc nhiễm khuẩn hoặc tổn thương cơ quan rõ ràng:
@@ -446,7 +464,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
 
         {/* Expandable NHSN Criteria Checklist */}
         {showNhsnDetails && (
-          <div className="space-y-3 pt-2">
+          <div className="space-y-2.5 pt-3 border-t border-slate-100 mt-2.5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <span className="text-xs font-bold text-slate-600">
                 Hội chứng đánh giá NHSN:
@@ -454,7 +472,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
               <select
                 value={selectedSyndrome}
                 onChange={e => setSelectedSyndrome(e.target.value)}
-                className="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white font-medium focus:ring-1 focus:ring-teal-500 cursor-pointer w-full sm:w-auto"
+                className="text-xs border border-slate-300 rounded-lg px-2.5 py-1 bg-white font-medium focus:ring-1 focus:ring-teal-500 cursor-pointer w-full sm:w-auto"
               >
                 {NHSN_CRITERIA_SECTIONS.map(sec => (
                   <option key={sec.id} value={sec.id}>
@@ -470,7 +488,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                 return (
                   <label
                     key={crit.id}
-                    className={`flex items-start space-x-2.5 p-2.5 rounded-xl border text-xs cursor-pointer transition-all ${
+                    className={`flex items-start space-x-2.5 p-2 rounded-xl border text-xs cursor-pointer transition-all ${
                       isChecked
                         ? 'border-teal-500 bg-teal-50/50 text-slate-900 font-medium'
                         : 'border-slate-200 hover:border-slate-300 bg-white text-slate-600 hover:bg-slate-50'
@@ -503,9 +521,9 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         )}
       </div>
 
-      {/* SECTION 3: PHÂN TẦNG NGUY CƠ VKĐK & MỨC ĐỘ NẶNG */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+      {/* SECTION C: PHÂN TẦNG NGUY CƠ VKĐK & MỨC ĐỘ NẶNG */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-4">
+        <div className="flex items-center justify-between pb-2.5 border-b border-slate-100">
           <div className="flex items-center space-x-2">
             <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">
               C
@@ -517,14 +535,77 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
           <SourceBadge source={{ doc: 'BVBND_PhanNhom', page: 2 }} />
         </div>
 
+        {/* 1-Click Fast Group Stratifier */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <button
+            type="button"
+            onClick={() => handleQuickGroupSelect('group_1')}
+            className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer relative ${
+              !isGroup2
+                ? 'border-emerald-500 bg-emerald-50/70 ring-2 ring-emerald-500/20 shadow-xs'
+                : 'border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-300'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center space-x-2">
+                <ShieldCheck className={`w-5 h-5 ${!isGroup2 ? 'text-emerald-700' : 'text-slate-400'}`} />
+                <span className="text-xs font-black uppercase tracking-wider text-emerald-900">
+                  Nhóm 1: Ít Nguy Cơ VKĐK
+                </span>
+              </div>
+              {!isGroup2 && (
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-600 text-white">
+                  Đang chọn
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-slate-600 leading-snug">
+              Bệnh nhân từ <strong>Cộng đồng</strong>, không có tiền sử nhập viện/dùng kháng sinh gần đây, không có dụng cụ xâm lấn, SOFA &lt; 2.
+            </p>
+            <div className="text-[11px] font-semibold text-emerald-700 mt-2">
+              → Khuyến cáo: Phác đồ kháng sinh phổ hẹp / tiêu chuẩn BVBND 2026.
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleQuickGroupSelect('group_2')}
+            className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer relative ${
+              isGroup2
+                ? 'border-rose-500 bg-rose-50/70 ring-2 ring-rose-500/20 shadow-xs'
+                : 'border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-300'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center space-x-2">
+                <ShieldAlert className={`w-5 h-5 ${isGroup2 ? 'text-rose-700' : 'text-slate-400'}`} />
+                <span className="text-xs font-black uppercase tracking-wider text-rose-900">
+                  Nhóm 2: Nguy Cơ Cao VKĐK
+                </span>
+              </div>
+              {isGroup2 && (
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-600 text-white">
+                  Đang chọn
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-slate-600 leading-snug">
+              Nhiễm khuẩn <strong>Bệnh viện / ICU</strong>, thở máy, lọc máu, dùng kháng sinh phổ rộng 30-90 ngày qua, hoặc nhiễm khuẩn nặng (SOFA ≥ 2).
+            </p>
+            <div className="text-[11px] font-semibold text-rose-700 mt-2">
+              → Khuyến cáo: Phổ rộng diệt Pseudomonas / Acineto, xem xét phối hợp MRSA/ESBL.
+            </div>
+          </button>
+        </div>
+
         {/* Severity Score Component */}
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div>
               <div className="flex items-center space-x-2 flex-wrap gap-y-1">
                 <Activity className="w-4 h-4 text-teal-600 shrink-0" />
                 <span className="text-xs font-bold text-slate-900 uppercase tracking-wide">
-                  {population === 'pediatric' ? 'Thang điểm pSOFA (Trẻ em)' : isChronicLiverDisease ? 'Thang điểm CLIF-SOFA (Xơ gan)' : 'Thang điểm SOFA (Người lớn)'}
+                  {population === 'pediatric' ? 'Thang điểm pSOFA (Trẻ em)' : isChronicLiverDisease ? 'Thang điểm CLIF-SOFA (Xơ gan)' : 'Mức độ nặng (Thang điểm SOFA)'}
                 </span>
                 <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase ${
                   riskResult.isHighSeverity ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
@@ -542,47 +623,44 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             </div>
 
             {/* Quick Score Stepper & Calculator Trigger */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-              <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none">
-                <span className="text-xs text-slate-500 font-medium shrink-0">Điểm số:</span>
-                <div className="flex items-center gap-1 shrink-0">
-                  {[0, 1, 2, 4, 6, 8, 12].map(scoreVal => {
-                    const currentScore = population === 'pediatric' ? psofaScore : isChronicLiverDisease ? clifSofaScore : sofaScore;
-                    const isCurrent = currentScore === scoreVal;
-                    return (
-                      <button
-                        key={scoreVal}
-                        type="button"
-                        onClick={() => {
-                          if (population === 'pediatric') onPsofaChange(scoreVal);
-                          else if (isChronicLiverDisease) onClifSofaChange(scoreVal);
-                          else onSofaChange(scoreVal);
-                        }}
-                        className={`w-7 h-7 rounded-lg text-xs font-bold transition-all cursor-pointer shrink-0 ${
-                          isCurrent
-                            ? 'bg-teal-600 text-white shadow-xs'
-                            : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
-                        }`}
-                      >
-                        {scoreVal}
-                      </button>
-                    );
-                  })}
-                </div>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
+                {[0, 1, 2, 4, 6, 8, 12].map(scoreVal => {
+                  const currentScore = population === 'pediatric' ? psofaScore : isChronicLiverDisease ? clifSofaScore : sofaScore;
+                  const isCurrent = currentScore === scoreVal;
+                  return (
+                    <button
+                      key={scoreVal}
+                      type="button"
+                      onClick={() => {
+                        if (population === 'pediatric') onPsofaChange(scoreVal);
+                        else if (isChronicLiverDisease) onClifSofaChange(scoreVal);
+                        else onSofaChange(scoreVal);
+                      }}
+                      className={`w-7 h-7 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        isCurrent
+                          ? 'bg-teal-600 text-white shadow-xs'
+                          : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                      }`}
+                    >
+                      {scoreVal}
+                    </button>
+                  );
+                })}
               </div>
               {population === 'adult' && !isChronicLiverDisease && (
                 <button
                   type="button"
                   onClick={() => setShowSofaCalculator(!showSofaCalculator)}
-                  className={`w-full sm:w-auto px-2.5 py-1.5 rounded-lg text-xs font-bold flex items-center justify-center space-x-1 transition-all cursor-pointer ${
+                  className={`px-2 py-1 rounded-lg text-xs font-bold flex items-center space-x-1 transition-all cursor-pointer ${
                     showSofaCalculator
                       ? 'bg-teal-700 text-white shadow-xs'
-                      : 'bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200'
+                      : 'bg-white text-teal-700 hover:bg-teal-50 border border-teal-200'
                   }`}
                   title="Mở máy tính nhanh 6 hệ cơ quan SOFA"
                 >
                   <Calculator className="w-3.5 h-3.5" />
-                  <span>{showSofaCalculator ? 'Đóng tính nhanh' : 'Máy tính SOFA'}</span>
+                  <span>{showSofaCalculator ? 'Đóng' : 'Tính SOFA'}</span>
                 </button>
               )}
             </div>
@@ -592,20 +670,20 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
           {showSofaCalculator && population === 'adult' && !isChronicLiverDisease && (
             <div className="pt-2 border-t border-slate-200/80 space-y-2">
               <div className="text-[11px] font-bold text-slate-700 flex items-center justify-between">
-                <span>Chọn các rối loạn chức năng cơ quan ghi nhận ở bệnh nhân:</span>
+                <span>Chọn nhanh các rối loạn tạng ghi nhận ở bệnh nhân:</span>
                 <span className="text-teal-700 font-semibold">SOFA hiện tại: {sofaScore} điểm</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1.5">
                 {[
-                  { organ: '🫁 Hô hấp', label: 'PaO2/FiO2 ≤ 300 (hoặc SpO2/FiO2 tương đương)', pts: 2 },
-                  { organ: '🫁 Hô hấp thở máy', label: 'PaO2/FiO2 ≤ 200 có hỗ trợ thở máy', pts: 3 },
+                  { organ: '🫁 Hô hấp', label: 'PaO2/FiO2 ≤ 300', pts: 2 },
+                  { organ: '🫁 Hô hấp thở máy', label: 'PaO2/FiO2 ≤ 200 (thở máy)', pts: 3 },
                   { organ: '🩸 Đông máu', label: 'Tiểu cầu < 100 x 10⁹/L', pts: 2 },
                   { organ: '🩸 Đông máu nặng', label: 'Tiểu cầu < 50 x 10⁹/L', pts: 3 },
                   { organ: '🧪 Gan mật', label: 'Bilirubin ≥ 33 µmol/L (≥ 2.0 mg/dL)', pts: 2 },
-                  { organ: '🫀 Tim mạch', label: 'Tụt HA cần bù dịch / Dopamine ≤ 5 µg/kg/p', pts: 2 },
-                  { organ: '🫀 Tim mạch nặng', label: 'Cần Noradrenaline / Dopamine > 5 µg/kg/p', pts: 3 },
-                  { organ: '🧠 Thần kinh', label: 'Glasgow 10 - 12 điểm (lơ mơ, rối loạn tri giác)', pts: 2 },
-                  { organ: '💧 Thận', label: 'Creatinine ≥ 171 µmol/L (≥ 2.0 mg/dL) / thiểu niệu', pts: 2 }
+                  { organ: '🫀 Tim mạch', label: 'Tụt HA cần bù dịch / Dopamine ≤ 5', pts: 2 },
+                  { organ: '🫀 Tim mạch nặng', label: 'Noradrenaline / Dopamine > 5', pts: 3 },
+                  { organ: '🧠 Thần kinh', label: 'Glasgow 10 - 12 điểm (lơ mơ)', pts: 2 },
+                  { organ: '💧 Thận', label: 'Creatinine ≥ 171 µmol/L (≥ 2.0 mg/dL)', pts: 2 }
                 ].map((item, idx) => (
                   <button
                     key={idx}
@@ -614,7 +692,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                       const newScore = Math.min(24, Math.max(0, sofaScore + (sofaScore >= item.pts ? -item.pts : item.pts)));
                       onSofaChange(newScore);
                     }}
-                    className="p-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-left text-[11px] transition-all cursor-pointer flex flex-col justify-between"
+                    className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-left text-[11px] transition-all cursor-pointer flex flex-col justify-between"
                   >
                     <div className="font-bold text-slate-800 flex items-center justify-between">
                       <span>{item.organ}</span>
@@ -628,58 +706,70 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
           )}
         </div>
 
-        {/* 8 General MDR Risk Factors */}
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold text-slate-800">
-              8 Yếu Tố Nguy Cơ Chung Nhiễm VKĐK (BVBND 2026):
-            </span>
-            <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md border border-teal-200">
-              {checkedGeneralRiskIds.length}/8 Yếu tố đã chọn
-            </span>
-          </div>
+        {/* 8 General MDR Risk Factors Accordion */}
+        <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50">
+          <button
+            type="button"
+            onClick={() => setShowGeneralRisks(!showGeneralRisks)}
+            className="w-full p-2.5 flex items-center justify-between text-left hover:bg-slate-100/70 transition-colors cursor-pointer"
+          >
+            <div className="flex items-center space-x-2">
+              <Shield className="w-4 h-4 text-slate-600" />
+              <span className="text-xs font-bold text-slate-800">
+                Bảng Kiểm 8 Yếu Tố Nguy Cơ Chung Nhiễm VKĐK (BVBND 2026)
+              </span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-[11px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                Đã chọn {checkedGeneralRiskIds.length}/8 yếu tố
+              </span>
+              {showGeneralRisks ? <ChevronUp className="w-3.5 h-3.5 text-slate-500" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-500" />}
+            </div>
+          </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {GENERAL_MDR_RISK_FACTORS.map(factor => {
-              const isChecked = checkedGeneralRiskIds.includes(factor.id);
-              return (
-                <label
-                  key={factor.id}
-                  className={`flex items-start space-x-2.5 p-2.5 rounded-xl border text-xs cursor-pointer transition-all ${
-                    isChecked
-                      ? 'border-amber-500 bg-amber-50/60 text-slate-900 font-medium shadow-2xs'
-                      : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={() => onToggleGeneralRisk(factor.id)}
-                    className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
-                  />
-                  <div className="flex-1">
-                    <div className="leading-snug">{factor.labelVi}</div>
-                    {factor.noteVi && (
-                      <div className="text-[10px] text-slate-400 mt-0.5">
-                        {factor.noteVi}
-                      </div>
-                    )}
-                  </div>
-                </label>
-              );
-            })}
-          </div>
+          {showGeneralRisks && (
+            <div className="p-3 border-t border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2 gap-2">
+              {GENERAL_MDR_RISK_FACTORS.map(factor => {
+                const isChecked = checkedGeneralRiskIds.includes(factor.id);
+                return (
+                  <label
+                    key={factor.id}
+                    className={`flex items-start space-x-2 p-2 rounded-lg border text-xs cursor-pointer transition-all ${
+                      isChecked
+                        ? 'border-amber-500 bg-amber-50/60 text-slate-900 font-medium'
+                        : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => onToggleGeneralRisk(factor.id)}
+                      className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
+                    />
+                    <div className="flex-1">
+                      <div className="leading-snug">{factor.labelVi}</div>
+                      {factor.noteVi && (
+                        <div className="text-[10px] text-slate-400 mt-0.5">
+                          {factor.noteVi}
+                        </div>
+                      )}
+                    </div>
+                  </label>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Specific Pathogen Risks with Granular Factor Checklist */}
-        <div className="space-y-3 pt-2 border-t border-slate-100">
+        <div className="space-y-2.5 pt-1">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
               <span className="text-xs font-bold text-slate-800 block">
-                Đánh Giá Yếu Tố Nguy Cơ Riêng Của Từng Tác Nhân Đa Kháng (BVBND 2026):
+                Tác Nhân Đa Kháng Cần Bao Phủ Cụ Thể (BVBND 2026):
               </span>
               <span className="text-[11px] text-slate-500">
-                Tự động suy luận kháng sinh bao phủ & hiển thị cảnh báo phối hợp thuốc theo Ghi chú b
+                Tự động kích hoạt kháng sinh bao phủ & hiển thị cảnh báo phối hợp thuốc theo Ghi chú b
               </span>
             </div>
             <span className="text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200">
@@ -688,7 +778,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
           </div>
 
           {/* 4 Pathogen Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
             {[
               {
                 id: 'mrsa' as SpecificPathogenRisk,
@@ -696,7 +786,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                 sub: 'Vancomycin / Linezolid',
                 color: 'rose',
                 isSiteTarget: site === 'skin_soft_tissue',
-                siteLabel: '🎯 Khuyên kiểm tra theo ổ Da & Mô mềm',
+                siteLabel: '🎯 Gợi ý theo ổ Da & Mô mềm',
                 factors: MRSA_RISK_FACTORS
               },
               {
@@ -705,7 +795,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                 sub: 'Carbapenem / Aminoglycoside',
                 color: 'amber',
                 isSiteTarget: site === 'urinary' || site === 'gastrointestinal' || site === 'peritoneal',
-                siteLabel: '🎯 Khuyên kiểm tra theo ổ Tiết niệu / Tiêu hóa',
+                siteLabel: '🎯 Gợi ý theo ổ Tiết niệu / Tiêu hóa',
                 factors: ESBL_RISK_FACTORS
               },
               {
@@ -714,7 +804,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                 sub: 'Carbapenem / Colistin / Cefepime / Piptaz',
                 color: 'purple',
                 isSiteTarget: site === 'respiratory' || site === 'sepsis',
-                siteLabel: '🎯 Khuyên kiểm tra theo ổ Hô hấp / Nhiễm trùng huyết',
+                siteLabel: '🎯 Gợi ý theo ổ Hô hấp / Nhiễm trùng huyết',
                 factors: PSEUDO_ACINETO_RISK_FACTORS
               },
               {
@@ -723,7 +813,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                 sub: 'Ampicillin / Daptomycin / Linezolid',
                 color: 'indigo',
                 isSiteTarget: site === 'urinary' && checkedGeneralRiskIds.includes('invasive_device'),
-                siteLabel: '🎯 Khuyên kiểm tra khi có sonde tiểu lưu kéo dài',
+                siteLabel: '🎯 Gợi ý khi có sonde lưu kéo dài',
                 factors: ENTEROCOCCUS_RISK_FACTORS
               }
             ].map(spec => {
@@ -742,7 +832,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                       : 'border-slate-200 bg-white hover:border-slate-300'
                   }`}
                 >
-                  <div className="p-3 flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
+                  <div className="p-2.5 flex items-start justify-between gap-2">
                     <label className="flex items-start space-x-2.5 cursor-pointer flex-1 min-w-0">
                       <input
                         type="checkbox"
@@ -756,12 +846,12 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                             {spec.title}
                           </span>
                           {spec.isSiteTarget && (
-                            <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800 break-words">
+                            <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800">
                               {spec.siteLabel}
                             </span>
                           )}
                         </div>
-                        <div className="text-[11px] text-slate-500 mt-1 leading-snug">
+                        <div className="text-[11px] text-slate-500 mt-0.5 leading-snug">
                           Thuốc bao phủ: <span className="font-semibold text-slate-700">{spec.sub}</span>
                         </div>
                       </div>
@@ -770,7 +860,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                     <button
                       type="button"
                       onClick={() => setExpandedPathogen(isExpanded ? null : spec.id)}
-                      className={`self-start sm:self-auto px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center space-x-1 shrink-0 ${
+                      className={`px-1.5 py-1 rounded text-[10px] font-bold transition-all cursor-pointer flex items-center space-x-0.5 shrink-0 ${
                         isExpanded
                           ? 'bg-slate-200 text-slate-800'
                           : activeCount > 0
@@ -778,14 +868,14 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                           : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                       }`}
                     >
-                      <span>{activeCount > 0 ? `${activeCount}/${spec.factors.length} yếu tố` : `Xem ${spec.factors.length} yếu tố`}</span>
+                      <span>{activeCount > 0 ? `${activeCount}/${spec.factors.length}` : 'Chi tiết'}</span>
                       {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </button>
                   </div>
 
                   {/* Granular Factors Checklist Expandable Panel */}
                   {isExpanded && (
-                    <div className="px-3 pb-3 pt-1 border-t border-slate-100 space-y-1.5 bg-slate-50/50 rounded-b-xl">
+                    <div className="px-2.5 pb-2.5 pt-1 border-t border-slate-100 space-y-1 bg-slate-50/50 rounded-b-xl">
                       <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
                         Bảng kiểm yếu tố nguy cơ riêng (BVBND):
                       </div>
@@ -827,15 +917,15 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         </div>
       </div>
 
-      {/* SECTION 4: THẺ TÁC NHÂN GỢI Ý & CẢNH BÁO QUY TẮC BVBND (Ghi Chú b) */}
-      <div className="space-y-3">
+      {/* SECTION D: CẢNH BÁO QUY TẮC BVBND (Ghi Chú b) */}
+      <div className="space-y-2.5">
         {/* Suggested Organisms Card */}
-        <div className={`p-4 rounded-2xl border transition-all ${
+        <div className={`p-3.5 rounded-2xl border transition-all ${
           isGroup2
             ? 'bg-rose-50/80 border-rose-200 text-rose-950'
             : 'bg-emerald-50/80 border-emerald-200 text-emerald-950'
         }`}>
-          <div className="flex items-start space-x-3">
+          <div className="flex items-start space-x-2.5">
             {isGroup2 ? (
               <Bug className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
             ) : (
@@ -875,13 +965,13 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
 
         {/* BVBND Note b: Co-Risk Gram(+) and Gram(-) Alert Banner */}
         {riskResult.isGramPosGramNegCoRisk && (
-          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-sm flex items-start space-x-3">
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-sm flex items-start space-x-2.5">
             <AlertCircle className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />
             <div className="text-xs leading-relaxed">
-              <div className="font-black text-sm uppercase tracking-wide text-amber-200 flex items-center space-x-1.5">
+              <div className="font-black text-xs uppercase tracking-wide text-amber-200 flex items-center space-x-1.5">
                 <span>⚠️ QUY TẮC BVBND (Ghi chú b): BẮT BUỘC PHỐI HỢP KHÁNG SINH GRAM (+) VÀ GRAM (-)</span>
               </div>
-              <p className="mt-1 opacity-95">
+              <p className="mt-0.5 opacity-95">
                 Bệnh nhân có đồng thời nguy cơ nhiễm cầu khuẩn Gram (+) đa kháng (MRSA / VRE) VÀ trực khuẩn Gram (-) đa kháng (ESBL / Pseudomonas / Acinetobacter). 
                 <strong> Bắt buộc chỉ định phác đồ phối hợp 2 nhóm thuốc</strong> (ví dụ: Vancomycin hoặc Linezolid KẾT HỢP VỚI Meropenem hoặc Piperacillin-tazobactam).
               </p>
@@ -891,16 +981,16 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
 
         {/* BVBND Note b: Dual Gram(-) Risk Prioritization Banner */}
         {riskResult.isDualGramNegRisk && (
-          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white shadow-sm flex items-start space-x-3">
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white shadow-sm flex items-start space-x-2.5">
             <Zap className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />
             <div className="text-xs leading-relaxed">
-              <div className="font-black text-sm uppercase tracking-wide text-amber-200 flex items-center space-x-1.5">
+              <div className="font-black text-xs uppercase tracking-wide text-amber-200 flex items-center space-x-1.5">
                 <span>⚡ QUY TẮC BVBND (Ghi chú b): ƯU TIÊN KHÁNG SINH DIỆT PSEUDOMONAS / ACINETOBACTER</span>
               </div>
-              <p className="mt-1 opacity-95">
+              <p className="mt-0.5 opacity-95">
                 Bệnh nhân có nguy cơ đồng thời cả 2 nhóm Gram (-) (Enterobacterales sinh ESBL và Pseudomonas / Acinetobacter). 
                 <strong> ƯU TIÊN chọn kháng sinh có hoạt phổ trên Acinetobacter / Pseudomonas</strong> (như Meropenem, Cefepime, Piperacillin-tazobactam hoặc Colistin phối hợp) 
-                để bao phủ luôn cả các chủng sinh ESBL. <em>Tránh dùng Ertapenem đơn độc</em> vì Ertapenem không có phổ trên Pseudomonas hay Acinetobacter.
+                để bao phủ luôn cả các chủng sinh ESBL. <em>Tránh dùng Ertapenem đơn độc</em>.
               </p>
             </div>
           </div>
@@ -915,18 +1005,18 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
         </div>
       </div>
 
-      {/* RESULT CARD & PROCEED BUTTON */}
-      <div className={`p-4 sm:p-5 rounded-2xl border transition-all ${
+      {/* FINAL RESULT CARD & DIRECT PROCEED BUTTON */}
+      <div className={`p-4 rounded-2xl border transition-all ${
         isGroup2
           ? 'bg-rose-50/90 border-rose-300 text-rose-950 shadow-sm'
           : 'bg-emerald-50/90 border-emerald-300 text-emerald-950 shadow-sm'
       }`}>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3.5">
           <div className="flex items-start space-x-3 flex-1 min-w-0">
             {isGroup2 ? (
-              <ShieldAlert className="w-8 h-8 text-rose-600 shrink-0 mt-0.5" />
+              <ShieldAlert className="w-7 h-7 text-rose-600 shrink-0 mt-0.5" />
             ) : (
-              <ShieldCheck className="w-8 h-8 text-emerald-600 shrink-0 mt-0.5" />
+              <ShieldCheck className="w-7 h-7 text-emerald-600 shrink-0 mt-0.5" />
             )}
             <div>
               <div className="flex items-center space-x-2">
@@ -939,7 +1029,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                   {isGroup2 ? 'Cần Phổ Rộng / Phối Hợp' : 'Phác Đồ Tiêu Chuẩn'}
                 </span>
               </div>
-              <ul className="text-xs mt-1.5 space-y-0.5 opacity-90">
+              <ul className="text-xs mt-1 space-y-0.5 opacity-90">
                 {riskResult.rationalesVi.map((r, i) => (
                   <li key={i} className="flex items-center space-x-1.5">
                     <span>•</span>
@@ -959,7 +1049,7 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                 : 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/30'
             }`}
           >
-            <span>Sang Giai Đoạn 2: Xem Phác Đồ Khuyến Cáo</span>
+            <span>Xem Phác Đồ BVBND 2026 &amp; Tính Liều Cá Thể Hóa →</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -967,4 +1057,3 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
     </div>
   );
 };
-
