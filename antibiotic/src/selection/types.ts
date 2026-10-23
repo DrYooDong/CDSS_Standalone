@@ -83,6 +83,8 @@ export interface DrugChoiceItem {
   isAlternative?: boolean;
   hasDosingCalculator: boolean; // true nếu có trong ANTIBIOTICS hiện có
   infusionNoteVi?: string;
+  drugName?: string; // compatibility alias
+  dosageVi?: string; // compatibility alias
 }
 
 export interface EmpiricRegimen {

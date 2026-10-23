@@ -37,7 +37,7 @@
   
   <!-- CliniPortal CDSS Shell Styles & Theme Script -->
   <link rel="stylesheet" href="./shared/cdss-shell.css">
-  <link rel="stylesheet" href="./css/cdss-hub.css?v=2.6.0">
+  <link rel="stylesheet" href="./css/cdss-hub.css?v=2.7.0">
   <script src="./shared/cdss-shell.js"></script>
 </head>
 <body>
@@ -70,21 +70,18 @@
   <!-- CDSS Hub Application Mount Container -->
   <main id="cdss-hub-app"></main>
 
-  <footer style="border-top: 1px solid var(--color-border); padding: 3rem 1.5rem; text-align: center; font-size: 0.85rem; color: var(--color-text-muted); background: var(--color-surface); margin-top: 4rem;">
-    <div style="max-width: 960px; margin: 0 auto; line-height: 1.7;">
-      <p style="font-family: var(--cdss-font-display); font-weight: 800; font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--color-text);">
-        Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập (CDSS Standalone Suite)
-      </p>
-      <p style="margin-bottom: 0.75rem;">
-        Hợp nhất 10 module CDSS độc lập: Dịch truyền SXHD Dengue, ECG Master, ABG Pro, Sinh hóa gan HepaCDSS, SepsisCDSS, InfectoDose Kháng sinh, Vancomycin PK, DiaCare Insulin nội viện, Khám bệnh nội trú Bates &amp; Macleod, Phân tích dịch não tủy CSF CDSS.
-      </p>
-      <p style="font-size: 0.78rem; opacity: 0.85; margin: 0;">
-        Phát triển theo tiêu chuẩn Y học chứng cứ (EBM), Bộ Y Tế Việt Nam, AHA/ACC, NICE, ASHP, ADA, EFNS &amp; Bates Pocket Guide to Physical Examination.
-      </p>
+  <footer style="border-top: 1px solid var(--color-border); padding: 1.75rem 1.25rem; text-align: center; font-size: 0.78rem; color: var(--color-text-muted); background: var(--color-surface);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+      <div>
+        <strong>CDSS Platform Suite</strong> — Hỗ trợ quyết định lâm sàng tại giường bệnh (10 Modules)
+      </div>
+      <div>
+        Chuẩn Bộ Y Tế Việt Nam &amp; EBM Quốc Tế · 100% Client-side
+      </div>
     </div>
   </footer>
 
-  <!-- CDSS Hub Application Bundle (Pre-bundled IIFE - works directly on GitHub Pages, offline file:///, and Vite dev server) -->
-  <script src="./cdss-hub-bundle.js?v=2.6.0"></script>
+  <!-- CDSS Hub Application Bundle (Pre-bundled IIFE) -->
+  <script src="./cdss-hub-bundle.js?v=2.7.0"></script>
 </body>
 </html>

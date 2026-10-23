@@ -10,6 +10,9 @@ import {
 } from '../../selection/types';
 import { getEmpiricRegimens, getAntibiogramForSite } from '../../selection/engine';
 import { SourceBadge } from './SourceBadge';
+import { DoseResult } from '../../utils/drugDataExtractor';
+import { PatientState, CalculatedRenalMetrics } from '../../types';
+import { ANTIBIOTICS } from '../../data/antibiotics';
 import { 
   ClipboardList, 
   FlaskConical, 
@@ -21,7 +24,17 @@ import {
   Clock,
   ShieldAlert,
   Info,
-  BookOpen
+  BookOpen,
+  Sparkles,
+  Zap,
+  Filter,
+  Copy,
+  Check,
+  User,
+  Activity,
+  SlidersHorizontal,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 interface StepEmpiricProps {
@@ -34,6 +47,12 @@ interface StepEmpiricProps {
   onNextStep: () => void;
   onPrevStep: () => void;
   onOpenGuidelineAtlas?: (imageId?: string) => void;
+  dosingResult?: DoseResult | null;
+  selectedDrugId?: string;
+  patient?: PatientState;
+  renal?: CalculatedRenalMetrics;
+  onCalculateDoseForDrug?: (drugId: string) => void;
+  onPatientChange?: (updated: Partial<PatientState>) => void;
 }
 
 export const StepEmpiric: React.FC<StepEmpiricProps> = ({
@@ -45,9 +64,18 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
   onSelectDrugForDosing,
   onNextStep,
   onPrevStep,
-  onOpenGuidelineAtlas
+  onOpenGuidelineAtlas,
+  dosingResult,
+  selectedDrugId,
+  patient,
+  renal,
+  onCalculateDoseForDrug,
+  onPatientChange
 }) => {
   const [activeTab, setActiveTab] = useState<'regimens' | 'antibiogram'>('regimens');
+  const [selectedFilterRisk, setSelectedFilterRisk] = useState<string>('all');
+  const [copiedDrugId, setCopiedDrugId] = useState<string | null>(null);
+  const [showRenalQuickEditor, setShowRenalQuickEditor] = useState<boolean>(false);
 
   const getTargetImageId = (tab: 'regimens' | 'antibiogram') => {
     const isAdult = population === 'adult';
@@ -76,8 +104,8 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
     ? (population === 'adult' ? (activeTab === 'antibiogram' ? 10 : 11) : (activeTab === 'antibiogram' ? 7 : 8)) 
     : (activeTab === 'antibiogram' ? 11 : 12);
 
-  // Lấy danh sách phác đồ khởi đầu theo phân tầng
-  const regimens: EmpiricRegimen[] = getEmpiricRegimens(
+  // Lấy danh sách phác đồ khởi đầu theo phân tầng chuẩn BVBND 2026
+  const allRegimens: EmpiricRegimen[] = getEmpiricRegimens(
     site,
     population,
     riskGroup,
@@ -85,8 +113,40 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
     specificRisks
   );
 
+  // Filter based on quick pathogen filter if user selects one
+  const regimens = allRegimens.filter(r => {
+    if (selectedFilterRisk === 'all') return true;
+    if (selectedFilterRisk === 'base') return !r.specificRisk;
+    return r.specificRisk === selectedFilterRisk;
+  });
+
   // Lấy dữ liệu vi sinh tại chỗ
   const antibiogramData: AntibiogramDataset | undefined = getAntibiogramForSite(site, population);
+
+  // Active calculated drug name in Phân hệ 2
+  const activeCalculatedDrug = ANTIBIOTICS.find(a => a.id === selectedDrugId);
+  const activeCalculatedDrugName = activeCalculatedDrug ? activeCalculatedDrug.name : selectedDrugId;
+
+  // Site label formatting
+  const siteLabels: Record<InfectionSite, string> = {
+    respiratory: 'Hô hấp (Viêm phổi CAP / HAP / VAP)',
+    sepsis: 'Nhiễm khuẩn huyết / Sốc nhiễm khuẩn',
+    skin_soft_tissue: 'Da và Mô mềm (SSTI)',
+    urinary: 'Tiết niệu (UTI)',
+    peritoneal: 'Dịch báng / Viêm phúc mạc (SBP)',
+    gastrointestinal: 'Tiêu hóa / Ổ bụng',
+    cns: 'Thần kinh trung ương (Viêm màng não mủ)'
+  };
+
+  const handleCopyOrder = (text: string, drugId: string) => {
+    try {
+      navigator.clipboard.writeText(text);
+      setCopiedDrugId(drugId);
+      setTimeout(() => setCopiedDrugId(null), 2000);
+    } catch (e) {
+      console.warn('Copy failed', e);
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -94,16 +154,19 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
       <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-200">
                 Giai Đoạn 2
               </span>
-              <h2 className="text-lg sm:text-xl font-extrabold text-slate-900">
+              <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                {population === 'adult' ? 'Người lớn' : 'Trẻ em'} • {siteLabels[site] || site}
+              </span>
+              <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 w-full sm:w-auto mt-1 sm:mt-0">
                 Phác Đồ Kháng Sinh Khởi Đầu &amp; Dữ Liệu Vi Sinh
               </h2>
             </div>
             <p className="text-xs text-slate-500 mt-1">
-              Lựa chọn phác đồ kinh nghiệm theo phân tầng nguy cơ ({riskGroup === 'group_1' ? 'Nhóm 1 - Nguy cơ thấp' : 'Nhóm 2 - Nguy cơ cao VKĐK'}) và kháng sinh đồ tại chỗ BV Bệnh Nhiệt Đới.
+              Khuyến cáo phác đồ theo hướng dẫn BV Bệnh Nhiệt Đới 2026 (P.4-13) • Tích hợp tính liều cá thể hóa trực tiếp theo chức năng thận.
             </p>
           </div>
 
@@ -121,38 +184,161 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
               </button>
             )}
 
-          {/* Tab switch */}
-          <div className="w-full sm:w-auto grid grid-cols-2 sm:flex p-1 bg-slate-100 rounded-xl border border-slate-200">
-            <button
-              type="button"
-              onClick={() => setActiveTab('regimens')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${
-                activeTab === 'regimens'
-                  ? 'bg-white text-teal-700 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <ClipboardList className="w-3.5 h-3.5 text-teal-600" />
-              <span>Phác đồ Khuyến cáo ({regimens.length})</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('antibiogram')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${
-                activeTab === 'antibiogram'
-                  ? 'bg-white text-teal-700 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <FlaskConical className="w-3.5 h-3.5 text-teal-600" />
-              <span>Vi sinh &amp; KSĐ Tại Chỗ</span>
-            </button>
-          </div>
+            {/* Tab switch */}
+            <div className="w-full sm:w-auto grid grid-cols-2 sm:flex p-1 bg-slate-100 rounded-xl border border-slate-200">
+              <button
+                type="button"
+                onClick={() => setActiveTab('regimens')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${
+                  activeTab === 'regimens'
+                    ? 'bg-white text-teal-700 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <ClipboardList className="w-3.5 h-3.5 text-teal-600" />
+                <span>Phác đồ Khuyến cáo ({allRegimens.length})</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('antibiogram')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${
+                  activeTab === 'antibiogram'
+                    ? 'bg-white text-teal-700 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <FlaskConical className="w-3.5 h-3.5 text-teal-600" />
+                <span>Vi sinh &amp; KSĐ Tại Chỗ</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Cảnh báo phân tầng */}
-        <div className={`mt-4 p-4 rounded-xl border text-sm ${
+        {/* Live Dosing Summary Banner (Tích Hợp Trực Tiếp State dosingResult Từ Phân Hệ 2) */}
+        <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-teal-50/90 via-emerald-50/80 to-teal-50/60 border border-teal-300 shadow-2xs space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-teal-600 text-white shadow-2xs">
+                <Calculator className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-black text-sm text-teal-950">
+                    Máy Tính Liều Cá Thể Hóa Trực Tiếp (Phân Hệ 2)
+                  </span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-teal-200/90 text-teal-900">
+                    Thời Gian Thực
+                  </span>
+                </div>
+                <div className="text-xs text-slate-600 mt-0.5">
+                  Bệnh nhân: <strong className="text-slate-900">{patient?.patientName || 'Bệnh nhân'}</strong> • {patient?.age || 60} tuổi • Cân nặng: <strong className="text-teal-900">{patient?.weight || 60} kg</strong> • SCr: <strong className="text-teal-900">{patient?.scr || 90} {patient?.scrUnit || 'µmol/L'}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 flex-wrap">
+              <div className="px-3 py-1 rounded-lg bg-white border border-teal-200 text-xs shadow-2xs">
+                <span className="text-slate-500 font-medium">CrCl: </span>
+                <strong className="text-teal-900 font-black">{renal?.crcl ?? 90} mL/phút</strong>
+                <span className="text-[11px] text-teal-700 ml-1">({renal?.cgCrClLabel || 'Bảo tồn'})</span>
+              </div>
+              {onPatientChange && (
+                <button
+                  type="button"
+                  onClick={() => setShowRenalQuickEditor(!showRenalQuickEditor)}
+                  className="px-2.5 py-1 text-xs font-bold rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 flex items-center gap-1 cursor-pointer transition-all shadow-2xs"
+                  title="Thay đổi nhanh SCr và Cân nặng để tính lại liều"
+                >
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-teal-600" />
+                  <span>Hiệu chỉnh thông số</span>
+                  {showRenalQuickEditor ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Quick Renal Editor Inputs */}
+          {showRenalQuickEditor && onPatientChange && (
+            <div className="p-3 bg-white/90 rounded-xl border border-teal-200 text-xs space-y-2.5 animate-fadeIn">
+              <div className="font-bold text-slate-800 flex items-center gap-1.5">
+                <Activity className="w-3.5 h-3.5 text-teal-600" />
+                <span>Hiệu chỉnh nhanh thông số thận &amp; cân nặng (tự động cập nhật liều cho toàn bộ thuốc):</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div>
+                  <label className="block text-[11px] font-semibold text-slate-600 mb-1">Cân nặng (kg)</label>
+                  <input
+                    type="number"
+                    value={patient?.weight || 60}
+                    onChange={(e) => onPatientChange({ weight: parseFloat(e.target.value) || 50 })}
+                    className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-slate-600 mb-1">Serum Creatinine ({patient?.scrUnit || 'µmol/L'})</label>
+                  <input
+                    type="number"
+                    value={patient?.scr || 90}
+                    onChange={(e) => onPatientChange({ scr: parseFloat(e.target.value) || 60 })}
+                    className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-slate-600 mb-1">Tuổi</label>
+                  <input
+                    type="number"
+                    value={patient?.age || 60}
+                    onChange={(e) => onPatientChange({ age: parseInt(e.target.value) || 60 })}
+                    className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-slate-600 mb-1">Lọc máu</label>
+                  <select
+                    value={patient?.dialysis || 'none'}
+                    onChange={(e) => onPatientChange({ dialysis: e.target.value as any })}
+                    className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden cursor-pointer"
+                  >
+                    <option value="none">Không lọc máu</option>
+                    <option value="hd">HD (Thận nhân tạo chu kỳ)</option>
+                    <option value="crrt_cvvh">CRRT: CVVH</option>
+                    <option value="crrt_cvvhd">CRRT: CVVHD</option>
+                    <option value="crrt_cvvhdf">CRRT: CVVHDF</option>
+                    <option value="sled">SLED (Lọc máu kéo dài)</option>
+                    <option value="capd">CAPD (Thẩm phân phúc mạc)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Dosing Result Quick Highlight when active */}
+          {dosingResult && selectedDrugId && (
+            <div className="p-3 bg-white rounded-xl border border-teal-300/80 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse shrink-0"></span>
+                <span className="text-xs text-slate-700">
+                  Thuốc đang chọn: <strong className="text-teal-950 font-black">{activeCalculatedDrugName}</strong>
+                </span>
+                <span className="text-xs text-slate-400">→</span>
+                <span className="text-xs font-black text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                  Liều cá thể hóa: {dosingResult.maintenanceDoseTextVi}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => onSelectDrugForDosing(selectedDrugId)}
+                className="px-3 py-1 rounded-lg text-xs font-bold bg-teal-600 hover:bg-teal-700 text-white transition-all flex items-center gap-1 cursor-pointer shrink-0"
+              >
+                <span>Mở Phân hệ 2 chi tiết</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Phân tầng nguy cơ cảnh báo */}
+        <div className={`mt-3 p-3.5 rounded-xl border text-xs ${
           riskGroup === 'group_2'
             ? 'bg-amber-50/90 border-amber-200 text-amber-950'
             : 'bg-emerald-50/90 border-emerald-200 text-emerald-950'
@@ -173,26 +359,97 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
                   ? 'Bệnh nhân thuộc Nhóm 2 (Nguy cơ cao vi khuẩn đa kháng hoặc bệnh cảnh nặng):'
                   : 'Bệnh nhân thuộc Nhóm 1 (Ít nguy cơ vi khuẩn đa kháng):'}
               </strong>
-              <p className="text-xs mt-1 leading-relaxed text-slate-700">
+              <p className="mt-1 leading-relaxed text-slate-700">
                 {riskGroup === 'group_2'
-                  ? 'Bắt buộc sử dụng kháng sinh phổ rộng theo lưu đồ BVBND (BL-BLI liều cao hoặc Carbapenem), có thể cần phối hợp bao phủ MRSA nếu có chỉ định. Luôn lấy cấy máu và bệnh phẩm trước liều đầu tiên.'
+                  ? 'Bắt buộc sử dụng kháng sinh phổ rộng theo lưu đồ BVBND (BL-BLI liều cao hoặc Carbapenem), phối hợp bao phủ MRSA nếu có chỉ định. Luôn lấy cấy máu và bệnh phẩm trước liều đầu tiên.'
                   : 'Ưu tiên kháng sinh phổ hẹp hoặc phổ trung bình phù hợp. Hạn chế lạm dụng nhóm Carbapenem, Colistin hay Vancomycin khi chưa có bằng chứng vi sinh.'}
               </p>
             </div>
           </div>
         </div>
+
+        {/* Quick Pathogen Filter if Group 2 */}
+        {riskGroup === 'group_2' && (
+          <div className="mt-3 pt-3 border-t border-slate-100 flex items-center gap-1.5 flex-wrap">
+            <span className="text-xs font-bold text-slate-600 flex items-center gap-1 mr-1">
+              <Filter className="w-3.5 h-3.5 text-slate-400" />
+              Lọc nhanh phác đồ:
+            </span>
+            <button
+              type="button"
+              onClick={() => setSelectedFilterRisk('all')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                selectedFilterRisk === 'all'
+                  ? 'bg-teal-600 text-white shadow-2xs'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+              }`}
+            >
+              Tất cả ({allRegimens.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedFilterRisk('base')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                selectedFilterRisk === 'base'
+                  ? 'bg-teal-600 text-white shadow-2xs'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+              }`}
+            >
+              Phác đồ Khởi đầu Nền
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedFilterRisk('mrsa')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                selectedFilterRisk === 'mrsa'
+                  ? 'bg-amber-600 text-white shadow-2xs'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+              }`}
+            >
+              + Nguy cơ MRSA
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedFilterRisk('esbl')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                selectedFilterRisk === 'esbl'
+                  ? 'bg-indigo-600 text-white shadow-2xs'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+              }`}
+            >
+              + Nguy cơ ESBL
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedFilterRisk('pseudo_acineto')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                selectedFilterRisk === 'pseudo_acineto'
+                  ? 'bg-rose-600 text-white shadow-2xs'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+              }`}
+            >
+              + Pseudomonas / Acineto đa kháng
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Main Content Area */}
       {activeTab === 'regimens' && (
         <div className="space-y-4">
-          {/* Danh sách các phác đồ */}
           {regimens.length === 0 ? (
             <div className="p-8 text-center bg-white rounded-2xl border border-slate-200/90 shadow-xs">
               <Info className="w-8 h-8 text-slate-400 mx-auto mb-2" />
-              <p className="text-slate-600 text-sm font-medium">
-                Không tìm thấy phác đồ đặc hiệu cho tổ hợp tiêu chí hiện tại. Vui lòng kiểm tra lại bối cảnh lâm sàng hoặc hội chẩn chuyên khoa Truyền nhiễm / Dược lâm sàng.
+              <p className="text-slate-700 text-sm font-semibold">
+                Không tìm thấy phác đồ khớp với bộ lọc cụ thể hiện tại.
               </p>
+              <button
+                type="button"
+                onClick={() => setSelectedFilterRisk('all')}
+                className="mt-3 px-4 py-2 text-xs font-bold text-teal-700 bg-teal-50 hover:bg-teal-100 rounded-xl transition-all cursor-pointer"
+              >
+                Hiển thị tất cả phác đồ cho vị trí này ({allRegimens.length})
+              </button>
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-4">
@@ -203,8 +460,13 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-100">
                     <div>
-                      <h3 className="text-base font-extrabold text-slate-900">
-                        {regimen.titleVi}
+                      <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
+                        <span>{regimen.titleVi}</span>
+                        {regimen.specificRisk && (
+                          <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                            Trúng đích {regimen.specificRisk.toUpperCase()}
+                          </span>
+                        )}
                       </h3>
                       <p className="text-xs text-slate-500 italic mt-0.5">
                         {regimen.titleEn}
@@ -216,56 +478,183 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
                   {/* Danh sách thuốc */}
                   <div className="space-y-3">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Thuốc lựa chọn &amp; Liều khuyến cáo:
+                      Thuốc lựa chọn &amp; Liều chuẩn BVBND 2026:
                     </h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {regimen.drugs.map((drug, dIdx) => (
-                        <div
-                          key={dIdx}
-                          className="p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex flex-col justify-between"
-                        >
-                          <div>
-                            <div className="flex items-start justify-between gap-2">
-                              <span className="font-bold text-sm text-teal-900">
-                                {drug.drugName}
-                              </span>
-                              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200/80 text-slate-700">
-                                {drug.route}
-                              </span>
+                      {regimen.drugs.map((drug, dIdx) => {
+                        const drugDisplayName = drug.nameVi || drug.drugName || 'Kháng sinh';
+                        const doseText = drug.standardDoseVi || drug.dosageVi || 'Theo hướng dẫn';
+                        const routeText = drug.route || 'IV';
+                        const hasDosingTool = Boolean(drug.drugId);
+                        const isCalculatedActive = selectedDrugId === drug.drugId && Boolean(dosingResult);
+
+                        return (
+                          <div
+                            key={dIdx}
+                            className={`p-3.5 rounded-xl border transition-all flex flex-col justify-between ${
+                              isCalculatedActive
+                                ? 'border-teal-500 ring-2 ring-teal-500/20 bg-teal-50/30 shadow-xs'
+                                : 'border-slate-200/80 bg-slate-50/70 hover:bg-white hover:border-teal-200 hover:shadow-xs'
+                            }`}
+                          >
+                            <div>
+                              <div className="flex items-start justify-between gap-2">
+                                <span className="font-bold text-sm text-teal-950 flex items-center gap-1.5">
+                                  <span>{drugDisplayName}</span>
+                                  {isCalculatedActive && (
+                                    <span className="px-1.5 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-teal-600 text-white">
+                                      Đang tính
+                                    </span>
+                                  )}
+                                </span>
+                                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200/80 text-slate-700 shrink-0">
+                                  {routeText}
+                                </span>
+                              </div>
+                              <div className="mt-1.5 text-xs text-slate-700">
+                                <span className="font-semibold text-slate-900">
+                                  Liều chuẩn BVBND:
+                                </span>{' '}
+                                <span className="text-slate-800 font-medium">{doseText}</span>
+                              </div>
+                              {drug.infusionNoteVi && (
+                                <div className="mt-1.5 text-[11px] text-amber-900 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/70 flex items-center gap-1.5 font-medium">
+                                  <Clock className="w-3 h-3 text-amber-600 shrink-0" />
+                                  <span>{drug.infusionNoteVi}</span>
+                                </div>
+                              )}
                             </div>
-                            <div className="mt-1.5 text-xs text-slate-700">
-                              <span className="font-semibold text-slate-900">
-                                Liều chuẩn:
-                              </span>{' '}
-                              {drug.dosageVi}
-                            </div>
-                            {drug.infusionNoteVi && (
-                              <div className="mt-1 text-[11px] text-amber-800 bg-amber-50 px-2 py-1 rounded-md border border-amber-200/60 flex items-center gap-1 font-medium">
-                                <Clock className="w-3 h-3 text-amber-600 shrink-0" />
-                                <span>{drug.infusionNoteVi}</span>
+
+                            {/* HIỂN THỊ KẾT QUẢ TÍNH LIỀU CÁ THỂ HÓA (DOSING RESULT TỪ PHÂN HỆ 2) TRỰC TIẾP TRÊN THẺ THUỐC */}
+                            {isCalculatedActive && dosingResult && (
+                              <div className="mt-3 p-3 rounded-xl bg-white border border-teal-300 shadow-2xs space-y-2.5 animate-fadeIn">
+                                <div className="flex items-center justify-between gap-1 flex-wrap pb-1.5 border-b border-slate-100">
+                                  <div className="flex items-center gap-1.5">
+                                    <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+                                    <span className="text-[11px] font-extrabold uppercase text-teal-900 tracking-wider">
+                                      Liều Cá Thể Hóa Theo Thận (CrCl {renal?.crcl} mL/p)
+                                    </span>
+                                  </div>
+                                  <div>
+                                    {dosingResult.reductionPercentage && dosingResult.reductionPercentage > 0 ? (
+                                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                                        Giảm {dosingResult.reductionPercentage}% liều
+                                      </span>
+                                    ) : (
+                                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                        100% liều chuẩn
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
+
+                                {/* Loading dose if applicable */}
+                                {dosingResult.loadingDoseTextVi && (
+                                  <div className="text-xs bg-amber-50/80 p-2 rounded-lg border border-amber-200/70 text-amber-950">
+                                    <span className="font-extrabold text-amber-900">Liều nạp (Loading):</span>{' '}
+                                    <span className="font-medium">{dosingResult.loadingDoseTextVi}</span>
+                                  </div>
+                                )}
+
+                                {/* Maintenance dose */}
+                                <div className="text-xs bg-teal-50/90 p-2.5 rounded-lg border border-teal-200/90 text-teal-950">
+                                  <div className="text-[10px] font-bold text-teal-700 uppercase tracking-wider mb-0.5">
+                                    Liều duy trì khuyến nghị:
+                                  </div>
+                                  <div className="text-sm font-black text-teal-950 leading-snug">
+                                    {dosingResult.maintenanceDoseTextVi}
+                                  </div>
+                                  {dosingResult.infusionInstructionsVi && (
+                                    <div className="mt-1 text-[11px] text-teal-800 flex items-center gap-1 font-medium">
+                                      <Clock className="w-3 h-3 text-teal-600 shrink-0" />
+                                      <span>{dosingResult.infusionInstructionsVi}</span>
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* Renal adjustment advice */}
+                                {dosingResult.renalAdjustmentAdviceVi && (
+                                  <div className="text-[11px] text-slate-600 bg-slate-50 p-2 rounded-lg border border-slate-200/70 flex items-start gap-1.5 leading-relaxed">
+                                    <ShieldAlert className="w-3.5 h-3.5 text-teal-600 shrink-0 mt-0.5" />
+                                    <span>{dosingResult.renalAdjustmentAdviceVi}</span>
+                                  </div>
+                                )}
+
+                                {/* Action buttons: Copy nursing order & jump to Phân hệ 2 */}
+                                {dosingResult.orderTextVi && (
+                                  <div className="pt-1 flex items-center justify-between gap-2 flex-wrap">
+                                    <button
+                                      type="button"
+                                      onClick={() => handleCopyOrder(dosingResult.orderTextVi, drug.drugId!)}
+                                      className="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-1 cursor-pointer transition-all shadow-2xs"
+                                      title="Sao chép y lệnh điều dưỡng vào clipboard"
+                                    >
+                                      {copiedDrugId === drug.drugId ? (
+                                        <>
+                                          <Check className="w-3 h-3 text-emerald-600" />
+                                          <span className="text-emerald-700 font-extrabold">Đã sao chép!</span>
+                                        </>
+                                      ) : (
+                                        <>
+                                          <Copy className="w-3 h-3 text-slate-500" />
+                                          <span>Sao chép y lệnh</span>
+                                        </>
+                                      )}
+                                    </button>
+
+                                    <button
+                                      type="button"
+                                      onClick={() => onSelectDrugForDosing(drug.drugId!)}
+                                      className="text-[11px] font-bold text-teal-700 hover:text-teal-900 flex items-center gap-1 cursor-pointer hover:underline"
+                                    >
+                                      <span>Bảng tính liều chi tiết &amp; DDI</span>
+                                      <ArrowRight className="w-3 h-3" />
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+
+                            {/* Nút hành động tính liều */}
+                            {hasDosingTool && drug.drugId && (
+                              <div className="mt-3 pt-2.5 border-t border-slate-200/80 flex items-center justify-between gap-2 flex-wrap">
+                                <span className="text-[11px] text-teal-700 font-medium flex items-center gap-1">
+                                  <Calculator className="w-3.5 h-3.5 text-teal-600 shrink-0" />
+                                  <span>Máy tính 43 KS</span>
+                                </span>
+                                
+                                <div className="flex items-center gap-1.5">
+                                  {onCalculateDoseForDrug && (
+                                    <button
+                                      type="button"
+                                      onClick={() => onCalculateDoseForDrug(drug.drugId!)}
+                                      className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer shadow-2xs ${
+                                        isCalculatedActive
+                                          ? 'bg-teal-700 text-white'
+                                          : 'bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200'
+                                      }`}
+                                      title={`Tính liều ${drugDisplayName} trực tiếp tại chỗ theo CrCl ${renal?.crcl ?? 90} mL/phút`}
+                                    >
+                                      <Zap className="w-3 h-3 text-amber-500" />
+                                      <span>{isCalculatedActive ? 'Đang hiển thị' : 'Tính liều tại đây'}</span>
+                                    </button>
+                                  )}
+
+                                  <button
+                                    type="button"
+                                    onClick={() => onSelectDrugForDosing(drug.drugId!)}
+                                    className="px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-700 active:scale-95 text-white shadow-2xs transition-all flex items-center gap-1 cursor-pointer"
+                                    title={`Xem bảng tính liều cá thể hóa, tương tác thuốc và lọc máu của ${drugDisplayName}`}
+                                  >
+                                    <span>Bảng tính liều &amp; DDI</span>
+                                    <ArrowRight className="w-3 h-3" />
+                                  </button>
+                                </div>
                               </div>
                             )}
                           </div>
-
-                          {/* Nút hành động tính liều */}
-                          {drug.drugId && (
-                            <div className="mt-3 pt-2.5 border-t border-slate-200/80 flex items-center justify-between">
-                              <span className="text-[11px] text-slate-500 font-medium">
-                                Có sẵn công cụ tính liều
-                              </span>
-                              <button
-                                type="button"
-                                onClick={() => onSelectDrugForDosing(drug.drugId!)}
-                                className="px-3 py-1 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-xs transition-all flex items-center gap-1 cursor-pointer"
-                              >
-                                <Calculator className="w-3.5 h-3.5" />
-                                <span>Tính liều cá thể hóa</span>
-                                <ArrowRight className="w-3 h-3" />
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -313,10 +702,10 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
                 <div>
                   <h3 className="text-base font-extrabold text-slate-900">
-                    Dữ liệu Vi sinh &amp; Kháng sinh đồ tại chỗ (Nhiễm trùng {site === 'respiratory' ? 'Hô hấp' : site === 'peritoneal' ? 'Ổ bụng' : site === 'urinary' ? 'Tiết niệu' : 'Toàn thân'})
+                    Dữ liệu Vi sinh &amp; Kháng sinh đồ tại chỗ — {siteLabels[site] || site} ({population === 'adult' ? 'Người lớn' : 'Trẻ em'})
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Thời gian khảo sát: {antibiogramData.period} | Tổng số mẫu phân lập: {antibiogramData.sampleTotal} chủng
+                    Khảo sát vi sinh BV Bệnh Nhiệt Đới: {antibiogramData.period} | Tổng số mẫu phân lập: {antibiogramData.sampleTotal} chủng
                   </p>
                 </div>
                 <SourceBadge source={antibiogramData.source} />

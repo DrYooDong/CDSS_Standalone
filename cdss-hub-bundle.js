@@ -250,19 +250,15 @@
   }
 
   // src/index.ts
-  var TRIAGE_CHIPS = [
-    { id: "triage-dengue", label: "S\u1ED1c SXHD Dengue", slug: "dengue", icon: "fa-solid fa-droplet", urgency: "stat", highlightText: "Hct cao, c\xF4 \u0111\u1EB7c m\xE1u, s\u1ED1c t\u1EE5t HA" },
-    { id: "triage-sepsis", label: "Sepsis / S\u1ED1c Nhi\u1EC5m Khu\u1EA9n", slug: "sepsis", icon: "fa-solid fa-biohazard", urgency: "stat", highlightText: "S\u1ED1t cao, t\u1EE5t HA, Lactate > 2, SOFA" },
-    { id: "triage-abg", label: "Kh\xED M\xE1u & Toan Ki\u1EC1m ABG", slug: "abg", icon: "fa-solid fa-lungs", urgency: "stat", highlightText: "Toan chuy\u1EC3n h\xF3a, PaO2/PaCO2, Anion Gap" },
-    { id: "triage-ecg", label: "STEMI & \u0110o ECG Caliper", slug: "ecg", icon: "fa-solid fa-heart-pulse", urgency: "stat", highlightText: "\u0110au ng\u1EF1c, STEMI \u0111\u1ECBnh khu, QTc, Caliper" },
-    { id: "triage-abx", label: "Kh\xE1ng Sinh & L\u1ECDc M\xE1u", slug: "antibiotic", icon: "fa-solid fa-viruses", urgency: "urgent", highlightText: "43 KS, ch\u1EC9nh th\u1EADn CrCl, vi khu\u1EA9n MDR" },
-    { id: "triage-vanco", label: "Vancomycin AUC/MIC", slug: "vancomycin", icon: "fa-solid fa-syringe", urgency: "urgent", highlightText: "Li\u1EC1u n\u1EA1p, AUC 400-600, l\u1ECDc m\xE1u IHD" },
-    { id: "triage-diacare", label: "C\u1EA5p C\u1EE9u DKA & Insulin", slug: "diacare", icon: "fa-solid fa-vial-circle-check", urgency: "urgent", highlightText: "Basal-Bolus, ph\xE1c \u0111\u1ED3 tr\u01B0\u1EE3t SSI, toan ceton" },
-    { id: "triage-hepa", label: "Sinh H\xF3a Gan ACG", slug: "hepa", icon: "fa-solid fa-virus", urgency: "routine", highlightText: "T\u1EF7 s\u1ED1 R-ratio, De Ritis, FIB-4, DILI" },
-    { id: "triage-csf", label: "D\u1ECBch N\xE3o T\u1EE7y CSF", slug: "csf", icon: "fa-solid fa-brain", urgency: "stat", highlightText: "Vi\xEAm m\xE0ng n\xE3o, ch\u1EA1m m\u1EA1ch vs SAH, LP" },
-    { id: "triage-bates", label: "Kh\xE1m B\u1EC7nh Bates & Macleod", slug: "inpatient", icon: "fa-solid fa-stethoscope", urgency: "routine", highlightText: "H\u1ECFi b\u1EC7nh 7 thu\u1ED9c t\xEDnh OPQRST, 30+ h\u1ED9i ch\u1EE9ng" }
+  var STAT_TRIAGE_ITEMS = [
+    { slug: "dengue", label: "S\u1ED1c SXHD Dengue", trigger: "Hct cao, c\xF4 \u0111\u1EB7c m\xE1u, s\u1ED1c t\u1EE5t HA", icon: "fa-solid fa-droplet" },
+    { slug: "sepsis", label: "Sepsis & S\u1ED1c Nhi\u1EC5m Khu\u1EA9n", trigger: "S\u1ED1t cao, t\u1EE5t HA, Lactate > 2, SOFA", icon: "fa-solid fa-biohazard" },
+    { slug: "abg", label: "Kh\xED M\xE1u ABG & Toan Ki\u1EC1m", trigger: "Toan chuy\u1EC3n h\xF3a, PaO2/PaCO2, Anion Gap", icon: "fa-solid fa-lungs" },
+    { slug: "ecg", label: "STEMI ECG 12 Chuy\u1EC3n \u0110\u1EA1o", trigger: "\u0110au ng\u1EF1c, STEMI \u0111\u1ECBnh khu, QTc, Caliper", icon: "fa-solid fa-heart-pulse" },
+    { slug: "csf", label: "D\u1ECBch N\xE3o T\u1EE7y CSF", trigger: "S\u1ED1t, \u0111au \u0111\u1EA7u, vi\xEAm m\xE0ng n\xE3o, SAH", icon: "fa-solid fa-brain" }
   ];
   var PINNED_STORAGE_KEY = "cdss_pinned_module_slugs";
+  var VIEW_MODE_STORAGE_KEY = "cdss_preferred_view_mode";
   function getPinnedSlugs() {
     try {
       const raw = localStorage.getItem(PINNED_STORAGE_KEY);
@@ -277,48 +273,61 @@
     } catch (e) {
     }
   }
+  function getStoredViewMode() {
+    try {
+      const mode = localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+      return mode === "grid" || mode === "table" || mode === "grouped" ? mode : "grid";
+    } catch (e) {
+      return "grid";
+    }
+  }
+  function setStoredViewMode(mode) {
+    try {
+      localStorage.setItem(VIEW_MODE_STORAGE_KEY, mode);
+    } catch (e) {
+    }
+  }
   function initCDSSHub(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     let activeCategory = "all";
     let searchQuery = "";
-    let viewMode = "grid";
+    let viewMode = getStoredViewMode();
     let pinnedSlugs = getPinnedSlugs();
     const categories = [
-      { id: "all", name: "T\u1EA5t C\u1EA3 (10 CDSS)", icon: "fa-solid fa-shapes" },
-      { id: "stat", name: "\u{1F6A8} C\u1EA5p C\u1EE9u STAT (5)", icon: "fa-solid fa-bolt-lightning", isStat: true },
-      { id: "resuscitation", name: "H\u1ED3i S\u1EE9c C\u1EA5p C\u1EE9u", icon: "fa-solid fa-biohazard" },
-      { id: "cardio-resp", name: "Tim M\u1EA1ch & H\xF4 H\u1EA5p", icon: "fa-solid fa-heart-pulse" },
-      { id: "pharmacology", name: "Kh\xE1ng Sinh & D\u01B0\u1EE3c L\xFD", icon: "fa-solid fa-viruses" },
-      { id: "gastro-endo", name: "Ti\xEAu H\xF3a & N\u1ED9i Ti\u1EBFt", icon: "fa-solid fa-virus" },
-      { id: "neuro-internal", name: "Th\u1EA7n Kinh & N\u1ED9i Tr\xFA", icon: "fa-solid fa-brain" }
+      { id: "all", label: "T\u1EA5t c\u1EA3 (10)", icon: "fa-solid fa-shapes" },
+      { id: "stat", label: "\u{1F6A8} C\u1EA5p c\u1EE9u STAT (5)", icon: "fa-solid fa-bolt-lightning", isStat: true },
+      { id: "resus", label: "H\u1ED3i s\u1EE9c & C\u1EA5p c\u1EE9u", icon: "fa-solid fa-truck-medical" },
+      { id: "cardio-resp", label: "Tim m\u1EA1ch & H\xF4 h\u1EA5p", icon: "fa-solid fa-heart-pulse" },
+      { id: "pharma", label: "Kh\xE1ng sinh & D\u01B0\u1EE3c", icon: "fa-solid fa-pills" },
+      { id: "internal", label: "N\u1ED9i khoa & Th\u1EA7n kinh", icon: "fa-solid fa-hospital-user" }
     ];
     const specialtyGroups = [
       {
-        id: "resus-emer",
+        id: "group-resus",
         title: "H\u1ED3i S\u1EE9c C\u1EA5p C\u1EE9u & Nhi\u1EC5m Tr\xF9ng Nguy K\u1ECBch",
-        desc: "Ph\xE1c \u0111\u1ED3 h\u1ED3i s\u1EE9c ch\u1ED1ng s\u1ED1c SXHD Dengue, ph\xE2n t\u1EA7ng nhi\u1EC5m khu\u1EA9n huy\u1EBFt v\xE0 kh\xED m\xE1u \u0111\u1ED9ng m\u1EA1ch",
+        desc: "Ph\xE1c \u0111\u1ED3 b\xF9 d\u1ECBch ch\u1ED1ng s\u1ED1c SXHD Dengue, ph\xE2n t\u1EA7ng nhi\u1EC5m khu\u1EA9n huy\u1EBFt v\xE0 toan ki\u1EC1m c\u01A1 th\u1EC3",
         icon: "fa-solid fa-truck-medical",
         slugs: ["dengue", "sepsis", "abg"]
       },
       {
-        id: "cardio-resp",
+        id: "group-cardio-resp",
         title: "Tim M\u1EA1ch, H\xF4 H\u1EA5p & \u0110i\u1EC7n Tim Chuy\xEAn S\xE2u",
-        desc: "Ph\xE2n t\xEDch \u0111i\u1EC7n t\xE2m \u0111\u1ED3 12 \u0111\u1EA1o tr\xECnh tr\u1EF1c quan v\xE0 th\u0103ng b\u1EB1ng toan ki\u1EC1m c\u01A1 th\u1EC3",
+        desc: "Ph\xE2n t\xEDch \u0111i\u1EC7n t\xE2m \u0111\u1ED3 12 \u0111\u1EA1o tr\xECnh tr\u1EF1c quan tr\xEAn canvas v\xE0 th\u0103ng b\u1EB1ng toan ki\u1EC1m kh\xED m\xE1u",
         icon: "fa-solid fa-heart-pulse",
         slugs: ["ecg", "abg"]
       },
       {
-        id: "pharma-care",
+        id: "group-pharma",
         title: "D\u01B0\u1EE3c \u0110\u1ED9ng H\u1ECDc Kh\xE1ng Sinh & T\u1ED1i \u01AFu H\xF3a Li\u1EC1u",
-        desc: "C\xE1 th\u1EC3 h\xF3a li\u1EC1u 43 kh\xE1ng sinh theo ch\u1EE9c n\u0103ng th\u1EADn l\u1ECDc m\xE1u v\xE0 gi\xE1m s\xE1t n\u1ED3ng \u0111\u1ED9 Vancomycin AUC/MIC",
-        icon: "fa-solid fa-viruses",
+        desc: "C\xE1 th\u1EC3 h\xF3a li\u1EC1u 43 kh\xE1ng sinh theo \u0111\u1ED9 thanh th\u1EA3i th\u1EADn l\u1ECDc m\xE1u v\xE0 TDM Vancomycin AUC/MIC",
+        icon: "fa-solid fa-pills",
         slugs: ["antibiotic", "vancomycin"]
       },
       {
-        id: "internal-specialty",
+        id: "group-internal",
         title: "Ti\xEAu H\xF3a - Gan M\u1EADt, Chuy\u1EC3n H\xF3a & Th\u1EA7n Kinh",
-        desc: "Bi\u1EC7n gi\u1EA3i sinh h\xF3a gan ACG, qu\u1EA3n l\xFD insulin n\u1ED9i vi\u1EC7n, ch\u1ECDc d\xF2 d\u1ECBch n\xE3o t\u1EE7y v\xE0 k\u1EF9 n\u0103ng kh\xE1m l\xE2m s\xE0ng Bates",
+        desc: "Bi\u1EC7n gi\u1EA3i sinh h\xF3a gan ACG, qu\u1EA3n l\xFD insulin n\u1ED9i vi\u1EC7n, ch\u1ECDc d\xF2 d\u1ECBch n\xE3o t\u1EE7y v\xE0 k\u1EF9 n\u0103ng kh\xE1m Bates",
         icon: "fa-solid fa-hospital-user",
         slugs: ["hepa", "diacare", "csf", "inpatient"]
       }
@@ -331,16 +340,14 @@
           matchCat = true;
         } else if (activeCategory === "stat") {
           matchCat = m.urgency === "stat";
-        } else if (activeCategory === "resuscitation") {
+        } else if (activeCategory === "resus") {
           matchCat = m.category === "resuscitation";
         } else if (activeCategory === "cardio-resp") {
           matchCat = m.category === "cardiology" || m.category === "respiratory";
-        } else if (activeCategory === "pharmacology") {
+        } else if (activeCategory === "pharma") {
           matchCat = m.category === "pharmacology";
-        } else if (activeCategory === "gastro-endo") {
-          matchCat = m.category === "gastroenterology" || m.category === "endocrinology";
-        } else if (activeCategory === "neuro-internal") {
-          matchCat = m.category === "neurology" || m.category === "internal";
+        } else if (activeCategory === "internal") {
+          matchCat = m.category === "gastroenterology" || m.category === "endocrinology" || m.category === "neurology" || m.category === "internal";
         } else {
           matchCat = m.category === activeCategory;
         }
@@ -351,129 +358,38 @@
     function render() {
       const filtered = filterModules(CDSS_MODULES);
       const pinnedModules = CDSS_MODULES.filter((m) => pinnedSlugs.includes(m.slug));
-      const activeCategoryObj = categories.find((c) => c.id === activeCategory);
+      const activeCatObj = categories.find((c) => c.id === activeCategory);
       container.innerHTML = `
       <div class="cdss-hub-workspace">
 
         <!-- ================================================================
-             1. BEDSIDE CLINICAL COMMAND CENTER (Clean HepaCDSS / Sepsis Style)
+             1. REFINED BEDSIDE HERO (Minimalist, Professional, High Clarity)
              ================================================================ -->
-        <header class="cdss-command-header">
-          <div class="cdss-command-head-row">
-            <div class="cdss-command-brand-block">
-              <div class="cdss-command-logo-wrap">
-                <img src="./shared/cdss-logo.svg" alt="CDSS Suite Logo" class="cdss-command-logo" />
-              </div>
-              <div>
-                <div class="cdss-command-subtag">
-                  <span class="cdss-live-dot"></span>
-                  <span>H\u1EC7 Th\u1ED1ng CDSS \u0110\u1ED9c L\u1EADp \u2022 Bedside Ready</span>
-                  <span class="cdss-ver-tag">v2.5</span>
-                </div>
-                <h1 class="cdss-command-title">
-                  Trung T\xE2m H\u1ED7 Tr\u1EE3 Quy\u1EBFt \u0110\u1ECBnh L\xE2m S\xE0ng
-                </h1>
-              </div>
-            </div>
-
-            <!-- EBM & Privacy Telemetry Strip -->
-            <div class="cdss-command-telemetry">
-              <div class="cdss-telemetry-item">
-                <i class="fa-solid fa-shapes text-teal-600"></i>
-                <div>
-                  <div class="cdss-telemetry-val">10 Module</div>
-                  <div class="cdss-telemetry-lbl">Chuy\xEAn Khoa S\xE2u</div>
-                </div>
-              </div>
-              <div class="cdss-telemetry-item">
-                <i class="fa-solid fa-pills text-emerald-600"></i>
-                <div>
-                  <div class="cdss-telemetry-val">43 Kh\xE1ng Sinh</div>
-                  <div class="cdss-telemetry-lbl">Ch\u1EC9nh Th\u1EADn &amp; L\u1ECDc M\xE1u</div>
-                </div>
-              </div>
-              <div class="cdss-telemetry-item">
-                <i class="fa-solid fa-shield-halved text-cyan-600"></i>
-                <div>
-                  <div class="cdss-telemetry-val">100% Client-Side</div>
-                  <div class="cdss-telemetry-lbl">B\u1EA3o M\u1EADt Y Khoa</div>
-                </div>
-              </div>
-            </div>
+        <header class="cdss-hero">
+          <div class="cdss-hero-badge">
+            <span class="cdss-badge-dot"></span>
+            <span>H\u1EC6 TH\u1ED0NG CDSS \u0110\u1ED8C L\u1EACP \xB7 BEDSIDE READY</span>
+            <span class="cdss-hero-version">v2.5</span>
           </div>
-
-          <!-- Concise Scope Description -->
-          <p class="cdss-command-desc">
-            H\u1EC7 sinh th\xE1i 10 module CDSS h\u1ED7 tr\u1EE3 ch\u1EA9n \u0111o\xE1n v\xE0 \u0111i\u1EC1u tr\u1ECB t\u1EA1i gi\u01B0\u1EDDng b\u1EC7nh chu\u1EA9n H\u01B0\u1EDBng d\u1EABn B\u1ED9 Y T\u1EBF &amp; Y h\u1ECDc ch\u1EE9ng c\u1EE9 (EBM): 
-            ph\xE1c \u0111\u1ED3 d\u1ECBch truy\u1EC1n ch\u1ED1ng s\u1ED1c SXHD Dengue, ph\xE2n t\xEDch kh\xED m\xE1u ABG 6 b\u01B0\u1EDBc, \u0111i\u1EC7n tim 12 chuy\u1EC3n \u0111\u1EA1o STEMI, 
-            sinh h\xF3a gan HepaCDSS theo ACG, ph\xE2n t\u1EA7ng Sepsis NICE/Phoenix, t\xEDnh li\u1EC1u 43 kh\xE1ng sinh InfectoDose, 
-            Vancomycin PK AUC/MIC, insulin n\u1ED9i vi\u1EC7n DiaCare, kh\xE1m b\u1EC7nh n\u1ED9i tr\xFA Bates &amp; Macleod v\xE0 d\u1ECBch n\xE3o t\u1EE7y CSF CDSS.
+          <h1 class="cdss-hero-title">Trung T\xE2m H\u1ED7 Tr\u1EE3 Quy\u1EBFt \u0110\u1ECBnh L\xE2m S\xE0ng</h1>
+          <p class="cdss-hero-subtitle">
+            H\u1EE3p nh\u1EA5t 10 c\xF4ng c\u1EE5 l\xE2m s\xE0ng chuy\xEAn s\xE2u t\u1EA1i gi\u01B0\u1EDDng b\u1EC7nh chu\u1EA9n B\u1ED9 Y T\u1EBF &amp; Y h\u1ECDc ch\u1EE9ng c\u1EE9 (EBM).
+            T\xEDnh to\xE1n li\u1EC1u, ph\xE2n t\u1EA7ng nguy c\u01A1 v\xE0 ph\xE1c \u0111\u1ED3 x\u1EED tr\xED 100% Client-side ngo\u1EA1i tuy\u1EBFn.
           </p>
-
-          <!-- ================================================================
-               2. RAPID STAT / CLINICAL EMERGENCY ACCESS BAR
-               ================================================================ -->
-          <div class="cdss-rapid-bar" id="cdss-rapid-bar">
-            <div class="cdss-rapid-label">
-              <i class="fa-solid fa-bolt-lightning text-amber-500"></i>
-              <span>Truy C\u1EADp Nhanh:</span>
-            </div>
-            <div class="cdss-rapid-chips">
-              ${TRIAGE_CHIPS.map((chip) => `
-                <button 
-                  class="cdss-rapid-chip cdss-rapid-chip--${chip.urgency}" 
-                  data-target-slug="${chip.slug}"
-                  title="${chip.label} \u2014 ${chip.highlightText}"
-                >
-                  <i class="${chip.icon}"></i>
-                  <span>${chip.label}</span>
-                </button>
-              `).join("")}
-            </div>
-          </div>
-
-          <!-- ================================================================
-               3. PINNED QUICK-ACCESS STRIP (Sleek 1-line bar, no duplicate cards!)
-               ================================================================ -->
-          ${pinnedModules.length > 0 ? `
-            <div class="cdss-pinned-strip">
-              <div class="cdss-pinned-strip-label">
-                <i class="fa-solid fa-star text-amber-400"></i>
-                <span>\u0110\xE3 Ghim (${pinnedModules.length}):</span>
-              </div>
-              <div class="cdss-pinned-pills">
-                ${pinnedModules.map((m) => `
-                  <div class="cdss-pinned-pill" title="M\u1EDF nhanh ${m.shortTitle || m.title}">
-                    <a href="${m.standaloneUrl}" class="cdss-pinned-link">
-                      <i class="${m.icon}"></i>
-                      <span>${m.shortTitle || m.title}</span>
-                    </a>
-                    <button class="cdss-pinned-remove" data-unpin-slug="${m.slug}" title="B\u1ECF ghim">
-                      <i class="fa-solid fa-xmark"></i>
-                    </button>
-                  </div>
-                `).join("")}
-                <button id="cdss-clear-pinned-btn" class="cdss-pinned-clear-all" title="B\u1ECF ghim t\u1EA5t c\u1EA3">
-                  X\xF3a t\u1EA5t c\u1EA3
-                </button>
-              </div>
-            </div>
-          ` : ""}
-
         </header>
 
         <!-- ================================================================
-             4. UNIFIED SEARCH & CLINICAL FILTER TOOLBAR
+             2. COMMAND LAUNCHER BAR (Search, STAT Quick Strip, Filters)
              ================================================================ -->
-        <section class="cdss-toolbar">
-          <!-- Search Row -->
+        <section class="cdss-command-bar">
+          <!-- Main Search Box -->
           <div class="cdss-search-wrap">
             <i class="fa-solid fa-magnifying-glass cdss-search-icon"></i>
             <input 
               id="cdss-search-input" 
               type="text" 
               class="cdss-search-input"
-              placeholder="Tra c\u1EE9u nhanh theo t\xEAn CDSS, thu\u1ED1c, b\u1EC7nh l\xFD, tri\u1EC7u ch\u1EE9ng, m\xE3 ICD-10 (nh\u1EA5n / \u0111\u1EC3 t\xECm)..." 
+              placeholder="Tra c\u1EE9u nhanh theo t\xEAn CDSS, thu\u1ED1c, b\u1EC7nh l\xFD, ch\u1EC9 \u0111\u1ECBnh, m\xE3 ICD-10 (nh\u1EA5n / \u0111\u1EC3 t\xECm)..." 
               value="${searchQuery}"
               autocomplete="off"
               spellcheck="false"
@@ -483,178 +399,221 @@
                 <i class="fa-solid fa-xmark"></i>
               </button>
             ` : `
-              <span class="cdss-search-hint" title="Ph\xEDm t\u1EAFt t\xECm ki\u1EBFm">/</span >
+              <span class="cdss-search-kbd" title="Nh\u1EA5n / \u0111\u1EC3 tra c\u1EE9u nhanh">/</span>
             `}
           </div>
 
-          <!-- Controls Bar: Category Segmented Tabs + View Switcher -->
-          <div class="cdss-controls-bar">
-            <div class="cdss-cat-tabs">
-              ${categories.map((cat) => `
+          <!-- Rapid STAT Shortcuts Strip -->
+          <div class="cdss-stat-strip" id="cdss-rapid-bar">
+            <span class="cdss-stat-strip-label">
+              <i class="fa-solid fa-bolt-lightning text-amber-500"></i> STAT C\u1EA5p C\u1EE9u:
+            </span>
+            <div class="cdss-stat-strip-items">
+              ${STAT_TRIAGE_ITEMS.map((item) => `
                 <button 
-                  class="cdss-cat-btn ${activeCategory === cat.id ? "active" : ""} ${cat.isStat ? "cdss-cat-btn--stat" : ""}" 
-                  data-cat="${cat.id}"
+                  type="button" 
+                  class="cdss-stat-quick-link" 
+                  data-quick-slug="${item.slug}"
+                  title="${item.label} \u2014 ${item.trigger}"
                 >
-                  <i class="${cat.icon}"></i>
-                  <span>${cat.name}</span>
+                  <i class="${item.icon}"></i>
+                  <span>${item.label}</span>
                 </button>
               `).join("")}
             </div>
+          </div>
 
-            <div class="cdss-view-switcher">
+          <!-- Pinned Favorites Strip (Rendered only if pinned tools exist) -->
+          ${pinnedModules.length > 0 ? `
+            <div class="cdss-pinned-bar">
+              <div class="cdss-pinned-head">
+                <i class="fa-solid fa-star text-amber-500"></i>
+                <span>\u0110\xE3 ghim (${pinnedModules.length}):</span>
+              </div>
+              <div class="cdss-pinned-items">
+                ${pinnedModules.map((m) => `
+                  <div class="cdss-pinned-chip">
+                    <a href="${m.standaloneUrl}" class="cdss-pinned-link">
+                      <i class="${m.icon}"></i>
+                      <span>${m.shortTitle || m.title}</span>
+                    </a>
+                    <button type="button" class="cdss-pinned-remove" data-unpin-slug="${m.slug}" title="B\u1ECF ghim">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                `).join("")}
+                <button type="button" id="cdss-clear-all-pinned" class="cdss-pinned-clear-btn" title="X\xF3a t\u1EA5t c\u1EA3 m\u1EE5c \u0111\xE3 ghim">
+                  X\xF3a h\u1EBFt
+                </button>
+              </div>
+            </div>
+          ` : ""}
+
+          <!-- Filters Row: Category Tabs + View Switcher -->
+          <div class="cdss-filter-row">
+            <div class="cdss-category-tabs">
+              ${categories.map((cat) => {
+        const isActive = activeCategory === cat.id;
+        return `
+                  <button 
+                    type="button" 
+                    class="cdss-cat-tab ${isActive ? "active" : ""} ${cat.isStat ? "is-stat" : ""}" 
+                    data-cat="${cat.id}"
+                  >
+                    <i class="${cat.icon}"></i>
+                    <span>${cat.label}</span>
+                  </button>
+                `;
+      }).join("")}
+            </div>
+
+            <div class="cdss-view-toggle">
               <button 
+                type="button" 
                 class="cdss-view-btn ${viewMode === "grid" ? "active" : ""}" 
                 data-mode="grid"
                 title="Xem d\u1EA1ng L\u01B0\u1EDBi Th\u1EBB Chuy\xEAn Khoa"
-                aria-label="Xem d\u1EA1ng L\u01B0\u1EDBi"
               >
                 <i class="fa-solid fa-table-cells-large"></i>
-                <span class="cdss-view-btn-text">L\u01B0\u1EDBi</span>
+                <span>L\u01B0\u1EDBi</span>
               </button>
-
               <button 
-                class="cdss-view-btn ${viewMode === "list" ? "active" : ""}" 
-                data-mode="list"
-                title="Xem d\u1EA1ng B\u1EA3ng Gi\u01B0\u1EDDng B\u1EC7nh T\u1ED1i Gi\u1EA3n"
-                aria-label="Xem d\u1EA1ng B\u1EA3ng"
+                type="button" 
+                class="cdss-view-btn ${viewMode === "table" ? "active" : ""}" 
+                data-mode="table"
+                title="Xem d\u1EA1ng B\u1EA3ng G\u1ECDn Gi\u01B0\u1EDDng B\u1EC7nh"
               >
                 <i class="fa-solid fa-table-list"></i>
-                <span class="cdss-view-btn-text">B\u1EA3ng G\u1ECDn</span>
+                <span>B\u1EA3ng g\u1ECDn</span>
               </button>
-
               <button 
+                type="button" 
                 class="cdss-view-btn ${viewMode === "grouped" ? "active" : ""}" 
                 data-mode="grouped"
                 title="Xem theo Kh\u1ED1i Khoa L\xE2m S\xE0ng"
-                aria-label="Xem theo Kh\u1ED1i Khoa"
               >
                 <i class="fa-solid fa-layer-group"></i>
-                <span class="cdss-view-btn-text">Nh\xF3m Khoa</span>
+                <span>Nh\xF3m khoa</span>
               </button>
             </div>
           </div>
         </section>
 
-        <!-- Results Counter & Reset Filter Indicator -->
-        <div class="cdss-results-strip">
-          <div class="cdss-results-info">
+        <!-- ================================================================
+             3. RESULTS STATUS & RESET CONTROLS
+             ================================================================ -->
+        <div class="cdss-status-row">
+          <div class="cdss-status-left">
             <span>Hi\u1EC3n th\u1ECB <strong>${filtered.length}</strong> / <strong>${CDSS_MODULES.length}</strong> c\xF4ng c\u1EE5 CDSS</span>
             ${activeCategory !== "all" ? `
-              <span class="cdss-filter-tag">
-                ${activeCategoryObj?.name}
-                <i class="fa-solid fa-xmark cdss-tag-remove" data-reset="category"></i>
+              <span class="cdss-active-filter-tag">
+                ${activeCatObj?.label}
+                <button type="button" data-reset="category" class="cdss-tag-close" title="B\u1ECF l\u1ECDc chuy\xEAn khoa">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
               </span>
             ` : ""}
             ${searchQuery ? `
-              <span class="cdss-filter-tag">
+              <span class="cdss-active-filter-tag">
                 "${searchQuery}"
-                <i class="fa-solid fa-xmark cdss-tag-remove" data-reset="search"></i>
+                <button type="button" data-reset="search" class="cdss-tag-close" title="X\xF3a t\u1EEB kh\xF3a t\xECm ki\u1EBFm">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
               </span>
             ` : ""}
           </div>
 
           ${activeCategory !== "all" || searchQuery ? `
-            <button id="cdss-reset-filters" class="cdss-reset-link" title="Xem l\u1EA1i t\u1EA5t c\u1EA3 c\xF4ng c\u1EE5">
+            <button type="button" id="cdss-reset-filters-btn" class="cdss-reset-btn">
               <i class="fa-solid fa-rotate-left"></i> \u0110\u1EB7t l\u1EA1i b\u1ED9 l\u1ECDc
             </button>
           ` : ""}
         </div>
 
-        <!-- ================================================================
-             5. MAIN WORKSPACE CONTENT (GRID / LIST / GROUPED)
-             ================================================================ -->
+        <!-- Empty State -->
         ${filtered.length === 0 ? `
-          <div class="cdss-empty-state">
-            <div class="cdss-empty-icon">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+          <div class="cdss-empty-box">
+            <i class="fa-solid fa-magnifying-glass cdss-empty-icon"></i>
             <h3 class="cdss-empty-title">Kh\xF4ng t\xECm th\u1EA5y c\xF4ng c\u1EE5 CDSS ph\xF9 h\u1EE3p</h3>
             <p class="cdss-empty-desc">
-              Kh\xF4ng c\xF3 k\u1EBFt qu\u1EA3 n\xE0o kh\u1EDBp v\u1EDBi "<strong>${searchQuery}</strong>". Th\u1EED t\xECm v\u1EDBi t\u1EEB kh\xF3a kh\xE1c nh\u01B0 <em>Dengue, Vancomycin, SOFA, FIB-4, PaO2, Kh\xE1ng sinh</em> ho\u1EB7c ch\u1ECDn chuy\xEAn khoa b\xEAn tr\xEAn.
+              Kh\xF4ng c\xF3 c\xF4ng c\u1EE5 n\xE0o kh\u1EDBp v\u1EDBi t\u1EEB kh\xF3a "<strong>${searchQuery}</strong>". Th\u1EED t\xECm ki\u1EBFm v\u1EDBi t\u1EEB kh\xF3a kh\xE1c nh\u01B0 <em>Dengue, Sepsis, ABG, ECG, Vancomycin, Insulin, DNT</em> ho\u1EB7c ch\u1ECDn chuy\xEAn khoa b\xEAn tr\xEAn.
             </p>
-            <button id="cdss-empty-reset-btn" class="cdss-btn-primary">
-              <i class="fa-solid fa-arrows-rotate"></i> Xem l\u1EA1i t\u1EA5t c\u1EA3 10 CDSS
+            <button type="button" id="cdss-empty-reset" class="cdss-empty-btn">
+              <i class="fa-solid fa-arrows-rotate"></i> Xem t\u1EA5t c\u1EA3 10 c\xF4ng c\u1EE5 CDSS
             </button>
           </div>
         ` : ""}
 
-        <!-- VIEW 1: MODERN RESPONSIVE CLINICAL GRID (DEFAULT) -->
+        <!-- ================================================================
+             4. VIEW MODES (GRID, TABLE, GROUPED)
+             ================================================================ -->
+
+        <!-- VIEW MODE 1: MINIMALIST PROFESSIONAL CARDS GRID (DEFAULT) -->
         ${viewMode === "grid" && filtered.length > 0 ? `
-          <div class="cdss-cards-grid">
-            ${filtered.map((m) => renderModuleCard(m)).join("")}
+          <div class="cdss-grid">
+            ${filtered.map((m) => renderCard(m)).join("")}
           </div>
         ` : ""}
 
-        <!-- VIEW 2: BEDSIDE COMPACT LIST / TABLE VIEW -->
-        ${viewMode === "list" && filtered.length > 0 ? `
-          <div class="cdss-list-wrapper">
-            <table class="cdss-list-table">
+        <!-- VIEW MODE 2: COMPACT TABLE (BEDSIDE ROUNDS) -->
+        ${viewMode === "table" && filtered.length > 0 ? `
+          <div class="cdss-table-container">
+            <table class="cdss-table">
               <thead>
                 <tr>
                   <th style="width: 44px; text-align: center;">\u2605</th>
-                  <th style="width: 28%;">C\xF4ng C\u1EE5 CDSS</th>
-                  <th style="width: 14%;">Chuy\xEAn Khoa &amp; M\u1EE9c</th>
-                  <th style="width: 32%;">Ch\u1EC9 \u0110\u1ECBnh &amp; N\u0103ng L\u1EF1c T\xEDnh To\xE1n</th>
-                  <th style="width: 16%;">C\u01A1 S\u1EDF Ph\xE1p L\xFD</th>
-                  <th style="width: 10%; text-align: right;">H\xE0nh \u0110\u1ED9ng</th>
+                  <th style="width: 28%;">C\xF4ng c\u1EE5 CDSS</th>
+                  <th style="width: 16%;">Chuy\xEAn khoa &amp; M\u1EE9c</th>
+                  <th style="width: 32%;">Ch\u1EC9 \u0111\u1ECBnh &amp; Ph\u1EA1m vi t\xEDnh to\xE1n</th>
+                  <th style="width: 14%;">C\u01A1 s\u1EDF h\u01B0\u1EDBng d\u1EABn</th>
+                  <th style="width: 10%; text-align: right;">Thao t\xE1c</th>
                 </tr>
               </thead>
               <tbody>
                 ${filtered.map((m) => {
         const isPinned = pinnedSlugs.includes(m.slug);
+        const isStat = m.urgency === "stat";
         return `
-                    <tr class="cdss-list-row" id="cdss-row-${m.slug}">
+                    <tr class="cdss-table-row" id="cdss-row-${m.slug}">
                       <td style="text-align: center;">
                         <button 
-                          class="cdss-pin-btn ${isPinned ? "pinned" : ""}" 
+                          type="button" 
+                          class="cdss-star-btn ${isPinned ? "pinned" : ""}" 
                           data-pin-slug="${m.slug}" 
-                          title="${isPinned ? "B\u1ECF ghim" : "Ghim l\xEAn thanh y\xEAu th\xEDch"}"
+                          title="${isPinned ? "B\u1ECF ghim" : "Ghim y\xEAu th\xEDch"}"
+                          aria-label="${isPinned ? "B\u1ECF ghim" : "Ghim"}"
                         >
                           <i class="${isPinned ? "fa-solid" : "fa-regular"} fa-star"></i>
                         </button>
                       </td>
                       <td>
-                        <div class="cdss-list-cell-tool">
-                          <div class="cdss-card-emblem cdss-emblem--${m.category}" style="width: 38px; height: 38px; font-size: 1.05rem; border-radius: 9px;">
-                            <i class="${m.icon}"></i>
-                          </div>
-                          <div>
-                            <a href="${m.standaloneUrl}" class="cdss-list-tool-name">
-                              ${m.title}
-                            </a>
-                            <div class="cdss-list-tool-code">
-                              <span class="cdss-code-pill">${m.brandCode || m.slug.toUpperCase()}</span>
-                              ${m.titleEn ? `<span class="cdss-list-tool-en">${m.titleEn}</span>` : ""}
-                            </div>
+                        <div class="cdss-table-cell-title">
+                          <a href="${m.standaloneUrl}" class="cdss-table-link">
+                            ${m.title}
+                          </a>
+                          <div class="cdss-table-sub">
+                            <span class="cdss-table-code">${m.brandCode}</span>
+                            ${m.titleEn ? `<span>${m.titleEn}</span>` : ""}
                           </div>
                         </div>
                       </td>
                       <td>
-                        <div class="cdss-list-dept">${m.department || m.categoryName}</div>
-                        <span class="cdss-urgency-badge cdss-urgency--${m.urgency}">
-                          ${m.urgency === "stat" ? "\u{1F6A8} STAT C\u1EA5p C\u1EE9u" : m.urgency === "urgent" ? "\u26A1 Kh\u1EA9n C\u1EA5p" : "Th\u01B0\u1EDDng Quy"}
-                        </span>
+                        <div class="cdss-table-dept">${m.department || m.categoryName}</div>
+                        ${isStat ? `<span class="cdss-stat-tag">\u{1F6A8} STAT C\u1EA5p c\u1EE9u</span>` : `<span class="cdss-routine-tag">Th\u01B0\u1EDDng quy</span>`}
                       </td>
                       <td>
-                        <div class="cdss-list-desc">${m.shortDesc}</div>
+                        <p class="cdss-table-desc">${m.shortDesc}</p>
                         ${m.features ? `
-                          <div class="cdss-list-features">
-                            ${m.features.slice(0, 3).map((f) => `<span class="cdss-feature-chip">${f}</span>`).join("")}
+                          <div class="cdss-table-features">
+                            ${m.features.slice(0, 3).join(" \xB7 ")}
                           </div>
                         ` : ""}
                       </td>
                       <td>
-                        <div class="cdss-list-guideline" title="${m.guidelineSource}">
-                          <i class="fa-solid fa-book-medical text-teal-600"></i> ${m.badge || m.guidelineSource}
-                        </div>
-                        ${m.icd10 && m.icd10.length > 0 ? `
-                          <div class="cdss-list-icd">
-                            ${m.icd10.slice(0, 3).map((c) => `<span class="cdss-icd-pill">${c}</span>`).join("")}
-                          </div>
-                        ` : ""}
+                        <div class="cdss-table-guide">${m.badge || m.guidelineSource}</div>
                       </td>
                       <td style="text-align: right;">
-                        <a href="${m.standaloneUrl}" class="cdss-list-launch-btn">
+                        <a href="${m.standaloneUrl}" class="cdss-table-action-btn">
                           <span>M\u1EDF</span>
                           <i class="fa-solid fa-arrow-right"></i>
                         </a>
@@ -667,7 +626,7 @@
           </div>
         ` : ""}
 
-        <!-- VIEW 3: SPECIALTY DEPARTMENT GROUPS -->
+        <!-- VIEW MODE 3: SPECIALTY CLINICAL GROUPS -->
         ${viewMode === "grouped" && filtered.length > 0 ? `
           <div class="cdss-groups-container">
             ${specialtyGroups.map((grp) => {
@@ -688,8 +647,8 @@
                     <span class="cdss-group-counter">${groupModules.length} Modules</span>
                   </div>
 
-                  <div class="cdss-cards-grid" style="margin-bottom:0;">
-                    ${groupModules.map((m) => renderModuleCard(m)).join("")}
+                  <div class="cdss-grid" style="margin-bottom:0;">
+                    ${groupModules.map((m) => renderCard(m)).join("")}
                   </div>
                 </div>
               `;
@@ -698,135 +657,96 @@
         ` : ""}
 
         <!-- ================================================================
-             6. CLINICAL PRACTICE STANDARDS ACCORDION & EBM FOOTER
+             5. REFINED EBM LEGAL & CLINICAL STANDARDS FOOTER
              ================================================================ -->
-        <section class="cdss-ebm-footer-card">
-          <div class="cdss-ebm-top-row">
-            <div class="cdss-ebm-head">
-              <i class="fa-solid fa-shield-halved"></i>
-              <span>C\u01A1 S\u1EDF Ph\xE1p L\xFD Y Khoa &amp; Chu\u1EA9n M\u1EF1c B\u1EB1ng Ch\u1EE9ng (EBM)</span>
-            </div>
-            <span class="cdss-ebm-badge-ok">
-              <i class="fa-solid fa-circle-check"></i> Tu\xE2n th\u1EE7 H\u01B0\u1EDBng D\u1EABn B\u1ED9 Y T\u1EBF &amp; Qu\u1ED1c T\u1EBF
-            </span>
-          </div>
-
-          <div class="cdss-ebm-columns">
-            <div class="cdss-ebm-col">
-              <h4 class="cdss-ebm-col-title">
-                <i class="fa-solid fa-certificate text-teal-600"></i>
+        <footer class="cdss-bottom-info">
+          <div class="cdss-bottom-info-inner">
+            <div class="cdss-info-col">
+              <div class="cdss-info-title">
+                <i class="fa-solid fa-circle-check text-teal-600"></i>
                 <span>B\u1ED9 Y T\u1EBF Vi\u1EC7t Nam</span>
-              </h4>
-              <p>
-                Tu\xE2n th\u1EE7 nghi\xEAm ng\u1EB7t Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT (Ph\xE1c \u0111\u1ED3 SXHD Dengue 2023), Quy\u1EBFt \u0111\u1ECBnh 5631/Q\u0110-BYT (S\u1EED d\u1EE5ng kh\xE1ng sinh), H\u01B0\u1EDBng d\u1EABn B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi eMed 2026 v\xE0 BV\u0110K C\xE0 Mau.
-              </p>
+              </div>
+              <p>Tu\xE2n th\u1EE7 Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT (SXHD Dengue), 5631/Q\u0110-BYT (S\u1EED d\u1EE5ng kh\xE1ng sinh), H\u01B0\u1EDBng d\u1EABn BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi eMed 2026 v\xE0 BV\u0110K C\xE0 Mau.</p>
             </div>
-
-            <div class="cdss-ebm-col">
-              <h4 class="cdss-ebm-col-title">
-                <i class="fa-solid fa-globe text-cyan-600"></i>
-                <span>H\u01B0\u1EDBng D\u1EABn Qu\u1ED1c T\u1EBF (EBM)</span>
-              </h4>
-              <p>
-                C\u1EADp nh\u1EADt chu\u1EA9n NICE NG253 (2024/2026), Surviving Sepsis Campaign (SSC), Phoenix Sepsis Criteria 2024, ASHP/IDSA 2020 (Vancomycin AUC/MIC), ADA Standards of Care 2026, EFNS v\xE0 ACG 2017.
-              </p>
+            <div class="cdss-info-col">
+              <div class="cdss-info-title">
+                <i class="fa-solid fa-shield-halved text-teal-600"></i>
+                <span>Y H\u1ECDc Ch\u1EE9ng C\u1EE9 Qu\u1ED1c T\u1EBF</span>
+              </div>
+              <p>C\u1EADp nh\u1EADt theo NICE NG253 (2024/2026), Surviving Sepsis Campaign, Phoenix 2024, ASHP/IDSA 2020 (Vancomycin AUC/MIC), ADA 2026, EFNS v\xE0 ACG 2017.</p>
             </div>
-
-            <div class="cdss-ebm-col">
-              <h4 class="cdss-ebm-col-title">
-                <i class="fa-solid fa-laptop-medical text-emerald-600"></i>
-                <span>\u0110\u1ED9c L\u1EADp &amp; An To\xE0n Tuy\u1EC7t \u0110\u1ED1i</span>
-              </h4>
-              <p>
-                To\xE0n b\u1ED9 thu\u1EADt to\xE1n ch\u1EA1y 100% t\u1EA1i tr\xECnh duy\u1EC7t b\xE1c s\u0129 (Client-side), kh\xF4ng truy\u1EC1n g\u1EEDi th\xF4ng tin nh\u1EADn di\u1EC7n ng\u01B0\u1EDDi b\u1EC7nh (No PII), ho\u1EA1t \u0111\u1ED9ng m\u01B0\u1EE3t m\xE0 ngo\u1EA1i tuy\u1EBFn (Offline Ready) t\u1EA1i khoa c\u1EA5p c\u1EE9u v\xE0 ICU.
-              </p>
+            <div class="cdss-info-col">
+              <div class="cdss-info-title">
+                <i class="fa-solid fa-lock text-teal-600"></i>
+                <span>B\u1EA3o M\u1EADt Y Khoa &amp; Ngo\u1EA1i Tuy\u1EBFn</span>
+              </div>
+              <p>To\xE0n b\u1ED9 thu\u1EADt to\xE1n ch\u1EA1y 100% t\u1EA1i tr\xECnh duy\u1EC7t b\xE1c s\u0129 (Client-side), kh\xF4ng truy\u1EC1n d\u1EEF li\u1EC7u \u0111\u1ECBnh danh b\u1EC7nh nh\xE2n (No PII), ho\u1EA1t \u0111\u1ED9ng m\u01B0\u1EE3t m\xE0 ngo\u1EA1i tuy\u1EBFn (Offline Ready).</p>
             </div>
           </div>
-        </section>
+        </footer>
 
       </div>
     `;
-      function renderModuleCard(m) {
+      function renderCard(m) {
         const isPinned = pinnedSlugs.includes(m.slug);
         const isStat = m.urgency === "stat";
         return `
-        <article class="cdss-module-card ${isStat ? "cdss-module-card--stat" : ""}" id="cdss-card-${m.slug}" data-slug="${m.slug}">
-          <!-- Card Top Bar: Urgency/Department + Star Pin + Emblem -->
-          <div class="cdss-card-top-bar">
-            <div class="cdss-card-badges-group">
-              <span class="cdss-urgency-badge cdss-urgency--${m.urgency}">
-                ${m.urgency === "stat" ? '<i class="fa-solid fa-bolt-lightning"></i> STAT C\u1EA5p C\u1EE9u' : m.urgency === "urgent" ? '<i class="fa-solid fa-clock-rotate-left"></i> Kh\u1EA9n C\u1EA5p' : '<i class="fa-solid fa-stethoscope"></i> Th\u01B0\u1EDDng Quy'}
-              </span>
-              <span class="cdss-dept-tag">${m.department || m.categoryName}</span>
-            </div>
-
-            <div class="cdss-card-actions-top">
-              <button 
-                class="cdss-pin-btn ${isPinned ? "pinned" : ""}" 
-                data-pin-slug="${m.slug}" 
-                title="${isPinned ? "B\u1ECF ghim kh\u1ECFi thanh y\xEAu th\xEDch" : "Ghim l\xEAn thanh y\xEAu th\xEDch"}"
-                aria-label="${isPinned ? "B\u1ECF ghim" : "Ghim"}"
-              >
-                <i class="${isPinned ? "fa-solid" : "fa-regular"} fa-star"></i>
-              </button>
-              
+        <article class="cdss-card ${isStat ? "is-stat-card" : ""}" id="cdss-card-${m.slug}" data-slug="${m.slug}">
+          <!-- Top Row: Icon + Meta + Pin -->
+          <div class="cdss-card-header">
+            <div class="cdss-card-header-left">
               <div class="cdss-card-emblem cdss-emblem--${m.category}">
                 <i class="${m.icon}"></i>
               </div>
+              <div class="cdss-card-meta">
+                <span class="cdss-card-dept">${m.department || m.categoryName}</span>
+                ${isStat ? `<span class="cdss-card-stat"><i class="fa-solid fa-bolt-lightning"></i> STAT</span>` : ""}
+              </div>
             </div>
+
+            <button 
+              type="button" 
+              class="cdss-star-btn ${isPinned ? "pinned" : ""}" 
+              data-pin-slug="${m.slug}"
+              title="${isPinned ? "B\u1ECF ghim" : "Ghim y\xEAu th\xEDch"}"
+              aria-label="${isPinned ? "B\u1ECF ghim" : "Ghim"}"
+            >
+              <i class="${isPinned ? "fa-solid" : "fa-regular"} fa-star"></i>
+            </button>
           </div>
 
-          <!-- Title & Brand Acronym Group -->
-          <div class="cdss-card-title-group">
-            <div class="cdss-brand-row">
-              <span class="cdss-brand-code">${m.brandCode || m.slug.toUpperCase()}</span>
-              ${m.badge ? `<span class="cdss-badge-evidence">${m.badge}</span>` : ""}
-            </div>
+          <!-- Title & Guideline Reference -->
+          <div class="cdss-card-body">
             <h3 class="cdss-card-title">
               <a href="${m.standaloneUrl}">${m.title}</a>
             </h3>
-            ${m.titleEn ? `<p class="cdss-card-title-en">${m.titleEn}</p>` : ""}
-          </div>
-
-          <!-- STAT Symptom Trigger Bar (For rapid bedside visual identification) -->
-          ${m.statTrigger ? `
-            <div class="cdss-trigger-box">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-              <span>${m.statTrigger}</span>
+            <div class="cdss-card-guideline">
+              <span>${m.badge || m.guidelineSource}</span>
             </div>
-          ` : ""}
 
-          <!-- Core Clinical Description -->
-          <p class="cdss-card-desc">${m.shortDesc}</p>
+            ${m.statTrigger ? `
+              <div class="cdss-trigger-row">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>${m.statTrigger}</span>
+              </div>
+            ` : ""}
 
-          <!-- Core Clinical Features Chips -->
-          ${m.features && m.features.length > 0 ? `
-            <div class="cdss-feature-chips">
-              ${m.features.slice(0, 4).map((f) => `<span class="cdss-feature-chip">${f}</span>`).join("")}
-            </div>
-          ` : ""}
+            <!-- Clinical Description -->
+            <p class="cdss-card-desc">${m.shortDesc}</p>
 
-          <!-- Guideline Source & ICD-10 Metadata Strip -->
-          <div class="cdss-card-meta-strip">
-            <div class="cdss-meta-item" title="${m.guidelineSource}">
-              <i class="fa-solid fa-book-medical"></i>
-              <span>${m.guidelineSource}</span>
-            </div>
-            ${m.icd10 && m.icd10.length > 0 ? `
-              <div class="cdss-meta-item cdss-meta-icd">
-                <i class="fa-solid fa-barcode"></i>
-                <span>ICD-10: ${m.icd10.slice(0, 3).map((c) => `<span class="cdss-icd-pill">${c}</span>`).join("")}</span>
+            <!-- Key Features / Formulas (Clean unboxed text) -->
+            ${m.features && m.features.length > 0 ? `
+              <div class="cdss-card-features">
+                ${m.features.slice(0, 3).join(" \xB7 ")}
               </div>
             ` : ""}
           </div>
 
-          <!-- Action Footer -->
+          <!-- Bottom Row: Code/Version + Open Action Link -->
           <div class="cdss-card-footer">
-            <div class="cdss-card-ver-wrap">
-              <span class="cdss-card-version">${m.version}</span>
-            </div>
-            <a href="${m.standaloneUrl}" class="cdss-launch-btn">
-              <span>M\u1EDF CDSS</span>
+            <span class="cdss-card-code">${m.brandCode} \xB7 v${m.version.split(" ")[0]}</span>
+            <a href="${m.standaloneUrl}" class="cdss-card-launch">
+              <span>M\u1EDF c\xF4ng c\u1EE5</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
@@ -855,28 +775,29 @@
           render();
         });
       }
-      const catBtns = container.querySelectorAll(".cdss-cat-btn");
-      catBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const cat = btn.getAttribute("data-cat") || "all";
+      const catTabs = container.querySelectorAll(".cdss-cat-tab");
+      catTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const cat = tab.getAttribute("data-cat") || "all";
           activeCategory = cat;
           render();
         });
       });
-      const modeBtns = container.querySelectorAll(".cdss-view-btn");
-      modeBtns.forEach((btn) => {
+      const viewBtns = container.querySelectorAll(".cdss-view-btn");
+      viewBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
           const mode = btn.getAttribute("data-mode");
-          if (mode) {
+          if (mode && mode !== viewMode) {
             viewMode = mode;
+            setStoredViewMode(mode);
             render();
           }
         });
       });
-      const triageChips = container.querySelectorAll(".cdss-rapid-chip");
-      triageChips.forEach((chip) => {
-        chip.addEventListener("click", () => {
-          const targetSlug = chip.getAttribute("data-target-slug");
+      const quickLinks = container.querySelectorAll(".cdss-stat-quick-link");
+      quickLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          const targetSlug = link.getAttribute("data-quick-slug");
           if (!targetSlug) return;
           if (activeCategory !== "all" || searchQuery) {
             activeCategory = "all";
@@ -884,21 +805,20 @@
             render();
           }
           setTimeout(() => {
-            const targetCard = document.getElementById(`cdss-card-${targetSlug}`) || document.getElementById(`cdss-row-${targetSlug}`);
-            if (targetCard) {
-              targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
-              targetCard.classList.remove("cdss-pulse-highlight");
-              void targetCard.offsetWidth;
-              targetCard.classList.add("cdss-pulse-highlight");
+            const targetEl = document.getElementById(`cdss-card-${targetSlug}`) || document.getElementById(`cdss-row-${targetSlug}`);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+              targetEl.classList.add("cdss-highlight-pulse");
+              setTimeout(() => targetEl.classList.remove("cdss-highlight-pulse"), 1800);
             }
-          }, 50);
+          }, 60);
         });
       });
-      const pinBtns = container.querySelectorAll(".cdss-pin-btn");
+      const pinBtns = container.querySelectorAll(".cdss-star-btn");
       pinBtns.forEach((btn) => {
         btn.addEventListener("click", (e) => {
-          e.preventDefault();
           e.stopPropagation();
+          e.preventDefault();
           const slug = btn.getAttribute("data-pin-slug");
           if (!slug) return;
           if (pinnedSlugs.includes(slug)) {
@@ -913,16 +833,16 @@
       const unpinBtns = container.querySelectorAll(".cdss-pinned-remove");
       unpinBtns.forEach((btn) => {
         btn.addEventListener("click", (e) => {
-          e.preventDefault();
           e.stopPropagation();
           const slug = btn.getAttribute("data-unpin-slug");
-          if (!slug) return;
-          pinnedSlugs = pinnedSlugs.filter((s) => s !== slug);
-          setPinnedSlugs(pinnedSlugs);
-          render();
+          if (slug) {
+            pinnedSlugs = pinnedSlugs.filter((s) => s !== slug);
+            setPinnedSlugs(pinnedSlugs);
+            render();
+          }
         });
       });
-      const clearPinnedBtn = document.getElementById("cdss-clear-pinned-btn");
+      const clearPinnedBtn = document.getElementById("cdss-clear-all-pinned");
       if (clearPinnedBtn) {
         clearPinnedBtn.addEventListener("click", () => {
           pinnedSlugs = [];
@@ -930,15 +850,24 @@
           render();
         });
       }
-      const resetBtn = document.getElementById("cdss-reset-filters");
-      if (resetBtn) {
-        resetBtn.addEventListener("click", () => {
+      const tagCloseBtns = container.querySelectorAll(".cdss-tag-close");
+      tagCloseBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const resetTarget = btn.getAttribute("data-reset");
+          if (resetTarget === "category") activeCategory = "all";
+          if (resetTarget === "search") searchQuery = "";
+          render();
+        });
+      });
+      const resetFiltersBtn = document.getElementById("cdss-reset-filters-btn");
+      if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener("click", () => {
           activeCategory = "all";
           searchQuery = "";
           render();
         });
       }
-      const emptyResetBtn = document.getElementById("cdss-empty-reset-btn");
+      const emptyResetBtn = document.getElementById("cdss-empty-reset");
       if (emptyResetBtn) {
         emptyResetBtn.addEventListener("click", () => {
           activeCategory = "all";
@@ -946,18 +875,21 @@
           render();
         });
       }
-      const tagRemovers = container.querySelectorAll(".cdss-tag-remove");
-      tagRemovers.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const resetType = btn.getAttribute("data-reset");
-          if (resetType === "category") activeCategory = "all";
-          if (resetType === "search") searchQuery = "";
-          render();
+      const cards = container.querySelectorAll(".cdss-card");
+      cards.forEach((card) => {
+        card.addEventListener("click", (e) => {
+          const target = e.target;
+          if (target.closest(".cdss-star-btn") || target.closest("a")) return;
+          const slug = card.getAttribute("data-slug");
+          const meta = CDSS_MODULES.find((m) => m.slug === slug);
+          if (meta && meta.standaloneUrl) {
+            window.location.href = meta.standaloneUrl;
+          }
         });
       });
     }
     document.addEventListener("keydown", (e) => {
-      if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+      if ((e.key === "/" || (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
         e.preventDefault();
         const input = document.getElementById("cdss-search-input");
         if (input) {

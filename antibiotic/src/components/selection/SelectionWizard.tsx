@@ -27,14 +27,29 @@ import {
   CheckCircle2
 } from 'lucide-react';
 
+import { DoseResult } from '../../utils/drugDataExtractor';
+import { PatientState, CalculatedRenalMetrics } from '../../types';
+
 interface SelectionWizardProps {
   onSelectDrugForDosing: (drugId?: string) => void;
   onOpenGuidelineAtlas?: (imageId?: string) => void;
+  dosingResult?: DoseResult | null;
+  selectedDrugId?: string;
+  patient?: PatientState;
+  renal?: CalculatedRenalMetrics;
+  onCalculateDoseForDrug?: (drugId: string) => void;
+  onPatientChange?: (updated: Partial<PatientState>) => void;
 }
 
 export const SelectionWizard: React.FC<SelectionWizardProps> = ({
   onSelectDrugForDosing,
-  onOpenGuidelineAtlas
+  onOpenGuidelineAtlas,
+  dosingResult,
+  selectedDrugId,
+  patient,
+  renal,
+  onCalculateDoseForDrug,
+  onPatientChange
 }) => {
   // 3-Stage Master Workflow: 1 = Đánh giá & Phân tầng, 2 = Phác đồ & Antibiogram, 3 = Tái đánh giá 48-72h
   const [currentStage, setCurrentStage] = useState<1 | 2 | 3>(1);
@@ -460,6 +475,12 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
                 specificRisks={checkedSpecificRisks}
                 onSelectDrugForDosing={(drugId) => onSelectDrugForDosing(drugId)}
                 onOpenGuidelineAtlas={onOpenGuidelineAtlas}
+                dosingResult={dosingResult}
+                selectedDrugId={selectedDrugId}
+                patient={patient}
+                renal={renal}
+                onCalculateDoseForDrug={onCalculateDoseForDrug}
+                onPatientChange={onPatientChange}
                 onNextStep={() => {
                   setCurrentStage(3);
                   window.scrollTo({ top: 120, behavior: 'smooth' });
