@@ -6,7 +6,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Header } from './components/Header';
 import { PatientSidebar } from './components/PatientSidebar';
-import { AntibioticSearch } from './components/AntibioticSearch';
 import { DosingRecommendationCard } from './components/DosingRecommendationCard';
 import { RenalAdjustmentTable } from './components/RenalAdjustmentTable';
 import { DialysisPanel } from './components/DialysisPanel';
@@ -502,28 +501,7 @@ export default function App() {
 
           {/* Right Column: Unified Clinical Flow */}
           <div className="flex-1 min-w-0 space-y-6">
-            {/* 1. Quick Global 43 Antibiotic Search Bar */}
-            <div className="bg-white p-3 rounded-2xl border border-slate-200/90 shadow-2xs">
-              <div className="flex items-center justify-between gap-2 mb-2 px-1">
-                <span className="text-xs font-black uppercase tracking-wider text-teal-800 flex items-center gap-1.5">
-                  <Calculator className="w-4 h-4 text-teal-600" />
-                  <span>Tra cứu nhanh 43 Kháng sinh &amp; Tính liều tức thì</span>
-                </span>
-                <span className="text-[11px] text-slate-500 hidden sm:inline">
-                  Nhấn <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-slate-100 border border-slate-300 rounded text-slate-700">/</kbd> để tìm kiếm hoặc chọn thuốc trong phác đồ bên dưới
-                </span>
-              </div>
-              <AntibioticSearch
-                antibiotics={ANTIBIOTICS}
-                selectedId={selectedDrugId}
-                onSelect={(id) => {
-                  handleSelectDrugFromSelection(id);
-                }}
-                language={language}
-              />
-            </div>
-
-            {/* 2. Unified Clinical Flow (BVBND 2026 Selection + Precision Dosing Workspace) */}
+            {/* Unified Clinical Flow (BVBND 2026 Selection + Precision Dosing Workspace) */}
             <SelectionWizard
               onSelectDrugForDosing={handleSelectDrugFromSelection}
               onOpenGuidelineAtlas={handleOpenGuidelineAtlas}

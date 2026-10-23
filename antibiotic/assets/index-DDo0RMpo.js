@@ -783,7 +783,7 @@ var require_scheduler = __commonJS({
 var require_react_dom_production = __commonJS({
   "node_modules/react-dom/cjs/react-dom.production.js"(exports) {
     "use strict";
-    var React17 = require_react();
+    var React16 = require_react();
     function formatProdErrorMessage(code) {
       var url = "https://react.dev/errors/" + code;
       if (1 < arguments.length) {
@@ -825,7 +825,7 @@ var require_react_dom_production = __commonJS({
         implementation
       };
     }
-    var ReactSharedInternals = React17.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+    var ReactSharedInternals = React16.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
     function getCrossOriginStringAs(as, input) {
       if ("font" === as) return "";
       if ("string" === typeof input)
@@ -967,7 +967,7 @@ var require_react_dom_client_production = __commonJS({
   "node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
     "use strict";
     var Scheduler = require_scheduler();
-    var React17 = require_react();
+    var React16 = require_react();
     var ReactDOM = require_react_dom();
     function formatProdErrorMessage(code) {
       var url = "https://react.dev/errors/" + code;
@@ -1260,7 +1260,7 @@ var require_react_dom_client_production = __commonJS({
       return null;
     }
     var isArrayImpl = Array.isArray;
-    var ReactSharedInternals = React17.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+    var ReactSharedInternals = React16.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
     var ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
     var sharedNotPendingObject = {
       pending: false,
@@ -14409,7 +14409,7 @@ var require_react_dom_client_production = __commonJS({
         0 === i && attemptExplicitHydrationTarget(target);
       }
     };
-    var isomorphicReactPackageVersion$jscomp$inline_2043 = React17.version;
+    var isomorphicReactPackageVersion$jscomp$inline_2043 = React16.version;
     if ("19.3.1" !== isomorphicReactPackageVersion$jscomp$inline_2043)
       throw Error(
         formatProdErrorMessage(
@@ -48377,11 +48377,11 @@ var require_jspdf_umd_min = __commonJS({
 });
 
 // antibiotic/src/main.tsx
-var import_react19 = __toESM(require_react(), 1);
+var import_react18 = __toESM(require_react(), 1);
 var import_client = __toESM(require_client(), 1);
 
 // antibiotic/src/App.tsx
-var import_react18 = __toESM(require_react(), 1);
+var import_react17 = __toESM(require_react(), 1);
 
 // antibiotic/src/components/Header.tsx
 var import_react3 = __toESM(require_react(), 1);
@@ -49044,22 +49044,8 @@ var __iconNode55 = [
 ];
 var Shield = createLucideIcon("shield", __iconNode55);
 
-// node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
-var __iconNode56 = [
-  ["path", { d: "M10 5H3", key: "1qgfaw" }],
-  ["path", { d: "M12 19H3", key: "yhmn1j" }],
-  ["path", { d: "M14 3v4", key: "1sua03" }],
-  ["path", { d: "M16 17v4", key: "1q0r14" }],
-  ["path", { d: "M21 12h-9", key: "1o4lsq" }],
-  ["path", { d: "M21 19h-5", key: "1rlt1p" }],
-  ["path", { d: "M21 5h-7", key: "1oszz2" }],
-  ["path", { d: "M8 10v4", key: "tgpxqk" }],
-  ["path", { d: "M8 12H3", key: "a7s4jb" }]
-];
-var SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode56);
-
 // node_modules/lucide-react/dist/esm/icons/sparkles.js
-var __iconNode57 = [
+var __iconNode56 = [
   [
     "path",
     {
@@ -49071,39 +49057,39 @@ var __iconNode57 = [
   ["path", { d: "M22 4h-4", key: "gwowj6" }],
   ["circle", { cx: "4", cy: "20", r: "2", key: "6kqj1y" }]
 ];
-var Sparkles = createLucideIcon("sparkles", __iconNode57);
+var Sparkles = createLucideIcon("sparkles", __iconNode56);
 
 // node_modules/lucide-react/dist/esm/icons/square-check-big.js
-var __iconNode58 = [
+var __iconNode57 = [
   [
     "path",
     { d: "M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344", key: "2acyp4" }
   ],
   ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
 ];
-var SquareCheckBig = createLucideIcon("square-check-big", __iconNode58);
+var SquareCheckBig = createLucideIcon("square-check-big", __iconNode57);
 
 // node_modules/lucide-react/dist/esm/icons/stethoscope.js
-var __iconNode59 = [
+var __iconNode58 = [
   ["path", { d: "M11 2v2", key: "1539x4" }],
   ["path", { d: "M5 2v2", key: "1yf1q8" }],
   ["path", { d: "M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1", key: "rb5t3r" }],
   ["path", { d: "M8 15a6 6 0 0 0 12 0v-3", key: "x18d4x" }],
   ["circle", { cx: "20", cy: "10", r: "2", key: "ts1r5v" }]
 ];
-var Stethoscope = createLucideIcon("stethoscope", __iconNode59);
+var Stethoscope = createLucideIcon("stethoscope", __iconNode58);
 
 // node_modules/lucide-react/dist/esm/icons/table.js
-var __iconNode60 = [
+var __iconNode59 = [
   ["path", { d: "M12 3v18", key: "108xh3" }],
   ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
   ["path", { d: "M3 9h18", key: "1pudct" }],
   ["path", { d: "M3 15h18", key: "5xshup" }]
 ];
-var Table = createLucideIcon("table", __iconNode60);
+var Table = createLucideIcon("table", __iconNode59);
 
 // node_modules/lucide-react/dist/esm/icons/triangle-alert.js
-var __iconNode61 = [
+var __iconNode60 = [
   [
     "path",
     {
@@ -49114,17 +49100,17 @@ var __iconNode61 = [
   ["path", { d: "M12 9v4", key: "juzpu7" }],
   ["path", { d: "M12 17h.01", key: "p32p05" }]
 ];
-var TriangleAlert = createLucideIcon("triangle-alert", __iconNode61);
+var TriangleAlert = createLucideIcon("triangle-alert", __iconNode60);
 
 // node_modules/lucide-react/dist/esm/icons/user.js
-var __iconNode62 = [
+var __iconNode61 = [
   ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
   ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
 ];
-var User = createLucideIcon("user", __iconNode62);
+var User = createLucideIcon("user", __iconNode61);
 
 // node_modules/lucide-react/dist/esm/icons/weight.js
-var __iconNode63 = [
+var __iconNode62 = [
   ["circle", { cx: "12", cy: "5", r: "3", key: "rqqgnr" }],
   [
     "path",
@@ -49134,25 +49120,25 @@ var __iconNode63 = [
     }
   ]
 ];
-var Weight = createLucideIcon("weight", __iconNode63);
+var Weight = createLucideIcon("weight", __iconNode62);
 
 // node_modules/lucide-react/dist/esm/icons/workflow.js
-var __iconNode64 = [
+var __iconNode63 = [
   ["rect", { width: "8", height: "8", x: "3", y: "3", rx: "2", key: "by2w9f" }],
   ["path", { d: "M7 11v4a2 2 0 0 0 2 2h4", key: "xkn7yn" }],
   ["rect", { width: "8", height: "8", x: "13", y: "13", rx: "2", key: "1cgmvn" }]
 ];
-var Workflow = createLucideIcon("workflow", __iconNode64);
+var Workflow = createLucideIcon("workflow", __iconNode63);
 
 // node_modules/lucide-react/dist/esm/icons/x.js
-var __iconNode65 = [
+var __iconNode64 = [
   ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
   ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
 ];
-var X = createLucideIcon("x", __iconNode65);
+var X = createLucideIcon("x", __iconNode64);
 
 // node_modules/lucide-react/dist/esm/icons/zap.js
-var __iconNode66 = [
+var __iconNode65 = [
   [
     "path",
     {
@@ -49161,24 +49147,24 @@ var __iconNode66 = [
     }
   ]
 ];
-var Zap = createLucideIcon("zap", __iconNode66);
+var Zap = createLucideIcon("zap", __iconNode65);
 
 // node_modules/lucide-react/dist/esm/icons/zoom-in.js
-var __iconNode67 = [
+var __iconNode66 = [
   ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }],
   ["line", { x1: "21", x2: "16.65", y1: "21", y2: "16.65", key: "13gj7c" }],
   ["line", { x1: "11", x2: "11", y1: "8", y2: "14", key: "1vmskp" }],
   ["line", { x1: "8", x2: "14", y1: "11", y2: "11", key: "durymu" }]
 ];
-var ZoomIn = createLucideIcon("zoom-in", __iconNode67);
+var ZoomIn = createLucideIcon("zoom-in", __iconNode66);
 
 // node_modules/lucide-react/dist/esm/icons/zoom-out.js
-var __iconNode68 = [
+var __iconNode67 = [
   ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }],
   ["line", { x1: "21", x2: "16.65", y1: "21", y2: "16.65", key: "13gj7c" }],
   ["line", { x1: "8", x2: "14", y1: "11", y2: "11", key: "durymu" }]
 ];
-var ZoomOut = createLucideIcon("zoom-out", __iconNode68);
+var ZoomOut = createLucideIcon("zoom-out", __iconNode67);
 
 // antibiotic/src/components/CdssLogo.tsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -49998,243 +49984,9 @@ var PatientSidebar = ({
   ] });
 };
 
-// antibiotic/src/components/AntibioticSearch.tsx
+// antibiotic/src/components/DosingRecommendationCard.tsx
 var import_react5 = __toESM(require_react(), 1);
 var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
-var FREQUENT_SUGGESTIONS = [
-  "meropenem",
-  "vancomycin",
-  "piperacillin_tazobactam",
-  "colistin",
-  "ceftriaxone",
-  "levofloxacin",
-  "cefepime"
-];
-var AntibioticSearch = ({
-  antibiotics,
-  selectedId,
-  onSelect,
-  language
-}) => {
-  const [searchTerm, setSearchTerm] = (0, import_react5.useState)("");
-  const [isOpen, setIsOpen] = (0, import_react5.useState)(false);
-  const [selectedIndex, setSelectedIndex] = (0, import_react5.useState)(0);
-  const containerRef = (0, import_react5.useRef)(null);
-  const inputRef = (0, import_react5.useRef)(null);
-  const isEn = language === "en";
-  const activeDrug = antibiotics.find((a) => a.id === selectedId) || antibiotics[0];
-  (0, import_react5.useEffect)(() => {
-    const handleKeyDown2 = (e) => {
-      if (e.key === "/" && document.activeElement !== inputRef.current && document.activeElement?.tagName !== "INPUT") {
-        e.preventDefault();
-        inputRef.current?.focus();
-        setIsOpen(true);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown2);
-    return () => window.removeEventListener("keydown", handleKeyDown2);
-  }, []);
-  (0, import_react5.useEffect)(() => {
-    const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-  const matchingAntibiotics = (0, import_react5.useMemo)(() => {
-    const query = searchTerm.toLowerCase().trim();
-    if (!query) {
-      const frequent = antibiotics.filter((a) => FREQUENT_SUGGESTIONS.includes(a.id));
-      const others = antibiotics.filter((a) => !FREQUENT_SUGGESTIONS.includes(a.id));
-      return [...frequent, ...others];
-    }
-    return antibiotics.filter((item) => {
-      const matchesName = item.name.toLowerCase().includes(query);
-      const matchesGroup = item.group.toLowerCase().includes(query) || item.groupEn && item.groupEn.toLowerCase().includes(query);
-      const matchesAliases = item.aliases.some((a) => a.toLowerCase().includes(query));
-      const matchesIndications = item.indications.some((ind) => ind.toLowerCase().includes(query)) || item.indicationsEn.some((ind) => ind.toLowerCase().includes(query));
-      return matchesName || matchesGroup || matchesAliases || matchesIndications;
-    });
-  }, [antibiotics, searchTerm]);
-  const handleKeyDown = (e) => {
-    if (!isOpen) {
-      if (e.key === "ArrowDown" || e.key === "Enter") {
-        setIsOpen(true);
-      }
-      return;
-    }
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setSelectedIndex((prev) => (prev + 1) % Math.max(1, matchingAntibiotics.length));
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setSelectedIndex((prev) => (prev - 1 + matchingAntibiotics.length) % Math.max(1, matchingAntibiotics.length));
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-      if (matchingAntibiotics.length > 0 && selectedIndex < matchingAntibiotics.length) {
-        handleSelect(matchingAntibiotics[selectedIndex].id);
-      }
-    } else if (e.key === "Escape") {
-      setIsOpen(false);
-    }
-  };
-  const handleSelect = (drugId) => {
-    onSelect(drugId);
-    setIsOpen(false);
-    setSearchTerm("");
-  };
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { ref: containerRef, className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-5 mb-5 relative z-20", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 mb-3 border-b border-slate-100", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Pill, { className: "w-4 h-4" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[11px] font-bold text-slate-500 uppercase tracking-wider", children: isEn ? "Selected Antimicrobial:" : "Kh\xE1ng sinh \u0111ang ch\u1ECDn:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-base sm:text-lg font-black text-slate-900", children: activeDrug.name }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[11px] font-extrabold px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 uppercase", children: activeDrug.route }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-xs text-slate-500 hidden md:inline font-medium", children: [
-              "\u2022 ",
-              isEn ? activeDrug.groupEn || activeDrug.group : activeDrug.group
-            ] })
-          ] })
-        ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-        "button",
-        {
-          type: "button",
-          onClick: () => {
-            inputRef.current?.focus();
-            setIsOpen(true);
-          },
-          className: "text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-blue-700 border border-slate-200/80 transition-colors flex items-center space-x-1.5 self-start sm:self-auto",
-          children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Search, { className: "w-3.5 h-3.5 text-blue-600" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: isEn ? "Change Antibiotic" : "\u0110\u1ED5i kh\xE1ng sinh kh\xE1c" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] bg-slate-200/80 px-1.5 py-0.5 rounded text-slate-500 font-mono hidden sm:inline", children: "/" })
-          ]
-        }
-      )
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "relative", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "relative flex items-center", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Search, { className: "w-4 h-4 absolute left-3.5 text-slate-400 pointer-events-none" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-          "input",
-          {
-            ref: inputRef,
-            type: "text",
-            value: searchTerm,
-            onChange: (e) => {
-              setSearchTerm(e.target.value);
-              setIsOpen(true);
-              setSelectedIndex(0);
-            },
-            onFocus: () => setIsOpen(true),
-            onKeyDown: handleKeyDown,
-            placeholder: isEn ? "Search antibiotic by generic or brand (e.g. Meropenem, Vancomycin, Augmentin, Cipro...)" : "T\xECm ki\u1EBFm kh\xE1ng sinh (v\xED d\u1EE5: Meropenem, Vancomycin, Augmentin, Ciprofloxacin, Tazocin...)",
-            className: "w-full bg-slate-50/80 hover:bg-slate-50 focus:bg-white border border-slate-300 focus:border-blue-500 rounded-xl pl-10 pr-20 py-2.5 text-sm font-medium text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 transition-all shadow-inner"
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "absolute right-3 flex items-center space-x-1.5", children: [
-          searchTerm ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-            "button",
-            {
-              type: "button",
-              onClick: () => {
-                setSearchTerm("");
-                inputRef.current?.focus();
-              },
-              className: "text-slate-400 hover:text-slate-600 p-1 rounded-md",
-              children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(X, { className: "w-4 h-4" })
-            }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "hidden sm:inline text-[10px] font-bold text-slate-400 bg-slate-200/70 px-1.5 py-0.5 rounded border border-slate-300", children: "/" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-            "button",
-            {
-              type: "button",
-              onClick: () => setIsOpen(!isOpen),
-              className: "text-slate-400 hover:text-slate-600 p-1 rounded-md",
-              title: "Toggle list",
-              children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ChevronDown, { className: `w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}` })
-            }
-          )
-        ] })
-      ] }),
-      isOpen && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-150", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "px-4 py-2 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between text-xs text-slate-500", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-semibold flex items-center", children: searchTerm ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-            isEn ? "Found " : "T\xECm th\u1EA5y ",
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { className: "text-slate-900 mx-1", children: matchingAntibiotics.length }),
-            isEn ? "result(s)" : "kh\xE1ng sinh"
-          ] }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Sparkles, { className: "w-3 h-3 text-amber-500 mr-1" }),
-            isEn ? "Top hospital antibiotics & All 43 drugs:" : "G\u1EE3i \xFD th\u01B0\u1EDDng d\xF9ng & Danh b\u1EA1 43 kh\xE1ng sinh:"
-          ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[11px] text-slate-400 hidden sm:inline", children: isEn ? "\u2191\u2193 to navigate, Enter to select, Esc to close" : "D\xF9ng ph\xEDm \u2191\u2193 v\xE0 Enter \u0111\u1EC3 ch\u1ECDn nhanh" })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "max-h-72 overflow-y-auto divide-y divide-slate-100", children: matchingAntibiotics.length > 0 ? matchingAntibiotics.map((drug, idx) => {
-          const isCurrent = drug.id === selectedId;
-          const isHovered = idx === selectedIndex;
-          return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-            "button",
-            {
-              type: "button",
-              onClick: () => handleSelect(drug.id),
-              onMouseEnter: () => setSelectedIndex(idx),
-              className: `w-full text-left px-4 py-2.5 flex items-center justify-between transition-colors ${isCurrent ? "bg-blue-50/80 text-blue-950 font-bold" : isHovered ? "bg-slate-50 text-slate-900" : "text-slate-700 hover:bg-slate-50"}`,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-3 min-w-0", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: `w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${isCurrent ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"}`, children: drug.name.charAt(0) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "min-w-0", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2", children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-sm font-bold truncate", children: drug.name }),
-                      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] font-bold px-1.5 py-0.2 rounded uppercase bg-slate-100 text-slate-600 border border-slate-200 shrink-0", children: drug.route })
-                    ] }),
-                    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-xs text-slate-500 truncate", children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-slate-600 font-medium", children: isEn ? drug.groupEn || drug.group : drug.group }),
-                      drug.aliases.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-slate-400 ml-1.5", children: [
-                        "(",
-                        drug.aliases.join(", "),
-                        ")"
-                      ] })
-                    ] })
-                  ] })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex items-center space-x-2 shrink-0 ml-2", children: isCurrent ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "flex items-center space-x-1 text-xs font-bold text-blue-600 bg-blue-100/80 px-2 py-0.5 rounded-full", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Check, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "hidden sm:inline", children: isEn ? "Selected" : "\u0110ang ch\u1ECDn" })
-                ] }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ArrowRight, { className: "w-4 h-4 text-slate-300 opacity-0 group-hover:opacity-100" }) })
-              ]
-            },
-            drug.id
-          );
-        }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "py-8 text-center text-slate-400 text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "font-semibold text-slate-600 mb-1", children: isEn ? "No antibiotic found matching your query" : "Kh\xF4ng t\xECm th\u1EA5y kh\xE1ng sinh ph\xF9 h\u1EE3p" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { children: isEn ? "Try searching by generic name (e.g. Meropenem) or brand (e.g. Meronem)" : "H\xE3y th\u1EED t\xECm theo t\xEAn ho\u1EA1t ch\u1EA5t (vd: Meropenem) ho\u1EB7c bi\u1EC7t d\u01B0\u1EE3c (vd: Meronem)" })
-        ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: isEn ? "Total: 43 Hospital Antimicrobials" : "H\u1EC7 th\u1ED1ng h\u1ED7 tr\u1EE3 43 kh\xE1ng sinh n\u1ED9i tr\xFA & ICU" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-            "button",
-            {
-              type: "button",
-              onClick: () => setIsOpen(false),
-              className: "text-blue-600 hover:underline font-semibold",
-              children: isEn ? "Close" : "\u0110\xF3ng"
-            }
-          )
-        ] })
-      ] })
-    ] })
-  ] });
-};
-
-// antibiotic/src/components/DosingRecommendationCard.tsx
-var import_react6 = __toESM(require_react(), 1);
-var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
 var DosingRecommendationCard = ({
   drugDetails,
   doseResult,
@@ -50244,11 +49996,11 @@ var DosingRecommendationCard = ({
   language,
   onExportPdf
 }) => {
-  const [copied, setCopied] = (0, import_react6.useState)(false);
-  const [copiedOrder, setCopiedOrder] = (0, import_react6.useState)(false);
-  const [dilutionVolume, setDilutionVolume] = (0, import_react6.useState)(100);
-  const [infusionHours, setInfusionHours] = (0, import_react6.useState)(3);
-  const [showInfusionCalc, setShowInfusionCalc] = (0, import_react6.useState)(false);
+  const [copied, setCopied] = (0, import_react5.useState)(false);
+  const [copiedOrder, setCopiedOrder] = (0, import_react5.useState)(false);
+  const [dilutionVolume, setDilutionVolume] = (0, import_react5.useState)(100);
+  const [infusionHours, setInfusionHours] = (0, import_react5.useState)(3);
+  const [showInfusionCalc, setShowInfusionCalc] = (0, import_react5.useState)(false);
   const isEn = language === "en";
   const handleCopy = () => {
     const textToCopy = isEn ? doseResult.orderTextEn : doseResult.orderTextVi;
@@ -50264,21 +50016,21 @@ var DosingRecommendationCard = ({
   };
   const pumpRateMlh = infusionHours > 0 ? (dilutionVolume / infusionHours).toFixed(1) : "0";
   const dropsPerMin = infusionHours > 0 ? Math.round(dilutionVolume * 20 / (infusionHours * 60)) : 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden mb-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "bg-slate-50/80 p-4 border-b border-slate-200/60", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-xs font-bold uppercase tracking-wider text-slate-500 block", children: isEn ? "Clinical Protocol / Scenario" : "K\u1ECBch b\u1EA3n L\xE2m s\xE0ng / Ph\xE1c \u0111\u1ED3" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center space-x-2 mt-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-lg font-black text-slate-900", children: drugDetails.name }),
-          drugDetails.forms && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "text-xs text-slate-500 font-medium", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden mb-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "bg-slate-50/80 p-4 border-b border-slate-200/60", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-xs font-bold uppercase tracking-wider text-slate-500 block", children: isEn ? "Clinical Protocol / Scenario" : "K\u1ECBch b\u1EA3n L\xE2m s\xE0ng / Ph\xE1c \u0111\u1ED3" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2 mt-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-lg font-black text-slate-900", children: drugDetails.name }),
+          drugDetails.forms && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-xs text-slate-500 font-medium", children: [
             "(",
             drugDetails.forms,
             ")"
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center space-x-2 flex-wrap gap-y-2", children: [
-        drugDetails.scenarios.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex flex-wrap gap-1.5 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs", children: drugDetails.scenarios.map((scn) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2 flex-wrap gap-y-2", children: [
+        drugDetails.scenarios.length > 1 && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex flex-wrap gap-1.5 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs", children: drugDetails.scenarios.map((scn) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
           "button",
           {
             onClick: () => onScenarioChange(scn.key),
@@ -50287,7 +50039,7 @@ var DosingRecommendationCard = ({
           },
           scn.key
         )) }),
-        onExportPdf && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+        onExportPdf && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
           "button",
           {
             type: "button",
@@ -50295,78 +50047,78 @@ var DosingRecommendationCard = ({
             className: "inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-2xs transition-colors shrink-0",
             title: isEn ? "Export PDF Consultation Report" : "Xu\u1EA5t phi\u1EBFu h\u1ED9i ch\u1EA9n PDF",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(FileDown, { className: "w-3.5 h-3.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: isEn ? "PDF Report" : "Xu\u1EA5t PDF H\u1ED9i Ch\u1EA9n" })
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(FileDown, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: isEn ? "PDF Report" : "Xu\u1EA5t PDF H\u1ED9i Ch\u1EA9n" })
             ]
           }
         )
       ] })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-4 sm:p-6", children: [
-      doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "mb-4 p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-950 flex items-start space-x-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "w-7 h-7 rounded-lg bg-amber-500 text-white flex items-center justify-center shrink-0 mt-0.5 font-black text-xs", children: "LD" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-amber-800 block", children: isEn ? "Initial Loading Dose (Dose N\u1EA1p ban \u0111\u1EA7u)" : "Li\u1EC1u n\u1EA1p ban \u0111\u1EA7u (Loading Dose)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "text-sm font-extrabold text-amber-950 mt-0.5", children: isEn ? doseResult.loadingDoseTextEn : doseResult.loadingDoseTextVi })
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-4 sm:p-6", children: [
+      doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "mb-4 p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-950 flex items-start space-x-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "w-7 h-7 rounded-lg bg-amber-500 text-white flex items-center justify-center shrink-0 mt-0.5 font-black text-xs", children: "LD" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-amber-800 block", children: isEn ? "Initial Loading Dose (Dose N\u1EA1p ban \u0111\u1EA7u)" : "Li\u1EC1u n\u1EA1p ban \u0111\u1EA7u (Loading Dose)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-sm font-extrabold text-amber-950 mt-0.5", children: isEn ? doseResult.loadingDoseTextEn : doseResult.loadingDoseTextVi })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "bg-slate-50/70 border border-slate-200 rounded-2xl p-4 sm:p-5 mb-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-200/80", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center space-x-2 flex-wrap gap-y-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-xs font-bold uppercase tracking-wider text-slate-700", children: isEn ? "Recommended Maintenance Dose" : "Li\u1EC1u Duy Tr\xEC Khuy\u1EBFn C\xE1o" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "px-2.5 py-0.5 text-xs font-bold rounded-md bg-blue-100 text-blue-800 border border-blue-200/60", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-slate-50/70 border border-slate-200 rounded-2xl p-4 sm:p-5 mb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-200/80", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2 flex-wrap gap-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-xs font-bold uppercase tracking-wider text-slate-700", children: isEn ? "Recommended Maintenance Dose" : "Li\u1EC1u Duy Tr\xEC Khuy\u1EBFn C\xE1o" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "px-2.5 py-0.5 text-xs font-bold rounded-md bg-blue-100 text-blue-800 border border-blue-200/60", children: [
               "CrCl ",
               doseResult.selectedRowLabel,
               " mL/ph\xFAt"
             ] }),
-            drugDetails.route && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-200/80 text-slate-800", children: [
+            drugDetails.route && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "px-2 py-0.5 text-xs font-semibold rounded-md bg-slate-200/80 text-slate-800", children: [
               "\u0110\u01B0\u1EDDng ",
               drugDetails.route
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex items-center space-x-2 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex items-center space-x-2 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
             "button",
             {
               onClick: handleCopy,
               className: `inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${copied ? "bg-emerald-600 text-white shadow-2xs" : "bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 shadow-2xs"}`,
               title: isEn ? "Copy simple prescription text" : "Sao ch\xE9p t\xF3m t\u1EAFt y l\u1EC7nh",
               children: [
-                copied ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Check, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Copy, { className: "w-3.5 h-3.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: copied ? isEn ? "Copied!" : "\u0110\xE3 sao ch\xE9p!" : isEn ? "Copy Order" : "Sao ch\xE9p y l\u1EC7nh" })
+                copied ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Check, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Copy, { className: "w-3.5 h-3.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: copied ? isEn ? "Copied!" : "\u0110\xE3 sao ch\xE9p!" : isEn ? "Copy Order" : "Sao ch\xE9p y l\u1EC7nh" })
               ]
             }
           ) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "py-3", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug", children: isEn ? doseResult.maintenanceDoseTextEn : doseResult.maintenanceDoseTextVi }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "pt-3 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-medium text-slate-700", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center space-x-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Clock, { className: "w-4 h-4 text-blue-600 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { className: "text-slate-900", children: isEn ? "Administration: " : "C\xE1ch d\xF9ng & T\u1ED1c \u0111\u1ED9: " }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "py-3", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug", children: isEn ? doseResult.maintenanceDoseTextEn : doseResult.maintenanceDoseTextVi }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "pt-3 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-medium text-slate-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Clock, { className: "w-4 h-4 text-blue-600 shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { className: "text-slate-900", children: isEn ? "Administration: " : "C\xE1ch d\xF9ng & T\u1ED1c \u0111\u1ED9: " }),
               isEn ? doseResult.infusionInstructionsEn : doseResult.infusionInstructionsVi
             ] })
           ] }),
-          drugDetails.route.includes("IV") && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          drugDetails.route.includes("IV") && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
             "button",
             {
               onClick: () => setShowInfusionCalc(!showInfusionCalc),
               className: "text-xs font-bold text-blue-700 hover:text-blue-900 flex items-center space-x-1 shrink-0 self-start sm:self-auto",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Gauge, { className: "w-3.5 h-3.5 text-blue-600" }),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: showInfusionCalc ? isEn ? "Hide pump calc" : "\u1EA8n t\xEDnh m\xE1y ti\xEAm \u0111i\u1EC7n" : isEn ? "Calc pump rate" : "T\xEDnh t\u1ED1c \u0111\u1ED9 m\xE1y ti\xEAm \u0111i\u1EC7n" })
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Gauge, { className: "w-3.5 h-3.5 text-blue-600" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: showInfusionCalc ? isEn ? "Hide pump calc" : "\u1EA8n t\xEDnh m\xE1y ti\xEAm \u0111i\u1EC7n" : isEn ? "Calc pump rate" : "T\xEDnh t\u1ED1c \u0111\u1ED9 m\xE1y ti\xEAm \u0111i\u1EC7n" })
               ]
             }
           )
         ] }),
-        showInfusionCalc && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "mt-3 p-3.5 bg-white/90 rounded-xl border border-blue-200 text-xs animate-in fade-in duration-150", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center space-x-2 text-blue-900 font-bold mb-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Gauge, { className: "w-4 h-4 text-blue-600" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: isEn ? "Infusion Pump & Drip Rate Calculator:" : "M\xE1y Ti\xEAm \u0110i\u1EC7n & T\u1ED1c \u0110\u1ED9 Truy\u1EC1n D\u1ECBch (Infusion Calculator):" })
+        showInfusionCalc && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "mt-3 p-3.5 bg-white/90 rounded-xl border border-blue-200 text-xs animate-in fade-in duration-150", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2 text-blue-900 font-bold mb-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Gauge, { className: "w-4 h-4 text-blue-600" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: isEn ? "Infusion Pump & Drip Rate Calculator:" : "M\xE1y Ti\xEAm \u0110i\u1EC7n & T\u1ED1c \u0110\u1ED9 Truy\u1EC1n D\u1ECBch (Infusion Calculator):" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "text-slate-600 font-semibold block mb-1", children: isEn ? "Dilution Volume (Dung m\xF4i NaCl / G5%):" : "Th\u1EC3 t\xEDch pha (NaCl 0.9% ho\u1EB7c G5%):" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex gap-1.5", children: [50, 100, 250, 500].map((v) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "text-slate-600 font-semibold block mb-1", children: isEn ? "Dilution Volume (Dung m\xF4i NaCl / G5%):" : "Th\u1EC3 t\xEDch pha (NaCl 0.9% ho\u1EB7c G5%):" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex gap-1.5", children: [50, 100, 250, 500].map((v) => /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
                 "button",
                 {
                   onClick: () => setDilutionVolume(v),
@@ -50379,9 +50131,9 @@ var DosingRecommendationCard = ({
                 v
               )) })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "text-slate-600 font-semibold block mb-1", children: isEn ? "Infusion Duration:" : "Th\u1EDDi gian truy\u1EC1n:" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex gap-1.5", children: [0.5, 1, 2, 3, 4].map((h) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "text-slate-600 font-semibold block mb-1", children: isEn ? "Infusion Duration:" : "Th\u1EDDi gian truy\u1EC1n:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex gap-1.5", children: [0.5, 1, 2, 3, 4].map((h) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
                 "button",
                 {
                   onClick: () => setInfusionHours(h),
@@ -50392,17 +50144,17 @@ var DosingRecommendationCard = ({
               )) })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2.5 bg-blue-50/80 rounded-lg flex flex-wrap items-center justify-between gap-3 text-xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center space-x-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-slate-600 font-medium", children: "T\u1ED1c \u0111\u1ED9 m\xE1y ti\xEAm \u0111i\u1EC7n:" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "text-base font-black text-blue-900 font-mono", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-2.5 bg-blue-50/80 rounded-lg flex flex-wrap items-center justify-between gap-3 text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-slate-600 font-medium", children: "T\u1ED1c \u0111\u1ED9 m\xE1y ti\xEAm \u0111i\u1EC7n:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-base font-black text-blue-900 font-mono", children: [
                 pumpRateMlh,
                 " mL/gi\u1EDD"
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center space-x-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-slate-600 font-medium", children: "T\u1ED1c \u0111\u1ED9 gi\u1ECDt (d\xE2y 20gtt/mL):" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "text-base font-black text-indigo-900 font-mono", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-slate-600 font-medium", children: "T\u1ED1c \u0111\u1ED9 gi\u1ECDt (d\xE2y 20gtt/mL):" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-base font-black text-indigo-900 font-mono", children: [
                 "~",
                 dropsPerMin,
                 " gi\u1ECDt/ph\xFAt"
@@ -50411,38 +50163,38 @@ var DosingRecommendationCard = ({
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3.5 bg-slate-50 rounded-xl border border-slate-200 mb-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(FileText, { className: "w-3.5 h-3.5 mr-1 text-slate-500" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3.5 bg-slate-50 rounded-xl border border-slate-200 mb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-[11px] font-bold uppercase tracking-wider text-slate-600 flex items-center", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(FileText, { className: "w-3.5 h-3.5 mr-1 text-slate-500" }),
             isEn ? "Clinical EMR / HIS Prescription Format:" : "M\u1EABu Y L\u1EC7nh B\u1EC7nh \xC1n / Ph\u1EA7n M\u1EC1m B\u1EC7nh Vi\u1EC7n (HIS/EMR):"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
             "button",
             {
               onClick: handleCopyHis,
               className: `text-xs font-bold px-2 py-0.5 rounded transition-all flex items-center space-x-1 ${copiedOrder ? "bg-emerald-600 text-white" : "text-blue-700 hover:text-blue-900 hover:bg-blue-50"}`,
               children: [
-                copiedOrder ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Check, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Copy, { className: "w-3.5 h-3.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: copiedOrder ? isEn ? "Copied" : "\u0110\xE3 sao ch\xE9p" : isEn ? "Copy HIS text" : "Sao ch\xE9p y l\u1EC7nh" })
+                copiedOrder ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Check, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Copy, { className: "w-3.5 h-3.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: copiedOrder ? isEn ? "Copied" : "\u0110\xE3 sao ch\xE9p" : isEn ? "Copy HIS text" : "Sao ch\xE9p y l\u1EC7nh" })
               ]
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "p-2 bg-white rounded-lg border border-slate-200/80 font-mono text-xs text-slate-800 select-all leading-relaxed", children: hisPrescriptionText })
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "p-2 bg-white rounded-lg border border-slate-200/80 font-mono text-xs text-slate-800 select-all leading-relaxed", children: hisPrescriptionText })
       ] }),
-      doseResult.selectedRowNoteVi && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-start space-x-2 mb-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Info, { className: "w-4 h-4 text-slate-400 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-slate-900", children: isEn ? "Clinical Protocol Note: " : "Ghi ch\xFA ph\xE1c \u0111\u1ED3: " }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: isEn ? doseResult.selectedRowNoteEn : doseResult.selectedRowNoteVi })
+      doseResult.selectedRowNoteVi && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-start space-x-2 mb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Info, { className: "w-4 h-4 text-slate-400 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-bold text-slate-900", children: isEn ? "Clinical Protocol Note: " : "Ghi ch\xFA ph\xE1c \u0111\u1ED3: " }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: isEn ? doseResult.selectedRowNoteEn : doseResult.selectedRowNoteVi })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-200/80 text-xs flex items-start space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ShieldCheck, { className: "w-4 h-4 text-emerald-600 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-emerald-950", children: isEn ? "Renal Adjustment Rationale:" : "C\u01A1 s\u1EDF hi\u1EC7u ch\u1EC9nh li\u1EC1u theo ch\u1EE9c n\u0103ng th\u1EADn:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "text-emerald-900 mt-0.5 leading-relaxed", children: isEn ? doseResult.renalAdjustmentAdviceEn : doseResult.renalAdjustmentAdviceVi })
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-200/80 text-xs flex items-start space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ShieldCheck, { className: "w-4 h-4 text-emerald-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-bold text-emerald-950", children: isEn ? "Renal Adjustment Rationale:" : "C\u01A1 s\u1EDF hi\u1EC7u ch\u1EC9nh li\u1EC1u theo ch\u1EE9c n\u0103ng th\u1EADn:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("p", { className: "text-emerald-900 mt-0.5 leading-relaxed", children: isEn ? doseResult.renalAdjustmentAdviceEn : doseResult.renalAdjustmentAdviceVi })
         ] })
       ] })
     ] })
@@ -50450,7 +50202,7 @@ var DosingRecommendationCard = ({
 };
 
 // antibiotic/src/components/RenalAdjustmentTable.tsx
-var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
 var RenalAdjustmentTable = ({
   drugDetails,
   renal,
@@ -50460,47 +50212,47 @@ var RenalAdjustmentTable = ({
   const isEn = language === "en";
   const { crcl } = renal;
   if (drugDetails.isColistin) {
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center space-x-2 mb-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Table, { className: "w-4 h-4 text-blue-600" }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Colistin Renal Dosing Stratification (Garonzik Algorithm)" : "B\u1EA3ng Hi\u1EC7u Ch\u1EC9nh Li\u1EC1u Colistin Theo CrCl (Thu\u1EADt to\xE1n Garonzik)" })
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center space-x-2 mb-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Table, { className: "w-4 h-4 text-blue-600" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Colistin Renal Dosing Stratification (Garonzik Algorithm)" : "B\u1EA3ng Hi\u1EC7u Ch\u1EC9nh Li\u1EC1u Colistin Theo CrCl (Thu\u1EADt to\xE1n Garonzik)" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-xs text-slate-500 mb-4", children: isEn ? "Colistimethate sodium dosing expressed as Colistin Base Activity (CBA). 1 MIU \u2248 33.3 mg CBA." : "\u0110\u01A1n v\u1ECB t\xEDnh: Ho\u1EA1t t\xEDnh Colistin Base (CBA). 1 tri\u1EC7u UI CMS \u2248 33,3 mg CBA. Li\u1EC1u n\u1EA1p 9 MIU (~300 mg CBA) truy\u1EC1n 1-2h." }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("table", { className: "w-full text-left text-xs border-collapse", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("tr", { className: "bg-slate-100/80 text-slate-700 font-bold border-b border-slate-200", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { className: "py-2.5 px-3", children: isEn ? "CrCl Range (mL/min)" : "Kho\u1EA3ng CrCl (mL/ph\xFAt)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { className: "py-2.5 px-3", children: isEn ? "Dose per 12 hours (q12h)" : "Li\u1EC1u m\u1ED7i 12 gi\u1EDD (q12h)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { className: "py-2.5 px-3", children: isEn ? "Equivalent in MIU" : "Quy \u0111\u1ED5i sang tri\u1EC7u UI (MIU)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { className: "py-2.5 px-3", children: isEn ? "Total Daily Dose" : "T\u1ED5ng li\u1EC1u ng\xE0y" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { className: "py-2.5 px-3 text-center", children: isEn ? "Match" : "Kh\u1EDBp" })
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "text-xs text-slate-500 mb-4", children: isEn ? "Colistimethate sodium dosing expressed as Colistin Base Activity (CBA). 1 MIU \u2248 33.3 mg CBA." : "\u0110\u01A1n v\u1ECB t\xEDnh: Ho\u1EA1t t\xEDnh Colistin Base (CBA). 1 tri\u1EC7u UI CMS \u2248 33,3 mg CBA. Li\u1EC1u n\u1EA1p 9 MIU (~300 mg CBA) truy\u1EC1n 1-2h." }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("table", { className: "w-full text-left text-xs border-collapse", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("tr", { className: "bg-slate-100/80 text-slate-700 font-bold border-b border-slate-200", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-3", children: isEn ? "CrCl Range (mL/min)" : "Kho\u1EA3ng CrCl (mL/ph\xFAt)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-3", children: isEn ? "Dose per 12 hours (q12h)" : "Li\u1EC1u m\u1ED7i 12 gi\u1EDD (q12h)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-3", children: isEn ? "Equivalent in MIU" : "Quy \u0111\u1ED5i sang tri\u1EC7u UI (MIU)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-3", children: isEn ? "Total Daily Dose" : "T\u1ED5ng li\u1EC1u ng\xE0y" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-3 text-center", children: isEn ? "Match" : "Kh\u1EDBp" })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("tbody", { className: "divide-y divide-slate-100", children: drugDetails.rows.map((row, idx) => {
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("tbody", { className: "divide-y divide-slate-100", children: drugDetails.rows.map((row, idx) => {
           const isMatched = crcl >= row.lo && (row.hi === null || crcl < row.hi);
           const miu = (row.perDose / 33.3).toFixed(1).replace(".", ",");
           const dailyMiu = (row.perDay / 33.3).toFixed(1).replace(".", ",");
           const rangeLabel = row.hi === null ? `\u2265 ${row.lo}` : row.lo === 0 ? `< ${row.hi}` : `${row.lo} - ${row.hi}`;
-          return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+          return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
             "tr",
             {
               className: `transition-colors ${isMatched ? "bg-blue-100/70 font-bold text-blue-950 ring-1 ring-blue-400" : "hover:bg-slate-50 text-slate-700"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("td", { className: "py-2 px-3 font-semibold", children: rangeLabel }),
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("td", { className: "py-2 px-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "py-2 px-3 font-semibold", children: rangeLabel }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: "py-2 px-3", children: [
                   row.perDose,
                   " mg CBA q12h"
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("td", { className: "py-2 px-3 text-blue-800 font-medium", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: "py-2 px-3 text-blue-800 font-medium", children: [
                   "~",
                   miu,
                   " MIU q12h"
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("td", { className: "py-2 px-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: "py-2 px-3", children: [
                   row.perDay,
                   " mg CBA (~",
                   dailyMiu,
                   " MIU)/ng\xE0y"
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("td", { className: "py-2 px-3 text-center", children: isMatched && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black bg-blue-600 text-white", children: isEn ? "Current CrCl" : "\u0110ang ch\u1ECDn" }) })
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "py-2 px-3 text-center", children: isMatched && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black bg-blue-600 text-white", children: isEn ? "Current CrCl" : "\u0110ang ch\u1ECDn" }) })
               ]
             },
             idx
@@ -50510,18 +50262,18 @@ var RenalAdjustmentTable = ({
     ] });
   }
   const scenarios = drugDetails.scenarios;
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center justify-between mb-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center space-x-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Table, { className: "w-4 h-4 text-blue-600" }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Complete Renal Dosing Adjustment Protocol" : "B\u1EA3ng Hi\u1EC7u Ch\u1EC9nh Li\u1EC1u \u0110\u1EA7y \u0110\u1EE7 Theo Ch\u1EE9c N\u0103ng Th\u1EADn" })
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center justify-between mb-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center space-x-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Table, { className: "w-4 h-4 text-blue-600" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Complete Renal Dosing Adjustment Protocol" : "B\u1EA3ng Hi\u1EC7u Ch\u1EC9nh Li\u1EC1u \u0110\u1EA7y \u0110\u1EE7 Theo Ch\u1EE9c N\u0103ng Th\u1EADn" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "text-xs text-slate-500 font-medium hidden sm:inline", children: isEn ? `Current CrCl: ${crcl} mL/min` : `CrCl hi\u1EC7n t\u1EA1i: ${crcl} mL/ph\xFAt` })
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-xs text-slate-500 font-medium hidden sm:inline", children: isEn ? `Current CrCl: ${crcl} mL/min` : `CrCl hi\u1EC7n t\u1EA1i: ${crcl} mL/ph\xFAt` })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("table", { className: "w-full text-left text-xs border-collapse", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("tr", { className: "bg-slate-100/80 text-slate-700 font-bold border-b border-slate-200", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { className: "py-2.5 px-3 min-w-[130px]", children: isEn ? "CrCl Threshold" : "Ng\u01B0\u1EE1ng CrCl" }),
-        scenarios.map((s) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("table", { className: "w-full text-left text-xs border-collapse", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("tr", { className: "bg-slate-100/80 text-slate-700 font-bold border-b border-slate-200", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-3 min-w-[130px]", children: isEn ? "CrCl Threshold" : "Ng\u01B0\u1EE1ng CrCl" }),
+        scenarios.map((s) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
           "th",
           {
             className: `py-2.5 px-3 min-w-[180px] ${selectedScenario === s.key ? "text-blue-700 bg-blue-50/50" : ""}`,
@@ -50529,9 +50281,9 @@ var RenalAdjustmentTable = ({
           },
           s.key
         )),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("th", { className: "py-2.5 px-3 min-w-[150px]", children: isEn ? "Clinical Notes" : "L\u01B0u \xFD l\xE2m s\xE0ng" })
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-3 min-w-[150px]", children: isEn ? "Clinical Notes" : "L\u01B0u \xFD l\xE2m s\xE0ng" })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("tbody", { className: "divide-y divide-slate-100", children: drugDetails.rows.map((row, idx) => {
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("tbody", { className: "divide-y divide-slate-100", children: drugDetails.rows.map((row, idx) => {
         const isMatched = row.op === "gt" ? crcl > row.thr : crcl >= row.thr;
         let isExactMatch = isMatched;
         if (idx > 0) {
@@ -50539,21 +50291,21 @@ var RenalAdjustmentTable = ({
           const prevMatched = prev.op === "gt" ? crcl > prev.thr : crcl >= prev.thr;
           if (prevMatched) isExactMatch = false;
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
           "tr",
           {
             className: `transition-colors ${isExactMatch ? "bg-blue-100/70 font-bold text-blue-950 ring-1 ring-blue-400" : "hover:bg-slate-50 text-slate-700"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("td", { className: "py-2.5 px-3 font-bold whitespace-nowrap flex items-center space-x-1.5", children: [
-                isExactMatch && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ChevronRight, { className: "w-3.5 h-3.5 text-blue-600 shrink-0" }),
-                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: row.label })
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: "py-2.5 px-3 font-bold whitespace-nowrap flex items-center space-x-1.5", children: [
+                isExactMatch && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ChevronRight, { className: "w-3.5 h-3.5 text-blue-600 shrink-0" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: row.label })
               ] }),
               scenarios.map((s) => {
                 let doseVal = row.doses ? row.doses[s.key] : "-";
                 if (Array.isArray(doseVal)) {
                   doseVal = doseVal.map((d) => typeof d === "string" ? d : `${d.dose} (${d.label})`).join(" HO\u1EB6C ");
                 }
-                return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+                return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                   "td",
                   {
                     className: `py-2.5 px-3 ${selectedScenario === s.key ? "font-black text-blue-900" : ""}`,
@@ -50562,7 +50314,7 @@ var RenalAdjustmentTable = ({
                   s.key
                 );
               }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("td", { className: "py-2.5 px-3 text-slate-500 font-normal", children: isEn ? row.noteEn || row.note || "-" : row.note || "-" })
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "py-2.5 px-3 text-slate-500 font-normal", children: isEn ? row.noteEn || row.note || "-" : row.note || "-" })
             ]
           },
           idx
@@ -50573,8 +50325,8 @@ var RenalAdjustmentTable = ({
 };
 
 // antibiotic/src/components/DialysisPanel.tsx
-var import_react7 = __toESM(require_react(), 1);
-var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
+var import_react6 = __toESM(require_react(), 1);
+var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
 function parseRrtData(html, currentDialysis) {
   if (!html) return { modes: [], source: "" };
   try {
@@ -50608,7 +50360,7 @@ var DialysisPanel = ({
   language
 }) => {
   const isEn = language === "en";
-  const colistinModes = (0, import_react7.useMemo)(() => [
+  const colistinModes = (0, import_react6.useMemo)(() => [
     {
       title: isEn ? "IHD - Intermittent Hemodialysis" : "IHD - Th\u1EADn nh\xE2n t\u1EA1o ng\u1EAFt qu\xE3ng chu k\u1EF3",
       isMatched: dialysis === "hd",
@@ -50640,86 +50392,86 @@ var DialysisPanel = ({
       note: isEn ? "High membrane clearance in CRRT requires near-normal dosing to prevent failure and emergent resistance." : "M\xE0ng l\u1ECDc CRRT \u0111\xE0o th\u1EA3i colistin li\xEAn t\u1EE5c v\u1EDBi \u0111\u1ED9 thanh th\u1EA3i cao. C\u1EA7n duy tr\xEC li\u1EC1u cao nh\u01B0 tr\xEAn \u0111\u1EC3 tr\xE1nh th\u1EA5t b\u1EA1i \u0111i\u1EC1u tr\u1ECB."
     }
   ], [dialysis, isEn]);
-  const parsedRrt = (0, import_react7.useMemo)(() => {
+  const parsedRrt = (0, import_react6.useMemo)(() => {
     if (drugDetails.isColistin) {
       return { modes: colistinModes, source: "International Consensus Guidelines for the Optimal Use of the Polymyxins (2019)" };
     }
     return parseRrtData(drugDetails.rrtHtml, dialysis);
   }, [drugDetails, dialysis, colistinModes]);
   const hasData = parsedRrt.modes.length > 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-4 pb-3 border-b border-slate-100", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Droplets, { className: "w-4 h-4" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Renal Replacement Therapy (RRT / Dialysis) Protocol" : "Li\u1EC1u Kh\xE1ng Sinh Trong L\u1ECDc M\xE1u (HD / CRRT / CAPD)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-[11px] text-slate-500", children: isEn ? "Clinical dosing guide for intermittent and continuous renal replacement modalities" : "H\u01B0\u1EDBng d\u1EABn hi\u1EC7u ch\u1EC9nh li\u1EC1u cho b\u1EC7nh nh\xE2n th\u1EADn nh\xE2n t\u1EA1o chu k\u1EF3 v\xE0 l\u1ECDc m\xE1u li\xEAn t\u1EE5c" })
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-4 pb-3 border-b border-slate-100", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Droplets, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Renal Replacement Therapy (RRT / Dialysis) Protocol" : "Li\u1EC1u Kh\xE1ng Sinh Trong L\u1ECDc M\xE1u (HD / CRRT / CAPD)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-[11px] text-slate-500", children: isEn ? "Clinical dosing guide for intermittent and continuous renal replacement modalities" : "H\u01B0\u1EDBng d\u1EABn hi\u1EC7u ch\u1EC9nh li\u1EC1u cho b\u1EC7nh nh\xE2n th\u1EADn nh\xE2n t\u1EA1o chu k\u1EF3 v\xE0 l\u1ECDc m\xE1u li\xEAn t\u1EE5c" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "flex items-center space-x-2", children: dialysis !== "none" ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-purple-100 text-purple-900 border border-purple-200 shadow-2xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-600 animate-pulse" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: isEn ? `Patient on ${dialysis.toUpperCase()}` : `B\u1EC7nh nh\xE2n \u0111ang ${dialysis === "hd" ? "l\u1ECDc m\xE1u HD" : dialysis === "crrt" ? "CRRT" : "CAPD"}` })
-      ] }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Info, { className: "w-3.5 h-3.5 text-slate-400" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: isEn ? "Patient: No Dialysis" : "B\u1EC7nh nh\xE2n: Kh\xF4ng l\u1ECDc m\xE1u" })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "flex items-center space-x-2", children: dialysis !== "none" ? /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-purple-100 text-purple-900 border border-purple-200 shadow-2xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-600 animate-pulse" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: isEn ? `Patient on ${dialysis.toUpperCase()}` : `B\u1EC7nh nh\xE2n \u0111ang ${dialysis === "hd" ? "l\u1ECDc m\xE1u HD" : dialysis === "crrt" ? "CRRT" : "CAPD"}` })
+      ] }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Info, { className: "w-3.5 h-3.5 text-slate-400" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: isEn ? "Patient: No Dialysis" : "B\u1EC7nh nh\xE2n: Kh\xF4ng l\u1ECDc m\xE1u" })
       ] }) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: `p-3.5 sm:p-4 rounded-xl border mb-5 transition-all text-xs leading-relaxed ${dialysis !== "none" ? "bg-purple-50/80 border-purple-200/90 text-purple-950" : "bg-slate-50/90 border-slate-200 text-slate-700"}`, children: [
-      dialysis === "hd" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CircleCheck, { className: "w-4 h-4 text-purple-600 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "font-bold text-purple-900 block text-[13px] mb-0.5", children: isEn ? "Active Clinical Target: Intermittent Hemodialysis (HD)" : "Ch\u1EBF \u0111\u1ED9 l\u1ECDc m\xE1u c\u1EE7a b\u1EC7nh nh\xE2n: Th\u1EADn nh\xE2n t\u1EA1o chu k\u1EF3 (IHD / HD)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-purple-900/90", children: isEn ? "The patient is undergoing HD. Check the highlighted IHD protocol below. Most dialyzable antibiotics must be administered AFTER hemodialysis to prevent drug clearance." : "B\u1EC7nh nh\xE2n \u0111ang ch\u1EA1y th\u1EADn nh\xE2n t\u1EA1o chu k\u1EF3. Kh\u1ED1i ph\xE1c \u0111\u1ED3 IHD b\xEAn d\u01B0\u1EDBi \u0111\xE3 \u0111\u01B0\u1EE3c l\xE0m n\u1ED5i b\u1EADt \u0111\u1EC3 \xE1p d\u1EE5ng. L\u01B0u \xFD d\xF9ng thu\u1ED1c SAU bu\u1ED5i l\u1ECDc m\xE1u v\xE0o nh\u1EEFng ng\xE0y c\xF3 l\u1ECDc \u0111\u1EC3 tr\xE1nh th\u1EA5t tho\xE1t thu\u1ED1c qua qu\u1EA3 l\u1ECDc." })
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: `p-3.5 sm:p-4 rounded-xl border mb-5 transition-all text-xs leading-relaxed ${dialysis !== "none" ? "bg-purple-50/80 border-purple-200/90 text-purple-950" : "bg-slate-50/90 border-slate-200 text-slate-700"}`, children: [
+      dialysis === "hd" && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(CircleCheck, { className: "w-4 h-4 text-purple-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "font-bold text-purple-900 block text-[13px] mb-0.5", children: isEn ? "Active Clinical Target: Intermittent Hemodialysis (HD)" : "Ch\u1EBF \u0111\u1ED9 l\u1ECDc m\xE1u c\u1EE7a b\u1EC7nh nh\xE2n: Th\u1EADn nh\xE2n t\u1EA1o chu k\u1EF3 (IHD / HD)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-purple-900/90", children: isEn ? "The patient is undergoing HD. Check the highlighted IHD protocol below. Most dialyzable antibiotics must be administered AFTER hemodialysis to prevent drug clearance." : "B\u1EC7nh nh\xE2n \u0111ang ch\u1EA1y th\u1EADn nh\xE2n t\u1EA1o chu k\u1EF3. Kh\u1ED1i ph\xE1c \u0111\u1ED3 IHD b\xEAn d\u01B0\u1EDBi \u0111\xE3 \u0111\u01B0\u1EE3c l\xE0m n\u1ED5i b\u1EADt \u0111\u1EC3 \xE1p d\u1EE5ng. L\u01B0u \xFD d\xF9ng thu\u1ED1c SAU bu\u1ED5i l\u1ECDc m\xE1u v\xE0o nh\u1EEFng ng\xE0y c\xF3 l\u1ECDc \u0111\u1EC3 tr\xE1nh th\u1EA5t tho\xE1t thu\u1ED1c qua qu\u1EA3 l\u1ECDc." })
         ] })
       ] }),
-      dialysis === "crrt" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CircleCheck, { className: "w-4 h-4 text-purple-600 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "font-bold text-purple-900 block text-[13px] mb-0.5", children: isEn ? "Active Clinical Target: Continuous Renal Replacement Therapy (CRRT)" : "Ch\u1EBF \u0111\u1ED9 l\u1ECDc m\xE1u c\u1EE7a b\u1EC7nh nh\xE2n: L\u1ECDc m\xE1u li\xEAn t\u1EE5c (CRRT)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-purple-900/90", children: isEn ? "The patient is receiving CRRT (CVVH/CVVHD/CVVHDF). Clearance by modern continuous filters is high. Refer to the highlighted CRRT protocol below." : "B\u1EC7nh nh\xE2n \u0111ang l\u1ECDc m\xE1u li\xEAn t\u1EE5c (CVVH/CVVHD/CVVHDF). Qu\u1EA3 l\u1ECDc CRRT thanh th\u1EA3i thu\u1ED1c 24/24 n\xEAn li\u1EC1u duy tr\xEC th\u01B0\u1EDDng cao h\u01A1n so v\u1EDBi th\u1EADn nh\xE2n t\u1EA1o chu k\u1EF3 \u0111\u1EC3 \u0111\u1EA1t n\u1ED3ng \u0111\u1ED9 \u0111i\u1EC1u tr\u1ECB." })
+      dialysis === "crrt" && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(CircleCheck, { className: "w-4 h-4 text-purple-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "font-bold text-purple-900 block text-[13px] mb-0.5", children: isEn ? "Active Clinical Target: Continuous Renal Replacement Therapy (CRRT)" : "Ch\u1EBF \u0111\u1ED9 l\u1ECDc m\xE1u c\u1EE7a b\u1EC7nh nh\xE2n: L\u1ECDc m\xE1u li\xEAn t\u1EE5c (CRRT)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-purple-900/90", children: isEn ? "The patient is receiving CRRT (CVVH/CVVHD/CVVHDF). Clearance by modern continuous filters is high. Refer to the highlighted CRRT protocol below." : "B\u1EC7nh nh\xE2n \u0111ang l\u1ECDc m\xE1u li\xEAn t\u1EE5c (CVVH/CVVHD/CVVHDF). Qu\u1EA3 l\u1ECDc CRRT thanh th\u1EA3i thu\u1ED1c 24/24 n\xEAn li\u1EC1u duy tr\xEC th\u01B0\u1EDDng cao h\u01A1n so v\u1EDBi th\u1EADn nh\xE2n t\u1EA1o chu k\u1EF3 \u0111\u1EC3 \u0111\u1EA1t n\u1ED3ng \u0111\u1ED9 \u0111i\u1EC1u tr\u1ECB." })
         ] })
       ] }),
-      dialysis === "capd" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CircleCheck, { className: "w-4 h-4 text-purple-600 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "font-bold text-purple-900 block text-[13px] mb-0.5", children: isEn ? "Active Clinical Target: Peritoneal Dialysis (CAPD)" : "Ch\u1EBF \u0111\u1ED9 l\u1ECDc m\xE1u c\u1EE7a b\u1EC7nh nh\xE2n: L\u1ECDc m\xE0ng b\u1EE5ng (CAPD / APD)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-purple-900/90", children: isEn ? "The patient is on peritoneal dialysis. Most beta-lactams and carbapenems require once-daily dosing or intraperitoneal administration for peritonitis." : "B\u1EC7nh nh\xE2n \u0111ang l\u1ECDc m\xE0ng b\u1EE5ng. H\u1EA7u h\u1EBFt kh\xE1ng sinh \u0111\xE0o th\u1EA3i qua th\u1EA9m t\xE1ch ph\xFAc m\u1EA1c \u1EDF m\u1EE9c th\u1EA5p h\u01A1n l\u1ECDc m\xE1u t\u0129nh m\u1EA1ch, th\u01B0\u1EDDng d\xF9ng li\u1EC1u ng\u1EAFt qu\xE3ng q24h ho\u1EB7c pha v\xE0o d\u1ECBch l\u1ECDc n\u1EBFu vi\xEAm ph\xFAc m\u1EA1c." })
+      dialysis === "capd" && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(CircleCheck, { className: "w-4 h-4 text-purple-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "font-bold text-purple-900 block text-[13px] mb-0.5", children: isEn ? "Active Clinical Target: Peritoneal Dialysis (CAPD)" : "Ch\u1EBF \u0111\u1ED9 l\u1ECDc m\xE1u c\u1EE7a b\u1EC7nh nh\xE2n: L\u1ECDc m\xE0ng b\u1EE5ng (CAPD / APD)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-purple-900/90", children: isEn ? "The patient is on peritoneal dialysis. Most beta-lactams and carbapenems require once-daily dosing or intraperitoneal administration for peritonitis." : "B\u1EC7nh nh\xE2n \u0111ang l\u1ECDc m\xE0ng b\u1EE5ng. H\u1EA7u h\u1EBFt kh\xE1ng sinh \u0111\xE0o th\u1EA3i qua th\u1EA9m t\xE1ch ph\xFAc m\u1EA1c \u1EDF m\u1EE9c th\u1EA5p h\u01A1n l\u1ECDc m\xE1u t\u0129nh m\u1EA1ch, th\u01B0\u1EDDng d\xF9ng li\u1EC1u ng\u1EAFt qu\xE3ng q24h ho\u1EB7c pha v\xE0o d\u1ECBch l\u1ECDc n\u1EBFu vi\xEAm ph\xFAc m\u1EA1c." })
         ] })
       ] }),
-      dialysis === "none" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Info, { className: "w-4 h-4 text-blue-600 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "font-bold text-slate-900 block text-[13px] mb-0.5", children: isEn ? "Patient Status: Not on Renal Replacement Therapy" : "Tr\u1EA1ng th\xE1i b\u1EC7nh nh\xE2n: Hi\u1EC7n kh\xF4ng ch\u1EC9 \u0111\u1ECBnh l\u1ECDc m\xE1u" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-slate-600", children: isEn ? "The patient is currently not on dialysis. The active dosing regimen is calibrated according to calculated Cockcroft-Gault CrCl above. Below are standardized reference protocols if acute dialysis is initiated." : "B\u1EC7nh nh\xE2n hi\u1EC7n kh\xF4ng ch\u1EA1y th\u1EADn nh\xE2n t\u1EA1o hay l\u1ECDc m\xE1u li\xEAn t\u1EE5c. Ph\xE1c \u0111\u1ED3 \u0111ang \xE1p d\u1EE5ng cho ng\u01B0\u1EDDi b\u1EC7nh \u0111\u01B0\u1EE3c hi\u1EC7u ch\u1EC9nh theo \u0111\u1ED9 thanh th\u1EA3i CrCl \u1EDF b\u1EA3ng tr\xEAn. C\xE1c ph\xE1c \u0111\u1ED3 d\u01B0\u1EDBi \u0111\xE2y d\xF9ng \u0111\u1EC3 tham kh\u1EA3o s\u1EB5n s\xE0ng khi c\xF3 ch\u1EC9 \u0111\u1ECBnh l\u1ECDc m\xE1u c\u1EA5p t\xEDnh." })
+      dialysis === "none" && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Info, { className: "w-4 h-4 text-blue-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "font-bold text-slate-900 block text-[13px] mb-0.5", children: isEn ? "Patient Status: Not on Renal Replacement Therapy" : "Tr\u1EA1ng th\xE1i b\u1EC7nh nh\xE2n: Hi\u1EC7n kh\xF4ng ch\u1EC9 \u0111\u1ECBnh l\u1ECDc m\xE1u" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-slate-600", children: isEn ? "The patient is currently not on dialysis. The active dosing regimen is calibrated according to calculated Cockcroft-Gault CrCl above. Below are standardized reference protocols if acute dialysis is initiated." : "B\u1EC7nh nh\xE2n hi\u1EC7n kh\xF4ng ch\u1EA1y th\u1EADn nh\xE2n t\u1EA1o hay l\u1ECDc m\xE1u li\xEAn t\u1EE5c. Ph\xE1c \u0111\u1ED3 \u0111ang \xE1p d\u1EE5ng cho ng\u01B0\u1EDDi b\u1EC7nh \u0111\u01B0\u1EE3c hi\u1EC7u ch\u1EC9nh theo \u0111\u1ED9 thanh th\u1EA3i CrCl \u1EDF b\u1EA3ng tr\xEAn. C\xE1c ph\xE1c \u0111\u1ED3 d\u01B0\u1EDBi \u0111\xE2y d\xF9ng \u0111\u1EC3 tham kh\u1EA3o s\u1EB5n s\xE0ng khi c\xF3 ch\u1EC9 \u0111\u1ECBnh l\u1ECDc m\xE1u c\u1EA5p t\xEDnh." })
         ] })
       ] })
     ] }),
-    hasData ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: parsedRrt.modes.map((mode, index) => {
+    hasData ? /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: parsedRrt.modes.map((mode, index) => {
         const isHighlighted = mode.isMatched;
-        return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
           "div",
           {
             className: `rounded-xl p-4 transition-all duration-200 border flex flex-col justify-between ${isHighlighted ? "bg-purple-50/50 border-purple-400 shadow-sm ring-2 ring-purple-400/20" : "bg-slate-50/60 border-slate-200/90 hover:bg-slate-50"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center justify-between gap-2 pb-2.5 border-b border-slate-200/80 mb-3", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center space-x-2 min-w-0", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: `w-2.5 h-2.5 rounded-full ${isHighlighted ? "bg-purple-600" : "bg-slate-400"}` }),
-                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: `text-xs sm:text-sm font-extrabold truncate ${isHighlighted ? "text-purple-950" : "text-slate-900"}`, children: mode.title })
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center justify-between gap-2 pb-2.5 border-b border-slate-200/80 mb-3", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center space-x-2 min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: `w-2.5 h-2.5 rounded-full ${isHighlighted ? "bg-purple-600" : "bg-slate-400"}` }),
+                    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h4", { className: `text-xs sm:text-sm font-extrabold truncate ${isHighlighted ? "text-purple-950" : "text-slate-900"}`, children: mode.title })
                   ] }),
-                  isHighlighted ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-black uppercase bg-purple-600 text-white shrink-0 tracking-wide shadow-2xs", children: isEn ? "Active Mode" : "\u0110ang \xC1p D\u1EE5ng" }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-200 text-slate-600 shrink-0", children: isEn ? "Reference" : "Tham kh\u1EA3o" })
+                  isHighlighted ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-black uppercase bg-purple-600 text-white shrink-0 tracking-wide shadow-2xs", children: isEn ? "Active Mode" : "\u0110ang \xC1p D\u1EE5ng" }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-200 text-slate-600 shrink-0", children: isEn ? "Reference" : "Tham kh\u1EA3o" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "space-y-2 text-xs", children: mode.lines.map((line, lIdx) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "space-y-2 text-xs", children: mode.lines.map((line, lIdx) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
                   "div",
                   {
                     className: "bg-white p-2.5 rounded-lg border border-slate-200/60 flex flex-col sm:flex-row sm:items-start justify-between gap-1.5",
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "font-bold text-slate-600 shrink-0 sm:w-28 text-[11px] uppercase tracking-wider", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "font-bold text-slate-600 shrink-0 sm:w-28 text-[11px] uppercase tracking-wider", children: [
                         line.label,
                         ":"
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
                         "div",
                         {
                           className: "font-medium text-slate-900 flex-1 leading-snug",
@@ -50731,23 +50483,23 @@ var DialysisPanel = ({
                   lIdx
                 )) })
               ] }),
-              mode.note && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/70 text-[11px] text-slate-600 flex items-start space-x-1.5 italic", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Clock, { className: "w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: mode.note })
+              mode.note && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/70 text-[11px] text-slate-600 flex items-start space-x-1.5 italic", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Clock, { className: "w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: mode.note })
               ] })
             ]
           },
           index
         );
       }) }),
-      parsedRrt.source && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "pt-2 text-[11px] text-slate-500 text-right italic", children: parsedRrt.source })
+      parsedRrt.source && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pt-2 text-[11px] text-slate-500 text-right italic", children: parsedRrt.source })
     ] }) : (
       /* Fallback when drug has no specific RRT adjustment requirement */
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-600 flex items-start space-x-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "space-y-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "font-bold text-slate-900 block", children: isEn ? "No Specific Dialysis Adjustment Required" : "Kh\xF4ng Y\xEAu C\u1EA7u Hi\u1EC7u Ch\u1EC9nh Li\u1EC1u Ri\xEAng Trong L\u1ECDc M\xE1u" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "leading-relaxed", children: isEn ? `${drugDetails.name} is primarily eliminated through non-renal pathways (hepatic, biliary) or exhibits negligible clearance across hemodialysis membranes. Standard adult or renal-impairment dosage is generally retained without supplemental post-dialysis dosing.` : `Kh\xE1ng sinh ${drugDetails.name} \u0111\xE0o th\u1EA3i ch\u1EE7 y\u1EBFu qua gan, \u0111\u01B0\u1EDDng m\u1EADt ho\u1EB7c con \u0111\u01B0\u1EDDng ngo\xE0i th\u1EADn, \xEDt ch\u1ECBu \u1EA3nh h\u01B0\u1EDFng b\u1EDFi m\xE0ng l\u1ECDc th\u1EADn nh\xE2n t\u1EA1o. Kh\xF4ng c\u1EA7n b\u1ED5 sung li\u1EC1u sau l\u1ECDc m\xE1u hay thay \u0111\u1ED5i li\u1EC1u \u0111\u1EB7c th\xF9 trong HD/CRRT so v\u1EDBi li\u1EC1u theo ch\u1EE9c n\u0103ng th\u1EADn \u0111\xE3 khuy\u1EBFn c\xE1o.` })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-600 flex items-start space-x-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "space-y-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "font-bold text-slate-900 block", children: isEn ? "No Specific Dialysis Adjustment Required" : "Kh\xF4ng Y\xEAu C\u1EA7u Hi\u1EC7u Ch\u1EC9nh Li\u1EC1u Ri\xEAng Trong L\u1ECDc M\xE1u" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "leading-relaxed", children: isEn ? `${drugDetails.name} is primarily eliminated through non-renal pathways (hepatic, biliary) or exhibits negligible clearance across hemodialysis membranes. Standard adult or renal-impairment dosage is generally retained without supplemental post-dialysis dosing.` : `Kh\xE1ng sinh ${drugDetails.name} \u0111\xE0o th\u1EA3i ch\u1EE7 y\u1EBFu qua gan, \u0111\u01B0\u1EDDng m\u1EADt ho\u1EB7c con \u0111\u01B0\u1EDDng ngo\xE0i th\u1EADn, \xEDt ch\u1ECBu \u1EA3nh h\u01B0\u1EDFng b\u1EDFi m\xE0ng l\u1ECDc th\u1EADn nh\xE2n t\u1EA1o. Kh\xF4ng c\u1EA7n b\u1ED5 sung li\u1EC1u sau l\u1ECDc m\xE1u hay thay \u0111\u1ED5i li\u1EC1u \u0111\u1EB7c th\xF9 trong HD/CRRT so v\u1EDBi li\u1EC1u theo ch\u1EE9c n\u0103ng th\u1EADn \u0111\xE3 khuy\u1EBFn c\xE1o.` })
         ] })
       ] })
     )
@@ -50755,7 +50507,7 @@ var DialysisPanel = ({
 };
 
 // antibiotic/src/components/DrugInteractionChecker.tsx
-var import_react8 = __toESM(require_react(), 1);
+var import_react7 = __toESM(require_react(), 1);
 
 // antibiotic/src/data/drugInteractions.ts
 var DRUG_INTERACTIONS = [
@@ -51017,20 +50769,20 @@ var DRUG_INTERACTIONS = [
 ];
 
 // antibiotic/src/components/DrugInteractionChecker.tsx
-var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
 var DrugInteractionChecker = ({
   antibioticId,
   antibioticName,
   language
 }) => {
-  const [selectedConcurrentDrugs, setSelectedConcurrentDrugs] = (0, import_react8.useState)([]);
-  const [customSearch, setCustomSearch] = (0, import_react8.useState)("");
-  const [expandedId, setExpandedId] = (0, import_react8.useState)(null);
+  const [selectedConcurrentDrugs, setSelectedConcurrentDrugs] = (0, import_react7.useState)([]);
+  const [customSearch, setCustomSearch] = (0, import_react7.useState)("");
+  const [expandedId, setExpandedId] = (0, import_react7.useState)(null);
   const isEn = language === "en";
-  const drugInteractions = (0, import_react8.useMemo)(() => {
+  const drugInteractions = (0, import_react7.useMemo)(() => {
     return DRUG_INTERACTIONS.filter((di) => di.antibioticIds.includes(antibioticId));
   }, [antibioticId]);
-  const commonMedsList = (0, import_react8.useMemo)(() => {
+  const commonMedsList = (0, import_react7.useMemo)(() => {
     return [
       { id: "valproate", vi: "Acid Valproic / Depakine", en: "Valproic Acid / Depakine" },
       { id: "vancomycin", vi: "Vancomycin (ti\xEAm truy\u1EC1n)", en: "Vancomycin (IV)" },
@@ -51057,7 +50809,7 @@ var DrugInteractionChecker = ({
   const toggleExpand = (id) => {
     setExpandedId(expandedId === id ? null : id);
   };
-  const activeDetectedAlerts = (0, import_react8.useMemo)(() => {
+  const activeDetectedAlerts = (0, import_react7.useMemo)(() => {
     return drugInteractions.filter((di) => {
       return selectedConcurrentDrugs.some((drugKey) => {
         if (drugKey === "valproate" && di.id.includes("valproate")) return true;
@@ -51076,25 +50828,25 @@ var DrugInteractionChecker = ({
       });
     });
   }, [drugInteractions, selectedConcurrentDrugs]);
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-2 mb-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center space-x-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ShieldAlert, { className: "w-4 h-4" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Automatic Drug-Drug Interaction (DDI) Warning" : "C\u1EA3nh B\xE1o T\u01B0\u01A1ng T\xE1c Thu\u1ED1c T\u1EF1 \u0110\u1ED9ng (DDI)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-xs text-slate-500", children: isEn ? `Clinical interaction analysis for ${antibioticName}` : `Ph\xE2n t\xEDch t\u01B0\u01A1ng t\xE1c thu\u1ED1c l\xE2m s\xE0ng cho ${antibioticName}` })
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-2 mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center space-x-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ShieldAlert, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Automatic Drug-Drug Interaction (DDI) Warning" : "C\u1EA3nh B\xE1o T\u01B0\u01A1ng T\xE1c Thu\u1ED1c T\u1EF1 \u0110\u1ED9ng (DDI)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-xs text-slate-500", children: isEn ? `Clinical interaction analysis for ${antibioticName}` : `Ph\xE2n t\xEDch t\u01B0\u01A1ng t\xE1c thu\u1ED1c l\xE2m s\xE0ng cho ${antibioticName}` })
         ] })
       ] }),
-      drugInteractions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { className: "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 self-start sm:self-auto", children: [
+      drugInteractions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 self-start sm:self-auto", children: [
         drugInteractions.length,
         " ",
         isEn ? "known significant interactions" : "t\u01B0\u01A1ng t\xE1c \u0111\xE1ng ch\xFA \xFD"
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "mb-4 bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/60", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-xs font-bold text-slate-700 mb-2 flex items-center justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: isEn ? "Test Patient's Concurrent Medications:" : "Ki\u1EC3m tra thu\u1ED1c d\xF9ng k\xE8m c\u1EE7a b\u1EC7nh nh\xE2n:" }),
-        selectedConcurrentDrugs.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mb-4 bg-slate-50/70 p-3.5 rounded-xl border border-slate-200/60", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "text-xs font-bold text-slate-700 mb-2 flex items-center justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: isEn ? "Test Patient's Concurrent Medications:" : "Ki\u1EC3m tra thu\u1ED1c d\xF9ng k\xE8m c\u1EE7a b\u1EC7nh nh\xE2n:" }),
+        selectedConcurrentDrugs.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
           "button",
           {
             onClick: () => setSelectedConcurrentDrugs([]),
@@ -51103,83 +50855,83 @@ var DrugInteractionChecker = ({
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "flex flex-wrap gap-1.5 mb-2", children: commonMedsList.map((med) => {
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "flex flex-wrap gap-1.5 mb-2", children: commonMedsList.map((med) => {
         const isAdded = selectedConcurrentDrugs.includes(med.id);
-        return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
           "button",
           {
             onClick: () => isAdded ? removeMedication(med.id) : addMedication(med.id),
             className: `px-2.5 py-1 text-xs font-medium rounded-lg flex items-center space-x-1 transition-all ${isAdded ? "bg-rose-600 text-white shadow-xs font-bold" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: isEn ? med.en : med.vi }),
-              isAdded ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(X, { className: "w-3 h-3 ml-1" }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Plus, { className: "w-3 h-3 text-slate-400" })
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: isEn ? med.en : med.vi }),
+              isAdded ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(X, { className: "w-3 h-3 ml-1" }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Plus, { className: "w-3 h-3 text-slate-400" })
             ]
           },
           med.id
         );
       }) }),
-      selectedConcurrentDrugs.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/70", children: activeDetectedAlerts.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-950 flex items-start space-x-2.5 text-xs animate-in fade-in duration-200", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(TriangleAlert, { className: "w-4 h-4 text-rose-600 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "font-bold text-rose-900", children: isEn ? "DDI ALERT DETECTED!" : "PH\xC1T HI\u1EC6N T\u01AF\u01A0NG T\xC1C THU\u1ED0C NGUY HI\u1EC2M!" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "mt-0.5 text-rose-800", children: isEn ? `${activeDetectedAlerts.length} severe interaction(s) triggered with current concurrent medication list. Review details below immediately.` : `Ph\xE1t hi\u1EC7n ${activeDetectedAlerts.length} t\u01B0\u01A1ng t\xE1c nguy c\u01A1 cao v\u1EDBi thu\u1ED1c d\xF9ng k\xE8m \u0111ang ch\u1ECDn. Xem chi ti\u1EBFt c\u1EA3nh b\xE1o b\xEAn d\u01B0\u1EDBi.` })
+      selectedConcurrentDrugs.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/70", children: activeDetectedAlerts.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-950 flex items-start space-x-2.5 text-xs animate-in fade-in duration-200", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(TriangleAlert, { className: "w-4 h-4 text-rose-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "font-bold text-rose-900", children: isEn ? "DDI ALERT DETECTED!" : "PH\xC1T HI\u1EC6N T\u01AF\u01A0NG T\xC1C THU\u1ED0C NGUY HI\u1EC2M!" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "mt-0.5 text-rose-800", children: isEn ? `${activeDetectedAlerts.length} severe interaction(s) triggered with current concurrent medication list. Review details below immediately.` : `Ph\xE1t hi\u1EC7n ${activeDetectedAlerts.length} t\u01B0\u01A1ng t\xE1c nguy c\u01A1 cao v\u1EDBi thu\u1ED1c d\xF9ng k\xE8m \u0111ang ch\u1ECDn. Xem chi ti\u1EBFt c\u1EA3nh b\xE1o b\xEAn d\u01B0\u1EDBi.` })
         ] })
-      ] }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "p-2.5 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 flex items-center space-x-2 text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(CircleCheck, { className: "w-4 h-4 text-emerald-600 shrink-0" }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: isEn ? "No critical interaction detected with the selected concurrent drugs." : "Kh\xF4ng ph\xE1t hi\u1EC7n t\u01B0\u01A1ng t\xE1c nghi\xEAm tr\u1ECDng v\u1EDBi c\xE1c thu\u1ED1c d\xF9ng k\xE8m \u0111\xE3 ch\u1ECDn." })
+      ] }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "p-2.5 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 flex items-center space-x-2 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CircleCheck, { className: "w-4 h-4 text-emerald-600 shrink-0" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: isEn ? "No critical interaction detected with the selected concurrent drugs." : "Kh\xF4ng ph\xE1t hi\u1EC7n t\u01B0\u01A1ng t\xE1c nghi\xEAm tr\u1ECDng v\u1EDBi c\xE1c thu\u1ED1c d\xF9ng k\xE8m \u0111\xE3 ch\u1ECDn." })
       ] }) })
     ] }),
-    drugInteractions.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "p-4 bg-emerald-50/50 border border-emerald-100 rounded-xl text-xs text-emerald-800 flex items-center space-x-2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(CircleCheck, { className: "w-4 h-4 text-emerald-600 shrink-0" }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: isEn ? "No major contraindications or catastrophic drug interactions registered for this antibiotic." : "Kh\xE1ng sinh n\xE0y kh\xF4ng c\xF3 t\u01B0\u01A1ng t\xE1c thu\u1ED1c t\u1ED1i kh\u1EA9n c\u1EA5p ho\u1EB7c ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh ph\u1ED1i h\u1EE3p tuy\u1EC7t \u0111\u1ED1i ph\u1ED5 bi\u1EBFn." })
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "space-y-3", children: drugInteractions.map((item) => {
+    drugInteractions.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "p-4 bg-emerald-50/50 border border-emerald-100 rounded-xl text-xs text-emerald-800 flex items-center space-x-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CircleCheck, { className: "w-4 h-4 text-emerald-600 shrink-0" }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: isEn ? "No major contraindications or catastrophic drug interactions registered for this antibiotic." : "Kh\xE1ng sinh n\xE0y kh\xF4ng c\xF3 t\u01B0\u01A1ng t\xE1c thu\u1ED1c t\u1ED1i kh\u1EA9n c\u1EA5p ho\u1EB7c ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh ph\u1ED1i h\u1EE3p tuy\u1EC7t \u0111\u1ED1i ph\u1ED5 bi\u1EBFn." })
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "space-y-3", children: drugInteractions.map((item) => {
       const isMajor = item.severity === "major";
       const isExpanded = expandedId === item.id;
-      return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+      return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
         "div",
         {
           className: `rounded-xl border transition-all overflow-hidden ${isMajor ? "bg-rose-50/40 border-rose-200 hover:border-rose-300" : "bg-amber-50/40 border-amber-200 hover:border-amber-300"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
               "div",
               {
                 onClick: () => toggleExpand(item.id),
                 className: "p-3 sm:p-4 cursor-pointer flex items-center justify-between gap-3",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: `p-1.5 rounded-lg shrink-0 ${isMajor ? "bg-rose-600 text-white" : "bg-amber-500 text-white"}`, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(TriangleAlert, { className: "w-3.5 h-3.5" }) }),
-                    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center space-x-2", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: `text-[10px] font-black uppercase px-1.5 py-0.2 rounded ${isMajor ? "bg-rose-200 text-rose-900" : "bg-amber-200 text-amber-900"}`, children: isMajor ? isEn ? "Major / Contraindicated" : "Nguy c\u01A1 cao / Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh" : isEn ? "Moderate / Monitor" : "Trung b\xECnh / Theo d\xF5i" }),
-                        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs text-slate-500 font-medium", children: isEn ? item.interactingGroupEn : item.interactingGroupVi })
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: `p-1.5 rounded-lg shrink-0 ${isMajor ? "bg-rose-600 text-white" : "bg-amber-500 text-white"}`, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(TriangleAlert, { className: "w-3.5 h-3.5" }) }),
+                    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: `text-[10px] font-black uppercase px-1.5 py-0.2 rounded ${isMajor ? "bg-rose-200 text-rose-900" : "bg-amber-200 text-amber-900"}`, children: isMajor ? isEn ? "Major / Contraindicated" : "Nguy c\u01A1 cao / Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh" : isEn ? "Moderate / Monitor" : "Trung b\xECnh / Theo d\xF5i" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-xs text-slate-500 font-medium", children: isEn ? item.interactingGroupEn : item.interactingGroupVi })
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "text-sm font-bold text-slate-900 mt-1", children: isEn ? item.interactingDrugEn : item.interactingDrugVi })
+                      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "text-sm font-bold text-slate-900 mt-1", children: isEn ? item.interactingDrugEn : item.interactingDrugVi })
                     ] })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center space-x-2 text-slate-400", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs text-slate-500 hidden sm:inline", children: isExpanded ? isEn ? "Collapse" : "Thu g\u1ECDn" : isEn ? "View details" : "Chi ti\u1EBFt" }),
-                    isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ChevronUp, { className: "w-4 h-4" }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ChevronDown, { className: "w-4 h-4" })
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center space-x-2 text-slate-400", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-xs text-slate-500 hidden sm:inline", children: isExpanded ? isEn ? "Collapse" : "Thu g\u1ECDn" : isEn ? "View details" : "Chi ti\u1EBFt" }),
+                    isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChevronUp, { className: "w-4 h-4" }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChevronDown, { className: "w-4 h-4" })
                   ] })
                 ]
               }
             ),
-            isExpanded && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "px-4 pb-4 pt-1 border-t border-slate-200/50 text-xs space-y-2.5 animate-in fade-in duration-150", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "font-bold text-slate-800 block mb-0.5", children: isEn ? "Clinical Consequence:" : "H\u1EADu qu\u1EA3 l\xE2m s\xE0ng:" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-slate-700 leading-relaxed", children: isEn ? item.clinicalEffectEn : item.clinicalEffectVi })
+            isExpanded && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "px-4 pb-4 pt-1 border-t border-slate-200/50 text-xs space-y-2.5 animate-in fade-in duration-150", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "font-bold text-slate-800 block mb-0.5", children: isEn ? "Clinical Consequence:" : "H\u1EADu qu\u1EA3 l\xE2m s\xE0ng:" }),
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-slate-700 leading-relaxed", children: isEn ? item.clinicalEffectEn : item.clinicalEffectVi })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "font-bold text-slate-800 block mb-0.5", children: isEn ? "Pharmacokinetic / Pharmacodynamic Mechanism:" : "C\u01A1 ch\u1EBF d\u01B0\u1EE3c \u0111\u1ED9ng h\u1ECDc / D\u01B0\u1EE3c l\u1EF1c h\u1ECDc:" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-slate-600 leading-relaxed", children: isEn ? item.mechanismEn : item.mechanismVi })
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "font-bold text-slate-800 block mb-0.5", children: isEn ? "Pharmacokinetic / Pharmacodynamic Mechanism:" : "C\u01A1 ch\u1EBF d\u01B0\u1EE3c \u0111\u1ED9ng h\u1ECDc / D\u01B0\u1EE3c l\u1EF1c h\u1ECDc:" }),
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-slate-600 leading-relaxed", children: isEn ? item.mechanismEn : item.mechanismVi })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "p-2.5 rounded-lg bg-white border border-slate-200 text-slate-900", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { className: "font-extrabold text-blue-700 block mb-0.5 flex items-center", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(CircleCheck, { className: "w-3.5 h-3.5 mr-1" }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "p-2.5 rounded-lg bg-white border border-slate-200 text-slate-900", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "font-extrabold text-blue-700 block mb-0.5 flex items-center", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CircleCheck, { className: "w-3.5 h-3.5 mr-1" }),
                   isEn ? "Recommended Clinical Management:" : "X\u1EED tr\xED & H\u01B0\u1EDBng d\u1EABn ph\u1ED1i h\u1EE3p l\xE2m s\xE0ng:"
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "font-semibold text-slate-800 leading-relaxed", children: isEn ? item.managementEn : item.managementVi })
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "font-semibold text-slate-800 leading-relaxed", children: isEn ? item.managementEn : item.managementVi })
               ] }),
-              item.referenceSource && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-[10px] text-slate-400 italic", children: [
+              item.referenceSource && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "text-[10px] text-slate-400 italic", children: [
                 isEn ? "Source: " : "Ngu\u1ED3n: ",
                 item.referenceSource
               ] })
@@ -51193,8 +50945,8 @@ var DrugInteractionChecker = ({
 };
 
 // antibiotic/src/components/ClinicalNotesTiers.tsx
-var import_react9 = __toESM(require_react(), 1);
-var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
+var import_react8 = __toESM(require_react(), 1);
+var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
 function extractTiersFromHtml(html) {
   if (!html) return [];
   try {
@@ -51231,7 +50983,7 @@ var ClinicalNotesTiers = ({
   language
 }) => {
   const isEn = language === "en";
-  const colistinTiers = (0, import_react9.useMemo)(() => [
+  const colistinTiers = (0, import_react8.useMemo)(() => [
     {
       level: 1,
       title: isEn ? "Tier 1 - Critical Safety & Organ Toxicity" : "C\u1EA5p \u0111\u1ED9 1 - C\u1EA3nh b\xE1o an to\xE0n & \u0110\u1ED9c t\xEDnh c\u01A1 quan",
@@ -51257,7 +51009,7 @@ var ClinicalNotesTiers = ({
       ]
     }
   ], [isEn]);
-  const parsedTiers = (0, import_react9.useMemo)(() => {
+  const parsedTiers = (0, import_react8.useMemo)(() => {
     if (drugDetails.isColistin) {
       return colistinTiers;
     }
@@ -51266,36 +51018,36 @@ var ClinicalNotesTiers = ({
   if (!drugDetails.notesHtml && !drugDetails.isColistin && parsedTiers.length === 0) {
     return null;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex items-center space-x-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Stethoscope, { className: "w-4 h-4" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Clinical Guidance & Pharmacotherapy Notes" : "L\u01B0u \xDD L\xE2m S\xE0ng & D\u01B0\u1EE3c L\xFD (Ph\xE2n T\u1EA7ng Tier 1 - 2 - 3)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "text-[11px] text-slate-500", children: isEn ? "Evidence-based risk stratification and stewardship guidance" : "Ph\xE2n c\u1EA5p c\u1EA3nh b\xE1o theo m\u1EE9c \u0111\u1ED9 an to\xE0n, hi\u1EC7u qu\u1EA3 v\xE0 qu\u1EA3n l\xFD kh\xE1ng sinh" })
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center space-x-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Stethoscope, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Clinical Guidance & Pharmacotherapy Notes" : "L\u01B0u \xDD L\xE2m S\xE0ng & D\u01B0\u1EE3c L\xFD (Ph\xE2n T\u1EA7ng Tier 1 - 2 - 3)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-[11px] text-slate-500", children: isEn ? "Evidence-based risk stratification and stewardship guidance" : "Ph\xE2n c\u1EA5p c\u1EA3nh b\xE1o theo m\u1EE9c \u0111\u1ED9 an to\xE0n, hi\u1EC7u qu\u1EA3 v\xE0 qu\u1EA3n l\xFD kh\xE1ng sinh" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex items-center space-x-1.5 self-start sm:self-auto text-[11px] font-semibold text-slate-500", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "px-2 py-0.5 rounded bg-rose-100 text-rose-800 text-[10px] font-bold", children: "Tier 1: An to\xE0n" }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "px-2 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-bold", children: "Tier 2: Hi\u1EC7u qu\u1EA3" }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "px-2 py-0.5 rounded bg-slate-100 text-slate-800 text-[10px] font-bold", children: "Tier 3: AMS" })
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center space-x-1.5 self-start sm:self-auto text-[11px] font-semibold text-slate-500", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "px-2 py-0.5 rounded bg-rose-100 text-rose-800 text-[10px] font-bold", children: "Tier 1: An to\xE0n" }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "px-2 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-bold", children: "Tier 2: Hi\u1EC7u qu\u1EA3" }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "px-2 py-0.5 rounded bg-slate-100 text-slate-800 text-[10px] font-bold", children: "Tier 3: AMS" })
       ] })
     ] }),
-    parsedTiers.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "space-y-3.5", children: parsedTiers.map((tier) => {
+    parsedTiers.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "space-y-3.5", children: parsedTiers.map((tier) => {
       if (tier.level === 1) {
-        return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
           "div",
           {
             className: "p-3.5 sm:p-4 rounded-xl bg-rose-50/90 border border-rose-200/90 text-rose-950 transition-all",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex items-center space-x-2 mb-2", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-rose-600 text-white", children: "C\u1EA5p \u0111\u1ED9 1" }),
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ShieldAlert, { className: "w-4 h-4 text-rose-600 shrink-0" }),
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "text-xs sm:text-sm font-extrabold text-rose-950", children: tier.title })
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center space-x-2 mb-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-rose-600 text-white", children: "C\u1EA5p \u0111\u1ED9 1" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ShieldAlert, { className: "w-4 h-4 text-rose-600 shrink-0" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs sm:text-sm font-extrabold text-rose-950", children: tier.title })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("ul", { className: "space-y-2 text-xs text-rose-900/90 pl-1", children: tier.items.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("li", { className: "flex items-start space-x-2 leading-relaxed", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "text-rose-500 font-black text-sm shrink-0 mt-[-1px]", children: "\u2022" }),
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: item })
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("ul", { className: "space-y-2 text-xs text-rose-900/90 pl-1", children: tier.items.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("li", { className: "flex items-start space-x-2 leading-relaxed", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-rose-500 font-black text-sm shrink-0 mt-[-1px]", children: "\u2022" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: item })
               ] }, idx)) })
             ]
           },
@@ -51303,44 +51055,44 @@ var ClinicalNotesTiers = ({
         );
       }
       if (tier.level === 2) {
-        return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
           "div",
           {
             className: "p-3.5 sm:p-4 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-950 transition-all",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex items-center space-x-2 mb-2", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-amber-600 text-white", children: "C\u1EA5p \u0111\u1ED9 2" }),
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(TriangleAlert, { className: "w-4 h-4 text-amber-600 shrink-0" }),
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "text-xs sm:text-sm font-extrabold text-amber-950", children: tier.title })
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center space-x-2 mb-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-amber-600 text-white", children: "C\u1EA5p \u0111\u1ED9 2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(TriangleAlert, { className: "w-4 h-4 text-amber-600 shrink-0" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs sm:text-sm font-extrabold text-amber-950", children: tier.title })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("ul", { className: "space-y-2 text-xs text-amber-950/90 pl-1", children: tier.items.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("li", { className: "flex items-start space-x-2 leading-relaxed", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "text-amber-500 font-black text-sm shrink-0 mt-[-1px]", children: "\u2022" }),
-                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: item })
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("ul", { className: "space-y-2 text-xs text-amber-950/90 pl-1", children: tier.items.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("li", { className: "flex items-start space-x-2 leading-relaxed", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-amber-500 font-black text-sm shrink-0 mt-[-1px]", children: "\u2022" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: item })
               ] }, idx)) })
             ]
           },
           tier.level
         );
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
+      return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
         "div",
         {
           className: "p-3.5 sm:p-4 rounded-xl bg-slate-50/90 border border-slate-200 text-slate-800 transition-all",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex items-center space-x-2 mb-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-slate-700 text-white", children: "C\u1EA5p \u0111\u1ED9 3" }),
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Sparkles, { className: "w-4 h-4 text-blue-600 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "text-xs sm:text-sm font-extrabold text-slate-900", children: tier.title })
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center space-x-2 mb-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-slate-700 text-white", children: "C\u1EA5p \u0111\u1ED9 3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Sparkles, { className: "w-4 h-4 text-blue-600 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs sm:text-sm font-extrabold text-slate-900", children: tier.title })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("ul", { className: "space-y-2 text-xs text-slate-700 pl-1", children: tier.items.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("li", { className: "flex items-start space-x-2 leading-relaxed", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "text-blue-500 font-black text-sm shrink-0 mt-[-1px]", children: "\u2022" }),
-              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: item })
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("ul", { className: "space-y-2 text-xs text-slate-700 pl-1", children: tier.items.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("li", { className: "flex items-start space-x-2 leading-relaxed", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-blue-500 font-black text-sm shrink-0 mt-[-1px]", children: "\u2022" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: item })
             ] }, idx)) })
           ]
         },
         tier.level
       );
-    }) }) : /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+    }) }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
       "div",
       {
         className: "prose prose-sm max-w-none text-xs text-slate-700 original-notes-content bg-slate-50 p-4 rounded-xl border border-slate-200",
@@ -51351,8 +51103,8 @@ var ClinicalNotesTiers = ({
 };
 
 // antibiotic/src/components/ReferencesList.tsx
-var import_react10 = __toESM(require_react(), 1);
-var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
+var import_react9 = __toESM(require_react(), 1);
+var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
 function parseReferencesHtml(html) {
   if (!html) return [];
   try {
@@ -51418,7 +51170,7 @@ var ReferencesList = ({
   language
 }) => {
   const isEn = language === "en";
-  const references = (0, import_react10.useMemo)(() => {
+  const references = (0, import_react9.useMemo)(() => {
     const parsed = parseReferencesHtml(drugDetails.srcHtml);
     if (parsed.length > 0) return parsed;
     return DEFAULT_EVIDENCE_SOURCES;
@@ -51433,37 +51185,37 @@ var ReferencesList = ({
     if (lower.includes("b\u1ED9 y t\u1EBF")) return "bg-rose-50 text-rose-800 border-rose-200";
     return "bg-indigo-50 text-indigo-800 border-indigo-200";
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex items-center space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(BookMarked, { className: "w-4 h-4" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Evidence Base & Clinical References" : "T\xE0i Li\u1EC7u Tham Kh\u1EA3o & Ngu\u1ED3n D\u1EEF Li\u1EC7u L\xE2m S\xE0ng" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-[11px] text-slate-500", children: isEn ? "Peer-reviewed references, hospital guidelines, and prescribing information" : "H\u01B0\u1EDBng d\u1EABn \u0111i\u1EC1u tr\u1ECB c\u1EE7a c\xE1c trung t\xE2m y khoa h\xE0ng \u0111\u1EA7u v\xE0 D\u01B0\u1EE3c th\u01B0 ch\xEDnh th\u1EE9c" })
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 mb-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex items-center space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(BookMarked, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h3", { className: "text-sm sm:text-base font-bold text-slate-900", children: isEn ? "Evidence Base & Clinical References" : "T\xE0i Li\u1EC7u Tham Kh\u1EA3o & Ngu\u1ED3n D\u1EEF Li\u1EC7u L\xE2m S\xE0ng" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "text-[11px] text-slate-500", children: isEn ? "Peer-reviewed references, hospital guidelines, and prescribing information" : "H\u01B0\u1EDBng d\u1EABn \u0111i\u1EC1u tr\u1ECB c\u1EE7a c\xE1c trung t\xE2m y khoa h\xE0ng \u0111\u1EA7u v\xE0 D\u01B0\u1EE3c th\u01B0 ch\xEDnh th\u1EE9c" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex items-center space-x-1.5 self-start sm:self-auto text-[11px] text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200/70 font-semibold", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Award, { className: "w-3.5 h-3.5 text-blue-600" }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex items-center space-x-1.5 self-start sm:self-auto text-[11px] text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200/70 font-semibold", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Award, { className: "w-3.5 h-3.5 text-blue-600" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { children: [
           references.length,
           " ",
           isEn ? "Verified Sources" : "Ngu\u1ED3n \u0111\u1ED1i chi\u1EBFu"
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "space-y-2.5", children: references.map((ref) => /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "space-y-2.5", children: references.map((ref) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
       "div",
       {
         className: "p-3 sm:p-3.5 rounded-xl border border-slate-200/80 hover:border-blue-300 hover:bg-slate-50/70 transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex items-start space-x-3 min-w-0", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "w-6 h-6 rounded-md bg-slate-100 text-slate-600 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors", children: ref.index < 10 ? `0${ref.index}` : ref.index }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "min-w-0", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "flex items-center flex-wrap gap-1.5 mb-1", children: ref.tag && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: `px-2 py-0.5 rounded text-[10px] font-bold border ${getTagStyle(ref.tag)}`, children: ref.tag }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-xs sm:text-[13px] font-semibold text-slate-900 leading-snug", children: ref.title })
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "flex items-start space-x-3 min-w-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "w-6 h-6 rounded-md bg-slate-100 text-slate-600 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors", children: ref.index < 10 ? `0${ref.index}` : ref.index }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "min-w-0", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "flex items-center flex-wrap gap-1.5 mb-1", children: ref.tag && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: `px-2 py-0.5 rounded text-[10px] font-bold border ${getTagStyle(ref.tag)}`, children: ref.tag }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "text-xs sm:text-[13px] font-semibold text-slate-900 leading-snug", children: ref.title })
             ] })
           ] }),
-          ref.url && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+          ref.url && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
             "a",
             {
               href: ref.url,
@@ -51471,8 +51223,8 @@ var ReferencesList = ({
               rel: "noopener noreferrer",
               className: "inline-flex items-center space-x-1 text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100/80 px-2.5 py-1.5 rounded-lg transition-colors shrink-0 self-end sm:self-center",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: isEn ? "View Source" : "T\xE0i li\u1EC7u g\u1ED1c" }),
-                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(ExternalLink, { className: "w-3 h-3 ml-0.5" })
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: isEn ? "View Source" : "T\xE0i li\u1EC7u g\u1ED1c" }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ExternalLink, { className: "w-3 h-3 ml-0.5" })
               ]
             }
           )
@@ -51480,18 +51232,18 @@ var ReferencesList = ({
       },
       ref.index
     )) }),
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200/70 flex items-start space-x-2.5 text-xs text-slate-600", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(CircleCheckBig, { className: "w-4 h-4 text-emerald-600 shrink-0 mt-0.5" }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "leading-relaxed", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "font-bold text-slate-800 block text-[11px] uppercase tracking-wider mb-0.5", children: isEn ? "Clinical Governance & Continuous Cross-Verification" : "Ti\xEAu Chu\u1EA9n Th\u1EA9m \u0110\u1ECBnh & \u0110\u1ED1i Chi\u1EBFu L\xE2m S\xE0ng" }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-[11px]", children: isEn ? "Dosing algorithms are prioritized based on international society guidelines (IDSA, KDIGO) and major academic medical centers (Stanford, UCSF), cross-validated with official prescribing information." : "D\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c c\u1EADp nh\u1EADt v\xE0 \u0111\u1ED1i chi\u1EBFu ch\xE9o li\xEAn t\u1EE5c gi\u1EEFa c\xE1c ph\xE1c \u0111\u1ED3 qu\u1ED1c t\u1EBF (Stanford Health Care, UCSF IDMP, Sanford Guide 2024) v\xE0 H\u01B0\u1EDBng d\u1EABn s\u1EED d\u1EE5ng kh\xE1ng sinh c\u1EE7a B\u1ED9 Y T\u1EBF Vi\u1EC7t Nam." })
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200/70 flex items-start space-x-2.5 text-xs text-slate-600", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(CircleCheckBig, { className: "w-4 h-4 text-emerald-600 shrink-0 mt-0.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "leading-relaxed", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "font-bold text-slate-800 block text-[11px] uppercase tracking-wider mb-0.5", children: isEn ? "Clinical Governance & Continuous Cross-Verification" : "Ti\xEAu Chu\u1EA9n Th\u1EA9m \u0110\u1ECBnh & \u0110\u1ED1i Chi\u1EBFu L\xE2m S\xE0ng" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "text-[11px]", children: isEn ? "Dosing algorithms are prioritized based on international society guidelines (IDSA, KDIGO) and major academic medical centers (Stanford, UCSF), cross-validated with official prescribing information." : "D\u1EEF li\u1EC7u \u0111\u01B0\u1EE3c c\u1EADp nh\u1EADt v\xE0 \u0111\u1ED1i chi\u1EBFu ch\xE9o li\xEAn t\u1EE5c gi\u1EEFa c\xE1c ph\xE1c \u0111\u1ED3 qu\u1ED1c t\u1EBF (Stanford Health Care, UCSF IDMP, Sanford Guide 2024) v\xE0 H\u01B0\u1EDBng d\u1EABn s\u1EED d\u1EE5ng kh\xE1ng sinh c\u1EE7a B\u1ED9 Y T\u1EBF Vi\u1EC7t Nam." })
       ] })
     ] })
   ] });
 };
 
 // antibiotic/src/components/AmrModal.tsx
-var import_react11 = __toESM(require_react(), 1);
+var import_react10 = __toESM(require_react(), 1);
 
 // antibiotic/src/data/antibiotics.ts
 var ANTIBIOTICS = [
@@ -54656,7 +54408,7 @@ var AMR_DATA = {
 };
 
 // antibiotic/src/components/AmrModal.tsx
-var import_jsx_runtime11 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
 var AmrModal = ({
   isOpen,
   onClose,
@@ -54664,35 +54416,35 @@ var AmrModal = ({
   selectedDrugName,
   language
 }) => {
-  const [selectedSpec, setSelectedSpec] = (0, import_react11.useState)(0);
-  const [searchTerm, setSearchTerm] = (0, import_react11.useState)("");
+  const [selectedSpec, setSelectedSpec] = (0, import_react10.useState)(0);
+  const [searchTerm, setSearchTerm] = (0, import_react10.useState)("");
   const isEn = language === "en";
-  const drugAmrData = (0, import_react11.useMemo)(() => {
+  const drugAmrData = (0, import_react10.useMemo)(() => {
     return AMR_DATA[selectedDrugId] || [];
   }, [selectedDrugId]);
   if (!isOpen) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bg-white rounded-2xl max-w-3xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bg-gradient-to-r from-blue-700 to-indigo-800 p-4 sm:p-5 text-white flex items-center justify-between shrink-0", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex items-center space-x-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "w-10 h-10 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ShieldAlert, { className: "w-6 h-6 text-amber-300" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "text-base sm:text-lg font-extrabold tracking-tight", children: isEn ? "Antimicrobial Resistance Surveillance (Vietnam)" : "D\u1EEF Li\u1EC7u Gi\xE1m S\xE1t \u0110\u1EC1 Kh\xE1ng Kh\xE1ng Sinh (Vi\u1EC7t Nam)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-xs text-white/80", children: isEn ? `Susceptibility data for ${selectedDrugName}` : `T\u1EF7 l\u1EC7 nh\u1EA1y c\u1EA3m in vitro c\u1EE7a ${selectedDrugName}` })
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "bg-white rounded-2xl max-w-3xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "bg-gradient-to-r from-blue-700 to-indigo-800 p-4 sm:p-5 text-white flex items-center justify-between shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex items-center space-x-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "w-10 h-10 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(ShieldAlert, { className: "w-6 h-6 text-amber-300" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-base sm:text-lg font-extrabold tracking-tight", children: isEn ? "Antimicrobial Resistance Surveillance (Vietnam)" : "D\u1EEF Li\u1EC7u Gi\xE1m S\xE1t \u0110\u1EC1 Kh\xE1ng Kh\xE1ng Sinh (Vi\u1EC7t Nam)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-xs text-white/80", children: isEn ? `Susceptibility data for ${selectedDrugName}` : `T\u1EF7 l\u1EC7 nh\u1EA1y c\u1EA3m in vitro c\u1EE7a ${selectedDrugName}` })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
         "button",
         {
           onClick: onClose,
           className: "p-1.5 rounded-lg text-white/80 hover:text-white hover:bg-white/20 transition-colors",
-          children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(X, { className: "w-5 h-5" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(X, { className: "w-5 h-5" })
         }
       )
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "p-4 bg-slate-50 border-b border-slate-200 shrink-0 space-y-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex flex-wrap items-center gap-1.5 text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "font-bold text-slate-700 mr-1", children: isEn ? "Clinical Specimen:" : "B\u1EC7nh ph\u1EA9m l\xE2m s\xE0ng:" }),
-        AMR_SPEC.map((spec, idx) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "p-4 bg-slate-50 border-b border-slate-200 shrink-0 space-y-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex flex-wrap items-center gap-1.5 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "font-bold text-slate-700 mr-1", children: isEn ? "Clinical Specimen:" : "B\u1EC7nh ph\u1EA9m l\xE2m s\xE0ng:" }),
+        AMR_SPEC.map((spec, idx) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
           "button",
           {
             onClick: () => setSelectedSpec(idx),
@@ -54702,9 +54454,9 @@ var AmrModal = ({
           spec[0]
         ))
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "relative", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Search, { className: "w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "relative", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Search, { className: "w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
           "input",
           {
             type: "text",
@@ -54716,14 +54468,14 @@ var AmrModal = ({
         )
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "p-4 sm:p-5 overflow-y-auto flex-1", children: drugAmrData.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "text-center py-10 text-xs text-slate-500", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Info, { className: "w-8 h-8 mx-auto text-slate-400 mb-2" }),
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "p-4 sm:p-5 overflow-y-auto flex-1", children: drugAmrData.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "text-center py-10 text-xs text-slate-500", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Info, { className: "w-8 h-8 mx-auto text-slate-400 mb-2" }),
       isEn ? "No specific Vietnam hospital surveillance antibiogram records found for this antimicrobial." : "Ch\u01B0a c\xF3 b\u1EA3n ghi gi\xE1m s\xE1t vi sinh vi\u1EC7n ri\xEAng bi\u1EC7t cho ho\u1EA1t ch\u1EA5t n\xE0y."
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "space-y-2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid grid-cols-12 text-[11px] font-bold uppercase text-slate-500 pb-2 border-b border-slate-200 px-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "col-span-6", children: isEn ? "Pathogen / Organism" : "Ch\u1EE7ng vi khu\u1EA9n" }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "col-span-3 text-center", children: isEn ? "Sample Count (N)" : "S\u1ED1 m\u1EABu (N)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "col-span-3 text-right", children: isEn ? "Susceptibility % (%S)" : "T\u1EF7 l\u1EC7 nh\u1EA1y (%S)" })
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "space-y-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "grid grid-cols-12 text-[11px] font-bold uppercase text-slate-500 pb-2 border-b border-slate-200 px-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "col-span-6", children: isEn ? "Pathogen / Organism" : "Ch\u1EE7ng vi khu\u1EA9n" }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "col-span-3 text-center", children: isEn ? "Sample Count (N)" : "S\u1ED1 m\u1EABu (N)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "col-span-3 text-right", children: isEn ? "Susceptibility % (%S)" : "T\u1EF7 l\u1EC7 nh\u1EA1y (%S)" })
       ] }),
       drugAmrData.filter((row) => {
         if (selectedSpec !== 0 && row[1] !== selectedSpec) return false;
@@ -54740,20 +54492,20 @@ var AmrModal = ({
         let colorBadge = "bg-emerald-100 text-emerald-900 border-emerald-300";
         if (sPct < 40) colorBadge = "bg-rose-100 text-rose-900 border-rose-300";
         else if (sPct < 70) colorBadge = "bg-amber-100 text-amber-900 border-amber-300";
-        return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
           "div",
           {
             className: "grid grid-cols-12 items-center text-xs p-2.5 rounded-xl hover:bg-slate-50 border border-slate-100 transition-colors",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "col-span-6 font-semibold text-slate-900", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "col-span-6 font-semibold text-slate-900", children: [
                 orgName,
-                varName && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "ml-1.5 px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 text-[10px] font-medium", children: varName })
+                varName && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "ml-1.5 px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 text-[10px] font-medium", children: varName })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "col-span-3 text-center text-slate-500 font-mono", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "col-span-3 text-center text-slate-500 font-mono", children: [
                 "N = ",
                 nCount
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "col-span-3 text-right", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { className: `inline-block px-2.5 py-0.5 rounded-full text-xs font-black border ${colorBadge}`, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "col-span-3 text-right", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: `inline-block px-2.5 py-0.5 rounded-full text-xs font-black border ${colorBadge}`, children: [
                 sPct,
                 "% S"
               ] }) })
@@ -54763,9 +54515,9 @@ var AmrModal = ({
         );
       })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 shrink-0", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: isEn ? "Data source: Vietnam Antimicrobial Resistance Surveillance System (VINARES)" : "Ngu\u1ED3n: Gi\xE1m s\xE1t \u0110\u1EC1 kh\xE1ng Kh\xE1ng sinh B\u1EC7nh vi\u1EC7n Vi\u1EC7t Nam (VINARES / B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0111\u1EDBi)" }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: isEn ? "Data source: Vietnam Antimicrobial Resistance Surveillance System (VINARES)" : "Ngu\u1ED3n: Gi\xE1m s\xE1t \u0110\u1EC1 kh\xE1ng Kh\xE1ng sinh B\u1EC7nh vi\u1EC7n Vi\u1EC7t Nam (VINARES / B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0111\u1EDBi)" }),
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
         "button",
         {
           onClick: onClose,
@@ -54778,7 +54530,7 @@ var AmrModal = ({
 };
 
 // antibiotic/src/components/OriginalPreviewModal.tsx
-var import_react12 = __toESM(require_react(), 1);
+var import_react11 = __toESM(require_react(), 1);
 
 // antibiotic/src/data/rawPreviewData.ts
 var _pd = (s) => {
@@ -54804,7 +54556,7 @@ function decodePreviewSource(id) {
 }
 
 // antibiotic/src/components/OriginalPreviewModal.tsx
-var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime11 = __toESM(require_jsx_runtime(), 1);
 var OriginalPreviewModal = ({
   isOpen,
   onClose,
@@ -54814,7 +54566,7 @@ var OriginalPreviewModal = ({
   language
 }) => {
   const isEn = language === "en";
-  const rawHtml = (0, import_react12.useMemo)(() => {
+  const rawHtml = (0, import_react11.useMemo)(() => {
     let html = decodePreviewSource(drugId);
     if (!html) return "";
     const scrVal = patient.scrUnit === "mgdl" ? Math.round(patient.scr * 88.4) : patient.scr;
@@ -54842,30 +54594,30 @@ var OriginalPreviewModal = ({
     return html.replace("</body>", `${injectionScript}</body>`);
   }, [drugId, patient]);
   if (!isOpen) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-white rounded-2xl max-w-5xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col h-[92vh]", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-slate-900 text-white p-3 sm:p-4 flex items-center justify-between shrink-0", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "flex items-center space-x-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "font-bold text-sm sm:text-base", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bg-white rounded-2xl max-w-5xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col h-[92vh]", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bg-slate-900 text-white p-3 sm:p-4 flex items-center justify-between shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex items-center space-x-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" }),
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { className: "font-bold text-sm sm:text-base", children: [
           isEn ? "Original Stanford/UCSF Full Protocol Preview" : "B\u1EA3n Xem G\u1ED1c Theo Chu\u1EA9n Stanford / UCSF",
           " - ",
           drugName
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "flex items-center space-x-2", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "flex items-center space-x-2", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
         "button",
         {
           onClick: onClose,
           className: "p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors",
-          children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(X, { className: "w-5 h-5" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(X, { className: "w-5 h-5" })
         }
       ) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-indigo-50 border-b border-indigo-100 px-4 py-2 text-xs text-indigo-900 flex items-center justify-between shrink-0", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: isEn ? `Embedded with patient parameters: Scr ${patient.scr} ${patient.scrUnit === "umol" ? "\xB5mol/L" : "mg/dL"}, ${patient.age}yo, ${patient.weight}kg, ${patient.gender.toUpperCase()}` : `\u0110\xE3 t\u1EF1 \u0111\u1ED9ng n\u1EA1p th\xF4ng s\u1ED1 b\u1EC7nh nh\xE2n: Scr ${patient.scr} ${patient.scrUnit === "umol" ? "\xB5mol/L" : "mg/dL"}, ${patient.age} tu\u1ED5i, ${patient.weight}kg, gi\u1EDBi ${patient.gender.toUpperCase()}` }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-[11px] font-semibold text-indigo-700 hidden sm:inline", children: "100% Fidelity Render" })
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bg-indigo-50 border-b border-indigo-100 px-4 py-2 text-xs text-indigo-900 flex items-center justify-between shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: isEn ? `Embedded with patient parameters: Scr ${patient.scr} ${patient.scrUnit === "umol" ? "\xB5mol/L" : "mg/dL"}, ${patient.age}yo, ${patient.weight}kg, ${patient.gender.toUpperCase()}` : `\u0110\xE3 t\u1EF1 \u0111\u1ED9ng n\u1EA1p th\xF4ng s\u1ED1 b\u1EC7nh nh\xE2n: Scr ${patient.scr} ${patient.scrUnit === "umol" ? "\xB5mol/L" : "mg/dL"}, ${patient.age} tu\u1ED5i, ${patient.weight}kg, gi\u1EDBi ${patient.gender.toUpperCase()}` }),
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "text-[11px] font-semibold text-indigo-700 hidden sm:inline", children: "100% Fidelity Render" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "flex-1 w-full bg-slate-100 overflow-hidden relative", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "flex-1 w-full bg-slate-100 overflow-hidden relative", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
       "iframe",
       {
         srcDoc: rawHtml,
@@ -55048,7 +54800,7 @@ function triggerPrintConsultation() {
 }
 
 // antibiotic/src/components/PdfConsultationModal.tsx
-var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
 var PdfConsultationModal = ({
   isOpen,
   onClose,
@@ -55064,115 +54816,115 @@ var PdfConsultationModal = ({
     triggerPrintConsultation();
   };
   const { patient, renal, drug, doseResult, interactions, scenarioLabel } = reportData;
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-white rounded-2xl max-w-3xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[92vh]", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-gradient-to-r from-blue-700 to-indigo-800 p-4 sm:p-5 text-white flex items-center justify-between shrink-0", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center space-x-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "w-10 h-10 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FileText, { className: "w-6 h-6 text-white" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { className: "text-base sm:text-lg font-extrabold tracking-tight", children: isEn ? "Antimicrobial Dosing Consultation Record" : "Phi\u1EBFu H\u1ED9i Ch\u1EA9n D\u01B0\u1EE3c L\xE2m S\xE0ng & Li\u1EC1u Kh\xE1ng Sinh" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-xs text-white/80", children: isEn ? "Preview official consultation document before PDF export" : "Xem tr\u01B0\u1EDBc phi\u1EBFu h\u1ED9i ch\u1EA9n ch\xEDnh th\u1EE9c tr\u01B0\u1EDBc khi xu\u1EA5t PDF / In" })
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-white rounded-2xl max-w-3xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[92vh]", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-gradient-to-r from-blue-700 to-indigo-800 p-4 sm:p-5 text-white flex items-center justify-between shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "flex items-center space-x-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "w-10 h-10 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(FileText, { className: "w-6 h-6 text-white" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { className: "text-base sm:text-lg font-extrabold tracking-tight", children: isEn ? "Antimicrobial Dosing Consultation Record" : "Phi\u1EBFu H\u1ED9i Ch\u1EA9n D\u01B0\u1EE3c L\xE2m S\xE0ng & Li\u1EC1u Kh\xE1ng Sinh" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "text-xs text-white/80", children: isEn ? "Preview official consultation document before PDF export" : "Xem tr\u01B0\u1EDBc phi\u1EBFu h\u1ED9i ch\u1EA9n ch\xEDnh th\u1EE9c tr\u01B0\u1EDBc khi xu\u1EA5t PDF / In" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         "button",
         {
           onClick: onClose,
           className: "p-1.5 rounded-lg text-white/80 hover:text-white hover:bg-white/20 transition-colors",
-          children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(X, { className: "w-5 h-5" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(X, { className: "w-5 h-5" })
         }
       )
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "p-4 sm:p-6 overflow-y-auto flex-1 bg-slate-100/70", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-white p-6 sm:p-8 rounded-xl shadow-xs border border-slate-200/80 max-w-2xl mx-auto text-xs text-slate-800 space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "border-b-2 border-blue-600 pb-3 flex justify-between items-start", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-extrabold text-blue-900 uppercase text-xs block", children: isEn ? "HOSPITAL CLINICAL PHARMACY DEPARTMENT" : "B\u1EC6NH VI\u1EC6N - KHOA D\u01AF\u1EE2C L\xC2M S\xC0NG" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-[10px] text-slate-500 block", children: "Antimicrobial Stewardship Program (ASP) & CDSS" })
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p-4 sm:p-6 overflow-y-auto flex-1 bg-slate-100/70", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-white p-6 sm:p-8 rounded-xl shadow-xs border border-slate-200/80 max-w-2xl mx-auto text-xs text-slate-800 space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "border-b-2 border-blue-600 pb-3 flex justify-between items-start", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "font-extrabold text-blue-900 uppercase text-xs block", children: isEn ? "HOSPITAL CLINICAL PHARMACY DEPARTMENT" : "B\u1EC6NH VI\u1EC6N - KHOA D\u01AF\u1EE2C L\xC2M S\xC0NG" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-[10px] text-slate-500 block", children: "Antimicrobial Stewardship Program (ASP) & CDSS" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-right", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "text-[10px] text-slate-500 block", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-right", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "text-[10px] text-slate-500 block", children: [
             isEn ? "Date:" : "Ng\xE0y h\u1ED9i ch\u1EA9n:",
             " ",
             (/* @__PURE__ */ new Date()).toLocaleDateString("vi-VN")
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "text-[10px] font-mono text-slate-400", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "text-[10px] font-mono text-slate-400", children: [
             "REF: CDSS-",
             patient.patientId || "INP-2026"
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-center py-1", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "text-sm sm:text-base font-black text-slate-900 tracking-tight uppercase", children: isEn ? "ANTIMICROBIAL DOSING CONSULTATION RECORD" : "PHI\u1EBEU H\u1ED8I CH\u1EA8N & QU\u1EA2N L\xDD LI\u1EC0U KH\xC1NG SINH" }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-[11px] text-blue-700 font-semibold", children: isEn ? "Renal Impairment Adjustment & Drug Interaction Screening" : "Hi\u1EC7u ch\u1EC9nh li\u1EC1u theo ch\u1EE9c n\u0103ng th\u1EADn & S\xE0ng l\u1ECDc t\u01B0\u01A1ng t\xE1c thu\u1ED1c" })
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-center py-1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "text-sm sm:text-base font-black text-slate-900 tracking-tight uppercase", children: isEn ? "ANTIMICROBIAL DOSING CONSULTATION RECORD" : "PHI\u1EBEU H\u1ED8I CH\u1EA8N & QU\u1EA2N L\xDD LI\u1EC0U KH\xC1NG SINH" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-[11px] text-blue-700 font-semibold", children: isEn ? "Renal Impairment Adjustment & Drug Interaction Screening" : "Hi\u1EC7u ch\u1EC9nh li\u1EC1u theo ch\u1EE9c n\u0103ng th\u1EADn & S\xE0ng l\u1ECDc t\u01B0\u01A1ng t\xE1c thu\u1ED1c" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-slate-50 p-3 rounded-lg border border-slate-200", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "font-bold text-blue-900 text-xs block mb-1.5 uppercase", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-slate-50 p-3 rounded-lg border border-slate-200", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "font-bold text-blue-900 text-xs block mb-1.5 uppercase", children: [
           "1. ",
           isEn ? "Patient Demographics & Renal Clearance" : "Th\xF4ng tin B\u1EC7nh nh\xE2n & Ch\u1EE9c n\u0103ng Th\u1EADn"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px]", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "text-slate-500", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "text-slate-500", children: [
               isEn ? "Patient Name:" : "H\u1ECD t\xEAn:",
               " "
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-bold text-slate-900", children: patient.patientName || "Nguy\u1EC5n V\u0103n A" })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "font-bold text-slate-900", children: patient.patientName || "Nguy\u1EC5n V\u0103n A" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "text-slate-500", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "text-slate-500", children: [
               isEn ? "Patient ID:" : "M\xE3 BN:",
               " "
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-bold", children: patient.patientId || "BN-102938" })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "font-bold", children: patient.patientId || "BN-102938" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "text-slate-500", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "text-slate-500", children: [
               isEn ? "Age / Gender:" : "Tu\u1ED5i / Gi\u1EDBi:",
               " "
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "font-bold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "font-bold", children: [
               patient.age,
               "t / ",
               patient.gender === "m" ? isEn ? "Male" : "Nam" : isEn ? "Female" : "N\u1EEF"
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "text-slate-500", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "text-slate-500", children: [
               isEn ? "Weight / Height:" : "C\xE2n n\u1EB7ng / CC:",
               " "
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "font-bold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "font-bold", children: [
               patient.weight,
               " kg ",
               patient.height ? `/ ${patient.height} cm` : ""
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-slate-500", children: "Scr: " }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "font-bold", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-slate-500", children: "Scr: " }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "font-bold", children: [
               renal.scrUmol,
               " \xB5mol/L (",
               renal.scrMgdl,
               " mg/dL)"
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-slate-500", children: "CrCl (Cockcroft-Gault): " }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "font-black text-blue-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-slate-500", children: "CrCl (Cockcroft-Gault): " }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "font-black text-blue-700", children: [
               renal.crcl,
               " mL/ph\xFAt"
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "mt-1.5 pt-1.5 border-t border-slate-200 text-[10px] text-slate-600 flex justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "mt-1.5 pt-1.5 border-t border-slate-200 text-[10px] text-slate-600 flex justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { children: [
             isEn ? "Status:" : "Ph\xE2n lo\u1EA1i th\u1EADn:",
             " ",
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { className: "text-slate-800", children: isEn ? renal.categoryLabelEn : renal.categoryLabelVi })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("strong", { className: "text-slate-800", children: isEn ? renal.categoryLabelEn : renal.categoryLabelVi })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { children: [
             isEn ? "Calculated Weight:" : "C\xE2n n\u1EB7ng t\xEDnh CrCl:",
             " ",
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("strong", { className: "text-slate-800", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("strong", { className: "text-slate-800", children: [
               renal.usedWeight,
               " kg (",
               renal.usedWeightType,
@@ -55181,51 +54933,51 @@ var PdfConsultationModal = ({
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-blue-50/60 p-3 rounded-lg border border-blue-200", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "font-bold text-blue-900 text-xs block mb-1.5 uppercase", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-blue-50/60 p-3 rounded-lg border border-blue-200", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "font-bold text-blue-900 text-xs block mb-1.5 uppercase", children: [
           "2. ",
           isEn ? "Antimicrobial Recommendation" : "Khuy\u1EBFn c\xE1o Li\u1EC1u Kh\xE1ng sinh (CDSS)"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "space-y-1.5 text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-slate-600", children: isEn ? "Antibiotic: " : "Kh\xE1ng sinh: " }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { className: "text-slate-900 text-sm", children: drug.name }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "space-y-1.5 text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-slate-600", children: isEn ? "Antibiotic: " : "Kh\xE1ng sinh: " }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("strong", { className: "text-slate-900 text-sm", children: drug.name }),
             " (",
             drug.group,
             ")"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-slate-600", children: isEn ? "Scenario / Indication: " : "Ph\xE1c \u0111\u1ED3 / Ch\u1EC9 \u0111\u1ECBnh: " }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-semibold text-slate-800", children: scenarioLabel })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-slate-600", children: isEn ? "Scenario / Indication: " : "Ph\xE1c \u0111\u1ED3 / Ch\u1EC9 \u0111\u1ECBnh: " }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "font-semibold text-slate-800", children: scenarioLabel })
           ] }),
-          doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "p-2 rounded bg-amber-100/70 text-amber-950 font-semibold", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-bold text-amber-800", children: isEn ? "Loading Dose: " : "Li\u1EC1u n\u1EA1p (Loading dose): " }),
+          doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "p-2 rounded bg-amber-100/70 text-amber-950 font-semibold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "font-bold text-amber-800", children: isEn ? "Loading Dose: " : "Li\u1EC1u n\u1EA1p (Loading dose): " }),
             isEn ? doseResult.loadingDoseTextEn : doseResult.loadingDoseTextVi
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "p-2 rounded bg-white border border-blue-200", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-bold text-blue-900 block mb-0.5", children: isEn ? "Maintenance Dose (CrCl Adjusted):" : "Li\u1EC1u duy tr\xEC (\u0110\xE3 hi\u1EC7u ch\u1EC9nh th\u1EADn):" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-sm font-black text-slate-900", children: isEn ? doseResult.maintenanceDoseTextEn : doseResult.maintenanceDoseTextVi })
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "p-2 rounded bg-white border border-blue-200", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "font-bold text-blue-900 block mb-0.5", children: isEn ? "Maintenance Dose (CrCl Adjusted):" : "Li\u1EC1u duy tr\xEC (\u0110\xE3 hi\u1EC7u ch\u1EC9nh th\u1EADn):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-sm font-black text-slate-900", children: isEn ? doseResult.maintenanceDoseTextEn : doseResult.maintenanceDoseTextVi })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-[11px] text-slate-700", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-bold", children: isEn ? "Administration & Infusion: " : "C\xE1ch d\xF9ng & Dung m\xF4i: " }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-[11px] text-slate-700", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "font-bold", children: isEn ? "Administration & Infusion: " : "C\xE1ch d\xF9ng & Dung m\xF4i: " }),
             isEn ? doseResult.infusionInstructionsEn : doseResult.infusionInstructionsVi
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-amber-50/50 p-2.5 rounded-lg border border-amber-200 text-[11px]", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "font-bold text-amber-900 block mb-0.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-amber-50/50 p-2.5 rounded-lg border border-amber-200 text-[11px]", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "font-bold text-amber-900 block mb-0.5", children: [
           "3. ",
           isEn ? "Renal Rationale:" : "C\u01A1 s\u1EDF hi\u1EC7u ch\u1EC9nh li\u1EC1u theo th\u1EADn:"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-amber-950 leading-relaxed", children: isEn ? doseResult.renalAdjustmentAdviceEn : doseResult.renalAdjustmentAdviceVi })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "text-amber-950 leading-relaxed", children: isEn ? doseResult.renalAdjustmentAdviceEn : doseResult.renalAdjustmentAdviceVi })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-[11px]", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "font-bold text-slate-800 block mb-0.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-[11px]", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "font-bold text-slate-800 block mb-0.5", children: [
           "4. ",
           isEn ? "Drug-Drug Interaction Risk Evaluation:" : "\u0110\xE1nh gi\xE1 nguy c\u01A1 t\u01B0\u01A1ng t\xE1c thu\u1ED1c:"
         ] }),
-        interactions.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "space-y-1 mt-1", children: interactions.map((inter) => /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "p-1.5 rounded bg-rose-50 border border-rose-200 text-rose-950 text-[10px]", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("strong", { className: "text-rose-900", children: [
+        interactions.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "space-y-1 mt-1", children: interactions.map((inter) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "p-1.5 rounded bg-rose-50 border border-rose-200 text-rose-950 text-[10px]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("strong", { className: "text-rose-900", children: [
             "[",
             inter.severity.toUpperCase(),
             "] ",
@@ -55234,23 +54986,23 @@ var PdfConsultationModal = ({
           ] }),
           " ",
           inter.clinicalEffectVi
-        ] }, inter.id)) }) : /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-slate-600", children: isEn ? "No major contraindications or catastrophic interactions found." : "Kh\xF4ng ghi nh\u1EADn t\u01B0\u01A1ng t\xE1c thu\u1ED1c nghi\xEAm tr\u1ECDng v\u1EDBi ph\xE1c \u0111\u1ED3 n\xE0y." })
+        ] }, inter.id)) }) : /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "text-slate-600", children: isEn ? "No major contraindications or catastrophic interactions found." : "Kh\xF4ng ghi nh\u1EADn t\u01B0\u01A1ng t\xE1c thu\u1ED1c nghi\xEAm tr\u1ECDng v\u1EDBi ph\xE1c \u0111\u1ED3 n\xE0y." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "pt-6 grid grid-cols-2 gap-4 text-center text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-bold text-slate-800 block uppercase", children: isEn ? "Attending Physician" : "B\xE1c s\u0129 \u0111i\u1EC1u tr\u1ECB" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-[10px] text-slate-400 block mt-1", children: isEn ? "(Signature & Name)" : "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "h-12" })
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "pt-6 grid grid-cols-2 gap-4 text-center text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "font-bold text-slate-800 block uppercase", children: isEn ? "Attending Physician" : "B\xE1c s\u0129 \u0111i\u1EC1u tr\u1ECB" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-[10px] text-slate-400 block mt-1", children: isEn ? "(Signature & Name)" : "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "h-12" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-bold text-slate-800 block uppercase", children: isEn ? "Clinical Pharmacist" : "D\u01B0\u1EE3c s\u0129 l\xE2m s\xE0ng" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-[10px] text-slate-400 block mt-1", children: isEn ? "(Signature & Name)" : "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "h-12" })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "font-bold text-slate-800 block uppercase", children: isEn ? "Clinical Pharmacist" : "D\u01B0\u1EE3c s\u0129 l\xE2m s\xE0ng" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-[10px] text-slate-400 block mt-1", children: isEn ? "(Signature & Name)" : "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "h-12" })
         ] })
       ] })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 shrink-0", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         "button",
         {
           onClick: onClose,
@@ -55258,26 +55010,26 @@ var PdfConsultationModal = ({
           children: isEn ? "Back to Dashboard" : "Quay l\u1EA1i"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center space-x-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "flex items-center space-x-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
           "button",
           {
             onClick: handlePrint,
             className: "inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-bold text-slate-700 bg-white border border-slate-300 hover:bg-slate-100 shadow-2xs transition-all",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Printer, { className: "w-4 h-4" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: isEn ? "Direct Print" : "In phi\u1EBFu" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Printer, { className: "w-4 h-4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: isEn ? "Direct Print" : "In phi\u1EBFu" })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
           "button",
           {
             onClick: handleDownload,
             className: "inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Download, { className: "w-4 h-4" }),
-              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: isEn ? "Download PDF Report" : "T\u1EA3i Phi\u1EBFu PDF" })
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Download, { className: "w-4 h-4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: isEn ? "Download PDF Report" : "T\u1EA3i Phi\u1EBFu PDF" })
             ]
           }
         )
@@ -55287,7 +55039,7 @@ var PdfConsultationModal = ({
 };
 
 // antibiotic/src/components/selection/GuidelineImageModal.tsx
-var import_react13 = __toESM(require_react(), 1);
+var import_react12 = __toESM(require_react(), 1);
 
 // antibiotic/src/selection/data/guidelineImages.ts
 var GUIDELINE_IMAGES = [
@@ -55745,7 +55497,7 @@ function getMdrGuidelineImages(mdrCategory) {
 }
 
 // antibiotic/src/components/selection/GuidelineImageModal.tsx
-var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
 var GuidelineImageModal = ({
   isOpen,
   onClose,
@@ -55754,13 +55506,13 @@ var GuidelineImageModal = ({
   currentPopulation = "adult",
   currentMdr
 }) => {
-  const [selectedId, setSelectedId] = (0, import_react13.useState)(initialImageId || "adult_resp_regimen");
-  const [zoomLevel, setZoomLevel] = (0, import_react13.useState)(1);
-  const [mobileTab, setMobileTab] = (0, import_react13.useState)("image");
-  const [isSidebarVisible, setIsSidebarVisible] = (0, import_react13.useState)(true);
-  const [filterPopulation, setFilterPopulation] = (0, import_react13.useState)("adult");
-  const [filterSite, setFilterSite] = (0, import_react13.useState)("respiratory");
-  (0, import_react13.useEffect)(() => {
+  const [selectedId, setSelectedId] = (0, import_react12.useState)(initialImageId || "adult_resp_regimen");
+  const [zoomLevel, setZoomLevel] = (0, import_react12.useState)(1);
+  const [mobileTab, setMobileTab] = (0, import_react12.useState)("image");
+  const [isSidebarVisible, setIsSidebarVisible] = (0, import_react12.useState)(true);
+  const [filterPopulation, setFilterPopulation] = (0, import_react12.useState)("adult");
+  const [filterSite, setFilterSite] = (0, import_react12.useState)("respiratory");
+  (0, import_react12.useEffect)(() => {
     if (isOpen) {
       if (initialImageId) {
         setSelectedId(initialImageId);
@@ -55786,13 +55538,13 @@ var GuidelineImageModal = ({
       setMobileTab("image");
     }
   }, [isOpen, initialImageId, currentSite, currentPopulation, currentMdr]);
-  const currentIndex = (0, import_react13.useMemo)(() => {
+  const currentIndex = (0, import_react12.useMemo)(() => {
     return GUIDELINE_IMAGES.findIndex((i) => i.id === selectedId);
   }, [selectedId]);
-  const currentImage = (0, import_react13.useMemo)(() => {
+  const currentImage = (0, import_react12.useMemo)(() => {
     return GUIDELINE_IMAGES[currentIndex >= 0 ? currentIndex : 0];
   }, [currentIndex]);
-  const currentPair = (0, import_react13.useMemo)(() => {
+  const currentPair = (0, import_react12.useMemo)(() => {
     if (currentImage.site !== "all" && currentImage.population !== "all") {
       return getGuidelineImagesForSite(currentImage.site, currentImage.population);
     }
@@ -55814,19 +55566,19 @@ var GuidelineImageModal = ({
     setZoomLevel(1);
   };
   const imageSrc = `./assets/guidelines/${currentImage.imageFilename}`;
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "bg-white rounded-2xl max-w-7xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col h-[94vh] max-h-[980px]", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "bg-gradient-to-r from-teal-900 via-slate-900 to-indigo-950 text-white p-3 sm:p-4 flex items-center justify-between shrink-0 border-b border-teal-500/20", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center space-x-3 overflow-hidden", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "w-9 h-9 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(BookOpen, { className: "w-5 h-5 text-teal-300" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "truncate", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "font-extrabold text-sm sm:text-base text-white tracking-tight truncate", children: currentImage.titleVi }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/25 text-teal-300 border border-teal-500/30 shrink-0", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-white rounded-2xl max-w-7xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col h-[94vh] max-h-[980px]", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-gradient-to-r from-teal-900 via-slate-900 to-indigo-950 text-white p-3 sm:p-4 flex items-center justify-between shrink-0 border-b border-teal-500/20", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center space-x-3 overflow-hidden", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "w-9 h-9 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(BookOpen, { className: "w-5 h-5 text-teal-300" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "truncate", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-extrabold text-sm sm:text-base text-white tracking-tight truncate", children: currentImage.titleVi }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/25 text-teal-300 border border-teal-500/30 shrink-0", children: [
               "Trang ",
               currentImage.pdfPage,
               " (BVBND 2026)"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { className: "text-[10px] text-slate-400 hidden lg:inline", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "text-[10px] text-slate-400 hidden lg:inline", children: [
               "(\u1EA2nh ",
               currentIndex + 1,
               "/",
@@ -55834,54 +55586,54 @@ var GuidelineImageModal = ({
               ")"
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-xs text-slate-300 truncate mt-0.5", children: currentImage.subtitleVi })
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-xs text-slate-300 truncate mt-0.5", children: currentImage.subtitleVi })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center space-x-1.5 sm:space-x-2 shrink-0", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center bg-white/10 rounded-lg p-0.5 border border-white/10 mr-1 hidden sm:flex", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center space-x-1.5 sm:space-x-2 shrink-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center bg-white/10 rounded-lg p-0.5 border border-white/10 mr-1 hidden sm:flex", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "button",
             {
               type: "button",
               onClick: handlePrev,
               className: "p-1.5 rounded-md hover:bg-white/20 text-slate-200 hover:text-white transition-colors cursor-pointer",
               title: "L\u01B0u \u0111\u1ED3 tr\u01B0\u1EDBc",
-              children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ChevronLeft, { className: "w-4 h-4" })
+              children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ChevronLeft, { className: "w-4 h-4" })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { className: "text-[11px] font-mono px-1.5 text-slate-300", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "text-[11px] font-mono px-1.5 text-slate-300", children: [
             currentIndex + 1,
             "/",
             GUIDELINE_IMAGES.length
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "button",
             {
               type: "button",
               onClick: handleNext,
               className: "p-1.5 rounded-md hover:bg-white/20 text-slate-200 hover:text-white transition-colors cursor-pointer",
               title: "L\u01B0u \u0111\u1ED3 ti\u1EBFp theo",
-              children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ChevronRight, { className: "w-4 h-4" })
+              children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ChevronRight, { className: "w-4 h-4" })
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
           "button",
           {
             type: "button",
             onClick: () => setIsSidebarVisible((prev) => !prev),
             className: "p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors hidden md:flex items-center gap-1.5 text-xs font-medium cursor-pointer",
             title: isSidebarVisible ? "\u1EA8n c\u1ED9t ghi ch\xFA" : "Hi\u1EC7n c\u1ED9t ghi ch\xFA",
-            children: isSidebarVisible ? /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PanelRightClose, { className: "w-4 h-4" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "hidden xl:inline", children: "M\u1EDF r\u1ED9ng \u1EA3nh" })
-            ] }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PanelRightOpen, { className: "w-4 h-4" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "hidden xl:inline", children: "Hi\u1EC7n ghi ch\xFA" })
+            children: isSidebarVisible ? /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(PanelRightClose, { className: "w-4 h-4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "hidden xl:inline", children: "M\u1EDF r\u1ED9ng \u1EA3nh" })
+            ] }) : /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(PanelRightOpen, { className: "w-4 h-4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "hidden xl:inline", children: "Hi\u1EC7n ghi ch\xFA" })
             ] })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
           "a",
           {
             href: imageSrc,
@@ -55889,33 +55641,33 @@ var GuidelineImageModal = ({
             rel: "noopener noreferrer",
             className: "p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors",
             title: "M\u1EDF tab m\u1EDBi xem \u1EA3nh g\u1ED1c k\xEDch th\u01B0\u1EDBc \u0111\u1EA7y \u0111\u1EE7",
-            children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ExternalLink, { className: "w-4 h-4" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ExternalLink, { className: "w-4 h-4" })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
           "a",
           {
             href: imageSrc,
             download: currentImage.imageFilename,
             className: "p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors",
             title: "T\u1EA3i \u1EA3nh g\u1ED1c v\u1EC1 m\xE1y",
-            children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Download, { className: "w-4 h-4" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Download, { className: "w-4 h-4" })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
           "button",
           {
             onClick: onClose,
             className: "p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer",
             title: "\u0110\xF3ng modal",
-            children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(X, { className: "w-5 h-5" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(X, { className: "w-5 h-5" })
           }
         )
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "bg-slate-100 border-b border-slate-200 px-3 sm:px-4 py-2 flex flex-wrap items-center justify-between gap-2 shrink-0 text-xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center gap-1.5 overflow-x-auto", children: [
-        currentPair.regimen && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-slate-100 border-b border-slate-200 px-3 sm:px-4 py-2 flex flex-wrap items-center justify-between gap-2 shrink-0 text-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center gap-1.5 overflow-x-auto", children: [
+        currentPair.regimen && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
           "button",
           {
             type: "button",
@@ -55925,12 +55677,12 @@ var GuidelineImageModal = ({
             },
             className: `px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${selectedId === currentPair.regimen.id ? "bg-teal-600 text-white shadow-xs" : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-300"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(FileText, { className: "w-3.5 h-3.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "L\u01B0u \u0111\u1ED3 Ph\xE1c \u0111\u1ED3" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FileText, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "L\u01B0u \u0111\u1ED3 Ph\xE1c \u0111\u1ED3" })
             ]
           }
         ),
-        currentPair.antibiogram && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+        currentPair.antibiogram && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
           "button",
           {
             type: "button",
@@ -55940,14 +55692,14 @@ var GuidelineImageModal = ({
             },
             className: `px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${selectedId === currentPair.antibiogram.id ? "bg-teal-600 text-white shadow-xs" : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-300"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Layers, { className: "w-3.5 h-3.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "D\u1EEF li\u1EC7u Vi sinh" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Layers, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "D\u1EEF li\u1EC7u Vi sinh" })
             ]
           }
         ),
-        currentImage.site !== "all" && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "h-5 w-px bg-slate-300 mx-1 hidden sm:block" }),
-        currentImage.site !== "all" && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "inline-flex rounded-lg border border-slate-300 bg-white p-0.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        currentImage.site !== "all" && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "h-5 w-px bg-slate-300 mx-1 hidden sm:block" }),
+        currentImage.site !== "all" && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "inline-flex rounded-lg border border-slate-300 bg-white p-0.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "button",
             {
               type: "button",
@@ -55962,7 +55714,7 @@ var GuidelineImageModal = ({
               children: "Ng\u01B0\u1EDDi l\u1EDBn"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "button",
             {
               type: "button",
@@ -55979,9 +55731,9 @@ var GuidelineImageModal = ({
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center gap-2 ml-auto flex-wrap", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "text-[11px] font-medium text-slate-500 hidden md:inline", children: "Ch\u1ECDn l\u01B0u \u0111\u1ED3:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center gap-2 ml-auto flex-wrap", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-[11px] font-medium text-slate-500 hidden md:inline", children: "Ch\u1ECDn l\u01B0u \u0111\u1ED3:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
           "select",
           {
             value: selectedId,
@@ -55991,41 +55743,41 @@ var GuidelineImageModal = ({
             },
             className: "bg-white border border-slate-300 text-slate-800 text-xs rounded-lg px-2.5 py-1 font-medium focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-hidden max-w-[220px] sm:max-w-xs cursor-pointer",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("optgroup", { label: "Ng\u01B0\u1EDDi l\u1EDBn \u2014 Ti\xEAu \u0111i\u1EC3m nhi\u1EC5m tr\xF9ng", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_resp_regimen", children: "Vi\xEAm ph\u1ED5i \u2014 Ph\xE1c \u0111\u1ED3 (Trang 9)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_resp_antibiogram", children: "Vi\xEAm ph\u1ED5i \u2014 Vi sinh (Trang 8)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_blood_regimen", children: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u2014 Ph\xE1c \u0111\u1ED3 (Trang 13)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_blood_antibiogram", children: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u2014 Vi sinh (Trang 12)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_ssti_regimen", children: "Da & m\xF4 m\u1EC1m \u2014 Ph\xE1c \u0111\u1ED3 (Trang 10)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_ssti_antibiogram", children: "Da & m\xF4 m\u1EC1m \u2014 Vi sinh (Trang 9)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_uti_regimen", children: "Ti\u1EBFt ni\u1EC7u \u2014 Ph\xE1c \u0111\u1ED3 (Trang 11)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_uti_antibiogram", children: "Ti\u1EBFt ni\u1EC7u \u2014 Vi sinh (Trang 10)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_sbp_regimen", children: "D\u1ECBch b\xE1ng (SBP) \u2014 Ph\xE1c \u0111\u1ED3 (Trang 12)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "adult_sbp_antibiogram", children: "D\u1ECBch b\xE1ng (SBP) \u2014 Vi sinh (Trang 11)" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("optgroup", { label: "Ng\u01B0\u1EDDi l\u1EDBn \u2014 Ti\xEAu \u0111i\u1EC3m nhi\u1EC5m tr\xF9ng", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_resp_regimen", children: "Vi\xEAm ph\u1ED5i \u2014 Ph\xE1c \u0111\u1ED3 (Trang 9)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_resp_antibiogram", children: "Vi\xEAm ph\u1ED5i \u2014 Vi sinh (Trang 8)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_blood_regimen", children: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u2014 Ph\xE1c \u0111\u1ED3 (Trang 13)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_blood_antibiogram", children: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u2014 Vi sinh (Trang 12)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_ssti_regimen", children: "Da & m\xF4 m\u1EC1m \u2014 Ph\xE1c \u0111\u1ED3 (Trang 10)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_ssti_antibiogram", children: "Da & m\xF4 m\u1EC1m \u2014 Vi sinh (Trang 9)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_uti_regimen", children: "Ti\u1EBFt ni\u1EC7u \u2014 Ph\xE1c \u0111\u1ED3 (Trang 11)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_uti_antibiogram", children: "Ti\u1EBFt ni\u1EC7u \u2014 Vi sinh (Trang 10)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_sbp_regimen", children: "D\u1ECBch b\xE1ng (SBP) \u2014 Ph\xE1c \u0111\u1ED3 (Trang 12)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "adult_sbp_antibiogram", children: "D\u1ECBch b\xE1ng (SBP) \u2014 Vi sinh (Trang 11)" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("optgroup", { label: "Tr\u1EBB em \u2014 Ti\xEAu \u0111i\u1EC3m nhi\u1EC5m tr\xF9ng", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "peds_resp_regimen", children: "Nhi: Vi\xEAm ph\u1ED5i \u2014 Ph\xE1c \u0111\u1ED3 (Trang 4)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "peds_resp_antibiogram", children: "Nhi: Vi\xEAm ph\u1ED5i \u2014 Vi sinh (Trang 4)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "peds_blood_regimen", children: "Nhi: Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u2014 Ph\xE1c \u0111\u1ED3 (Trang 6)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "peds_blood_antibiogram", children: "Nhi: Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u2014 Vi sinh (Trang 5)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "peds_ssti_regimen", children: "Nhi: Da & m\xF4 m\u1EC1m \u2014 Ph\xE1c \u0111\u1ED3 (Trang 7)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "peds_ssti_antibiogram", children: "Nhi: Da & m\xF4 m\u1EC1m \u2014 Vi sinh (Trang 6)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "peds_uti_regimen", children: "Nhi: Ti\u1EBFt ni\u1EC7u \u2014 Ph\xE1c \u0111\u1ED3 (Trang 8)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "peds_uti_antibiogram", children: "Nhi: Ti\u1EBFt ni\u1EC7u \u2014 Vi sinh (Trang 7)" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("optgroup", { label: "Tr\u1EBB em \u2014 Ti\xEAu \u0111i\u1EC3m nhi\u1EC5m tr\xF9ng", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "peds_resp_regimen", children: "Nhi: Vi\xEAm ph\u1ED5i \u2014 Ph\xE1c \u0111\u1ED3 (Trang 4)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "peds_resp_antibiogram", children: "Nhi: Vi\xEAm ph\u1ED5i \u2014 Vi sinh (Trang 4)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "peds_blood_regimen", children: "Nhi: Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u2014 Ph\xE1c \u0111\u1ED3 (Trang 6)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "peds_blood_antibiogram", children: "Nhi: Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u2014 Vi sinh (Trang 5)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "peds_ssti_regimen", children: "Nhi: Da & m\xF4 m\u1EC1m \u2014 Ph\xE1c \u0111\u1ED3 (Trang 7)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "peds_ssti_antibiogram", children: "Nhi: Da & m\xF4 m\u1EC1m \u2014 Vi sinh (Trang 6)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "peds_uti_regimen", children: "Nhi: Ti\u1EBFt ni\u1EC7u \u2014 Ph\xE1c \u0111\u1ED3 (Trang 8)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "peds_uti_antibiogram", children: "Nhi: Ti\u1EBFt ni\u1EC7u \u2014 Vi sinh (Trang 7)" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("optgroup", { label: "Vi khu\u1EA9n \u0111a kh\xE1ng (MDR Pathways)", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "mdr_cre_table1", children: "CRE: B\u1EA3ng 1 KS c\xF2n nh\u1EA1y (Trang 15)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "mdr_cre_flowchart", children: "CRE: B\u1EA3ng 2 L\u01B0u \u0111\u1ED3 ki\u1EC3u men KPC/OXA/MBL (Trang 15)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "mdr_pseudo_dosing", children: "P. aeruginosa: B\u1EA3ng li\u1EC1u DTR (Trang 17)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "mdr_pseudo_flowchart", children: "P. aeruginosa: L\u01B0u \u0111\u1ED3 \u0111i\u1EC1u tr\u1ECB DTR (Trang 18)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "mdr_acineto_dosing", children: "A. baumannii: B\u1EA3ng li\u1EC1u CRAB (Trang 20)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "mdr_acineto_flowchart", children: "A. baumannii & S. maltophilia: L\u01B0u \u0111\u1ED3 (Trang 21)" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("optgroup", { label: "Vi khu\u1EA9n \u0111a kh\xE1ng (MDR Pathways)", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "mdr_cre_table1", children: "CRE: B\u1EA3ng 1 KS c\xF2n nh\u1EA1y (Trang 15)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "mdr_cre_flowchart", children: "CRE: B\u1EA3ng 2 L\u01B0u \u0111\u1ED3 ki\u1EC3u men KPC/OXA/MBL (Trang 15)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "mdr_pseudo_dosing", children: "P. aeruginosa: B\u1EA3ng li\u1EC1u DTR (Trang 17)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "mdr_pseudo_flowchart", children: "P. aeruginosa: L\u01B0u \u0111\u1ED3 \u0111i\u1EC1u tr\u1ECB DTR (Trang 18)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "mdr_acineto_dosing", children: "A. baumannii: B\u1EA3ng li\u1EC1u CRAB (Trang 20)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: "mdr_acineto_flowchart", children: "A. baumannii & S. maltophilia: L\u01B0u \u0111\u1ED3 (Trang 21)" })
               ] })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center gap-1 bg-white border border-slate-300 rounded-lg p-0.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center gap-1 bg-white border border-slate-300 rounded-lg p-0.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "button",
             {
               type: "button",
@@ -56033,14 +55785,14 @@ var GuidelineImageModal = ({
               disabled: zoomLevel <= 0.75,
               className: "p-1 hover:bg-slate-100 rounded text-slate-700 disabled:opacity-40 cursor-pointer",
               title: "Thu nh\u1ECF",
-              children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ZoomOut, { className: "w-3.5 h-3.5" })
+              children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ZoomOut, { className: "w-3.5 h-3.5" })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { className: "text-[10px] font-mono font-bold px-1 text-slate-700 w-9 text-center", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "text-[10px] font-mono font-bold px-1 text-slate-700 w-9 text-center", children: [
             Math.round(zoomLevel * 100),
             "%"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "button",
             {
               type: "button",
@@ -56048,51 +55800,51 @@ var GuidelineImageModal = ({
               disabled: zoomLevel >= 2.5,
               className: "p-1 hover:bg-slate-100 rounded text-slate-700 disabled:opacity-40 cursor-pointer",
               title: "Ph\xF3ng to",
-              children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ZoomIn, { className: "w-3.5 h-3.5" })
+              children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ZoomIn, { className: "w-3.5 h-3.5" })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "button",
             {
               type: "button",
               onClick: handleZoomReset,
               className: "p-1 hover:bg-slate-100 rounded text-slate-700 cursor-pointer",
               title: "Kh\xF4i ph\u1EE5c 100%",
-              children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(RotateCcw, { className: "w-3 h-3" })
+              children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(RotateCcw, { className: "w-3 h-3" })
             }
           )
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "md:hidden bg-slate-200 p-1 flex items-center justify-center shrink-0 border-b border-slate-300", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "grid grid-cols-2 w-full max-w-sm bg-slate-300 rounded-lg p-0.5 text-xs font-bold", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "md:hidden bg-slate-200 p-1 flex items-center justify-center shrink-0 border-b border-slate-300", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "grid grid-cols-2 w-full max-w-sm bg-slate-300 rounded-lg p-0.5 text-xs font-bold", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
         "button",
         {
           type: "button",
           onClick: () => setMobileTab("image"),
           className: `py-1.5 rounded-md flex items-center justify-center gap-1.5 transition-all cursor-pointer ${mobileTab === "image" ? "bg-white text-slate-900 shadow-xs" : "text-slate-600"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Eye, { className: "w-3.5 h-3.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Xem L\u01B0u \u0110\u1ED3" })
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Eye, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Xem L\u01B0u \u0110\u1ED3" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
         "button",
         {
           type: "button",
           onClick: () => setMobileTab("notes"),
           className: `py-1.5 rounded-md flex items-center justify-center gap-1.5 transition-all cursor-pointer ${mobileTab === "notes" ? "bg-white text-slate-900 shadow-xs" : "text-slate-600"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(FileText, { className: "w-3.5 h-3.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Ghi Ch\xFA & Khuy\u1EBFn C\xE1o" })
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FileText, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Ghi Ch\xFA & Khuy\u1EBFn C\xE1o" })
           ]
         }
       )
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex-1 overflow-hidden flex flex-col md:flex-row bg-slate-900", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: `flex-1 min-w-0 overflow-auto p-3 sm:p-6 items-start justify-center relative bg-slate-950/95 select-none ${mobileTab === "notes" ? "hidden md:flex" : "flex"}`, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex-1 overflow-hidden flex flex-col md:flex-row bg-slate-900", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: `flex-1 min-w-0 overflow-auto p-3 sm:p-6 items-start justify-center relative bg-slate-950/95 select-none ${mobileTab === "notes" ? "hidden md:flex" : "flex"}`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
           "div",
           {
             className: "flex items-center justify-center m-auto transition-all duration-200 cursor-zoom-in",
@@ -56102,7 +55854,7 @@ var GuidelineImageModal = ({
               width: zoomLevel === 1 ? "100%" : `${Math.round(zoomLevel * 100)}%`,
               minWidth: zoomLevel === 1 ? "auto" : `${Math.round(zoomLevel * 100)}%`
             },
-            children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
               "img",
               {
                 src: imageSrc,
@@ -56113,47 +55865,47 @@ var GuidelineImageModal = ({
             )
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "absolute bottom-3 right-3 bg-slate-900/85 backdrop-blur-xs text-white text-[11px] font-mono px-2.5 py-1 rounded-md border border-slate-700 shadow-md flex items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "absolute bottom-3 right-3 bg-slate-900/85 backdrop-blur-xs text-white text-[11px] font-mono px-2.5 py-1 rounded-md border border-slate-700 shadow-md flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { children: [
             "Zoom: ",
             Math.round(zoomLevel * 100),
             "%"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "text-slate-400 text-[10px] hidden sm:inline", children: "\u2022 Click \u1EA3nh \u0111\u1EC3 ph\xF3ng 150%" })
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-slate-400 text-[10px] hidden sm:inline", children: "\u2022 Click \u1EA3nh \u0111\u1EC3 ph\xF3ng 150%" })
         ] })
       ] }),
-      isSidebarVisible && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: `w-full md:w-80 lg:w-96 bg-white border-t md:border-t-0 md:border-l border-slate-200 overflow-y-auto p-4 sm:p-5 flex-col shrink-0 ${mobileTab === "image" ? "hidden md:flex" : "flex"}`, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "space-y-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "text-[10px] font-black uppercase tracking-wider text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200", children: "Chu\u1EA9n h\xF3a BVBND eMed 2026" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h4", { className: "text-sm font-extrabold text-slate-900 mt-1.5", children: "\u0110i\u1EC3m C\u1ED1t L\xF5i L\xE2m S\xE0ng" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("p", { className: "text-xs text-slate-500", children: [
+      isSidebarVisible && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: `w-full md:w-80 lg:w-96 bg-white border-t md:border-t-0 md:border-l border-slate-200 overflow-y-auto p-4 sm:p-5 flex-col shrink-0 ${mobileTab === "image" ? "hidden md:flex" : "flex"}`, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "text-[10px] font-black uppercase tracking-wider text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200", children: "Chu\u1EA9n h\xF3a BVBND eMed 2026" }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h4", { className: "text-sm font-extrabold text-slate-900 mt-1.5", children: "\u0110i\u1EC3m C\u1ED1t L\xF5i L\xE2m S\xE0ng" }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { className: "text-xs text-slate-500", children: [
             "Tr\xEDch xu\u1EA5t tr\u1EF1c ti\u1EBFp t\u1EEB t\xE0i li\u1EC7u g\u1ED1c Trang ",
             currentImage.pdfPage,
             "/24"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "space-y-2.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "text-xs font-bold text-slate-700 uppercase tracking-wider", children: "Quy t\u1EAFc \u0111i\u1EC1u tr\u1ECB & Khuy\u1EBFn c\xE1o:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "space-y-2", children: currentImage.summaryPointsVi.map((point, idx) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-start gap-2 text-xs text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-xl border border-slate-200/80", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "w-4 h-4 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5", children: idx + 1 }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: point })
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "space-y-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "text-xs font-bold text-slate-700 uppercase tracking-wider", children: "Quy t\u1EAFc \u0111i\u1EC1u tr\u1ECB & Khuy\u1EBFn c\xE1o:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "space-y-2", children: currentImage.summaryPointsVi.map((point, idx) => /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-start gap-2 text-xs text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-xl border border-slate-200/80", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "w-4 h-4 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5", children: idx + 1 }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: point })
           ] }, idx)) })
         ] }),
-        currentImage.clinicalCautionsVi && currentImage.clinicalCautionsVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-950 space-y-1.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center gap-1.5 text-xs font-bold text-rose-900", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ShieldAlert, { className: "w-4 h-4 text-rose-600 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "L\u01B0u \xFD an to\xE0n & Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh:" })
+        currentImage.clinicalCautionsVi && currentImage.clinicalCautionsVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-950 space-y-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center gap-1.5 text-xs font-bold text-rose-900", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ShieldAlert, { className: "w-4 h-4 text-rose-600 shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "L\u01B0u \xFD an to\xE0n & Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh:" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("ul", { className: "list-disc list-inside text-xs space-y-1 text-rose-900 leading-relaxed font-medium", children: currentImage.clinicalCautionsVi.map((c, idx) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("li", { children: c }, idx)) })
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("ul", { className: "list-disc list-inside text-xs space-y-1 text-rose-900 leading-relaxed font-medium", children: currentImage.clinicalCautionsVi.map((c, idx) => /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("li", { children: c }, idx)) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "pt-3 border-t border-slate-200 text-[11px] text-slate-500 space-y-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "font-semibold text-slate-700", children: "T\xE0i li\u1EC7u tham chi\u1EBFu chu\u1EA9n:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("p", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "pt-3 border-t border-slate-200 text-[11px] text-slate-500 space-y-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "font-semibold text-slate-700", children: "T\xE0i li\u1EC7u tham chi\u1EBFu chu\u1EA9n:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
             "BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi TP.HCM \u2014 ",
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("em", { children: "H\u01B0\u1EDBng d\u1EABn s\u1EED d\u1EE5ng kh\xE1ng sinh (Quy\u1EBFt \u0111\u1ECBnh \xE1p d\u1EE5ng n\u1ED9i vi\u1EC7n 2026)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("em", { children: "H\u01B0\u1EDBng d\u1EABn s\u1EED d\u1EE5ng kh\xE1ng sinh (Quy\u1EBFt \u0111\u1ECBnh \xE1p d\u1EE5ng n\u1ED9i vi\u1EC7n 2026)" }),
             "."
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("p", { className: "font-mono text-[10px] text-slate-400", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { className: "font-mono text-[10px] text-slate-400", children: [
             "File g\u1ED1c: 7. H\u01AF\u1EDANG D\u1EAAN S\u1EEC D\u1EE4NG KH\xC1NG SINH - BV B\u1EC7nh nhi\u1EC7t \u0111\u1EDBi.pdf (Trang ",
             currentImage.pdfPage,
             ")"
@@ -56161,37 +55913,37 @@ var GuidelineImageModal = ({
         ] })
       ] }) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "bg-slate-50 border-t border-slate-200 px-4 py-3 flex items-center justify-between shrink-0", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "text-xs text-slate-600 flex items-center gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "w-2 h-2 rounded-full bg-emerald-500 animate-pulse" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "font-semibold", children: "B\u1EA3n scan s\u1ED1 h\xF3a 100% \u0111\u1ED9 s\u1EAFc n\xE9t cao (High-Fidelity)" })
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-slate-50 border-t border-slate-200 px-4 py-3 flex items-center justify-between shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-xs text-slate-600 flex items-center gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "w-2 h-2 rounded-full bg-emerald-500 animate-pulse" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "font-semibold", children: "B\u1EA3n scan s\u1ED1 h\xF3a 100% \u0111\u1ED9 s\u1EAFc n\xE9t cao (High-Fidelity)" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
           "button",
           {
             type: "button",
             onClick: handlePrev,
             className: "px-3 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg transition-all cursor-pointer flex items-center gap-1",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ChevronLeft, { className: "w-3.5 h-3.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Trang tr\u01B0\u1EDBc" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ChevronLeft, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Trang tr\u01B0\u1EDBc" })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
           "button",
           {
             type: "button",
             onClick: handleNext,
             className: "px-3 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg transition-all cursor-pointer flex items-center gap-1",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Trang sau" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ChevronRight, { className: "w-3.5 h-3.5" })
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Trang sau" }),
+              /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ChevronRight, { className: "w-3.5 h-3.5" })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
           "button",
           {
             type: "button",
@@ -56206,7 +55958,7 @@ var GuidelineImageModal = ({
 };
 
 // antibiotic/src/components/selection/SelectionWizard.tsx
-var import_react17 = __toESM(require_react(), 1);
+var import_react16 = __toESM(require_react(), 1);
 
 // antibiotic/src/selection/data/riskFactors.ts
 var GENERAL_MDR_RISK_FACTORS = [
@@ -59346,7 +59098,7 @@ function getMdrPathway(category) {
 }
 
 // antibiotic/src/components/selection/StepAssessmentStratification.tsx
-var import_react14 = __toESM(require_react(), 1);
+var import_react13 = __toESM(require_react(), 1);
 
 // antibiotic/src/selection/data/nhsnCriteria.ts
 var NHSN_CRITERIA_SECTIONS = [
@@ -59578,7 +59330,7 @@ var NHSN_CRITERIA_SECTIONS = [
 ];
 
 // antibiotic/src/components/selection/SourceBadge.tsx
-var import_jsx_runtime15 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
 var SourceBadge = ({ source, className = "" }) => {
   let docName = "BVBND 2026";
   let badgeColor = "bg-blue-50 text-blue-700 border-blue-200";
@@ -59596,14 +59348,14 @@ var SourceBadge = ({ source, className = "" }) => {
     badgeColor = "bg-purple-50 text-purple-700 border-purple-200";
   }
   const pageStr = Array.isArray(source.page) ? source.page.join(", ") : source.page;
-  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
     "span",
     {
       className: `inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[11px] font-semibold border ${badgeColor} ${className}`,
       title: `Ngu\u1ED3n y v\u0103n ch\xEDnh th\u1EE9c: ${docName}, Trang ${pageStr}${source.note ? ` (${source.note})` : ""}`,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(BookOpen, { className: "w-3 h-3 shrink-0" }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(BookOpen, { className: "w-3 h-3 shrink-0" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { children: [
           docName,
           " \u2022 Tr.",
           pageStr
@@ -59614,7 +59366,7 @@ var SourceBadge = ({ source, className = "" }) => {
 };
 
 // antibiotic/src/components/selection/StepAssessmentStratification.tsx
-var import_jsx_runtime16 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime15 = __toESM(require_jsx_runtime(), 1);
 var StepAssessmentStratification = ({
   indicationConfirmed,
   onConfirmIndication,
@@ -59644,19 +59396,19 @@ var StepAssessmentStratification = ({
   onApplyPreset,
   onNextStage
 }) => {
-  const [showNhsnDetails, setShowNhsnDetails] = (0, import_react14.useState)(false);
-  const [showGeneralRisks, setShowGeneralRisks] = (0, import_react14.useState)(false);
-  const [selectedSyndrome, setSelectedSyndrome] = (0, import_react14.useState)("nhsn_pneumonia_adult");
-  const [activePreset, setActivePreset] = (0, import_react14.useState)("vap_severe");
-  const [showSofaCalculator, setShowSofaCalculator] = (0, import_react14.useState)(false);
-  const [expandedPathogen, setExpandedPathogen] = (0, import_react14.useState)(null);
+  const [showNhsnDetails, setShowNhsnDetails] = (0, import_react13.useState)(false);
+  const [showGeneralRisks, setShowGeneralRisks] = (0, import_react13.useState)(false);
+  const [selectedSyndrome, setSelectedSyndrome] = (0, import_react13.useState)("nhsn_pneumonia_adult");
+  const [activePreset, setActivePreset] = (0, import_react13.useState)("vap_severe");
+  const [showSofaCalculator, setShowSofaCalculator] = (0, import_react13.useState)(false);
+  const [expandedPathogen, setExpandedPathogen] = (0, import_react13.useState)(null);
   const isGroup2 = riskResult.group === "group_2";
   const sitesList = [
     {
       id: "respiratory",
       titleVi: "H\xF4 H\u1EA5p (Vi\xEAm Ph\u1ED5i)",
       subVi: "CAP, HAP, VAP th\u1EDF m\xE1y",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Stethoscope, { className: "w-4 h-4 text-sky-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Stethoscope, { className: "w-4 h-4 text-sky-600" }),
       color: "bg-sky-50 text-sky-700",
       borderActive: "border-sky-500 bg-sky-50/70 ring-2 ring-sky-500/20"
     },
@@ -59664,7 +59416,7 @@ var StepAssessmentStratification = ({
       id: "sepsis",
       titleVi: "Nhi\u1EC5m Khu\u1EA9n Huy\u1EBFt",
       subVi: "Sepsis, S\u1ED1c NK",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Droplet, { className: "w-4 h-4 text-rose-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Droplet, { className: "w-4 h-4 text-rose-600" }),
       color: "bg-rose-50 text-rose-700",
       borderActive: "border-rose-500 bg-rose-50/70 ring-2 ring-rose-500/20"
     },
@@ -59672,7 +59424,7 @@ var StepAssessmentStratification = ({
       id: "urinary",
       titleVi: "\u0110\u01B0\u1EDDng Ti\u1EBFt Ni\u1EC7u",
       subVi: "UTI, \u0110\xE0i b\u1EC3 th\u1EADn, CAUTI",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(HeartHandshake, { className: "w-4 h-4 text-indigo-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(HeartHandshake, { className: "w-4 h-4 text-indigo-600" }),
       color: "bg-indigo-50 text-indigo-700",
       borderActive: "border-indigo-500 bg-indigo-50/70 ring-2 ring-indigo-500/20"
     },
@@ -59680,7 +59432,7 @@ var StepAssessmentStratification = ({
       id: "skin_soft_tissue",
       titleVi: "Da & M\xF4 M\u1EC1m (SSTI)",
       subVi: "Vi\xEAm m\xF4 TB, lo\xE9t t\xEC \u0111\xE8, \xE1p xe",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Flame, { className: "w-4 h-4 text-amber-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Flame, { className: "w-4 h-4 text-amber-600" }),
       color: "bg-amber-50 text-amber-700",
       borderActive: "border-amber-500 bg-amber-50/70 ring-2 ring-amber-500/20"
     },
@@ -59688,7 +59440,7 @@ var StepAssessmentStratification = ({
       id: "peritoneal",
       titleVi: "D\u1ECBch B\xE1ng / B\u1EE5ng (SBP)",
       subVi: "Vi\xEAm ph\xFAc m\u1EA1c x\u01A1 gan",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Layers, { className: "w-4 h-4 text-emerald-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Layers, { className: "w-4 h-4 text-emerald-600" }),
       color: "bg-emerald-50 text-emerald-700",
       borderActive: "border-emerald-500 bg-emerald-50/70 ring-2 ring-emerald-500/20"
     },
@@ -59696,7 +59448,7 @@ var StepAssessmentStratification = ({
       id: "cns",
       titleVi: "Th\u1EA7n Kinh TW (CNS)",
       subVi: "Vi\xEAm m\xE0ng n\xE3o m\u1EE7, \xE1p xe",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Brain, { className: "w-4 h-4 text-purple-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Brain, { className: "w-4 h-4 text-purple-600" }),
       color: "bg-purple-50 text-purple-700",
       borderActive: "border-purple-500 bg-purple-50/70 ring-2 ring-purple-500/20"
     }
@@ -59734,34 +59486,34 @@ var StepAssessmentStratification = ({
       if (sofaScore < 2) onSofaChange(4);
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "space-y-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "bg-gradient-to-r from-teal-900 via-slate-900 to-sky-950 text-white rounded-2xl p-3.5 shadow-sm border border-teal-500/30", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "w-8 h-8 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Sparkles, { className: "w-4 h-4" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-teal-400", children: "M\u1EABu Ca L\xE2m S\xE0ng \u0110i\u1EC3n H\xECnh" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-[10px] bg-teal-500/20 text-teal-200 px-2 py-0.5 rounded-full border border-teal-400/20", children: "1-Click Nhanh" })
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "space-y-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "bg-gradient-to-r from-teal-900 via-slate-900 to-sky-950 text-white rounded-2xl p-3.5 shadow-sm border border-teal-500/30", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-8 h-8 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Sparkles, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-teal-400", children: "M\u1EABu Ca L\xE2m S\xE0ng \u0110i\u1EC3n H\xECnh" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-[10px] bg-teal-500/20 text-teal-200 px-2 py-0.5 rounded-full border border-teal-400/20", children: "1-Click Nhanh" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-[11px] text-slate-300 mt-0.5", children: "N\u1EA1p nhanh th\xF4ng s\u1ED1 ca b\u1EC7nh m\u1EABu \u0111\u1EC3 ki\u1EC3m th\u1EED v\xE0 ph\xE2n t\u1EA7ng t\u1EE9c th\xEC" })
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-[11px] text-slate-300 mt-0.5", children: "N\u1EA1p nhanh th\xF4ng s\u1ED1 ca b\u1EC7nh m\u1EABu \u0111\u1EC3 ki\u1EC3m th\u1EED v\xE0 ph\xE2n t\u1EA7ng t\u1EE9c th\xEC" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full scrollbar-none sm:flex-wrap", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full scrollbar-none sm:flex-wrap", children: [
         presets.map((p) => {
           const isSelected = activePreset === p.id;
-          return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "button",
             {
               type: "button",
               onClick: () => handleSelectPreset(p.id),
               className: `px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center space-x-1.5 shrink-0 whitespace-nowrap ${isSelected ? "bg-teal-500 text-slate-950 font-bold shadow-sm ring-2 ring-white/30" : "bg-white/10 text-slate-200 hover:bg-white/20 hover:text-white border border-white/10"}`,
               title: p.desc,
-              children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: p.label })
+              children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: p.label })
             },
             p.id
           );
         }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
           "button",
           {
             type: "button",
@@ -59769,24 +59521,24 @@ var StepAssessmentStratification = ({
             className: "px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-1 shrink-0 whitespace-nowrap cursor-pointer",
             title: "L\xE0m m\u1EDBi \u0111\u1EC3 t\u1EF1 nh\u1EADp ca b\u1EC7nh",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(RotateCcw, { className: "w-3.5 h-3.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "T\u1EF1 nh\u1EADp" })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(RotateCcw, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "T\u1EF1 nh\u1EADp" })
             ]
           }
         )
       ] })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-4 shadow-xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between pb-2.5 mb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "A" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "text-sm font-extrabold text-slate-900", children: "V\u1ECB Tr\xED \u1ED4 Nhi\u1EC5m & \u0110\u1ED1i T\u01B0\u1EE3ng B\u1EC7nh Nh\xE2n" })
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-4 shadow-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center justify-between pb-2.5 mb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "A" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "text-sm font-extrabold text-slate-900", children: "V\u1ECB Tr\xED \u1ED4 Nhi\u1EC5m & \u0110\u1ED1i T\u01B0\u1EE3ng B\u1EC7nh Nh\xE2n" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 2 } })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 2 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-3.5", children: sitesList.map((s) => {
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-3.5", children: sitesList.map((s) => {
         const isSelected = site === s.id;
-        return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
           "button",
           {
             type: "button",
@@ -59801,51 +59553,51 @@ var StepAssessmentStratification = ({
             },
             className: `p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${isSelected ? s.borderActive : "border-slate-200 hover:border-slate-300 bg-slate-50/50 hover:bg-white"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between mb-1", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: `p-1.5 rounded-lg ${s.color}`, children: s.icon }),
-                isSelected && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-600" })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center justify-between mb-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: `p-1.5 rounded-lg ${s.color}`, children: s.icon }),
+                isSelected && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-600" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-xs font-bold text-slate-900 leading-snug", children: s.titleVi }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5 line-clamp-1", children: s.subVi })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-xs font-bold text-slate-900 leading-snug", children: s.titleVi }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5 line-clamp-1", children: s.subVi })
               ] })
             ]
           },
           s.id
         );
       }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-wrap items-center gap-3 pt-2.5 border-t border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-bold text-slate-500 uppercase tracking-wider", children: "\u0110\u1ED1i t\u01B0\u1EE3ng:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-50", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-wrap items-center gap-3 pt-2.5 border-t border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-500 uppercase tracking-wider", children: "\u0110\u1ED1i t\u01B0\u1EE3ng:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-50", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => onSelectPopulation("adult"),
                 className: `px-3 py-1 rounded-md text-xs font-semibold transition-all flex items-center space-x-1.5 cursor-pointer ${population === "adult" ? "bg-white text-teal-800 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(User, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Ng\u01B0\u1EDDi l\u1EDBn (\u2265 16T)" })
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(User, { className: "w-3.5 h-3.5" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Ng\u01B0\u1EDDi l\u1EDBn (\u2265 16T)" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => onSelectPopulation("pediatric"),
                 className: `px-3 py-1 rounded-md text-xs font-semibold transition-all flex items-center space-x-1.5 cursor-pointer ${population === "pediatric" ? "bg-white text-teal-800 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Baby, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Tr\u1EBB em (< 16T)" })
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Baby, { className: "w-3.5 h-3.5" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Tr\u1EBB em (< 16T)" })
                 ]
               }
             )
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("label", { className: "flex items-center space-x-2 cursor-pointer bg-slate-50 px-3 py-1 rounded-lg border border-slate-200 hover:bg-slate-100 transition-colors", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("label", { className: "flex items-center space-x-2 cursor-pointer bg-slate-50 px-3 py-1 rounded-lg border border-slate-200 hover:bg-slate-100 transition-colors", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "input",
             {
               type: "checkbox",
@@ -59854,47 +59606,47 @@ var StepAssessmentStratification = ({
               className: "rounded text-teal-600 focus:ring-teal-500 w-4 h-4 cursor-pointer"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-semibold text-slate-700", children: "B\u1EC7nh gan m\u1EA1n / X\u01A1 gan (Thang \u0111i\u1EC3m CLIF-SOFA)" })
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-semibold text-slate-700", children: "B\u1EC7nh gan m\u1EA1n / X\u01A1 gan (Thang \u0111i\u1EC3m CLIF-SOFA)" })
         ] }),
-        site === "sepsis" && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2 w-full sm:w-auto sm:ml-auto", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-bold text-rose-600 uppercase tracking-wider shrink-0", children: "Ng\xF5 v\xE0o:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+        site === "sepsis" && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2 w-full sm:w-auto sm:ml-auto", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-rose-600 uppercase tracking-wider shrink-0", children: "Ng\xF5 v\xE0o:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
             "select",
             {
               value: sepsisSource || "respiratory",
               onChange: (e) => onSelectSepsisSource(e.target.value),
               className: "text-xs border border-slate-300 rounded-lg px-2.5 py-1 bg-white font-medium focus:ring-1 focus:ring-teal-500 cursor-pointer flex-1 sm:flex-none",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("option", { value: "respiratory", children: "T\u1EEB \u1ED5 H\xF4 h\u1EA5p (Ph\u1ED5i)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("option", { value: "urinary", children: "T\u1EEB \u1ED5 Ti\u1EBFt ni\u1EC7u" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("option", { value: "gastrointestinal", children: "T\u1EEB \u1ED5 Ti\xEAu h\xF3a" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("option", { value: "peritoneal", children: "T\u1EEB \u1ED5 D\u1ECBch b\xE1ng (SBP)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("option", { value: "skin_soft_tissue", children: "T\u1EEB \u1ED5 Da m\xF4 m\u1EC1m" })
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "respiratory", children: "T\u1EEB \u1ED5 H\xF4 h\u1EA5p (Ph\u1ED5i)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "urinary", children: "T\u1EEB \u1ED5 Ti\u1EBFt ni\u1EC7u" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "gastrointestinal", children: "T\u1EEB \u1ED5 Ti\xEAu h\xF3a" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "peritoneal", children: "T\u1EEB \u1ED5 D\u1ECBch b\xE1ng (SBP)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "skin_soft_tissue", children: "T\u1EEB \u1ED5 Da m\xF4 m\u1EC1m" })
               ]
             }
           )
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-4 shadow-xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "B" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "text-sm font-extrabold text-slate-900", children: "Ch\u1EC9 \u0110\u1ECBnh Kh\xE1ng Sinh C\u1EA5p T\xEDnh (Ti\xEAu chu\u1EA9n NHSN-CDC 2019)" })
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-4 shadow-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "B" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "text-sm font-extrabold text-slate-900", children: "Ch\u1EC9 \u0110\u1ECBnh Kh\xE1ng Sinh C\u1EA5p T\xEDnh (Ti\xEAu chu\u1EA9n NHSN-CDC 2019)" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: `px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center space-x-1 ${isCriteriaMet ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`, children: isCriteriaMet ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(import_jsx_runtime16.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(CircleCheck, { className: "w-3.5 h-3.5 text-emerald-600" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: `px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center space-x-1 ${isCriteriaMet ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`, children: isCriteriaMet ? /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(import_jsx_runtime15.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(CircleCheck, { className: "w-3.5 h-3.5 text-emerald-600" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { children: [
               "\u0110\u1EA1t ",
               metCount,
               "/",
               activeNhsnSection.requiredCriteriaCount,
               " ti\xEAu chu\u1EA9n NHSN"
             ] })
-          ] }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(import_jsx_runtime16.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TriangleAlert, { className: "w-3.5 h-3.5 text-amber-600" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { children: [
+          ] }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(import_jsx_runtime15.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(TriangleAlert, { className: "w-3.5 h-3.5 text-amber-600" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { children: [
               "\u0110\xE3 ch\u1ECDn ",
               metCount,
               "/",
@@ -59902,27 +59654,27 @@ var StepAssessmentStratification = ({
               " ti\xEAu chu\u1EA9n"
             ] })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => setShowNhsnDetails(!showNhsnDetails),
               className: "text-slate-600 hover:text-slate-900 px-2 py-1 rounded-md text-xs font-semibold flex items-center space-x-1 border border-slate-200 bg-slate-50 cursor-pointer",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: showNhsnDetails ? "Thu g\u1ECDn b\u1EA3ng ki\u1EC3m" : "Chi ti\u1EBFt b\u1EA3ng ki\u1EC3m" }),
-                showNhsnDetails ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ChevronUp, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ChevronDown, { className: "w-3.5 h-3.5" })
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: showNhsnDetails ? "Thu g\u1ECDn b\u1EA3ng ki\u1EC3m" : "Chi ti\u1EBFt b\u1EA3ng ki\u1EC3m" }),
+                showNhsnDetails ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ChevronUp, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ChevronDown, { className: "w-3.5 h-3.5" })
               ]
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2 flex-1 min-w-0", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(SquareCheckBig, { className: "w-4 h-4 text-teal-600 shrink-0" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-xs text-slate-700 font-medium", children: "B\u1EC7nh nh\xE2n c\xF3 h\u1ED9i ch\u1EE9ng nhi\u1EC5m khu\u1EA9n c\u1EA5p t\xEDnh, s\u1ED1c nhi\u1EC5m khu\u1EA9n ho\u1EB7c t\u1ED5n th\u01B0\u01A1ng c\u01A1 quan r\xF5 r\xE0ng:" })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2 flex-1 min-w-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(SquareCheckBig, { className: "w-4 h-4 text-teal-600 shrink-0" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-xs text-slate-700 font-medium", children: "B\u1EC7nh nh\xE2n c\xF3 h\u1ED9i ch\u1EE9ng nhi\u1EC5m khu\u1EA9n c\u1EA5p t\xEDnh, s\u1ED1c nhi\u1EC5m khu\u1EA9n ho\u1EB7c t\u1ED5n th\u01B0\u01A1ng c\u01A1 quan r\xF5 r\xE0ng:" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "grid grid-cols-2 gap-2 w-full sm:w-auto shrink-0", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "grid grid-cols-2 gap-2 w-full sm:w-auto shrink-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "button",
             {
               type: "button",
@@ -59931,7 +59683,7 @@ var StepAssessmentStratification = ({
               children: "\u2713 X\xE1c nh\u1EADn c\xF3 ch\u1EC9 \u0111\u1ECBnh"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "button",
             {
               type: "button",
@@ -59942,27 +59694,27 @@ var StepAssessmentStratification = ({
           )
         ] })
       ] }),
-      showNhsnDetails && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "space-y-2.5 pt-3 border-t border-slate-100 mt-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-bold text-slate-600", children: "H\u1ED9i ch\u1EE9ng \u0111\xE1nh gi\xE1 NHSN:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+      showNhsnDetails && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "space-y-2.5 pt-3 border-t border-slate-100 mt-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-600", children: "H\u1ED9i ch\u1EE9ng \u0111\xE1nh gi\xE1 NHSN:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "select",
             {
               value: selectedSyndrome,
               onChange: (e) => setSelectedSyndrome(e.target.value),
               className: "text-xs border border-slate-300 rounded-lg px-2.5 py-1 bg-white font-medium focus:ring-1 focus:ring-teal-500 cursor-pointer w-full sm:w-auto",
-              children: NHSN_CRITERIA_SECTIONS.map((sec) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("option", { value: sec.id, children: sec.titleVi }, sec.id))
+              children: NHSN_CRITERIA_SECTIONS.map((sec) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: sec.id, children: sec.titleVi }, sec.id))
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2", children: activeNhsnSection.criteria.map((crit) => {
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2", children: activeNhsnSection.criteria.map((crit) => {
           const isChecked = checkedNhsnIds.includes(crit.id);
-          return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+          return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
             "label",
             {
               className: `flex items-start space-x-2.5 p-2 rounded-xl border text-xs cursor-pointer transition-all ${isChecked ? "border-teal-500 bg-teal-50/50 text-slate-900 font-medium" : "border-slate-200 hover:border-slate-300 bg-white text-slate-600 hover:bg-slate-50"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
                   "input",
                   {
                     type: "checkbox",
@@ -59971,10 +59723,10 @@ var StepAssessmentStratification = ({
                     className: "rounded text-teal-600 focus:ring-teal-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex-1 leading-snug", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: crit.textVi }),
-                  crit.isImaging && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "ml-1.5 px-1 py-0.2 rounded text-[9px] font-bold bg-purple-100 text-purple-700", children: "X-quang / CT" }),
-                  crit.isLab && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "ml-1.5 px-1 py-0.2 rounded text-[9px] font-bold bg-blue-100 text-blue-700", children: "X\xE9t nghi\u1EC7m" })
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex-1 leading-snug", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: crit.textVi }),
+                  crit.isImaging && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "ml-1.5 px-1 py-0.2 rounded text-[9px] font-bold bg-purple-100 text-purple-700", children: "X-quang / CT" }),
+                  crit.isLab && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "ml-1.5 px-1 py-0.2 rounded text-[9px] font-bold bg-blue-100 text-blue-700", children: "X\xE9t nghi\u1EC7m" })
                 ] })
               ]
             },
@@ -59983,77 +59735,77 @@ var StepAssessmentStratification = ({
         }) })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between pb-2.5 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "C" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "text-sm font-extrabold text-slate-900", children: "Ph\xE2n T\u1EA7ng Nguy C\u01A1 Vi Khu\u1EA9n \u0110a Kh\xE1ng (VK\u0110K) & M\u1EE9c \u0110\u1ED9 N\u1EB7ng" })
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center justify-between pb-2.5 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "C" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "text-sm font-extrabold text-slate-900", children: "Ph\xE2n T\u1EA7ng Nguy C\u01A1 Vi Khu\u1EA9n \u0110a Kh\xE1ng (VK\u0110K) & M\u1EE9c \u0110\u1ED9 N\u1EB7ng" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(SourceBadge, { source: { doc: "BVBND_PhanNhom", page: 2 } })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(SourceBadge, { source: { doc: "BVBND_PhanNhom", page: 2 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => handleQuickGroupSelect("group_1"),
             className: `p-3.5 rounded-xl border text-left transition-all cursor-pointer relative ${!isGroup2 ? "border-emerald-500 bg-emerald-50/70 ring-2 ring-emerald-500/20 shadow-xs" : "border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-300"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ShieldCheck, { className: `w-5 h-5 ${!isGroup2 ? "text-emerald-700" : "text-slate-400"}` }),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-emerald-900", children: "Nh\xF3m 1: \xCDt Nguy C\u01A1 VK\u0110K" })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ShieldCheck, { className: `w-5 h-5 ${!isGroup2 ? "text-emerald-700" : "text-slate-400"}` }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-emerald-900", children: "Nh\xF3m 1: \xCDt Nguy C\u01A1 VK\u0110K" })
                 ] }),
-                !isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-600 text-white", children: "\u0110ang ch\u1ECDn" })
+                !isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-600 text-white", children: "\u0110ang ch\u1ECDn" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("p", { className: "text-xs text-slate-600 leading-snug", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("p", { className: "text-xs text-slate-600 leading-snug", children: [
                 "B\u1EC7nh nh\xE2n t\u1EEB ",
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: "C\u1ED9ng \u0111\u1ED3ng" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: "C\u1ED9ng \u0111\u1ED3ng" }),
                 ", kh\xF4ng c\xF3 ti\u1EC1n s\u1EED nh\u1EADp vi\u1EC7n/d\xF9ng kh\xE1ng sinh g\u1EA7n \u0111\xE2y, kh\xF4ng c\xF3 d\u1EE5ng c\u1EE5 x\xE2m l\u1EA5n, SOFA < 2."
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-[11px] font-semibold text-emerald-700 mt-2", children: "\u2192 Khuy\u1EBFn c\xE1o: Ph\xE1c \u0111\u1ED3 kh\xE1ng sinh ph\u1ED5 h\u1EB9p / ti\xEAu chu\u1EA9n BVBND 2026." })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[11px] font-semibold text-emerald-700 mt-2", children: "\u2192 Khuy\u1EBFn c\xE1o: Ph\xE1c \u0111\u1ED3 kh\xE1ng sinh ph\u1ED5 h\u1EB9p / ti\xEAu chu\u1EA9n BVBND 2026." })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => handleQuickGroupSelect("group_2"),
             className: `p-3.5 rounded-xl border text-left transition-all cursor-pointer relative ${isGroup2 ? "border-rose-500 bg-rose-50/70 ring-2 ring-rose-500/20 shadow-xs" : "border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-300"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ShieldAlert, { className: `w-5 h-5 ${isGroup2 ? "text-rose-700" : "text-slate-400"}` }),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-rose-900", children: "Nh\xF3m 2: Nguy C\u01A1 Cao VK\u0110K" })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ShieldAlert, { className: `w-5 h-5 ${isGroup2 ? "text-rose-700" : "text-slate-400"}` }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-rose-900", children: "Nh\xF3m 2: Nguy C\u01A1 Cao VK\u0110K" })
                 ] }),
-                isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-600 text-white", children: "\u0110ang ch\u1ECDn" })
+                isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-600 text-white", children: "\u0110ang ch\u1ECDn" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("p", { className: "text-xs text-slate-600 leading-snug", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("p", { className: "text-xs text-slate-600 leading-snug", children: [
                 "Nhi\u1EC5m khu\u1EA9n ",
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: "B\u1EC7nh vi\u1EC7n / ICU" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: "B\u1EC7nh vi\u1EC7n / ICU" }),
                 ", th\u1EDF m\xE1y, l\u1ECDc m\xE1u, d\xF9ng kh\xE1ng sinh ph\u1ED5 r\u1ED9ng 30-90 ng\xE0y qua, ho\u1EB7c nhi\u1EC5m khu\u1EA9n n\u1EB7ng (SOFA \u2265 2)."
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-[11px] font-semibold text-rose-700 mt-2", children: "\u2192 Khuy\u1EBFn c\xE1o: Ph\u1ED5 r\u1ED9ng di\u1EC7t Pseudomonas / Acineto, xem x\xE9t ph\u1ED1i h\u1EE3p MRSA/ESBL." })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[11px] font-semibold text-rose-700 mt-2", children: "\u2192 Khuy\u1EBFn c\xE1o: Ph\u1ED5 r\u1ED9ng di\u1EC7t Pseudomonas / Acineto, xem x\xE9t ph\u1ED1i h\u1EE3p MRSA/ESBL." })
             ]
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2 flex-wrap gap-y-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Activity, { className: "w-4 h-4 text-teal-600 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-bold text-slate-900 uppercase tracking-wide", children: population === "pediatric" ? "Thang \u0111i\u1EC3m pSOFA (Tr\u1EBB em)" : isChronicLiverDisease ? "Thang \u0111i\u1EC3m CLIF-SOFA (X\u01A1 gan)" : "M\u1EE9c \u0111\u1ED9 n\u1EB7ng (Thang \u0111i\u1EC3m SOFA)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `px-2 py-0.5 rounded text-[10px] font-black uppercase ${riskResult.isHighSeverity ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: riskResult.isHighSeverity ? "M\u1EE9c \u0111\u1ED9 N\u1EB7ng / S\u1ED1c NK" : "M\u1EE9c \u0111\u1ED9 Nh\u1EB9 - Trung b\xECnh" })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2 flex-wrap gap-y-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Activity, { className: "w-4 h-4 text-teal-600 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-900 uppercase tracking-wide", children: population === "pediatric" ? "Thang \u0111i\u1EC3m pSOFA (Tr\u1EBB em)" : isChronicLiverDisease ? "Thang \u0111i\u1EC3m CLIF-SOFA (X\u01A1 gan)" : "M\u1EE9c \u0111\u1ED9 n\u1EB7ng (Thang \u0111i\u1EC3m SOFA)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: `px-2 py-0.5 rounded text-[10px] font-black uppercase ${riskResult.isHighSeverity ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: riskResult.isHighSeverity ? "M\u1EE9c \u0111\u1ED9 N\u1EB7ng / S\u1ED1c NK" : "M\u1EE9c \u0111\u1ED9 Nh\u1EB9 - Trung b\xECnh" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: population === "pediatric" ? "\u0110i\u1EC3m pSOFA \u2265 8 l\xE0 ch\u1EC9 d\u1EA5u b\u1EC7nh n\u1EB7ng (Sepsis-3 Nhi khoa)" : isChronicLiverDisease ? "\u0110i\u1EC3m CLIF-SOFA \u2265 12 l\xE0 ch\u1EC9 d\u1EA5u suy t\u1EA1ng n\u1EB7ng \u1EDF b\u1EC7nh nh\xE2n x\u01A1 gan" : "\u0110i\u1EC3m SOFA \u2265 2 ph\u1EA3n \xE1nh r\u1ED1i lo\u1EA1n ch\u1EE9c n\u0103ng t\u1EA1ng n\u1EB7ng li\xEAn quan nhi\u1EC5m khu\u1EA9n" })
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: population === "pediatric" ? "\u0110i\u1EC3m pSOFA \u2265 8 l\xE0 ch\u1EC9 d\u1EA5u b\u1EC7nh n\u1EB7ng (Sepsis-3 Nhi khoa)" : isChronicLiverDisease ? "\u0110i\u1EC3m CLIF-SOFA \u2265 12 l\xE0 ch\u1EC9 d\u1EA5u suy t\u1EA1ng n\u1EB7ng \u1EDF b\u1EC7nh nh\xE2n x\u01A1 gan" : "\u0110i\u1EC3m SOFA \u2265 2 ph\u1EA3n \xE1nh r\u1ED1i lo\u1EA1n ch\u1EE9c n\u0103ng t\u1EA1ng n\u1EB7ng li\xEAn quan nhi\u1EC5m khu\u1EA9n" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "flex items-center gap-1", children: [0, 1, 2, 4, 6, 8, 12].map((scoreVal) => {
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex items-center gap-1", children: [0, 1, 2, 4, 6, 8, 12].map((scoreVal) => {
               const currentScore = population === "pediatric" ? psofaScore : isChronicLiverDisease ? clifSofaScore : sofaScore;
               const isCurrent = currentScore === scoreVal;
-              return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+              return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
                 "button",
                 {
                   type: "button",
@@ -60068,7 +59820,7 @@ var StepAssessmentStratification = ({
                 scoreVal
               );
             }) }),
-            population === "adult" && !isChronicLiverDisease && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+            population === "adult" && !isChronicLiverDisease && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
               "button",
               {
                 type: "button",
@@ -60076,23 +59828,23 @@ var StepAssessmentStratification = ({
                 className: `px-2 py-1 rounded-lg text-xs font-bold flex items-center space-x-1 transition-all cursor-pointer ${showSofaCalculator ? "bg-teal-700 text-white shadow-xs" : "bg-white text-teal-700 hover:bg-teal-50 border border-teal-200"}`,
                 title: "M\u1EDF m\xE1y t\xEDnh nhanh 6 h\u1EC7 c\u01A1 quan SOFA",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Calculator, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: showSofaCalculator ? "\u0110\xF3ng" : "T\xEDnh SOFA" })
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Calculator, { className: "w-3.5 h-3.5" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: showSofaCalculator ? "\u0110\xF3ng" : "T\xEDnh SOFA" })
                 ]
               }
             )
           ] })
         ] }),
-        showSofaCalculator && population === "adult" && !isChronicLiverDisease && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "pt-2 border-t border-slate-200/80 space-y-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "text-[11px] font-bold text-slate-700 flex items-center justify-between", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Ch\u1ECDn nhanh c\xE1c r\u1ED1i lo\u1EA1n t\u1EA1ng ghi nh\u1EADn \u1EDF b\u1EC7nh nh\xE2n:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "text-teal-700 font-semibold", children: [
+        showSofaCalculator && population === "adult" && !isChronicLiverDisease && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "pt-2 border-t border-slate-200/80 space-y-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "text-[11px] font-bold text-slate-700 flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Ch\u1ECDn nhanh c\xE1c r\u1ED1i lo\u1EA1n t\u1EA1ng ghi nh\u1EADn \u1EDF b\u1EC7nh nh\xE2n:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { className: "text-teal-700 font-semibold", children: [
               "SOFA hi\u1EC7n t\u1EA1i: ",
               sofaScore,
               " \u0111i\u1EC3m"
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1.5", children: [
             { organ: "\u{1FAC1} H\xF4 h\u1EA5p", label: "PaO2/FiO2 \u2264 300", pts: 2 },
             { organ: "\u{1FAC1} H\xF4 h\u1EA5p th\u1EDF m\xE1y", label: "PaO2/FiO2 \u2264 200 (th\u1EDF m\xE1y)", pts: 3 },
             { organ: "\u{1FA78} \u0110\xF4ng m\xE1u", label: "Ti\u1EC3u c\u1EA7u < 100 x 10\u2079/L", pts: 2 },
@@ -60102,7 +59854,7 @@ var StepAssessmentStratification = ({
             { organ: "\u{1FAC0} Tim m\u1EA1ch n\u1EB7ng", label: "Noradrenaline / Dopamine > 5", pts: 3 },
             { organ: "\u{1F9E0} Th\u1EA7n kinh", label: "Glasgow 10 - 12 \u0111i\u1EC3m (l\u01A1 m\u01A1)", pts: 2 },
             { organ: "\u{1F4A7} Th\u1EADn", label: "Creatinine \u2265 171 \xB5mol/L (\u2265 2.0 mg/dL)", pts: 2 }
-          ].map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+          ].map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
             "button",
             {
               type: "button",
@@ -60112,52 +59864,52 @@ var StepAssessmentStratification = ({
               },
               className: "p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-left text-[11px] transition-all cursor-pointer flex flex-col justify-between",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "font-bold text-slate-800 flex items-center justify-between", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: item.organ }),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "px-1.5 py-0.2 rounded bg-teal-50 text-teal-700 font-black", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "font-bold text-slate-800 flex items-center justify-between", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: item.organ }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { className: "px-1.5 py-0.2 rounded bg-teal-50 text-teal-700 font-black", children: [
                     "+",
                     item.pts,
                     "\u0111"
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-slate-500 text-[10px] mt-0.5 leading-snug", children: item.label })
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-slate-500 text-[10px] mt-0.5 leading-snug", children: item.label })
               ]
             },
             idx
           )) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => setShowGeneralRisks(!showGeneralRisks),
             className: "w-full p-2.5 flex items-center justify-between text-left hover:bg-slate-100/70 transition-colors cursor-pointer",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Shield, { className: "w-4 h-4 text-slate-600" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-bold text-slate-800", children: "B\u1EA3ng Ki\u1EC3m 8 Y\u1EBFu T\u1ED1 Nguy C\u01A1 Chung Nhi\u1EC5m VK\u0110K (BVBND 2026)" })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Shield, { className: "w-4 h-4 text-slate-600" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-800", children: "B\u1EA3ng Ki\u1EC3m 8 Y\u1EBFu T\u1ED1 Nguy C\u01A1 Chung Nhi\u1EC5m VK\u0110K (BVBND 2026)" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "text-[11px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { className: "text-[11px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200", children: [
                   "\u0110\xE3 ch\u1ECDn ",
                   checkedGeneralRiskIds.length,
                   "/8 y\u1EBFu t\u1ED1"
                 ] }),
-                showGeneralRisks ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ChevronUp, { className: "w-3.5 h-3.5 text-slate-500" }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ChevronDown, { className: "w-3.5 h-3.5 text-slate-500" })
+                showGeneralRisks ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ChevronUp, { className: "w-3.5 h-3.5 text-slate-500" }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ChevronDown, { className: "w-3.5 h-3.5 text-slate-500" })
               ] })
             ]
           }
         ),
-        showGeneralRisks && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "p-3 border-t border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2 gap-2", children: GENERAL_MDR_RISK_FACTORS.map((factor) => {
+        showGeneralRisks && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "p-3 border-t border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2 gap-2", children: GENERAL_MDR_RISK_FACTORS.map((factor) => {
           const isChecked = checkedGeneralRiskIds.includes(factor.id);
-          return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+          return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
             "label",
             {
               className: `flex items-start space-x-2 p-2 rounded-lg border text-xs cursor-pointer transition-all ${isChecked ? "border-amber-500 bg-amber-50/60 text-slate-900 font-medium" : "border-slate-200 hover:border-slate-300 bg-white text-slate-700 hover:bg-slate-50"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
                   "input",
                   {
                     type: "checkbox",
@@ -60166,9 +59918,9 @@ var StepAssessmentStratification = ({
                     className: "rounded text-amber-600 focus:ring-amber-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex-1", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "leading-snug", children: factor.labelVi }),
-                  factor.noteVi && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-[10px] text-slate-400 mt-0.5", children: factor.noteVi })
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex-1", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "leading-snug", children: factor.labelVi }),
+                  factor.noteVi && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[10px] text-slate-400 mt-0.5", children: factor.noteVi })
                 ] })
               ]
             },
@@ -60176,19 +59928,19 @@ var StepAssessmentStratification = ({
           );
         }) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "space-y-2.5 pt-1", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-bold text-slate-800 block", children: "T\xE1c Nh\xE2n \u0110a Kh\xE1ng C\u1EA7n Bao Ph\u1EE7 C\u1EE5 Th\u1EC3 (BVBND 2026):" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-[11px] text-slate-500", children: "T\u1EF1 \u0111\u1ED9ng k\xEDch ho\u1EA1t kh\xE1ng sinh bao ph\u1EE7 & hi\u1EC3n th\u1ECB c\u1EA3nh b\xE1o ph\u1ED1i h\u1EE3p thu\u1ED1c theo Ghi ch\xFA b" })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "space-y-2.5 pt-1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-bold text-slate-800 block", children: "T\xE1c Nh\xE2n \u0110a Kh\xE1ng C\u1EA7n Bao Ph\u1EE7 C\u1EE5 Th\u1EC3 (BVBND 2026):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-[11px] text-slate-500", children: "T\u1EF1 \u0111\u1ED9ng k\xEDch ho\u1EA1t kh\xE1ng sinh bao ph\u1EE7 & hi\u1EC3n th\u1ECB c\u1EA3nh b\xE1o ph\u1ED1i h\u1EE3p thu\u1ED1c theo Ghi ch\xFA b" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { className: "text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200", children: [
             "\u0110\xE3 nh\u1EADn di\u1EC7n: ",
             checkedSpecificRisks.length,
             " nh\xF3m t\xE1c nh\xE2n"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2.5", children: [
           {
             id: "mrsa",
             title: "T\u1EE5 C\u1EA7u V\xE0ng Kh\xE1ng Methicillin (MRSA)",
@@ -60229,14 +59981,14 @@ var StepAssessmentStratification = ({
           const isChecked = checkedSpecificRisks.includes(spec.id);
           const isExpanded = expandedPathogen === spec.id;
           const activeCount = spec.factors.filter((f) => checkedSpecificRiskFactorIds.includes(f.id)).length;
-          return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+          return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
             "div",
             {
               className: `rounded-xl border transition-all ${isChecked ? "border-rose-400 bg-rose-50/40 shadow-xs" : spec.isSiteTarget ? "border-sky-300 bg-sky-50/20" : "border-slate-200 bg-white hover:border-slate-300"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-2.5 flex items-start justify-between gap-2", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("label", { className: "flex items-start space-x-2.5 cursor-pointer flex-1 min-w-0", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-2.5 flex items-start justify-between gap-2", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("label", { className: "flex items-start space-x-2.5 cursor-pointer flex-1 min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
                       "input",
                       {
                         type: "checkbox",
@@ -60245,40 +59997,40 @@ var StepAssessmentStratification = ({
                         className: "rounded text-rose-600 focus:ring-rose-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "min-w-0 flex-1", children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-1.5 flex-wrap gap-y-1", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `text-xs font-bold ${isChecked ? "text-rose-950 font-black" : "text-slate-900"} break-words`, children: spec.title }),
-                        spec.isSiteTarget && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800", children: spec.siteLabel })
+                    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "min-w-0 flex-1", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-1.5 flex-wrap gap-y-1", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: `text-xs font-bold ${isChecked ? "text-rose-950 font-black" : "text-slate-900"} break-words`, children: spec.title }),
+                        spec.isSiteTarget && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800", children: spec.siteLabel })
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "text-[11px] text-slate-500 mt-0.5 leading-snug", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "text-[11px] text-slate-500 mt-0.5 leading-snug", children: [
                         "Thu\u1ED1c bao ph\u1EE7: ",
-                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "font-semibold text-slate-700", children: spec.sub })
+                        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "font-semibold text-slate-700", children: spec.sub })
                       ] })
                     ] })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
                     "button",
                     {
                       type: "button",
                       onClick: () => setExpandedPathogen(isExpanded ? null : spec.id),
                       className: `px-1.5 py-1 rounded text-[10px] font-bold transition-all cursor-pointer flex items-center space-x-0.5 shrink-0 ${isExpanded ? "bg-slate-200 text-slate-800" : activeCount > 0 ? "bg-rose-100 text-rose-800 font-black" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`,
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: activeCount > 0 ? `${activeCount}/${spec.factors.length}` : "Chi ti\u1EBFt" }),
-                        isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ChevronUp, { className: "w-3 h-3" }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ChevronDown, { className: "w-3 h-3" })
+                        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: activeCount > 0 ? `${activeCount}/${spec.factors.length}` : "Chi ti\u1EBFt" }),
+                        isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ChevronUp, { className: "w-3 h-3" }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ChevronDown, { className: "w-3 h-3" })
                       ]
                     }
                   )
                 ] }),
-                isExpanded && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "px-2.5 pb-2.5 pt-1 border-t border-slate-100 space-y-1 bg-slate-50/50 rounded-b-xl", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1", children: "B\u1EA3ng ki\u1EC3m y\u1EBFu t\u1ED1 nguy c\u01A1 ri\xEAng (BVBND):" }),
+                isExpanded && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "px-2.5 pb-2.5 pt-1 border-t border-slate-100 space-y-1 bg-slate-50/50 rounded-b-xl", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1", children: "B\u1EA3ng ki\u1EC3m y\u1EBFu t\u1ED1 nguy c\u01A1 ri\xEAng (BVBND):" }),
                   spec.factors.map((fact) => {
                     const isFactorChecked = checkedSpecificRiskFactorIds.includes(fact.id);
-                    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+                    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
                       "label",
                       {
                         className: `flex items-start space-x-2 p-1.5 rounded-lg border text-[11px] cursor-pointer transition-all ${isFactorChecked ? "bg-white border-rose-400 font-semibold text-slate-900 shadow-2xs" : "border-slate-200/80 bg-white/70 hover:bg-white text-slate-600"}`,
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
                             "input",
                             {
                               type: "checkbox",
@@ -60290,9 +60042,9 @@ var StepAssessmentStratification = ({
                               className: "rounded text-rose-600 focus:ring-rose-500 w-3.5 h-3.5 mt-0.5 cursor-pointer shrink-0"
                             }
                           ),
-                          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex-1 leading-snug", children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: fact.labelVi }),
-                            fact.noteVi && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-[10px] text-slate-400 mt-0.5", children: fact.noteVi })
+                          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex-1 leading-snug", children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: fact.labelVi }),
+                            fact.noteVi && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[10px] text-slate-400 mt-0.5", children: fact.noteVi })
                           ] })
                         ]
                       },
@@ -60307,84 +60059,84 @@ var StepAssessmentStratification = ({
         }) })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "space-y-2.5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: `p-3.5 rounded-2xl border transition-all ${isGroup2 ? "bg-rose-50/80 border-rose-200 text-rose-950" : "bg-emerald-50/80 border-emerald-200 text-emerald-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
-        isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Bug, { className: "w-5 h-5 text-rose-600 shrink-0 mt-0.5" }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between flex-wrap gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-black uppercase tracking-wider", children: isGroup2 ? "T\xE1c Nh\xE2n Vi Khu\u1EA9n \u0110a Kh\xE1ng C\u1EA7n Bao Ph\u1EE7 (BVBND 2026):" : "T\xE1c Nh\xE2n Th\u01B0\u1EDDng G\u1EB7p C\u1EA7n Bao Ph\u1EE7 Theo \u1ED4 Nhi\u1EC5m (BVBND 2026):" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `text-[10px] font-black px-2 py-0.5 rounded-full ${isGroup2 ? "bg-rose-200 text-rose-900" : "bg-emerald-200 text-emerald-900"}`, children: isGroup2 ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: \xCDt nguy c\u01A1 VK\u0110K" })
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "space-y-2.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: `p-3.5 rounded-2xl border transition-all ${isGroup2 ? "bg-rose-50/80 border-rose-200 text-rose-950" : "bg-emerald-50/80 border-emerald-200 text-emerald-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+        isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Bug, { className: "w-5 h-5 text-rose-600 shrink-0 mt-0.5" }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center justify-between flex-wrap gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-xs font-black uppercase tracking-wider", children: isGroup2 ? "T\xE1c Nh\xE2n Vi Khu\u1EA9n \u0110a Kh\xE1ng C\u1EA7n Bao Ph\u1EE7 (BVBND 2026):" : "T\xE1c Nh\xE2n Th\u01B0\u1EDDng G\u1EB7p C\u1EA7n Bao Ph\u1EE7 Theo \u1ED4 Nhi\u1EC5m (BVBND 2026):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: `text-[10px] font-black px-2 py-0.5 rounded-full ${isGroup2 ? "bg-rose-200 text-rose-900" : "bg-emerald-200 text-emerald-900"}`, children: isGroup2 ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: \xCDt nguy c\u01A1 VK\u0110K" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "flex flex-wrap gap-1.5 mt-2", children: riskResult.suggestedOrganismsVi.map((org, idx) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex flex-wrap gap-1.5 mt-2", children: riskResult.suggestedOrganismsVi.map((org, idx) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
             "span",
             {
               className: `text-xs px-2.5 py-1 rounded-lg font-bold flex items-center space-x-1 ${isGroup2 ? "bg-white border border-rose-300 text-rose-900 shadow-2xs" : "bg-white border border-emerald-300 text-emerald-900 shadow-2xs"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "\u2022" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: org })
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "\u2022" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: org })
               ]
             },
             idx
           )) })
         ] })
       ] }) }),
-      riskResult.isGramPosGramNegCoRisk && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-3 rounded-2xl bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-sm flex items-start space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(CircleAlert, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "text-xs leading-relaxed", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "font-black text-xs uppercase tracking-wide text-amber-200 flex items-center space-x-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "\u26A0\uFE0F QUY T\u1EAEC BVBND (Ghi ch\xFA b): B\u1EAET BU\u1ED8C PH\u1ED0I H\u1EE2P KH\xC1NG SINH GRAM (+) V\xC0 GRAM (-)" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("p", { className: "mt-0.5 opacity-95", children: [
+      riskResult.isGramPosGramNegCoRisk && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-3 rounded-2xl bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-sm flex items-start space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(CircleAlert, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "text-xs leading-relaxed", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "font-black text-xs uppercase tracking-wide text-amber-200 flex items-center space-x-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "\u26A0\uFE0F QUY T\u1EAEC BVBND (Ghi ch\xFA b): B\u1EAET BU\u1ED8C PH\u1ED0I H\u1EE2P KH\xC1NG SINH GRAM (+) V\xC0 GRAM (-)" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("p", { className: "mt-0.5 opacity-95", children: [
             "B\u1EC7nh nh\xE2n c\xF3 \u0111\u1ED3ng th\u1EDDi nguy c\u01A1 nhi\u1EC5m c\u1EA7u khu\u1EA9n Gram (+) \u0111a kh\xE1ng (MRSA / VRE) V\xC0 tr\u1EF1c khu\u1EA9n Gram (-) \u0111a kh\xE1ng (ESBL / Pseudomonas / Acinetobacter).",
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: " B\u1EAFt bu\u1ED9c ch\u1EC9 \u0111\u1ECBnh ph\xE1c \u0111\u1ED3 ph\u1ED1i h\u1EE3p 2 nh\xF3m thu\u1ED1c" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: " B\u1EAFt bu\u1ED9c ch\u1EC9 \u0111\u1ECBnh ph\xE1c \u0111\u1ED3 ph\u1ED1i h\u1EE3p 2 nh\xF3m thu\u1ED1c" }),
             " (v\xED d\u1EE5: Vancomycin ho\u1EB7c Linezolid K\u1EBET H\u1EE2P V\u1EDAI Meropenem ho\u1EB7c Piperacillin-tazobactam)."
           ] })
         ] })
       ] }),
-      riskResult.isDualGramNegRisk && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white shadow-sm flex items-start space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Zap, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "text-xs leading-relaxed", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "font-black text-xs uppercase tracking-wide text-amber-200 flex items-center space-x-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "\u26A1 QUY T\u1EAEC BVBND (Ghi ch\xFA b): \u01AFU TI\xCAN KH\xC1NG SINH DI\u1EC6T PSEUDOMONAS / ACINETOBACTER" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("p", { className: "mt-0.5 opacity-95", children: [
+      riskResult.isDualGramNegRisk && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white shadow-sm flex items-start space-x-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Zap, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "text-xs leading-relaxed", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "font-black text-xs uppercase tracking-wide text-amber-200 flex items-center space-x-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "\u26A1 QUY T\u1EAEC BVBND (Ghi ch\xFA b): \u01AFU TI\xCAN KH\xC1NG SINH DI\u1EC6T PSEUDOMONAS / ACINETOBACTER" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("p", { className: "mt-0.5 opacity-95", children: [
             "B\u1EC7nh nh\xE2n c\xF3 nguy c\u01A1 \u0111\u1ED3ng th\u1EDDi c\u1EA3 2 nh\xF3m Gram (-) (Enterobacterales sinh ESBL v\xE0 Pseudomonas / Acinetobacter).",
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: " \u01AFU TI\xCAN ch\u1ECDn kh\xE1ng sinh c\xF3 ho\u1EA1t ph\u1ED5 tr\xEAn Acinetobacter / Pseudomonas" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: " \u01AFU TI\xCAN ch\u1ECDn kh\xE1ng sinh c\xF3 ho\u1EA1t ph\u1ED5 tr\xEAn Acinetobacter / Pseudomonas" }),
             " (nh\u01B0 Meropenem, Cefepime, Piperacillin-tazobactam ho\u1EB7c Colistin ph\u1ED1i h\u1EE3p) \u0111\u1EC3 bao ph\u1EE7 lu\xF4n c\u1EA3 c\xE1c ch\u1EE7ng sinh ESBL. ",
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("em", { children: "Tr\xE1nh d\xF9ng Ertapenem \u0111\u01A1n \u0111\u1ED9c" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("em", { children: "Tr\xE1nh d\xF9ng Ertapenem \u0111\u01A1n \u0111\u1ED9c" }),
             "."
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs flex items-center space-x-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Info, { className: "w-4 h-4 text-slate-500 shrink-0" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: "Nguy\xEAn t\u1EAFc s\u1ED1 9 BVBND:" }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs flex items-center space-x-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Info, { className: "w-4 h-4 text-slate-500 shrink-0" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: "Nguy\xEAn t\u1EAFc s\u1ED1 9 BVBND:" }),
           " C\xE1c kh\xE1ng sinh ph\u1ED5 r\u1ED9ng nh\xF3m BL-BLI (nh\u01B0 Piperacillin-tazobactam) ho\u1EB7c Carbapenem (Meropenem, Imipenem) \u0111\xE3 c\xF3 ph\u1ED5 k\u1EF5 kh\xED hi\u1EC7u qu\u1EA3, ",
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: "kh\xF4ng d\xF9ng Metronidazole ph\u1ED1i h\u1EE3p c\xF9ng" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("strong", { children: "kh\xF4ng d\xF9ng Metronidazole ph\u1ED1i h\u1EE3p c\xF9ng" }),
           "."
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: `p-4 rounded-2xl border transition-all ${isGroup2 ? "bg-rose-50/90 border-rose-300 text-rose-950 shadow-sm" : "bg-emerald-50/90 border-emerald-300 text-emerald-950 shadow-sm"}`, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3.5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start space-x-3 flex-1 min-w-0", children: [
-        isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ShieldAlert, { className: "w-7 h-7 text-rose-600 shrink-0 mt-0.5" }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ShieldCheck, { className: "w-7 h-7 text-emerald-600 shrink-0 mt-0.5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-sm font-black uppercase tracking-wide", children: riskResult.groupLabelVi }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${isGroup2 ? "bg-rose-200 text-rose-900" : "bg-emerald-200 text-emerald-900"}`, children: isGroup2 ? "C\u1EA7n Ph\u1ED5 R\u1ED9ng / Ph\u1ED1i H\u1EE3p" : "Ph\xE1c \u0110\u1ED3 Ti\xEAu Chu\u1EA9n" })
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: `p-4 rounded-2xl border transition-all ${isGroup2 ? "bg-rose-50/90 border-rose-300 text-rose-950 shadow-sm" : "bg-emerald-50/90 border-emerald-300 text-emerald-950 shadow-sm"}`, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-start space-x-3 flex-1 min-w-0", children: [
+        isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ShieldAlert, { className: "w-7 h-7 text-rose-600 shrink-0 mt-0.5" }) : /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ShieldCheck, { className: "w-7 h-7 text-emerald-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-sm font-black uppercase tracking-wide", children: riskResult.groupLabelVi }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: `px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${isGroup2 ? "bg-rose-200 text-rose-900" : "bg-emerald-200 text-emerald-900"}`, children: isGroup2 ? "C\u1EA7n Ph\u1ED5 R\u1ED9ng / Ph\u1ED1i H\u1EE3p" : "Ph\xE1c \u0110\u1ED3 Ti\xEAu Chu\u1EA9n" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ul", { className: "text-xs mt-1 space-y-0.5 opacity-90", children: riskResult.rationalesVi.map((r, i) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("li", { className: "flex items-center space-x-1.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "\u2022" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: r })
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("ul", { className: "text-xs mt-1 space-y-0.5 opacity-90", children: riskResult.rationalesVi.map((r, i) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("li", { className: "flex items-center space-x-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "\u2022" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: r })
           ] }, i)) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
         "button",
         {
           type: "button",
           onClick: onNextStage,
           className: `w-full md:w-auto px-5 py-3 rounded-xl font-extrabold text-xs text-white shadow-md flex items-center justify-center space-x-2 transition-all cursor-pointer shrink-0 min-h-[44px] ${isGroup2 ? "bg-rose-600 hover:bg-rose-700 shadow-rose-600/30" : "bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/30"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Xem Ph\xE1c \u0110\u1ED3 BVBND 2026 & T\xEDnh Li\u1EC1u C\xE1 Th\u1EC3 H\xF3a \u2192" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ArrowRight, { className: "w-4 h-4" })
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Xem Ph\xE1c \u0110\u1ED3 BVBND 2026 & T\xEDnh Li\u1EC1u C\xE1 Th\u1EC3 H\xF3a \u2192" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ArrowRight, { className: "w-4 h-4" })
           ]
         }
       )
@@ -60393,8 +60145,8 @@ var StepAssessmentStratification = ({
 };
 
 // antibiotic/src/components/selection/StepEmpiric.tsx
-var import_react15 = __toESM(require_react(), 1);
-var import_jsx_runtime17 = __toESM(require_jsx_runtime(), 1);
+var import_react14 = __toESM(require_react(), 1);
+var import_jsx_runtime16 = __toESM(require_jsx_runtime(), 1);
 var StepEmpiric = ({
   site,
   population,
@@ -60412,10 +60164,9 @@ var StepEmpiric = ({
   onCalculateDoseForDrug,
   onPatientChange
 }) => {
-  const [activeTab, setActiveTab] = (0, import_react15.useState)("regimens");
-  const [selectedFilterRisk, setSelectedFilterRisk] = (0, import_react15.useState)("all");
-  const [copiedDrugId, setCopiedDrugId] = (0, import_react15.useState)(null);
-  const [showRenalQuickEditor, setShowRenalQuickEditor] = (0, import_react15.useState)(false);
+  const [activeTab, setActiveTab] = (0, import_react14.useState)("regimens");
+  const [selectedFilterRisk, setSelectedFilterRisk] = (0, import_react14.useState)("all");
+  const [copiedDrugId, setCopiedDrugId] = (0, import_react14.useState)(null);
   const getTargetImageId = (tab) => {
     const isAdult = population === "adult";
     if (tab === "antibiogram") {
@@ -60466,23 +60217,23 @@ var StepEmpiric = ({
       console.warn("Copy failed", e);
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-200", children: "Giai \u0110o\u1EA1n 2" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-200", children: "Giai \u0110o\u1EA1n 2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200", children: [
               population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em",
               " \u2022 ",
               siteLabels[site] || site
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h2", { className: "text-lg sm:text-xl font-extrabold text-slate-900 w-full sm:w-auto mt-1 sm:mt-0", children: "Ph\xE1c \u0110\u1ED3 Kh\xE1ng Sinh Kh\u1EDFi \u0110\u1EA7u & D\u1EEF Li\u1EC7u Vi Sinh" })
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "text-lg sm:text-xl font-extrabold text-slate-900 w-full sm:w-auto mt-1 sm:mt-0", children: "Ph\xE1c \u0110\u1ED3 Kh\xE1ng Sinh Kh\u1EDFi \u0110\u1EA7u & D\u1EEF Li\u1EC7u Vi Sinh" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs text-slate-500 mt-1", children: "Khuy\u1EBFn c\xE1o ph\xE1c \u0111\u1ED3 theo h\u01B0\u1EDBng d\u1EABn BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026 (P.4-13) \u2022 T\xEDch h\u1EE3p t\xEDnh li\u1EC1u c\xE1 th\u1EC3 h\xF3a tr\u1EF1c ti\u1EBFp theo ch\u1EE9c n\u0103ng th\u1EADn." })
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-xs text-slate-500 mt-1", children: "Khuy\u1EBFn c\xE1o ph\xE1c \u0111\u1ED3 theo h\u01B0\u1EDBng d\u1EABn BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026 (P.4-13) \u2022 T\xEDch h\u1EE3p t\xEDnh li\u1EC1u c\xE1 th\u1EC3 h\xF3a tr\u1EF1c ti\u1EBFp theo ch\u1EE9c n\u0103ng th\u1EADn." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-wrap items-center gap-2", children: [
-          onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-wrap items-center gap-2", children: [
+          onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
             "button",
             {
               id: "btn-open-site-flowchart",
@@ -60491,8 +60242,8 @@ var StepEmpiric = ({
               className: "px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
               title: "Xem \u1EA3nh l\u01B0u \u0111\u1ED3 ph\xE1c \u0111\u1ED3 / vi sinh g\u1ED1c t\u1EEB H\u01B0\u1EDBng d\u1EABn B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { children: [
                   "Xem L\u01B0u \u0110\u1ED3 G\u1ED1c BVBND (Trang ",
                   currentPdfPage,
                   ")"
@@ -60500,16 +60251,16 @@ var StepEmpiric = ({
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "w-full sm:w-auto grid grid-cols-2 sm:flex p-1 bg-slate-100 rounded-xl border border-slate-200", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "w-full sm:w-auto grid grid-cols-2 sm:flex p-1 bg-slate-100 rounded-xl border border-slate-200", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setActiveTab("regimens"),
                 className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${activeTab === "regimens" ? "bg-white text-teal-700 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ClipboardList, { className: "w-3.5 h-3.5 text-teal-600" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ClipboardList, { className: "w-3.5 h-3.5 text-teal-600" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { children: [
                     "Ph\xE1c \u0111\u1ED3 Khuy\u1EBFn c\xE1o (",
                     allRegimens.length,
                     ")"
@@ -60517,186 +60268,34 @@ var StepEmpiric = ({
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setActiveTab("antibiogram"),
                 className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${activeTab === "antibiogram" ? "bg-white text-teal-700 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(FlaskConical, { className: "w-3.5 h-3.5 text-teal-600" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Vi sinh & KS\u0110 T\u1EA1i Ch\u1ED7" })
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(FlaskConical, { className: "w-3.5 h-3.5 text-teal-600" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Vi sinh & KS\u0110 T\u1EA1i Ch\u1ED7" })
                 ]
               }
             )
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-4 p-4 rounded-xl bg-gradient-to-r from-teal-50/90 via-emerald-50/80 to-teal-50/60 border border-teal-300 shadow-2xs space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-2.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "p-2 rounded-xl bg-teal-600 text-white shadow-2xs", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Calculator, { className: "w-4 h-4" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "font-black text-sm text-teal-950", children: "M\xE1y T\xEDnh Li\u1EC1u C\xE1 Th\u1EC3 H\xF3a Tr\u1EF1c Ti\u1EBFp (Ph\xE2n H\u1EC7 2)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-teal-200/90 text-teal-900", children: "Th\u1EDDi Gian Th\u1EF1c" })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "text-xs text-slate-600 mt-0.5", children: [
-                "B\u1EC7nh nh\xE2n: ",
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { className: "text-slate-900", children: patient?.patientName || "B\u1EC7nh nh\xE2n" }),
-                " \u2022 ",
-                patient?.age || 60,
-                " tu\u1ED5i \u2022 C\xE2n n\u1EB7ng: ",
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("strong", { className: "text-teal-900", children: [
-                  patient?.weight || 60,
-                  " kg"
-                ] }),
-                " \u2022 SCr: ",
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("strong", { className: "text-teal-900", children: [
-                  patient?.scr || 90,
-                  " ",
-                  patient?.scrUnit || "\xB5mol/L"
-                ] })
-              ] })
-            ] })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "px-3 py-1 rounded-lg bg-white border border-teal-200 text-xs shadow-2xs", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-slate-500 font-medium", children: "CrCl: " }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("strong", { className: "text-teal-900 font-black", children: [
-                renal?.crcl ?? 90,
-                " mL/ph\xFAt"
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "text-[11px] text-teal-700 ml-1", children: [
-                "(",
-                renal?.cgCrClLabel || "B\u1EA3o t\u1ED3n",
-                ")"
-              ] })
-            ] }),
-            onPatientChange && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
-              "button",
-              {
-                type: "button",
-                onClick: () => setShowRenalQuickEditor(!showRenalQuickEditor),
-                className: "px-2.5 py-1 text-xs font-bold rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 flex items-center gap-1 cursor-pointer transition-all shadow-2xs",
-                title: "Thay \u0111\u1ED5i nhanh SCr v\xE0 C\xE2n n\u1EB7ng \u0111\u1EC3 t\xEDnh l\u1EA1i li\u1EC1u",
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SlidersHorizontal, { className: "w-3.5 h-3.5 text-teal-600" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Hi\u1EC7u ch\u1EC9nh th\xF4ng s\u1ED1" }),
-                  showRenalQuickEditor ? /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ChevronUp, { className: "w-3 h-3" }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ChevronDown, { className: "w-3 h-3" })
-                ]
-              }
-            )
-          ] })
-        ] }),
-        showRenalQuickEditor && onPatientChange && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-3 bg-white/90 rounded-xl border border-teal-200 text-xs space-y-2.5 animate-fadeIn", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "font-bold text-slate-800 flex items-center gap-1.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Activity, { className: "w-3.5 h-3.5 text-teal-600" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Hi\u1EC7u ch\u1EC9nh nhanh th\xF4ng s\u1ED1 th\u1EADn & c\xE2n n\u1EB7ng (t\u1EF1 \u0111\u1ED9ng c\u1EADp nh\u1EADt li\u1EC1u cho to\xE0n b\u1ED9 thu\u1ED1c):" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("label", { className: "block text-[11px] font-semibold text-slate-600 mb-1", children: "C\xE2n n\u1EB7ng (kg)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
-                "input",
-                {
-                  type: "number",
-                  value: patient?.weight || 60,
-                  onChange: (e) => onPatientChange({ weight: parseFloat(e.target.value) || 50 }),
-                  className: "w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("label", { className: "block text-[11px] font-semibold text-slate-600 mb-1", children: [
-                "Serum Creatinine (",
-                patient?.scrUnit || "\xB5mol/L",
-                ")"
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
-                "input",
-                {
-                  type: "number",
-                  value: patient?.scr || 90,
-                  onChange: (e) => onPatientChange({ scr: parseFloat(e.target.value) || 60 }),
-                  className: "w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("label", { className: "block text-[11px] font-semibold text-slate-600 mb-1", children: "Tu\u1ED5i" }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
-                "input",
-                {
-                  type: "number",
-                  value: patient?.age || 60,
-                  onChange: (e) => onPatientChange({ age: parseInt(e.target.value) || 60 }),
-                  className: "w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("label", { className: "block text-[11px] font-semibold text-slate-600 mb-1", children: "L\u1ECDc m\xE1u" }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
-                "select",
-                {
-                  value: patient?.dialysis || "none",
-                  onChange: (e) => onPatientChange({ dialysis: e.target.value }),
-                  className: "w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden cursor-pointer",
-                  children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("option", { value: "none", children: "Kh\xF4ng l\u1ECDc m\xE1u" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("option", { value: "hd", children: "HD (Th\u1EADn nh\xE2n t\u1EA1o chu k\u1EF3)" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("option", { value: "crrt_cvvh", children: "CRRT: CVVH" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("option", { value: "crrt_cvvhd", children: "CRRT: CVVHD" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("option", { value: "crrt_cvvhdf", children: "CRRT: CVVHDF" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("option", { value: "sled", children: "SLED (L\u1ECDc m\xE1u k\xE9o d\xE0i)" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("option", { value: "capd", children: "CAPD (Th\u1EA9m ph\xE2n ph\xFAc m\u1EA1c)" })
-                  ]
-                }
-              )
-            ] })
-          ] })
-        ] }),
-        dosingResult && selectedDrugId && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-3 bg-white rounded-xl border border-teal-300/80 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "text-xs text-slate-700", children: [
-              "Thu\u1ED1c \u0111ang ch\u1ECDn: ",
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { className: "text-teal-950 font-black", children: activeCalculatedDrugName })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-xs text-slate-400", children: "\u2192" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "text-xs font-black text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200", children: [
-              "Li\u1EC1u c\xE1 th\u1EC3 h\xF3a: ",
-              dosingResult.maintenanceDoseTextVi
-            ] })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
-            "button",
-            {
-              type: "button",
-              onClick: () => onSelectDrugForDosing(selectedDrugId),
-              className: "px-3 py-1 rounded-lg text-xs font-bold bg-teal-600 hover:bg-teal-700 text-white transition-all flex items-center gap-1 cursor-pointer shrink-0",
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "M\u1EDF Ph\xE2n h\u1EC7 2 chi ti\u1EBFt" }),
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
-              ]
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: `mt-3 p-3.5 rounded-xl border text-xs ${riskGroup === "group_2" ? "bg-amber-50/90 border-amber-200 text-amber-950" : "bg-emerald-50/90 border-emerald-200 text-emerald-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-start gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: `p-1.5 rounded-lg shrink-0 mt-0.5 ${riskGroup === "group_2" ? "bg-amber-100 text-amber-700" : "bg-emerald-100 text-emerald-700"}`, children: riskGroup === "group_2" ? /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(TriangleAlert, { className: "w-4 h-4" }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(CircleCheck, { className: "w-4 h-4" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { className: "font-bold text-xs sm:text-sm", children: riskGroup === "group_2" ? "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 2 (Nguy c\u01A1 cao vi khu\u1EA9n \u0111a kh\xE1ng ho\u1EB7c b\u1EC7nh c\u1EA3nh n\u1EB7ng):" : "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 1 (\xCDt nguy c\u01A1 vi khu\u1EA9n \u0111a kh\xE1ng):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "mt-1 leading-relaxed text-slate-700", children: riskGroup === "group_2" ? "B\u1EAFt bu\u1ED9c s\u1EED d\u1EE5ng kh\xE1ng sinh ph\u1ED5 r\u1ED9ng theo l\u01B0u \u0111\u1ED3 BVBND (BL-BLI li\u1EC1u cao ho\u1EB7c Carbapenem), ph\u1ED1i h\u1EE3p bao ph\u1EE7 MRSA n\u1EBFu c\xF3 ch\u1EC9 \u0111\u1ECBnh. Lu\xF4n l\u1EA5y c\u1EA5y m\xE1u v\xE0 b\u1EC7nh ph\u1EA9m tr\u01B0\u1EDBc li\u1EC1u \u0111\u1EA7u ti\xEAn." : "\u01AFu ti\xEAn kh\xE1ng sinh ph\u1ED5 h\u1EB9p ho\u1EB7c ph\u1ED5 trung b\xECnh ph\xF9 h\u1EE3p. H\u1EA1n ch\u1EBF l\u1EA1m d\u1EE5ng nh\xF3m Carbapenem, Colistin hay Vancomycin khi ch\u01B0a c\xF3 b\u1EB1ng ch\u1EE9ng vi sinh." })
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: `mt-3 p-3.5 rounded-xl border text-xs ${riskGroup === "group_2" ? "bg-amber-50/90 border-amber-200 text-amber-950" : "bg-emerald-50/90 border-emerald-200 text-emerald-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: `p-1.5 rounded-lg shrink-0 mt-0.5 ${riskGroup === "group_2" ? "bg-amber-100 text-amber-700" : "bg-emerald-100 text-emerald-700"}`, children: riskGroup === "group_2" ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TriangleAlert, { className: "w-4 h-4" }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(CircleCheck, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { className: "font-bold text-xs sm:text-sm", children: riskGroup === "group_2" ? "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 2 (Nguy c\u01A1 cao vi khu\u1EA9n \u0111a kh\xE1ng ho\u1EB7c b\u1EC7nh c\u1EA3nh n\u1EB7ng):" : "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 1 (\xCDt nguy c\u01A1 vi khu\u1EA9n \u0111a kh\xE1ng):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-1 leading-relaxed text-slate-700", children: riskGroup === "group_2" ? "B\u1EAFt bu\u1ED9c s\u1EED d\u1EE5ng kh\xE1ng sinh ph\u1ED5 r\u1ED9ng theo l\u01B0u \u0111\u1ED3 BVBND (BL-BLI li\u1EC1u cao ho\u1EB7c Carbapenem), ph\u1ED1i h\u1EE3p bao ph\u1EE7 MRSA n\u1EBFu c\xF3 ch\u1EC9 \u0111\u1ECBnh. Lu\xF4n l\u1EA5y c\u1EA5y m\xE1u v\xE0 b\u1EC7nh ph\u1EA9m tr\u01B0\u1EDBc li\u1EC1u \u0111\u1EA7u ti\xEAn." : "\u01AFu ti\xEAn kh\xE1ng sinh ph\u1ED5 h\u1EB9p ho\u1EB7c ph\u1ED5 trung b\xECnh ph\xF9 h\u1EE3p. H\u1EA1n ch\u1EBF l\u1EA1m d\u1EE5ng nh\xF3m Carbapenem, Colistin hay Vancomycin khi ch\u01B0a c\xF3 b\u1EB1ng ch\u1EE9ng vi sinh." })
         ] })
       ] }) }),
-      riskGroup === "group_2" && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-3 pt-3 border-t border-slate-100 flex items-center gap-1.5 flex-wrap", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "text-xs font-bold text-slate-600 flex items-center gap-1 mr-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Funnel, { className: "w-3.5 h-3.5 text-slate-400" }),
+      riskGroup === "group_2" && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-3 pt-3 border-t border-slate-100 flex items-center gap-1.5 flex-wrap", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "text-xs font-bold text-slate-600 flex items-center gap-1 mr-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Funnel, { className: "w-3.5 h-3.5 text-slate-400" }),
           "L\u1ECDc nhanh ph\xE1c \u0111\u1ED3:"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
           "button",
           {
             type: "button",
@@ -60709,7 +60308,7 @@ var StepEmpiric = ({
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
           "button",
           {
             type: "button",
@@ -60718,7 +60317,7 @@ var StepEmpiric = ({
             children: "Ph\xE1c \u0111\u1ED3 Kh\u1EDFi \u0111\u1EA7u N\u1EC1n"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
           "button",
           {
             type: "button",
@@ -60727,7 +60326,7 @@ var StepEmpiric = ({
             children: "+ Nguy c\u01A1 MRSA"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
           "button",
           {
             type: "button",
@@ -60736,7 +60335,7 @@ var StepEmpiric = ({
             children: "+ Nguy c\u01A1 ESBL"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
           "button",
           {
             type: "button",
@@ -60747,10 +60346,10 @@ var StepEmpiric = ({
         )
       ] })
     ] }),
-    activeTab === "regimens" && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-4", children: regimens.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-8 text-center bg-white rounded-2xl border border-slate-200/90 shadow-xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Info, { className: "w-8 h-8 text-slate-400 mx-auto mb-2" }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-slate-700 text-sm font-semibold", children: "Kh\xF4ng t\xECm th\u1EA5y ph\xE1c \u0111\u1ED3 kh\u1EDBp v\u1EDBi b\u1ED9 l\u1ECDc c\u1EE5 th\u1EC3 hi\u1EC7n t\u1EA1i." }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+    activeTab === "regimens" && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "space-y-4", children: regimens.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-8 text-center bg-white rounded-2xl border border-slate-200/90 shadow-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Info, { className: "w-8 h-8 text-slate-400 mx-auto mb-2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-slate-700 text-sm font-semibold", children: "Kh\xF4ng t\xECm th\u1EA5y ph\xE1c \u0111\u1ED3 kh\u1EDBp v\u1EDBi b\u1ED9 l\u1ECDc c\u1EE5 th\u1EC3 hi\u1EC7n t\u1EA1i." }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
         "button",
         {
           type: "button",
@@ -60763,126 +60362,126 @@ var StepEmpiric = ({
           ]
         }
       )
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "grid grid-cols-1 gap-4", children: regimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "grid grid-cols-1 gap-4", children: regimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
       "div",
       {
         className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs hover:border-teal-300 transition-all",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-100", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h3", { className: "text-base font-extrabold text-slate-900 flex items-center gap-2", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: regimen.titleVi }),
-                regimen.specificRisk && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-200", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-100", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("h3", { className: "text-base font-extrabold text-slate-900 flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: regimen.titleVi }),
+                regimen.specificRisk && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-200", children: [
                   "Tr\xFAng \u0111\xEDch ",
                   regimen.specificRisk.toUpperCase()
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs text-slate-500 italic mt-0.5", children: regimen.titleEn })
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-xs text-slate-500 italic mt-0.5", children: regimen.titleEn })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SourceBadge, { source: regimen.source })
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(SourceBadge, { source: regimen.source })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-500", children: "Thu\u1ED1c l\u1EF1a ch\u1ECDn & Li\u1EC1u chu\u1EA9n BVBND 2026:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: regimen.drugs.map((drug, dIdx) => {
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-500", children: "Thu\u1ED1c l\u1EF1a ch\u1ECDn & Li\u1EC1u chu\u1EA9n BVBND 2026:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: regimen.drugs.map((drug, dIdx) => {
               const drugDisplayName = drug.nameVi || drug.drugName || "Kh\xE1ng sinh";
               const doseText = drug.standardDoseVi || drug.dosageVi || "Theo h\u01B0\u1EDBng d\u1EABn";
               const routeText = drug.route || "IV";
               const hasDosingTool = Boolean(drug.drugId);
               const isCalculatedActive = selectedDrugId === drug.drugId && Boolean(dosingResult);
-              return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+              return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
                 "div",
                 {
                   className: `p-3.5 rounded-xl border transition-all flex flex-col justify-between ${isCalculatedActive ? "border-teal-500 ring-2 ring-teal-500/20 bg-teal-50/30 shadow-xs" : "border-slate-200/80 bg-slate-50/70 hover:bg-white hover:border-teal-200 hover:shadow-xs"}`,
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "font-bold text-sm text-teal-950 flex items-center gap-1.5", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: drugDisplayName }),
-                          isCalculatedActive && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "px-1.5 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-teal-600 text-white", children: "\u0110ang t\xEDnh" })
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "font-bold text-sm text-teal-950 flex items-center gap-1.5", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: drugDisplayName }),
+                          isCalculatedActive && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "px-1.5 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-teal-600 text-white", children: "\u0110ang t\xEDnh" })
                         ] }),
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200/80 text-slate-700 shrink-0", children: routeText })
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200/80 text-slate-700 shrink-0", children: routeText })
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-1.5 text-xs text-slate-700", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "font-semibold text-slate-900", children: "Li\u1EC1u chu\u1EA9n BVBND:" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-1.5 text-xs text-slate-700", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "font-semibold text-slate-900", children: "Li\u1EC1u chu\u1EA9n BVBND:" }),
                         " ",
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-slate-800 font-medium", children: doseText })
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-slate-800 font-medium", children: doseText })
                       ] }),
-                      drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-1.5 text-[11px] text-amber-900 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/70 flex items-center gap-1.5 font-medium", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Clock, { className: "w-3 h-3 text-amber-600 shrink-0" }),
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: drug.infusionNoteVi })
+                      drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-1.5 text-[11px] text-amber-900 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/70 flex items-center gap-1.5 font-medium", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Clock, { className: "w-3 h-3 text-amber-600 shrink-0" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: drug.infusionNoteVi })
                       ] })
                     ] }),
-                    isCalculatedActive && dosingResult && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-3 p-3 rounded-xl bg-white border border-teal-300 shadow-2xs space-y-2.5 animate-fadeIn", children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center justify-between gap-1 flex-wrap pb-1.5 border-b border-slate-100", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-1.5", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-500 animate-pulse" }),
-                          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "text-[11px] font-extrabold uppercase text-teal-900 tracking-wider", children: [
+                    isCalculatedActive && dosingResult && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-3 p-3 rounded-xl bg-white border border-teal-300 shadow-2xs space-y-2.5 animate-fadeIn", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between gap-1 flex-wrap pb-1.5 border-b border-slate-100", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-500 animate-pulse" }),
+                          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "text-[11px] font-extrabold uppercase text-teal-900 tracking-wider", children: [
                             "Li\u1EC1u C\xE1 Th\u1EC3 H\xF3a Theo Th\u1EADn (CrCl ",
                             renal?.crcl,
                             " mL/p)"
                           ] })
                         ] }),
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { children: dosingResult.reductionPercentage && dosingResult.reductionPercentage > 0 ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { children: dosingResult.reductionPercentage && dosingResult.reductionPercentage > 0 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200", children: [
                           "Gi\u1EA3m ",
                           dosingResult.reductionPercentage,
                           "% li\u1EC1u"
-                        ] }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200", children: "100% li\u1EC1u chu\u1EA9n" }) })
+                        ] }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200", children: "100% li\u1EC1u chu\u1EA9n" }) })
                       ] }),
-                      dosingResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "text-xs bg-amber-50/80 p-2 rounded-lg border border-amber-200/70 text-amber-950", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "font-extrabold text-amber-900", children: "Li\u1EC1u n\u1EA1p (Loading):" }),
+                      dosingResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "text-xs bg-amber-50/80 p-2 rounded-lg border border-amber-200/70 text-amber-950", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "font-extrabold text-amber-900", children: "Li\u1EC1u n\u1EA1p (Loading):" }),
                         " ",
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "font-medium", children: dosingResult.loadingDoseTextVi })
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "font-medium", children: dosingResult.loadingDoseTextVi })
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "text-xs bg-teal-50/90 p-2.5 rounded-lg border border-teal-200/90 text-teal-950", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "text-[10px] font-bold text-teal-700 uppercase tracking-wider mb-0.5", children: "Li\u1EC1u duy tr\xEC khuy\u1EBFn ngh\u1ECB:" }),
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "text-sm font-black text-teal-950 leading-snug", children: dosingResult.maintenanceDoseTextVi }),
-                        dosingResult.infusionInstructionsVi && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-1 text-[11px] text-teal-800 flex items-center gap-1 font-medium", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Clock, { className: "w-3 h-3 text-teal-600 shrink-0" }),
-                          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: dosingResult.infusionInstructionsVi })
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "text-xs bg-teal-50/90 p-2.5 rounded-lg border border-teal-200/90 text-teal-950", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-[10px] font-bold text-teal-700 uppercase tracking-wider mb-0.5", children: "Li\u1EC1u duy tr\xEC khuy\u1EBFn ngh\u1ECB:" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-sm font-black text-teal-950 leading-snug", children: dosingResult.maintenanceDoseTextVi }),
+                        dosingResult.infusionInstructionsVi && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-1 text-[11px] text-teal-800 flex items-center gap-1 font-medium", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Clock, { className: "w-3 h-3 text-teal-600 shrink-0" }),
+                          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: dosingResult.infusionInstructionsVi })
                         ] })
                       ] }),
-                      dosingResult.renalAdjustmentAdviceVi && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "text-[11px] text-slate-600 bg-slate-50 p-2 rounded-lg border border-slate-200/70 flex items-start gap-1.5 leading-relaxed", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-teal-600 shrink-0 mt-0.5" }),
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: dosingResult.renalAdjustmentAdviceVi })
+                      dosingResult.renalAdjustmentAdviceVi && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "text-[11px] text-slate-600 bg-slate-50 p-2 rounded-lg border border-slate-200/70 flex items-start gap-1.5 leading-relaxed", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-teal-600 shrink-0 mt-0.5" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: dosingResult.renalAdjustmentAdviceVi })
                       ] }),
-                      dosingResult.orderTextVi && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "pt-1 flex items-center justify-between gap-2 flex-wrap", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+                      dosingResult.orderTextVi && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "pt-1 flex items-center justify-between gap-2 flex-wrap", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
                           "button",
                           {
                             type: "button",
                             onClick: () => handleCopyOrder(dosingResult.orderTextVi, drug.drugId),
                             className: "px-2.5 py-1 text-[11px] font-bold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-1 cursor-pointer transition-all shadow-2xs",
                             title: "Sao ch\xE9p y l\u1EC7nh \u0111i\u1EC1u d\u01B0\u1EE1ng v\xE0o clipboard",
-                            children: copiedDrugId === drug.drugId ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(import_jsx_runtime17.Fragment, { children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Check, { className: "w-3 h-3 text-emerald-600" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-emerald-700 font-extrabold", children: "\u0110\xE3 sao ch\xE9p!" })
-                            ] }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(import_jsx_runtime17.Fragment, { children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Copy, { className: "w-3 h-3 text-slate-500" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Sao ch\xE9p y l\u1EC7nh" })
+                            children: copiedDrugId === drug.drugId ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(import_jsx_runtime16.Fragment, { children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Check, { className: "w-3 h-3 text-emerald-600" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-emerald-700 font-extrabold", children: "\u0110\xE3 sao ch\xE9p!" })
+                            ] }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(import_jsx_runtime16.Fragment, { children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Copy, { className: "w-3 h-3 text-slate-500" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Sao ch\xE9p y l\u1EC7nh" })
                             ] })
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
                           "button",
                           {
                             type: "button",
                             onClick: () => onSelectDrugForDosing(drug.drugId),
                             className: "text-[11px] font-bold text-teal-700 hover:text-teal-900 flex items-center gap-1 cursor-pointer hover:underline",
                             children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "B\u1EA3ng t\xEDnh li\u1EC1u chi ti\u1EBFt & DDI" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowRight, { className: "w-3 h-3" })
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "B\u1EA3ng t\xEDnh li\u1EC1u chi ti\u1EBFt & DDI" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ArrowRight, { className: "w-3 h-3" })
                             ]
                           }
                         )
                       ] })
                     ] }),
-                    hasDosingTool && drug.drugId && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/80 flex items-center justify-between gap-2 flex-wrap", children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "text-[11px] text-teal-700 font-medium flex items-center gap-1", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Calculator, { className: "w-3.5 h-3.5 text-teal-600 shrink-0" }),
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "M\xE1y t\xEDnh 43 KS" })
+                    hasDosingTool && drug.drugId && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/80 flex items-center justify-between gap-2 flex-wrap", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "text-[11px] text-teal-700 font-medium flex items-center gap-1", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Calculator, { className: "w-3.5 h-3.5 text-teal-600 shrink-0" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "M\xE1y t\xEDnh 43 KS" })
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-1.5", children: [
-                        onCalculateDoseForDrug && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+                        onCalculateDoseForDrug && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
                           "button",
                           {
                             type: "button",
@@ -60890,12 +60489,12 @@ var StepEmpiric = ({
                             className: `px-2.5 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer shadow-2xs ${isCalculatedActive ? "bg-teal-700 text-white" : "bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200"}`,
                             title: `T\xEDnh li\u1EC1u ${drugDisplayName} tr\u1EF1c ti\u1EBFp t\u1EA1i ch\u1ED7 theo CrCl ${renal?.crcl ?? 90} mL/ph\xFAt`,
                             children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Zap, { className: "w-3 h-3 text-amber-500" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: isCalculatedActive ? "\u0110ang hi\u1EC3n th\u1ECB" : "T\xEDnh li\u1EC1u t\u1EA1i \u0111\xE2y" })
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Zap, { className: "w-3 h-3 text-amber-500" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: isCalculatedActive ? "\u0110ang hi\u1EC3n th\u1ECB" : "T\xEDnh li\u1EC1u t\u1EA1i \u0111\xE2y" })
                             ]
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
                           "button",
                           {
                             type: "button",
@@ -60903,8 +60502,8 @@ var StepEmpiric = ({
                             className: "px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-700 active:scale-95 text-white shadow-2xs transition-all flex items-center gap-1 cursor-pointer",
                             title: `Xem b\u1EA3ng t\xEDnh li\u1EC1u c\xE1 th\u1EC3 h\xF3a, t\u01B0\u01A1ng t\xE1c thu\u1ED1c v\xE0 l\u1ECDc m\xE1u c\u1EE7a ${drugDisplayName}`,
                             children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "B\u1EA3ng t\xEDnh li\u1EC1u & DDI" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowRight, { className: "w-3 h-3" })
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "B\u1EA3ng t\xEDnh li\u1EC1u & DDI" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ArrowRight, { className: "w-3 h-3" })
                             ]
                           }
                         )
@@ -60916,35 +60515,35 @@ var StepEmpiric = ({
               );
             }) })
           ] }),
-          regimen.combinationRulesVi && regimen.combinationRulesVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-4 p-3.5 rounded-xl bg-teal-50/60 border border-teal-100", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h4", { className: "text-xs font-bold text-teal-950 mb-1.5 flex items-center gap-1.5", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Info, { className: "w-3.5 h-3.5 text-teal-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Quy t\u1EAFc ph\u1ED1i h\u1EE3p l\xE2m s\xE0ng:" })
+          regimen.combinationRulesVi && regimen.combinationRulesVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-4 p-3.5 rounded-xl bg-teal-50/60 border border-teal-100", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("h4", { className: "text-xs font-bold text-teal-950 mb-1.5 flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Info, { className: "w-3.5 h-3.5 text-teal-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Quy t\u1EAFc ph\u1ED1i h\u1EE3p l\xE2m s\xE0ng:" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("ul", { className: "list-disc list-inside text-xs text-slate-700 space-y-1", children: regimen.combinationRulesVi.map((rule, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("li", { children: rule }, rIdx)) })
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ul", { className: "list-disc list-inside text-xs text-slate-700 space-y-1", children: regimen.combinationRulesVi.map((rule, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("li", { children: rule }, rIdx)) })
           ] }),
-          regimen.cautionVi && regimen.cautionVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-3 p-3.5 rounded-xl bg-rose-50/70 border border-rose-200/80", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h4", { className: "text-xs font-bold text-rose-950 mb-1.5 flex items-center gap-1.5", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-rose-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Ch\xFA \xFD an to\xE0n & Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh ph\u1ED1i h\u1EE3p:" })
+          regimen.cautionVi && regimen.cautionVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-3 p-3.5 rounded-xl bg-rose-50/70 border border-rose-200/80", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("h4", { className: "text-xs font-bold text-rose-950 mb-1.5 flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-rose-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Ch\xFA \xFD an to\xE0n & Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh ph\u1ED1i h\u1EE3p:" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("ul", { className: "list-disc list-inside text-xs text-rose-900 space-y-1", children: regimen.cautionVi.map((c, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("li", { children: c }, cIdx)) })
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ul", { className: "list-disc list-inside text-xs text-rose-900 space-y-1", children: regimen.cautionVi.map((c, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("li", { children: c }, cIdx)) })
           ] })
         ]
       },
       regimen.id
     )) }) }),
-    activeTab === "antibiogram" && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-4", children: antibiogramData ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h3", { className: "text-base font-extrabold text-slate-900", children: [
+    activeTab === "antibiogram" && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "space-y-4", children: antibiogramData ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("h3", { className: "text-base font-extrabold text-slate-900", children: [
             "D\u1EEF li\u1EC7u Vi sinh & Kh\xE1ng sinh \u0111\u1ED3 t\u1EA1i ch\u1ED7 \u2014 ",
             siteLabels[site] || site,
             " (",
             population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em",
             ")"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("p", { className: "text-xs text-slate-500 mt-0.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("p", { className: "text-xs text-slate-500 mt-0.5", children: [
             "Kh\u1EA3o s\xE1t vi sinh BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi: ",
             antibiogramData.period,
             " | T\u1ED5ng s\u1ED1 m\u1EABu ph\xE2n l\u1EADp: ",
@@ -60952,32 +60551,32 @@ var StepEmpiric = ({
             " ch\u1EE7ng"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SourceBadge, { source: antibiogramData.source })
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(SourceBadge, { source: antibiogramData.source })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("table", { className: "w-full min-w-[550px] text-xs text-left border-collapse", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("tr", { className: "border-b border-slate-200 bg-slate-50 text-slate-700 font-bold", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "T\xE1c nh\xE2n g\xE2y b\u1EC7nh" }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3 text-center", children: "T\u1EF7 l\u1EC7 ph\xE2n l\u1EADp" }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "\u0110\u1ED9 nh\u1EA1y c\u1EA3m v\u1EDBi kh\xE1ng sinh th\u01B0\u1EDDng d\xF9ng" }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "\u0110\u1EB7c \u0111i\u1EC3m kh\xE1ng thu\u1ED1c" })
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("table", { className: "w-full min-w-[550px] text-xs text-left border-collapse", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("tr", { className: "border-b border-slate-200 bg-slate-50 text-slate-700 font-bold", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("th", { className: "py-2.5 px-3", children: "T\xE1c nh\xE2n g\xE2y b\u1EC7nh" }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("th", { className: "py-2.5 px-3 text-center", children: "T\u1EF7 l\u1EC7 ph\xE2n l\u1EADp" }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("th", { className: "py-2.5 px-3", children: "\u0110\u1ED9 nh\u1EA1y c\u1EA3m v\u1EDBi kh\xE1ng sinh th\u01B0\u1EDDng d\xF9ng" }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("th", { className: "py-2.5 px-3", children: "\u0110\u1EB7c \u0111i\u1EC3m kh\xE1ng thu\u1ED1c" })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tbody", { className: "divide-y divide-slate-100 text-slate-700", children: antibiogramData.organisms.map((org, oIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("tr", { className: "hover:bg-slate-50/70 transition-colors", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("td", { className: "py-3 px-3 font-bold text-slate-900", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("tbody", { className: "divide-y divide-slate-100 text-slate-700", children: antibiogramData.organisms.map((org, oIdx) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("tr", { className: "hover:bg-slate-50/70 transition-colors", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("td", { className: "py-3 px-3 font-bold text-slate-900", children: [
             org.organismName,
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "text-[11px] text-slate-500 font-normal", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "text-[11px] text-slate-500 font-normal", children: [
               "(n = ",
               org.sampleCount,
               ")"
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("td", { className: "py-3 px-3 text-center font-extrabold text-teal-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("td", { className: "py-3 px-3 text-center font-extrabold text-teal-700", children: [
             org.pctOfIsolates,
             "%"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { className: "py-3 px-3", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "flex flex-wrap gap-1.5", children: org.sensitivities.map((s, sIdx) => {
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("td", { className: "py-3 px-3", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "flex flex-wrap gap-1.5", children: org.sensitivities.map((s, sIdx) => {
             const isHigh = s.sensitivityPct >= 70;
             const isLow = s.sensitivityPct < 40;
-            return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+            return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
               "span",
               {
                 className: `px-2 py-0.5 rounded-md text-[11px] font-semibold border ${isHigh ? "bg-emerald-50 text-emerald-800 border-emerald-200" : isLow ? "bg-rose-50 text-rose-800 border-rose-200" : "bg-amber-50 text-amber-800 border-amber-200"}`,
@@ -60985,7 +60584,7 @@ var StepEmpiric = ({
                 children: [
                   s.antibioticName,
                   ": ",
-                  /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("strong", { className: "font-extrabold", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("strong", { className: "font-extrabold", children: [
                     s.sensitivityPct,
                     "%"
                   ] })
@@ -60994,35 +60593,35 @@ var StepEmpiric = ({
               sIdx
             );
           }) }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { className: "py-3 px-3 text-rose-700 font-medium", children: org.notableResistance || "\u2014" })
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("td", { className: "py-3 px-3 text-rose-700 font-medium", children: org.notableResistance || "\u2014" })
         ] }, oIdx)) })
       ] }) })
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-8 text-center bg-white rounded-2xl border border-slate-200/90 shadow-xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Info, { className: "w-8 h-8 text-slate-400 mx-auto mb-2" }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-slate-600 text-sm font-medium", children: "Ch\u01B0a c\xF3 d\u1EEF li\u1EC7u Antibiogram ri\xEAng cho v\u1ECB tr\xED nhi\u1EC5m tr\xF9ng n\xE0y. Vui l\xF2ng tham kh\u1EA3o b\xE1o c\xE1o vi sinh chung c\u1EE7a B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi n\u0103m 2024." })
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-8 text-center bg-white rounded-2xl border border-slate-200/90 shadow-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Info, { className: "w-8 h-8 text-slate-400 mx-auto mb-2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-slate-600 text-sm font-medium", children: "Ch\u01B0a c\xF3 d\u1EEF li\u1EC7u Antibiogram ri\xEAng cho v\u1ECB tr\xED nhi\u1EC5m tr\xF9ng n\xE0y. Vui l\xF2ng tham kh\u1EA3o b\xE1o c\xE1o vi sinh chung c\u1EE7a B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi n\u0103m 2024." })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
         "button",
         {
           type: "button",
           onClick: onPrevStep,
           className: "w-full sm:w-auto px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowLeft, { className: "w-4 h-4" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Quay l\u1EA1i Giai \u0111o\u1EA1n 1 (\u0110\xE1nh gi\xE1 & Ph\xE2n t\u1EA7ng)" })
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ArrowLeft, { className: "w-4 h-4" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Quay l\u1EA1i Giai \u0111o\u1EA1n 1 (\u0110\xE1nh gi\xE1 & Ph\xE2n t\u1EA7ng)" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
         "button",
         {
           type: "button",
           onClick: onNextStep,
           className: "w-full sm:w-auto px-5 py-2.5 text-xs sm:text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl shadow-sm transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Ti\u1EBFp t\u1EE5c: Giai \u0111o\u1EA1n 3 (T\xE1i \u0111\xE1nh gi\xE1 48-72h)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowRight, { className: "w-4 h-4" })
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Ti\u1EBFp t\u1EE5c: Giai \u0111o\u1EA1n 3 (T\xE1i \u0111\xE1nh gi\xE1 48-72h)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ArrowRight, { className: "w-4 h-4" })
           ]
         }
       )
@@ -61031,29 +60630,29 @@ var StepEmpiric = ({
 };
 
 // antibiotic/src/components/selection/StepReassess.tsx
-var import_react16 = __toESM(require_react(), 1);
-var import_jsx_runtime18 = __toESM(require_jsx_runtime(), 1);
+var import_react15 = __toESM(require_react(), 1);
+var import_jsx_runtime17 = __toESM(require_jsx_runtime(), 1);
 var StepReassess = ({
   site,
   onSelectDrugForDosing,
   onPrevStep,
   onOpenGuidelineAtlas
 }) => {
-  const [subTab, setSubTab] = (0, import_react16.useState)("decision_tree");
-  const [clinicalStatus, setClinicalStatus] = (0, import_react16.useState)("improved");
-  const [cultureStatus, setCultureStatus] = (0, import_react16.useState)("pending");
-  const [susceptibilityStatus, setSusceptibilityStatus] = (0, import_react16.useState)("sensitive");
-  const [selectedMdr, setSelectedMdr] = (0, import_react16.useState)("cre");
-  const [creEnzyme, setCreEnzyme] = (0, import_react16.useState)("mbl");
-  const [currentDays, setCurrentDays] = (0, import_react16.useState)(5);
-  const [checkedClinical, setCheckedClinical] = (0, import_react16.useState)([
+  const [subTab, setSubTab] = (0, import_react15.useState)("decision_tree");
+  const [clinicalStatus, setClinicalStatus] = (0, import_react15.useState)("improved");
+  const [cultureStatus, setCultureStatus] = (0, import_react15.useState)("pending");
+  const [susceptibilityStatus, setSusceptibilityStatus] = (0, import_react15.useState)("sensitive");
+  const [selectedMdr, setSelectedMdr] = (0, import_react15.useState)("cre");
+  const [creEnzyme, setCreEnzyme] = (0, import_react15.useState)("mbl");
+  const [currentDays, setCurrentDays] = (0, import_react15.useState)(5);
+  const [checkedClinical, setCheckedClinical] = (0, import_react15.useState)([
     "crit_afebrile",
     "crit_hemodynamic",
     "crit_oxygenation",
     "crit_local_signs",
     "crit_oral_intake"
   ]);
-  const [checkedLab, setCheckedLab] = (0, import_react16.useState)(["crit_pct"]);
+  const [checkedLab, setCheckedLab] = (0, import_react15.useState)(["crit_pct"]);
   const reassessResult = evaluate48hReassessment(
     clinicalStatus,
     cultureStatus,
@@ -61076,80 +60675,80 @@ var StepReassess = ({
       (prev) => prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-200", children: "Giai \u0110o\u1EA1n 3" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h2", { className: "text-lg sm:text-xl font-extrabold text-slate-900", children: "T\xE1i \u0110\xE1nh Gi\xE1 48-72 Gi\u1EDD & Qu\u1EA3n L\xFD Kh\xE1ng Sinh (AMS)" })
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-200", children: "Giai \u0110o\u1EA1n 3" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h2", { className: "text-lg sm:text-xl font-extrabold text-slate-900", children: "T\xE1i \u0110\xE1nh Gi\xE1 48-72 Gi\u1EDD & Qu\u1EA3n L\xFD Kh\xE1ng Sinh (AMS)" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-slate-500 mt-1", children: "L\u01B0u \u0111\u1ED3 \u0111\xE1nh gi\xE1 l\u1EA1i sau 48-72h, \u0111i\u1EC1u tr\u1ECB tr\xFAng \u0111\xEDch vi khu\u1EA9n \u0111a kh\xE1ng (CRE, DTR-PA, CRAB), b\u1EA3ng ki\u1EC3m ng\u01B0ng kh\xE1ng sinh an to\xE0n v\xE0 chuy\u1EC3n \u0111\u1ED5i IV sang PO." })
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs text-slate-500 mt-1", children: "L\u01B0u \u0111\u1ED3 \u0111\xE1nh gi\xE1 l\u1EA1i sau 48-72h, \u0111i\u1EC1u tr\u1ECB tr\xFAng \u0111\xEDch vi khu\u1EA9n \u0111a kh\xE1ng (CRE, DTR-PA, CRAB), b\u1EA3ng ki\u1EC3m ng\u01B0ng kh\xE1ng sinh an to\xE0n v\xE0 chuy\u1EC3n \u0111\u1ED5i IV sang PO." })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 pt-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 pt-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => setSubTab("decision_tree"),
             className: `px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "decision_tree" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Clock, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "1. L\u01B0u \u0111\u1ED3 48-72h (BVBND)" })
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Clock, { className: "w-3.5 h-3.5 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "1. L\u01B0u \u0111\u1ED3 48-72h (BVBND)" })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => setSubTab("mdr_pathways"),
             className: `px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "mdr_pathways" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Crosshair, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "2. Tr\xFAng \u0110\xEDch VK\u0110K" })
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Crosshair, { className: "w-3.5 h-3.5 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "2. Tr\xFAng \u0110\xEDch VK\u0110K" })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => setSubTab("stop_criteria"),
             className: `px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "stop_criteria" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Ban, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "3. B\u1EA3ng Ki\u1EC3m Ng\u01B0ng KS" })
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Ban, { className: "w-3.5 h-3.5 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "3. B\u1EA3ng Ki\u1EC3m Ng\u01B0ng KS" })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => setSubTab("iv_to_po"),
             className: `px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "iv_to_po" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ArrowRightLeft, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "4. Chuy\u1EC3n Ti\xEAm sang U\u1ED1ng" })
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowRightLeft, { className: "w-3.5 h-3.5 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "4. Chuy\u1EC3n Ti\xEAm sang U\u1ED1ng" })
             ]
           }
         )
       ] })
     ] }),
-    subTab === "decision_tree" && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", { className: "text-sm font-bold text-slate-900", children: "Nh\u1EADp t\xECnh tr\u1EA1ng ng\u01B0\u1EDDi b\u1EC7nh t\u1EA1i th\u1EDDi \u0111i\u1EC3m 48 - 72 gi\u1EDD:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 2 } })
+    subTab === "decision_tree" && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h3", { className: "text-sm font-bold text-slate-900", children: "Nh\u1EADp t\xECnh tr\u1EA1ng ng\u01B0\u1EDDi b\u1EC7nh t\u1EA1i th\u1EDDi \u0111i\u1EC3m 48 - 72 gi\u1EDD:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 2 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "1. \u0110\xE1p \u1EE9ng l\xE2m s\xE0ng:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "1. \u0110\xE1p \u1EE9ng l\xE2m s\xE0ng:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-2", children: [
             { id: "improved", label: "C\u1EA3i thi\u1EC7n (H\u1EBFt s\u1ED1t, sinh hi\u1EC7u \u1ED5n)", color: "text-emerald-700" },
             { id: "not_improved", label: "Kh\xF4ng c\u1EA3i thi\u1EC7n", color: "text-amber-700" },
             { id: "worsened", label: "X\u1EA5u \u0111i (S\u1ED1c, suy t\u1EA1ng t\u0103ng)", color: "text-rose-700" }
-          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
               "input",
               {
                 type: "radio",
@@ -61159,17 +60758,17 @@ var StepReassess = ({
                 className: "text-teal-600 focus:ring-teal-500"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: `font-semibold ${opt.color}`, children: opt.label })
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: `font-semibold ${opt.color}`, children: opt.label })
           ] }, opt.id)) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "2. K\u1EBFt qu\u1EA3 c\u1EA5y vi sinh:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "2. K\u1EBFt qu\u1EA3 c\u1EA5y vi sinh:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-2", children: [
             { id: "pending", label: "\u0110ang ch\u1EDD k\u1EBFt qu\u1EA3" },
             { id: "negative", label: "\xC2m t\xEDnh (Kh\xF4ng m\u1ECDc vi khu\u1EA9n)" },
             { id: "positive", label: "D\u01B0\u01A1ng t\xEDnh (Ph\xE2n l\u1EADp \u0111\u01B0\u1EE3c vi khu\u1EA9n)" }
-          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
               "input",
               {
                 type: "radio",
@@ -61179,17 +60778,17 @@ var StepReassess = ({
                 className: "text-teal-600 focus:ring-teal-500"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-slate-700 font-medium", children: opt.label })
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-slate-700 font-medium", children: opt.label })
           ] }, opt.id)) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: `p-3.5 rounded-xl border transition-all ${cultureStatus !== "positive" ? "opacity-50 pointer-events-none border-slate-200 bg-slate-100" : "border-slate-200/80 bg-slate-50/70"}`, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "3. \u0110\u1ED9 nh\u1EA1y KS tr\xEAn KS\u0110:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: `p-3.5 rounded-xl border transition-all ${cultureStatus !== "positive" ? "opacity-50 pointer-events-none border-slate-200 bg-slate-100" : "border-slate-200/80 bg-slate-50/70"}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "3. \u0110\u1ED9 nh\u1EA1y KS tr\xEAn KS\u0110:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-2", children: [
             { id: "sensitive", label: "Nh\u1EA1y c\u1EA3m (S)" },
             { id: "resistant", label: "\u0110\u1EC1 kh\xE1ng (R)" },
             { id: "intermediate", label: "Trung gian (I)" }
-          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
               "input",
               {
                 type: "radio",
@@ -61200,37 +60799,37 @@ var StepReassess = ({
                 className: "text-teal-600 focus:ring-teal-500"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-slate-700 font-medium", children: opt.label })
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-slate-700 font-medium", children: opt.label })
           ] }, opt.id)) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: `p-4 rounded-xl border mt-4 ${reassessResult.actionType === "de_escalate" ? "bg-emerald-50 border-emerald-300 text-emerald-950" : reassessResult.actionType === "switch_by_ast" ? "bg-rose-50 border-rose-300 text-rose-950" : reassessResult.actionType === "consult" ? "bg-amber-50 border-amber-300 text-amber-950" : "bg-teal-50 border-teal-300 text-teal-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-start gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-2xl shrink-0", children: reassessResult.actionType === "de_escalate" ? "\u{1F7E2}" : reassessResult.actionType === "switch_by_ast" ? "\u{1F534}" : reassessResult.actionType === "consult" ? "\u{1F7E1}" : "\u{1F535}" }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-1.5 flex-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "font-extrabold text-sm sm:text-base", children: reassessResult.actionTitleVi }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("ul", { className: "list-disc list-inside text-xs space-y-1 text-slate-800", children: reassessResult.recommendationsVi.map((rec, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("li", { className: "leading-relaxed font-medium", children: rec }, rIdx)) }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "pt-2 flex flex-wrap gap-2", children: [
-            reassessResult.stopChecklistEligible && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: `p-4 rounded-xl border mt-4 ${reassessResult.actionType === "de_escalate" ? "bg-emerald-50 border-emerald-300 text-emerald-950" : reassessResult.actionType === "switch_by_ast" ? "bg-rose-50 border-rose-300 text-rose-950" : reassessResult.actionType === "consult" ? "bg-amber-50 border-amber-300 text-amber-950" : "bg-teal-50 border-teal-300 text-teal-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-start gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-2xl shrink-0", children: reassessResult.actionType === "de_escalate" ? "\u{1F7E2}" : reassessResult.actionType === "switch_by_ast" ? "\u{1F534}" : reassessResult.actionType === "consult" ? "\u{1F7E1}" : "\u{1F535}" }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-1.5 flex-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h4", { className: "font-extrabold text-sm sm:text-base", children: reassessResult.actionTitleVi }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("ul", { className: "list-disc list-inside text-xs space-y-1 text-slate-800", children: reassessResult.recommendationsVi.map((rec, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("li", { className: "leading-relaxed font-medium", children: rec }, rIdx)) }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "pt-2 flex flex-wrap gap-2", children: [
+            reassessResult.stopChecklistEligible && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setSubTab("stop_criteria"),
                 className: "px-3 py-1.5 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all cursor-pointer flex items-center space-x-1",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "Ki\u1EC3m tra B\u1EA3ng ki\u1EC3m ng\u01B0ng KS ngay" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Ki\u1EC3m tra B\u1EA3ng ki\u1EC3m ng\u01B0ng KS ngay" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
                 ]
               }
             ),
-            reassessResult.ivToPoEligible && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+            reassessResult.ivToPoEligible && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setSubTab("iv_to_po"),
                 className: "px-3 py-1.5 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-xs transition-all cursor-pointer flex items-center space-x-1",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "Xem x\xE9t Chuy\u1EC3n \u0111\u1ED5i IV sang PO" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Xem x\xE9t Chuy\u1EC3n \u0111\u1ED5i IV sang PO" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
                 ]
               }
             )
@@ -61238,13 +60837,13 @@ var StepReassess = ({
         ] })
       ] }) })
     ] }) }),
-    subTab === "mdr_pathways" && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2.5", children: [
+    subTab === "mdr_pathways" && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2.5", children: [
         { id: "cre", label: "CRE (Enterobacterales kh\xE1ng Carbapenem)" },
         { id: "dtr_pseudo", label: "DTR-Pseudomonas aeruginosa" },
         { id: "crab", label: "CRAB (A. baumannii kh\xE1ng Carbapenem)" },
         { id: "s_maltophilia", label: "Stenotrophomonas maltophilia" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
         "button",
         {
           type: "button",
@@ -61254,14 +60853,14 @@ var StepReassess = ({
         },
         item.id
       )) }),
-      mdrData && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: mdrData.titleVi }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: mdrData.definitionVi })
+      mdrData && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: mdrData.titleVi }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: mdrData.definitionVi })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center gap-2", children: [
-            onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-2", children: [
+            onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
               "button",
               {
                 id: "btn-open-mdr-flowchart",
@@ -61276,21 +60875,21 @@ var StepReassess = ({
                 className: "px-2.5 py-1 text-xs font-bold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs",
                 title: "Xem \u1EA3nh l\u01B0u \u0111\u1ED3 g\u1ED1c BVBND cho vi khu\u1EA9n \u0111a kh\xE1ng n\xE0y",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "Xem L\u01B0u \u0110\u1ED3 G\u1ED1c MDR" })
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Xem L\u01B0u \u0110\u1ED3 G\u1ED1c MDR" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SourceBadge, { source: { doc: "BVBND_HDSDKS_2026", page: selectedMdr === "cre" ? 15 : selectedMdr === "dtr_pseudo" ? 18 : 21 } })
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SourceBadge, { source: { doc: "BVBND_HDSDKS_2026", page: selectedMdr === "cre" ? 15 : selectedMdr === "dtr_pseudo" ? 18 : 21 } })
           ] })
         ] }),
-        selectedMdr === "cre" && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "text-xs font-bold text-slate-800", children: "Ph\xE2n lo\u1EA1i theo ki\u1EC3u men Carbapenemase (k\u1EBFt qu\u1EA3 PCR / test mCIM / Carba NP):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex flex-wrap gap-2", children: [
+        selectedMdr === "cre" && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "text-xs font-bold text-slate-800", children: "Ph\xE2n lo\u1EA1i theo ki\u1EC3u men Carbapenemase (k\u1EBFt qu\u1EA3 PCR / test mCIM / Carba NP):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "flex flex-wrap gap-2", children: [
             { id: "mbl", label: "Metallo-beta-lactamase (MBL: NDM, VIM, IMP)" },
             { id: "kpc", label: "Serine Carbapenemase nh\xF3m A (KPC)" },
             { id: "oxa48", label: "OXA-48-like (Serine Carbapenemase nh\xF3m D)" }
-          ].map((enz) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+          ].map((enz) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
             "button",
             {
               type: "button",
@@ -61300,43 +60899,43 @@ var StepReassess = ({
             },
             enz.id
           )) }),
-          creEnzyme === "mbl" && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-950 font-medium", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { children: "\u26A0\uFE0F MBL (NDM):" }),
+          creEnzyme === "mbl" && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-3 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-950 font-medium", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { children: "\u26A0\uFE0F MBL (NDM):" }),
             " Men Metallo-beta-lactamase kh\xE1ng l\u1EA1i CAZ-AVI \u0111\u01A1n \u0111\u1ED9c. B\u1EAFt bu\u1ED9c ph\u1ED1i h\u1EE3p ",
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { children: "Ceftazidime/Avibactam + Aztreonam" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { children: "Ceftazidime/Avibactam + Aztreonam" }),
             " truy\u1EC1n \u0111\u1ED3ng th\u1EDDi qua ",
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { children: "Y-site" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { children: "Y-site" }),
             "."
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-500", children: "Kh\xE1ng sinh \u0110\u1EA7u tay Khuy\u1EBFn c\xE1o:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: mdrData.firstLineDrugs.map((drug, dIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-500", children: "Kh\xE1ng sinh \u0110\u1EA7u tay Khuy\u1EBFn c\xE1o:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: mdrData.firstLineDrugs.map((drug, dIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
             "div",
             {
               className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex flex-col justify-between",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "font-bold text-sm text-teal-900", children: drug.nameVi }),
-                  /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "text-xs text-slate-700 mt-1", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "font-semibold text-slate-900", children: "Li\u1EC1u:" }),
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "font-bold text-sm text-teal-900", children: drug.nameVi }),
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "text-xs text-slate-700 mt-1", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "font-semibold text-slate-900", children: "Li\u1EC1u:" }),
                     " ",
                     drug.standardDoseVi
                   ] }),
-                  drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "mt-1 text-[11px] text-amber-800 bg-amber-50 px-2 py-1 rounded-md border border-amber-200/60 font-medium flex items-center gap-1", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Clock, { className: "w-3 h-3 text-amber-600 shrink-0" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: drug.infusionNoteVi })
+                  drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-1 text-[11px] text-amber-800 bg-amber-50 px-2 py-1 rounded-md border border-amber-200/60 font-medium flex items-center gap-1", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Clock, { className: "w-3 h-3 text-amber-600 shrink-0" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: drug.infusionNoteVi })
                   ] })
                 ] }),
-                drug.hasDosingCalculator && drug.drugId && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/80 flex justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+                drug.hasDosingCalculator && drug.drugId && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/80 flex justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
                   "button",
                   {
                     type: "button",
                     onClick: () => onSelectDrugForDosing(drug.drugId),
                     className: "px-3 py-1 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-xs transition-all flex items-center gap-1 cursor-pointer",
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Calculator, { className: "w-3.5 h-3.5" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "T\xEDnh li\u1EC1u \u2192" })
+                      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Calculator, { className: "w-3.5 h-3.5" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "T\xEDnh li\u1EC1u \u2192" })
                     ]
                   }
                 ) })
@@ -61345,46 +60944,46 @@ var StepReassess = ({
             dIdx
           )) })
         ] }),
-        mdrData.combinationRegimens && mdrData.combinationRegimens.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-teal-700", children: "Ph\xE1c \u0111\u1ED3 Ph\u1ED1i h\u1EE3p B\u1EAFt bu\u1ED9c:" }),
-          mdrData.combinationRegimens.map((combo, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+        mdrData.combinationRegimens && mdrData.combinationRegimens.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-teal-700", children: "Ph\xE1c \u0111\u1ED3 Ph\u1ED1i h\u1EE3p B\u1EAFt bu\u1ED9c:" }),
+          mdrData.combinationRegimens.map((combo, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
             "div",
             {
               className: "p-3.5 rounded-xl bg-teal-50/60 border border-teal-100 space-y-2",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex flex-wrap items-center gap-2", children: combo.map((item, iIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_react16.default.Fragment, { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "font-bold text-xs text-teal-950 bg-white px-2.5 py-1 rounded-md border border-teal-200 shadow-2xs", children: item.nameVi }),
-                  iIdx < combo.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "font-black text-xs text-teal-600", children: "+" })
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "flex flex-wrap items-center gap-2", children: combo.map((item, iIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(import_react15.default.Fragment, { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "font-bold text-xs text-teal-950 bg-white px-2.5 py-1 rounded-md border border-teal-200 shadow-2xs", children: item.nameVi }),
+                  iIdx < combo.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "font-black text-xs text-teal-600", children: "+" })
                 ] }, iIdx)) }),
-                combo.some((c) => c.infusionNoteVi) && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-teal-900 font-medium", children: combo.find((c) => c.infusionNoteVi)?.infusionNoteVi })
+                combo.some((c) => c.infusionNoteVi) && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs text-teal-900 font-medium", children: combo.find((c) => c.infusionNoteVi)?.infusionNoteVi })
               ]
             },
             cIdx
           ))
         ] }),
-        mdrData.contraindicatedOrIneffectiveVi && mdrData.contraindicatedOrIneffectiveVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3.5 rounded-xl bg-rose-50/70 border border-rose-200/80 space-y-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("h4", { className: "text-xs font-bold text-rose-950 flex items-center gap-1.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-rose-600" }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "Ph\xE1c \u0111\u1ED3 KH\xD4NG khuy\u1EBFn c\xE1o / Kh\xF4ng hi\u1EC7u qu\u1EA3:" })
+        mdrData.contraindicatedOrIneffectiveVi && mdrData.contraindicatedOrIneffectiveVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-3.5 rounded-xl bg-rose-50/70 border border-rose-200/80 space-y-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h4", { className: "text-xs font-bold text-rose-950 flex items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-rose-600" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Ph\xE1c \u0111\u1ED3 KH\xD4NG khuy\u1EBFn c\xE1o / Kh\xF4ng hi\u1EC7u qu\u1EA3:" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("ul", { className: "list-disc list-inside text-xs text-rose-900 space-y-0.5 font-medium", children: mdrData.contraindicatedOrIneffectiveVi.map((warn, wIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("li", { children: warn }, wIdx)) })
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("ul", { className: "list-disc list-inside text-xs text-rose-900 space-y-0.5 font-medium", children: mdrData.contraindicatedOrIneffectiveVi.map((warn, wIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("li", { children: warn }, wIdx)) })
         ] })
       ] })
     ] }),
-    subTab === "stop_criteria" && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "B\u1EA3ng ki\u1EC3m \u0110\u1EE7 \u0111i\u1EC1u ki\u1EC7n Ng\u01B0ng Kh\xE1ng Sinh (Stopping Checklist)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: "D\u1EF1a tr\xEAn l\u01B0u \u0111\u1ED3 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi & c\xE1c th\u1EED nghi\u1EC7m l\xE2m s\xE0ng ng\u1EABu nhi\xEAn c\xF3 \u0111\u1ED1i ch\u1EE9ng (RCTs)." })
+    subTab === "stop_criteria" && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "B\u1EA3ng ki\u1EC3m \u0110\u1EE7 \u0111i\u1EC1u ki\u1EC7n Ng\u01B0ng Kh\xE1ng Sinh (Stopping Checklist)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: "D\u1EF1a tr\xEAn l\u01B0u \u0111\u1ED3 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi & c\xE1c th\u1EED nghi\u1EC7m l\xE2m s\xE0ng ng\u1EABu nhi\xEAn c\xF3 \u0111\u1ED1i ch\u1EE9ng (RCTs)." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 3 } })
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 3 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-xs font-bold text-slate-900", children: "S\u1ED1 ng\xE0y b\u1EC7nh nh\xE2n \u0111\xE3 d\xF9ng kh\xE1ng sinh hi\u1EC7n t\u1EA1i:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-xs font-bold text-slate-900", children: "S\u1ED1 ng\xE0y b\u1EC7nh nh\xE2n \u0111\xE3 d\xF9ng kh\xE1ng sinh hi\u1EC7n t\u1EA1i:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: [
             "Th\u1EDDi gian t\u1ED1i thi\u1EC3u chu\u1EA9n cho \u1ED5 nhi\u1EC5m n\xE0y: ",
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("strong", { className: "text-teal-700", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("strong", { className: "text-teal-700", children: [
               stopResult.minDays,
               " ng\xE0y"
             ] }),
@@ -61393,8 +60992,8 @@ var StepReassess = ({
             ")"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
             "input",
             {
               type: "number",
@@ -61405,24 +61004,24 @@ var StepReassess = ({
               className: "w-20 px-3 py-1.5 text-center text-sm font-bold rounded-lg border border-slate-300 bg-white text-slate-900 focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 outline-none"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-xs font-semibold text-slate-700", children: "ng\xE0y" })
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-xs font-semibold text-slate-700", children: "ng\xE0y" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Ti\xEAu chu\u1EA9n L\xE2m s\xE0ng (B\u1EAFt bu\u1ED9c \u0111\u1EA1t c\u1EA3 5/5):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("span", { className: `text-xs font-extrabold px-2.5 py-0.5 rounded-full border ${stopResult.clinicalCriteriaMet ? "bg-emerald-100 text-emerald-800 border-emerald-200" : "bg-amber-100 text-amber-800 border-amber-200"}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Ti\xEAu chu\u1EA9n L\xE2m s\xE0ng (B\u1EAFt bu\u1ED9c \u0111\u1EA1t c\u1EA3 5/5):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: `text-xs font-extrabold px-2.5 py-0.5 rounded-full border ${stopResult.clinicalCriteriaMet ? "bg-emerald-100 text-emerald-800 border-emerald-200" : "bg-amber-100 text-amber-800 border-amber-200"}`, children: [
             "\u0110\u1EA1t ",
             stopResult.clinicalCriteriaCount,
             " / 5 ti\xEAu ch\xED"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.clinicalCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.clinicalCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
           "label",
           {
             className: "flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/60 cursor-pointer hover:bg-slate-100/70 transition-all text-xs",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
                 "input",
                 {
                   type: "checkbox",
@@ -61431,27 +61030,27 @@ var StepReassess = ({
                   className: "mt-0.5 rounded text-teal-600 focus:ring-teal-500"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-slate-800 leading-relaxed font-medium", children: item.textVi })
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-slate-800 leading-relaxed font-medium", children: item.textVi })
             ]
           },
           item.id
         )) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Ti\xEAu chu\u1EA9n C\u1EADn L\xE2m s\xE0ng (C\u1EA7n \u0111\u1EA1t \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("span", { className: `text-xs font-extrabold px-2.5 py-0.5 rounded-full border ${stopResult.labCriteriaMet ? "bg-emerald-100 text-emerald-800 border-emerald-200" : "bg-slate-100 text-slate-700 border-slate-200"}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Ti\xEAu chu\u1EA9n C\u1EADn L\xE2m s\xE0ng (C\u1EA7n \u0111\u1EA1t \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: `text-xs font-extrabold px-2.5 py-0.5 rounded-full border ${stopResult.labCriteriaMet ? "bg-emerald-100 text-emerald-800 border-emerald-200" : "bg-slate-100 text-slate-700 border-slate-200"}`, children: [
             "\u0110\u1EA1t ",
             stopResult.labCriteriaCount,
             " ch\u1EC9 s\u1ED1"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.labCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.labCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
           "label",
           {
             className: "flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/60 cursor-pointer hover:bg-slate-100/70 transition-all text-xs",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
                 "input",
                 {
                   type: "checkbox",
@@ -61460,89 +61059,89 @@ var StepReassess = ({
                   className: "mt-0.5 rounded text-teal-600 focus:ring-teal-500"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-slate-800 leading-relaxed font-medium", children: item.textVi })
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-slate-800 leading-relaxed font-medium", children: item.textVi })
             ]
           },
           item.id
         )) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: `p-4 rounded-xl border text-sm ${stopResult.canStop ? "bg-emerald-50 border-emerald-300 text-emerald-950" : "bg-slate-50 border-slate-200 text-slate-800"}`, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-start gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-2xl shrink-0", children: stopResult.canStop ? "\u{1F389}" : "\u23F3" }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { className: "font-extrabold text-sm sm:text-base", children: stopResult.canStop ? "\u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N XEM X\xC9T NG\u01AFNG KH\xC1NG SINH AN TO\xC0N" : "CH\u01AFA \u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N \u0110\u1EC2 NG\u01AFNG KH\xC1NG SINH" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs mt-1 leading-relaxed text-slate-700", children: stopResult.canStop ? `B\u1EC7nh nh\xE2n \u0111\xE3 \u0111\u1EA1t \u0111\u1EE7 s\u1ED1 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y), th\u1ECFa m\xE3n 5/5 ti\xEAu chu\u1EA9n \u1ED5n \u0111\u1ECBnh l\xE2m s\xE0ng v\xE0 \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1 ch\u1EC9 \u0111i\u1EC3m c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i. Khuy\u1EBFn c\xE1o ng\u01B0ng kh\xE1ng sinh \u0111\u1EC3 gi\u1EA3m thi\u1EC3u \u0111\u1ED9c t\xEDnh v\xE0 nguy c\u01A1 ch\u1ECDn l\u1ECDc ch\u1EE7ng \u0111\u1EC1 kh\xE1ng. Ghi nh\u1EADn quy\u1EBFt \u0111\u1ECBnh v\xE0o h\u1ED3 s\u01A1 b\u1EC7nh \xE1n.` : `Hi\u1EC7n t\u1EA1i ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 c\xE1c ti\xEAu ch\xED ng\u01B0ng thu\u1ED1c. L\xFD do: ${!stopResult.minDurationMet ? `Ch\u01B0a \u0111\u1EE7 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y); ` : ""}${!stopResult.clinicalCriteriaMet ? `Ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 5/5 ti\xEAu chu\u1EA9n l\xE2m s\xE0ng (${stopResult.clinicalCriteriaCount}/5); ` : ""}${!stopResult.labCriteriaMet ? "Ch\u01B0a c\xF3 ch\u1EC9 s\u1ED1 c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i." : ""}` })
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: `p-4 rounded-xl border text-sm ${stopResult.canStop ? "bg-emerald-50 border-emerald-300 text-emerald-950" : "bg-slate-50 border-slate-200 text-slate-800"}`, children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-start gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-2xl shrink-0", children: stopResult.canStop ? "\u{1F389}" : "\u23F3" }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { className: "font-extrabold text-sm sm:text-base", children: stopResult.canStop ? "\u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N XEM X\xC9T NG\u01AFNG KH\xC1NG SINH AN TO\xC0N" : "CH\u01AFA \u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N \u0110\u1EC2 NG\u01AFNG KH\xC1NG SINH" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs mt-1 leading-relaxed text-slate-700", children: stopResult.canStop ? `B\u1EC7nh nh\xE2n \u0111\xE3 \u0111\u1EA1t \u0111\u1EE7 s\u1ED1 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y), th\u1ECFa m\xE3n 5/5 ti\xEAu chu\u1EA9n \u1ED5n \u0111\u1ECBnh l\xE2m s\xE0ng v\xE0 \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1 ch\u1EC9 \u0111i\u1EC3m c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i. Khuy\u1EBFn c\xE1o ng\u01B0ng kh\xE1ng sinh \u0111\u1EC3 gi\u1EA3m thi\u1EC3u \u0111\u1ED9c t\xEDnh v\xE0 nguy c\u01A1 ch\u1ECDn l\u1ECDc ch\u1EE7ng \u0111\u1EC1 kh\xE1ng. Ghi nh\u1EADn quy\u1EBFt \u0111\u1ECBnh v\xE0o h\u1ED3 s\u01A1 b\u1EC7nh \xE1n.` : `Hi\u1EC7n t\u1EA1i ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 c\xE1c ti\xEAu ch\xED ng\u01B0ng thu\u1ED1c. L\xFD do: ${!stopResult.minDurationMet ? `Ch\u01B0a \u0111\u1EE7 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y); ` : ""}${!stopResult.clinicalCriteriaMet ? `Ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 5/5 ti\xEAu chu\u1EA9n l\xE2m s\xE0ng (${stopResult.clinicalCriteriaCount}/5); ` : ""}${!stopResult.labCriteriaMet ? "Ch\u01B0a c\xF3 ch\u1EC9 s\u1ED1 c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i." : ""}` })
         ] })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-4 rounded-xl bg-teal-50/70 border border-teal-200/80 space-y-2 text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("h4", { className: "font-bold text-teal-950 flex items-center gap-1.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Info, { className: "w-4 h-4 text-teal-700" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "Quy tr\xECnh Theo d\xF5i Sau khi Ng\u01B0ng Kh\xE1ng sinh & Xu\u1ED1ng thang (BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi):" })
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-4 rounded-xl bg-teal-50/70 border border-teal-200/80 space-y-2 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h4", { className: "font-bold text-teal-950 flex items-center gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Info, { className: "w-4 h-4 text-teal-700" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Quy tr\xECnh Theo d\xF5i Sau khi Ng\u01B0ng Kh\xE1ng sinh & Xu\u1ED1ng thang (BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi):" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-800", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "bg-white p-3 rounded-lg border border-teal-100 space-y-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { className: "text-teal-900 block font-bold", children: "1. Theo d\xF5i trong 24 \u2013 48 gi\u1EDD \u0111\u1EA7u:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-slate-600", children: "Theo d\xF5i s\xE1t nhi\u1EC7t \u0111\u1ED9 s\u1ED1t, sinh hi\u1EC7u, m\u1EE9c \u0111\u1ED9 tri gi\xE1c. L\u1EB7p l\u1EA1i x\xE9t nghi\u1EC7m Procalcitonin (PCT) n\u1EBFu l\xE2m s\xE0ng c\xF3 d\u1EA5u hi\u1EC7u nghi ng\u1EDD t\xE1i b\xF9ng ph\xE1t." })
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-800", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "bg-white p-3 rounded-lg border border-teal-100 space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { className: "text-teal-900 block font-bold", children: "1. Theo d\xF5i trong 24 \u2013 48 gi\u1EDD \u0111\u1EA7u:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-slate-600", children: "Theo d\xF5i s\xE1t nhi\u1EC7t \u0111\u1ED9 s\u1ED1t, sinh hi\u1EC7u, m\u1EE9c \u0111\u1ED9 tri gi\xE1c. L\u1EB7p l\u1EA1i x\xE9t nghi\u1EC7m Procalcitonin (PCT) n\u1EBFu l\xE2m s\xE0ng c\xF3 d\u1EA5u hi\u1EC7u nghi ng\u1EDD t\xE1i b\xF9ng ph\xE1t." })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "bg-white p-3 rounded-lg border border-teal-100 space-y-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { className: "text-rose-900 block font-bold", children: "2. X\u1EED tr\xED khi t\xE1i ph\xE1t tri\u1EC7u ch\u1EE9ng:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-slate-600", children: "C\u1EA5y m\xE1u / c\u1EA5y b\u1EC7nh ph\u1EA9m l\u1EA1i ngay l\u1EADp t\u1EE9c. Kh\u1EDFi \u0111\u1ED9ng l\u1EA1i kh\xE1ng sinh theo b\u1EB1ng ch\u1EE9ng vi sinh v\xE0 k\xEDch ho\u1EA1t h\u1ED9i ch\u1EA9n D\u01B0\u1EE3c l\xE2m s\xE0ng / H\u1ED3i s\u1EE9c." })
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "bg-white p-3 rounded-lg border border-teal-100 space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { className: "text-rose-900 block font-bold", children: "2. X\u1EED tr\xED khi t\xE1i ph\xE1t tri\u1EC7u ch\u1EE9ng:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-slate-600", children: "C\u1EA5y m\xE1u / c\u1EA5y b\u1EC7nh ph\u1EA9m l\u1EA1i ngay l\u1EADp t\u1EE9c. Kh\u1EDFi \u0111\u1ED9ng l\u1EA1i kh\xE1ng sinh theo b\u1EB1ng ch\u1EE9ng vi sinh v\xE0 k\xEDch ho\u1EA1t h\u1ED9i ch\u1EA9n D\u01B0\u1EE3c l\xE2m s\xE0ng / H\u1ED3i s\u1EE9c." })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 font-medium mt-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { children: "Quy t\u1EAFc xu\u1ED1ng thang (*):" }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 font-medium mt-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { children: "Quy t\u1EAFc xu\u1ED1ng thang (*):" }),
           " C\xF3 th\u1EC3 ",
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("em", { children: "KH\xD4NG" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("em", { children: "KH\xD4NG" }),
           " xu\u1ED1ng thang khi th\u1EDDi gian s\u1EED d\u1EE5ng kh\xE1ng sinh c\xF2n l\u1EA1i \u2264 2 ng\xE0y. N\u1EBFu \u0111\u1ED5i sang kh\xE1ng sinh kh\xE1c, b\u1EAFt bu\u1ED9c ph\u1EA3i duy tr\xEC th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB \xEDt nh\u1EA5t ",
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { children: "3 \u2013 5 ng\xE0y" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { children: "3 \u2013 5 ng\xE0y" }),
           "."
         ] })
       ] })
     ] }) }),
-    subTab === "iv_to_po" && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "Quy tr\xECnh Chuy\u1EC3n \u0111\u1ED5i Kh\xE1ng sinh t\u1EEB Ti\xEAm sang U\u1ED1ng (IV to PO Switch)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: "Theo Quy\u1EBFt \u0111\u1ECBnh s\u1ED1 5631/Q\u0110-BYT n\u0103m 2020 c\u1EE7a B\u1ED9 Y t\u1EBF." })
+    subTab === "iv_to_po" && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "Quy tr\xECnh Chuy\u1EC3n \u0111\u1ED5i Kh\xE1ng sinh t\u1EEB Ti\xEAm sang U\u1ED1ng (IV to PO Switch)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: "Theo Quy\u1EBFt \u0111\u1ECBnh s\u1ED1 5631/Q\u0110-BYT n\u0103m 2020 c\u1EE7a B\u1ED9 Y t\u1EBF." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SourceBadge, { source: { doc: "BYT_5631_2020", page: 85 } })
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SourceBadge, { source: { doc: "BYT_5631_2020", page: 85 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-4 rounded-xl bg-rose-50/80 border border-rose-200 space-y-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("h4", { className: "text-xs font-bold text-rose-950 flex items-center gap-1.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Ban, { className: "w-4 h-4 text-rose-600" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh chuy\u1EC3n \u0111\u1ED5i \u0111\u01B0\u1EDDng u\u1ED1ng (B\u1EAFt bu\u1ED9c d\xF9ng to\xE0n b\u1ED9 li\u1EC7u tr\xECnh qua \u0111\u01B0\u1EDDng ti\xEAm t\u0129nh m\u1EA1ch):" })
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-4 rounded-xl bg-rose-50/80 border border-rose-200 space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h4", { className: "text-xs font-bold text-rose-950 flex items-center gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Ban, { className: "w-4 h-4 text-rose-600" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh chuy\u1EC3n \u0111\u1ED5i \u0111\u01B0\u1EDDng u\u1ED1ng (B\u1EAFt bu\u1ED9c d\xF9ng to\xE0n b\u1ED9 li\u1EC7u tr\xECnh qua \u0111\u01B0\u1EDDng ti\xEAm t\u0129nh m\u1EA1ch):" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-rose-900 font-medium", children: IV_TO_PO_CONTRAINDICATIONS.map((c, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center gap-1.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u2022" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: c })
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-rose-900 font-medium", children: IV_TO_PO_CONTRAINDICATIONS.map((c, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "\u2022" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: c })
         ] }, cIdx)) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Danh m\u1EE5c Kh\xE1ng sinh Chuy\u1EC3n \u0111\u1ED5i Th\u01B0\u1EDDng d\xF9ng (Nh\xF3m 1 - Sinh kh\u1EA3 d\u1EE5ng cao > 90%):" }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("table", { className: "w-full min-w-[500px] text-xs text-left border-collapse", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("tr", { className: "border-b border-slate-200 bg-slate-50 text-slate-700 font-bold", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("th", { className: "py-2.5 px-3", children: "Thu\u1ED1c ti\xEAm (IV)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("th", { className: "py-2.5 px-3", children: "Chuy\u1EC3n sang thu\u1ED1c u\u1ED1ng (PO)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("th", { className: "py-2.5 px-3", children: "Li\u1EC1u u\u1ED1ng khuy\u1EBFn c\xE1o" }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("th", { className: "py-2.5 px-3", children: "Sinh kh\u1EA3 d\u1EE5ng (F)" })
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Danh m\u1EE5c Kh\xE1ng sinh Chuy\u1EC3n \u0111\u1ED5i Th\u01B0\u1EDDng d\xF9ng (Nh\xF3m 1 - Sinh kh\u1EA3 d\u1EE5ng cao > 90%):" }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("table", { className: "w-full min-w-[500px] text-xs text-left border-collapse", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("tr", { className: "border-b border-slate-200 bg-slate-50 text-slate-700 font-bold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "Thu\u1ED1c ti\xEAm (IV)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "Chuy\u1EC3n sang thu\u1ED1c u\u1ED1ng (PO)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "Li\u1EC1u u\u1ED1ng khuy\u1EBFn c\xE1o" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "Sinh kh\u1EA3 d\u1EE5ng (F)" })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("tbody", { className: "divide-y divide-slate-100 text-slate-700", children: IV_TO_PO_DRUG_PAIRS.filter((p) => p.group === 1).map((pair, pIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("tr", { className: "hover:bg-slate-50/70 transition-colors", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("td", { className: "py-2.5 px-3 font-extrabold text-slate-900", children: pair.ivName }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("td", { className: "py-2.5 px-3 font-bold text-teal-700", children: pair.poName }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("td", { className: "py-2.5 px-3 font-medium", children: pair.poDoseVi }),
-            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("td", { className: "py-2.5 px-3 text-emerald-700 font-bold", children: pair.bioavailabilityVi })
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tbody", { className: "divide-y divide-slate-100 text-slate-700", children: IV_TO_PO_DRUG_PAIRS.filter((p) => p.group === 1).map((pair, pIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("tr", { className: "hover:bg-slate-50/70 transition-colors", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { className: "py-2.5 px-3 font-extrabold text-slate-900", children: pair.ivName }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { className: "py-2.5 px-3 font-bold text-teal-700", children: pair.poName }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { className: "py-2.5 px-3 font-medium", children: pair.poDoseVi }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { className: "py-2.5 px-3 text-emerald-700 font-bold", children: pair.bioavailabilityVi })
           ] }, pIdx)) })
         ] }) })
       ] })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
       "button",
       {
         type: "button",
         onClick: onPrevStep,
         className: "w-full sm:w-auto px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ArrowLeft, { className: "w-4 h-4" }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "Quay l\u1EA1i Giai \u0111o\u1EA1n 2 (Ph\xE1c \u0111\u1ED3 kh\u1EDFi \u0111\u1EA7u & Vi sinh)" })
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ArrowLeft, { className: "w-4 h-4" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "Quay l\u1EA1i Giai \u0111o\u1EA1n 2 (Ph\xE1c \u0111\u1ED3 kh\u1EDFi \u0111\u1EA7u & Vi sinh)" })
         ]
       }
     ) })
@@ -61550,7 +61149,7 @@ var StepReassess = ({
 };
 
 // antibiotic/src/components/selection/SelectionWizard.tsx
-var import_jsx_runtime19 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime18 = __toESM(require_jsx_runtime(), 1);
 var SelectionWizard = ({
   onSelectDrugForDosing,
   onOpenGuidelineAtlas,
@@ -61562,40 +61161,40 @@ var SelectionWizard = ({
   onPatientChange,
   children
 }) => {
-  const [currentStage, setCurrentStage] = (0, import_react17.useState)(1);
-  const [viewMode, setViewMode] = (0, import_react17.useState)("stepper");
-  const [indicationConfirmed, setIndicationConfirmed] = (0, import_react17.useState)(true);
-  const [checkedNhsnIds, setCheckedNhsnIds] = (0, import_react17.useState)([
+  const [currentStage, setCurrentStage] = (0, import_react16.useState)(1);
+  const [viewMode, setViewMode] = (0, import_react16.useState)("stepper");
+  const [indicationConfirmed, setIndicationConfirmed] = (0, import_react16.useState)(true);
+  const [checkedNhsnIds, setCheckedNhsnIds] = (0, import_react16.useState)([
     "vae_vac",
     "vae_ivac",
     "pneu_sputum_purulent",
     "pneu_xray"
   ]);
-  const [population, setPopulation] = (0, import_react17.useState)("adult");
-  const [site, setSite] = (0, import_react17.useState)("respiratory");
-  const [sepsisSource, setSepsisSource] = (0, import_react17.useState)(void 0);
-  const [checkedGeneralRiskIds, setCheckedGeneralRiskIds] = (0, import_react17.useState)([
+  const [population, setPopulation] = (0, import_react16.useState)("adult");
+  const [site, setSite] = (0, import_react16.useState)("respiratory");
+  const [sepsisSource, setSepsisSource] = (0, import_react16.useState)(void 0);
+  const [checkedGeneralRiskIds, setCheckedGeneralRiskIds] = (0, import_react16.useState)([
     "hospital_90d",
     "invasive_device",
     "iv_abx_30d"
   ]);
-  const [sofaScore, setSofaScore] = (0, import_react17.useState)(8);
-  const [psofaScore, setPsofaScore] = (0, import_react17.useState)(0);
-  const [clifSofaScore, setClifSofaScore] = (0, import_react17.useState)(0);
-  const [isChronicLiverDisease, setIsChronicLiverDisease] = (0, import_react17.useState)(false);
-  const [checkedSpecificRisks, setCheckedSpecificRisks] = (0, import_react17.useState)([
+  const [sofaScore, setSofaScore] = (0, import_react16.useState)(8);
+  const [psofaScore, setPsofaScore] = (0, import_react16.useState)(0);
+  const [clifSofaScore, setClifSofaScore] = (0, import_react16.useState)(0);
+  const [isChronicLiverDisease, setIsChronicLiverDisease] = (0, import_react16.useState)(false);
+  const [checkedSpecificRisks, setCheckedSpecificRisks] = (0, import_react16.useState)([
     "pseudo_acineto",
     "mrsa"
   ]);
-  const [checkedSpecificRiskFactorIds, setCheckedSpecificRiskFactorIds] = (0, import_react17.useState)([
+  const [checkedSpecificRiskFactorIds, setCheckedSpecificRiskFactorIds] = (0, import_react16.useState)([
     "ps_icu_5d",
     "ps_devices",
     "mrsa_cvc_foley"
   ]);
-  const [clinicalResponse, setClinicalResponse] = (0, import_react17.useState)("improved");
-  const [cultureStatus, setCultureStatus] = (0, import_react17.useState)("pending");
-  const [susceptibilityStatus, setSusceptibilityStatus] = (0, import_react17.useState)("sensitive");
-  const [daysOnAntibiotic, setDaysOnAntibiotic] = (0, import_react17.useState)(3);
+  const [clinicalResponse, setClinicalResponse] = (0, import_react16.useState)("improved");
+  const [cultureStatus, setCultureStatus] = (0, import_react16.useState)("pending");
+  const [susceptibilityStatus, setSusceptibilityStatus] = (0, import_react16.useState)("sensitive");
+  const [daysOnAntibiotic, setDaysOnAntibiotic] = (0, import_react16.useState)(3);
   const handleToggleNhsnId = (id) => {
     setCheckedNhsnIds(
       (prev) => prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
@@ -61719,59 +61318,59 @@ var SelectionWizard = ({
       stage: 1,
       title: "\u0110\xE1nh Gi\xE1 L\xE2m S\xE0ng & Ph\xE2n T\u1EA7ng Nhanh",
       desc: "Ch\u1EC9 \u0111\u1ECBnh NHSN \u2022 V\u1ECB tr\xED \u1ED5 nhi\u1EC5m \u2022 Nguy c\u01A1 VK\u0110K (SOFA)",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ClipboardCheck, { className: "w-4 h-4" })
+      icon: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ClipboardCheck, { className: "w-4 h-4" })
     },
     {
       stage: 2,
       title: "L\u1EF1a Ch\u1ECDn Ph\xE1c \u0110\u1ED3 & Antibiogram",
       desc: "Ph\xE1c \u0111\u1ED3 BVBND 2026 \u2022 \u0110\u1ED9 nh\u1EA1y KS\u0110 \u2022 C\u1EA7u n\u1ED1i t\xEDnh li\u1EC1u",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Pill, { className: "w-4 h-4" })
+      icon: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Pill, { className: "w-4 h-4" })
     },
     {
       stage: 3,
       title: "T\xE1i \u0110\xE1nh Gi\xE1 48-72h & Xu\u1ED1ng Thang",
       desc: "\u0110\xE1p \u1EE9ng l\xE2m s\xE0ng & KS\u0110 \u2022 Ti\xEAu chu\u1EA9n ng\u01B0ng \u2022 \u0110\u1ED5i ti\xEAm sang u\u1ED1ng",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Clock, { className: "w-4 h-4" })
+      icon: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Clock, { className: "w-4 h-4" })
     }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-5", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-3 sm:p-4 shadow-xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-teal-100 text-teal-800", children: "Quy Tr\xECnh 3 Giai \u0110o\u1EA1n R\xFAt G\u1ECDn" }),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-xs text-slate-500 hidden sm:inline", children: "Chu\u1EA9n h\xF3a theo L\u01B0u \u0111\u1ED3 B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026 & Q\u0110 5631/BYT" })
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-3 sm:p-4 shadow-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-teal-100 text-teal-800", children: "Quy Tr\xECnh 3 Giai \u0110o\u1EA1n R\xFAt G\u1ECDn" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-xs text-slate-500 hidden sm:inline", children: "Chu\u1EA9n h\xF3a theo L\u01B0u \u0111\u1ED3 B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026 & Q\u0110 5631/BYT" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "w-full sm:w-auto grid grid-cols-2 sm:flex rounded-xl p-1 bg-slate-100 border border-slate-200 text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "w-full sm:w-auto grid grid-cols-2 sm:flex rounded-xl p-1 bg-slate-100 border border-slate-200 text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => setViewMode("stepper"),
               className: `px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center justify-center space-x-1.5 ${viewMode === "stepper" ? "bg-white text-teal-900 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(LayoutList, { className: "w-3.5 h-3.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "T\u1EEBng Giai \u0110o\u1EA1n" })
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(LayoutList, { className: "w-3.5 h-3.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "T\u1EEBng Giai \u0110o\u1EA1n" })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => setViewMode("all-in-one"),
               className: `px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center justify-center space-x-1.5 ${viewMode === "all-in-one" ? "bg-white text-teal-900 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Layers, { className: "w-3.5 h-3.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "Xem To\xE0n Di\u1EC7n (M\u1ED9t Trang)" })
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Layers, { className: "w-3.5 h-3.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "Xem To\xE0n Di\u1EC7n (M\u1ED9t Trang)" })
               ]
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-3 gap-2", children: stagesList.map((st) => {
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-3 gap-2", children: stagesList.map((st) => {
         const isActive = currentStage === st.stage;
         const isCompleted = currentStage > st.stage;
-        return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
           "button",
           {
             type: "button",
@@ -61784,38 +61383,38 @@ var SelectionWizard = ({
             },
             className: `p-3 rounded-xl border text-left transition-all cursor-pointer flex items-start space-x-3 ${isActive ? "border-teal-500 bg-teal-50/70 ring-2 ring-teal-500/20 text-teal-950 shadow-xs" : isCompleted ? "border-slate-200 bg-white text-slate-800 hover:border-slate-300" : "border-slate-100 bg-slate-50/50 text-slate-500 hover:bg-slate-50"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
                 "div",
                 {
                   className: `w-7 h-7 rounded-lg shrink-0 flex items-center justify-center font-bold text-xs ${isActive ? "bg-teal-600 text-white shadow-xs" : isCompleted ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-600"}`,
                   children: isCompleted ? "\u2713" : st.stage
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "min-w-0 flex-1", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center justify-between", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { className: "text-[10px] font-black uppercase tracking-wider text-slate-400", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "min-w-0 flex-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center justify-between", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("span", { className: "text-[10px] font-black uppercase tracking-wider text-slate-400", children: [
                     "Giai \u0111o\u1EA1n ",
                     st.stage
                   ] }),
-                  isActive && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-500 shrink-0" })
+                  isActive && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-500 shrink-0" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-xs font-bold text-slate-900 mt-0.5 line-clamp-1 sm:truncate leading-tight", children: st.title }),
-                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[11px] text-slate-500 mt-0.5 line-clamp-2 leading-tight", children: st.desc })
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "text-xs font-bold text-slate-900 mt-0.5 line-clamp-1 sm:truncate leading-tight", children: st.title }),
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "text-[11px] text-slate-500 mt-0.5 line-clamp-2 leading-tight", children: st.desc })
               ] })
             ]
           },
           st.stage
         );
       }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "lg:hidden mt-3 p-3 rounded-xl border bg-slate-50 border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-2.5 min-w-0", children: [
-          riskResult.group === "group_2" ? /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ShieldAlert, { className: "w-5 h-5 text-rose-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0" }),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "min-w-0 flex-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-xs font-black text-slate-900 truncate", children: riskResult.group === "group_2" ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: \xCDt nguy c\u01A1 VK\u0110K" }),
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: `text-[10px] font-bold px-1.5 py-0.2 rounded ${riskResult.group === "group_2" ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: riskResult.isHighSeverity ? "B\u1EC7nh c\u1EA3nh n\u1EB7ng" : "Ti\xEAu chu\u1EA9n" })
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "lg:hidden mt-3 p-3 rounded-xl border bg-slate-50 border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center space-x-2.5 min-w-0", children: [
+          riskResult.group === "group_2" ? /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ShieldAlert, { className: "w-5 h-5 text-rose-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "min-w-0 flex-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-xs font-black text-slate-900 truncate", children: riskResult.group === "group_2" ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: \xCDt nguy c\u01A1 VK\u0110K" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: `text-[10px] font-bold px-1.5 py-0.2 rounded ${riskResult.group === "group_2" ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: riskResult.isHighSeverity ? "B\u1EC7nh c\u1EA3nh n\u1EB7ng" : "Ti\xEAu chu\u1EA9n" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-[11px] text-slate-500 truncate mt-0.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "text-[11px] text-slate-500 truncate mt-0.5", children: [
               population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em",
               " \u2022 ",
               site === "respiratory" ? "H\xF4 h\u1EA5p" : site === "sepsis" ? "Sepsis" : site === "urinary" ? "Ti\u1EBFt ni\u1EC7u" : site === "skin_soft_tissue" ? "Da m\xF4 m\u1EC1m" : site === "peritoneal" ? "D\u1ECBch b\xE1ng" : "CNS",
@@ -61825,7 +61424,7 @@ var SelectionWizard = ({
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "flex items-center gap-2 shrink-0", children: currentStage === 1 ? /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex items-center gap-2 shrink-0", children: currentStage === 1 ? /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
           "button",
           {
             type: "button",
@@ -61835,11 +61434,11 @@ var SelectionWizard = ({
             },
             className: "w-full sm:w-auto px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs flex items-center justify-center space-x-1",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "Xem Ph\xE1c \u0110\u1ED3" }),
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "Xem Ph\xE1c \u0110\u1ED3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
             ]
           }
-        ) : currentStage === 2 ? /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+        ) : currentStage === 2 ? /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
           "button",
           {
             type: "button",
@@ -61849,31 +61448,31 @@ var SelectionWizard = ({
             },
             className: "w-full sm:w-auto px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs flex items-center justify-center space-x-1",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "T\xE1i \u0110\xE1nh Gi\xE1 48-72h" }),
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "T\xE1i \u0110\xE1nh Gi\xE1 48-72h" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
             ]
           }
-        ) : /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+        ) : /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => onSelectDrugForDosing(),
             className: "w-full sm:w-auto px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs flex items-center justify-center space-x-1",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "T\xEDnh Li\u1EC1u Kh\xE1ng Sinh" }),
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "T\xEDnh Li\u1EC1u Kh\xE1ng Sinh" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
             ]
           }
         ) })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "w-full space-y-6", children: [
-      (viewMode === "all-in-one" || currentStage === 1) && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { id: "section-stage-1", className: "space-y-4", children: [
-        viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-2 pt-2 pb-1 border-b border-slate-200", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "1" }),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "Giai \u0110o\u1EA1n 1: \u0110\xE1nh Gi\xE1 L\xE2m S\xE0ng & Ph\xE2n T\u1EA7ng Nguy C\u01A1 VK\u0110K" })
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "w-full space-y-6", children: [
+      (viewMode === "all-in-one" || currentStage === 1) && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { id: "section-stage-1", className: "space-y-4", children: [
+        viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center space-x-2 pt-2 pb-1 border-b border-slate-200", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "1" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "Giai \u0110o\u1EA1n 1: \u0110\xE1nh Gi\xE1 L\xE2m S\xE0ng & Ph\xE2n T\u1EA7ng Nguy C\u01A1 VK\u0110K" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
           StepAssessmentStratification,
           {
             indicationConfirmed,
@@ -61909,12 +61508,12 @@ var SelectionWizard = ({
           }
         )
       ] }),
-      (viewMode === "all-in-one" || currentStage === 2) && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { id: "section-stage-2", className: "space-y-6", children: [
-        viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "2" }),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "Giai \u0110o\u1EA1n 2: L\u1EF1a Ch\u1ECDn Ph\xE1c \u0110\u1ED3 Kh\xE1ng Sinh Kh\u1EDFi \u0110\u1EA7u & T\xEDnh Li\u1EC1u C\xE1 Th\u1EC3 H\xF3a" })
+      (viewMode === "all-in-one" || currentStage === 2) && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { id: "section-stage-2", className: "space-y-6", children: [
+        viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "2" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "Giai \u0110o\u1EA1n 2: L\u1EF1a Ch\u1ECDn Ph\xE1c \u0110\u1ED3 Kh\xE1ng Sinh Kh\u1EDFi \u0110\u1EA7u & T\xEDnh Li\u1EC1u C\xE1 Th\u1EC3 H\xF3a" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
           StepEmpiric,
           {
             site,
@@ -61942,12 +61541,12 @@ var SelectionWizard = ({
         ),
         children
       ] }),
-      (viewMode === "all-in-one" || currentStage === 3) && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { id: "section-stage-3", className: "space-y-4", children: [
-        viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "3" }),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "Giai \u0110o\u1EA1n 3: T\xE1i \u0110\xE1nh Gi\xE1 48-72h, Xu\u1ED1ng Thang & Qu\u1EA3n L\xFD Kh\xE1ng Sinh (AMS)" })
+      (viewMode === "all-in-one" || currentStage === 3) && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { id: "section-stage-3", className: "space-y-4", children: [
+        viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "3" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "Giai \u0110o\u1EA1n 3: T\xE1i \u0110\xE1nh Gi\xE1 48-72h, Xu\u1ED1ng Thang & Qu\u1EA3n L\xFD Kh\xE1ng Sinh (AMS)" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
           StepReassess,
           {
             site,
@@ -62294,7 +61893,7 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
 }
 
 // antibiotic/src/App.tsx
-var import_jsx_runtime20 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime19 = __toESM(require_jsx_runtime(), 1);
 var DEFAULT_PATIENT = {
   scr: 90,
   scrUnit: "umol",
@@ -62309,41 +61908,41 @@ var DEFAULT_PATIENT = {
   diagnosis: "Vi\xEAm ph\u1ED5i b\u1EC7nh vi\u1EC7n (HAP/VAP) / Nhi\u1EC5m khu\u1EA9n huy\u1EBFt"
 };
 function App() {
-  const [language, setLanguage] = (0, import_react18.useState)("vi");
-  const [patient, setPatient] = (0, import_react18.useState)(DEFAULT_PATIENT);
-  const [selectedDrugId, setSelectedDrugId] = (0, import_react18.useState)("meropenem");
-  const [selectedScenario, setSelectedScenario] = (0, import_react18.useState)("standard");
-  const [activeTab, setActiveTab] = (0, import_react18.useState)("all");
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = (0, import_react18.useState)(false);
-  const [isAmrOpen, setIsAmrOpen] = (0, import_react18.useState)(false);
-  const [isOriginalOpen, setIsOriginalOpen] = (0, import_react18.useState)(false);
-  const [isPdfModalOpen, setIsPdfModalOpen] = (0, import_react18.useState)(false);
-  const [isGuidelineAtlasOpen, setIsGuidelineAtlasOpen] = (0, import_react18.useState)(false);
-  const [guidelineAtlasImageId, setGuidelineAtlasImageId] = (0, import_react18.useState)(void 0);
+  const [language, setLanguage] = (0, import_react17.useState)("vi");
+  const [patient, setPatient] = (0, import_react17.useState)(DEFAULT_PATIENT);
+  const [selectedDrugId, setSelectedDrugId] = (0, import_react17.useState)("meropenem");
+  const [selectedScenario, setSelectedScenario] = (0, import_react17.useState)("standard");
+  const [activeTab, setActiveTab] = (0, import_react17.useState)("all");
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = (0, import_react17.useState)(false);
+  const [isAmrOpen, setIsAmrOpen] = (0, import_react17.useState)(false);
+  const [isOriginalOpen, setIsOriginalOpen] = (0, import_react17.useState)(false);
+  const [isPdfModalOpen, setIsPdfModalOpen] = (0, import_react17.useState)(false);
+  const [isGuidelineAtlasOpen, setIsGuidelineAtlasOpen] = (0, import_react17.useState)(false);
+  const [guidelineAtlasImageId, setGuidelineAtlasImageId] = (0, import_react17.useState)(void 0);
   const handleOpenGuidelineAtlas = (imageId) => {
     setGuidelineAtlasImageId(imageId);
     setIsGuidelineAtlasOpen(true);
   };
-  const activeDrug = (0, import_react18.useMemo)(() => {
+  const activeDrug = (0, import_react17.useMemo)(() => {
     return ANTIBIOTICS.find((a) => a.id === selectedDrugId) || ANTIBIOTICS[0];
   }, [selectedDrugId]);
-  const drugDetails = (0, import_react18.useMemo)(() => {
+  const drugDetails = (0, import_react17.useMemo)(() => {
     return extractDrugData(selectedDrugId);
   }, [selectedDrugId]);
-  (0, import_react18.useEffect)(() => {
+  (0, import_react17.useEffect)(() => {
     const defScn = drugDetails.scenarios.find((s) => s.def) || drugDetails.scenarios[0];
     if (defScn) {
       setSelectedScenario(defScn.key);
     }
   }, [selectedDrugId, drugDetails]);
-  const renal = (0, import_react18.useMemo)(() => {
+  const renal = (0, import_react17.useMemo)(() => {
     return calculateRenalMetrics(patient, drugDetails.weightRule);
   }, [patient, drugDetails]);
-  const doseResult = (0, import_react18.useMemo)(() => {
+  const doseResult = (0, import_react17.useMemo)(() => {
     return calculateDose(drugDetails, renal, selectedScenario, patient);
   }, [drugDetails, renal, selectedScenario, patient]);
-  const [dosingResult, setDosingResult] = (0, import_react18.useState)(null);
-  (0, import_react18.useEffect)(() => {
+  const [dosingResult, setDosingResult] = (0, import_react17.useState)(null);
+  (0, import_react17.useEffect)(() => {
     setDosingResult(doseResult);
   }, [doseResult]);
   const handleCalculateDoseInSelection = (drugId, autoScrollToDosing = false) => {
@@ -62366,7 +61965,7 @@ function App() {
       }
     }
   };
-  const drugInteractions = (0, import_react18.useMemo)(() => {
+  const drugInteractions = (0, import_react17.useMemo)(() => {
     return DRUG_INTERACTIONS.filter((di) => di.antibioticIds.includes(selectedDrugId));
   }, [selectedDrugId]);
   const handlePatientChange = (updated) => {
@@ -62402,27 +62001,27 @@ function App() {
     language
   };
   const isEn = language === "en";
-  const renderDosingWorkspace = (isUnified = false) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { id: isUnified ? "unified-dosing-workspace" : "dosing-section", className: "space-y-4", children: [
-    isUnified && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "bg-gradient-to-r from-teal-800 via-teal-900 to-slate-900 text-white p-4 rounded-2xl shadow-sm border border-teal-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "p-2.5 bg-teal-600 rounded-xl text-white shadow-xs shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Calculator, { className: "w-6 h-6" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-xs font-black uppercase tracking-wider bg-teal-400/20 text-teal-200 px-2 py-0.5 rounded-full border border-teal-400/30", children: "B\u01B0\u1EDBc 2 trong Quy Tr\xECnh H\u1EE3p Nh\u1EA5t" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h3", { className: "text-base font-extrabold text-white", children: "C\xE1 Th\u1EC3 H\xF3a T\xEDnh Li\u1EC1u & An To\xE0n D\u01B0\u1EE3c L\xE2m S\xE0ng" })
+  const renderDosingWorkspace = (isUnified = false) => /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { id: isUnified ? "unified-dosing-workspace" : "dosing-section", className: "space-y-4", children: [
+    isUnified && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "bg-gradient-to-r from-teal-800 via-teal-900 to-slate-900 text-white p-4 rounded-2xl shadow-sm border border-teal-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "p-2.5 bg-teal-600 rounded-xl text-white shadow-xs shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Calculator, { className: "w-6 h-6" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-xs font-black uppercase tracking-wider bg-teal-400/20 text-teal-200 px-2 py-0.5 rounded-full border border-teal-400/30", children: "B\u01B0\u1EDBc 2 trong Quy Tr\xECnh H\u1EE3p Nh\u1EA5t" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h3", { className: "text-base font-extrabold text-white", children: "C\xE1 Th\u1EC3 H\xF3a T\xEDnh Li\u1EC1u & An To\xE0n D\u01B0\u1EE3c L\xE2m S\xE0ng" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-xs text-teal-100/90 mt-1 flex items-center gap-2 flex-wrap", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-xs text-teal-100/90 mt-1 flex items-center gap-2 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { children: [
               "Thu\u1ED1c \u0111ang t\xEDnh: ",
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { className: "text-amber-300 font-bold", children: activeDrug.name }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { className: "text-amber-300 font-bold", children: activeDrug.name }),
               " (",
               activeDrug.group,
               ")"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "\u2022" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "\u2022" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { children: [
               "CrCl: ",
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("strong", { className: "text-white font-bold", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("strong", { className: "text-white font-bold", children: [
                 renal.crcl,
                 " mL/ph\xFAt"
               ] }),
@@ -62430,15 +62029,15 @@ function App() {
               renal.categoryLabelVi,
               ")"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "\u2022" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "\u2022" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { children: [
               "L\u1ECDc m\xE1u: ",
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { className: "text-white font-bold", children: patient.dialysis === "none" ? "Kh\xF4ng" : patient.dialysis.toUpperCase() })
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { className: "text-white font-bold", children: patient.dialysis === "none" ? "Kh\xF4ng" : patient.dialysis.toUpperCase() })
             ] })
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "flex items-center gap-2 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "flex items-center gap-2 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
         "button",
         {
           type: "button",
@@ -62449,82 +62048,82 @@ function App() {
           },
           className: "px-3 py-1.5 text-xs font-bold rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer flex items-center gap-1.5",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ChevronUp, { className: "w-3.5 h-3.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "V\u1EC1 B\u01B0\u1EDBc 1 (Ph\xE1c \u0111\u1ED3 BVBND)" })
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ChevronUp, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "V\u1EC1 B\u01B0\u1EDBc 1 (Ph\xE1c \u0111\u1ED3 BVBND)" })
           ]
         }
       ) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-2 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "flex flex-wrap items-center justify-between gap-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-wrap items-center gap-1", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-2 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "flex flex-wrap items-center justify-between gap-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex flex-wrap items-center gap-1", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
         "button",
         {
           onClick: () => setActiveTab("all"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "all" ? "bg-teal-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(LayoutGrid, { className: "w-3.5 h-3.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: isEn ? "All Sections" : "T\u1EA5t c\u1EA3" })
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(LayoutGrid, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: isEn ? "All Sections" : "T\u1EA5t c\u1EA3" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
         "button",
         {
           onClick: () => setActiveTab("dosing"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "dosing" ? "bg-teal-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Pill, { className: "w-3.5 h-3.5 text-teal-600" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: isEn ? "Dose & CrCl Table" : "Li\u1EC1u & B\u1EA3ng CrCl" })
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Pill, { className: "w-3.5 h-3.5 text-teal-600" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: isEn ? "Dose & CrCl Table" : "Li\u1EC1u & B\u1EA3ng CrCl" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
         "button",
         {
           onClick: () => setActiveTab("dialysis"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "dialysis" ? "bg-purple-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Droplets, { className: "w-3.5 h-3.5 text-purple-500" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: isEn ? "Dialysis (HD/CRRT)" : "L\u1ECDc m\xE1u (HD/CRRT)" })
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Droplets, { className: "w-3.5 h-3.5 text-purple-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: isEn ? "Dialysis (HD/CRRT)" : "L\u1ECDc m\xE1u (HD/CRRT)" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
         "button",
         {
           onClick: () => setActiveTab("ddi"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "ddi" ? "bg-rose-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-rose-500" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: isEn ? "Interactions" : "T\u01B0\u01A1ng t\xE1c thu\u1ED1c" }),
-            drugInteractions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: `text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeTab === "ddi" ? "bg-white text-rose-600" : "bg-rose-100 text-rose-700"}`, children: drugInteractions.length })
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-rose-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: isEn ? "Interactions" : "T\u01B0\u01A1ng t\xE1c thu\u1ED1c" }),
+            drugInteractions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: `text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeTab === "ddi" ? "bg-white text-rose-600" : "bg-rose-100 text-rose-700"}`, children: drugInteractions.length })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
         "button",
         {
           onClick: () => setActiveTab("notes"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "notes" ? "bg-indigo-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(FileText, { className: "w-3.5 h-3.5 text-indigo-500" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: isEn ? "Clinical Guidance (Tier 1-3)" : "L\u01B0u \xFD D\u01B0\u1EE3c l\xFD (Tier 1-3)" })
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(FileText, { className: "w-3.5 h-3.5 text-indigo-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: isEn ? "Clinical Guidance (Tier 1-3)" : "L\u01B0u \xFD D\u01B0\u1EE3c l\xFD (Tier 1-3)" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
         "button",
         {
           onClick: () => setActiveTab("refs"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "refs" ? "bg-slate-800 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-slate-500" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: isEn ? "References" : "T\xE0i li\u1EC7u tham kh\u1EA3o" })
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-slate-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: isEn ? "References" : "T\xE0i li\u1EC7u tham kh\u1EA3o" })
           ]
         }
       )
     ] }) }) }),
-    (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { id: "dosing-card-anchor", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { id: "dosing-card-anchor", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       DosingRecommendationCard,
       {
         drugDetails,
@@ -62536,7 +62135,7 @@ function App() {
         onExportPdf: () => setIsPdfModalOpen(true)
       }
     ) }),
-    (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { id: "renal-table-section", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { id: "renal-table-section", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       RenalAdjustmentTable,
       {
         drugDetails,
@@ -62545,7 +62144,7 @@ function App() {
         language
       }
     ) }),
-    (activeTab === "all" || activeTab === "dialysis") && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { id: "dialysis-section", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    (activeTab === "all" || activeTab === "dialysis") && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { id: "dialysis-section", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       DialysisPanel,
       {
         drugDetails,
@@ -62553,7 +62152,7 @@ function App() {
         language
       }
     ) }),
-    (activeTab === "all" || activeTab === "ddi") && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { id: "ddi-section", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    (activeTab === "all" || activeTab === "ddi") && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { id: "ddi-section", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       DrugInteractionChecker,
       {
         antibioticId: selectedDrugId,
@@ -62561,14 +62160,14 @@ function App() {
         language
       }
     ) }),
-    (activeTab === "all" || activeTab === "notes") && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { id: "notes-section", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    (activeTab === "all" || activeTab === "notes") && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { id: "notes-section", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       ClinicalNotesTiers,
       {
         drugDetails,
         language
       }
     ) }),
-    (activeTab === "all" || activeTab === "refs") && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { id: "references-section", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    (activeTab === "all" || activeTab === "refs") && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { id: "references-section", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       ReferencesList,
       {
         drugDetails,
@@ -62576,8 +62175,8 @@ function App() {
       }
     ) })
   ] });
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "min-h-screen bg-slate-50/60 flex flex-col selection:bg-teal-600 selection:text-white", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "min-h-screen bg-slate-50/60 flex flex-col selection:bg-teal-600 selection:text-white", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       Header,
       {
         language,
@@ -62590,57 +62189,57 @@ function App() {
         selectedDrugName: activeDrug.name
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("main", { className: "flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-3.5 mb-5 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-3 flex-wrap min-w-0", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "p-2.5 rounded-xl bg-teal-50 border border-teal-200/80 text-teal-800 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Workflow, { className: "w-5 h-5 text-teal-700" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "min-w-0", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-teal-800", children: "InfectoDose CDSS" }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-900 border border-teal-200/70", children: "Ph\xE1c \u0110\u1ED3 BVBND 2026 \u2022 43 Kh\xE1ng Sinh" }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-[11px] font-bold text-slate-500", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("main", { className: "flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-3.5 mb-5 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center gap-3 flex-wrap min-w-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "p-2.5 rounded-xl bg-teal-50 border border-teal-200/80 text-teal-800 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Workflow, { className: "w-5 h-5 text-teal-700" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "min-w-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-teal-800", children: "InfectoDose CDSS" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-900 border border-teal-200/70", children: "Ph\xE1c \u0110\u1ED3 BVBND 2026 \u2022 43 Kh\xE1ng Sinh" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { className: "text-[11px] font-bold text-slate-500", children: [
                 "\u0110ang ch\u1ECDn: ",
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { className: "text-teal-700", children: activeDrug.name }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { className: "text-teal-700", children: activeDrug.name }),
                 " (",
                 activeDrug.group,
                 ")"
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-xs text-slate-700 font-semibold mt-1 flex items-center gap-2 flex-wrap", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: patient.patientName || "Nguy\u1EC5n V\u0103n An" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-xs text-slate-700 font-semibold mt-1 flex items-center gap-2 flex-wrap", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: patient.patientName || "Nguy\u1EC5n V\u0103n An" }),
                 " (",
                 patient.patientId || "BN-882910",
                 ")"
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-slate-300", children: "\u2022" }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-slate-300", children: "\u2022" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { children: [
                 patient.age,
                 "t, ",
                 patient.gender === "m" ? "Nam" : "N\u1EEF"
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-slate-300", children: "\u2022" }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-slate-300", children: "\u2022" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { children: [
                 patient.weight,
                 " kg"
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-slate-300", children: "\u2022" }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-slate-300", children: "\u2022" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { children: [
                 "CrCl: ",
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("strong", { className: "text-teal-700 font-black", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("strong", { className: "text-teal-700 font-black", children: [
                   renal.crcl,
                   " mL/ph\xFAt"
                 ] }),
                 " ",
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-[11px] font-medium text-slate-500", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { className: "text-[11px] font-medium text-slate-500", children: [
                   "(",
                   renal.categoryLabelVi,
                   ")"
                 ] })
               ] }),
-              patient.dialysis !== "none" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_jsx_runtime20.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-slate-300", children: "\u2022" }),
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "px-1.5 py-0.2 rounded text-[10px] font-black bg-purple-100 text-purple-800 uppercase", children: [
+              patient.dialysis !== "none" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(import_jsx_runtime19.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-slate-300", children: "\u2022" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { className: "px-1.5 py-0.2 rounded text-[10px] font-black bg-purple-100 text-purple-800 uppercase", children: [
                   "L\u1ECDc m\xE1u: ",
                   patient.dialysis
                 ] })
@@ -62648,8 +62247,8 @@ function App() {
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap shrink-0", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap shrink-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
             "button",
             {
               type: "button",
@@ -62657,12 +62256,12 @@ function App() {
               className: "px-2.5 py-1.5 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-all cursor-pointer flex items-center gap-1 shadow-2xs",
               title: "Xem Atlas L\u01B0u \u0110\u1ED3 BVBND 2026",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "hidden sm:inline", children: "Atlas BVBND" })
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "hidden sm:inline", children: "Atlas BVBND" })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
             "button",
             {
               type: "button",
@@ -62670,12 +62269,12 @@ function App() {
               className: "px-2.5 py-1.5 rounded-xl text-xs font-bold text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200/80 transition-all cursor-pointer flex items-center gap-1 shadow-2xs",
               title: "D\u1EEF li\u1EC7u \u0110\u1EC1 kh\xE1ng AMR Vi sinh",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-amber-600" }),
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "hidden sm:inline", children: "D\u1EEF li\u1EC7u AMR" })
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-amber-600" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "hidden sm:inline", children: "D\u1EEF li\u1EC7u AMR" })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
             "button",
             {
               type: "button",
@@ -62683,20 +62282,20 @@ function App() {
               className: "px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-teal-700 hover:bg-teal-800 transition-all cursor-pointer flex items-center gap-1.5 shadow-2xs",
               title: "Xu\u1EA5t phi\u1EBFu h\u1ED9i ch\u1EA9n l\xE2m s\xE0ng PDF",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(FileText, { className: "w-3.5 h-3.5 text-teal-100" }),
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Phi\u1EBFu H\u1ED9i Ch\u1EA9n PDF" })
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(FileText, { className: "w-3.5 h-3.5 text-teal-100" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "Phi\u1EBFu H\u1ED9i Ch\u1EA9n PDF" })
               ]
             }
           )
         ] })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "lg:flex lg:gap-6 items-start", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "lg:flex lg:gap-6 items-start", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
           "aside",
           {
             "aria-label": "Patient and Renal Parameters",
             className: `w-full shrink-0 mb-6 lg:mb-0 transition-all duration-300 lg:sticky lg:top-14 ${isSidebarCollapsed ? "lg:w-[260px] xl:w-[280px]" : "lg:w-[360px] xl:w-[390px]"}`,
-            children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
               PatientSidebar,
               {
                 patient,
@@ -62711,90 +62310,64 @@ function App() {
             )
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex-1 min-w-0 space-y-6", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "bg-white p-3 rounded-2xl border border-slate-200/90 shadow-2xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center justify-between gap-2 mb-2 px-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-xs font-black uppercase tracking-wider text-teal-800 flex items-center gap-1.5", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Calculator, { className: "w-4 h-4 text-teal-600" }),
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Tra c\u1EE9u nhanh 43 Kh\xE1ng sinh & T\xEDnh li\u1EC1u t\u1EE9c th\xEC" })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-[11px] text-slate-500 hidden sm:inline", children: [
-                "Nh\u1EA5n ",
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("kbd", { className: "px-1.5 py-0.5 text-[10px] font-mono bg-slate-100 border border-slate-300 rounded text-slate-700", children: "/" }),
-                " \u0111\u1EC3 t\xECm ki\u1EBFm ho\u1EB7c ch\u1ECDn thu\u1ED1c trong ph\xE1c \u0111\u1ED3 b\xEAn d\u01B0\u1EDBi"
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
-              AntibioticSearch,
-              {
-                antibiotics: ANTIBIOTICS,
-                selectedId: selectedDrugId,
-                onSelect: (id) => {
-                  handleSelectDrugFromSelection(id);
-                },
-                language
-              }
-            )
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
-            SelectionWizard,
-            {
-              onSelectDrugForDosing: handleSelectDrugFromSelection,
-              onOpenGuidelineAtlas: handleOpenGuidelineAtlas,
-              dosingResult,
-              selectedDrugId,
-              patient,
-              renal,
-              onCalculateDoseForDrug: handleCalculateDoseInSelection,
-              onPatientChange: handlePatientChange,
-              children: renderDosingWorkspace(true)
-            }
-          )
-        ] })
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "flex-1 min-w-0 space-y-6", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+          SelectionWizard,
+          {
+            onSelectDrugForDosing: handleSelectDrugFromSelection,
+            onOpenGuidelineAtlas: handleOpenGuidelineAtlas,
+            dosingResult,
+            selectedDrugId,
+            patient,
+            renal,
+            onCalculateDoseForDrug: handleCalculateDoseInSelection,
+            onPatientChange: handlePatientChange,
+            children: renderDosingWorkspace(true)
+          }
+        ) })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "print-only p-8 text-black bg-white", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "border-b-2 border-black pb-4 mb-4 flex justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h1", { className: "text-xl font-bold uppercase", children: "B\u1EC6NH VI\u1EC6N - KHOA D\u01AF\u1EE2C L\xC2M S\xC0NG" }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h2", { className: "text-sm font-semibold", children: "PHI\u1EBEU H\u1ED8I CH\u1EA8N & QU\u1EA2N L\xDD LI\u1EC0U KH\xC1NG SINH (CDSS)" })
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "print-only p-8 text-black bg-white", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "border-b-2 border-black pb-4 mb-4 flex justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h1", { className: "text-xl font-bold uppercase", children: "B\u1EC6NH VI\u1EC6N - KHOA D\u01AF\u1EE2C L\xC2M S\xC0NG" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h2", { className: "text-sm font-semibold", children: "PHI\u1EBEU H\u1ED8I CH\u1EA8N & QU\u1EA2N L\xDD LI\u1EC0U KH\xC1NG SINH (CDSS)" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-right text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-right text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
             "Ng\xE0y: ",
             (/* @__PURE__ */ new Date()).toLocaleDateString("vi-VN")
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
             "M\xE3 HS: ",
             patient.patientId || "BN-10293"
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mb-4 text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "B\u1EC7nh nh\xE2n:" }),
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mb-4 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "B\u1EC7nh nh\xE2n:" }),
           " ",
           patient.patientName || "Nguy\u1EC5n V\u0103n A",
           " | ",
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "Tu\u1ED5i/Gi\u1EDBi:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Tu\u1ED5i/Gi\u1EDBi:" }),
           " ",
           patient.age,
           "t / ",
           patient.gender === "m" ? "Nam" : "N\u1EEF",
           " | ",
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "C\xE2n n\u1EB7ng:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "C\xE2n n\u1EB7ng:" }),
           " ",
           patient.weight,
           " kg"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "Scr:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Scr:" }),
           " ",
           renal.scrUmol,
           " \xB5mol/L (",
           renal.scrMgdl,
           " mg/dL) | ",
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "CrCl:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "CrCl:" }),
           " ",
           renal.crcl,
           " mL/ph\xFAt (",
@@ -62802,51 +62375,51 @@ function App() {
           ")"
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "border border-black p-3 mb-4 text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { className: "text-sm font-bold", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "border border-black p-3 mb-4 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { className: "text-sm font-bold", children: [
           "Kh\xE1ng sinh ch\u1EC9 \u0111\u1ECBnh: ",
           activeDrug.name,
           " (",
           activeDrug.group,
           ")"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
           "Ph\xE1c \u0111\u1ED3 / K\u1ECBch b\u1EA3n: ",
           scenarioLabel
         ] }),
-        doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "Li\u1EC1u n\u1EA1p:" }),
+        doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Li\u1EC1u n\u1EA1p:" }),
           " ",
           doseResult.loadingDoseTextVi
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "Li\u1EC1u duy tr\xEC:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Li\u1EC1u duy tr\xEC:" }),
           " ",
           doseResult.maintenanceDoseTextVi
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "C\xE1ch d\xF9ng:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "C\xE1ch d\xF9ng:" }),
           " ",
           doseResult.infusionInstructionsVi
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "mb-4 text-xs", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "C\u01A1 s\u1EDF hi\u1EC7u ch\u1EC9nh li\u1EC1u:" }),
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "mb-4 text-xs", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "C\u01A1 s\u1EDF hi\u1EC7u ch\u1EC9nh li\u1EC1u:" }),
         " ",
         doseResult.renalAdjustmentAdviceVi
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-12 grid grid-cols-2 text-center text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "font-bold", children: "B\xC1C S\u0128 \u0110I\u1EC0U TR\u1ECA" }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mt-12 grid grid-cols-2 text-center text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "font-bold", children: "B\xC1C S\u0128 \u0110I\u1EC0U TR\u1ECA" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "font-bold", children: "D\u01AF\u1EE2C S\u0128 L\xC2M S\xC0NG" }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "font-bold", children: "D\u01AF\u1EE2C S\u0128 L\xC2M S\xC0NG" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       AmrModal,
       {
         isOpen: isAmrOpen,
@@ -62856,7 +62429,7 @@ function App() {
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       OriginalPreviewModal,
       {
         isOpen: isOriginalOpen,
@@ -62867,7 +62440,7 @@ function App() {
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       PdfConsultationModal,
       {
         isOpen: isPdfModalOpen,
@@ -62876,7 +62449,7 @@ function App() {
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       GuidelineImageModal,
       {
         isOpen: isGuidelineAtlasOpen,
@@ -62884,17 +62457,17 @@ function App() {
         initialImageId: guidelineAtlasImageId
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("footer", { className: "no-print bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "max-w-7xl mx-auto px-4 space-y-1", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "font-semibold text-slate-700", children: isEn ? "Antimicrobial Dosing Clinical Decision Support System (CDSS)" : "H\u1EC7 th\u1ED1ng H\u1ED7 tr\u1EE3 Quy\u1EBFt \u0111\u1ECBnh L\xE2m s\xE0ng Qu\u1EA3n l\xFD Li\u1EC1u Kh\xE1ng sinh (CDSS)" }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { children: isEn ? "Based on Stanford SHC & UCSF IDMP adult inpatient protocols. Medical reference tool only; clinical judgment remains paramount." : "D\u1EF1a tr\xEAn ph\xE1c \u0111\u1ED3 Stanford Health Care & UCSF IDMP. C\xF4ng c\u1EE5 h\u1ED7 tr\u1EE3 ra quy\u1EBFt \u0111\u1ECBnh l\xE2m s\xE0ng cho b\xE1c s\u0129 v\xE0 d\u01B0\u1EE3c s\u0129." })
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("footer", { className: "no-print bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "max-w-7xl mx-auto px-4 space-y-1", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "font-semibold text-slate-700", children: isEn ? "Antimicrobial Dosing Clinical Decision Support System (CDSS)" : "H\u1EC7 th\u1ED1ng H\u1ED7 tr\u1EE3 Quy\u1EBFt \u0111\u1ECBnh L\xE2m s\xE0ng Qu\u1EA3n l\xFD Li\u1EC1u Kh\xE1ng sinh (CDSS)" }),
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { children: isEn ? "Based on Stanford SHC & UCSF IDMP adult inpatient protocols. Medical reference tool only; clinical judgment remains paramount." : "D\u1EF1a tr\xEAn ph\xE1c \u0111\u1ED3 Stanford Health Care & UCSF IDMP. C\xF4ng c\u1EE5 h\u1ED7 tr\u1EE3 ra quy\u1EBFt \u0111\u1ECBnh l\xE2m s\xE0ng cho b\xE1c s\u0129 v\xE0 d\u01B0\u1EE3c s\u0129." })
     ] }) })
   ] });
 }
 
 // antibiotic/src/main.tsx
-var import_jsx_runtime21 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime20 = __toESM(require_jsx_runtime(), 1);
 (0, import_client.createRoot)(document.getElementById("root")).render(
-  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_react19.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(App, {}) })
+  /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_react18.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(App, {}) })
 );
 /**
  * @license
@@ -63218,7 +62791,6 @@ lucide-react/dist/esm/icons/search.js:
 lucide-react/dist/esm/icons/shield-alert.js:
 lucide-react/dist/esm/icons/shield-check.js:
 lucide-react/dist/esm/icons/shield.js:
-lucide-react/dist/esm/icons/sliders-horizontal.js:
 lucide-react/dist/esm/icons/sparkles.js:
 lucide-react/dist/esm/icons/square-check-big.js:
 lucide-react/dist/esm/icons/stethoscope.js:

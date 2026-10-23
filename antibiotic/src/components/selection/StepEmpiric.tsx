@@ -75,7 +75,6 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
   const [activeTab, setActiveTab] = useState<'regimens' | 'antibiogram'>('regimens');
   const [selectedFilterRisk, setSelectedFilterRisk] = useState<string>('all');
   const [copiedDrugId, setCopiedDrugId] = useState<string | null>(null);
-  const [showRenalQuickEditor, setShowRenalQuickEditor] = useState<boolean>(false);
 
   const getTargetImageId = (tab: 'regimens' | 'antibiogram') => {
     const isAdult = population === 'adult';
@@ -214,128 +213,7 @@ export const StepEmpiric: React.FC<StepEmpiricProps> = ({
           </div>
         </div>
 
-        {/* Live Dosing Summary Banner (Tích Hợp Trực Tiếp State dosingResult Từ Phân Hệ 2) */}
-        <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-teal-50/90 via-emerald-50/80 to-teal-50/60 border border-teal-300 shadow-2xs space-y-3">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-teal-600 text-white shadow-2xs">
-                <Calculator className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-black text-sm text-teal-950">
-                    Máy Tính Liều Cá Thể Hóa Trực Tiếp (Phân Hệ 2)
-                  </span>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-teal-200/90 text-teal-900">
-                    Thời Gian Thực
-                  </span>
-                </div>
-                <div className="text-xs text-slate-600 mt-0.5">
-                  Bệnh nhân: <strong className="text-slate-900">{patient?.patientName || 'Bệnh nhân'}</strong> • {patient?.age || 60} tuổi • Cân nặng: <strong className="text-teal-900">{patient?.weight || 60} kg</strong> • SCr: <strong className="text-teal-900">{patient?.scr || 90} {patient?.scrUnit || 'µmol/L'}</strong>
-                </div>
-              </div>
-            </div>
 
-            <div className="flex items-center gap-2 flex-wrap">
-              <div className="px-3 py-1 rounded-lg bg-white border border-teal-200 text-xs shadow-2xs">
-                <span className="text-slate-500 font-medium">CrCl: </span>
-                <strong className="text-teal-900 font-black">{renal?.crcl ?? 90} mL/phút</strong>
-                <span className="text-[11px] text-teal-700 ml-1">({renal?.cgCrClLabel || 'Bảo tồn'})</span>
-              </div>
-              {onPatientChange && (
-                <button
-                  type="button"
-                  onClick={() => setShowRenalQuickEditor(!showRenalQuickEditor)}
-                  className="px-2.5 py-1 text-xs font-bold rounded-lg bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 flex items-center gap-1 cursor-pointer transition-all shadow-2xs"
-                  title="Thay đổi nhanh SCr và Cân nặng để tính lại liều"
-                >
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-teal-600" />
-                  <span>Hiệu chỉnh thông số</span>
-                  {showRenalQuickEditor ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Quick Renal Editor Inputs */}
-          {showRenalQuickEditor && onPatientChange && (
-            <div className="p-3 bg-white/90 rounded-xl border border-teal-200 text-xs space-y-2.5 animate-fadeIn">
-              <div className="font-bold text-slate-800 flex items-center gap-1.5">
-                <Activity className="w-3.5 h-3.5 text-teal-600" />
-                <span>Hiệu chỉnh nhanh thông số thận &amp; cân nặng (tự động cập nhật liều cho toàn bộ thuốc):</span>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                <div>
-                  <label className="block text-[11px] font-semibold text-slate-600 mb-1">Cân nặng (kg)</label>
-                  <input
-                    type="number"
-                    value={patient?.weight || 60}
-                    onChange={(e) => onPatientChange({ weight: parseFloat(e.target.value) || 50 })}
-                    className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[11px] font-semibold text-slate-600 mb-1">Serum Creatinine ({patient?.scrUnit || 'µmol/L'})</label>
-                  <input
-                    type="number"
-                    value={patient?.scr || 90}
-                    onChange={(e) => onPatientChange({ scr: parseFloat(e.target.value) || 60 })}
-                    className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[11px] font-semibold text-slate-600 mb-1">Tuổi</label>
-                  <input
-                    type="number"
-                    value={patient?.age || 60}
-                    onChange={(e) => onPatientChange({ age: parseInt(e.target.value) || 60 })}
-                    className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[11px] font-semibold text-slate-600 mb-1">Lọc máu</label>
-                  <select
-                    value={patient?.dialysis || 'none'}
-                    onChange={(e) => onPatientChange({ dialysis: e.target.value as any })}
-                    className="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 font-bold text-slate-900 text-xs bg-slate-50 focus:bg-white focus:border-teal-500 outline-hidden cursor-pointer"
-                  >
-                    <option value="none">Không lọc máu</option>
-                    <option value="hd">HD (Thận nhân tạo chu kỳ)</option>
-                    <option value="crrt_cvvh">CRRT: CVVH</option>
-                    <option value="crrt_cvvhd">CRRT: CVVHD</option>
-                    <option value="crrt_cvvhdf">CRRT: CVVHDF</option>
-                    <option value="sled">SLED (Lọc máu kéo dài)</option>
-                    <option value="capd">CAPD (Thẩm phân phúc mạc)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Dosing Result Quick Highlight when active */}
-          {dosingResult && selectedDrugId && (
-            <div className="p-3 bg-white rounded-xl border border-teal-300/80 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse shrink-0"></span>
-                <span className="text-xs text-slate-700">
-                  Thuốc đang chọn: <strong className="text-teal-950 font-black">{activeCalculatedDrugName}</strong>
-                </span>
-                <span className="text-xs text-slate-400">→</span>
-                <span className="text-xs font-black text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
-                  Liều cá thể hóa: {dosingResult.maintenanceDoseTextVi}
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => onSelectDrugForDosing(selectedDrugId)}
-                className="px-3 py-1 rounded-lg text-xs font-bold bg-teal-600 hover:bg-teal-700 text-white transition-all flex items-center gap-1 cursor-pointer shrink-0"
-              >
-                <span>Mở Phân hệ 2 chi tiết</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          )}
-        </div>
 
         {/* Phân tầng nguy cơ cảnh báo */}
         <div className={`mt-3 p-3.5 rounded-xl border text-xs ${
