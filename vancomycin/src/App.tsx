@@ -65,14 +65,19 @@ export default function App() {
   // TDM State
   const [tdmInput, setTdmInput] = useState<TdmInput>({
     regimenType: 'intermittent',
+    intermittentMethod: 'bayesian_single',
     currentDoseMg: 1000,
     currentIntervalHours: 12,
     infusionDurationHours: 1.5,
+    singleConcentration: 11.5,
+    singleSampleType: 'trough',
+    singleDoseNumber: 2,
     peakConcentration: 28.0,
     peakTimeAfterEndHours: 1.0,
-    troughConcentration: 12.0,
+    troughConcentration: 11.5,
     troughTimeBeforeNextHours: 0.5,
-    steadyStateConcentration: 22.0
+    steadyStateConcentration: 22.0,
+    currentContinuousDailyDoseMg: 2000
   });
 
   // Calculate Renal & Body Metrics
@@ -133,12 +138,19 @@ export default function App() {
     });
     setTdmInput({
       regimenType: 'intermittent',
+      intermittentMethod: 'bayesian_single',
       currentDoseMg: 1000,
       currentIntervalHours: 12,
       infusionDurationHours: 1.5,
+      singleConcentration: undefined,
+      singleSampleType: 'trough',
+      singleDoseNumber: 2,
       peakConcentration: undefined,
+      peakTimeAfterEndHours: 1.0,
       troughConcentration: undefined,
-      steadyStateConcentration: undefined
+      troughTimeBeforeNextHours: 0.5,
+      steadyStateConcentration: undefined,
+      currentContinuousDailyDoseMg: 2000
     });
   };
 
@@ -165,6 +177,7 @@ export default function App() {
       setTdmInput((prev) => ({
         ...prev,
         regimenType: 'continuous',
+        currentContinuousDailyDoseMg: 2500,
         steadyStateConcentration: 23.5
       }));
     } else if (sampleType === 'ckd_camau') {
@@ -186,6 +199,18 @@ export default function App() {
         concomitantNephrotoxins: []
       });
       setMethodPreference('intermittent');
+      setTdmInput((prev) => ({
+        ...prev,
+        regimenType: 'intermittent',
+        intermittentMethod: 'bayesian_single',
+        currentDoseMg: 1000,
+        currentIntervalHours: 24,
+        infusionDurationHours: 1.5,
+        singleConcentration: 12.5,
+        troughConcentration: 12.5,
+        singleSampleType: 'trough',
+        singleDoseNumber: 2
+      }));
     } else if (sampleType === 'ihd') {
       setPatient({
         id: 'BN-IHD-DIALYSIS',
@@ -207,9 +232,33 @@ export default function App() {
         concomitantNephrotoxins: []
       });
       setMethodPreference('intermittent');
+      setTdmInput((prev) => ({
+        ...prev,
+        regimenType: 'intermittent',
+        intermittentMethod: 'bayesian_single',
+        currentDoseMg: 1000,
+        currentIntervalHours: 48,
+        infusionDurationHours: 1.5,
+        singleConcentration: 14.5,
+        troughConcentration: 14.5,
+        singleSampleType: 'trough',
+        singleDoseNumber: 2
+      }));
     } else {
       setPatient(DEFAULT_PATIENT);
       setMethodPreference('intermittent');
+      setTdmInput((prev) => ({
+        ...prev,
+        regimenType: 'intermittent',
+        intermittentMethod: 'bayesian_single',
+        currentDoseMg: 1000,
+        currentIntervalHours: 12,
+        infusionDurationHours: 1.5,
+        singleConcentration: 11.5,
+        troughConcentration: 11.5,
+        singleSampleType: 'trough',
+        singleDoseNumber: 2
+      }));
     }
   };
 
@@ -221,7 +270,8 @@ export default function App() {
     setTdmInput((prev) => ({
       ...prev,
       currentDoseMg: newDose,
-      currentIntervalHours: newInterval || prev.currentIntervalHours
+      currentIntervalHours: newInterval || prev.currentIntervalHours,
+      currentContinuousDailyDoseMg: methodPreference === 'continuous' ? newDose : prev.currentContinuousDailyDoseMg
     }));
   };
 

@@ -125,6 +125,8 @@ export interface TdmInput {
   
   // For continuous
   steadyStateConcentration?: number; // mg/L
+  continuousRateMgPerHour?: number; // mg/h
+  continuousDailyDoseMg?: number; // mg/day
 }
 
 export interface TdmEvaluationResult {
@@ -146,6 +148,13 @@ export interface TdmEvaluationResult {
   suggestedIntervalHours?: number;
   suggestedContinuousRateMgH?: number;
   predictedAuc24?: number;
+  predictedPeak?: number;
+  predictedTrough?: number;
+  holdDoseHours?: number;
+  isHighTroughRisk?: boolean;
+  monitoringPlan?: string;
+  adjustedRegimens?: ClinCalcDosingRegimen[];
+  preferredAdjustedRegimen?: ClinCalcDosingRegimen;
   clinicalNote: string;
   timingValidation?: TimingValidationResult;
 }

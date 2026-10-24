@@ -35,9 +35,9 @@
     mod
   ));
 
-  // node_modules/react/cjs/react.production.js
+  // antibiotic/node_modules/react/cjs/react.production.js
   var require_react_production = __commonJS({
-    "node_modules/react/cjs/react.production.js"(exports) {
+    "antibiotic/node_modules/react/cjs/react.production.js"(exports) {
       "use strict";
       var REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element");
       var REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal");
@@ -487,9 +487,9 @@
     }
   });
 
-  // node_modules/react/index.js
+  // antibiotic/node_modules/react/index.js
   var require_react = __commonJS({
-    "node_modules/react/index.js"(exports, module) {
+    "antibiotic/node_modules/react/index.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_react_production();
@@ -499,9 +499,9 @@
     }
   });
 
-  // node_modules/scheduler/cjs/scheduler.production.js
+  // antibiotic/node_modules/scheduler/cjs/scheduler.production.js
   var require_scheduler_production = __commonJS({
-    "node_modules/scheduler/cjs/scheduler.production.js"(exports) {
+    "antibiotic/node_modules/scheduler/cjs/scheduler.production.js"(exports) {
       "use strict";
       function push(heap, node) {
         var index = heap.length;
@@ -772,9 +772,9 @@
     }
   });
 
-  // node_modules/scheduler/index.js
+  // antibiotic/node_modules/scheduler/index.js
   var require_scheduler = __commonJS({
-    "node_modules/scheduler/index.js"(exports, module) {
+    "antibiotic/node_modules/scheduler/index.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_scheduler_production();
@@ -784,9 +784,9 @@
     }
   });
 
-  // node_modules/react-dom/cjs/react-dom.production.js
+  // antibiotic/node_modules/react-dom/cjs/react-dom.production.js
   var require_react_dom_production = __commonJS({
-    "node_modules/react-dom/cjs/react-dom.production.js"(exports) {
+    "antibiotic/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
       "use strict";
       var React19 = require_react();
       function formatProdErrorMessage(code) {
@@ -941,9 +941,9 @@
     }
   });
 
-  // node_modules/react-dom/index.js
+  // antibiotic/node_modules/react-dom/index.js
   var require_react_dom = __commonJS({
-    "node_modules/react-dom/index.js"(exports, module) {
+    "antibiotic/node_modules/react-dom/index.js"(exports, module) {
       "use strict";
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -967,9 +967,9 @@
     }
   });
 
-  // node_modules/react-dom/cjs/react-dom-client.production.js
+  // antibiotic/node_modules/react-dom/cjs/react-dom-client.production.js
   var require_react_dom_client_production = __commonJS({
-    "node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
+    "antibiotic/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
       "use strict";
       var Scheduler = require_scheduler();
       var React19 = require_react();
@@ -14511,9 +14511,9 @@
     }
   });
 
-  // node_modules/react-dom/client.js
+  // antibiotic/node_modules/react-dom/client.js
   var require_client = __commonJS({
-    "node_modules/react-dom/client.js"(exports, module) {
+    "antibiotic/node_modules/react-dom/client.js"(exports, module) {
       "use strict";
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -14537,9 +14537,9 @@
     }
   });
 
-  // node_modules/lucide-react/dist/cjs/lucide-react.js
+  // antibiotic/node_modules/lucide-react/dist/cjs/lucide-react.js
   var require_lucide_react = __commonJS({
-    "node_modules/lucide-react/dist/cjs/lucide-react.js"(exports) {
+    "antibiotic/node_modules/lucide-react/dist/cjs/lucide-react.js"(exports) {
       "use strict";
       var react = require_react();
       var toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
@@ -37658,9 +37658,9 @@
     }
   });
 
-  // node_modules/react/cjs/react-jsx-runtime.production.js
+  // antibiotic/node_modules/react/cjs/react-jsx-runtime.production.js
   var require_react_jsx_runtime_production = __commonJS({
-    "node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
+    "antibiotic/node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
       "use strict";
       var REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element");
       var REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment");
@@ -37688,9 +37688,9 @@
     }
   });
 
-  // node_modules/react/jsx-runtime.js
+  // antibiotic/node_modules/react/jsx-runtime.js
   var require_jsx_runtime = __commonJS({
-    "node_modules/react/jsx-runtime.js"(exports, module) {
+    "antibiotic/node_modules/react/jsx-runtime.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_react_jsx_runtime_production();
@@ -37700,9 +37700,9 @@
     }
   });
 
-  // node_modules/jspdf/dist/jspdf.umd.min.js
+  // antibiotic/node_modules/jspdf/dist/jspdf.umd.min.js
   var require_jspdf_umd_min = __commonJS({
-    "node_modules/jspdf/dist/jspdf.umd.min.js"(exports, module) {
+    "antibiotic/node_modules/jspdf/dist/jspdf.umd.min.js"(exports, module) {
       !(function(t, e) {
         "object" == typeof exports && "undefined" != typeof module ? e(exports) : "function" == typeof define && define.amd ? define(["exports"], e) : e((t = "undefined" != typeof globalThis ? globalThis : t || self).jspdf = {});
       })(exports, function(t) {
@@ -47015,18 +47015,18 @@
     }
   });
 
-  // src/main.tsx
+  // antibiotic/src/main.tsx
   var import_react19 = __toESM(require_react(), 1);
   var import_client = __toESM(require_client(), 1);
 
-  // src/App.tsx
+  // antibiotic/src/App.tsx
   var import_react18 = __toESM(require_react(), 1);
 
-  // src/components/Header.tsx
+  // antibiotic/src/components/Header.tsx
   var import_react = __toESM(require_react(), 1);
   var import_lucide_react = __toESM(require_lucide_react(), 1);
 
-  // src/components/CdssLogo.tsx
+  // antibiotic/src/components/CdssLogo.tsx
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var CdssLogo = ({ className = "", size = "md" }) => {
     const sizeMap = {
@@ -47096,7 +47096,7 @@
     ) });
   };
 
-  // src/components/Header.tsx
+  // antibiotic/src/components/Header.tsx
   var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
   var Header = ({
     language,
@@ -47367,7 +47367,7 @@
     ] });
   };
 
-  // src/components/PatientSidebar.tsx
+  // antibiotic/src/components/PatientSidebar.tsx
   var import_react2 = __toESM(require_react(), 1);
   var import_lucide_react2 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
@@ -47849,7 +47849,7 @@
     ] });
   };
 
-  // src/components/StickyPatientBar.tsx
+  // antibiotic/src/components/StickyPatientBar.tsx
   var import_react3 = __toESM(require_react(), 1);
   var import_lucide_react3 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
@@ -48036,7 +48036,7 @@
     ] });
   };
 
-  // src/components/QuickPatientDrawer.tsx
+  // antibiotic/src/components/QuickPatientDrawer.tsx
   var import_lucide_react4 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
   var QuickPatientDrawer = ({
@@ -48395,11 +48395,11 @@
     ] });
   };
 
-  // src/components/DrugSearchModal.tsx
+  // antibiotic/src/components/DrugSearchModal.tsx
   var import_react4 = __toESM(require_react(), 1);
   var import_lucide_react5 = __toESM(require_lucide_react(), 1);
 
-  // src/data/antibiotics.ts
+  // antibiotic/src/data/antibiotics.ts
   var ANTIBIOTICS = [
     {
       "id": "meropenem",
@@ -51561,7 +51561,7 @@
     ]
   };
 
-  // src/components/DrugSearchModal.tsx
+  // antibiotic/src/components/DrugSearchModal.tsx
   var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
   var FREQUENT_SUGGESTIONS = [
     "meropenem",
@@ -51738,7 +51738,7 @@
     ] });
   };
 
-  // src/components/AntibioticSearch.tsx
+  // antibiotic/src/components/AntibioticSearch.tsx
   var import_react5 = __toESM(require_react(), 1);
   var import_lucide_react6 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
@@ -51973,7 +51973,7 @@
     ] });
   };
 
-  // src/components/DosingRecommendationCard.tsx
+  // antibiotic/src/components/DosingRecommendationCard.tsx
   var import_react6 = __toESM(require_react(), 1);
   var import_lucide_react7 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
@@ -52191,7 +52191,7 @@
     ] });
   };
 
-  // src/components/RenalAdjustmentTable.tsx
+  // antibiotic/src/components/RenalAdjustmentTable.tsx
   var import_lucide_react8 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
   var RenalAdjustmentTable = ({
@@ -52315,7 +52315,7 @@
     ] });
   };
 
-  // src/components/DialysisPanel.tsx
+  // antibiotic/src/components/DialysisPanel.tsx
   var import_react7 = __toESM(require_react(), 1);
   var import_lucide_react9 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
@@ -52498,11 +52498,11 @@
     ] });
   };
 
-  // src/components/DrugInteractionChecker.tsx
+  // antibiotic/src/components/DrugInteractionChecker.tsx
   var import_react8 = __toESM(require_react(), 1);
   var import_lucide_react10 = __toESM(require_lucide_react(), 1);
 
-  // src/data/drugInteractions.ts
+  // antibiotic/src/data/drugInteractions.ts
   var DRUG_INTERACTIONS = [
     // 1. Carbapenems + Valproic Acid
     {
@@ -52761,7 +52761,7 @@
     }
   ];
 
-  // src/components/DrugInteractionChecker.tsx
+  // antibiotic/src/components/DrugInteractionChecker.tsx
   var import_jsx_runtime11 = __toESM(require_jsx_runtime(), 1);
   var DrugInteractionChecker = ({
     antibioticId,
@@ -52937,7 +52937,7 @@
     ] });
   };
 
-  // src/components/ClinicalNotesTiers.tsx
+  // antibiotic/src/components/ClinicalNotesTiers.tsx
   var import_react9 = __toESM(require_react(), 1);
   var import_lucide_react11 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
@@ -53096,7 +53096,7 @@
     ] });
   };
 
-  // src/components/ReferencesList.tsx
+  // antibiotic/src/components/ReferencesList.tsx
   var import_react10 = __toESM(require_react(), 1);
   var import_lucide_react12 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
@@ -53237,7 +53237,7 @@
     ] });
   };
 
-  // src/components/AmrModal.tsx
+  // antibiotic/src/components/AmrModal.tsx
   var import_react11 = __toESM(require_react(), 1);
   var import_lucide_react13 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
@@ -53361,11 +53361,11 @@
     ] }) });
   };
 
-  // src/components/OriginalPreviewModal.tsx
+  // antibiotic/src/components/OriginalPreviewModal.tsx
   var import_react12 = __toESM(require_react(), 1);
   var import_lucide_react14 = __toESM(require_lucide_react(), 1);
 
-  // src/data/rawPreviewData.ts
+  // antibiotic/src/data/rawPreviewData.ts
   var _pd = (s) => {
     try {
       return decodeURIComponent(escape(atob(s)));
@@ -53388,7 +53388,7 @@
     return parts.map((x) => typeof x === "number" ? PREVIEW_DICT[x] : _pd(x)).join("");
   }
 
-  // src/components/OriginalPreviewModal.tsx
+  // antibiotic/src/components/OriginalPreviewModal.tsx
   var import_jsx_runtime15 = __toESM(require_jsx_runtime(), 1);
   var OriginalPreviewModal = ({
     isOpen,
@@ -53462,10 +53462,10 @@
     ] }) });
   };
 
-  // src/components/PdfConsultationModal.tsx
+  // antibiotic/src/components/PdfConsultationModal.tsx
   var import_lucide_react15 = __toESM(require_lucide_react(), 1);
 
-  // src/utils/pdfGenerator.ts
+  // antibiotic/src/utils/pdfGenerator.ts
   var import_jspdf = __toESM(require_jspdf_umd_min(), 1);
   function generatePdfConsultationReport(data) {
     const isEn = data.language === "en";
@@ -53631,7 +53631,7 @@
     window.print();
   }
 
-  // src/components/PdfConsultationModal.tsx
+  // antibiotic/src/components/PdfConsultationModal.tsx
   var import_jsx_runtime16 = __toESM(require_jsx_runtime(), 1);
   var PdfConsultationModal = ({
     isOpen,
@@ -53862,11 +53862,11 @@
     ] }) });
   };
 
-  // src/components/selection/GuidelineImageModal.tsx
+  // antibiotic/src/components/selection/GuidelineImageModal.tsx
   var import_react13 = __toESM(require_react(), 1);
   var import_lucide_react16 = __toESM(require_lucide_react(), 1);
 
-  // src/selection/data/guidelineImages.ts
+  // antibiotic/src/selection/data/guidelineImages.ts
   var GUIDELINE_IMAGES = [
     // ==========================================
     // NGƯỜI LỚN (ADULT)
@@ -54321,7 +54321,7 @@
     }
   }
 
-  // src/components/selection/GuidelineImageModal.tsx
+  // antibiotic/src/components/selection/GuidelineImageModal.tsx
   var import_jsx_runtime17 = __toESM(require_jsx_runtime(), 1);
   var GuidelineImageModal = ({
     isOpen,
@@ -54782,13 +54782,13 @@
     ] }) });
   };
 
-  // src/App.tsx
+  // antibiotic/src/App.tsx
   var import_lucide_react23 = __toESM(require_lucide_react(), 1);
 
-  // src/components/selection/SelectionWizard.tsx
+  // antibiotic/src/components/selection/SelectionWizard.tsx
   var import_react17 = __toESM(require_react(), 1);
 
-  // src/selection/data/riskFactors.ts
+  // antibiotic/src/selection/data/riskFactors.ts
   var GENERAL_MDR_RISK_FACTORS = [
     {
       id: "hospital_90d",
@@ -55108,7 +55108,7 @@
     };
   }
 
-  // src/selection/data/empiricRegimens.ts
+  // antibiotic/src/selection/data/empiricRegimens.ts
   var EMPIRIC_REGIMENS = [
     // ==========================================
     // 1. ADULT - RESPIRATORY (VIÊM PHỔI NGƯỜI LỚN) (P.8-9)
@@ -56790,7 +56790,7 @@
     return candidates;
   }
 
-  // src/selection/data/whoRegimens.ts
+  // antibiotic/src/selection/data/whoRegimens.ts
   var WHO_REGIMENS = [
     // =======================================================================
     // 1. RESPIRATORY INFECTIONS (CH 4, 12, 13, 27, 28)
@@ -58244,7 +58244,7 @@
     });
   }
 
-  // src/selection/data/stopAndSwitch.ts
+  // antibiotic/src/selection/data/stopAndSwitch.ts
   var EVIDENCE_BASED_DURATIONS = [
     {
       conditionVi: "Vi\xEAm ph\u1ED5i c\u1ED9ng \u0111\u1ED3ng (CAP)",
@@ -58488,7 +58488,7 @@
     }
   ];
 
-  // src/selection/data/mdrPathways.ts
+  // antibiotic/src/selection/data/mdrPathways.ts
   var MDR_PATHWAYS = {
     cre: {
       category: "cre",
@@ -58798,7 +58798,7 @@
     }
   };
 
-  // src/selection/data/antibiogram.ts
+  // antibiotic/src/selection/data/antibiogram.ts
   var BVBND_ANTIBIOGRAMS = [
     // 1. TIẾT NIỆU NGƯỜI LỚN (P.10-11)
     {
@@ -59191,7 +59191,7 @@
     return BVBND_ANTIBIOGRAMS.find((ab) => ab.site === site && ab.population === population);
   }
 
-  // src/selection/engine.ts
+  // antibiotic/src/selection/engine.ts
   function classifyRisk(selectedGeneralRiskIds, severity, specificRisks = [], options) {
     const generalRiskCount = selectedGeneralRiskIds.length;
     const isHighSeverity = severity.isHighSeverity;
@@ -59540,11 +59540,11 @@
     return MDR_PATHWAYS[category];
   }
 
-  // src/components/selection/StepAssessmentStratification.tsx
+  // antibiotic/src/components/selection/StepAssessmentStratification.tsx
   var import_react14 = __toESM(require_react(), 1);
   var import_lucide_react18 = __toESM(require_lucide_react(), 1);
 
-  // src/selection/data/nhsnCriteria.ts
+  // antibiotic/src/selection/data/nhsnCriteria.ts
   var NHSN_CRITERIA_SECTIONS = [
     {
       id: "nhsn_pneumonia_adult",
@@ -59773,7 +59773,7 @@
     }
   ];
 
-  // src/components/selection/SourceBadge.tsx
+  // antibiotic/src/components/selection/SourceBadge.tsx
   var import_lucide_react17 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime18 = __toESM(require_jsx_runtime(), 1);
   var SourceBadge = ({ source, className = "" }) => {
@@ -59813,7 +59813,7 @@
     );
   };
 
-  // src/components/selection/StepAssessmentStratification.tsx
+  // antibiotic/src/components/selection/StepAssessmentStratification.tsx
   var import_jsx_runtime19 = __toESM(require_jsx_runtime(), 1);
   var StepAssessmentStratification = ({
     indicationConfirmed,
@@ -60601,7 +60601,7 @@
     ] });
   };
 
-  // src/components/selection/StepEmpiric.tsx
+  // antibiotic/src/components/selection/StepEmpiric.tsx
   var import_react15 = __toESM(require_react(), 1);
   var import_lucide_react19 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime20 = __toESM(require_jsx_runtime(), 1);
@@ -61593,7 +61593,7 @@
     ] });
   };
 
-  // src/components/selection/StepReassess.tsx
+  // antibiotic/src/components/selection/StepReassess.tsx
   var import_react16 = __toESM(require_react(), 1);
   var import_lucide_react20 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime21 = __toESM(require_jsx_runtime(), 1);
@@ -62117,7 +62117,7 @@
     ] });
   };
 
-  // src/components/selection/DecisionSummaryCard.tsx
+  // antibiotic/src/components/selection/DecisionSummaryCard.tsx
   var import_lucide_react21 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime22 = __toESM(require_jsx_runtime(), 1);
   var DecisionSummaryCard = ({
@@ -62259,7 +62259,7 @@
     ] });
   };
 
-  // src/components/selection/SelectionWizard.tsx
+  // antibiotic/src/components/selection/SelectionWizard.tsx
   var import_lucide_react22 = __toESM(require_lucide_react(), 1);
   var import_jsx_runtime23 = __toESM(require_jsx_runtime(), 1);
   var SelectionWizard = ({
@@ -62816,7 +62816,7 @@ K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0
     ] });
   };
 
-  // src/utils/clinicalFormulas.ts
+  // antibiotic/src/utils/clinicalFormulas.ts
   var UMOL_TO_MGDL = 88.4;
   function convertScrToUmol(val, unit) {
     if (unit === "mgdl") {
@@ -62938,7 +62938,7 @@ K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0
     };
   }
 
-  // src/utils/drugDataExtractor.ts
+  // antibiotic/src/utils/drugDataExtractor.ts
   function safeEvalJs(codeStr) {
     try {
       return new Function("return " + codeStr)();
@@ -63159,7 +63159,7 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
     };
   }
 
-  // src/App.tsx
+  // antibiotic/src/App.tsx
   var import_jsx_runtime24 = __toESM(require_jsx_runtime(), 1);
   var DEFAULT_PATIENT = {
     scr: 90,
@@ -63697,7 +63697,7 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
     ] });
   }
 
-  // src/main.tsx
+  // antibiotic/src/main.tsx
   var import_jsx_runtime25 = __toESM(require_jsx_runtime(), 1);
   (0, import_client.createRoot)(document.getElementById("root")).render(
     /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_react19.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(App, {}) })

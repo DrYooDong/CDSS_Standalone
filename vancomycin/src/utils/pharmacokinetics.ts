@@ -820,8 +820,144 @@ function getZhangIivDose(tbw: number, ckdEpi: number, isIcu: boolean): { doseMg:
 }
 
 /**
+ * Generates Candidate Regimens Grid for TDM Dose Adjustment
+ * Computes predicted Peak, Trough, AUC24, AUC/MIC for candidate regimens based on patient-specific individual PK.
+ */
+export function generateTdmAdjustedRegimens(
+  kel: number,
+  vd: number,
+  cl: number,
+  crcl: number,
+  mic: number = 1.0
+): {
+  regimens: ClinCalcDosingRegimen[];
+  preferredRegimen?: ClinCalcDosingRegimen;
+} {
+  const candidateDoses = [500, 750, 1000, 1250, 1500, 1750, 2000];
+  let candidateIntervals = [8, 12, 18, 24, 36, 48];
+  if (crcl >= 90) {
+    candidateIntervals = [6, 8, 12, 18, 24];
+  } else if (crcl < 30) {
+    candidateIntervals = [18, 24, 36, 48];
+  }
+
+  const regimens: ClinCalcDosingRegimen[] = [];
+
+  for (const dose of candidateDoses) {
+    for (const tau of candidateIntervals) {
+      const infusionMin = calculateSafeInfusionMinutes(dose);
+      const tinf = infusionMin / 60;
+      if (tinf >= tau) continue;
+
+      // Steady-state Peak:
+      const cPeak = Number(((dose / (tinf * cl)) * ((1 - Math.exp(-kel * tinf)) / (1 - Math.exp(-kel * tau)))).toFixed(1));
+      // Steady-state Trough:
+      const cTrough = Number((cPeak * Math.exp(-kel * (tau - tinf))).toFixed(1));
+      // AUC24:
+      const dailyDoseMg = Math.round(dose * (24 / tau));
+      const auc24 = Number((dailyDoseMg / cl).toFixed(1));
+      const aucMicRatio = Number((auc24 / mic).toFixed(1));
+
+      const isWithinGoal = auc24 >= 400 && auc24 <= 600;
+      const isHighTroughRisk = cTrough >= 20.0;
+
+      regimens.push({
+        doseMg: dose,
+        intervalHours: tau,
+        infusionMinutes: infusionMin,
+        infusionHours: tinf,
+        dailyDoseMg,
+        cPeak,
+        cTrough,
+        auc24,
+        aucMicRatio,
+        isWithinGoal,
+        isPreferred: false,
+        isHighTroughRisk
+      });
+    }
+  }
+
+  // Filter candidate regimens that meet AUC goal AND safe trough
+  const withinGoal = regimens.filter(r => r.isWithinGoal && !r.isHighTroughRisk);
+  let bestCandidate: ClinCalcDosingRegimen | undefined = undefined;
+  let bestScore = -Infinity;
+
+  const getIntervalPreference = (tau: number) => {
+    if (tau === 12) return 35;
+    if (tau === 24) return 30;
+    if (tau === 8) return 20;
+    if (tau === 18) return 15;
+    if (tau === 36) return 12;
+    if (tau === 48) return 10;
+    return 5;
+  };
+
+  for (const cand of withinGoal) {
+    const aucDistPenalty = Math.abs(cand.auc24 - 500); // 0 to 100
+    // Preferred trough range: 10 - 15 mg/L (ASHP 2020)
+    const troughScore = (cand.cTrough >= 10 && cand.cTrough <= 15) ? 30 : (cand.cTrough < 10 ? 10 : 15);
+    const peakPenalty = cand.cPeak > 42 ? 15 : 0;
+    const intervalScore = getIntervalPreference(cand.intervalHours);
+
+    const totalScore = 100 - aucDistPenalty + troughScore + intervalScore - peakPenalty;
+    if (totalScore > bestScore) {
+      bestScore = totalScore;
+      bestCandidate = cand;
+    }
+  }
+
+  if (!bestCandidate && regimens.length > 0) {
+    let minDiff = Infinity;
+    for (const r of regimens) {
+      if (r.cTrough >= 20.0) continue;
+      const diff = Math.abs(r.auc24 - 500);
+      if (diff < minDiff) {
+        minDiff = diff;
+        bestCandidate = r;
+      }
+    }
+  }
+
+  if (bestCandidate) {
+    bestCandidate.isPreferred = true;
+  }
+
+  // Filter to the top 5-6 clinically distinct, best regimens across intervals
+  // Group by interval, pick the best dose per interval
+  const byInterval = new Map<number, ClinCalcDosingRegimen>();
+  // First, candidate meeting goal
+  const sortedCandidates = [...regimens].sort((a, b) => {
+    if (a.isPreferred) return -1;
+    if (b.isPreferred) return 1;
+    const aGoal = a.isWithinGoal && !a.isHighTroughRisk;
+    const bGoal = b.isWithinGoal && !b.isHighTroughRisk;
+    if (aGoal && !bGoal) return -1;
+    if (!aGoal && bGoal) return 1;
+    return Math.abs(a.auc24 - 500) - Math.abs(b.auc24 - 500);
+  });
+
+  for (const cand of sortedCandidates) {
+    if (!byInterval.has(cand.intervalHours) && byInterval.size < 6) {
+      byInterval.set(cand.intervalHours, cand);
+    }
+  }
+
+  const selectedRegimens = Array.from(byInterval.values()).sort((a, b) => {
+    if (a.isPreferred) return -1;
+    if (b.isPreferred) return 1;
+    return a.intervalHours - b.intervalHours;
+  });
+
+  return {
+    regimens: selectedRegimens.length > 0 ? selectedRegimens : (bestCandidate ? [bestCandidate] : []),
+    preferredRegimen: bestCandidate
+  };
+}
+
+/**
  * Bayesian MAP (Maximum A Posteriori) Estimation for Vancomycin using a Single Concentration Sample
- * (ASHP/IDSA 2020 Guidelines & Thomson / Colin / Goti Population PK Models)
+ * (ASHP/IDSA 2020 Guidelines & Thomson / Colin / Goti / ClinCalc Population PK Models)
  * Allows estimation in the first 24-48 hours (dose 1, 2, 3, or pre-dose trough) or at steady state.
  */
 export function estimateBayesianSingleSample(
@@ -836,6 +972,7 @@ export function estimateBayesianSingleSample(
   const tau = tdm.currentIntervalHours || 12;
   const tInf = tdm.infusionDurationHours || (dose > 1000 ? 2.0 : 1.0);
   const doseNumber = Math.max(1, tdm.singleDoseNumber || (tau === 12 ? 3 : 2));
+  const isSteadyState = (tdm.singleDoseNumber || 0) >= 4;
 
   // Patient covariates
   const weight = patient?.weight || 65;
@@ -856,12 +993,13 @@ export function estimateBayesianSingleSample(
   }
   crcl = Math.max(10, Math.min(180, crcl));
 
-  // Population PK Priors (Thomson et al., Colin et al., Goti et al.)
-  // CL_pop = 0.0411 * CrCl + 0.35 L/h (min 0.4, max 9.0 L/h)
-  const popCl = Number(Math.max(0.4, Math.min(9.0, 0.0411 * crcl + 0.35)).toFixed(2));
-  // Vd_pop = 0.72 L/kg for non-ICU, 0.85 L/kg for ICU expanded volume
+  // Consistent Population PK Priors (ClinCalc / Matzke / Bauer / Thomson models)
+  const ibw = gender === 'male' ? 50 + 0.91 * (height - 152.4) : 45.5 + 0.91 * (height - 152.4);
+  const useWeight = weight > 1.2 * ibw ? (ibw + 0.4 * (weight - ibw)) : weight;
   const vdFactor = isIcu ? 0.85 : 0.72;
-  const popVd = Number(Math.max(20, Math.min(120, weight * vdFactor)).toFixed(1));
+  const popVd = Number(Math.max(20, Math.min(130, useWeight * vdFactor)).toFixed(1));
+  const popKe = 0.00083 * crcl + 0.0044;
+  const popCl = Number(Math.max(0.4, Math.min(10.0, popKe * popVd)).toFixed(2));
 
   // Variances (log-normal scale): omega_CL^2 = 0.16 (CV ~40%), omega_Vd^2 = 0.09 (CV ~30%), sigma^2 = 0.04 (CV ~20%)
   const omegaSqCl = 0.16;
@@ -885,19 +1023,22 @@ export function estimateBayesianSingleSample(
   }
 
   // Sample timing:
-  // If trough: sample is taken ~0.5h before next dose, so time from start of dose = tau - 0.5
-  // If random: singleSampleHoursAfterDose
-  let tMeas = tdm.singleSampleHoursAfterDose;
-  if (!tMeas || tMeas <= 0) {
-    tMeas = Math.max(tInf + 0.5, tau - (tdm.troughTimeBeforeNextHours || 0.5));
+  let tMeas: number;
+  if (tdm.singleSampleType === 'random' && tdm.singleSampleHoursAfterDose && tdm.singleSampleHoursAfterDose > 0) {
+    tMeas = Math.max(tInf + 0.5, Math.min(tau, tdm.singleSampleHoursAfterDose));
+  } else {
+    // Trough: measured ~30 mins before next dose
+    const troughTimeBefore = tdm.troughTimeBeforeNextHours ?? 0.5;
+    tMeas = Math.max(tInf + 0.5, tau - troughTimeBefore);
   }
-  tMeas = Math.max(tInf, Math.min(tau + 6, tMeas));
 
   // Pharmacokinetic concentration function C_pred(CL, Vd)
   const calcCPred = (clVal: number, vdVal: number): number => {
     const k = clVal / vdVal;
-    // End of infusion peak for dose N
-    const accumulation = (1 - Math.exp(-doseNumber * k * tau)) / (1 - Math.exp(-k * tau));
+    // End of infusion peak for dose N or steady-state:
+    const accumulation = isSteadyState 
+      ? 1 / (1 - Math.exp(-k * tau))
+      : (1 - Math.exp(-doseNumber * k * tau)) / (1 - Math.exp(-k * tau));
     const cPeakN = (dose / (tInf * clVal)) * (1 - Math.exp(-k * tInf)) * accumulation;
     
     // Post-infusion decay
@@ -963,7 +1104,7 @@ export function estimateBayesianSingleSample(
   const kel = Number((indCl / indVd).toFixed(4));
   const halfLife = Number((Math.log(2) / kel).toFixed(1));
 
-  // Steady-state Cmax and Cmin with estimated parameters
+  // Steady-state Cmax and Cmin with estimated individual parameters
   const cMaxSs = Number(((dose / (tInf * indCl)) * ((1 - Math.exp(-kel * tInf)) / (1 - Math.exp(-kel * tau)))).toFixed(1));
   const cMinSs = Number((cMaxSs * Math.exp(-kel * (tau - tInf))).toFixed(1));
 
@@ -976,32 +1117,50 @@ export function estimateBayesianSingleSample(
   if (auc24 < targetMin) attainment = 'subtherapeutic';
   else if (auc24 > targetMax) attainment = 'supratherapeutic';
 
-  // Target-oriented Dose Optimization: Target AUC24 midpoint = 500 mg*h/L
-  const targetDailyDose = 500 * indCl;
-  let suggestedTau = tau;
+  const isHighTrough = cMinSs >= 20.0 || (tdm.singleSampleType === 'trough' && cMeas >= 20.0);
 
-  // If patient has renal impairment and interval is too short:
-  if (indCl < 1.8 && tau < 24) {
-    suggestedTau = 24;
-  } else if (indCl < 0.9 && tau < 48) {
-    suggestedTau = 48;
+  // Calculate Hold Dose Hours if toxic level
+  let holdDoseHours: number | undefined;
+  if (isHighTrough || auc24 > 600) {
+    const startConc = Math.max(cMeas, cMinSs);
+    if (startConc > 15) {
+      holdDoseHours = Math.max(4, Math.round((Math.log(startConc) - Math.log(12.5)) / kel));
+    }
   }
 
-  const rawSuggestedDose = targetDailyDose / (24 / suggestedTau);
-  const roundedSuggestedDose = Math.max(250, Math.round(rawSuggestedDose / 250) * 250);
-  const predictedDailyDose = roundedSuggestedDose * (24 / suggestedTau);
-  const predictedAuc24 = Number((predictedDailyDose / indCl).toFixed(1));
+  // Generate Full Candidate Adjusted Regimens Grid
+  const candidateMatrix = generateTdmAdjustedRegimens(kel, indVd, indCl, crcl, patient?.mic || 1.0);
+  const preferred = candidateMatrix.preferredRegimen;
+
+  const suggestedDose = preferred ? preferred.doseMg : Math.round((500 * indCl / (24 / tau)) / 250) * 250;
+  const suggestedTau = preferred ? preferred.intervalHours : tau;
+  const predictedDailyDose = suggestedDose * (24 / suggestedTau);
+  const predictedAuc24 = preferred ? preferred.auc24 : Number((predictedDailyDose / indCl).toFixed(1));
+  const predictedPeak = preferred ? preferred.cPeak : undefined;
+  const predictedTrough = preferred ? preferred.cTrough : undefined;
 
   let rec = '';
-  if (attainment === 'target') {
-    rec = `Duy trì chế độ liều hiện tại: ${dose} mg mỗi ${tau} giờ. AUC24 ước tính (${auc24} mg·h/L) đạt chuẩn trong khoảng đích 400 - 600 mg·h/L (ASHP 2020).`;
+  if (attainment === 'target' && !isHighTrough) {
+    rec = `Duy trì chế độ liều hiện tại: ${dose} mg mỗi ${tau} giờ. AUC24 ước tính (${auc24} mg·h/L) đạt chuẩn trong khoảng đích 400 - 600 mg·h/L (ASHP 2020) với nồng độ đáy dự kiến ${cMinSs} mg/L an toàn.`;
   } else if (attainment === 'subtherapeutic') {
-    rec = `AUC24 hiện tại (${auc24} mg·h/L) DƯỚI ĐÍCH ĐIỀU TRỊ (< 400). Đề xuất TĂNG liều lên ${roundedSuggestedDose} mg mỗi ${suggestedTau} giờ để đạt AUC24 mục tiêu ~${predictedAuc24} mg·h/L.`;
+    rec = `AUC24 hiện tại (${auc24} mg·h/L) DƯỚI ĐÍCH ĐIỀU TRỊ (< 400). Đề xuất chuyển sang ${suggestedDose} mg mỗi ${suggestedTau} giờ để nâng AUC24 lên mức mục tiêu ~${predictedAuc24} mg·h/L (Dự kiến Đáy ~${predictedTrough || 12} mg/L).`;
   } else {
-    const holdRecommendation = cMeas >= 25 
-      ? `Tạm hoãn liều kế tiếp cho đến khi nồng độ giảm xuống < 15 mg/L, sau đó ` 
+    const holdText = holdDoseHours 
+      ? `Tạm hoãn liều kế tiếp trong khoảng ${holdDoseHours} giờ (chờ nồng độ hạ xuống < 15 mg/L), sau đó ` 
       : '';
-    rec = `AUC24 hiện tại (${auc24} mg·h/L) VƯỢT NGƯỠNG AN TOÀN (> 600). Nguy cơ độc tính thận (AKI)! ${holdRecommendation}Đề xuất GIẢM liều xuống ${roundedSuggestedDose} mg mỗi ${suggestedTau} giờ (Dự đoán AUC24 ~${predictedAuc24} mg·h/L).`;
+    rec = `AUC24 hiện tại (${auc24} mg·h/L) hoặc nồng độ đáy (${cMinSs} mg/L) VƯỢT NGƯỠNG AN TOÀN! Nguy cơ tổn thương thận cấp AKI. ${holdText}Khuyến nghị điều chỉnh sang ${suggestedDose} mg mỗi ${suggestedTau} giờ (Dự đoán AUC24 mới ~${predictedAuc24} mg·h/L, Đáy ~${predictedTrough || 13} mg/L).`;
+  }
+
+  // Monitoring Plan
+  let monitoringPlan = '';
+  if (attainment === 'target' && !isHighTrough) {
+    monitoringPlan = 'Lặp lại xét nghiệm TDM mỗi 5 – 7 ngày (khoa thường) hoặc mỗi 2 – 3 ngày (ICU/huyết động dao động). Tiếp tục theo dõi SCr định kỳ mỗi 48 giờ.';
+  } else if (attainment === 'supratherapeutic' || isHighTrough) {
+    monitoringPlan = holdDoseHours
+      ? `Sau khi hoãn liều ${holdDoseHours}h và tái khởi động phác đồ mới, lấy lại mẫu TDM (Đáy) trước liều thứ 3 – 4 (sau khoảng 24–48h). Kiểm tra SCr hàng ngày.`
+      : 'Lấy lại mẫu TDM trước cữ liều thứ 3 – 4 của phác đồ mới (khoảng 24–48h). Kiểm tra SCr hàng ngày.';
+  } else {
+    monitoringPlan = 'Kiểm tra lại nồng độ TDM sau 24 – 48 giờ (trước liều thứ 3 – 4 của phác đồ tăng liều mới) để khẳng định AUC24 đã đạt đích 400 – 600 mg·h/L.';
   }
 
   const sampleDesc = tdm.singleSampleType === 'random' 
@@ -1025,9 +1184,16 @@ export function estimateBayesianSingleSample(
     popVd,
     estimationMethod: 'bayesian_single',
     adjustedDoseRecommendation: rec,
-    suggestedDoseMg: roundedSuggestedDose,
+    suggestedDoseMg: suggestedDose,
     suggestedIntervalHours: suggestedTau,
     predictedAuc24,
+    predictedPeak,
+    predictedTrough,
+    holdDoseHours,
+    isHighTroughRisk: isHighTrough,
+    monitoringPlan,
+    adjustedRegimens: candidateMatrix.regimens,
+    preferredAdjustedRegimen: preferred,
     clinicalNote
   };
 }
@@ -1035,7 +1201,7 @@ export function estimateBayesianSingleSample(
 /**
  * TDM AUC24 Calculator supporting:
  * 1. Bayesian MAP Single-Sample (ASHP 2020 preferred - 1 sample in first 24-48h or trough)
- * 2. First-Order PK Analytic Equations (2-point Peak - Trough, Pai & Rodvold 2014)
+ * 2. First-Order PK Analytic Equations (2-point Peak - Trough, Pai & Rodvold 2014 / Sawchuk-Zaske)
  * 3. Continuous Infusion Css * 24
  */
 export function evaluateTdm(
@@ -1045,6 +1211,8 @@ export function evaluateTdm(
 ): TdmEvaluationResult {
   const targetMin = 400;
   const targetMax = 600;
+  const crcl = renal?.crcl || 60;
+  const mic = patient?.mic || 1.0;
 
   // Case A: Continuous Infusion
   if (tdm.regimenType === 'continuous') {
@@ -1054,24 +1222,37 @@ export function evaluateTdm(
     if (auc24 < targetMin) attainment = 'subtherapeutic';
     else if (auc24 > targetMax) attainment = 'supratherapeutic';
 
-    // Target Css is 20 - 25 mg/L (midpoint 22.5 mg/L)
-    const currentRate = tdm.currentDoseMg; // mg/day or mg/h
-    const currentRateMgH = currentRate > 200 ? currentRate / 24 : currentRate;
+    // Current continuous rate
+    const currentRateMgH = tdm.continuousRateMgPerHour || 
+      (tdm.currentDoseMg > 200 ? Math.round(tdm.currentDoseMg / 24) : tdm.currentDoseMg) || 60;
+    const currentDailyMg = currentRateMgH * 24;
+
     let suggestedRateMgH = currentRateMgH;
     let predictedAuc = auc24;
 
     if (css > 0) {
-      suggestedRateMgH = Math.round((currentRateMgH * (22.5 / css)));
+      suggestedRateMgH = Math.max(10, Math.round(currentRateMgH * (22.5 / css)));
       predictedAuc = Number((22.5 * 24).toFixed(1));
     }
+    const suggestedDailyMg = suggestedRateMgH * 24;
 
     let rec = '';
+    let holdHours: number | undefined = undefined;
+    let monitoringPlan = '';
+
     if (attainment === 'target') {
-      rec = `Duy trì tốc độ truyền hiện tại (${Math.round(currentRateMgH)} mg/h). AUC24 đạt trong mục tiêu 400 - 600 mg·h/L.`;
+      rec = `Duy trì tốc độ truyền hiện tại (${suggestedRateMgH} mg/h, tương đương ${suggestedDailyMg} mg/24h). Nồng độ ổn định Css (${css} mg/L) đạt chuẩn trong khoảng đích lý tưởng 20 – 25 mg/L (AUC24 = ${auc24} mg·h/L).`;
+      monitoringPlan = 'Lặp lại định lượng nồng độ Css mỗi 5 – 7 ngày nếu bệnh nhân ổn định, hoặc mỗi 2 – 3 ngày ở bệnh nhân ICU. Theo dõi SCr mỗi 48 giờ.';
     } else if (attainment === 'subtherapeutic') {
-      rec = `Tăng tốc độ truyền lên ${suggestedRateMgH} mg/h (tổng ${suggestedRateMgH * 24} mg/24h) để đưa AUC24 về khoảng ~540 mg·h/L (Css ~22.5 mg/L).`;
+      rec = `Nồng độ Css hiện tại (${css} mg/L) dưới đích điều trị (< 20 mg/L). Đề xuất TĂNG tốc độ truyền lên ${suggestedRateMgH} mg/h (tổng ${suggestedDailyMg} mg/24h) để đưa Css về khoảng ~22.5 mg/L (Dự đoán AUC24 ~${predictedAuc} mg·h/L).`;
+      monitoringPlan = 'Lấy lại mẫu TDM (Css) sau 24 giờ kể từ khi tăng tốc độ truyền. Theo dõi SCr mỗi 24–48h.';
     } else {
-      rec = `Giảm tốc độ truyền xuống ${suggestedRateMgH} mg/h (tổng ${suggestedRateMgH * 24} mg/24h) hoặc tạm ngưng truyền 2-4h nếu Css > 30 mg/L để tránh độc tính thận AKI.`;
+      if (css >= 30) {
+        holdHours = 4;
+      }
+      const pauseText = holdHours ? `Tạm ngưng truyền trong ${holdHours} giờ, sau đó ` : '';
+      rec = `Nồng độ Css hiện tại (${css} mg/L) vượt ngưỡng an toàn (> 25 mg/L). Nguy cơ tổn thương thận cấp AKI! ${pauseText}Đề xuất GIẢM tốc độ truyền xuống ${suggestedRateMgH} mg/h (tổng ${suggestedDailyMg} mg/24h) để đưa AUC24 về mức an toàn ~${predictedAuc} mg·h/L.`;
+      monitoringPlan = 'Kiểm tra lại nồng độ TDM sau 24 giờ điều chỉnh tốc độ truyền. Theo dõi sát chức năng thận (SCr) mỗi ngày.';
     }
 
     const timingValidation = validateTdmSampleTiming(tdm);
@@ -1085,8 +1266,11 @@ export function evaluateTdm(
       estimationMethod: 'continuous_css',
       adjustedDoseRecommendation: rec,
       suggestedContinuousRateMgH: suggestedRateMgH,
+      suggestedDoseMg: suggestedDailyMg,
       predictedAuc24: predictedAuc,
-      clinicalNote: `Truyền tĩnh mạch liên tục: AUC24 được tính chính xác bằng công thức AUC24 = Css × 24. Mục tiêu Css lý tưởng: 20 – 25 mg/L.`,
+      holdDoseHours: holdHours,
+      monitoringPlan,
+      clinicalNote: `Truyền tĩnh mạch liên tục: AUC24 được tính chính xác bằng công thức AUC24 = Css × 24. Mục tiêu Css lý tưởng: 20 – 25 mg/L (tương đương AUC 480 – 600 mg·h/L).`,
       timingValidation
     };
   }
@@ -1104,14 +1288,14 @@ export function evaluateTdm(
     return res;
   }
 
-  // Case C: Intermittent Infusion (2-point PK Analytic)
+  // Case C: Intermittent Infusion (2-point PK Analytic - Pai & Rodvold 2014 / Sawchuk-Zaske)
   const cPeak = tdm.peakConcentration || 0;
   const cTrough = tdm.troughConcentration || 0;
   const tInf = tdm.infusionDurationHours || 1.5;
   const tau = tdm.currentIntervalHours || 12;
   const dose = tdm.currentDoseMg || 1000;
-  const tPeakAfterEnd = tdm.peakTimeAfterEndHours || 1.0; // typically 1-2 hours after infusion end
-  const tTroughBeforeNext = tdm.troughTimeBeforeNextHours || 0.5; // typically 0.5 hour before next dose
+  const tPeakAfterEnd = tdm.peakTimeAfterEndHours ?? 1.0; // typically 1-2 hours after infusion end
+  const tTroughBeforeNext = tdm.troughTimeBeforeNextHours ?? 0.5; // typically 0.5 hour before next dose
 
   if (cPeak <= 0 || cTrough <= 0 || cPeak <= cTrough) {
     // If only trough is provided in 2-point mode, route to Bayesian!
@@ -1147,6 +1331,14 @@ export function evaluateTdm(
   // Forward-extrapolate to true Cmin (at end of dosing interval, t = tau)
   const cMinTrue = Number((cTrough * Math.exp(-kel * tTroughBeforeNext)).toFixed(1));
 
+  // Exact Volume of Distribution Vd (Sawchuk-Zaske formula for steady-state infusion)
+  const numVd = (dose / tInf) * (1 - Math.exp(-kel * tInf));
+  const denVd = kel * (cMaxTrue - (cMinTrue * Math.exp(-kel * tInf)));
+  let estimatedVd = (denVd > 0) ? numVd / denVd : (patient?.weight ? patient.weight * 0.72 : 45);
+  // Sanity check Vd: bound between 15 and 150 L
+  estimatedVd = Number(Math.max(15, Math.min(150, estimatedVd)).toFixed(1));
+  const estimatedCl = Number((kel * estimatedVd).toFixed(2));
+
   // AUC over 1 dosing interval (tau) using Pai & Rodvold / Begg trapezoidal-exponential model:
   const aucInfusion = (tInf * (cMinTrue + cMaxTrue)) / 2;
   const aucElim = (cMaxTrue - cMinTrue) / kel;
@@ -1157,24 +1349,51 @@ export function evaluateTdm(
   if (auc24 < targetMin) attainment = 'subtherapeutic';
   else if (auc24 > targetMax) attainment = 'supratherapeutic';
 
-  // Dose proportional adjustment: New Dose = Old Dose * (Target AUC / Current AUC)
-  const targetMidpoint = 500;
-  const rawSuggestedDose = (dose * targetMidpoint) / Math.max(100, auc24);
-  const roundedSuggestedDose = Math.round(rawSuggestedDose / 250) * 250;
-  const predictedAuc24 = Number((auc24 * (roundedSuggestedDose / dose)).toFixed(1));
+  const isHighTrough = cMinTrue >= 20.0 || cTrough >= 20.0;
 
-  let rec = '';
-  if (attainment === 'target') {
-    rec = `Duy trì chế độ liều hiện tại: ${dose} mg mỗi ${tau} giờ. AUC24 (${auc24} mg·h/L) nằm lý tưởng trong khoảng đích 400 - 600 mg·h/L.`;
-  } else if (attainment === 'subtherapeutic') {
-    rec = `AUC24 hiện tại (${auc24} mg·h/L) dưới đích điều trị (< 400). Đề xuất TĂNG liều lên ${roundedSuggestedDose} mg mỗi ${tau} giờ (Dự đoán AUC24 ~${predictedAuc24} mg·h/L).`;
-  } else {
-    rec = `AUC24 hiện tại (${auc24} mg·h/L) vượt ngưỡng an toàn (> 600). Nguy cơ tổn thương thận cấp AKI! Đề xuất GIẢM liều xuống ${roundedSuggestedDose} mg mỗi ${tau} giờ (Dự đoán AUC24 ~${predictedAuc24} mg·h/L) hoặc kéo dài khoảng cách liều.`;
+  // Calculate Hold Dose Hours if toxic level
+  let holdDoseHours: number | undefined;
+  if (isHighTrough || auc24 > 600) {
+    const startConc = Math.max(cTrough, cMinTrue);
+    if (startConc > 15) {
+      holdDoseHours = Math.max(4, Math.round((Math.log(startConc) - Math.log(12.5)) / kel));
+    }
   }
 
-  // Estimated clearance: CL = Dose_tau / AUC_tau = Daily_Dose / AUC_24
-  const estimatedCl = Number((dose / Math.max(1, aucInterval)).toFixed(2));
-  const estimatedVd = Number((estimatedCl / kel).toFixed(1));
+  // Generate Candidate Adjusted Regimens Grid
+  const candidateMatrix = generateTdmAdjustedRegimens(kel, estimatedVd, estimatedCl, crcl, mic);
+  const preferred = candidateMatrix.preferredRegimen;
+
+  const suggestedDose = preferred ? preferred.doseMg : Math.round((dose * 500 / Math.max(100, auc24)) / 250) * 250;
+  const suggestedTau = preferred ? preferred.intervalHours : tau;
+  const predictedDailyDose = suggestedDose * (24 / suggestedTau);
+  const predictedAuc24 = preferred ? preferred.auc24 : Number((predictedDailyDose / estimatedCl).toFixed(1));
+  const predictedPeak = preferred ? preferred.cPeak : undefined;
+  const predictedTrough = preferred ? preferred.cTrough : undefined;
+
+  let rec = '';
+  if (attainment === 'target' && !isHighTrough) {
+    rec = `Duy trì chế độ liều hiện tại: ${dose} mg mỗi ${tau} giờ. AUC24 (${auc24} mg·h/L) nằm lý tưởng trong khoảng đích 400 - 600 mg·h/L với nồng độ đáy dự kiến ${cMinTrue} mg/L an toàn.`;
+  } else if (attainment === 'subtherapeutic') {
+    rec = `AUC24 hiện tại (${auc24} mg·h/L) dưới đích điều trị (< 400). Đề xuất TĂNG liều lên ${suggestedDose} mg mỗi ${suggestedTau} giờ để nâng AUC24 lên mức mục tiêu ~${predictedAuc24} mg·h/L (Dự kiến Đáy ~${predictedTrough || 12} mg/L).`;
+  } else {
+    const holdText = holdDoseHours 
+      ? `Tạm hoãn liều kế tiếp trong khoảng ${holdDoseHours} giờ (chờ nồng độ hạ xuống < 15 mg/L), sau đó ` 
+      : '';
+    rec = `AUC24 hiện tại (${auc24} mg·h/L) hoặc nồng độ đáy (${cMinTrue} mg/L) VƯỢT NGƯỠNG AN TOÀN! Nguy cơ tổn thương thận cấp AKI. ${holdText}Khuyến nghị điều chỉnh sang ${suggestedDose} mg mỗi ${suggestedTau} giờ (Dự đoán AUC24 mới ~${predictedAuc24} mg·h/L, Đáy ~${predictedTrough || 13} mg/L).`;
+  }
+
+  // Monitoring Plan
+  let monitoringPlan = '';
+  if (attainment === 'target' && !isHighTrough) {
+    monitoringPlan = 'Lặp lại xét nghiệm TDM mỗi 5 – 7 ngày (khoa thường) hoặc mỗi 2 – 3 ngày (ICU/huyết động dao động). Tiếp tục theo dõi SCr định kỳ mỗi 48 giờ.';
+  } else if (attainment === 'supratherapeutic' || isHighTrough) {
+    monitoringPlan = holdDoseHours
+      ? `Sau khi hoãn liều ${holdDoseHours}h và tái khởi động phác đồ mới, lấy lại mẫu TDM (Đáy) trước liều thứ 3 – 4 (sau khoảng 24–48h). Kiểm tra SCr hàng ngày.`
+      : 'Lấy lại mẫu TDM trước cữ liều thứ 3 – 4 của phác đồ mới (khoảng 24–48h). Kiểm tra SCr hàng ngày.';
+  } else {
+    monitoringPlan = 'Kiểm tra lại nồng độ TDM sau 24 – 48 giờ (trước liều thứ 3 – 4 của phác đồ tăng liều mới) để khẳng định AUC24 đã đạt đích 400 – 600 mg·h/L.';
+  }
 
   return {
     auc24,
@@ -1189,10 +1408,17 @@ export function evaluateTdm(
     vdEstimated: estimatedVd,
     estimationMethod: 'two_point',
     adjustedDoseRecommendation: rec,
-    suggestedDoseMg: roundedSuggestedDose,
-    suggestedIntervalHours: tau,
+    suggestedDoseMg: suggestedDose,
+    suggestedIntervalHours: suggestedTau,
     predictedAuc24,
-    clinicalNote: `Dược động học 2 điểm (Pai & Rodvold 2014): k_el = ${kel} h⁻¹, t½ = ${halfLife} giờ, CL ước tính = ${estimatedCl} L/h. C_max dự tính: ${cMaxTrue} mg/L, C_min dự tính: ${cMinTrue} mg/L.`,
+    predictedPeak,
+    predictedTrough,
+    holdDoseHours,
+    isHighTroughRisk: isHighTrough,
+    monitoringPlan,
+    adjustedRegimens: candidateMatrix.regimens,
+    preferredAdjustedRegimen: preferred,
+    clinicalNote: `Dược động học 2 điểm (Pai & Rodvold 2014 & Sawchuk-Zaske): k_el = ${kel} h⁻¹, t½ = ${halfLife} giờ, Vd = ${estimatedVd} L, CL = ${estimatedCl} L/h. C_max nội suy: ${cMaxTrue} mg/L, C_min nội suy: ${cMinTrue} mg/L.`,
     timingValidation
   };
 }
