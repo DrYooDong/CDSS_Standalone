@@ -14,12 +14,6 @@ export interface PatientState {
   weight: number; // TBW in kg
   height: number | null; // in cm
   dialysis: DialysisMode;
-  // Consultation record metadata
-  patientName?: string;
-  patientId?: string;
-  department?: string;
-  diagnosis?: string;
-  clinicalIndication?: string;
 }
 
 export interface CalculatedRenalMetrics {
@@ -32,6 +26,7 @@ export interface CalculatedRenalMetrics {
   bmi: number | null;
   usedWeight: number;
   usedWeightType: string;
+  weightFormulaUsed?: string;
   renalCategory: RenalCategory;
   categoryLabelVi: string;
   categoryLabelEn: string;

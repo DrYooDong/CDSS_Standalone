@@ -153,6 +153,7 @@ export interface MdrTargetedPathway {
   combinationRegimens: DrugChoiceItem[][];
   alternativeDrugs: DrugChoiceItem[];
   contraindicationsVi?: string[];
+  contraindicatedOrIneffectiveVi?: string[];
   clinicalNotesVi: string[];
   dosingTable?: Array<{
     drugName: string;

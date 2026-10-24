@@ -1,4 +1,13 @@
-const esbuild = require('esbuild');
+let esbuild;
+try {
+  esbuild = require('C:/Users/nguye/AppData/Roaming/npm/node_modules/esbuild');
+} catch (e) {
+  try {
+    esbuild = require('esbuild');
+  } catch (e2) {
+    esbuild = require(path.resolve(__dirname, '../node_modules/esbuild'));
+  }
+}
 const path = require('path');
 const fs = require('fs');
 
@@ -62,6 +71,16 @@ const ignoreCssPlugin = {
       }
     });
     console.log('✓ Successfully compiled assets/antibiotic-app.iife.js (IIFE)');
+
+    // 3. Sync to dist/antibiotic/assets if dist exists
+    const distJs1 = path.resolve(__dirname, '../dist/antibiotic/assets/index-DDo0RMpo.js');
+    const distJs2 = path.resolve(__dirname, '../dist/antibiotic/assets/antibiotic-app.iife.js');
+    if (fs.existsSync(path.dirname(distJs1))) {
+      fs.copyFileSync(path.resolve(__dirname, 'assets/index-DDo0RMpo.js'), distJs1);
+      fs.copyFileSync(path.resolve(__dirname, 'assets/antibiotic-app.iife.js'), distJs2);
+      console.log('✓ Successfully synced JS bundles to dist/antibiotic/assets/!');
+    }
+
     console.log('[build-antibiotic] All production bundles updated successfully!');
   } catch (err) {
     console.error('Bundle error:', err);

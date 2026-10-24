@@ -138,6 +138,7 @@ export function calculateRenalMetrics(
     bmi,
     usedWeight,
     usedWeightType,
+    weightFormulaUsed: usedWeightType,
     renalCategory,
     categoryLabelVi,
     categoryLabelEn,

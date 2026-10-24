@@ -6,6 +6,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Header } from './components/Header';
 import { PatientSidebar } from './components/PatientSidebar';
+import { StickyPatientBar } from './components/StickyPatientBar';
+import { QuickPatientDrawer } from './components/QuickPatientDrawer';
+import { DrugSearchModal } from './components/DrugSearchModal';
+import { AntibioticSearch } from './components/AntibioticSearch';
 import { DosingRecommendationCard } from './components/DosingRecommendationCard';
 import { RenalAdjustmentTable } from './components/RenalAdjustmentTable';
 import { DialysisPanel } from './components/DialysisPanel';
@@ -24,12 +28,12 @@ import {
   FileText, 
   BookOpen, 
   LayoutGrid,
-  Bug,
-  ChevronDown,
-  ChevronUp,
-  Workflow,
   Calculator,
-  Sparkles
+  Sparkles,
+  Search,
+  Activity,
+  ArrowRight,
+  ChevronUp
 } from 'lucide-react';
 
 import { SelectionWizard } from './components/selection/SelectionWizard';
@@ -47,11 +51,7 @@ const DEFAULT_PATIENT: PatientState = {
   gender: 'm',
   weight: 60,
   height: 165,
-  dialysis: 'none',
-  patientName: 'Nguyễn Văn An',
-  patientId: 'BN-882910',
-  department: 'Hồi sức tích cực (ICU)',
-  diagnosis: 'Viêm phổi bệnh viện (HAP/VAP) / Nhiễm khuẩn huyết'
+  dialysis: 'none'
 };
 
 type ViewSectionTab = 'all' | 'dosing' | 'dialysis' | 'ddi' | 'notes' | 'refs';
@@ -61,15 +61,30 @@ export default function App() {
   const [patient, setPatient] = useState<PatientState>(DEFAULT_PATIENT);
   const [selectedDrugId, setSelectedDrugId] = useState<string>('meropenem');
   const [selectedScenario, setSelectedScenario] = useState<string>('standard');
+  const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(1);
   const [activeTab, setActiveTab] = useState<ViewSectionTab>('all');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
 
-  // Modals
+  // Drawers & Modals
+  const [isQuickPatientOpen, setIsQuickPatientOpen] = useState(false);
+  const [isDrugSearchOpen, setIsDrugSearchOpen] = useState(false);
   const [isAmrOpen, setIsAmrOpen] = useState(false);
   const [isOriginalOpen, setIsOriginalOpen] = useState(false);
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
   const [isGuidelineAtlasOpen, setIsGuidelineAtlasOpen] = useState(false);
   const [guidelineAtlasImageId, setGuidelineAtlasImageId] = useState<string | undefined>(undefined);
+
+  // Global keyboard shortcut '/' to open instant drug search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === '/' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        setIsDrugSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const handleOpenGuidelineAtlas = (imageId?: string) => {
     setGuidelineAtlasImageId(imageId);
@@ -102,15 +117,13 @@ export default function App() {
     return calculateDose(drugDetails, renal, selectedScenario, patient);
   }, [drugDetails, renal, selectedScenario, patient]);
 
-  // State 'dosingResult' lấy dữ liệu từ phân hệ 2 và cung cấp trực tiếp vào Giai đoạn 2 (Phân hệ 1)
   const [dosingResult, setDosingResult] = useState<DoseResult | null>(null);
 
-  // Đồng bộ kết quả tính liều từ Phân hệ 2 sang state dosingResult
   useEffect(() => {
     setDosingResult(doseResult);
   }, [doseResult]);
 
-  // Hàm tính liều trực tiếp trong Giai đoạn 2 của Phân hệ 1 khi bác sĩ chọn kháng sinh
+  // Handle direct calculation for drug
   const handleCalculateDoseInSelection = (drugId: string, autoScrollToDosing = false) => {
     const exists = ANTIBIOTICS.some(a => a.id === drugId);
     if (exists) {
@@ -146,6 +159,7 @@ export default function App() {
     setPatient(DEFAULT_PATIENT);
     setSelectedDrugId('meropenem');
     setSelectedScenario('standard');
+    setCurrentStep(1);
     setActiveTab('all');
   };
 
@@ -153,10 +167,13 @@ export default function App() {
     if (drugId) {
       handleCalculateDoseInSelection(drugId, true);
     }
+    setCurrentStep(3);
     setTimeout(() => {
       const el = document.getElementById('unified-dosing-workspace') || document.getElementById('dosing-card-anchor');
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 80, behavior: 'smooth' });
       }
     }, 100);
   };
@@ -179,137 +196,144 @@ export default function App() {
 
   const isEn = language === 'en';
 
-  // Render Live Dosing & Safety Workspace (Shared between Unified and Dosing Modes)
-  const renderDosingWorkspace = (isUnified = false) => (
-    <div id={isUnified ? "unified-dosing-workspace" : "dosing-section"} className="space-y-4">
-      {/* If Unified mode, show an informative header card */}
-      {isUnified && (
-        <div className="bg-gradient-to-r from-teal-800 via-teal-900 to-slate-900 text-white p-4 rounded-2xl shadow-sm border border-teal-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-teal-600 rounded-xl text-white shadow-xs shrink-0">
-              <Calculator className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-black uppercase tracking-wider bg-teal-400/20 text-teal-200 px-2 py-0.5 rounded-full border border-teal-400/30">
-                  Bước 2 trong Quy Trình Hợp Nhất
-                </span>
-                <h3 className="text-base font-extrabold text-white">
-                  Cá Thể Hóa Tính Liều &amp; An Toàn Dược Lâm Sàng
-                </h3>
-              </div>
-              <div className="text-xs text-teal-100/90 mt-1 flex items-center gap-2 flex-wrap">
-                <span>Thuốc đang tính: <strong className="text-amber-300 font-bold">{activeDrug.name}</strong> ({activeDrug.group})</span>
-                <span>•</span>
-                <span>CrCl: <strong className="text-white font-bold">{renal.crcl} mL/phút</strong> ({renal.categoryLabelVi})</span>
-                <span>•</span>
-                <span>Lọc máu: <strong className="text-white font-bold">{patient.dialysis === 'none' ? 'Không' : patient.dialysis.toUpperCase()}</strong></span>
-              </div>
-            </div>
-          </div>
+  // Render Live Dosing & Safety Workspace (Embedded in Step 3)
+  const renderDosingWorkspace = () => (
+    <div id="unified-dosing-workspace" className="space-y-4">
+      
+      {/* 1. Instant Antibiotic Search & Switcher Bar */}
+      <AntibioticSearch
+        antibiotics={ANTIBIOTICS}
+        selectedId={selectedDrugId}
+        onSelect={(drugId) => {
+          setSelectedDrugId(drugId);
+          handleCalculateDoseInSelection(drugId);
+        }}
+        language={language}
+      />
 
-          <div className="flex items-center gap-2 shrink-0">
-            <button
-              type="button"
-              onClick={() => {
-                const el = document.getElementById('unified-step1-selection');
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                else window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="px-3 py-1.5 text-xs font-bold rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer flex items-center gap-1.5"
-            >
-              <ChevronUp className="w-3.5 h-3.5" />
-              <span>Về Bước 1 (Phác đồ BVBND)</span>
-            </button>
+      {/* 2. Dosing Workspace Informative Status Banner */}
+      <div className="bg-gradient-to-r from-teal-800 via-teal-900 to-slate-900 text-white p-4 rounded-3xl shadow-xs border border-teal-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 bg-teal-600 rounded-2xl text-white shadow-xs shrink-0">
+            <Calculator className="w-6 h-6" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-[10px] font-black uppercase tracking-wider bg-teal-400/20 text-teal-200 px-2.5 py-0.5 rounded-full border border-teal-400/30">
+                Bước 3: Cá Thể Hóa Tính Liều
+              </span>
+              <h3 className="text-base font-black text-white">
+                An Toàn Dược Lâm Sàng &amp; Hiệu Chỉnh Liều Theo Thận
+              </h3>
+            </div>
+            <div className="text-xs text-teal-100/90 mt-1 flex items-center gap-2 flex-wrap">
+              <span>Thuốc đang tính: <strong className="text-amber-300 font-extrabold">{activeDrug.name}</strong> ({activeDrug.group})</span>
+              <span>•</span>
+              <span>CrCl: <strong className="text-white font-bold">{renal.crcl} mL/phút</strong> ({renal.categoryLabelVi})</span>
+              <span>•</span>
+              <span>Lọc máu: <strong className="text-white font-bold">{patient.dialysis === 'none' ? 'Không' : patient.dialysis.toUpperCase()}</strong></span>
+            </div>
           </div>
         </div>
-      )}
 
-      {/* Clinical Section Segmented Navigation Tabs */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-2 no-print">
-        <div className="flex flex-wrap items-center justify-between gap-1.5">
-          <div className="flex flex-wrap items-center gap-1">
-            <button
-              onClick={() => setActiveTab('all')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
-                activeTab === 'all'
-                  ? 'bg-teal-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100'
-              }`}
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span>{isEn ? 'All Sections' : 'Tất cả'}</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('dosing')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
-                activeTab === 'dosing'
-                  ? 'bg-teal-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100'
-              }`}
-            >
-              <Pill className="w-3.5 h-3.5 text-teal-600" />
-              <span>{isEn ? 'Dose & CrCl Table' : 'Liều & Bảng CrCl'}</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('dialysis')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
-                activeTab === 'dialysis'
-                  ? 'bg-purple-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100'
-              }`}
-            >
-              <Droplets className="w-3.5 h-3.5 text-purple-500" />
-              <span>{isEn ? 'Dialysis (HD/CRRT)' : 'Lọc máu (HD/CRRT)'}</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('ddi')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
-                activeTab === 'ddi'
-                  ? 'bg-rose-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100'
-              }`}
-            >
-              <ShieldAlert className="w-3.5 h-3.5 text-rose-500" />
-              <span>{isEn ? 'Interactions' : 'Tương tác thuốc'}</span>
-              {drugInteractions.length > 0 && (
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeTab === 'ddi' ? 'bg-white text-rose-600' : 'bg-rose-100 text-rose-700'}`}>
-                  {drugInteractions.length}
-                </span>
-              )}
-            </button>
-
-            <button
-              onClick={() => setActiveTab('notes')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
-                activeTab === 'notes'
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100'
-              }`}
-            >
-              <FileText className="w-3.5 h-3.5 text-indigo-500" />
-              <span>{isEn ? 'Clinical Guidance (Tier 1-3)' : 'Lưu ý Dược lý (Tier 1-3)'}</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('refs')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
-                activeTab === 'refs'
-                  ? 'bg-slate-800 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100'
-              }`}
-            >
-              <BookOpen className="w-3.5 h-3.5 text-slate-500" />
-              <span>{isEn ? 'References' : 'Tài liệu tham khảo'}</span>
-            </button>
-          </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            type="button"
+            onClick={() => {
+              setCurrentStep(2);
+              window.scrollTo({ top: 80, behavior: 'smooth' });
+            }}
+            className="px-3 py-1.5 text-xs font-bold rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer flex items-center gap-1.5"
+          >
+            <ChevronUp className="w-3.5 h-3.5" />
+            <span>Về Bước 2 (Phác đồ BVBND)</span>
+          </button>
         </div>
       </div>
 
-      {/* Primary Dosing Recommendation Hero Card */}
+      {/* 3. Clinical Section Segmented Navigation Tabs */}
+      <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-1.5 no-print">
+        <div className="flex flex-wrap items-center gap-1">
+          <button
+            onClick={() => setActiveTab('all')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
+              activeTab === 'all'
+                ? 'bg-teal-600 text-white shadow-2xs'
+                : 'text-slate-600 hover:bg-slate-100'
+            }`}
+          >
+            <LayoutGrid className="w-3.5 h-3.5" />
+            <span>{isEn ? 'All Sections' : 'Tất cả'}</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('dosing')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
+              activeTab === 'dosing'
+                ? 'bg-teal-600 text-white shadow-2xs'
+                : 'text-slate-600 hover:bg-slate-100'
+            }`}
+          >
+            <Pill className="w-3.5 h-3.5" />
+            <span>{isEn ? 'Dose & CrCl Table' : 'Liều & Bảng CrCl'}</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('dialysis')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
+              activeTab === 'dialysis'
+                ? 'bg-purple-600 text-white shadow-2xs'
+                : 'text-slate-600 hover:bg-slate-100'
+            }`}
+          >
+            <Droplets className="w-3.5 h-3.5 text-purple-500" />
+            <span>{isEn ? 'Dialysis (HD/CRRT)' : 'Lọc máu (HD/CRRT)'}</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('ddi')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
+              activeTab === 'ddi'
+                ? 'bg-rose-600 text-white shadow-2xs'
+                : 'text-slate-600 hover:bg-slate-100'
+            }`}
+          >
+            <ShieldAlert className="w-3.5 h-3.5 text-rose-500" />
+            <span>{isEn ? 'Interactions' : 'Tương tác thuốc'}</span>
+            {drugInteractions.length > 0 && (
+              <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeTab === 'ddi' ? 'bg-white text-rose-600' : 'bg-rose-100 text-rose-700'}`}>
+                {drugInteractions.length}
+              </span>
+            )}
+          </button>
+
+          <button
+            onClick={() => setActiveTab('notes')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
+              activeTab === 'notes'
+                ? 'bg-indigo-600 text-white shadow-2xs'
+                : 'text-slate-600 hover:bg-slate-100'
+            }`}
+          >
+            <FileText className="w-3.5 h-3.5 text-indigo-500" />
+            <span>{isEn ? 'Clinical Guidance (Tier 1-3)' : 'Lưu ý Dược lý'}</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('refs')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
+              activeTab === 'refs'
+                ? 'bg-slate-800 text-white shadow-2xs'
+                : 'text-slate-600 hover:bg-slate-100'
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5 text-slate-500" />
+            <span>{isEn ? 'References' : 'Tài liệu tham khảo'}</span>
+          </button>
+        </div>
+      </div>
+
+      {/* 4. Primary Dosing Recommendation Hero Card */}
       {(activeTab === 'all' || activeTab === 'dosing') && (
         <div id="dosing-card-anchor">
           <DosingRecommendationCard
@@ -324,7 +348,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Complete Renal Adjustment Stratification Table */}
+      {/* 5. Complete Renal Adjustment Stratification Table */}
       {(activeTab === 'all' || activeTab === 'dosing') && (
         <div id="renal-table-section">
           <RenalAdjustmentTable
@@ -336,7 +360,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Dialysis / RRT Protocol Panel */}
+      {/* 6. Dialysis / RRT Protocol Panel */}
       {(activeTab === 'all' || activeTab === 'dialysis') && (
         <div id="dialysis-section">
           <DialysisPanel
@@ -347,7 +371,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Automatic Drug-Drug Interaction Warning System */}
+      {/* 7. Automatic Drug-Drug Interaction Warning System */}
       {(activeTab === 'all' || activeTab === 'ddi') && (
         <div id="ddi-section">
           <DrugInteractionChecker
@@ -358,7 +382,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Tier 1, 2, 3 Clinical Guidance & Pharmacotherapy Notes */}
+      {/* 8. Tier 1, 2, 3 Clinical Guidance & Pharmacotherapy Notes */}
       {(activeTab === 'all' || activeTab === 'notes') && (
         <div id="notes-section">
           <ClinicalNotesTiers
@@ -368,7 +392,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Evidence Base & Clinical References */}
+      {/* 9. Evidence Base & Clinical References */}
       {(activeTab === 'all' || activeTab === 'refs') && (
         <div id="references-section">
           <ReferencesList
@@ -381,9 +405,9 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50/60 flex flex-col selection:bg-teal-600 selection:text-white">
+    <div className="min-h-screen bg-slate-50/70 flex flex-col selection:bg-teal-600 selection:text-white pb-24 md:pb-8">
       
-      {/* Top Header */}
+      {/* 1. Main Navigation Header */}
       <Header
         language={language}
         onLanguageChange={setLanguage}
@@ -392,99 +416,40 @@ export default function App() {
         onOpenOriginal={() => setIsOriginalOpen(true)}
         onOpenPdfModal={() => setIsPdfModalOpen(true)}
         onOpenGuidelineAtlas={() => handleOpenGuidelineAtlas()}
+        onOpenDrugSearch={() => setIsDrugSearchOpen(true)}
+        onOpenQuickPatient={() => setIsQuickPatientOpen(true)}
         selectedDrugName={activeDrug.name}
       />
 
-      {/* Main Content Area */}
+      {/* 2. Responsive Sticky Patient Capsule & Mobile Bottom Navigation Bar */}
+      <StickyPatientBar
+        patient={patient}
+        renal={renal}
+        dialysis={patient.dialysis}
+        selectedDrugName={activeDrug.name}
+        currentStep={currentStep}
+        onStepChange={(step) => {
+          setCurrentStep(step);
+          window.scrollTo({ top: 80, behavior: 'smooth' });
+        }}
+        onOpenQuickPatient={() => setIsQuickPatientOpen(true)}
+        onOpenDrugSearch={() => setIsDrugSearchOpen(true)}
+        onExportPdf={() => setIsPdfModalOpen(true)}
+        language={language}
+      />
+
+      {/* 3. Main Clinical Workspace Layout */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
-
-        {/* CDSS Clinical Patient Glance Ribbon */}
-        <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-3.5 mb-5 no-print">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            {/* Left: Patient Glance Metrics */}
-            <div className="flex items-center gap-3 flex-wrap min-w-0">
-              <div className="p-2.5 rounded-xl bg-teal-50 border border-teal-200/80 text-teal-800 shrink-0">
-                <Workflow className="w-5 h-5 text-teal-700" />
-              </div>
-              <div className="min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-xs font-black uppercase tracking-wider text-teal-800">
-                    InfectoDose CDSS
-                  </span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-900 border border-teal-200/70">
-                    Phác Đồ BVBND 2026 &bull; 43 Kháng Sinh
-                  </span>
-                  <span className="text-[11px] font-bold text-slate-500">
-                    Đang chọn: <strong className="text-teal-700">{activeDrug.name}</strong> ({activeDrug.group})
-                  </span>
-                </div>
-                <div className="text-xs text-slate-700 font-semibold mt-1 flex items-center gap-2 flex-wrap">
-                  <span><strong>{patient.patientName || 'Nguyễn Văn An'}</strong> ({patient.patientId || 'BN-882910'})</span>
-                  <span className="text-slate-300">•</span>
-                  <span>{patient.age}t, {patient.gender === 'm' ? 'Nam' : 'Nữ'}</span>
-                  <span className="text-slate-300">•</span>
-                  <span>{patient.weight} kg</span>
-                  <span className="text-slate-300">•</span>
-                  <span>
-                    CrCl: <strong className="text-teal-700 font-black">{renal.crcl} mL/phút</strong>{' '}
-                    <span className="text-[11px] font-medium text-slate-500">({renal.categoryLabelVi})</span>
-                  </span>
-                  {patient.dialysis !== 'none' && (
-                    <>
-                      <span className="text-slate-300">•</span>
-                      <span className="px-1.5 py-0.2 rounded text-[10px] font-black bg-purple-100 text-purple-800 uppercase">
-                        Lọc máu: {patient.dialysis}
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Quick Tools */}
-            <div className="flex items-center gap-1.5 flex-wrap shrink-0">
-              <button
-                type="button"
-                onClick={() => handleOpenGuidelineAtlas()}
-                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
-                title="Xem Atlas Lưu Đồ BVBND 2026"
-              >
-                <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
-                <span className="hidden sm:inline">Atlas BVBND</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setIsAmrOpen(true)}
-                className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200/80 transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
-                title="Dữ liệu Đề kháng AMR Vi sinh"
-              >
-                <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
-                <span className="hidden sm:inline">Dữ liệu AMR</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setIsPdfModalOpen(true)}
-                className="px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-teal-700 hover:bg-teal-800 transition-all cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                title="Xuất phiếu hội chẩn lâm sàng PDF"
-              >
-                <FileText className="w-3.5 h-3.5 text-teal-100" />
-                <span>Phiếu Hội Chẩn PDF</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Master 2-Column Clinical Suite */}
+        
         <div className="lg:flex lg:gap-6 items-start">
-          {/* Sticky Left Sidebar: Patient Demographics & Renal Metrics */}
+          
+          {/* Left Column (Desktop / Laptop): Sticky Patient Demographics & Renal Metrics HUD */}
           <aside 
             aria-label="Patient and Renal Parameters" 
-            className={`w-full shrink-0 mb-6 lg:mb-0 transition-all duration-300 lg:sticky lg:top-14 ${
+            className={`hidden lg:block shrink-0 mb-6 lg:mb-0 transition-all duration-300 lg:sticky lg:top-32 ${
               isSidebarCollapsed 
                 ? 'lg:w-[260px] xl:w-[280px]' 
-                : 'lg:w-[360px] xl:w-[390px]'
+                : 'lg:w-[350px] xl:w-[380px]'
             }`}
           >
             <PatientSidebar
@@ -499,10 +464,11 @@ export default function App() {
             />
           </aside>
 
-          {/* Right Column: Unified Clinical Flow */}
+          {/* Right Column (All Devices): 4-Step Clinical Guided Pipeline */}
           <div className="flex-1 min-w-0 space-y-6">
-            {/* Unified Clinical Flow (BVBND 2026 Selection + Precision Dosing Workspace) */}
             <SelectionWizard
+              currentStage={currentStep}
+              onStageChange={(st) => setCurrentStep(st)}
               onSelectDrugForDosing={handleSelectDrugFromSelection}
               onOpenGuidelineAtlas={handleOpenGuidelineAtlas}
               dosingResult={dosingResult}
@@ -511,10 +477,12 @@ export default function App() {
               renal={renal}
               onCalculateDoseForDrug={handleCalculateDoseInSelection}
               onPatientChange={handlePatientChange}
+              onExportPdf={() => setIsPdfModalOpen(true)}
             >
-              {renderDosingWorkspace(true)}
+              {renderDosingWorkspace()}
             </SelectionWizard>
           </div>
+
         </div>
 
       </main>
@@ -527,14 +495,14 @@ export default function App() {
             <h2 className="text-sm font-semibold">PHIẾU HỘI CHẨN & QUẢN LÝ LIỀU KHÁNG SINH (CDSS)</h2>
           </div>
           <div className="text-right text-xs">
-            <p>Ngày: {new Date().toLocaleDateString('vi-VN')}</p>
-            <p>Mã HS: {patient.patientId || 'BN-10293'}</p>
+            <p>Thời điểm tính: {new Date().toLocaleDateString('vi-VN')}</p>
+            <p className="font-semibold text-slate-600">CDSS INFECTODOSE v3.0</p>
           </div>
         </div>
 
         <div className="mb-4 text-xs">
-          <p><strong>Bệnh nhân:</strong> {patient.patientName || 'Nguyễn Văn A'} | <strong>Tuổi/Giới:</strong> {patient.age}t / {patient.gender === 'm' ? 'Nam' : 'Nữ'} | <strong>Cân nặng:</strong> {patient.weight} kg</p>
-          <p><strong>Scr:</strong> {renal.scrUmol} µmol/L ({renal.scrMgdl} mg/dL) | <strong>CrCl:</strong> {renal.crcl} mL/phút ({renal.categoryLabelVi})</p>
+          <p><strong>Thông số nhân trắc:</strong> {patient.age} tuổi / {patient.gender === 'm' ? 'Nam' : 'Nữ'} | <strong>Cân nặng:</strong> {patient.weight} kg {patient.height ? `| Chiều cao: ${patient.height} cm (IBW: ${renal.ibw} kg, BMI: ${renal.bmi})` : ''}</p>
+          <p><strong>Sinh hóa &amp; Thận:</strong> Scr: {renal.scrUmol} µmol/L ({renal.scrMgdl} mg/dL) | <strong>CrCl (Cockcroft-Gault):</strong> {renal.crcl} mL/phút ({renal.categoryLabelVi}) {patient.dialysis !== 'none' ? `| Lọc máu: ${patient.dialysis.toUpperCase()}` : ''}</p>
         </div>
 
         <div className="border border-black p-3 mb-4 text-xs">
@@ -560,6 +528,29 @@ export default function App() {
           </div>
         </div>
       </div>
+
+      {/* Floating Quick Action Drawer for Patient on Mobile & Desktop */}
+      <QuickPatientDrawer
+        isOpen={isQuickPatientOpen}
+        onClose={() => setIsQuickPatientOpen(false)}
+        patient={patient}
+        onChange={handlePatientChange}
+        renal={renal}
+        language={language}
+      />
+
+      {/* Instant 43 Antibiotics Search Dialog */}
+      <DrugSearchModal
+        isOpen={isDrugSearchOpen}
+        onClose={() => setIsDrugSearchOpen(false)}
+        selectedDrugId={selectedDrugId}
+        onSelectDrug={(drugId) => {
+          setSelectedDrugId(drugId);
+          handleCalculateDoseInSelection(drugId);
+          setCurrentStep(3);
+        }}
+        language={language}
+      />
 
       {/* Modals */}
       <AmrModal
@@ -595,15 +586,11 @@ export default function App() {
       {/* Footer */}
       <footer className="no-print bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 space-y-1">
-          <p className="font-semibold text-slate-700">
-            {isEn 
-              ? 'Antimicrobial Dosing Clinical Decision Support System (CDSS)' 
-              : 'Hệ thống Hỗ trợ Quyết định Lâm sàng Quản lý Liều Kháng sinh (CDSS)'}
+          <p className="font-bold text-slate-700">
+            Hệ thống Hỗ Trợ Ra Quyết Định Lâm Sàng Kháng Sinh (InfectoDose CDSS v3.0 Pro)
           </p>
           <p>
-            {isEn 
-              ? 'Based on Stanford SHC & UCSF IDMP adult inpatient protocols. Medical reference tool only; clinical judgment remains paramount.' 
-              : 'Dựa trên phác đồ Stanford Health Care & UCSF IDMP. Công cụ hỗ trợ ra quyết định lâm sàng cho bác sĩ và dược sĩ.'}
+            Tích hợp Hướng Dẫn BV Bệnh Nhiệt Đới 2026, Tiêu Chuẩn NHSN-CDC, QĐ 5631/BYT &amp; Dược Động Học Stanford/UCSF.
           </p>
         </div>
       </footer>
@@ -611,4 +598,3 @@ export default function App() {
     </div>
   );
 }
-

@@ -495,14 +495,14 @@ export const StepReassess: React.FC<StepReassessProps> = ({
               )}
 
               {/* Cảnh báo đặc thù / Chống chỉ định */}
-              {mdrData.contraindicatedOrIneffectiveVi && mdrData.contraindicatedOrIneffectiveVi.length > 0 && (
+              {((mdrData.contraindicatedOrIneffectiveVi && mdrData.contraindicatedOrIneffectiveVi.length > 0) || (mdrData.contraindicationsVi && mdrData.contraindicationsVi.length > 0)) && (
                 <div className="p-3.5 rounded-xl bg-rose-50/70 border border-rose-200/80 space-y-1">
                   <h4 className="text-xs font-bold text-rose-950 flex items-center gap-1.5">
                     <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
                     <span>Phác đồ KHÔNG khuyến cáo / Không hiệu quả:</span>
                   </h4>
                   <ul className="list-disc list-inside text-xs text-rose-900 space-y-0.5 font-medium">
-                    {mdrData.contraindicatedOrIneffectiveVi.map((warn, wIdx) => (
+                    {(mdrData.contraindicatedOrIneffectiveVi || mdrData.contraindicationsVi || []).map((warn: string, wIdx: number) => (
                       <li key={wIdx}>{warn}</li>
                     ))}
                   </ul>

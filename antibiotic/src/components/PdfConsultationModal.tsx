@@ -76,7 +76,7 @@ export const PdfConsultationModal: React.FC<PdfConsultationModalProps> = ({
                   {isEn ? 'Date:' : 'Ngày hội chẩn:'} {new Date().toLocaleDateString('vi-VN')}
                 </span>
                 <span className="text-[10px] font-mono text-slate-400">
-                  REF: CDSS-{patient.patientId || 'INP-2026'}
+                  REF: CDSS-INFECTODOSE-2026
                 </span>
               </div>
             </div>
@@ -90,27 +90,23 @@ export const PdfConsultationModal: React.FC<PdfConsultationModalProps> = ({
               </span>
             </div>
 
-            {/* 1. Patient & Renal Demographics */}
+            {/* 1. Clinical Demographics & Renal Clearance */}
             <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
               <span className="font-bold text-blue-900 text-xs block mb-1.5 uppercase">
-                1. {isEn ? 'Patient Demographics & Renal Clearance' : 'Thông tin Bệnh nhân & Chức năng Thận'}
+                1. {isEn ? 'Clinical Demographics & Renal Clearance' : 'Thông số Sinh lý & Chức năng Thận'}
               </span>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px]">
                 <div>
-                  <span className="text-slate-500">{isEn ? 'Patient Name:' : 'Họ tên:'} </span>
-                  <span className="font-bold text-slate-900">{patient.patientName || 'Nguyễn Văn A'}</span>
-                </div>
-                <div>
-                  <span className="text-slate-500">{isEn ? 'Patient ID:' : 'Mã BN:'} </span>
-                  <span className="font-bold">{patient.patientId || 'BN-102938'}</span>
-                </div>
-                <div>
-                  <span className="text-slate-500">{isEn ? 'Age / Gender:' : 'Tuổi / Giới:'} </span>
-                  <span className="font-bold">{patient.age}t / {patient.gender === 'm' ? (isEn ? 'Male' : 'Nam') : (isEn ? 'Female' : 'Nữ')}</span>
+                  <span className="text-slate-500">{isEn ? 'Demographics:' : 'Đối tượng:'} </span>
+                  <span className="font-bold text-slate-900">{patient.age} tuổi / {patient.gender === 'm' ? (isEn ? 'Male' : 'Nam') : (isEn ? 'Female' : 'Nữ')}</span>
                 </div>
                 <div>
                   <span className="text-slate-500">{isEn ? 'Weight / Height:' : 'Cân nặng / CC:'} </span>
                   <span className="font-bold">{patient.weight} kg {patient.height ? `/ ${patient.height} cm` : ''}</span>
+                </div>
+                <div>
+                  <span className="text-slate-500">IBW / BMI: </span>
+                  <span className="font-bold">{renal.ibw} kg / {renal.bmi} kg/m²</span>
                 </div>
                 <div>
                   <span className="text-slate-500">Scr: </span>

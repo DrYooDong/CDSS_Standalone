@@ -56,7 +56,7 @@ export function generatePdfConsultationReport(data: ConsultationReportData): voi
   doc.setTextColor(15, 111, 186);
   doc.setFontSize(9.5);
   doc.setFont('helvetica', 'bold');
-  doc.text(isEn ? '1. PATIENT DEMOGRAPHICS & RENAL STATUS' : '1. THONG TIN BENH NHAN & CHUC NANG THAN', margin + 4, y + 6);
+  doc.text(isEn ? '1. CLINICAL DEMOGRAPHICS & RENAL STATUS' : '1. THONG SO SINH LY & CHUC NANG THAN', margin + 4, y + 6);
 
   doc.setFontSize(8.5);
   doc.setFont('helvetica', 'normal');
@@ -66,18 +66,13 @@ export function generatePdfConsultationReport(data: ConsultationReportData): voi
   const col2 = margin + 65;
   const col3 = margin + 125;
 
-  const patientName = data.patient.patientName || (isEn ? 'Inpatient Case' : 'Benh nhan noi tru');
-  const patientId = data.patient.patientId || 'BN-' + Math.floor(100000 + Math.random() * 900000);
-  const dept = data.patient.department || (isEn ? 'ICU / Internal Medicine' : 'ICU / Noi tong hop');
-  const diag = data.patient.diagnosis || data.drug.indications[0] || (isEn ? 'Severe infection' : 'Nhiem khuan nang');
+  doc.text(`${isEn ? 'Demographics' : 'Doi tuong'}: ${data.patient.age} yo / ${data.patient.gender === 'm' ? (isEn ? 'Male' : 'Nam') : (isEn ? 'Female' : 'Nu')}`, col1, y + 13);
+  doc.text(`${isEn ? 'Weight' : 'Can nang'}: ${data.patient.weight} kg`, col2, y + 13);
+  doc.text(`${isEn ? 'Height' : 'Chieu cao'}: ${data.patient.height ? data.patient.height + ' cm' : 'N/A'}`, col3, y + 13);
 
-  doc.text(`${isEn ? 'Patient' : 'Ho ten'}: ${patientName}`, col1, y + 13);
-  doc.text(`${isEn ? 'ID' : 'Ma BN'}: ${patientId}`, col2, y + 13);
-  doc.text(`${isEn ? 'Department' : 'Khoa'}: ${dept}`, col3, y + 13);
-
-  doc.text(`${isEn ? 'Age / Sex' : 'Tuoi / Gioi'}: ${data.patient.age} yo / ${data.patient.gender === 'm' ? (isEn ? 'Male' : 'Nam') : (isEn ? 'Female' : 'Nu')}`, col1, y + 20);
-  doc.text(`${isEn ? 'Weight / Height' : 'Can nang / Chieu cao'}: ${data.patient.weight} kg ${data.patient.height ? `/ ${data.patient.height} cm` : ''}`, col2, y + 20);
-  doc.text(`BMI: ${data.renal.bmi ? data.renal.bmi + ' kg/m2' : 'N/A'} (IBW: ${data.renal.ibw || 'N/A'} kg)`, col3, y + 20);
+  doc.text(`IBW: ${data.renal.ibw ? data.renal.ibw + ' kg' : 'N/A'}`, col1, y + 20);
+  doc.text(`BMI: ${data.renal.bmi ? data.renal.bmi + ' kg/m2' : 'N/A'}`, col2, y + 20);
+  doc.text(`${isEn ? 'Dialysis' : 'Loc mau'}: ${data.patient.dialysis === 'none' ? (isEn ? 'None' : 'Khong') : data.patient.dialysis.toUpperCase()}`, col3, y + 20);
 
   doc.setFont('helvetica', 'bold');
   const scrText = `Scr: ${data.renal.scrUmol} umol/L (${data.renal.scrMgdl} mg/dL)`;

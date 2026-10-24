@@ -23,9 +23,6 @@ export const PatientInputForm: React.FC<PatientInputFormProps> = ({
   patient,
   onChange,
   language,
-  needsHeight = false
-}) => {
-  const [showCaseDetails, setShowCaseDetails] = useState(false);
   const isEn = language === 'en';
 
   const handleScrChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -321,70 +318,9 @@ export const PatientInputForm: React.FC<PatientInputFormProps> = ({
           </div>
         </div>
 
-        {/* Toggle Consultation Metadata for PDF */}
-        <button
-          type="button"
-          onClick={() => setShowCaseDetails(!showCaseDetails)}
-          className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center space-x-1"
-        >
-          <span>{isEn ? 'Patient Case Details (For PDF)' : 'Thông tin bệnh án (In phiếu)'}</span>
-          {showCaseDetails ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-        </button>
-      </div>
-
-      {/* Collapsible Patient Consultation Metadata */}
-      {showCaseDetails && (
-        <div className="mt-3 p-3.5 bg-blue-50/50 rounded-xl border border-blue-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 animate-in fade-in duration-200">
-          <div>
-            <label className="block text-xs font-medium text-slate-600 mb-1">
-              {isEn ? 'Patient Full Name' : 'Họ và tên bệnh nhân'}
-            </label>
-            <input
-              type="text"
-              value={patient.patientName || ''}
-              onChange={(e) => onChange({ patientName: e.target.value })}
-              placeholder={isEn ? 'e.g. Nguyen Van A' : 'vd: Nguyễn Văn A'}
-              className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900"
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-slate-600 mb-1">
-              {isEn ? 'Medical Record / Patient ID' : 'Mã bệnh nhân / Số hồ sơ'}
-            </label>
-            <input
-              type="text"
-              value={patient.patientId || ''}
-              onChange={(e) => onChange({ patientId: e.target.value })}
-              placeholder="e.g. BN-2026-889"
-              className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900"
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-slate-600 mb-1">
-              {isEn ? 'Department / Ward' : 'Khoa / Phòng điều trị'}
-            </label>
-            <input
-              type="text"
-              value={patient.department || ''}
-              onChange={(e) => onChange({ department: e.target.value })}
-              placeholder={isEn ? 'e.g. ICU / Surgical Ward' : 'vd: Khoa Hồi sức tích cực (ICU)'}
-              className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900"
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-slate-600 mb-1">
-              {isEn ? 'Primary Clinical Diagnosis' : 'Chẩn đoán lâm sàng'}
-            </label>
-            <input
-              type="text"
-              value={patient.diagnosis || ''}
-              onChange={(e) => onChange({ diagnosis: e.target.value })}
-              placeholder={isEn ? 'e.g. Septic shock / VAP' : 'vd: Sốc nhiễm khuẩn / Viêm phổi thở máy'}
-              className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900"
-            />
-          </div>
         </div>
-      )}
+      </div>
+    </div>
 
     </div>
   );

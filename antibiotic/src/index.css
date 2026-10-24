@@ -13,6 +13,25 @@
   }
 }
 
+/* Animations for Drawers and Modals */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Rendered Raw HTML Styling (Notes, RRT Panels, Tiers, Sources) */
 .notes-box {
   background: #fff8f8;
@@ -191,4 +210,3 @@
     display: none !important;
   }
 }
-
