@@ -65,31 +65,32 @@ export const Header: React.FC<HeaderProps> = ({
                   v3.0 Pro
                 </span>
                 <span className="hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  BVBND 2026 • NHSN-CDC
+                  BVBND 2026 • WHO AWaRe 2022 • NHSN-CDC
                 </span>
               </div>
-              <p className="text-xs text-slate-500 hidden sm:block">
+              <p className="text-[11px] text-slate-500 hidden sm:block">
                 {isEn 
-                  ? 'Clinical Infection Assessment, MDR Stratification & Precision Antibiotic Dosing' 
-                  : 'Đánh Giá Nhiễm Trùng, Vi Khuẩn Đa Kháng & Liều Kháng Sinh Cá Thể Hóa'}
+                  ? 'MDR Stratification & Precision Antibiotic Dosing' 
+                  : 'Phân tầng VKĐK & Tính liều kháng sinh cá thể hóa'}
               </p>
             </div>
           </div>
 
-          {/* Desktop Navigation & Actions */}
-          <div className="hidden lg:flex items-center space-x-2">
+          {/* Desktop Navigation & Actions (Icon-First Clean Toolbar) */}
+          <div className="hidden lg:flex items-center space-x-1.5">
             
             {/* Quick Drug Search Trigger */}
             {onOpenDrugSearch && (
               <button
                 type="button"
                 onClick={onOpenDrugSearch}
-                className="px-3 py-1.5 rounded-xl text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-colors flex items-center gap-1.5 text-xs font-bold cursor-pointer"
+                className="px-2.5 py-1.5 rounded-xl text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200/80 transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer"
                 title="Tra cứu nhanh 43 kháng sinh (Phím tắt /)"
+                aria-label="Tra cứu 43 kháng sinh"
               >
                 <Search className="w-3.5 h-3.5 text-teal-600" />
-                <span>Tra cứu 43 KS</span>
-                <kbd className="px-1 py-0.2 text-[10px] bg-white border border-slate-300 rounded text-slate-500 font-mono">
+                <span className="text-[11px]">43 KS</span>
+                <kbd className="px-1 py-0.2 text-[9px] bg-white border border-slate-300 rounded text-slate-500 font-mono">
                   /
                 </kbd>
               </button>
@@ -100,12 +101,12 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="btn-open-bvbnd-atlas"
                 onClick={onOpenGuidelineAtlas}
-                className="px-3 py-1.5 rounded-xl text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-colors flex items-center gap-1.5 text-xs font-bold cursor-pointer shadow-2xs"
-                title={isEn ? 'BVBND 2026 Flowchart & Antibiogram Atlas' : 'Xem trọn bộ Atlas Lưu đồ Gốc & Dữ liệu Vi sinh BVBND 2026'}
+                className="p-2 rounded-xl text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer shadow-2xs"
+                title={isEn ? 'BVBND 2026 Flowchart & Antibiogram Atlas' : 'Xem Atlas Lưu đồ Gốc & Dữ liệu Vi sinh BVBND 2026'}
                 aria-label="Atlas BVBND"
               >
                 <BookOpen className="w-4 h-4 text-emerald-600" />
-                <span>{isEn ? 'BVBND Atlas' : 'Atlas BVBND 2026'}</span>
+                <span className="hidden xl:inline text-[11px]">Atlas BVBND</span>
               </button>
             )}
 
@@ -132,12 +133,12 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Consultation PDF Report */}
             <button
               onClick={onOpenPdfModal}
-              className="px-3 py-1.5 rounded-xl text-white bg-teal-600 hover:bg-teal-700 shadow-sm transition-all flex items-center space-x-1.5 text-xs font-bold cursor-pointer"
-              title={isEn ? 'Export PDF / Print' : 'Xuất Phiếu Hội Chẩn / In PDF'}
+              className="p-2 sm:px-2.5 sm:py-1.5 rounded-xl text-white bg-teal-600 hover:bg-teal-700 shadow-sm transition-all flex items-center space-x-1 text-xs font-bold cursor-pointer"
+              title={isEn ? 'Export PDF / Print Consultation Report' : 'Xuất Phiếu Hội Chẩn / In PDF'}
               aria-label="Xuất Phiếu Hội Chẩn"
             >
               <FileText className="w-4 h-4" />
-              <span>Phiếu Hội Chẩn PDF</span>
+              <span className="hidden xl:inline text-[11px]">In PDF</span>
             </button>
 
             {/* Reset Button */}

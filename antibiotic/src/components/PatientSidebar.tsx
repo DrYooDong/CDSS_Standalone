@@ -530,7 +530,7 @@ export const PatientSidebar: React.FC<PatientSidebarProps> = ({
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Trọng lượng dùng tính liều:</span>
-                <span className="font-bold text-teal-700">{renal.weightUsed} kg</span>
+                <span className="font-bold text-teal-700">{renal.usedWeight} kg</span>
               </div>
             </div>
           )}

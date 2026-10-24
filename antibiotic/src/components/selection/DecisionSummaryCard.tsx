@@ -9,7 +9,8 @@ import {
   AlertTriangle,
   ArrowRight,
   Layers,
-  Clock
+  Clock,
+  Calculator
 } from 'lucide-react';
 import { SelectionWizardState, RiskClassificationResult } from '../../selection/types';
 
@@ -70,24 +71,24 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
           <span className="text-teal-600 font-semibold">Chỉnh sửa</span>
         </div>
         
-        <div className="flex items-center space-x-2 mt-1.5">
+        <div className="flex items-center space-x-1.5 mt-1.5">
           {state.indicationConfirmed ? (
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
           ) : (
             <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0" />
           )}
           <span className="text-xs font-bold text-slate-800 break-words">
-            {state.indicationConfirmed ? 'Đủ tiêu chuẩn chỉ định' : 'Nghi ngờ / Cần theo dõi'}
+            {state.indicationConfirmed ? 'Có chỉ định cấp tính' : 'Cần theo dõi thêm'}
           </span>
         </div>
 
-        <div className="flex items-center space-x-1.5 text-xs text-slate-600 mt-1 pl-6">
+        <div className="flex items-center space-x-1.5 text-xs text-slate-600 mt-1 pl-5">
           <User className="w-3.5 h-3.5 text-slate-400 shrink-0" />
           <span className="break-words">{state.population === 'adult' ? 'Người lớn' : 'Trẻ em'} • {siteLabels[state.site] || state.site}</span>
         </div>
 
         {state.site === 'sepsis' && state.sepsisSource && (
-          <div className="text-[11px] text-rose-600 font-medium pl-6 mt-0.5">
+          <div className="text-[11px] text-rose-600 font-medium pl-5 mt-0.5">
             {sepsisSourceLabels[state.sepsisSource] || state.sepsisSource}
           </div>
         )}
@@ -139,14 +140,14 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
             {riskResult.isGramPosGramNegCoRisk && (
               <div className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-800 border border-red-200 flex items-center space-x-1">
                 <span>⚠️</span>
-                <span>Bắt buộc phối hợp Gram(+) & Gram(-)</span>
+                <span>Phối hợp Gram(+) & Gram(-)</span>
               </div>
             )}
 
             {riskResult.isDualGramNegRisk && (
               <div className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-200 flex items-center space-x-1">
                 <span>⚡</span>
-                <span>Ưu tiên diệt Pseudo / Acineto</span>
+                <span>Diệt Pseudo / Acineto</span>
               </div>
             )}
           </div>
@@ -165,7 +166,7 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
         <div className="flex items-center space-x-2 mt-1.5">
           <Pill className="w-4 h-4 text-teal-600 shrink-0" />
           <span className="text-xs font-bold text-slate-800">
-            BVBND 2026 ({isGroup2 ? 'Phổ rộng đa kháng' : 'Phác đồ chuẩn'})
+            BVBND 2026 &bull; WHO AWaRe ({isGroup2 ? 'Phổ rộng đa kháng' : 'Phác đồ chuẩn'})
           </span>
         </div>
       </div>
@@ -175,10 +176,10 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
         <button
           type="button"
           onClick={() => onSwitchToDosing(state.selectedDrugForDosing)}
-          className="w-full py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm flex items-center justify-center space-x-2 transition-all cursor-pointer"
+          className="w-full py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
         >
-          <Pill className="w-3.5 h-3.5" />
-          <span>Sang Phân Hệ 2: Tính Liều & CrCl</span>
+          <Calculator className="w-3.5 h-3.5" />
+          <span>Tính Liều &amp; CrCl</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </button>
         <p className="text-[10px] text-slate-400 text-center">

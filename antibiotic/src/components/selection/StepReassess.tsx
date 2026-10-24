@@ -119,29 +119,31 @@ export const StepReassess: React.FC<StepReassessProps> = ({
           </div>
         </div>
 
-        {/* Sub-tab Navigation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 pt-4">
+        {/* Sub-tab Navigation (Streamlined Icon-First) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 pt-3">
           <button
             type="button"
             onClick={() => setSubTab('decision_tree')}
-            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
+            className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
               subTab === 'decision_tree'
                 ? 'bg-teal-600 text-white border-teal-600 shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }`}
+            title="Lưu đồ tái đánh giá đáp ứng lâm sàng & vi sinh 48-72h (BVBND 2026)"
           >
             <Clock className="w-3.5 h-3.5 shrink-0" />
-            <span>1. Lưu đồ 48-72h (BVBND)</span>
+            <span>1. Lưu đồ 48-72h</span>
           </button>
 
           <button
             type="button"
             onClick={() => setSubTab('mdr_pathways')}
-            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
+            className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
               subTab === 'mdr_pathways'
                 ? 'bg-teal-600 text-white border-teal-600 shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }`}
+            title="Điều trị trúng đích vi khuẩn đa kháng CRE, DTR-PA, CRAB"
           >
             <Crosshair className="w-3.5 h-3.5 shrink-0" />
             <span>2. Trúng Đích VKĐK</span>
@@ -150,27 +152,29 @@ export const StepReassess: React.FC<StepReassessProps> = ({
           <button
             type="button"
             onClick={() => setSubTab('stop_criteria')}
-            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
+            className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
               subTab === 'stop_criteria'
                 ? 'bg-teal-600 text-white border-teal-600 shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }`}
+            title="Bảng kiểm tiêu chuẩn ngưng kháng sinh an toàn"
           >
             <Ban className="w-3.5 h-3.5 shrink-0" />
-            <span>3. Bảng Kiểm Ngưng KS</span>
+            <span>3. Ngưng Kháng Sinh</span>
           </button>
 
           <button
             type="button"
             onClick={() => setSubTab('iv_to_po')}
-            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
+            className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${
               subTab === 'iv_to_po'
                 ? 'bg-teal-600 text-white border-teal-600 shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }`}
+            title="Tiêu chuẩn và danh mục chuyển đổi kháng sinh từ đường tiêm sang đường uống (IV to PO)"
           >
             <ArrowRightLeft className="w-3.5 h-3.5 shrink-0" />
-            <span>4. Chuyển Tiêm sang Uống</span>
+            <span>4. Chuyển IV-sang-PO</span>
           </button>
         </div>
       </div>

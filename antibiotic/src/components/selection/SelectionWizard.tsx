@@ -261,32 +261,36 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
     setTimeout(() => setCopiedSummary(false), 2500);
   };
 
-  // 4 Master Clinical Stages List
+  // 4 Master Clinical Stages List (Icon-First Streamlined Pipeline)
   const stagesList = [
     {
       stage: 1 as const,
-      badge: 'Bước 1',
+      badge: '1. Đánh Giá',
+      sub: 'NHSN • Nguy cơ VKĐK',
       title: 'Đánh Giá & Phân Tầng',
       desc: 'Tiêu chuẩn NHSN • Ổ nhiễm • Điểm SOFA & Nguy cơ VKĐK',
       icon: <ClipboardCheck className="w-4 h-4" />
     },
     {
       stage: 2 as const,
-      badge: 'Bước 2',
-      title: 'Phác Đồ BVBND 2026',
-      desc: 'Phác đồ khởi đầu BVBND • Antibiogram vi sinh',
+      badge: '2. Phác Đồ',
+      sub: 'BVBND 2026 • WHO AWaRe',
+      title: 'Phác Đồ BVBND & WHO',
+      desc: 'Phác đồ BVBND 2026 • WHO AWaRe 2022 • Antibiogram vi sinh',
       icon: <Pill className="w-4 h-4" />
     },
     {
       stage: 3 as const,
-      badge: 'Bước 3',
+      badge: '3. Tính Liều',
+      sub: '43 KS • CrCl & DDI',
       title: 'Tính Liều & An Toàn Dược',
       desc: '43 Kháng sinh • Hiệu chỉnh CrCl/HD/CRRT • Cảnh báo DDI',
       icon: <Activity className="w-4 h-4" />
     },
     {
       stage: 4 as const,
-      badge: 'Bước 4',
+      badge: '4. Tái Đánh Giá',
+      sub: '48-72h • Xuống thang',
       title: 'Tái Đánh Giá 48-72h',
       desc: 'Đáp ứng lâm sàng & KSĐ • Xuống thang • Ngưng KS / IV-to-PO',
       icon: <Clock className="w-4 h-4" />
@@ -294,69 +298,74 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
   ];
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4">
       
       {/* Top Clinical Pipeline Header & View Switcher */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 p-3 sm:p-4 shadow-xs">
+      <div className="bg-white rounded-2xl border border-slate-200/90 p-2.5 sm:p-3 shadow-xs">
         
         {/* Top meta row */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-100">
           <div className="flex items-center space-x-2">
-            <span className="px-2.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-teal-100 text-teal-800">
-              Quy Trình 4 Bước Chuẩn Hóa
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-teal-100 text-teal-800">
+              Quy Trình 4 Bước
             </span>
-            <span className="text-xs text-slate-500 hidden sm:inline">
-              Lưu đồ BV Bệnh Nhiệt Đới 2026 • NHSN-CDC • QĐ 5631/BYT
+            <span className="text-[11px] text-slate-500 hidden md:inline">
+              BVBND 2026 • WHO AWaRe • NHSN-CDC
             </span>
           </div>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1.5 self-end sm:self-auto">
             {/* Copy Summary Button */}
             <button
               type="button"
               onClick={handleCopyConsultationSummary}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer border ${
+              className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all flex items-center space-x-1 cursor-pointer border ${
                 copiedSummary
                   ? 'bg-emerald-600 text-white border-emerald-600'
                   : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
               }`}
               title="Sao chép toàn bộ tóm tắt hội chẩn để dán vào Bệnh án EMR/HIS"
+              aria-label="Sao chép tóm tắt EMR"
             >
-              {copiedSummary ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5 text-slate-500" />}
-              <span>{copiedSummary ? 'Đã sao chép EMR' : 'Sao chép tóm tắt EMR'}</span>
+              {copiedSummary ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5 text-slate-500" />}
+              <span className="text-[11px]">{copiedSummary ? 'Đã sao chép' : 'EMR'}</span>
             </button>
 
             {/* View Mode Toggle */}
-            <div className="grid grid-cols-2 rounded-xl p-1 bg-slate-100 border border-slate-200 text-xs font-bold">
+            <div className="inline-flex rounded-xl p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold">
               <button
                 type="button"
                 onClick={() => setViewMode('stepper')}
-                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center justify-center space-x-1 ${
+                className={`p-1.5 rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${
                   viewMode === 'stepper'
                     ? 'bg-white text-teal-900 shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
+                title="Chế độ Từng Bước lâm sàng"
+                aria-label="Từng bước"
               >
                 <LayoutList className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Từng Bước</span>
+                <span className="hidden sm:inline text-[11px]">Từng Bước</span>
               </button>
               <button
                 type="button"
                 onClick={() => setViewMode('all-in-one')}
-                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center justify-center space-x-1 ${
+                className={`p-1.5 rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${
                   viewMode === 'all-in-one'
                     ? 'bg-white text-teal-900 shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
+                title="Chế độ Xem Toàn Bộ trên 1 trang"
+                aria-label="Toàn bộ"
               >
                 <Layers className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Toàn Bộ</span>
+                <span className="hidden sm:inline text-[11px]">Toàn Bộ</span>
               </button>
             </div>
           </div>
         </div>
 
-        {/* 4-Step Interactive Pipeline Progress Bar (Responsive 1/2/4 cols) */}
+        {/* 4-Step Interactive Pipeline (Streamlined Icon-First Header) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
           {stagesList.map((st) => {
             const isActive = currentStage === st.stage;
@@ -373,39 +382,37 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-start space-x-2.5 ${
+                title={st.desc}
+                className={`p-2.5 rounded-2xl border text-left transition-all cursor-pointer flex items-center space-x-2.5 ${
                   isActive
-                    ? 'border-teal-500 bg-teal-50/80 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
+                    ? 'border-teal-500 bg-teal-50/90 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
                     : isCompleted
                     ? 'border-slate-200 bg-white text-slate-800 hover:border-slate-300'
                     : 'border-slate-100 bg-slate-50/60 text-slate-500 hover:bg-slate-50'
                 }`}
               >
                 <div
-                  className={`w-7 h-7 rounded-xl shrink-0 flex items-center justify-center font-bold text-xs ${
+                  className={`w-8 h-8 rounded-xl shrink-0 flex items-center justify-center font-bold text-xs ${
                     isActive
                       ? 'bg-teal-600 text-white shadow-xs'
                       : isCompleted
                       ? 'bg-emerald-500 text-white'
-                      : 'bg-slate-200 text-slate-600'
+                      : 'bg-slate-200/80 text-slate-600'
                   }`}
                 >
-                  {isCompleted ? '✓' : st.stage}
+                  {isCompleted ? <Check className="w-4 h-4 text-white" /> : st.icon}
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">
+                    <span className="text-xs font-black text-slate-900 truncate">
                       {st.badge}
                     </span>
                     {isActive && (
                       <span className="w-2 h-2 rounded-full bg-teal-500 shrink-0"></span>
                     )}
                   </div>
-                  <div className="text-xs font-black text-slate-900 mt-0.5 truncate leading-tight">
-                    {st.title}
-                  </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5 line-clamp-1 leading-tight">
-                    {st.desc}
+                  <div className="text-[10px] font-semibold text-slate-500 truncate mt-0.5">
+                    {st.sub}
                   </div>
                 </div>
               </button>
@@ -518,7 +525,7 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
               <div className="flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200">
                 <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">2</span>
                 <h2 className="text-base font-extrabold text-slate-900">
-                  Bước 2: Lựa Chọn Phác Đồ Khởi Đầu BVBND 2026 &amp; Antibiogram Vi Sinh
+                  Bước 2: Lựa Chọn Phác Đồ BVBND 2026 &amp; WHO AWaRe • Antibiogram Vi Sinh
                 </h2>
               </div>
             )}
@@ -582,7 +589,7 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
                   className="px-4 py-2.5 rounded-2xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all flex items-center space-x-1.5 cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4" />
-                  <span>Quay lại Bước 2 (Phác đồ BVBND)</span>
+                  <span>Quay lại Bước 2 (Phác đồ BVBND &amp; WHO)</span>
                 </button>
 
                 <button

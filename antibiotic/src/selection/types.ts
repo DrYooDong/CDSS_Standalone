@@ -23,8 +23,11 @@ export type SepsisSource =
 
 export type RiskGroup = 'group_1' | 'group_2';
 
+export type GuidelineSource = 'bvbnd' | 'who' | 'compare';
+export type AwareCategory = 'Access' | 'Watch' | 'Reserve';
+
 export interface SourceRef {
-  doc: string;    // 'BVBND_LuuDo' (File 1) | 'BVBND_PhanNhom' (File 2) | 'BVBND_HDSDKS' (File 3) | 'BYT_5631' (File 4)
+  doc: string;    // 'BVBND_LuuDo' (File 1) | 'BVBND_PhanNhom' (File 2) | 'BVBND_HDSDKS' (File 3) | 'BYT_5631' (File 4) | 'WHO_AWaRe_2022'
   page: number | number[];
   note?: string;
 }
@@ -85,6 +88,8 @@ export interface DrugChoiceItem {
   infusionNoteVi?: string;
   drugName?: string; // compatibility alias
   dosageVi?: string; // compatibility alias
+  awareCategory?: AwareCategory;
+  line?: 'first_choice' | 'second_choice';
 }
 
 export interface EmpiricRegimen {
@@ -102,6 +107,18 @@ export interface EmpiricRegimen {
   cautionVi?: string[];
   cautionEn?: string[];
   source: SourceRef;
+
+  // Extended WHO AWaRe fields
+  guidelineSource?: 'bvbnd' | 'who';
+  chapterNumber?: number;
+  diseaseNameVi?: string;
+  diseaseNameEn?: string;
+  clinicalSetting?: 'primary_care' | 'hospital';
+  line?: 'first_choice' | 'second_choice';
+  durationVi?: string;
+  durationEn?: string;
+  nonAntibioticCareVi?: string;
+  commonPathogensVi?: string[];
 }
 
 export interface AntibiogramItem {

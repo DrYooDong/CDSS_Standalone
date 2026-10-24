@@ -23,6 +23,9 @@ export const SourceBadge: React.FC<SourceBadgeProps> = ({ source, className = ''
   } else if (source.doc === 'BYT_5631') {
     docName = 'QĐ 5631/QĐ-BYT 2020';
     badgeColor = 'bg-purple-50 text-purple-700 border-purple-200';
+  } else if (source.doc === 'WHO_AWaRe_2022') {
+    docName = 'WHO AWaRe 2022';
+    badgeColor = 'bg-sky-50 text-sky-800 border-sky-300';
   }
 
   const pageStr = Array.isArray(source.page) ? source.page.join(', ') : source.page;

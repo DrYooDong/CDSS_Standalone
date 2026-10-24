@@ -14654,7 +14654,7 @@ var require_lucide_react = __commonJS({
         }
       ]
     ];
-    var Activity12 = createLucideIcon("activity", __iconNode$px);
+    var Activity11 = createLucideIcon("activity", __iconNode$px);
     var __iconNode$pw = [
       ["path", { d: "M18 17.5a2.5 2.5 0 1 1-4 2.03V12", key: "yd12zl" }],
       [
@@ -16942,7 +16942,7 @@ var require_lucide_react = __commonJS({
       ],
       ["path", { d: "M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16", key: "16ra0t" }]
     ];
-    var Building2 = createLucideIcon("building-2", __iconNode$lT);
+    var Building22 = createLucideIcon("building-2", __iconNode$lT);
     var __iconNode$lS = [
       ["path", { d: "M12 10h.01", key: "1nrarc" }],
       ["path", { d: "M12 14h.01", key: "1etili" }],
@@ -17049,7 +17049,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M12 18h.01", key: "mhygvu" }],
       ["path", { d: "M8 18h.01", key: "lrp35t" }]
     ];
-    var Calculator5 = createLucideIcon("calculator", __iconNode$lL);
+    var Calculator6 = createLucideIcon("calculator", __iconNode$lL);
     var __iconNode$lK = [
       ["path", { d: "M11 14h1v4", key: "fy54vd" }],
       ["path", { d: "M16 2v4", key: "4m81vk" }],
@@ -17735,7 +17735,7 @@ var require_lucide_react = __commonJS({
     ];
     var Cherry = createLucideIcon("cherry", __iconNode$kE);
     var __iconNode$kD = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-    var ChevronDown6 = createLucideIcon("chevron-down", __iconNode$kD);
+    var ChevronDown5 = createLucideIcon("chevron-down", __iconNode$kD);
     var __iconNode$kC = [
       ["path", { d: "m17 18-6-6 6-6", key: "1yerx2" }],
       ["path", { d: "M7 6v12", key: "1p53r6" }]
@@ -17751,7 +17751,7 @@ var require_lucide_react = __commonJS({
     var __iconNode$kz = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
     var ChevronRight4 = createLucideIcon("chevron-right", __iconNode$kz);
     var __iconNode$ky = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-    var ChevronUp6 = createLucideIcon("chevron-up", __iconNode$ky);
+    var ChevronUp5 = createLucideIcon("chevron-up", __iconNode$ky);
     var __iconNode$kx = [
       ["path", { d: "m7 20 5-5 5 5", key: "13a0gw" }],
       ["path", { d: "m7 4 5 5 5-5", key: "1kwcof" }]
@@ -19929,7 +19929,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
       ["path", { d: "m9 15 2 2 4-4", key: "1grp1n" }]
     ];
-    var FileCheck = createLucideIcon("file-check", __iconNode$gx);
+    var FileCheck3 = createLucideIcon("file-check", __iconNode$gx);
     var __iconNode$gw = [
       ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
       ["path", { d: "M16 22h2a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3", key: "37hlfg" }],
@@ -21444,7 +21444,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" }],
       ["path", { d: "M2 12h20", key: "9i4pu4" }]
     ];
-    var Globe3 = createLucideIcon("globe", __iconNode$e9);
+    var Globe4 = createLucideIcon("globe", __iconNode$e9);
     var __iconNode$e8 = [
       ["path", { d: "M22 5V2l-5.89 5.89", key: "1eenpo" }],
       ["circle", { cx: "16.6", cy: "15.89", r: "3", key: "xjtalx" }],
@@ -21997,7 +21997,7 @@ var require_lucide_react = __commonJS({
       ],
       ["path", { d: "M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27", key: "auskq0" }]
     ];
-    var HeartPulse = createLucideIcon("heart-pulse", __iconNode$do);
+    var HeartPulse2 = createLucideIcon("heart-pulse", __iconNode$do);
     var __iconNode$dn = [
       [
         "path",
@@ -22790,7 +22790,7 @@ var require_lucide_react = __commonJS({
         }
       ]
     ];
-    var Layers9 = createLucideIcon("layers", __iconNode$cn);
+    var Layers10 = createLucideIcon("layers", __iconNode$cn);
     var __iconNode$cm = [
       ["rect", { width: "7", height: "9", x: "3", y: "3", rx: "1", key: "10lvy0" }],
       ["rect", { width: "7", height: "5", x: "14", y: "3", rx: "1", key: "16une8" }],
@@ -26148,7 +26148,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
       ["path", { d: "M8 16H3v5", key: "1cv678" }]
     ];
-    var RefreshCw2 = createLucideIcon("refresh-cw", __iconNode$71);
+    var RefreshCw3 = createLucideIcon("refresh-cw", __iconNode$71);
     var __iconNode$70 = [
       [
         "path",
@@ -26574,7 +26574,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M12 3v18", key: "108xh3" }],
       ["path", { d: "M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2", key: "3gwbw2" }]
     ];
-    var Scale = createLucideIcon("scale", __iconNode$6l);
+    var Scale2 = createLucideIcon("scale", __iconNode$6l);
     var __iconNode$6k = [
       ["path", { d: "M3 7V5a2 2 0 0 1 2-2h2", key: "aa7l1z" }],
       ["path", { d: "M17 3h2a2 2 0 0 1 2 2v2", key: "4qcy5o" }],
@@ -27405,7 +27405,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M8 10v4", key: "tgpxqk" }],
       ["path", { d: "M8 12H3", key: "a7s4jb" }]
     ];
-    var SlidersHorizontal2 = createLucideIcon("sliders-horizontal", __iconNode$54);
+    var SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode$54);
     var __iconNode$53 = [
       ["rect", { width: "14", height: "20", x: "5", y: "2", rx: "2", ry: "2", key: "1yt0o3" }],
       ["path", { d: "M12.667 8 10 12h4l-2.667 4", key: "h9lk2d" }]
@@ -28270,7 +28270,7 @@ var require_lucide_react = __commonJS({
         }
       ]
     ];
-    var Star = createLucideIcon("star", __iconNode$3v);
+    var Star2 = createLucideIcon("star", __iconNode$3v);
     var __iconNode$3u = [
       [
         "path",
@@ -28311,7 +28311,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M8 15a6 6 0 0 0 12 0v-3", key: "x18d4x" }],
       ["circle", { cx: "20", cy: "10", r: "2", key: "ts1r5v" }]
     ];
-    var Stethoscope3 = createLucideIcon("stethoscope", __iconNode$3r);
+    var Stethoscope4 = createLucideIcon("stethoscope", __iconNode$3r);
     var __iconNode$3q = [
       ["path", { d: "M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z", key: "qazsjp" }],
       ["path", { d: "M15 3v4a2 2 0 0 0 2 2h4", key: "40519r" }]
@@ -29710,7 +29710,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
       ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
     ];
-    var User8 = createLucideIcon("user", __iconNode$12);
+    var User7 = createLucideIcon("user", __iconNode$12);
     var __iconNode$11 = [
       ["path", { d: "M18 21a8 8 0 0 0-16 0", key: "3ypg7q" }],
       ["circle", { cx: "10", cy: "8", r: "5", key: "o932ke" }],
@@ -30427,7 +30427,7 @@ var require_lucide_react = __commonJS({
       AArrowUp,
       ALargeSmall,
       Accessibility,
-      Activity: Activity12,
+      Activity: Activity11,
       AirVent,
       Airplay,
       AlarmClock,
@@ -30662,14 +30662,14 @@ var require_lucide_react = __commonJS({
       BugOff,
       BugPlay,
       Building,
-      Building2,
+      Building2: Building22,
       Bus,
       BusFront,
       Cable,
       CableCar,
       Cake,
       CakeSlice,
-      Calculator: Calculator5,
+      Calculator: Calculator6,
       Calendar,
       Calendar1,
       CalendarArrowDown,
@@ -30741,12 +30741,12 @@ var require_lucide_react = __commonJS({
       CheckLine,
       ChefHat,
       Cherry,
-      ChevronDown: ChevronDown6,
+      ChevronDown: ChevronDown5,
       ChevronFirst,
       ChevronLast,
       ChevronLeft: ChevronLeft3,
       ChevronRight: ChevronRight4,
-      ChevronUp: ChevronUp6,
+      ChevronUp: ChevronUp5,
       ChevronsDown,
       ChevronsDownUp,
       ChevronsLeft,
@@ -31003,7 +31003,7 @@ var require_lucide_react = __commonJS({
       FileChartColumnIncreasing,
       FileChartLine,
       FileChartPie,
-      FileCheck,
+      FileCheck: FileCheck3,
       FileCheck2,
       FileClock,
       FileCode,
@@ -31151,7 +31151,7 @@ var require_lucide_react = __commonJS({
       Gitlab,
       GlassWater,
       Glasses,
-      Globe: Globe3,
+      Globe: Globe4,
       GlobeLock,
       Goal,
       Gpu,
@@ -31205,7 +31205,7 @@ var require_lucide_react = __commonJS({
       HeartMinus,
       HeartOff,
       HeartPlus,
-      HeartPulse,
+      HeartPulse: HeartPulse2,
       Heater,
       Hexagon,
       Highlighter,
@@ -31268,7 +31268,7 @@ var require_lucide_react = __commonJS({
       Lasso,
       LassoSelect,
       Laugh,
-      Layers: Layers9,
+      Layers: Layers10,
       Layers2: Layers22,
       LayoutDashboard,
       LayoutGrid: LayoutGrid2,
@@ -31610,7 +31610,7 @@ var require_lucide_react = __commonJS({
       RedoDot,
       RefreshCcw,
       RefreshCcwDot,
-      RefreshCw: RefreshCw2,
+      RefreshCw: RefreshCw3,
       RefreshCwOff,
       Refrigerator,
       Regex,
@@ -31653,7 +31653,7 @@ var require_lucide_react = __commonJS({
       Save: Save2,
       SaveAll,
       SaveOff,
-      Scale,
+      Scale: Scale2,
       Scale3d,
       Scaling,
       Scan,
@@ -31735,7 +31735,7 @@ var require_lucide_react = __commonJS({
       Slack,
       Slash,
       Slice,
-      SlidersHorizontal: SlidersHorizontal2,
+      SlidersHorizontal,
       SlidersVertical,
       Smartphone: Smartphone2,
       SmartphoneCharging,
@@ -31835,12 +31835,12 @@ var require_lucide_react = __commonJS({
       SquircleDashed,
       Squirrel,
       Stamp,
-      Star,
+      Star: Star2,
       StarHalf,
       StarOff,
       StepBack,
       StepForward,
-      Stethoscope: Stethoscope3,
+      Stethoscope: Stethoscope4,
       Sticker,
       StickyNote,
       Store,
@@ -31977,7 +31977,7 @@ var require_lucide_react = __commonJS({
       Unplug,
       Upload,
       Usb,
-      User: User8,
+      User: User7,
       UserCheck,
       UserCog,
       UserLock,
@@ -32070,8 +32070,8 @@ var require_lucide_react = __commonJS({
     exports.ALargeSmallIcon = ALargeSmall;
     exports.Accessibility = Accessibility;
     exports.AccessibilityIcon = Accessibility;
-    exports.Activity = Activity12;
-    exports.ActivityIcon = Activity12;
+    exports.Activity = Activity11;
+    exports.ActivityIcon = Activity11;
     exports.ActivitySquare = SquareActivity;
     exports.ActivitySquareIcon = SquareActivity;
     exports.AirVent = AirVent;
@@ -32639,8 +32639,8 @@ var require_lucide_react = __commonJS({
     exports.BugPlay = BugPlay;
     exports.BugPlayIcon = BugPlay;
     exports.Building = Building;
-    exports.Building2 = Building2;
-    exports.Building2Icon = Building2;
+    exports.Building2 = Building22;
+    exports.Building2Icon = Building22;
     exports.BuildingIcon = Building;
     exports.Bus = Bus;
     exports.BusFront = BusFront;
@@ -32654,8 +32654,8 @@ var require_lucide_react = __commonJS({
     exports.CakeIcon = Cake;
     exports.CakeSlice = CakeSlice;
     exports.CakeSliceIcon = CakeSlice;
-    exports.Calculator = Calculator5;
-    exports.CalculatorIcon = Calculator5;
+    exports.Calculator = Calculator6;
+    exports.CalculatorIcon = Calculator6;
     exports.Calendar = Calendar;
     exports.Calendar1 = Calendar1;
     exports.Calendar1Icon = Calendar1;
@@ -32808,10 +32808,10 @@ var require_lucide_react = __commonJS({
     exports.ChefHatIcon = ChefHat;
     exports.Cherry = Cherry;
     exports.CherryIcon = Cherry;
-    exports.ChevronDown = ChevronDown6;
+    exports.ChevronDown = ChevronDown5;
     exports.ChevronDownCircle = CircleChevronDown;
     exports.ChevronDownCircleIcon = CircleChevronDown;
-    exports.ChevronDownIcon = ChevronDown6;
+    exports.ChevronDownIcon = ChevronDown5;
     exports.ChevronDownSquare = SquareChevronDown;
     exports.ChevronDownSquareIcon = SquareChevronDown;
     exports.ChevronFirst = ChevronFirst;
@@ -32830,10 +32830,10 @@ var require_lucide_react = __commonJS({
     exports.ChevronRightIcon = ChevronRight4;
     exports.ChevronRightSquare = SquareChevronRight;
     exports.ChevronRightSquareIcon = SquareChevronRight;
-    exports.ChevronUp = ChevronUp6;
+    exports.ChevronUp = ChevronUp5;
     exports.ChevronUpCircle = CircleChevronUp;
     exports.ChevronUpCircleIcon = CircleChevronUp;
-    exports.ChevronUpIcon = ChevronUp6;
+    exports.ChevronUpIcon = ChevronUp5;
     exports.ChevronUpSquare = SquareChevronUp;
     exports.ChevronUpSquareIcon = SquareChevronUp;
     exports.ChevronsDown = ChevronsDown;
@@ -33391,10 +33391,10 @@ var require_lucide_react = __commonJS({
     exports.FileChartLineIcon = FileChartLine;
     exports.FileChartPie = FileChartPie;
     exports.FileChartPieIcon = FileChartPie;
-    exports.FileCheck = FileCheck;
+    exports.FileCheck = FileCheck3;
     exports.FileCheck2 = FileCheck2;
     exports.FileCheck2Icon = FileCheck2;
-    exports.FileCheckIcon = FileCheck;
+    exports.FileCheckIcon = FileCheck3;
     exports.FileClock = FileClock;
     exports.FileClockIcon = FileClock;
     exports.FileCode = FileCode;
@@ -33728,10 +33728,10 @@ var require_lucide_react = __commonJS({
     exports.GlassWaterIcon = GlassWater;
     exports.Glasses = Glasses;
     exports.GlassesIcon = Glasses;
-    exports.Globe = Globe3;
+    exports.Globe = Globe4;
     exports.Globe2 = Earth;
     exports.Globe2Icon = Earth;
-    exports.GlobeIcon = Globe3;
+    exports.GlobeIcon = Globe4;
     exports.GlobeLock = GlobeLock;
     exports.GlobeLockIcon = GlobeLock;
     exports.Goal = Goal;
@@ -33852,8 +33852,8 @@ var require_lucide_react = __commonJS({
     exports.HeartOffIcon = HeartOff;
     exports.HeartPlus = HeartPlus;
     exports.HeartPlusIcon = HeartPlus;
-    exports.HeartPulse = HeartPulse;
-    exports.HeartPulseIcon = HeartPulse;
+    exports.HeartPulse = HeartPulse2;
+    exports.HeartPulseIcon = HeartPulse2;
     exports.Heater = Heater;
     exports.HeaterIcon = Heater;
     exports.HelpCircle = CircleQuestionMark;
@@ -34003,12 +34003,12 @@ var require_lucide_react = __commonJS({
     exports.LassoSelectIcon = LassoSelect;
     exports.Laugh = Laugh;
     exports.LaughIcon = Laugh;
-    exports.Layers = Layers9;
+    exports.Layers = Layers10;
     exports.Layers2 = Layers22;
     exports.Layers2Icon = Layers22;
-    exports.Layers3 = Layers9;
-    exports.Layers3Icon = Layers9;
-    exports.LayersIcon = Layers9;
+    exports.Layers3 = Layers10;
+    exports.Layers3Icon = Layers10;
+    exports.LayersIcon = Layers10;
     exports.Layout = PanelsTopLeft;
     exports.LayoutDashboard = LayoutDashboard;
     exports.LayoutDashboardIcon = LayoutDashboard;
@@ -34135,7 +34135,7 @@ var require_lucide_react = __commonJS({
     exports.LucideAArrowUp = AArrowUp;
     exports.LucideALargeSmall = ALargeSmall;
     exports.LucideAccessibility = Accessibility;
-    exports.LucideActivity = Activity12;
+    exports.LucideActivity = Activity11;
     exports.LucideActivitySquare = SquareActivity;
     exports.LucideAirVent = AirVent;
     exports.LucideAirplay = Airplay;
@@ -34420,14 +34420,14 @@ var require_lucide_react = __commonJS({
     exports.LucideBugOff = BugOff;
     exports.LucideBugPlay = BugPlay;
     exports.LucideBuilding = Building;
-    exports.LucideBuilding2 = Building2;
+    exports.LucideBuilding2 = Building22;
     exports.LucideBus = Bus;
     exports.LucideBusFront = BusFront;
     exports.LucideCable = Cable;
     exports.LucideCableCar = CableCar;
     exports.LucideCake = Cake;
     exports.LucideCakeSlice = CakeSlice;
-    exports.LucideCalculator = Calculator5;
+    exports.LucideCalculator = Calculator6;
     exports.LucideCalendar = Calendar;
     exports.LucideCalendar1 = Calendar1;
     exports.LucideCalendarArrowDown = CalendarArrowDown;
@@ -34504,7 +34504,7 @@ var require_lucide_react = __commonJS({
     exports.LucideCheckSquare2 = SquareCheck;
     exports.LucideChefHat = ChefHat;
     exports.LucideCherry = Cherry;
-    exports.LucideChevronDown = ChevronDown6;
+    exports.LucideChevronDown = ChevronDown5;
     exports.LucideChevronDownCircle = CircleChevronDown;
     exports.LucideChevronDownSquare = SquareChevronDown;
     exports.LucideChevronFirst = ChevronFirst;
@@ -34515,7 +34515,7 @@ var require_lucide_react = __commonJS({
     exports.LucideChevronRight = ChevronRight4;
     exports.LucideChevronRightCircle = CircleChevronRight;
     exports.LucideChevronRightSquare = SquareChevronRight;
-    exports.LucideChevronUp = ChevronUp6;
+    exports.LucideChevronUp = ChevronUp5;
     exports.LucideChevronUpCircle = CircleChevronUp;
     exports.LucideChevronUpSquare = SquareChevronUp;
     exports.LucideChevronsDown = ChevronsDown;
@@ -34796,7 +34796,7 @@ var require_lucide_react = __commonJS({
     exports.LucideFileChartColumnIncreasing = FileChartColumnIncreasing;
     exports.LucideFileChartLine = FileChartLine;
     exports.LucideFileChartPie = FileChartPie;
-    exports.LucideFileCheck = FileCheck;
+    exports.LucideFileCheck = FileCheck3;
     exports.LucideFileCheck2 = FileCheck2;
     exports.LucideFileClock = FileClock;
     exports.LucideFileCode = FileCode;
@@ -34964,7 +34964,7 @@ var require_lucide_react = __commonJS({
     exports.LucideGitlab = Gitlab;
     exports.LucideGlassWater = GlassWater;
     exports.LucideGlasses = Glasses;
-    exports.LucideGlobe = Globe3;
+    exports.LucideGlobe = Globe4;
     exports.LucideGlobe2 = Earth;
     exports.LucideGlobeLock = GlobeLock;
     exports.LucideGoal = Goal;
@@ -35026,7 +35026,7 @@ var require_lucide_react = __commonJS({
     exports.LucideHeartMinus = HeartMinus;
     exports.LucideHeartOff = HeartOff;
     exports.LucideHeartPlus = HeartPlus;
-    exports.LucideHeartPulse = HeartPulse;
+    exports.LucideHeartPulse = HeartPulse2;
     exports.LucideHeater = Heater;
     exports.LucideHelpCircle = CircleQuestionMark;
     exports.LucideHelpingHand = HandHelping;
@@ -35101,9 +35101,9 @@ var require_lucide_react = __commonJS({
     exports.LucideLasso = Lasso;
     exports.LucideLassoSelect = LassoSelect;
     exports.LucideLaugh = Laugh;
-    exports.LucideLayers = Layers9;
+    exports.LucideLayers = Layers10;
     exports.LucideLayers2 = Layers22;
-    exports.LucideLayers3 = Layers9;
+    exports.LucideLayers3 = Layers10;
     exports.LucideLayout = PanelsTopLeft;
     exports.LucideLayoutDashboard = LayoutDashboard;
     exports.LucideLayoutGrid = LayoutGrid2;
@@ -35491,7 +35491,7 @@ var require_lucide_react = __commonJS({
     exports.LucideRedoDot = RedoDot;
     exports.LucideRefreshCcw = RefreshCcw;
     exports.LucideRefreshCcwDot = RefreshCcwDot;
-    exports.LucideRefreshCw = RefreshCw2;
+    exports.LucideRefreshCw = RefreshCw3;
     exports.LucideRefreshCwOff = RefreshCwOff;
     exports.LucideRefrigerator = Refrigerator;
     exports.LucideRegex = Regex;
@@ -35536,7 +35536,7 @@ var require_lucide_react = __commonJS({
     exports.LucideSave = Save2;
     exports.LucideSaveAll = SaveAll;
     exports.LucideSaveOff = SaveOff;
-    exports.LucideScale = Scale;
+    exports.LucideScale = Scale2;
     exports.LucideScale3D = Scale3d;
     exports.LucideScale3d = Scale3d;
     exports.LucideScaling = Scaling;
@@ -35632,7 +35632,7 @@ var require_lucide_react = __commonJS({
     exports.LucideSlashSquare = SquareSlash;
     exports.LucideSlice = Slice;
     exports.LucideSliders = SlidersVertical;
-    exports.LucideSlidersHorizontal = SlidersHorizontal2;
+    exports.LucideSlidersHorizontal = SlidersHorizontal;
     exports.LucideSlidersVertical = SlidersVertical;
     exports.LucideSmartphone = Smartphone2;
     exports.LucideSmartphoneCharging = SmartphoneCharging;
@@ -35737,13 +35737,13 @@ var require_lucide_react = __commonJS({
     exports.LucideSquircleDashed = SquircleDashed;
     exports.LucideSquirrel = Squirrel;
     exports.LucideStamp = Stamp;
-    exports.LucideStar = Star;
+    exports.LucideStar = Star2;
     exports.LucideStarHalf = StarHalf;
     exports.LucideStarOff = StarOff;
     exports.LucideStars = Sparkles12;
     exports.LucideStepBack = StepBack;
     exports.LucideStepForward = StepForward;
-    exports.LucideStethoscope = Stethoscope3;
+    exports.LucideStethoscope = Stethoscope4;
     exports.LucideSticker = Sticker;
     exports.LucideStickyNote = StickyNote;
     exports.LucideStopCircle = CircleStop;
@@ -35892,7 +35892,7 @@ var require_lucide_react = __commonJS({
     exports.LucideUpload = Upload;
     exports.LucideUploadCloud = CloudUpload;
     exports.LucideUsb = Usb;
-    exports.LucideUser = User8;
+    exports.LucideUser = User7;
     exports.LucideUser2 = UserRound;
     exports.LucideUserCheck = UserCheck;
     exports.LucideUserCheck2 = UserRoundCheck;
@@ -36646,8 +36646,8 @@ var require_lucide_react = __commonJS({
     exports.RefreshCcwDot = RefreshCcwDot;
     exports.RefreshCcwDotIcon = RefreshCcwDot;
     exports.RefreshCcwIcon = RefreshCcw;
-    exports.RefreshCw = RefreshCw2;
-    exports.RefreshCwIcon = RefreshCw2;
+    exports.RefreshCw = RefreshCw3;
+    exports.RefreshCwIcon = RefreshCw3;
     exports.RefreshCwOff = RefreshCwOff;
     exports.RefreshCwOffIcon = RefreshCwOff;
     exports.Refrigerator = Refrigerator;
@@ -36736,12 +36736,12 @@ var require_lucide_react = __commonJS({
     exports.SaveIcon = Save2;
     exports.SaveOff = SaveOff;
     exports.SaveOffIcon = SaveOff;
-    exports.Scale = Scale;
+    exports.Scale = Scale2;
     exports.Scale3D = Scale3d;
     exports.Scale3DIcon = Scale3d;
     exports.Scale3d = Scale3d;
     exports.Scale3dIcon = Scale3d;
-    exports.ScaleIcon = Scale;
+    exports.ScaleIcon = Scale2;
     exports.Scaling = Scaling;
     exports.ScalingIcon = Scaling;
     exports.Scan = Scan;
@@ -36927,8 +36927,8 @@ var require_lucide_react = __commonJS({
     exports.Slice = Slice;
     exports.SliceIcon = Slice;
     exports.Sliders = SlidersVertical;
-    exports.SlidersHorizontal = SlidersHorizontal2;
-    exports.SlidersHorizontalIcon = SlidersHorizontal2;
+    exports.SlidersHorizontal = SlidersHorizontal;
+    exports.SlidersHorizontalIcon = SlidersHorizontal;
     exports.SlidersIcon = SlidersVertical;
     exports.SlidersVertical = SlidersVertical;
     exports.SlidersVerticalIcon = SlidersVertical;
@@ -37138,10 +37138,10 @@ var require_lucide_react = __commonJS({
     exports.SquirrelIcon = Squirrel;
     exports.Stamp = Stamp;
     exports.StampIcon = Stamp;
-    exports.Star = Star;
+    exports.Star = Star2;
     exports.StarHalf = StarHalf;
     exports.StarHalfIcon = StarHalf;
-    exports.StarIcon = Star;
+    exports.StarIcon = Star2;
     exports.StarOff = StarOff;
     exports.StarOffIcon = StarOff;
     exports.Stars = Sparkles12;
@@ -37150,8 +37150,8 @@ var require_lucide_react = __commonJS({
     exports.StepBackIcon = StepBack;
     exports.StepForward = StepForward;
     exports.StepForwardIcon = StepForward;
-    exports.Stethoscope = Stethoscope3;
-    exports.StethoscopeIcon = Stethoscope3;
+    exports.Stethoscope = Stethoscope4;
+    exports.StethoscopeIcon = Stethoscope4;
     exports.Sticker = Sticker;
     exports.StickerIcon = Sticker;
     exports.StickyNote = StickyNote;
@@ -37448,7 +37448,7 @@ var require_lucide_react = __commonJS({
     exports.UploadIcon = Upload;
     exports.Usb = Usb;
     exports.UsbIcon = Usb;
-    exports.User = User8;
+    exports.User = User7;
     exports.User2 = UserRound;
     exports.User2Icon = UserRound;
     exports.UserCheck = UserCheck;
@@ -37463,7 +37463,7 @@ var require_lucide_react = __commonJS({
     exports.UserCog2 = UserRoundCog;
     exports.UserCog2Icon = UserRoundCog;
     exports.UserCogIcon = UserCog;
-    exports.UserIcon = User8;
+    exports.UserIcon = User7;
     exports.UserLock = UserLock;
     exports.UserLockIcon = UserLock;
     exports.UserMinus = UserMinus;
@@ -47122,23 +47122,24 @@ var Header = ({
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "text-teal-600", children: "CDSS" })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-800 border border-teal-200/60", children: "v3.0 Pro" }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200", children: "BVBND 2026 \u2022 NHSN-CDC" })
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200", children: "BVBND 2026 \u2022 WHO AWaRe 2022 \u2022 NHSN-CDC" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("p", { className: "text-xs text-slate-500 hidden sm:block", children: isEn ? "Clinical Infection Assessment, MDR Stratification & Precision Antibiotic Dosing" : "\u0110\xE1nh Gi\xE1 Nhi\u1EC5m Tr\xF9ng, Vi Khu\u1EA9n \u0110a Kh\xE1ng & Li\u1EC1u Kh\xE1ng Sinh C\xE1 Th\u1EC3 H\xF3a" })
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("p", { className: "text-[11px] text-slate-500 hidden sm:block", children: isEn ? "MDR Stratification & Precision Antibiotic Dosing" : "Ph\xE2n t\u1EA7ng VK\u0110K & T\xEDnh li\u1EC1u kh\xE1ng sinh c\xE1 th\u1EC3 h\xF3a" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "hidden lg:flex items-center space-x-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "hidden lg:flex items-center space-x-1.5", children: [
         onOpenDrugSearch && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
           "button",
           {
             type: "button",
             onClick: onOpenDrugSearch,
-            className: "px-3 py-1.5 rounded-xl text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-colors flex items-center gap-1.5 text-xs font-bold cursor-pointer",
+            className: "px-2.5 py-1.5 rounded-xl text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200/80 transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer",
             title: "Tra c\u1EE9u nhanh 43 kh\xE1ng sinh (Ph\xEDm t\u1EAFt /)",
+            "aria-label": "Tra c\u1EE9u 43 kh\xE1ng sinh",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.Search, { className: "w-3.5 h-3.5 text-teal-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Tra c\u1EE9u 43 KS" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("kbd", { className: "px-1 py-0.2 text-[10px] bg-white border border-slate-300 rounded text-slate-500 font-mono", children: "/" })
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "text-[11px]", children: "43 KS" }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("kbd", { className: "px-1 py-0.2 text-[9px] bg-white border border-slate-300 rounded text-slate-500 font-mono", children: "/" })
             ]
           }
         ),
@@ -47147,12 +47148,12 @@ var Header = ({
           {
             id: "btn-open-bvbnd-atlas",
             onClick: onOpenGuidelineAtlas,
-            className: "px-3 py-1.5 rounded-xl text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-colors flex items-center gap-1.5 text-xs font-bold cursor-pointer shadow-2xs",
-            title: isEn ? "BVBND 2026 Flowchart & Antibiogram Atlas" : "Xem tr\u1ECDn b\u1ED9 Atlas L\u01B0u \u0111\u1ED3 G\u1ED1c & D\u1EEF li\u1EC7u Vi sinh BVBND 2026",
+            className: "p-2 rounded-xl text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer shadow-2xs",
+            title: isEn ? "BVBND 2026 Flowchart & Antibiogram Atlas" : "Xem Atlas L\u01B0u \u0111\u1ED3 G\u1ED1c & D\u1EEF li\u1EC7u Vi sinh BVBND 2026",
             "aria-label": "Atlas BVBND",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.BookOpen, { className: "w-4 h-4 text-emerald-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: isEn ? "BVBND Atlas" : "Atlas BVBND 2026" })
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "hidden xl:inline text-[11px]", children: "Atlas BVBND" })
             ]
           }
         ),
@@ -47180,12 +47181,12 @@ var Header = ({
           "button",
           {
             onClick: onOpenPdfModal,
-            className: "px-3 py-1.5 rounded-xl text-white bg-teal-600 hover:bg-teal-700 shadow-sm transition-all flex items-center space-x-1.5 text-xs font-bold cursor-pointer",
-            title: isEn ? "Export PDF / Print" : "Xu\u1EA5t Phi\u1EBFu H\u1ED9i Ch\u1EA9n / In PDF",
+            className: "p-2 sm:px-2.5 sm:py-1.5 rounded-xl text-white bg-teal-600 hover:bg-teal-700 shadow-sm transition-all flex items-center space-x-1 text-xs font-bold cursor-pointer",
+            title: isEn ? "Export PDF / Print Consultation Report" : "Xu\u1EA5t Phi\u1EBFu H\u1ED9i Ch\u1EA9n / In PDF",
             "aria-label": "Xu\u1EA5t Phi\u1EBFu H\u1ED9i Ch\u1EA9n",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.FileText, { className: "w-4 h-4" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Phi\u1EBFu H\u1ED9i Ch\u1EA9n PDF" })
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "hidden xl:inline text-[11px]", children: "In PDF" })
             ]
           }
         ),
@@ -47837,7 +47838,7 @@ var PatientSidebar = ({
           /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex justify-between", children: [
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "text-slate-500", children: "Tr\u1ECDng l\u01B0\u1EE3ng d\xF9ng t\xEDnh li\u1EC1u:" }),
             /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: "font-bold text-teal-700", children: [
-              renal.weightUsed,
+              renal.usedWeight,
               " kg"
             ] })
           ] })
@@ -53622,7 +53623,7 @@ function generatePdfConsultationReport(data) {
   const now = /* @__PURE__ */ new Date();
   const dateStr = `${now.getDate().toString().padStart(2, "0")}/${(now.getMonth() + 1).toString().padStart(2, "0")}/${now.getFullYear()} ${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
   doc.text(`${isEn ? "Generated on" : "Thoi gian xuat"}: ${dateStr}`, margin, y + 24);
-  const filename = `CDSS_KhangSinh_${data.drug.id}_${patientId}_${now.toISOString().slice(0, 10)}.pdf`;
+  const filename = `CDSS_KhangSinh_${data.drug.id}_${now.toISOString().slice(0, 10)}.pdf`;
   doc.save(filename);
 }
 function triggerPrintConsultation() {
@@ -56788,6 +56789,1460 @@ function findEmpiricRegimens(site, population, riskGroup, sepsisSource, specific
   return candidates;
 }
 
+// src/selection/data/whoRegimens.ts
+var WHO_REGIMENS = [
+  // =======================================================================
+  // 1. RESPIRATORY INFECTIONS (CH 4, 12, 13, 27, 28)
+  // =======================================================================
+  // --- Chapter 12: Community-Acquired Pneumonia (CAP) - Mild (Adult) ---
+  {
+    id: "who_cap_mild_adult_first",
+    site: "respiratory",
+    population: "adult",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 12,
+    diseaseNameVi: "Vi\xEAm ph\u1ED5i m\u1EAFc ph\u1EA3i c\u1ED9ng \u0111\u1ED3ng (CAP) - Th\u1EC3 nh\u1EB9 / Ch\u0103m s\xF3c ban \u0111\u1EA7u",
+    diseaseNameEn: "Community-Acquired Pneumonia (CAP) - Mild (Primary Care)",
+    clinicalSetting: "primary_care",
+    line: "first_choice",
+    titleVi: "WHO \u0110\u1EA7u Tay: Amoxicillin u\u1ED1ng (Nh\xF3m Ti\u1EBFp C\u1EADn - Access)",
+    titleEn: "WHO First Choice: Oral Amoxicillin (Access Group)",
+    durationVi: "5 ng\xE0y (CURB-65 = 0-1 \u0111i\u1EC3m)",
+    durationEn: "5 days (CURB-65 score 0-1)",
+    nonAntibioticCareVi: "B\xF9 d\u1ECBch \u0111\u1EA7y \u0111\u1EE7, ngh\u1EC9 ng\u01A1i, Paracetamol 500mg-1g m\u1ED7i 4-6h h\u1EA1 s\u1ED1t gi\u1EA3m \u0111au. Tr\xE1nh l\u1EA1m d\u1EE5ng thu\u1ED1c ho c\xF3 ch\u1EE9a opioid.",
+    drugs: [
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin (\u0110\u01A1n tr\u1ECB \u0111\u1EA7u tay)",
+        drugName: "Amoxicillin",
+        nameEn: "Amoxicillin oral",
+        standardDoseVi: "1 g u\u1ED1ng m\u1ED7i 8 gi\u1EDD (ho\u1EB7c Phenoxymethylpenicillin 500 mg (800.000 IU) m\u1ED7i 6 gi\u1EDD)",
+        dosageVi: "1 g u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice",
+        infusionNoteVi: "Ph\u1EBF c\u1EA7u kh\xE1ng penicillin m\u1EE9c \u0111\u1ED9 th\u1EA5p/trung b\xECnh v\u1EABn \u0111\xE1p \u1EE9ng r\u1EA5t t\u1ED1t v\u1EDBi Amoxicillin li\u1EC1u cao 1g q8h."
+      }
+    ],
+    combinationRulesVi: [
+      "Amoxicillin \u0111\u01B0\u1EDDng u\u1ED1ng l\xE0 l\u1EF1a ch\u1ECDn s\u1ED1 1 th\u1EBF gi\u1EDBi c\u1EE7a WHO cho CAP nh\u1EB9-v\u1EEBa \u1EDF ng\u01B0\u1EDDi l\u1EDBn.",
+      "Kh\xF4ng c\u1EA7n x\xE9t nghi\u1EC7m vi sinh th\u01B0\u1EDDng quy cho c\xE1c tr\u01B0\u1EDDng h\u1EE3p ngo\u1EA1i tr\xFA nh\u1EB9.",
+      "Chuy\u1EC3n vi\u1EC7n ho\u1EB7c h\u1ED9i ch\u1EA9n n\u1EBFu b\u1EC7nh nh\xE2n kh\xF4ng c\u1EA3i thi\u1EC7n sau 48-72 gi\u1EDD."
+    ],
+    cautionVi: [
+      "\u0110\xE1nh gi\xE1 thang \u0111i\u1EC3m CURB-65: N\u1EBFu CURB-65 \u2265 2 \u0111i\u1EC3m, b\u1EC7nh nh\xE2n thu\u1ED9c th\u1EC3 N\u1EB6NG c\u1EA7n nh\u1EADp vi\u1EC7n \u0111i\u1EC1u tr\u1ECB theo Ch\u01B0\u01A1ng 27."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [147, 150], note: "Chapter 12: CAP - mild" }
+  },
+  {
+    id: "who_cap_mild_adult_second",
+    site: "respiratory",
+    population: "adult",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 12,
+    diseaseNameVi: "Vi\xEAm ph\u1ED5i m\u1EAFc ph\u1EA3i c\u1ED9ng \u0111\u1ED3ng (CAP) - Th\u1EC3 nh\u1EB9 / L\u1EF1a ch\u1ECDn th\u1EE9 hai",
+    diseaseNameEn: "Community-Acquired Pneumonia (CAP) - Mild (Second Choice)",
+    clinicalSetting: "primary_care",
+    line: "second_choice",
+    titleVi: "WHO L\u1EF1a Ch\u1ECDn Th\u1EE9 Hai: Amox/Clav u\u1ED1ng HO\u1EB6C Doxycycline",
+    titleEn: "WHO Second Choice: Oral Amox/Clav OR Doxycycline",
+    durationVi: "5 ng\xE0y",
+    durationEn: "5 days",
+    drugs: [
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin/Clavulanic acid",
+        drugName: "Amoxicillin/Clavulanate",
+        nameEn: "Amoxicillin+clavulanic acid oral",
+        standardDoseVi: "875 mg + 125 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD (ho\u1EB7c 1000/125 mg ph\xF3ng th\xEDch k\xE9o d\xE0i q12h)",
+        dosageVi: "875 mg + 125 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "second_choice"
+      },
+      {
+        nameVi: "Doxycycline (L\u1EF1a ch\u1ECDn thay th\u1EBF khi d\u1ECB \u1EE9ng penicillin)",
+        drugName: "Doxycycline",
+        nameEn: "Doxycycline oral",
+        standardDoseVi: "100 mg u\u1ED1ng m\u1ED7i 12 gi\u1EDD",
+        dosageVi: "100 mg u\u1ED1ng m\u1ED7i 12 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: false,
+        awareCategory: "Access",
+        line: "second_choice",
+        infusionNoteVi: "Bao ph\u1EE7 c\u1EA3 t\xE1c nh\xE2n \u0111i\u1EC3n h\xECnh v\xE0 kh\xF4ng \u0111i\u1EC3n h\xECnh (Mycoplasma, Chlamydia). U\u1ED1ng v\u1EDBi nhi\u1EC1u n\u01B0\u1EDBc tr\xE1nh lo\xE9t th\u1EF1c qu\u1EA3n."
+      }
+    ],
+    combinationRulesVi: [
+      "Ch\u1EC9 \u0111\u1ECBnh khi kh\xF4ng \u0111\xE1p \u1EE9ng v\u1EDBi Amoxicillin \u0111\u01A1n tr\u1ECB ho\u1EB7c nghi ng\u1EDD vi khu\u1EA9n sinh men beta-lactamase (H. influenzae, M. catarrhalis).",
+      "Doxycycline l\xE0 gi\u1EA3i ph\xE1p an to\xE0n h\xE0ng \u0111\u1EA7u cho b\u1EC7nh nh\xE2n c\xF3 ti\u1EC1n s\u1EED d\u1ECB \u1EE9ng penicillin kh\xF4ng s\u1ED1c ph\u1EA3n v\u1EC7."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [147, 150], note: "Chapter 12: CAP - mild" }
+  },
+  // --- Chapter 12: Community-Acquired Pneumonia (CAP) - Mild (Pediatric) ---
+  {
+    id: "who_cap_mild_peds_first",
+    site: "respiratory",
+    population: "pediatric",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 12,
+    diseaseNameVi: "Vi\xEAm ph\u1ED5i c\u1ED9ng \u0111\u1ED3ng \u1EDF tr\u1EBB em \u2013 Th\u1EC3 nh\u1EB9 (Th\u1EDF nhanh, kh\xF4ng r\xFAt l\xF5m ng\u1EF1c)",
+    diseaseNameEn: "Pediatric CAP \u2013 Mild (Fast breathing, no chest indrawing)",
+    clinicalSetting: "primary_care",
+    line: "first_choice",
+    titleVi: "WHO Nhi \u0110\u1EA7u Tay: Amoxicillin u\u1ED1ng li\u1EC1u cao (80-90 mg/kg/ng\xE0y)",
+    titleEn: "WHO Pediatric First Choice: Oral High-Dose Amoxicillin",
+    durationVi: "3 ng\xE0y (v\xF9ng HIV th\u1EA5p) ho\u1EB7c 5 ng\xE0y (v\xF9ng HIV cao)",
+    durationEn: "3 days (low HIV settings) or 5 days (high HIV settings)",
+    drugs: [
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin siro/vi\xEAn u\u1ED1ng",
+        drugName: "Amoxicillin",
+        nameEn: "Amoxicillin oral liquid",
+        standardDoseVi: "80\u201390 mg/kg/ng\xE0y chia 2 l\u1EA7n (q12h) u\u1ED1ng sau \u0103n",
+        dosageVi: "80\u201390 mg/kg/ng\xE0y chia 2 l\u1EA7n",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice",
+        infusionNoteVi: "Li\u1EC1u theo c\xE2n n\u1EB7ng: 3-<6kg: 250mg q12h; 6-<10kg: 375mg q12h; 10-<15kg: 500mg q12h; 15-<20kg: 750mg q12h; \u226520kg: 500mg q8h ho\u1EB7c 1g q12h."
+      }
+    ],
+    combinationRulesVi: [
+      "Tr\u1EBB ch\u1EC9 c\xF3 ho v\xE0 ch\u1EA3y m\u0169i kh\xF4ng c\xF3 th\u1EDF nhanh/r\xFAt l\xF5m ng\u1EF1c th\u01B0\u1EDDng l\xE0 nhi\u1EC5m vi-r\xFAt h\xF4 h\u1EA5p, KH\xD4NG d\xF9ng kh\xE1ng sinh.",
+      "WHO khuy\u1EBFn c\xE1o r\xFAt ng\u1EAFn th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB xu\u1ED1ng 3 ng\xE0y cho tr\u1EBB kh\xF4ng c\xF3 d\u1EA5u hi\u1EC7u n\u1EB7ng \u1EDF v\xF9ng t\u1EF7 l\u1EC7 HIV th\u1EA5p."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [147, 150], note: "Chapter 12: Pediatric CAP - mild" }
+  },
+  // --- Chapter 27: Community-Acquired Pneumonia (CAP) - Severe (Adult) ---
+  {
+    id: "who_cap_severe_adult_first",
+    site: "respiratory",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 27,
+    diseaseNameVi: "Vi\xEAm ph\u1ED5i m\u1EAFc ph\u1EA3i c\u1ED9ng \u0111\u1ED3ng (CAP) \u2013 Th\u1EC3 n\u1EB7ng (CURB-65 \u2265 2 \u0111i\u1EC3m / Nh\u1EADp vi\u1EC7n)",
+    diseaseNameEn: "Community-Acquired Pneumonia (CAP) \u2013 Severe (CURB-65 \u2265 2 / Inpatient)",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO \u0110\u1EA7u Tay: Ceftriaxone HO\u1EB6C Cefotaxime (+/- Clarithromycin)",
+    titleEn: "WHO First Choice: Ceftriaxone OR Cefotaxime (+/- Clarithromycin)",
+    durationVi: "5 ng\xE0y (\u0111\xE1nh gi\xE1 k\xE9o d\xE0i n\u1EBFu ch\u01B0a \u1ED5n \u0111\u1ECBnh l\xE2m s\xE0ng ho\u1EB7c c\xF3 m\u1EE7 m\xE0ng ph\u1ED5i)",
+    durationEn: "5 days (prolong if unstable or complications)",
+    drugs: [
+      {
+        drugId: "ceftriaxon",
+        nameVi: "Ceftriaxone",
+        drugName: "Ceftriaxone",
+        nameEn: "Ceftriaxone IV",
+        standardDoseVi: "2 g IV m\u1ED7i 24 gi\u1EDD (ho\u1EB7c 1g IM m\u1ED7i 24 gi\u1EDD)",
+        dosageVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "cefotaxim",
+        nameVi: "Cefotaxime (L\u1EF1a ch\u1ECDn thay th\u1EBF t\u01B0\u01A1ng \u0111\u01B0\u01A1ng)",
+        drugName: "Cefotaxime",
+        nameEn: "Cefotaxime IV",
+        standardDoseVi: "2 g IV/IM m\u1ED7i 8 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "azithromycin",
+        nameVi: "Clarithromycin (Ph\u1ED1i h\u1EE3p ph\u1EE7 VK kh\xF4ng \u0111i\u1EC3n h\xECnh khi CURB-65 \u2265 2)",
+        drugName: "Clarithromycin / Azithromycin",
+        nameEn: "Clarithromycin oral/IV",
+        standardDoseVi: "500 mg u\u1ED1ng/IV m\u1ED7i 12 gi\u1EDD (ho\u1EB7c Azithromycin 500mg IV/PO q24h)",
+        dosageVi: "500 mg u\u1ED1ng/IV m\u1ED7i 12 gi\u1EDD",
+        route: "PO/IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice",
+        infusionNoteVi: "Clarithromycin c\xF3 sinh kh\u1EA3 d\u1EE5ng \u0111\u01B0\u1EDDng u\u1ED1ng tuy\u1EC7t v\u1EDDi (~70-80%), \u01B0u ti\xEAn d\xF9ng \u0111\u01B0\u1EDDng u\u1ED1ng tr\u1EEB khi suy gi\u1EA3m ch\u1EE9c n\u0103ng ru\u1ED9t."
+      }
+    ],
+    combinationRulesVi: [
+      "N\u1EBEU CURB-65 \u2265 2: B\u1EAET BU\u1ED8C B\u1ED4 SUNG Clarithromycin (ho\u1EB7c Azithromycin) \u0111\u1EC3 bao ph\u1EE7 Legionella pneumophila, Mycoplasma v\xE0 Chlamydia.",
+      "C\u1EA5y m\xE1u v\xE0 x\xE9t nghi\u1EC7m kh\xE1ng nguy\xEAn n\u01B0\u1EDBc ti\u1EC3u Legionella/Ph\u1EBF c\u1EA7u tr\u01B0\u1EDBc khi ti\xEAm kh\xE1ng sinh li\u1EC1u \u0111\u1EA7u ti\xEAn."
+    ],
+    cautionVi: [
+      "Chuy\u1EC3n xu\u1ED1ng \u0111\u01B0\u1EDDng u\u1ED1ng (IV-to-PO switch) ngay khi b\u1EC7nh nh\xE2n h\u1EBFt s\u1ED1t 48 gi\u1EDD v\xE0 dung n\u1EA1p \u0111\u01B0\u1EDDng ti\xEAu h\xF3a."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [362, 364], note: "Chapter 27: CAP - severe" }
+  },
+  {
+    id: "who_cap_severe_adult_second",
+    site: "respiratory",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 27,
+    diseaseNameVi: "Vi\xEAm ph\u1ED5i c\u1ED9ng \u0111\u1ED3ng th\u1EC3 n\u1EB7ng \u2013 L\u1EF1a ch\u1ECDn th\u1EE9 hai (Amox/Clav ti\xEAm + Macrolide)",
+    diseaseNameEn: "Severe CAP \u2013 Second Choice (IV Amox/Clav + Macrolide)",
+    clinicalSetting: "hospital",
+    line: "second_choice",
+    titleVi: "WHO Th\u1EE9 Hai: Amoxicillin/Clavulanate IV + Clarithromycin",
+    titleEn: "WHO Second Choice: IV Amox/Clav + Clarithromycin",
+    durationVi: "5 ng\xE0y",
+    durationEn: "5 days",
+    drugs: [
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin/Clavulanic acid IV",
+        drugName: "Amoxicillin/Clavulanate",
+        nameEn: "Amoxicillin+clavulanic acid IV",
+        standardDoseVi: "1 g + 200 mg (1.2g) IV m\u1ED7i 8 gi\u1EDD (tr\u01B0\u1EDDng h\u1EE3p r\u1EA5t n\u1EB7ng c\xF3 th\u1EC3 t\u0103ng 1.2g q6h)",
+        dosageVi: "1.2 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "second_choice"
+      },
+      {
+        drugId: "azithromycin",
+        nameVi: "Clarithromycin",
+        drugName: "Clarithromycin",
+        nameEn: "Clarithromycin oral/IV",
+        standardDoseVi: "500 mg u\u1ED1ng/IV m\u1ED7i 12 gi\u1EDD",
+        dosageVi: "500 mg u\u1ED1ng/IV m\u1ED7i 12 gi\u1EDD",
+        route: "PO/IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "second_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "Ph\xE1c \u0111\u1ED3 ti\u1EBFt ki\u1EC7m Cephalosporin th\u1EBF h\u1EC7 3, gi\xFAp gi\u1EA3m \xE1p l\u1EF1c ch\u1ECDn l\u1ECDc \u0111\u1EC1 kh\xE1ng ESBL t\u1EA1i khoa ph\xF2ng."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [362, 364], note: "Chapter 27: CAP - severe" }
+  },
+  // --- Chapter 27: Severe CAP (Pediatric) ---
+  {
+    id: "who_cap_severe_peds_first",
+    site: "respiratory",
+    population: "pediatric",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 27,
+    diseaseNameVi: "Vi\xEAm ph\u1ED5i n\u1EB7ng \u1EDF tr\u1EBB em (R\xFAt l\xF5m ng\u1EF1c ho\u1EB7c c\xF3 d\u1EA5u hi\u1EC7u nguy hi\u1EC3m to\xE0n th\xE2n)",
+    diseaseNameEn: "Pediatric Severe CAP (Chest indrawing or danger signs)",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO Nhi N\u1EB7ng: Ampicillin/Amoxicillin IV + Gentamicin IV",
+    titleEn: "WHO Pediatric Severe First Choice: Ampicillin/Amoxicillin IV + Gentamicin IV",
+    durationVi: "5 ng\xE0y (3 ng\xE0y n\u1EBFu kh\xF4ng r\xFAt l\xF5m ng\u1EF1c \u1EDF v\xF9ng HIV th\u1EA5p)",
+    durationEn: "5 days (3 days in non-chest indrawing, low HIV)",
+    drugs: [
+      {
+        drugId: "ampicillin_sulbactam",
+        nameVi: "Ampicillin IV (ho\u1EB7c Amoxicillin IV)",
+        drugName: "Ampicillin",
+        nameEn: "Ampicillin IV",
+        standardDoseVi: "50 mg/kg/li\u1EC1u IV m\u1ED7i 8 gi\u1EDD (s\u01A1 sinh tu\u1EA7n \u0111\u1EA7u: m\u1ED7i 12 gi\u1EDD)",
+        dosageVi: "50 mg/kg m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "gentamicin",
+        nameVi: "Gentamicin IV",
+        drugName: "Gentamicin",
+        nameEn: "Gentamicin IV/IM",
+        standardDoseVi: "7,5 mg/kg IV m\u1ED7i 24 gi\u1EDD (s\u01A1 sinh: 5 mg/kg m\u1ED7i 24 gi\u1EDD)",
+        dosageVi: "7.5 mg/kg m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice",
+        infusionNoteVi: "Ti\xEAm truy\u1EC1n t\u0129nh m\u1EA1ch 1 l\u1EA7n/ng\xE0y. Theo d\xF5i ch\u1EE9c n\u0103ng th\u1EADn v\xE0 l\u01B0\u1EE3ng n\u01B0\u1EDBc ti\u1EC3u."
+      }
+    ],
+    combinationRulesVi: [
+      "Ph\u1ED1i h\u1EE3p kinh \u0111i\u1EC3n nh\xF3m Ti\u1EBFp c\u1EADn (Access + Access) bao ph\u1EE7 c\u1EA3 Ph\u1EBF c\u1EA7u, H. influenzae v\xE0 vi khu\u1EA9n Gram \xE2m \u0111\u01B0\u1EDDng ru\u1ED9t.",
+      "N\u1EBFu sau 48-72h kh\xF4ng \u0111\xE1p \u1EE9ng: Chuy\u1EC3n sang l\u1EF1a ch\u1ECDn th\u1EE9 hai Ceftriaxone 80 mg/kg q24h ho\u1EB7c Cefotaxime 50 mg/kg q8h."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [365, 366], note: "Chapter 27: Pediatric Severe CAP" }
+  },
+  // --- Chapter 28: Hospital-Acquired Pneumonia (HAP) & VAP (Adult) ---
+  {
+    id: "who_hap_adult_low_mdr",
+    site: "respiratory",
+    population: "adult",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 28,
+    diseaseNameVi: "Vi\xEAm ph\u1ED5i b\u1EC7nh vi\u1EC7n kh\xF4ng th\u1EDF m\xE1y (HAP non-VAP) \u2013 Nguy c\u01A1 VK\u0110K th\u1EA5p",
+    diseaseNameEn: "Hospital-Acquired Pneumonia (non-VAP) \u2013 Low MDR Risk",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO HAP Nguy C\u01A1 Th\u1EA5p: Amox/Clav IV HO\u1EB6C Ceftriaxone / Cefotaxime",
+    titleEn: "WHO HAP Low Risk: IV Amox/Clav OR Ceftriaxone / Cefotaxime",
+    durationVi: "7 ng\xE0y (\u0111\xE1nh gi\xE1 l\u1EA1i n\u1EBFu ch\u01B0a \u1ED5n \u0111\u1ECBnh l\xE2m s\xE0ng v\xE0o ng\xE0y 7)",
+    durationEn: "7 days (reassess at day 7)",
+    drugs: [
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin/Clavulanic acid IV",
+        drugName: "Amoxicillin/Clavulanate",
+        nameEn: "Amoxicillin+clavulanic acid IV",
+        standardDoseVi: "1 g + 200 mg (1.2g) IV m\u1ED7i 8 gi\u1EDD (ho\u1EB7c u\u1ED1ng 875/125mg q8h)",
+        dosageVi: "1.2 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "ceftriaxon",
+        nameVi: "Ceftriaxone (L\u1EF1a ch\u1ECDn thay th\u1EBF)",
+        drugName: "Ceftriaxone",
+        nameEn: "Ceftriaxone IV",
+        standardDoseVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "cefotaxim",
+        nameVi: "Cefotaxime (L\u1EF1a ch\u1ECDn thay th\u1EBF)",
+        drugName: "Cefotaxime",
+        nameEn: "Cefotaxime IV",
+        standardDoseVi: "2 g IV m\u1ED7i 8 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "\xC1p d\u1EE5ng cho b\u1EC7nh nh\xE2n n\u1EB1m vi\u1EC7n ng\u1EAFn ng\xE0y tr\u01B0\u1EDBc khi kh\u1EDFi ph\xE1t tri\u1EC7u ch\u1EE9ng (<5 ng\xE0y) v\xE0 kh\xF4ng c\xF3 ti\u1EC1n s\u1EED d\xF9ng kh\xE1ng sinh g\u1EA7n \u0111\xE2y.",
+      "C\u1EA5y \u0111\u1EDDm/d\u1ECBch h\xFAt kh\xED qu\u1EA3n v\xE0 c\u1EA5y m\xE1u tr\u01B0\u1EDBc li\u1EC1u \u0111\u1EA7u ti\xEAn."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [381, 383], note: "Chapter 28: HAP non-VAP" }
+  },
+  {
+    id: "who_hap_adult_pseudomonas",
+    site: "respiratory",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 28,
+    diseaseNameVi: "Vi\xEAm ph\u1ED5i b\u1EC7nh vi\u1EC7n (HAP/VAP) \u2013 Nguy c\u01A1 Tr\u1EF1c khu\u1EA9n m\u1EE7 xanh (Pseudomonas)",
+    diseaseNameEn: "HAP/VAP \u2013 High Risk for Pseudomonas aeruginosa / Severe",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO HAP/VAP: Piperacillin/Tazobactam 4.5g IV q6h (+/- Vancomycin)",
+    titleEn: "WHO HAP/VAP: Piperacillin/Tazobactam 4.5g IV q6h (+/- Vancomycin)",
+    durationVi: "7 ng\xE0y",
+    durationEn: "7 days",
+    drugs: [
+      {
+        drugId: "piperacillin_tazo",
+        nameVi: "Piperacillin/Tazobactam",
+        drugName: "Piperacillin/Tazobactam",
+        nameEn: "Piperacillin+tazobactam IV",
+        standardDoseVi: "4,5 g (4 g + 500 mg) IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3-4 gi\u1EDD",
+        dosageVi: "4.5 g IV m\u1ED7i 6 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice",
+        infusionNoteVi: "WHO nh\u1EA5n m\u1EA1nh Pip/Tazo cung c\u1EA5p ph\u1ED5 ch\u1ED1ng Pseudomonas aeruginosa v\u01B0\u1EE3t tr\u1ED9i m\xE0 Amox/Clav v\xE0 Ceftriaxone kh\xF4ng c\xF3."
+      },
+      {
+        drugId: "vancomycin",
+        nameVi: "Vancomycin (B\u1ED5 sung khi c\xF3 nguy c\u01A1 MRSA)",
+        drugName: "Vancomycin",
+        nameEn: "Vancomycin IV",
+        standardDoseVi: "15\u201320 mg/kg IV m\u1ED7i 12 gi\u1EDD (li\u1EC1u n\u1EA1p 25-30 mg/kg n\u1EBFu s\u1ED1c/n\u1EB7ng)",
+        dosageVi: "15-20 mg/kg m\u1ED7i 12 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "second_choice",
+        infusionNoteVi: "B\u1EAFt bu\u1ED9c theo d\xF5i n\u1ED3ng \u0111\u1ED9 \u0111\xE1y (Trough AUC/MIC) ho\u1EB7c n\u1ED3ng \u0111\u1ED9 \u0111\xE1y 15-20 mcg/mL."
+      }
+    ],
+    combinationRulesVi: [
+      "Nguy c\u01A1 P. aeruginosa t\u0103ng cao \u1EDF b\u1EC7nh nh\xE2n d\xF9ng kh\xE1ng sinh g\u1EA7n \u0111\xE2y, c\xF3 b\u1EC7nh ph\u1ED5i m\u1EA1n t\xEDnh (gi\xE3n ph\u1EBF qu\u1EA3n, COPD) ho\u1EB7c n\u1EB1m ICU > 5 ng\xE0y.",
+      "Xu\u1ED1ng thang kh\xE1ng sinh ph\u1ED5 h\u1EB9p ngay sau 48-72 gi\u1EDD khi c\xF3 k\u1EBFt qu\u1EA3 vi sinh c\u1EA5y \u0111\u1EDDm/m\xE1u."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [381, 383], note: "Chapter 28: HAP/VAP" }
+  },
+  // --- Chapter 13: Exacerbation of COPD (AECOPD) ---
+  {
+    id: "who_copd_adult",
+    site: "respiratory",
+    population: "adult",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 13,
+    diseaseNameVi: "\u0110\u1EE3t c\u1EA5p b\u1EC7nh ph\u1ED5i t\u1EAFc ngh\u1EBDn m\u1EA1n t\xEDnh (AECOPD)",
+    diseaseNameEn: "Acute Exacerbation of COPD (AECOPD)",
+    clinicalSetting: "primary_care",
+    line: "first_choice",
+    titleVi: "WHO \u0110\u1EE3t C\u1EA5p COPD: Amoxicillin u\u1ED1ng (Access) x 5 ng\xE0y",
+    titleEn: "WHO AECOPD: Oral Amoxicillin (Access) x 5 days",
+    durationVi: "5 ng\xE0y",
+    durationEn: "5 days",
+    nonAntibioticCareVi: "T\u1ED1i \u01B0u h\xF3a thu\u1ED1c gi\xE3n ph\u1EBF qu\u1EA3n (SABA + SAMA), Corticosteroid \u0111\u01B0\u1EDDng u\u1ED1ng ng\u1EAFn ng\xE0y (Prednisone 40mg x 5 ng\xE0y), th\u1EDF oxy l\u01B0u l\u01B0\u1EE3ng ki\u1EC3m so\xE1t.",
+    drugs: [
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin (\u0110\u1EA7u tay)",
+        drugName: "Amoxicillin",
+        nameEn: "Amoxicillin oral",
+        standardDoseVi: "500 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD x 5 ng\xE0y",
+        dosageVi: "500 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin/Clavulanate (L\u1EF1a ch\u1ECDn th\u1EE9 hai)",
+        drugName: "Amoxicillin/Clavulanate",
+        nameEn: "Amoxicillin+clavulanic acid oral",
+        standardDoseVi: "500 mg + 125 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD x 5 ng\xE0y",
+        dosageVi: "500/125 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "second_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "Ch\u1EC9 \u0111\u1ECBnh kh\xE1ng sinh khi b\u1EC7nh nh\xE2n c\xF3 \u0111\u1EE7 3 tri\u1EC7u ch\u1EE9ng Anthonisen (t\u0103ng kh\xF3 th\u1EDF, t\u0103ng th\u1EC3 t\xEDch \u0111\u1EDDm, \u0111\u1EDDm chuy\u1EC3n m\u1EE7) ho\u1EB7c c\xF3 2 tri\u1EC7u ch\u1EE9ng trong \u0111\xF3 b\u1EAFt bu\u1ED9c c\xF3 \u0111\u1EDDm m\u1EE7."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [162, 164], note: "Chapter 13: AECOPD" }
+  },
+  // =======================================================================
+  // 2. SEPSIS & SEPTIC SHOCK (CH 24, 25)
+  // =======================================================================
+  // --- Chapter 24: Sepsis in Adults - Unknown Origin ---
+  {
+    id: "who_sepsis_adult_unknown",
+    site: "sepsis",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 24,
+    diseaseNameVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u1EDF ng\u01B0\u1EDDi l\u1EDBn (Sepsis-3) \u2013 Kh\xF4ng r\xF5 ngu\u1ED3n g\u1ED1c ban \u0111\u1EA7u",
+    diseaseNameEn: "Adult Sepsis & Septic Shock \u2013 Sepsis of Unknown Origin",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO \u0110\u1EA7u Tay: Ceftriaxone/Cefotaxime + Amikacin IV (Ti\u1EBFt Ki\u1EC7m Carbapenem)",
+    titleEn: "WHO First Choice: Ceftriaxone/Cefotaxime + Amikacin IV (Carbapenem-Sparing)",
+    durationVi: "7 ng\xE0y",
+    durationEn: "7 days",
+    drugs: [
+      {
+        drugId: "ceftriaxon",
+        nameVi: "Ceftriaxone",
+        drugName: "Ceftriaxone",
+        nameEn: "Ceftriaxone IV",
+        standardDoseVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "cefotaxim",
+        nameVi: "Cefotaxime (L\u1EF1a ch\u1ECDn thay th\u1EBF)",
+        drugName: "Cefotaxime",
+        nameEn: "Cefotaxime IV",
+        standardDoseVi: "2 g IV m\u1ED7i 8 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "amikacin",
+        nameVi: "Amikacin IV (Ph\u1ED1i h\u1EE3p di\u1EC7t khu\u1EA9n nhanh & ph\u1EE7 ESBL)",
+        drugName: "Amikacin",
+        nameEn: "Amikacin IV",
+        standardDoseVi: "15 mg/kg IV m\u1ED7i 24 gi\u1EDD li\u1EC1u duy nh\u1EA5t (ho\u1EB7c Gentamicin 5 mg/kg q24h)",
+        dosageVi: "15 mg/kg m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice",
+        infusionNoteVi: "Chi\u1EBFn l\u01B0\u1EE3c ti\u1EBFt ki\u1EC7m Carbapenem c\u1EE7a WHO: Amikacin gi\u1EEF ho\u1EA1t t\xEDnh r\u1EA5t t\u1ED1t tr\xEAn tr\u1EF1c khu\u1EA9n \u0111\u01B0\u1EDDng ru\u1ED9t sinh ESBL."
+      }
+    ],
+    combinationRulesVi: [
+      "Kh\u1EDFi \u0111\u1EA7u kh\xE1ng sinh t\u0129nh m\u1EA1ch trong v\xF2ng 1 GI\u1EDC \u0110\u1EA6U (Golden Hour) sau khi ph\xE1t hi\u1EC7n s\u1ED1c nhi\u1EC5m khu\u1EA9n.",
+      "L\u1EA5y 2 b\u1ED9 c\u1EA5y m\xE1u tr\u01B0\u1EDBc li\u1EC1u kh\xE1ng sinh nh\u01B0ng tuy\u1EC7t \u0111\u1ED1i kh\xF4ng tr\xEC ho\xE3n truy\u1EC1n thu\u1ED1c.",
+      "Chi\u1EBFn l\u01B0\u1EE3c ti\u1EBFt ki\u1EC7m Carbapenem: D\xF9ng Ceftriaxone/Cefotaxime ph\u1ED1i h\u1EE3p Amikacin thay v\xEC l\u1EA1m d\u1EE5ng Meropenem ngay t\u1EEB \u0111\u1EA7u."
+    ],
+    cautionVi: [
+      "Theo d\xF5i s\xE1t CrCl v\xE0 n\u1ED3ng \u0111\u1ED9 \u0111\xE1y Aminoglycoside \u0111\u1EC3 tr\xE1nh \u0111\u1ED9c t\xEDnh th\u1EADn."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [295, 302], note: "Chapter 24: Sepsis in adults" }
+  },
+  // --- Chapter 24: Sepsis - Intra-abdominal Source ---
+  {
+    id: "who_sepsis_adult_intraabdo",
+    site: "sepsis",
+    sepsisSource: "gastrointestinal",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 24,
+    diseaseNameVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt c\xF3 ngu\u1ED3n g\u1ED1c t\u1EEB \u1ED4 b\u1EE5ng / Ti\xEAu h\xF3a",
+    diseaseNameEn: "Adult Sepsis Originating from Intra-abdominal Source",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO Sepsis \u1ED4 B\u1EE5ng: Ceftriaxone/Cefotaxime + Metronidazole HO\u1EB6C Pip/Tazo",
+    titleEn: "WHO Intra-abdominal Sepsis: Ceftriaxone + Metronidazole OR Pip/Tazo",
+    durationVi: "7 ng\xE0y (t\xF9y thu\u1ED9c v\xE0o can thi\u1EC7p ki\u1EC3m so\xE1t ngu\u1ED3n nhi\u1EC5m b\u1EB1ng ph\u1EABu thu\u1EADt)",
+    durationEn: "7 days (guided by source control)",
+    drugs: [
+      {
+        drugId: "ceftriaxon",
+        nameVi: "Ceftriaxone",
+        drugName: "Ceftriaxone",
+        nameEn: "Ceftriaxone IV",
+        standardDoseVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "metronidazol",
+        nameVi: "Metronidazole (Bao ph\u1EE7 vi khu\u1EA9n k\u1EF5 kh\xED Bacteroides)",
+        drugName: "Metronidazole",
+        nameEn: "Metronidazole IV",
+        standardDoseVi: "500 mg IV m\u1ED7i 8 gi\u1EDD",
+        dosageVi: "500 mg IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "piperacillin_tazo",
+        nameVi: "Piperacillin/Tazobactam (L\u1EF1a ch\u1ECDn \u0111\u01A1n tr\u1ECB thay th\u1EBF)",
+        drugName: "Piperacillin/Tazobactam",
+        nameEn: "Piperacillin+tazobactam IV",
+        standardDoseVi: "4,5 g IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n 3-4 gi\u1EDD",
+        dosageVi: "4.5 g IV m\u1ED7i 6 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "meropenem",
+        nameVi: "Meropenem (L\u1EF1a ch\u1ECDn th\u1EE9 hai khi s\u1ED1c n\u1EB7ng ho\u1EB7c nguy c\u01A1 cao ESBL)",
+        drugName: "Meropenem",
+        nameEn: "Meropenem IV",
+        standardDoseVi: "1 g - 2 g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 gi\u1EDD",
+        dosageVi: "1 - 2 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "second_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "Ki\u1EC3m so\xE1t ngu\u1ED3n b\u1EC7nh (d\u1EABn l\u01B0u \u1ED5 m\u1EE7, can thi\u1EC7p ph\u1EABu thu\u1EADt) l\xE0 y\u1EBFu t\u1ED1 quy\u1EBFt \u0111\u1ECBnh s\u1ED1ng c\xF2n h\xE0ng \u0111\u1EA7u.",
+      "Kh\xE1ng sinh b\u1EAFt bu\u1ED9c ph\u1EA3i bao ph\u1EE7 c\u1EA3 tr\u1EF1c khu\u1EA9n Gram \xE2m \u0111\u01B0\u1EDDng ru\u1ED9t v\xE0 vi khu\u1EA9n k\u1EF5 kh\xED."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [295, 303], note: "Chapter 24: Sepsis - Intra-abdominal" }
+  },
+  // --- Chapter 24: Sepsis - Urinary Source ---
+  {
+    id: "who_sepsis_adult_urinary",
+    site: "sepsis",
+    sepsisSource: "urinary",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 24,
+    diseaseNameVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt t\u1EEB \u0111\u01B0\u1EDDng Ti\u1EBFt ni\u1EC7u (Urosepsis)",
+    diseaseNameEn: "Adult Urosepsis (Urinary Source)",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO Urosepsis: Ceftriaxone/Cefotaxime + Amikacin IV",
+    titleEn: "WHO Urosepsis: Ceftriaxone/Cefotaxime + Amikacin IV",
+    durationVi: "7 ng\xE0y",
+    durationEn: "7 days",
+    drugs: [
+      {
+        drugId: "ceftriaxon",
+        nameVi: "Ceftriaxone",
+        drugName: "Ceftriaxone",
+        nameEn: "Ceftriaxone IV",
+        standardDoseVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "amikacin",
+        nameVi: "Amikacin IV (Ph\u1ED1i h\u1EE3p di\u1EC7t khu\u1EA9n nhanh v\xE0 ph\u1EE7 ESBL)",
+        drugName: "Amikacin",
+        nameEn: "Amikacin IV",
+        standardDoseVi: "15 mg/kg IV m\u1ED7i 24 gi\u1EDD li\u1EC1u duy nh\u1EA5t",
+        dosageVi: "15 mg/kg m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "meropenem",
+        nameVi: "Meropenem (L\u1EF1a ch\u1ECDn th\u1EE9 hai khi s\u1ED1c nhi\u1EC5m khu\u1EA9n ho\u1EB7c ti\u1EC1n s\u1EED ESBL)",
+        drugName: "Meropenem",
+        nameEn: "Meropenem IV",
+        standardDoseVi: "1 g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 gi\u1EDD",
+        dosageVi: "1 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "second_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "Gi\u1EA3i \xE1p \u0111\u01B0\u1EDDng ti\u1EC3u kh\u1EA9n c\u1EA5p n\u1EBFu c\xF3 s\u1ECFi ho\u1EB7c u b\u01B0\u1EDBu g\xE2y t\u1EAFc ngh\u1EBDn ni\u1EC7u qu\u1EA3n.",
+      "C\u1EA5y n\u01B0\u1EDBc ti\u1EC3u v\xE0 c\u1EA5y m\xE1u tr\u01B0\u1EDBc li\u1EC1u \u0111\u1EA7u ti\xEAn."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [295, 303], note: "Chapter 24: Sepsis - Urinary" }
+  },
+  // --- Chapter 25: Sepsis in Neonates and Children ---
+  {
+    id: "who_sepsis_peds_first",
+    site: "sepsis",
+    population: "pediatric",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 25,
+    diseaseNameVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt \u1EDF tr\u1EBB s\u01A1 sinh (<28 ng\xE0y) & Tr\u1EBB nh\u1ECF",
+    diseaseNameEn: "Neonatal (<28 days) & Pediatric Sepsis",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO S\u01A1 Sinh \u0110\u1EA7u Tay: Ampicillin + Gentamicin IV (Access + Access)",
+    titleEn: "WHO Neonatal First Choice: Ampicillin + Gentamicin IV (Access + Access)",
+    durationVi: "7 ng\xE0y (14 ng\xE0y n\u1EBFu c\xF3 vi\xEAm m\xE0ng n\xE3o \u0111\u1ED3ng nhi\u1EC5m)",
+    durationEn: "7 days (14 days if meningitis)",
+    drugs: [
+      {
+        drugId: "ampicillin_sulbactam",
+        nameVi: "Ampicillin IV (Bao ph\u1EE7 Listeria v\xE0 Li\xEAn c\u1EA7u B)",
+        drugName: "Ampicillin",
+        nameEn: "Ampicillin IV",
+        standardDoseVi: "50 mg/kg IV m\u1ED7i 12h (tu\u1EA7n \u0111\u1EA7u \u0111\u1EDDi) ho\u1EB7c m\u1ED7i 8h (>1 tu\u1EA7n \u0111\u1EDDi)",
+        dosageVi: "50 mg/kg m\u1ED7i 8-12 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "gentamicin",
+        nameVi: "Gentamicin IV (Hi\u1EC7p \u0111\u1ED3ng di\u1EC7t tr\u1EF1c khu\u1EA9n Gram \xE2m)",
+        drugName: "Gentamicin",
+        nameEn: "Gentamicin IV",
+        standardDoseVi: "5 mg/kg IV m\u1ED7i 24 gi\u1EDD (tr\u1EBB s\u01A1 sinh) ho\u1EB7c 7,5 mg/kg q24h (tr\u1EBB l\u1EDBn)",
+        dosageVi: "5 - 7.5 mg/kg m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "cefotaxim",
+        nameVi: "Cefotaxime (L\u1EF1a ch\u1ECDn \u0111\u1EA7u tay cho tr\u1EBB l\u1EDBn > 1 th\xE1ng)",
+        drugName: "Cefotaxime",
+        nameEn: "Cefotaxime IV",
+        standardDoseVi: "50 mg/kg IV m\u1ED7i 8 gi\u1EDD (ho\u1EB7c Ceftriaxone 80 mg/kg q24h \u1EDF tr\u1EBB ngo\xE0i s\u01A1 sinh)",
+        dosageVi: "50 mg/kg m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "Ph\u1ED1i h\u1EE3p kinh \u0111i\u1EC3n Ampicillin + Gentamicin l\xE0 chu\u1EA9n v\xE0ng c\u1EE7a WHO cho nhi\u1EC5m khu\u1EA9n huy\u1EBFt s\u01A1 sinh.",
+      "KH\xD4NG d\xF9ng Ceftriaxone cho tr\u1EBB s\u01A1 sinh c\xF3 t\u0103ng bilirubin m\xE1u t\u1EF1 do ho\u1EB7c \u0111ang truy\u1EC1n dung d\u1ECBch ch\u1EE9a canxi (nguy c\u01A1 k\u1EBFt t\u1EE7a ceftriaxone-canxi \u0111e d\u1ECDa t\xEDnh m\u1EA1ng)."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [319, 323], note: "Chapter 25: Sepsis in neonates & children" }
+  },
+  // =======================================================================
+  // 3. URINARY TRACT INFECTIONS (CH 23, 34)
+  // =======================================================================
+  // --- Chapter 23: Lower Urinary Tract Infection (Acute Cystitis) ---
+  {
+    id: "who_uti_lower_adult_first",
+    site: "urinary",
+    population: "adult",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 23,
+    diseaseNameVi: "Nhi\u1EC5m khu\u1EA9n ti\u1EBFt ni\u1EC7u d\u01B0\u1EDBi (Vi\xEAm b\xE0ng quang c\u1EA5p) \u2013 Ng\u01B0\u1EDDi l\u1EDBn",
+    diseaseNameEn: "Lower Urinary Tract Infection (Acute Cystitis) \u2013 Adults",
+    clinicalSetting: "primary_care",
+    line: "first_choice",
+    titleVi: "WHO \u0110\u1EA7u Tay: Nitrofurantoin u\u1ED1ng (\u01AFu ti\xEAn s\u1ED1 1) HO\u1EB6C Amox/Clav",
+    titleEn: "WHO First Choice: Nitrofurantoin (Preferred) OR Amox/Clav",
+    durationVi: "3\u20135 ng\xE0y (ph\u1EE5 n\u1EEF 5 ng\xE0y v\u1EDBi nitrofurantoin; nam gi\u1EDBi 7 ng\xE0y)",
+    durationEn: "3-5 days (women 5 days with nitrofurantoin; men 7 days)",
+    nonAntibioticCareVi: "U\u1ED1ng nhi\u1EC1u n\u01B0\u1EDBc (> 2 l\xEDt/ng\xE0y), \u0111i ti\u1EC3u th\u01B0\u1EDDng xuy\xEAn kh\xF4ng nh\u1ECBn ti\u1EC3u, d\xF9ng paracetamol gi\u1EA3m \u0111au t\u1EE9c h\u1EA1 v\u1ECB n\u1EBFu c\u1EA7n.",
+    drugs: [
+      {
+        nameVi: "Nitrofurantoin (Kh\xE1ng sinh l\u1EF1a ch\u1ECDn \u01B0u ti\xEAn s\u1ED1 1)",
+        drugName: "Nitrofurantoin",
+        nameEn: "Nitrofurantoin oral",
+        standardDoseVi: "100 mg u\u1ED1ng m\u1ED7i 12 gi\u1EDD (d\u1EA1ng ph\xF3ng th\xEDch bi\u1EBFn \u0111\u1ED5i macrocrystal) x 5 ng\xE0y; ho\u1EB7c 50 mg m\u1ED7i 6 gi\u1EDD x 5 ng\xE0y",
+        dosageVi: "100 mg u\u1ED1ng m\u1ED7i 12 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: false,
+        awareCategory: "Access",
+        line: "first_choice",
+        infusionNoteVi: "Duy tr\xEC n\u1ED3ng \u0111\u1ED9 c\u1EF1c cao trong n\u01B0\u1EDBc ti\u1EC3u, \xEDt \u1EA3nh h\u01B0\u1EDFng h\u1EC7 vi sinh ru\u1ED9t v\xE0 gi\u1EEF ho\u1EA1t t\xEDnh di\u1EC7t E. coli sinh ESBL."
+      },
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin/Clavulanic acid (L\u1EF1a ch\u1ECDn thay th\u1EBF)",
+        drugName: "Amoxicillin/Clavulanate",
+        nameEn: "Amoxicillin+clavulanic acid oral",
+        standardDoseVi: "500 mg + 125 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD x 3\u20135 ng\xE0y",
+        dosageVi: "500/125 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "tmp_smx",
+        nameVi: "Sulfamethoxazole+Trimethoprim (Cotrimoxazole)",
+        drugName: "Cotrimoxazole",
+        nameEn: "Sulfamethoxazole+trimethoprim oral",
+        standardDoseVi: "800 mg SMX + 160 mg TMP u\u1ED1ng m\u1ED7i 12 gi\u1EDD x 3 ng\xE0y",
+        dosageVi: "800/160 mg u\u1ED1ng m\u1ED7i 12 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "second_choice",
+        infusionNoteVi: "Ch\u1EC9 d\xF9ng khi t\u1EF7 l\u1EC7 \u0111\u1EC1 kh\xE1ng t\u1EA1i \u0111\u1ECBa ph\u01B0\u01A1ng \u0111\xE3 bi\u1EBFt < 20% v\xE0 b\u1EC7nh nh\xE2n kh\xF4ng c\xF3 nguy c\u01A1 ESBL."
+      }
+    ],
+    combinationRulesVi: [
+      "Nitrofurantoin l\xE0 kh\xE1ng sinh Ti\u1EBFp c\u1EADn s\u1ED1 1 th\u1EBF gi\u1EDBi c\u1EE7a WHO cho vi\xEAm b\xE0ng quang c\u1EA5p.",
+      "C\u1EA2NH B\xC1O: KH\xD4NG d\xF9ng Nitrofurantoin cho vi\xEAm b\u1EC3 th\u1EADn ho\u1EB7c nhi\u1EC5m tr\xF9ng ti\u1EBFt ni\u1EC7u tr\xEAn v\xEC thu\u1ED1c h\u1EA7u nh\u01B0 kh\xF4ng ng\u1EA5m v\xE0o nhu m\xF4 th\u1EADn."
+    ],
+    cautionVi: [
+      "Tr\xE1nh l\u1EA1m d\u1EE5ng Fluoroquinolone (Ciprofloxacin) cho vi\xEAm b\xE0ng quang kh\xF4ng bi\u1EBFn ch\u1EE9ng \u0111\u1EC3 b\u1EA3o t\u1ED3n thu\u1ED1c cho nhi\u1EC5m khu\u1EA9n n\u1EB7ng."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [278, 281], note: "Chapter 23: Lower UTI" }
+  },
+  // --- Chapter 34: Upper Urinary Tract Infection (Acute Pyelonephritis) ---
+  {
+    id: "who_uti_upper_adult_first",
+    site: "urinary",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 34,
+    diseaseNameVi: "Nhi\u1EC5m khu\u1EA9n ti\u1EBFt ni\u1EC7u tr\xEAn (Vi\xEAm b\u1EC3 th\u1EADn c\u1EA5p) \u2013 Ng\u01B0\u1EDDi l\u1EDBn nh\u1EADp vi\u1EC7n",
+    diseaseNameEn: "Upper Urinary Tract Infection (Acute Pyelonephritis) \u2013 Hospitalized Adults",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO \u0110\u1EA7u Tay: Ceftriaxone/Cefotaxime (+/- Amikacin Ti\u1EBFt Ki\u1EC7m Carbapenem)",
+    titleEn: "WHO First Choice: Ceftriaxone/Cefotaxime (+/- Amikacin Carbapenem-Sparing)",
+    durationVi: "7 ng\xE0y (k\xE9o d\xE0i 14 ng\xE0y n\u1EBFu c\xF3 vi\xEAm tuy\u1EBFn ti\u1EC1n li\u1EC7t \u1EDF nam gi\u1EDBi)",
+    durationEn: "7 days (14 days if prostatic involvement in men)",
+    drugs: [
+      {
+        drugId: "ceftriaxon",
+        nameVi: "Ceftriaxone IV",
+        drugName: "Ceftriaxone",
+        nameEn: "Ceftriaxone IV/IM",
+        standardDoseVi: "1 g - 2 g IV m\u1ED7i 24 gi\u1EDD",
+        dosageVi: "1 - 2 g IV m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "cefotaxim",
+        nameVi: "Cefotaxime IV",
+        drugName: "Cefotaxime",
+        nameEn: "Cefotaxime IV/IM",
+        standardDoseVi: "1 g - 2 g IV m\u1ED7i 8 gi\u1EDD",
+        dosageVi: "1 - 2 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "amikacin",
+        nameVi: "Amikacin IV (B\u1ED5 sung khi nguy c\u01A1 ESBL cao ho\u1EB7c b\u1EC7nh n\u1EB7ng)",
+        drugName: "Amikacin",
+        nameEn: "Amikacin IV",
+        standardDoseVi: "15 mg/kg IV m\u1ED7i 24 gi\u1EDD li\u1EC1u duy nh\u1EA5t (ho\u1EB7c Gentamicin 5 mg/kg q24h)",
+        dosageVi: "15 mg/kg m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice",
+        infusionNoteVi: "Amikacin \u0111\u1EA1t n\u1ED3ng \u0111\u1ED9 b\xE0i xu\u1EA5t c\u1EF1c cao trong th\u1EADn, l\xE0 ph\xE1c \u0111\u1ED3 \u0111\u01A1n tr\u1ECB ho\u1EB7c ph\u1ED1i h\u1EE3p ti\u1EBFt ki\u1EC7m Carbapenem l\xFD t\u01B0\u1EDFng cho ESBL."
+      },
+      {
+        drugId: "ciprofloxacin",
+        nameVi: "Ciprofloxacin (Th\u1EC3 nh\u1EB9 ngo\u1EA1i tr\xFA ho\u1EB7c xu\u1ED1ng thang)",
+        drugName: "Ciprofloxacin",
+        nameEn: "Ciprofloxacin oral/IV",
+        standardDoseVi: "500 mg u\u1ED1ng m\u1ED7i 12 gi\u1EDD x 7 ng\xE0y (ho\u1EB7c 400 mg IV q12h)",
+        dosageVi: "500 mg u\u1ED1ng m\u1ED7i 12 gi\u1EDD",
+        route: "PO/IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "Ph\u1EA3i c\u1EA5y n\u01B0\u1EDBc ti\u1EC3u tr\u01B0\u1EDBc li\u1EC1u kh\xE1ng sinh \u0111\u1EA7u ti\xEAn.",
+      "C\u1EA3i thi\u1EC7n l\xE2m s\xE0ng th\u01B0\u1EDDng r\xF5 r\u1EC7t sau 48-72 gi\u1EDD; xu\u1ED1ng thang sang kh\xE1ng sinh \u0111\u01B0\u1EDDng u\u1ED1ng ngay khi b\u1EC7nh nh\xE2n h\u1EBFt s\u1ED1t."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [474, 477], note: "Chapter 34: Upper UTI" }
+  },
+  // =======================================================================
+  // 4. CENTRAL NERVOUS SYSTEM - MENINGITIS (CH 26)
+  // =======================================================================
+  {
+    id: "who_meningitis_adult_first",
+    site: "cns",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 26,
+    diseaseNameVi: "Vi\xEAm m\xE0ng n\xE3o m\u1EE7 do vi khu\u1EA9n \u1EDF ng\u01B0\u1EDDi l\u1EDBn",
+    diseaseNameEn: "Acute Bacterial Meningitis in Adults",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO \u0110\u1EA7u Tay: Ceftriaxone li\u1EC1u m\xE0ng n\xE3o (4g/ng\xE0y) HO\u1EB6C Cefotaxime (8g/ng\xE0y) (+/- Ampicillin)",
+    titleEn: "WHO First Choice: High-Dose Ceftriaxone (4g/d) OR Cefotaxime (8g/d) (+/- Ampicillin)",
+    durationVi: "Ch\u01B0a r\xF5 t\xE1c nh\xE2n: 10 ng\xE0y; Ph\u1EBF c\u1EA7u: 10-14 ng\xE0y; N\xE3o m\xF4 c\u1EA7u: 5-7 ng\xE0y; Listeria: 21 ng\xE0y",
+    durationEn: "Unknown: 10 days; S. pneumoniae: 10-14 days; N. meningitidis: 5-7 days; Listeria: 21 days",
+    drugs: [
+      {
+        drugId: "ceftriaxon",
+        nameVi: "Ceftriaxone (Li\u1EC1u vi\xEAm m\xE0ng n\xE3o)",
+        drugName: "Ceftriaxone",
+        nameEn: "Ceftriaxone IV",
+        standardDoseVi: "2 g IV m\u1ED7i 12 gi\u1EDD (t\u1ED5ng li\u1EC1u 4 g/ng\xE0y) ti\xEAm truy\u1EC1n t\u0129nh m\u1EA1ch",
+        dosageVi: "2 g IV m\u1ED7i 12 gi\u1EDD (4g/ng\xE0y)",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice",
+        infusionNoteVi: "Li\u1EC1u m\xE0ng n\xE3o g\u1EA5p \u0111\xF4i li\u1EC1u th\xF4ng th\u01B0\u1EDDng \u0111\u1EC3 \u0111\u1EA3m b\u1EA3o n\u1ED3ng \u0111\u1ED9 thu\u1ED1c v\u01B0\u1EE3t qua h\xE0ng r\xE0o m\xE1u n\xE3o."
+      },
+      {
+        drugId: "cefotaxim",
+        nameVi: "Cefotaxime (L\u1EF1a ch\u1ECDn thay th\u1EBF)",
+        drugName: "Cefotaxime",
+        nameEn: "Cefotaxime IV",
+        standardDoseVi: "2 g IV m\u1ED7i 6 gi\u1EDD (t\u1ED5ng li\u1EC1u 8 g/ng\xE0y)",
+        dosageVi: "2 g IV m\u1ED7i 6 gi\u1EDD (8g/ng\xE0y)",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "ampicillin_sulbactam",
+        nameVi: "Ampicillin IV (B\u1ED5 sung di\u1EC7t Listeria monocytogenes)",
+        drugName: "Ampicillin",
+        nameEn: "Ampicillin IV",
+        standardDoseVi: "2 g IV m\u1ED7i 4 gi\u1EDD (ho\u1EB7c Amoxicillin 2g IV q4h)",
+        dosageVi: "2 g IV m\u1ED7i 4 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice",
+        infusionNoteVi: "B\u1EAFt bu\u1ED9c th\xEAm Ampicillin n\u1EBFu b\u1EC7nh nh\xE2n \u2265 50 tu\u1ED5i, ph\u1EE5 n\u1EEF c\xF3 thai ho\u1EB7c suy gi\u1EA3m mi\u1EC5n d\u1ECBch."
+      }
+    ],
+    combinationRulesVi: [
+      "Corticosteroid: Dexamethasone 0,15 mg/kg m\u1ED7i 6 gi\u1EDD ti\xEAm t\u0129nh m\u1EA1ch d\xF9ng ngay tr\u01B0\u1EDBc ho\u1EB7c c\xF9ng l\xFAc v\u1EDBi li\u1EC1u kh\xE1ng sinh \u0111\u1EA7u ti\xEAn.",
+      "Ch\u1EC9 ti\u1EBFp t\u1EE5c d\xF9ng Dexamethasone n\u1EBFu x\xE9t nghi\u1EC7m kh\u1EB3ng \u0111\u1ECBnh c\u0103n nguy\xEAn l\xE0 Ph\u1EBF c\u1EA7u (Streptococcus pneumoniae)."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [345, 347], note: "Chapter 26: Bacterial meningitis" }
+  },
+  // =======================================================================
+  // 5. INTRA-ABDOMINAL & PERITONEAL (CH 29, 30, 31, 33)
+  // =======================================================================
+  // --- Chapter 29: Acute Cholecystitis & Cholangitis ---
+  {
+    id: "who_cholecystitis_adult",
+    site: "gastrointestinal",
+    population: "adult",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 29,
+    diseaseNameVi: "Nhi\u1EC5m tr\xF9ng \u0111\u01B0\u1EDDng m\u1EADt \u2013 Vi\xEAm t\xFAi m\u1EADt c\u1EA5p & Vi\xEAm \u0111\u01B0\u1EDDng m\u1EADt c\u1EA5p",
+    diseaseNameEn: "Acute Cholecystitis & Acute Cholangitis",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO \u0110\u01B0\u1EDDng M\u1EADt \u0110\u1EA7u Tay: Amox/Clav IV HO\u1EB6C Ceftriaxone + Metronidazole",
+    titleEn: "WHO Biliary First Choice: IV Amox/Clav OR Ceftriaxone + Metronidazole",
+    durationVi: "Vi\xEAm t\xFAi m\u1EADt kh\xF4ng bi\u1EBFn ch\u1EE9ng: Ng\u1EEBng sau m\u1ED5; C\xF3 bi\u1EBFn ch\u1EE9ng/Vi\xEAm \u0111\u01B0\u1EDDng m\u1EADt: 5 ng\xE0y sau can thi\u1EC7p",
+    durationEn: "Uncomplicated: stop after surgery; Complicated: 5 days post source control",
+    drugs: [
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin/Clavulanic acid IV",
+        drugName: "Amoxicillin/Clavulanate",
+        nameEn: "Amoxicillin+clavulanic acid IV",
+        standardDoseVi: "1,2 g IV m\u1ED7i 8 gi\u1EDD (ho\u1EB7c u\u1ED1ng 875/125 mg q8h n\u1EBFu nh\u1EB9)",
+        dosageVi: "1.2 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "ceftriaxon",
+        nameVi: "Ceftriaxone IV",
+        drugName: "Ceftriaxone",
+        nameEn: "Ceftriaxone IV",
+        standardDoseVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "metronidazol",
+        nameVi: "Metronidazole IV/PO",
+        drugName: "Metronidazole",
+        nameEn: "Metronidazole IV/oral",
+        standardDoseVi: "500 mg m\u1ED7i 8 gi\u1EDD u\u1ED1ng ho\u1EB7c IV",
+        dosageVi: "500 mg m\u1ED7i 8 gi\u1EDD",
+        route: "IV/PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "piperacillin_tazo",
+        nameVi: "Piperacillin/Tazobactam (Th\u1EC3 n\u1EB7ng nh\u1EADp vi\u1EC7n)",
+        drugName: "Piperacillin/Tazobactam",
+        nameEn: "Piperacillin+tazobactam IV",
+        standardDoseVi: "4,5 g IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3-4 gi\u1EDD",
+        dosageVi: "4.5 g IV m\u1ED7i 6 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "C\u1EAFt t\xFAi m\u1EADt ho\u1EB7c d\u1EABn l\u01B0u m\u1EADt (qua ERCP/PTCD) l\xE0 can thi\u1EC7p tri\u1EC7t \u0111\u1EC3 ngu\u1ED3n b\u1EC7nh s\u1ED1ng c\xF2n.",
+      "N\u1EBFu kh\xF4ng c\xF3 bi\u1EBFn ch\u1EE9ng v\xE0 t\xFAi m\u1EADt \u0111\xE3 c\u1EAFt b\u1ECF th\xE0nh c\xF4ng, WHO khuy\u1EBFn c\xE1o NG\u1EEANG KH\xC1NG SINH ngay sau m\u1ED5."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [396, 398], note: "Chapter 29: Cholecystitis & cholangitis" }
+  },
+  // --- Chapter 30: Pyogenic Liver Abscess ---
+  {
+    id: "who_liver_abscess_adult",
+    site: "gastrointestinal",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 30,
+    diseaseNameVi: "\xC1p xe gan sinh m\u1EE7 do vi khu\u1EA9n (Pyogenic Liver Abscess)",
+    diseaseNameEn: "Pyogenic Liver Abscess",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO \xC1p Xe Gan: Ceftriaxone + Metronidazole HO\u1EB6C Piperacillin/Tazobactam",
+    titleEn: "WHO Liver Abscess: Ceftriaxone + Metronidazole OR Pip/Tazo",
+    durationVi: "4 tu\u1EA7n (bao g\u1ED3m \u0111\u1EE3t \u0111i\u1EC1u tr\u1ECB IV ban \u0111\u1EA7u k\u1EBFt h\u1EE3p r\xFAt m\u1EE7, sau \u0111\xF3 chuy\u1EC3n u\u1ED1ng)",
+    durationEn: "4 weeks total (IV followed by oral step-down)",
+    drugs: [
+      {
+        drugId: "ceftriaxon",
+        nameVi: "Ceftriaxone IV",
+        drugName: "Ceftriaxone",
+        nameEn: "Ceftriaxone IV",
+        standardDoseVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "metronidazol",
+        nameVi: "Metronidazole IV/PO",
+        drugName: "Metronidazole",
+        nameEn: "Metronidazole IV/oral",
+        standardDoseVi: "500 mg IV/u\u1ED1ng m\u1ED7i 8 gi\u1EDD (\xE1p xe amip: 750mg q8h)",
+        dosageVi: "500 mg m\u1ED7i 8 gi\u1EDD",
+        route: "IV/PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "piperacillin_tazo",
+        nameVi: "Piperacillin/Tazobactam (L\u1EF1a ch\u1ECDn thay th\u1EBF)",
+        drugName: "Piperacillin/Tazobactam",
+        nameEn: "Piperacillin+tazobactam IV",
+        standardDoseVi: "4,5 g IV m\u1ED7i 6 gi\u1EDD",
+        dosageVi: "4.5 g IV m\u1ED7i 6 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "Ch\u1ECDc h\xFAt ho\u1EB7c \u0111\u1EB7t \u1ED1ng d\u1EABn l\u01B0u \u1ED5 \xE1p xe qua h\u01B0\u1EDBng d\u1EABn si\xEAu \xE2m/CT l\xE0 bi\u1EC7n ph\xE1p c\u1ED1t l\xF5i k\u1EBFt h\u1EE3p kh\xE1ng sinh.",
+      "Chuy\u1EC3n sang kh\xE1ng sinh \u0111\u01B0\u1EDDng u\u1ED1ng (Amox/Clav ho\u1EB7c Ciprofloxacin + Metronidazole) sau khi d\u1EABn l\u01B0u t\u1ED1t v\xE0 h\u1EBFt s\u1ED1t."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [414, 417], note: "Chapter 30: Liver abscess" }
+  },
+  // --- Chapter 33: Clostridioides difficile Infection (CDI) ---
+  {
+    id: "who_cdiff_adult",
+    site: "gastrointestinal",
+    population: "adult",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 33,
+    diseaseNameVi: "Nhi\u1EC5m khu\u1EA9n \u0111\u1EA1i tr\xE0ng do Clostridioides difficile (CDI)",
+    diseaseNameEn: "Clostridioides difficile Infection (CDI)",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO C. difficile: Vancomycin \u0110\u01AF\u1EDCNG U\u1ED0NG (125mg q6h x 10 ng\xE0y)",
+    titleEn: "WHO CDI First Choice: Oral Vancomycin (125mg q6h x 10 days)",
+    durationVi: "10 ng\xE0y",
+    durationEn: "10 days",
+    drugs: [
+      {
+        drugId: "vancomycin",
+        nameVi: "Vancomycin \u0110\u01AF\u1EDCNG U\u1ED0NG (Kh\xF4ng d\xF9ng \u0111\u01B0\u1EDDng ti\xEAm)",
+        drugName: "Vancomycin oral",
+        nameEn: "Vancomycin oral formulation",
+        standardDoseVi: "125 mg u\u1ED1ng m\u1ED7i 6 gi\u1EDD x 10 ng\xE0y (tr\u01B0\u1EDDng h\u1EE3p t\u1ED1i c\u1EA5p t\u0103ng 500 mg q6h)",
+        dosageVi: "125 mg u\u1ED1ng m\u1ED7i 6 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice",
+        infusionNoteVi: "QUAN TR\u1ECCNG: Vancomycin \u0111\u01B0\u1EDDng ti\xEAm t\u0129nh m\u1EA1ch KH\xD4NG b\xE0i ti\u1EBFt v\xE0o l\xF2ng ru\u1ED9t, b\u1EAFt bu\u1ED9c ph\u1EA3i d\xF9ng VANCOMYCIN \u0110\u01AF\u1EDCNG U\u1ED0NG."
+      },
+      {
+        drugId: "metronidazol",
+        nameVi: "Metronidazole \u0110\u01AF\u1EDCNG U\u1ED0NG (L\u1EF1a ch\u1ECDn th\u1EE9 hai cho \u0111\u1EE3t \u0111\u1EA7u th\u1EC3 nh\u1EB9)",
+        drugName: "Metronidazole",
+        nameEn: "Metronidazole oral",
+        standardDoseVi: "500 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD x 10 ng\xE0y",
+        dosageVi: "500 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "second_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "Ng\u1EEBng ngay l\u1EADp t\u1EE9c c\xE1c kh\xE1ng sinh ph\u1ED5 r\u1ED9ng kh\xF4ng c\u1EA7n thi\u1EBFt \u0111ang d\xF9ng tr\u01B0\u1EDBc \u0111\xF3.",
+      "N\u1EBFu th\u1EC3 t\u1ED1i c\u1EA5p (vi\xEAm \u0111\u1EA1i tr\xE0ng nhi\u1EC5m \u0111\u1ED9c, th\u1EE7ng ru\u1ED9t): Ph\u1ED1i h\u1EE3p Vancomycin u\u1ED1ng 500mg q6h + Metronidazole 500mg q8h ti\xEAm t\u0129nh m\u1EA1ch."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [464, 467], note: "Chapter 33: C. difficile" }
+  },
+  // =======================================================================
+  // 6. SKIN & SOFT TISSUE INFECTIONS (CH 16, 37, 38)
+  // =======================================================================
+  // --- Chapter 16: Mild SSTI - Impetigo, Erysipelas, Cellulitis ---
+  {
+    id: "who_ssti_mild_adult",
+    site: "skin_soft_tissue",
+    population: "adult",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 16,
+    diseaseNameVi: "Nhi\u1EC5m tr\xF9ng da m\xF4 m\u1EC1m th\u1EC3 nh\u1EB9 \u2013 Vi\xEAm m\xF4 t\u1EBF b\xE0o, Vi\xEAm qu\u1EA7ng, Ch\u1ED1c",
+    diseaseNameEn: "Mild Skin and Soft Tissue Infections (Cellulitis, Erysipelas, Impetigo)",
+    clinicalSetting: "primary_care",
+    line: "first_choice",
+    titleVi: "WHO Da M\xF4 M\u1EC1m Nh\u1EB9: Cloxacillin / Cefalexin HO\u1EB6C Amox/Clav u\u1ED1ng",
+    titleEn: "WHO Mild SSTI: Cloxacillin / Cefalexin OR Amox/Clav oral",
+    durationVi: "5\u20137 ng\xE0y",
+    durationEn: "5-7 days",
+    nonAntibioticCareVi: "V\u1EC7 sinh s\u1EA1ch v\u1EBFt th\u01B0\u01A1ng, ch\u01B0\u1EDDm \u1EA5m, k\xEA cao chi t\u1ED5n th\u01B0\u01A1ng \u0111\u1EC3 gi\u1EA3m ph\xF9 n\u1EC1 t\u0129nh m\u1EA1ch.",
+    drugs: [
+      {
+        nameVi: "Cloxacillin \u0111\u01B0\u1EDDng u\u1ED1ng",
+        drugName: "Cloxacillin",
+        nameEn: "Cloxacillin oral",
+        standardDoseVi: "500 mg u\u1ED1ng m\u1ED7i 6 gi\u1EDD (tr\u01B0\u1EDBc \u0103n 1 gi\u1EDD ho\u1EB7c sau \u0103n 2 gi\u1EDD)",
+        dosageVi: "500 mg u\u1ED1ng m\u1ED7i 6 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: false,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        nameVi: "Cefalexin (Cephalosporin th\u1EBF h\u1EC7 1)",
+        drugName: "Cefalexin",
+        nameEn: "Cefalexin oral",
+        standardDoseVi: "500 mg u\u1ED1ng m\u1ED7i 6 gi\u1EDD (ho\u1EB7c 1g m\u1ED7i 12 gi\u1EDD)",
+        dosageVi: "500 mg u\u1ED1ng m\u1ED7i 6 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: false,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin/Clavulanic acid",
+        drugName: "Amoxicillin/Clavulanate",
+        nameEn: "Amoxicillin+clavulanic acid oral",
+        standardDoseVi: "500 mg + 125 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        dosageVi: "500/125 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "clindamycin",
+        nameVi: "Clindamycin (L\u1EF1a ch\u1ECDn th\u1EE9 hai khi d\u1ECB \u1EE9ng penicillin)",
+        drugName: "Clindamycin",
+        nameEn: "Clindamycin oral",
+        standardDoseVi: "300 mg - 450 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        dosageVi: "300-450 mg u\u1ED1ng m\u1ED7i 8 gi\u1EDD",
+        route: "PO",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "second_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "\u0110\u1EA1i \u0111a s\u1ED1 vi\xEAm m\xF4 t\u1EBF b\xE0o c\u1ED9ng \u0111\u1ED3ng do Li\xEAn c\u1EA7u nh\xF3m A (GAS) v\xE0 T\u1EE5 c\u1EA7u nh\u1EA1y methicillin (MSSA), kh\xE1ng sinh nh\xF3m Ti\u1EBFp c\u1EADn (Access) \u0111\u1EA1t hi\u1EC7u qu\u1EA3 kh\u1ECFi b\u1EC7nh > 95%."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [193, 196], note: "Chapter 16: Mild SSTI" }
+  },
+  // --- Chapter 37: Necrotizing Fasciitis ---
+  {
+    id: "who_necrotizing_fasciitis_adult",
+    site: "skin_soft_tissue",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 37,
+    diseaseNameVi: "Nhi\u1EC5m khu\u1EA9n ho\u1EA1i t\u1EED m\xF4 m\u1EC1m t\u1ED1i c\u1EA5p \u2013 Vi\xEAm c\xE2n m\u1EA1c ho\u1EA1i t\u1EED (Necrotizing Fasciitis)",
+    diseaseNameEn: "Necrotizing Soft Tissue Infections (Necrotizing Fasciitis)",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO Vi\xEAm C\xE2n Ho\u1EA1i T\u1EED: Piperacillin/Tazo + Clindamycin (+/- Vancomycin)",
+    titleEn: "WHO Necrotizing Fasciitis: Pip/Tazo + Clindamycin (+/- Vancomycin)",
+    durationVi: "2 \u0111\u1EBFn 3 tu\u1EA7n (t\xF9y thu\u1ED9c m\u1EE9c \u0111\u1ED9 c\u1EAFt l\u1ECDc ngo\u1EA1i khoa v\xE0 \u1ED5n \u0111\u1ECBnh m\xF4 m\u1EC1m)",
+    durationEn: "2-3 weeks (guided by debridement)",
+    drugs: [
+      {
+        drugId: "piperacillin_tazo",
+        nameVi: "Piperacillin/Tazobactam IV",
+        drugName: "Piperacillin/Tazobactam",
+        nameEn: "Piperacillin+tazobactam IV",
+        standardDoseVi: "4,5 g IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n t\u0129nh m\u1EA1ch 3 gi\u1EDD",
+        dosageVi: "4.5 g IV m\u1ED7i 6 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "clindamycin",
+        nameVi: "Clindamycin IV (B\u1EAET BU\u1ED8C \u0111\u1EC3 \u1EE9c ch\u1EBF \u0111\u1ED9c t\u1ED1 vi khu\u1EA9n - Anti-toxin)",
+        drugName: "Clindamycin",
+        nameEn: "Clindamycin IV",
+        standardDoseVi: "900 mg IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n t\u0129nh m\u1EA1ch",
+        dosageVi: "900 mg IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice",
+        infusionNoteVi: "T\xE1c d\u1EE5ng \u1EE9c ch\u1EBF t\u1ED5ng h\u1EE3p \u0111\u1ED9c t\u1ED1 (anti-toxin effect) c\u1EE7a Li\xEAn c\u1EA7u sinh \u0111\u1ED9c t\u1ED1 (Streptococcus pyogenes) v\xE0 T\u1EE5 c\u1EA7u v\xE0ng."
+      },
+      {
+        drugId: "vancomycin",
+        nameVi: "Vancomycin (Th\xEAm khi nghi ng\u1EDD MRSA)",
+        drugName: "Vancomycin",
+        nameEn: "Vancomycin IV",
+        standardDoseVi: "15\u201320 mg/kg IV m\u1ED7i 12 gi\u1EDD",
+        dosageVi: "15-20 mg/kg m\u1ED7i 12 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "PH\u1EAAU THU\u1EACT C\u1EAET L\u1ECCC M\xD4 HO\u1EA0I T\u1EEC KH\u1EA8N C\u1EA4P L\xC0 BI\u1EC6N PH\xC1P S\u1ED0NG C\xD2N S\u1ED0 1, kh\xF4ng \u0111\u01B0\u1EE3c tr\xEC ho\xE3n ph\u1EABu thu\u1EADt.",
+      "Clindamycin 900mg q8h l\xE0 th\xE0nh ph\u1EA7n b\u1EAFt bu\u1ED9c \u0111\u1EC3 d\u1EADp t\u1EAFt c\u01A1n b\xE3o \u0111\u1ED9c t\u1ED1 g\xE2y s\u1ED1c nhi\u1EC5m \u0111\u1ED9c."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [523, 526], note: "Chapter 37: Necrotizing fasciitis" }
+  },
+  // =======================================================================
+  // 7. BONE & JOINT, FEBRILE NEUTROPENIA, SURGICAL PROPHYLAXIS
+  // =======================================================================
+  // --- Chapter 35: Acute Bacterial Osteomyelitis ---
+  {
+    id: "who_osteomyelitis_adult",
+    site: "skin_soft_tissue",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 35,
+    diseaseNameVi: "Vi\xEAm t\u1EE7y x\u01B0\u01A1ng c\u1EA5p t\xEDnh do vi khu\u1EA9n (Acute Osteomyelitis)",
+    diseaseNameEn: "Acute Bacterial Osteomyelitis",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO Vi\xEAm T\u1EE7y X\u01B0\u01A1ng: Cloxacillin IV li\u1EC1u cao (2g q6h) HO\u1EB6C Cefazolin / Ceftriaxone",
+    titleEn: "WHO Osteomyelitis: High-Dose IV Cloxacillin OR Cefazolin / Ceftriaxone",
+    durationVi: "4 \u0111\u1EBFn 6 tu\u1EA7n \u1EDF ng\u01B0\u1EDDi l\u1EDBn (~3 tu\u1EA7n \u1EDF tr\u1EBB em kh\xF4ng bi\u1EBFn ch\u1EE9ng)",
+    durationEn: "4-6 weeks in adults (~3 weeks in children)",
+    drugs: [
+      {
+        nameVi: "Cloxacillin IV (Li\u1EC1u cao ng\u1EA5m x\u01B0\u01A1ng)",
+        drugName: "Cloxacillin",
+        nameEn: "Cloxacillin IV",
+        standardDoseVi: "2 g IV m\u1ED7i 6 gi\u1EDD (c\xF3 th\u1EC3 t\u0103ng t\u1EDBi 12 g/ng\xE0y \u0111\u1EC3 t\u0103ng n\u1ED3ng \u0111\u1ED9 v\xE0o m\xF4 x\u01B0\u01A1ng)",
+        dosageVi: "2 g IV m\u1ED7i 6 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: false,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "cefazolin",
+        nameVi: "Cefazolin (L\u1EF1a ch\u1ECDn thay th\u1EBF)",
+        drugName: "Cefazolin",
+        nameEn: "Cefazolin IV",
+        standardDoseVi: "2 g IV m\u1ED7i 8 gi\u1EDD",
+        dosageVi: "2 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "vancomycin",
+        nameVi: "Vancomycin (Khi nghi ng\u1EDD MRSA)",
+        drugName: "Vancomycin",
+        nameEn: "Vancomycin IV",
+        standardDoseVi: "15\u201320 mg/kg IV m\u1ED7i 12 gi\u1EDD",
+        dosageVi: "15-20 mg/kg m\u1ED7i 12 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "second_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "Th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB d\xE0i ng\xE0y (4-6 tu\u1EA7n). C\u1EA7n ph\u1ED1i h\u1EE3p sinh thi\u1EBFt x\u01B0\u01A1ng ho\u1EB7c c\u1EA5y m\xE1u \u0111\u1EC3 \u0111\u1ECBnh danh vi khu\u1EA9n ch\xEDnh x\xE1c."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [489, 492], note: "Chapter 35: Osteomyelitis" }
+  },
+  // --- Chapter 39: Febrile Neutropenia ---
+  {
+    id: "who_febrile_neutropenia_adult",
+    site: "sepsis",
+    population: "adult",
+    riskGroup: "group_2",
+    guidelineSource: "who",
+    chapterNumber: 39,
+    diseaseNameVi: "S\u1ED1t gi\u1EA3m b\u1EA1ch c\u1EA7u trung t\xEDnh (Febrile Neutropenia) \u2013 Nguy c\u01A1 cao",
+    diseaseNameEn: "Febrile Neutropenia \u2013 High Risk",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO S\u1ED1t H\u1EA1 BC: Piperacillin/Tazo 4.5g q6h HO\u1EB6C Meropenem 1g q8h",
+    titleEn: "WHO Febrile Neutropenia: Pip/Tazo 4.5g q6h OR Meropenem 1g q8h",
+    durationVi: "Cho \u0111\u1EBFn khi h\u1EBFt s\u1ED1t \xEDt nh\u1EA5t 48 gi\u1EDD V\xC0 c\u1EA3i thi\u1EC7n l\xE2m s\xE0ng (nguy c\u01A1 th\u1EA5p: 7 ng\xE0y)",
+    durationEn: "Afebrile for >= 48h and clinically resolved (low-risk: 7 days)",
+    drugs: [
+      {
+        drugId: "piperacillin_tazo",
+        nameVi: "Piperacillin/Tazobactam (L\u1EF1a ch\u1ECDn \u0111\u1EA7u tay)",
+        drugName: "Piperacillin/Tazobactam",
+        nameEn: "Piperacillin+tazobactam IV",
+        standardDoseVi: "4,5 g IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n 3-4 gi\u1EDD",
+        dosageVi: "4.5 g IV m\u1ED7i 6 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "first_choice"
+      },
+      {
+        drugId: "meropenem",
+        nameVi: "Meropenem (L\u1EF1a ch\u1ECDn th\u1EE9 hai khi nghi ng\u1EDD ESBL ho\u1EB7c s\u1ED1c)",
+        drugName: "Meropenem",
+        nameEn: "Meropenem IV",
+        standardDoseVi: "1 g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n 3 gi\u1EDD",
+        dosageVi: "1 g IV m\u1ED7i 8 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "second_choice"
+      },
+      {
+        drugId: "amikacin",
+        nameVi: "Amikacin (C\xE2n nh\u1EAFc b\u1ED5 sung khi nghi ng\u1EDD tr\u1EF1c khu\u1EA9n Gram \xE2m \u0111a kh\xE1ng)",
+        drugName: "Amikacin",
+        nameEn: "Amikacin IV",
+        standardDoseVi: "15 mg/kg IV m\u1ED7i 24 gi\u1EDD",
+        dosageVi: "15 mg/kg m\u1ED7i 24 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "second_choice"
+      },
+      {
+        drugId: "vancomycin",
+        nameVi: "Vancomycin (B\u1ED5 sung khi nghi ng\u1EDD MRSA ho\u1EB7c nhi\u1EC5m tr\xF9ng catheter CVC)",
+        drugName: "Vancomycin",
+        nameEn: "Vancomycin IV",
+        standardDoseVi: "15-20 mg/kg IV m\u1ED7i 12 gi\u1EDD",
+        dosageVi: "15-20 mg/kg m\u1ED7i 12 gi\u1EDD",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Watch",
+        line: "second_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "B\u1EAFt bu\u1ED9c d\xF9ng kh\xE1ng sinh ngay c\u1EA3 khi ch\u01B0a t\xECm th\u1EA5y \u1ED5 nhi\u1EC5m tr\xF9ng r\xF5 r\xE0ng n\u1EBFu ANC < 500 cells/mcL k\xE8m s\u1ED1t.",
+      "Khuy\u1EBFn c\xE1o ng\u1EEBng kh\xE1ng sinh d\u1EF1a tr\xEAn l\xE2m s\xE0ng (h\u1EBFt s\u1ED1t \u2265 48h v\xE0 \u1ED5n \u0111\u1ECBnh) ch\u1EE9 kh\xF4ng b\u1EAFt bu\u1ED9c ch\u1EDD s\u1ED1 l\u01B0\u1EE3ng b\u1EA1ch c\u1EA7u h\u1ED3i ph\u1EE5c."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [545, 548], note: "Chapter 39: Febrile neutropenia" }
+  },
+  // --- Chapter 40: Surgical Prophylaxis ---
+  {
+    id: "who_surgical_prophylaxis",
+    site: "skin_soft_tissue",
+    population: "adult",
+    riskGroup: "group_1",
+    guidelineSource: "who",
+    chapterNumber: 40,
+    diseaseNameVi: "Kh\xE1ng sinh d\u1EF1 ph\xF2ng ph\u1EABu thu\u1EADt (Surgical Antibiotic Prophylaxis)",
+    diseaseNameEn: "Surgical Antibiotic Prophylaxis",
+    clinicalSetting: "hospital",
+    line: "first_choice",
+    titleVi: "WHO D\u1EF1 Ph\xF2ng M\u1ED5: Cefazolin 2g IV li\u1EC1u duy nh\u1EA5t trong 120 ph\xFAt tr\u01B0\u1EDBc r\u1EA1ch da",
+    titleEn: "WHO Surgical Prophylaxis: Cefazolin 2g IV single pre-op dose within 120 min",
+    durationVi: "Li\u1EC1u duy nh\u1EA5t tr\u01B0\u1EDBc m\u1ED5. TUY\u1EC6T \u0110\u1ED0I KH\xD4NG ti\u1EBFp t\u1EE5c sau khi \u0111\xF3ng v\u1EBFt m\u1ED5",
+    durationEn: "Single pre-operative dose. No post-operative doses recommended",
+    drugs: [
+      {
+        drugId: "cefazolin",
+        nameVi: "Cefazolin (Chu\u1EA9n v\xE0ng d\u1EF1 ph\xF2ng ph\u1EABu thu\u1EADt to\xE0n c\u1EA7u)",
+        drugName: "Cefazolin",
+        nameEn: "Cefazolin IV",
+        standardDoseVi: "2 g IV li\u1EC1u duy nh\u1EA5t trong v\xF2ng 120 ph\xFAt tr\u01B0\u1EDBc khi r\u1EA1ch da (b\u1EC7nh nh\xE2n > 120kg d\xF9ng 3g)",
+        dosageVi: "2 g IV li\u1EC1u duy nh\u1EA5t",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice",
+        infusionNoteVi: "Ti\xEAm tr\u01B0\u1EDBc khi r\u1EA1ch da < 120 ph\xFAt \u0111\u1EC3 \u0111\u1EA1t n\u1ED3ng \u0111\u1ED9 t\u1ED1i \u0111a t\u1EA1i m\xF4 khi r\u1EA1ch."
+      },
+      {
+        drugId: "metronidazol",
+        nameVi: "Metronidazole (B\u1ED5 sung khi ph\u1EABu thu\u1EADt \u0111\u01B0\u1EDDng ru\u1ED9t/\u0111\u1EA1i tr\u1EF1c tr\xE0ng)",
+        drugName: "Metronidazole",
+        nameEn: "Metronidazole IV",
+        standardDoseVi: "500 mg IV li\u1EC1u duy nh\u1EA5t tr\u01B0\u1EDBc r\u1EA1ch da",
+        dosageVi: "500 mg IV li\u1EC1u duy nh\u1EA5t",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "first_choice"
+      },
+      {
+        drugId: "amox_clav",
+        nameVi: "Amoxicillin/Clavulanate IV (L\u1EF1a ch\u1ECDn th\u1EE9 hai)",
+        drugName: "Amoxicillin/Clavulanate",
+        nameEn: "Amoxicillin+clavulanic acid IV",
+        standardDoseVi: "2 g + 200 mg (2.2g) IV li\u1EC1u duy nh\u1EA5t tr\u01B0\u1EDBc r\u1EA1ch da",
+        dosageVi: "2.2 g IV li\u1EC1u duy nh\u1EA5t",
+        route: "IV",
+        hasDosingCalculator: true,
+        awareCategory: "Access",
+        line: "second_choice"
+      }
+    ],
+    combinationRulesVi: [
+      "WHO 2022 KHUY\u1EBEN C\xC1O M\u1EA0NH M\u1EBC: D\xF9ng kh\xE1ng sinh sau ph\u1EABu thu\u1EADt kh\xF4ng l\xE0m gi\u1EA3m nhi\u1EC5m tr\xF9ng v\u1EBFt m\u1ED5 m\xE0 l\xE0m t\u0103ng nguy c\u01A1 kh\xE1ng thu\u1ED1c v\xE0 ti\xEAu ch\u1EA3y C. difficile.",
+      "Ch\u1EC9 b\u1ED5 sung th\xEAm 1 li\u1EC1u trong m\u1ED5 n\u1EBFu cu\u1ED9c m\u1ED5 k\xE9o d\xE0i h\u01A1n 2 l\u1EA7n chu k\u1EF3 b\xE1n th\u1EA3i (> 4 gi\u1EDD v\u1EDBi Cefazolin) ho\u1EB7c m\u1EA5t m\xE1u > 1.500 mL."
+    ],
+    source: { doc: "WHO_AWaRe_2022", page: [562, 565], note: "Chapter 40: Surgical prophylaxis" }
+  }
+];
+function findWhoRegimens(site, population = "adult", options) {
+  return WHO_REGIMENS.filter((reg) => {
+    if (reg.population !== population) {
+      const hasSpecificPeds = WHO_REGIMENS.some((r) => r.site === site && r.population === population);
+      if (hasSpecificPeds) return false;
+    }
+    if (reg.site !== site) {
+      const isPeritonealMatch = (site === "peritoneal" || site === "gastrointestinal") && (reg.site === "peritoneal" || reg.site === "gastrointestinal");
+      if (!isPeritonealMatch) return false;
+    }
+    if (site === "sepsis" && options?.sepsisSource && reg.sepsisSource && reg.sepsisSource !== options.sepsisSource) {
+      return false;
+    }
+    if (options?.setting && options.setting !== "all" && reg.clinicalSetting !== options.setting) {
+      return false;
+    }
+    if (options?.line && options.line !== "all" && reg.line !== options.line) {
+      return false;
+    }
+    if (options?.awareCategory && options.awareCategory !== "all") {
+      const hasCat = reg.drugs.some((d) => d.awareCategory === options.awareCategory);
+      if (!hasCat) return false;
+    }
+    return true;
+  });
+}
+
 // src/selection/data/stopAndSwitch.ts
 var EVIDENCE_BASED_DURATIONS = [
   {
@@ -57822,6 +59277,145 @@ function classifyRiskGroup(selectedGeneralRiskIds, severity, population, specifi
 function getEmpiricRegimens(site, population, riskGroup, sepsisSource, specificRisks = []) {
   return findEmpiricRegimens(site, population, riskGroup, sepsisSource, specificRisks);
 }
+function getWhoRegimens(site, population = "adult", options) {
+  return findWhoRegimens(site, population, options);
+}
+function getGuidelineComparison(site, _population = "adult") {
+  const comparisons = {
+    respiratory: {
+      site: "respiratory",
+      siteLabelVi: "Nhi\u1EC5m tr\xF9ng h\xF4 h\u1EA5p (CAP / HAP / VAP)",
+      bvbndKeyPointsVi: [
+        "Nh\xF3m 1: \u01AFu ti\xEAn Amox/Clav ho\u1EB7c Ceftriaxone +/- Azithromycin (ph\u1EE7 kh\xF4ng \u0111i\u1EC3n h\xECnh) ho\u1EB7c FQ h\xF4 h\u1EA5p \u0111\u01A1n tr\u1ECB.",
+        "Nh\xF3m 2 (HAP/VAP): Kh\u1EDFi \u0111\u1EA7u ngay Piperacillin/Tazo li\u1EC1u cao truy\u1EC1n 3-4h ho\u1EB7c Meropenem khi c\xF3 s\u1ED1c/ESBL; ph\u1ED1i h\u1EE3p Vancomycin n\u1EBFu c\xF3 nguy c\u01A1 MRSA.",
+        "D\u1EF1a tr\xEAn vi sinh t\u1EA1i BVBND: Tr\u1EF1c khu\u1EA9n Gram \xE2m kh\xE1ng Cephalosporin >60%, Acinetobacter baumannii kh\xE1ng Carbapenem >70%."
+      ],
+      whoKeyPointsVi: [
+        "Th\u1EC3 nh\u1EB9 (Ch\u0103m s\xF3c ban \u0111\u1EA7u): Khuy\u1EBFn c\xE1o s\u1ED1 1 th\u1EBF gi\u1EDBi l\xE0 Amoxicillin u\u1ED1ng li\u1EC1u cao \u0111\u01A1n tr\u1ECB (Nh\xF3m Ti\u1EBFp C\u1EADn - Access). Th\u1EDDi gian ch\u1EC9 5 ng\xE0y (tr\u1EBB em 3 ng\xE0y \u1EDF v\xF9ng HIV th\u1EA5p).",
+        "Th\u1EC3 n\u1EB7ng (Nh\u1EADp vi\u1EC7n): Ceftriaxone ho\u1EB7c Cefotaxime (+ Clarithromycin n\u1EBFu CURB-65 \u2265 2). Khuy\u1EBFn c\xE1o th\u1EDDi gian d\xF9ng 5 ng\xE0y.",
+        "HAP kh\xF4ng th\u1EDF m\xE1y nguy c\u01A1 th\u1EA5p: \u01AFu ti\xEAn Amox/Clav IV ho\u1EB7c Ceftriaxone (th\u1EDDi gian 7 ng\xE0y). Ch\u1EC9 d\xF9ng Pip/Tazo khi c\xF3 nguy c\u01A1 cao Pseudomonas."
+      ],
+      keyDifferencesVi: [
+        "Th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB: WHO khuy\u1EBFn c\xE1o 5 ng\xE0y cho CAP (r\xFAt ng\u1EAFn r\xF5 r\u1EC7t so v\u1EDBi ph\xE1c \u0111\u1ED3 7-10 ng\xE0y truy\u1EC1n th\u1ED1ng).",
+        "Kh\xE1ng sinh \u0111\u1EA7u tay: WHO \u0111\u1EA9y m\u1EA1nh Amoxicillin \u0111\u01A1n tr\u1ECB (Access) cho CAP ngo\u1EA1i tr\xFA, trong khi th\u1EF1c h\xE0nh t\u1EA1i Vi\u1EC7t Nam th\u01B0\u1EDDng k\xEA \u0111\u01A1n Cephalosporin th\u1EBF h\u1EC7 2-3 (Watch) ho\u1EB7c FQ.",
+        "BVBND n\xE2ng b\u1EADc nhanh h\u01A1n l\xEAn Carbapenem trong HAP do t\u1EF7 l\u1EC7 vi khu\u1EA9n \u0111a kh\xE1ng n\u1ED9i vi\u1EC7n t\u1EA1i TP.HCM r\u1EA5t cao."
+      ],
+      stewardshipAdviceVi: "V\u1EDBi CAP nh\u1EB9 \u0111i\u1EC1u tr\u1ECB ngo\u1EA1i tr\xFA: \u01AFu ti\xEAn theo WHO d\xF9ng Amoxicillin 1g q8h \u0111\u1EC3 b\u1EA3o t\u1ED3n nh\xF3m Watch. V\u1EDBi HAP/VAP t\u1EA1i ICU: Tu\xE2n th\u1EE7 BVBND 2026 v\xEC \xE1p l\u1EF1c vi khu\u1EA9n \u0111a kh\xE1ng t\u1EA1i ch\u1ED7 r\u1EA5t l\u1EDBn."
+    },
+    sepsis: {
+      site: "sepsis",
+      siteLabelVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt & S\u1ED1c nhi\u1EC5m khu\u1EA9n",
+      bvbndKeyPointsVi: [
+        "Nh\xF3m 1: Ceftriaxone 2g q24h ho\u1EB7c Cefotaxime 2g q8h k\u1EBFt h\u1EE3p ki\u1EC3m so\xE1t \u1ED5 nhi\u1EC5m.",
+        "Nh\xF3m 2: B\u1EAFt bu\u1ED9c d\xF9ng BL-BLI ph\u1ED5 r\u1ED9ng li\u1EC1u cao (Pip/Tazo 4.5g q6h) ho\u1EB7c Meropenem 1-2g q8h truy\u1EC1n k\xE9o d\xE0i 3h.",
+        "B\u1EAFt bu\u1ED9c ph\u1ED1i h\u1EE3p ch\u1ED1ng Gram(+) n\u1EBFu c\xF3 catheter ho\u1EB7c ti\u1EC1n s\u1EED MRSA; \u01B0u ti\xEAn kh\xE1ng sinh di\u1EC7t Acinetobacter/Pseudomonas."
+      ],
+      whoKeyPointsVi: [
+        "Kh\xF4ng r\xF5 ngu\u1ED3n: Ceftriaxone/Cefotaxime PH\u1ED0I H\u1EE2P Amikacin 15 mg/kg/ng\xE0y (ho\u1EB7c Gentamicin 5 mg/kg/ng\xE0y).",
+        "Chi\u1EBFn l\u01B0\u1EE3c ti\u1EBFt ki\u1EC7m Carbapenem (Carbapenem-sparing): Amikacin gi\u1EEF ho\u1EA1t t\xEDnh di\u1EC7t khu\u1EA9n m\u1EA1nh v\xE0 ph\u1EE7 t\u1ED1t ESBL, gi\xFAp gi\u1EA3m d\xF9ng Meropenem.",
+        "Th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB ti\xEAu chu\u1EA9n: 7 ng\xE0y \u0111\u1ED1i v\u1EDBi nhi\u1EC5m khu\u1EA9n huy\u1EBFt kh\xF4ng r\xF5 ngu\u1ED3n."
+      ],
+      keyDifferencesVi: [
+        "WHO khuy\u1EBFn c\xE1o d\xF9ng Cephalosporin th\u1EBF h\u1EC7 3 + Amikacin nh\u01B0 m\u1ED9t ph\xE1c \u0111\u1ED3 \u0111\u1EA7u tay ti\u1EBFt ki\u1EC7m Carbapenem, trong khi BVBND ph\xE2n t\u1EA7ng Group 2 s\u1EBD \u01B0u ti\xEAn Meropenem ho\u1EB7c Pip/Tazo.",
+        "WHO nh\u1EA5n m\u1EA1nh th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB ng\u1EAFn ng\xE0y (7 ng\xE0y) n\u1EBFu ki\u1EC3m so\xE1t \u1ED5 nhi\u1EC5m t\u1ED1t."
+      ],
+      stewardshipAdviceVi: "T\u1EA1i c\u1EA5p c\u1EE9u khi b\u1EC7nh nh\xE2n s\u1ED1c nhi\u1EC5m khu\u1EA9n ch\u01B0a r\xF5 ngu\u1ED3n v\xE0 ch\u01B0a c\xF3 b\u1EB1ng ch\u1EE9ng s\u1ED1c do Acinetobacter/CRE: C\xF3 th\u1EC3 \xE1p d\u1EE5ng ph\xE1c \u0111\u1ED3 ti\u1EBFt ki\u1EC7m Carbapenem Ceftriaxone + Amikacin theo WHO, sau \u0111\xF3 t\xE1i \u0111\xE1nh gi\xE1 sau 48-72h."
+    },
+    urinary: {
+      site: "urinary",
+      siteLabelVi: "Nhi\u1EC5m tr\xF9ng ti\u1EBFt ni\u1EC7u (Vi\xEAm b\xE0ng quang / Vi\xEAm b\u1EC3 th\u1EADn)",
+      bvbndKeyPointsVi: [
+        "Vi\xEAm b\xE0ng quang: Amox/Clav, Cefuroxime ho\u1EB7c Fosfomycin \u0111\u01B0\u1EDDng u\u1ED1ng. BVBND ghi nh\u1EADn E. coli kh\xE1ng Ciprofloxacin >70-80%.",
+        "Vi\xEAm b\u1EC3 th\u1EADn / Nh\xF3m 2: Ceftriaxone, Piperacillin/Tazobactam ho\u1EB7c Carbapenem t\xF9y ti\u1EC1n s\u1EED ESBL.",
+        "Antibiogram BVBND: E. coli sinh ESBL chi\u1EBFm ~50-60% c\xE1c m\u1EABu ph\xE2n l\u1EADp n\u01B0\u1EDBc ti\u1EC3u."
+      ],
+      whoKeyPointsVi: [
+        "Vi\xEAm b\xE0ng quang c\u1EA5p: L\u1EF1a ch\u1ECDn \u01B0u ti\xEAn s\u1ED1 1 th\u1EBF gi\u1EDBi l\xE0 NITROFURANTOIN 100mg q12h x 5 ng\xE0y (Access). Kh\xF4ng bao gi\u1EDD d\xF9ng cho vi\xEAm b\u1EC3 th\u1EADn.",
+        "Vi\xEAm b\u1EC3 th\u1EADn c\u1EA5p: Ngo\u1EA1i tr\xFA d\xF9ng Ciprofloxacin 500mg q12h x 7 ng\xE0y. Nh\u1EADp vi\u1EC7n: Ceftriaxone/Cefotaxime (+/- Amikacin 15mg/kg q24h cho ESBL).",
+        "Th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB: 3-5 ng\xE0y cho vi\xEAm b\xE0ng quang \u1EDF n\u1EEF; 7 ng\xE0y cho vi\xEAm b\u1EC3 th\u1EADn."
+      ],
+      keyDifferencesVi: [
+        "WHO \u0111\u1EB7t Nitrofurantoin l\xE0 thu\u1ED1c s\u1ED1 1 cho vi\xEAm b\xE0ng quang c\u1EA5p v\xEC n\u1ED3ng \u0111\u1ED9 cao trong n\u01B0\u1EDBc ti\u1EC3u v\xE0 \xEDt kh\xE1ng thu\u1ED1c, h\u1EA1n ch\u1EBF t\u1ED1i \u0111a Fluoroquinolone.",
+        "V\u1EDBi vi\xEAm b\u1EC3 th\u1EADn nghi ng\u1EDD ESBL: WHO khuy\u1EBFn c\xE1o d\xF9ng \u0111\u01A1n tr\u1ECB ho\u1EB7c ph\u1ED1i h\u1EE3p Amikacin (Access) thay v\xEC Carbapenem."
+      ],
+      stewardshipAdviceVi: "\u01AFu ti\xEAn ch\u1EC9 \u0111\u1ECBnh Nitrofurantoin cho vi\xEAm b\xE0ng quang c\u1EA5p theo WHO (tr\xE1nh d\xF9ng Ciprofloxacin v\xEC t\u1EF7 l\u1EC7 kh\xE1ng t\u1EA1i VN qu\xE1 cao). V\u1EDBi vi\xEAm b\u1EC3 th\u1EADn nh\u1EADp vi\u1EC7n, c\xE2n nh\u1EAFc Amikacin \u0111\u1EC3 ti\u1EBFt ki\u1EC7m Carbapenem."
+    },
+    skin_soft_tissue: {
+      site: "skin_soft_tissue",
+      siteLabelVi: "Da & M\xF4 m\u1EC1m (SSTI / Vi\xEAm c\xE2n ho\u1EA1i t\u1EED)",
+      bvbndKeyPointsVi: [
+        "Nh\xF3m 1: Oxacillin/Cloxacillin IV, Cefazolin ho\u1EB7c Amox/Clav; d\u1ECB \u1EE9ng d\xF9ng Clindamycin.",
+        "Nh\xF3m 2: Th\xEAm Vancomycin ph\u1EE7 MRSA. Vi\xEAm c\xE2n m\u1EA1c ho\u1EA1i t\u1EED ph\u1ED1i h\u1EE3p Carbapenem/Pip-Tazo + Clindamycin/Vancomycin."
+      ],
+      whoKeyPointsVi: [
+        "Th\u1EC3 nh\u1EB9 (vi\xEAm m\xF4 t\u1EBF b\xE0o, ch\u1ED1c): Cloxacillin, Cefalexin ho\u1EB7c Amox/Clav \u0111\u01B0\u1EDDng u\u1ED1ng nh\xF3m Ti\u1EBFp c\u1EADn (Access) trong 5-7 ng\xE0y.",
+        "Vi\xEAm c\xE2n ho\u1EA1i t\u1EED (Necrotizing Fasciitis): Piperacillin/Tazo 4.5g q6h + CLINDAMYCIN 900mg q8h (\u1EE9c ch\u1EBF \u0111\u1ED9c t\u1ED1 vi khu\u1EA9n - anti-toxin).",
+        "Ph\u1EABu thu\u1EADt c\u1EAFt l\u1ECDc m\xF4 ho\u1EA1i t\u1EED kh\u1EA9n c\u1EA5p l\xE0 y\u1EBFu t\u1ED1 quy\u1EBFt \u0111\u1ECBnh s\u1ED1 1."
+      ],
+      keyDifferencesVi: [
+        "C\u1EA3 hai h\u01B0\u1EDBng d\u1EABn \u0111\u1EC1u th\u1ED1ng nh\u1EA5t cao v\u1EC1 vai tr\xF2 b\u1EAFt bu\u1ED9c c\u1EE7a Clindamycin li\u1EC1u cao (900mg q8h) trong vi\xEAm c\xE2n ho\u1EA1i t\u1EED \u0111\u1EC3 \u1EE9c ch\u1EBF \u0111\u1ED9c t\u1ED1 GAS/T\u1EE5 c\u1EA7u.",
+        "WHO khuy\u1EBFn c\xE1o th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB ng\u1EAFn 5-7 ng\xE0y cho vi\xEAm m\xF4 t\u1EBF b\xE0o nh\u1EB9 kh\xF4ng bi\u1EBFn ch\u1EE9ng."
+      ],
+      stewardshipAdviceVi: "Kh\xE1ng sinh nh\xF3m Ti\u1EBFp c\u1EADn (Cloxacillin, Cefazolin, Amox/Clav) \u0111\u1EA1t hi\u1EC7u qu\u1EA3 v\u01B0\u1EE3t tr\u1ED9i cho ph\u1EA7n l\u1EDBn nhi\u1EC5m tr\xF9ng da m\xF4 m\u1EC1m th\xF4ng th\u01B0\u1EDDng."
+    },
+    peritoneal: {
+      site: "peritoneal",
+      siteLabelVi: "D\u1ECBch b\xE1ng / Vi\xEAm ph\xFAc m\u1EA1c (SBP)",
+      bvbndKeyPointsVi: [
+        "SBP Nh\xF3m 1: Cefotaxime 2g q8h ho\u1EB7c Ceftriaxone 2g q24h x 5-7 ng\xE0y.",
+        "SBP Nh\xF3m 2 (X\u01A1 gan n\u1EB7ng CLIF-SOFA \u2265 12, n\u1EB1m vi\u1EC7n g\u1EA7n \u0111\xE2y): Kh\u1EDFi \u0111\u1EA7u Meropenem 1g q8h +/- Daptomycin/Vancomycin do nguy c\u01A1 cao ESBL v\xE0 Enterococcus."
+      ],
+      whoKeyPointsVi: [
+        "Nhi\u1EC5m tr\xF9ng \u1ED5 b\u1EE5ng th\u1EC3 nh\u1EB9-v\u1EEBa: Amox/Clav IV ho\u1EB7c Ceftriaxone/Cefotaxime + Metronidazole.",
+        "Nhi\u1EC5m tr\xF9ng \u1ED5 b\u1EE5ng n\u1EB7ng / nguy c\u01A1 ESBL: Piperacillin/Tazo ho\u1EB7c Meropenem.",
+        "Th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB: 4-5 ng\xE0y sau khi \u0111\xE3 ki\u1EC3m so\xE1t \u0111\u01B0\u1EE3c ngu\u1ED3n nhi\u1EC5m."
+      ],
+      keyDifferencesVi: [
+        "BVBND c\xF3 l\u01B0u \u0111\u1ED3 chuy\xEAn bi\u1EC7t cho b\u1EC7nh nh\xE2n x\u01A1 gan c\u1ED5 tr\u01B0\u1EDBng (SBP) v\u1EDBi ph\xE2n t\u1EA7ng \u0111i\u1EC3m CLIF-SOFA, trong khi WHO gom chung trong nh\xF3m nhi\u1EC5m tr\xF9ng \u1ED5 b\u1EE5ng (Intra-abdominal)."
+      ],
+      stewardshipAdviceVi: "B\u1EC7nh nh\xE2n x\u01A1 gan b\xE1ng b\u1EE5ng c\xF3 nhi\u1EC5m tr\xF9ng: N\xEAn \u01B0u ti\xEAn theo l\u01B0u \u0111\u1ED3 chuy\xEAn s\xE2u BVBND 2026 (\u0111\xE1nh gi\xE1 CLIF-SOFA) \u0111\u1EC3 x\u1EED tr\xED k\u1ECBp th\u1EDDi nguy c\u01A1 suy \u0111a t\u1EA1ng."
+    },
+    gastrointestinal: {
+      site: "gastrointestinal",
+      siteLabelVi: "Ti\xEAu h\xF3a & \u1ED4 b\u1EE5ng (Vi\xEAm t\xFAi m\u1EADt, ru\u1ED9t th\u1EEBa, \xE1p xe gan, C. difficile)",
+      bvbndKeyPointsVi: [
+        "Vi\xEAm t\xFAi m\u1EADt / \u0111\u01B0\u1EDDng m\u1EADt: Ceftriaxone/Cefotaxime + Metronidazole ho\u1EB7c Cefoperazone/Sulbactam.",
+        "\xC1p xe gan: Ceftriaxone + Metronidazole; c\u1EA5y m\u1EE7 t\xECm Klebsiella pneumoniae sinh K1/K2."
+      ],
+      whoKeyPointsVi: [
+        "Vi\xEAm t\xFAi m\u1EADt c\u1EAFt b\u1ECF th\xE0nh c\xF4ng kh\xF4ng bi\u1EBFn ch\u1EE9ng: Ng\u1EEBng kh\xE1ng sinh ngay sau m\u1ED5 (kh\xF4ng c\u1EA7n d\xF9ng ti\u1EBFp).",
+        "Clostridioides difficile: B\u1EAET BU\u1ED8C d\xF9ng Vancomycin \u0110\u01AF\u1EDCNG U\u1ED0NG (125mg q6h x 10 ng\xE0y). Vancomycin ti\xEAm t\u0129nh m\u1EA1ch kh\xF4ng c\xF3 t\xE1c d\u1EE5ng.",
+        "\xC1p xe gan: Ceftriaxone + Metronidazole trong 4 tu\u1EA7n (k\u1EBFt h\u1EE3p ch\u1ECDc h\xFAt d\u1EABn l\u01B0u m\u1EE7)."
+      ],
+      keyDifferencesVi: [
+        "WHO khuy\u1EBFn c\xE1o kh\xF4ng ti\u1EBFp t\u1EE5c kh\xE1ng sinh sau ph\u1EABu thu\u1EADt c\u1EAFt ru\u1ED9t th\u1EEBa ho\u1EB7c t\xFAi m\u1EADt kh\xF4ng bi\u1EBFn ch\u1EE9ng (gi\u1EA3m nguy c\u01A1 \u0111\u1EC1 kh\xE1ng v\xE0 C. diff).",
+        "WHO h\u01B0\u1EDBng d\u1EABn chi ti\u1EBFt v\u1EC1 \u0111i\u1EC1u tr\u1ECB C. diff b\u1EB1ng Vancomycin \u0111\u01B0\u1EDDng u\u1ED1ng."
+      ],
+      stewardshipAdviceVi: "Ki\u1EC3m so\xE1t tri\u1EC7t \u0111\u1EC3 ngu\u1ED3n nhi\u1EC5m b\u1EB1ng ph\u1EABu thu\u1EADt ho\u1EB7c d\u1EABn l\u01B0u l\xE0 ch\xECa kh\xF3a s\u1ED1 1. Ng\u1EEBng kh\xE1ng sinh s\u1EDBm sau m\u1ED5 s\u1EA1ch-nhi\u1EC5m theo khuy\u1EBFn c\xE1o c\u1EE7a WHO."
+    },
+    cns: {
+      site: "cns",
+      siteLabelVi: "Th\u1EA7n kinh trung \u01B0\u01A1ng (Vi\xEAm m\xE0ng n\xE3o m\u1EE7)",
+      bvbndKeyPointsVi: [
+        "Kh\u1EDFi \u0111\u1EA7u Ceftriaxone 2g q12h (4g/ng\xE0y) ho\u1EB7c Cefotaxime 2g q6h (8g/ng\xE0y).",
+        "B\u1ED5 sung Vancomycin li\u1EC1u cao ng\u1EA5m m\xE0ng n\xE3o n\u1EBFu nghi ng\u1EDD Ph\u1EBF c\u1EA7u kh\xE1ng Cephalosporin ho\u1EB7c sau ph\u1EABu thu\u1EADt th\u1EA7n kinh.",
+        "C\xE2n nh\u1EAFc Ampicillin n\u1EBFu nghi ng\u1EDD Listeria monocytogenes."
+      ],
+      whoKeyPointsVi: [
+        "\u0110\u1EA7u tay: Ceftriaxone 2g q12h (4g/ng\xE0y) ho\u1EB7c Cefotaxime 2g q6h (8g/ng\xE0y).",
+        "Th\xEAm Ampicillin 2g q4h IV n\u1EBFu b\u1EC7nh nh\xE2n \u2265 50 tu\u1ED5i ho\u1EB7c c\xF3 thai (di\u1EC7t Listeria).",
+        "Dexamethasone 0.15 mg/kg q6h ti\xEAm c\xF9ng li\u1EC1u kh\xE1ng sinh \u0111\u1EA7u ti\xEAn; ch\u1EC9 ti\u1EBFp t\u1EE5c n\u1EBFu l\xE0 Ph\u1EBF c\u1EA7u.",
+        "Th\u1EDDi gian: Ph\u1EBF c\u1EA7u 10-14 ng\xE0y; N\xE3o m\xF4 c\u1EA7u 5-7 ng\xE0y; Listeria 21 ng\xE0y."
+      ],
+      keyDifferencesVi: [
+        "Hai h\u01B0\u1EDBng d\u1EABn r\u1EA5t t\u01B0\u01A1ng \u0111\u1ED3ng v\u1EC1 li\u1EC1u m\xE0ng n\xE3o g\u1EA5p \u0111\xF4i th\xF4ng th\u01B0\u1EDDng c\u1EE7a Cephalosporin th\u1EBF h\u1EC7 3 v\xE0 ch\u1EC9 \u0111\u1ECBnh Dexamethasone.",
+        "WHO \u0111\u01B0a ra th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB nh\u1EAFm \u0111\xEDch r\u1EA5t r\xF5 cho t\u1EEBng ch\u1EE7ng vi khu\u1EA9n c\u1EE5 th\u1EC3."
+      ],
+      stewardshipAdviceVi: "Lu\xF4n d\xF9ng li\u1EC1u Ceftriaxone 2g m\u1ED7i 12h (t\u1ED5ng 4g/ng\xE0y) \u0111\u1EC3 thu\u1ED1c \u0111\u1EA1t n\u1ED3ng \u0111\u1ED9 di\u1EC7t khu\u1EA9n trong d\u1ECBch n\xE3o t\u1EE7y. D\xF9ng Dexamethasone ngay tr\u01B0\u1EDBc ho\u1EB7c c\xF9ng li\u1EC1u kh\xE1ng sinh \u0111\u1EA7u ti\xEAn."
+    }
+  };
+  return comparisons[site] || comparisons.respiratory;
+}
 function evaluate48hReassessment(clinicalStatus, cultureStatus, susceptibilityStatus) {
   const recommendationsVi = [];
   const recommendationsEn = [];
@@ -58174,6 +59768,9 @@ var SourceBadge = ({ source, className = "" }) => {
   } else if (source.doc === "BYT_5631") {
     docName = "Q\u0110 5631/Q\u0110-BYT 2020";
     badgeColor = "bg-purple-50 text-purple-700 border-purple-200";
+  } else if (source.doc === "WHO_AWaRe_2022") {
+    docName = "WHO AWaRe 2022";
+    badgeColor = "bg-sky-50 text-sky-800 border-sky-300";
   }
   const pageStr = Array.isArray(source.page) ? source.page.join(", ") : source.page;
   return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
@@ -58282,11 +59879,11 @@ var StepAssessmentStratification = ({
     }
   ];
   const presets = [
-    { id: "vap_severe", label: "VAP Th\u1EDF M\xE1y (ICU \u2022 SOFA 8)", desc: "Nguy c\u01A1 cao VK\u0110K Nh\xF3m 2" },
-    { id: "cap_standard", label: "CAP Vi\xEAm Ph\u1ED5i (Khoa N\u1ED9i \u2022 SOFA 0)", desc: "\xCDt nguy c\u01A1 Nh\xF3m 1" },
-    { id: "sepsis_cirrhosis", label: "Sepsis / SBP X\u01A1 Gan (CLIF-SOFA 13)", desc: "Nguy c\u01A1 cao VK\u0110K" },
-    { id: "cauti_elderly", label: "CAUTI Ti\u1EBFt Ni\u1EC7u Sonde L\u01B0u", desc: "C\xF3 nguy c\u01A1 ESBL/Pseudomonas" },
-    { id: "ssti_cellulitis", label: "SSTI Vi\xEAm M\xF4 T\u1EBF B\xE0o", desc: "\xCDt nguy c\u01A1 Nh\xF3m 1" }
+    { id: "vap_severe", icon: "\u26A1", label: "VAP ICU (SOFA 8)", desc: "VAP Th\u1EDF M\xE1y ICU \u2022 Nguy c\u01A1 cao VK\u0110K Nh\xF3m 2" },
+    { id: "cap_standard", icon: "\u{1FAC1}", label: "CAP N\u1ED9i (SOFA 0)", desc: "Vi\xEAm Ph\u1ED5i C\u1ED9ng \u0110\u1ED3ng Khoa N\u1ED9i \u2022 \xCDt nguy c\u01A1 Nh\xF3m 1" },
+    { id: "sepsis_cirrhosis", icon: "\u{1FA78}", label: "Sepsis X\u01A1 Gan", desc: "Sepsis / SBP Vi\xEAm Ph\xFAc M\u1EA1c X\u01A1 Gan \u2022 CLIF-SOFA 13" },
+    { id: "cauti_elderly", icon: "\u{1F6BD}", label: "CAUTI Ti\u1EBFt Ni\u1EC7u", desc: "Nhi\u1EC5m tr\xF9ng ti\u1EC3u Sonde l\u01B0u \u2022 Nguy c\u01A1 ESBL/Pseudomonas" },
+    { id: "ssti_cellulitis", icon: "\u{1FA79}", label: "SSTI M\xF4 T\u1EBF B\xE0o", desc: "Vi\xEAm m\xF4 t\u1EBF b\xE0o da m\xF4 m\u1EC1m \u2022 \xCDt nguy c\u01A1 Nh\xF3m 1" }
   ];
   const activeNhsnSection = NHSN_CRITERIA_SECTIONS.find((s) => s.id === selectedSyndrome) || NHSN_CRITERIA_SECTIONS[0];
   const metCount = activeNhsnSection.criteria.filter((c) => checkedNhsnIds.includes(c.id)).length;
@@ -58315,28 +59912,31 @@ var StepAssessmentStratification = ({
     }
   };
   return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "bg-gradient-to-r from-teal-900 via-slate-900 to-sky-950 text-white rounded-2xl p-3.5 shadow-sm border border-teal-500/30", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "w-8 h-8 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_lucide_react18.Sparkles, { className: "w-4 h-4" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "bg-gradient-to-r from-teal-900 via-slate-900 to-sky-950 text-white rounded-2xl p-3 shadow-sm border border-teal-500/30", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-2.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "w-7 h-7 rounded-lg bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_lucide_react18.Sparkles, { className: "w-3.5 h-3.5" }) }),
         /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-teal-400", children: "M\u1EABu Ca L\xE2m S\xE0ng \u0110i\u1EC3n H\xECnh" }),
-            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-[10px] bg-teal-500/20 text-teal-200 px-2 py-0.5 rounded-full border border-teal-400/20", children: "1-Click Nhanh" })
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-[11px] font-black uppercase tracking-wider text-teal-400", children: "M\u1EABu Ca \u0110i\u1EC3n H\xECnh" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-[9px] bg-teal-500/20 text-teal-200 px-1.5 py-0.2 rounded-full border border-teal-400/20", children: "1-Click" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-[11px] text-slate-300 mt-0.5", children: "N\u1EA1p nhanh th\xF4ng s\u1ED1 ca b\u1EC7nh m\u1EABu \u0111\u1EC3 ki\u1EC3m th\u1EED v\xE0 ph\xE2n t\u1EA7ng t\u1EE9c th\xEC" })
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-[10px] text-slate-300", children: "N\u1EA1p nhanh ca b\u1EC7nh m\u1EABu \u0111\u1EC3 ki\u1EC3m th\u1EED ph\xE2n t\u1EA7ng" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full scrollbar-none sm:flex-wrap", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center gap-1 overflow-x-auto pb-0.5 max-w-full scrollbar-none sm:flex-wrap", children: [
         presets.map((p) => {
           const isSelected = activePreset === p.id;
-          return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => handleSelectPreset(p.id),
-              className: `px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center space-x-1.5 shrink-0 whitespace-nowrap ${isSelected ? "bg-teal-500 text-slate-950 font-bold shadow-sm ring-2 ring-white/30" : "bg-white/10 text-slate-200 hover:bg-white/20 hover:text-white border border-white/10"}`,
+              className: `px-2 py-1 rounded-lg text-[11px] font-semibold transition-all cursor-pointer flex items-center space-x-1 shrink-0 whitespace-nowrap ${isSelected ? "bg-teal-500 text-slate-950 font-bold shadow-sm ring-2 ring-white/30" : "bg-white/10 text-slate-200 hover:bg-white/20 hover:text-white border border-white/10"}`,
               title: p.desc,
-              children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: p.label })
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: p.icon }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: p.label })
+              ]
             },
             p.id
           );
@@ -58346,10 +59946,10 @@ var StepAssessmentStratification = ({
           {
             type: "button",
             onClick: () => handleSelectPreset("custom"),
-            className: "px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-1 shrink-0 whitespace-nowrap cursor-pointer",
+            className: "px-2 py-1 rounded-lg text-[11px] font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-1 shrink-0 whitespace-nowrap cursor-pointer",
             title: "L\xE0m m\u1EDBi \u0111\u1EC3 t\u1EF1 nh\u1EADp ca b\u1EC7nh",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_lucide_react18.RotateCcw, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_lucide_react18.RotateCcw, { className: "w-3 h-3" }),
               /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "T\u1EF1 nh\u1EADp" })
             ]
           }
@@ -58502,22 +60102,28 @@ var StepAssessmentStratification = ({
           /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-xs text-slate-700 font-medium", children: "B\u1EC7nh nh\xE2n c\xF3 h\u1ED9i ch\u1EE9ng nhi\u1EC5m khu\u1EA9n c\u1EA5p t\xEDnh, s\u1ED1c nhi\u1EC5m khu\u1EA9n ho\u1EB7c t\u1ED5n th\u01B0\u01A1ng c\u01A1 quan r\xF5 r\xE0ng:" })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "grid grid-cols-2 gap-2 w-full sm:w-auto shrink-0", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => onConfirmIndication(true),
-              className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${indicationConfirmed ? "bg-teal-600 text-white shadow-xs" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"}`,
-              children: "\u2713 X\xE1c nh\u1EADn c\xF3 ch\u1EC9 \u0111\u1ECBnh"
+              className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center flex items-center justify-center space-x-1.5 ${indicationConfirmed ? "bg-teal-600 text-white shadow-xs" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_lucide_react18.CheckCircle2, { className: "w-3.5 h-3.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "C\xF3 ch\u1EC9 \u0111\u1ECBnh" })
+              ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => onConfirmIndication(false),
-              className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${!indicationConfirmed ? "bg-amber-600 text-white shadow-xs" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"}`,
-              children: "Ch\u01B0a r\xF5 / Nghi do virus"
+              className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center flex items-center justify-center space-x-1.5 ${!indicationConfirmed ? "bg-amber-600 text-white shadow-xs" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_lucide_react18.AlertTriangle, { className: "w-3.5 h-3.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "Ch\u01B0a \u0111\u1EE7 b\u1EB1ng ch\u1EE9ng" })
+              ]
             }
           )
         ] })
@@ -58993,9 +60599,13 @@ var StepEmpiric = ({
   onCalculateDoseForDrug,
   onPatientChange
 }) => {
-  const [activeTab, setActiveTab] = (0, import_react15.useState)("regimens");
+  const [guidelineSource, setGuidelineSource] = (0, import_react15.useState)("bvbnd");
+  const [bvbndTab, setBvbndTab] = (0, import_react15.useState)("regimens");
   const [selectedFilterRisk, setSelectedFilterRisk] = (0, import_react15.useState)("all");
   const [copiedDrugId, setCopiedDrugId] = (0, import_react15.useState)(null);
+  const [whoFilterSetting, setWhoFilterSetting] = (0, import_react15.useState)("all");
+  const [whoFilterLine, setWhoFilterLine] = (0, import_react15.useState)("all");
+  const [whoFilterAware, setWhoFilterAware] = (0, import_react15.useState)("all");
   const getTargetImageId = (tab) => {
     const isAdult = population === "adult";
     if (tab === "antibiogram") {
@@ -59012,22 +60622,28 @@ var StepEmpiric = ({
       return "adult_sbp_regimen";
     }
   };
-  const currentPdfPage = site === "respiratory" ? population === "adult" ? activeTab === "antibiogram" ? 8 : 9 : 4 : site === "sepsis" ? population === "adult" ? activeTab === "antibiogram" ? 12 : 13 : activeTab === "antibiogram" ? 5 : 6 : site === "skin_soft_tissue" ? population === "adult" ? activeTab === "antibiogram" ? 9 : 10 : activeTab === "antibiogram" ? 6 : 7 : site === "urinary" ? population === "adult" ? activeTab === "antibiogram" ? 10 : 11 : activeTab === "antibiogram" ? 7 : 8 : activeTab === "antibiogram" ? 11 : 12;
-  const allRegimens = getEmpiricRegimens(
+  const currentPdfPage = site === "respiratory" ? population === "adult" ? bvbndTab === "antibiogram" ? 8 : 9 : 4 : site === "sepsis" ? population === "adult" ? bvbndTab === "antibiogram" ? 12 : 13 : bvbndTab === "antibiogram" ? 5 : 6 : site === "skin_soft_tissue" ? population === "adult" ? bvbndTab === "antibiogram" ? 9 : 10 : bvbndTab === "antibiogram" ? 6 : 7 : site === "urinary" ? population === "adult" ? bvbndTab === "antibiogram" ? 10 : 11 : bvbndTab === "antibiogram" ? 7 : 8 : bvbndTab === "antibiogram" ? 11 : 12;
+  const allBvbndRegimens = getEmpiricRegimens(
     site,
     population,
     riskGroup,
     sepsisSource,
     specificRisks
   );
-  const regimens = allRegimens.filter((r) => {
+  const bvbndRegimens = allBvbndRegimens.filter((r) => {
     if (selectedFilterRisk === "all") return true;
     if (selectedFilterRisk === "base") return !r.specificRisk;
     return r.specificRisk === selectedFilterRisk;
   });
+  const allWhoRegimensForSite = getWhoRegimens(site, population, { sepsisSource });
+  const whoRegimens = getWhoRegimens(site, population, {
+    sepsisSource,
+    setting: whoFilterSetting,
+    line: whoFilterLine,
+    awareCategory: whoFilterAware
+  });
   const antibiogramData = getAntibiogramForSite(site, population);
-  const activeCalculatedDrug = ANTIBIOTICS.find((a) => a.id === selectedDrugId);
-  const activeCalculatedDrugName = activeCalculatedDrug ? activeCalculatedDrug.name : selectedDrugId;
+  const comparisonData = getGuidelineComparison(site, population);
   const siteLabels = {
     respiratory: "H\xF4 h\u1EA5p (Vi\xEAm ph\u1ED5i CAP / HAP / VAP)",
     sepsis: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt / S\u1ED1c nhi\u1EC5m khu\u1EA9n",
@@ -59047,8 +60663,8 @@ var StepEmpiric = ({
     }
   };
   return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "bg-white rounded-3xl border border-slate-200/90 shadow-xs p-4 sm:p-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-100", children: [
         /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
             /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-200", children: "Giai \u0110o\u1EA1n 2" }),
@@ -59057,41 +60673,103 @@ var StepEmpiric = ({
               " \u2022 ",
               siteLabels[site] || site
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h2", { className: "text-lg sm:text-xl font-extrabold text-slate-900 w-full sm:w-auto mt-1 sm:mt-0", children: "Ph\xE1c \u0110\u1ED3 Kh\xE1ng Sinh Kh\u1EDFi \u0110\u1EA7u & D\u1EEF Li\u1EC7u Vi Sinh" })
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h2", { className: "text-lg sm:text-xl font-extrabold text-slate-900 w-full sm:w-auto mt-1 sm:mt-0", children: "L\u1EF1a Ch\u1ECDn Ph\xE1c \u0110\u1ED3 Kh\xE1ng Sinh Kh\u1EDFi \u0110\u1EA7u" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-xs text-slate-500 mt-1", children: "Khuy\u1EBFn c\xE1o ph\xE1c \u0111\u1ED3 theo h\u01B0\u1EDBng d\u1EABn BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026 (P.4-13) \u2022 T\xEDch h\u1EE3p t\xEDnh li\u1EC1u c\xE1 th\u1EC3 h\xF3a tr\u1EF1c ti\u1EBFp theo ch\u1EE9c n\u0103ng th\u1EADn." })
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { className: "text-xs text-slate-500 mt-1", children: [
+            "T\xEDch h\u1EE3p \u0111a ngu\u1ED3n: ",
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026" }),
+            " (kh\xE1ng sinh \u0111\u1ED3 t\u1EA1i ch\u1ED7) & ",
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "WHO AWaRe 2022" }),
+            " (s\xE1ch kh\xE1ng sinh to\xE0n c\u1EA7u)."
+          ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-wrap items-center gap-2", children: [
-          onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-3 p-1 bg-slate-100 rounded-2xl border border-slate-200 gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
             "button",
             {
-              id: "btn-open-site-flowchart",
+              id: "btn-source-bvbnd",
               type: "button",
-              onClick: () => onOpenGuidelineAtlas(getTargetImageId(activeTab)),
-              className: "px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer shrink-0",
-              title: "Xem \u1EA3nh l\u01B0u \u0111\u1ED3 ph\xE1c \u0111\u1ED3 / vi sinh g\u1ED1c t\u1EEB H\u01B0\u1EDBng d\u1EABn B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026",
+              onClick: () => setGuidelineSource("bvbnd"),
+              className: `px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${guidelineSource === "bvbnd" ? "bg-white text-teal-900 shadow-xs border border-slate-200/80 font-black" : "text-slate-600 hover:text-slate-900"}`,
+              title: "Ph\xE1c \u0111\u1ED3 & Kh\xE1ng sinh \u0111\u1ED3 t\u1EA1i ch\u1ED7 B\u1EC7nh Vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.BookOpen, { className: `w-3.5 h-3.5 ${guidelineSource === "bvbnd" ? "text-teal-600" : "text-slate-400"}` }),
                 /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
-                  "Xem L\u01B0u \u0110\u1ED3 G\u1ED1c BVBND (Trang ",
-                  currentPdfPage,
+                  "BVBND (",
+                  allBvbndRegimens.length,
                   ")"
                 ] })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "w-full sm:w-auto grid grid-cols-2 sm:flex p-1 bg-slate-100 rounded-xl border border-slate-200", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+            "button",
+            {
+              id: "btn-source-who",
+              type: "button",
+              onClick: () => setGuidelineSource("who"),
+              className: `px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${guidelineSource === "who" ? "bg-sky-600 text-white shadow-xs font-black" : "text-slate-600 hover:text-slate-900"}`,
+              title: "S\xE1ch H\u01B0\u1EDBng d\u1EABn Kh\xE1ng sinh WHO AWaRe Book 2022",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Globe, { className: "w-3.5 h-3.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+                  "WHO AWaRe (",
+                  allWhoRegimensForSite.length,
+                  ")"
+                ] })
+              ]
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+            "button",
+            {
+              id: "btn-source-compare",
+              type: "button",
+              onClick: () => setGuidelineSource("compare"),
+              className: `px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${guidelineSource === "compare" ? "bg-purple-600 text-white shadow-xs font-black" : "text-slate-600 hover:text-slate-900"}`,
+              title: "So S\xE1nh \u0110\u1ED1i Chi\u1EBFu BVBND 2026 vs WHO AWaRe 2022",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Scale, { className: "w-3.5 h-3.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "\u0110\u1ED1i Chi\u1EBFu" })
+              ]
+            }
+          )
+        ] })
+      ] }),
+      guidelineSource === "bvbnd" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-4 space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-xs font-bold text-slate-700 flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.BookOpen, { className: "w-4 h-4 text-teal-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "H\u01B0\u1EDBng d\u1EABn BVBND 2026 (Trang 4-13) \u2022 Antibiogram n\u0103m 2024" })
+            ] }),
+            onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+              "button",
+              {
+                id: "btn-open-site-flowchart",
+                type: "button",
+                onClick: () => onOpenGuidelineAtlas(getTargetImageId(bvbndTab)),
+                className: "px-2.5 py-1 rounded-lg text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 shadow-2xs transition-all flex items-center gap-1 cursor-pointer",
+                title: "Xem \u1EA3nh l\u01B0u \u0111\u1ED3 ph\xE1c \u0111\u1ED3 / vi sinh g\u1ED1c t\u1EEB H\u01B0\u1EDBng d\u1EABn B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026",
+                children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+                  "L\u01B0u \u0111\u1ED3 g\u1ED1c Tr.",
+                  currentPdfPage
+                ] })
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex p-1 bg-slate-100 rounded-xl border border-slate-200 self-start sm:self-auto", children: [
             /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
               "button",
               {
                 type: "button",
-                onClick: () => setActiveTab("regimens"),
-                className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${activeTab === "regimens" ? "bg-white text-teal-700 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
+                onClick: () => setBvbndTab("regimens"),
+                className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1 cursor-pointer ${bvbndTab === "regimens" ? "bg-white text-teal-700 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ClipboardList, { className: "w-3.5 h-3.5 text-teal-600" }),
                   /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
-                    "Ph\xE1c \u0111\u1ED3 Khuy\u1EBFn c\xE1o (",
-                    allRegimens.length,
+                    "Ph\xE1c \u0111\u1ED3 BVBND (",
+                    allBvbndRegimens.length,
                     ")"
                   ] })
                 ]
@@ -59101,8 +60779,8 @@ var StepEmpiric = ({
               "button",
               {
                 type: "button",
-                onClick: () => setActiveTab("antibiogram"),
-                className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer ${activeTab === "antibiogram" ? "bg-white text-teal-700 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
+                onClick: () => setBvbndTab("antibiogram"),
+                className: `px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1 cursor-pointer ${bvbndTab === "antibiogram" ? "bg-white text-teal-700 shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.FlaskConical, { className: "w-3.5 h-3.5 text-teal-600" }),
                   /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Vi sinh & KS\u0110 T\u1EA1i Ch\u1ED7" })
@@ -59110,72 +60788,257 @@ var StepEmpiric = ({
               }
             )
           ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: `p-3 rounded-xl border text-xs ${riskGroup === "group_2" ? "bg-amber-50/90 border-amber-200 text-amber-950" : "bg-emerald-50/90 border-emerald-200 text-emerald-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-start gap-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: `p-1 rounded-lg shrink-0 mt-0.5 ${riskGroup === "group_2" ? "bg-amber-100 text-amber-700" : "bg-emerald-100 text-emerald-700"}`, children: riskGroup === "group_2" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.AlertTriangle, { className: "w-4 h-4" }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.CheckCircle2, { className: "w-4 h-4" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { className: "font-bold text-xs", children: riskGroup === "group_2" ? "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 2 (Nguy c\u01A1 cao vi khu\u1EA9n \u0111a kh\xE1ng ho\u1EB7c b\u1EC7nh c\u1EA3nh n\u1EB7ng):" : "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 1 (\xCDt nguy c\u01A1 vi khu\u1EA9n \u0111a kh\xE1ng):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "mt-0.5 leading-relaxed text-slate-700 text-[11px]", children: riskGroup === "group_2" ? "B\u1EAFt bu\u1ED9c s\u1EED d\u1EE5ng kh\xE1ng sinh ph\u1ED5 r\u1ED9ng theo l\u01B0u \u0111\u1ED3 BVBND (BL-BLI li\u1EC1u cao ho\u1EB7c Carbapenem), ph\u1ED1i h\u1EE3p bao ph\u1EE7 MRSA n\u1EBFu c\xF3 ch\u1EC9 \u0111\u1ECBnh. Lu\xF4n l\u1EA5y c\u1EA5y m\xE1u v\xE0 b\u1EC7nh ph\u1EA9m tr\u01B0\u1EDBc li\u1EC1u \u0111\u1EA7u ti\xEAn." : "\u01AFu ti\xEAn kh\xE1ng sinh ph\u1ED5 h\u1EB9p ho\u1EB7c ph\u1ED5 trung b\xECnh ph\xF9 h\u1EE3p. H\u1EA1n ch\u1EBF l\u1EA1m d\u1EE5ng nh\xF3m Carbapenem, Colistin hay Vancomycin khi ch\u01B0a c\xF3 b\u1EB1ng ch\u1EE9ng vi sinh." })
+          ] })
+        ] }) }),
+        riskGroup === "group_2" && bvbndTab === "regimens" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "pt-2 flex items-center gap-1.5 flex-wrap", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-xs font-bold text-slate-600 flex items-center gap-1 mr-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Filter, { className: "w-3.5 h-3.5 text-slate-400" }),
+            "L\u1ECDc nhanh:"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setSelectedFilterRisk("all"),
+              className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "all" ? "bg-teal-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
+              children: [
+                "T\u1EA5t c\u1EA3 (",
+                allBvbndRegimens.length,
+                ")"
+              ]
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setSelectedFilterRisk("base"),
+              className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "base" ? "bg-teal-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
+              children: "Ph\xE1c \u0111\u1ED3 n\u1EC1n"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setSelectedFilterRisk("mrsa"),
+              className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "mrsa" ? "bg-amber-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
+              children: "+ MRSA"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setSelectedFilterRisk("esbl"),
+              className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "esbl" ? "bg-indigo-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
+              children: "+ ESBL"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setSelectedFilterRisk("pseudo_acineto"),
+              className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "pseudo_acineto" ? "bg-rose-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
+              children: "+ Pseudo / Acineto"
+            }
+          )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: `mt-3 p-3.5 rounded-xl border text-xs ${riskGroup === "group_2" ? "bg-amber-50/90 border-amber-200 text-amber-950" : "bg-emerald-50/90 border-emerald-200 text-emerald-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-start gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: `p-1.5 rounded-lg shrink-0 mt-0.5 ${riskGroup === "group_2" ? "bg-amber-100 text-amber-700" : "bg-emerald-100 text-emerald-700"}`, children: riskGroup === "group_2" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.AlertTriangle, { className: "w-4 h-4" }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.CheckCircle2, { className: "w-4 h-4" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { className: "font-bold text-xs sm:text-sm", children: riskGroup === "group_2" ? "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 2 (Nguy c\u01A1 cao vi khu\u1EA9n \u0111a kh\xE1ng ho\u1EB7c b\u1EC7nh c\u1EA3nh n\u1EB7ng):" : "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 1 (\xCDt nguy c\u01A1 vi khu\u1EA9n \u0111a kh\xE1ng):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "mt-1 leading-relaxed text-slate-700", children: riskGroup === "group_2" ? "B\u1EAFt bu\u1ED9c s\u1EED d\u1EE5ng kh\xE1ng sinh ph\u1ED5 r\u1ED9ng theo l\u01B0u \u0111\u1ED3 BVBND (BL-BLI li\u1EC1u cao ho\u1EB7c Carbapenem), ph\u1ED1i h\u1EE3p bao ph\u1EE7 MRSA n\u1EBFu c\xF3 ch\u1EC9 \u0111\u1ECBnh. Lu\xF4n l\u1EA5y c\u1EA5y m\xE1u v\xE0 b\u1EC7nh ph\u1EA9m tr\u01B0\u1EDBc li\u1EC1u \u0111\u1EA7u ti\xEAn." : "\u01AFu ti\xEAn kh\xE1ng sinh ph\u1ED5 h\u1EB9p ho\u1EB7c ph\u1ED5 trung b\xECnh ph\xF9 h\u1EE3p. H\u1EA1n ch\u1EBF l\u1EA1m d\u1EE5ng nh\xF3m Carbapenem, Colistin hay Vancomycin khi ch\u01B0a c\xF3 b\u1EB1ng ch\u1EE9ng vi sinh." })
+      guidelineSource === "who" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-4 space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "bg-gradient-to-r from-sky-50 via-teal-50 to-slate-50 border border-sky-200 rounded-2xl p-3.5", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center space-x-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center shrink-0 shadow-xs", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Globe, { className: "w-5 h-5" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-xs font-extrabold text-sky-950", children: "The WHO AWaRe Antibiotic Book (2022)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800 border border-sky-300", children: "ISBN 978-92-4-006238-2" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { className: "text-[11px] text-slate-600 mt-0.5 leading-relaxed", children: [
+                "Ph\xE2n t\u1EA7ng kh\xE1ng sinh th\xE0nh 3 nh\xF3m: ",
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "Access (Ti\u1EBFp c\u1EADn)" }),
+                ", ",
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "Watch (Gi\xE1m s\xE1t)" }),
+                ", v\xE0 ",
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "Reserve (D\u1EF1 tr\u1EEF)" }),
+                ". M\u1EE5c ti\xEAu to\xE0n c\u1EA7u c\u1EE7a WHO: ",
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "\u2265 60%" }),
+                " t\u1ED5ng l\u01B0\u1EE3ng kh\xE1ng sinh s\u1EED d\u1EE5ng ph\u1EA3i thu\u1ED9c nh\xF3m Ti\u1EBFp C\u1EADn."
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1.5 shrink-0 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "px-2 py-0.5 rounded-lg text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-emerald-500" }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Access (\u226560%)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "px-2 py-0.5 rounded-lg text-[10px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300 flex items-center gap-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-amber-500" }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Watch" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "px-2 py-0.5 rounded-lg text-[10px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300 flex items-center gap-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-rose-500" }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Reserve" })
+            ] })
+          ] })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-wrap items-center gap-2 pt-1 border-t border-slate-100 text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "font-bold text-slate-500 text-[11px]", children: "B\u1EADc:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex bg-slate-100 p-0.5 rounded-lg border border-slate-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterLine("all"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterLine === "all" ? "bg-white text-sky-800 shadow-2xs" : "text-slate-600"}`,
+                  title: "T\u1EA5t c\u1EA3 c\xE1c b\u1EADc l\u1EF1a ch\u1ECDn",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Layers, { className: "w-3 h-3" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "T\u1EA5t c\u1EA3" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterLine("first_choice"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterLine === "first_choice" ? "bg-emerald-600 text-white shadow-2xs" : "text-slate-600"}`,
+                  title: "L\u1EF1a ch\u1ECDn \u0111\u1EA7u tay theo WHO (First Choice)",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Star, { className: "w-3 h-3" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "\u0110\u1EA7u tay" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterLine("second_choice"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterLine === "second_choice" ? "bg-amber-600 text-white shadow-2xs" : "text-slate-600"}`,
+                  title: "L\u1EF1a ch\u1ECDn th\u1EE9 hai / thay th\u1EBF (Second Choice)",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.RefreshCw, { className: "w-3 h-3" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "L\u1EF1a ch\u1ECDn 2" })
+                  ]
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "font-bold text-slate-500 text-[11px]", children: "Tuy\u1EBFn:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex bg-slate-100 p-0.5 rounded-lg border border-slate-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterSetting("all"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterSetting === "all" ? "bg-white text-sky-800 shadow-2xs" : "text-slate-600"}`,
+                  title: "T\u1EA5t c\u1EA3 c\xE1c tuy\u1EBFn \u0111i\u1EC1u tr\u1ECB",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Layers, { className: "w-3 h-3" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "T\u1EA5t c\u1EA3" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterSetting("hospital"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterSetting === "hospital" ? "bg-sky-600 text-white shadow-2xs" : "text-slate-600"}`,
+                  title: "Tuy\u1EBFn B\u1EC7nh vi\u1EC7n / \u0110i\u1EC1u tr\u1ECB n\u1ED9i tr\xFA",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Building2, { className: "w-3 h-3" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "B\u1EC7nh vi\u1EC7n" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterSetting("primary_care"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterSetting === "primary_care" ? "bg-teal-600 text-white shadow-2xs" : "text-slate-600"}`,
+                  title: "Ch\u0103m s\xF3c ban \u0111\u1EA7u / Ngo\u1EA1i tr\xFA",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Stethoscope, { className: "w-3 h-3" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Ngo\u1EA1i tr\xFA" })
+                  ]
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "font-bold text-slate-500 text-[11px]", children: "AWaRe:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex bg-slate-100 p-0.5 rounded-lg border border-slate-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterAware("all"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterAware === "all" ? "bg-white text-sky-800 shadow-2xs" : "text-slate-600"}`,
+                  title: "T\u1EA5t c\u1EA3 c\xE1c nh\xF3m AWaRe",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Layers, { className: "w-3 h-3" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "T\u1EA5t c\u1EA3" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterAware("Access"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterAware === "Access" ? "bg-emerald-600 text-white shadow-2xs" : "text-emerald-800 hover:bg-emerald-50"}`,
+                  title: "Nh\xF3m ACCESS: \u01AFu ti\xEAn ti\u1EBFp c\u1EADn, m\u1EE5c ti\xEAu qu\u1ED1c gia \u226560%",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-emerald-400" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Access" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterAware("Watch"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterAware === "Watch" ? "bg-amber-600 text-white shadow-2xs" : "text-amber-800 hover:bg-amber-50"}`,
+                  title: "Nh\xF3m WATCH: C\u1EA7n gi\xE1m s\xE1t, nguy c\u01A1 kh\xE1ng ch\xE9o",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-amber-400" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Watch" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setWhoFilterAware("Reserve"),
+                  className: `px-2 py-0.5 rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${whoFilterAware === "Reserve" ? "bg-rose-600 text-white shadow-2xs" : "text-rose-800 hover:bg-rose-50"}`,
+                  title: "Nh\xF3m RESERVE: D\u1EF1 tr\u1EEF b\u01B0\u1EDBc cu\u1ED1i cho VK \u0111a kh\xE1ng",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-rose-400" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Reserve" })
+                  ]
+                }
+              )
+            ] })
+          ] })
         ] })
-      ] }) }),
-      riskGroup === "group_2" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-3 pt-3 border-t border-slate-100 flex items-center gap-1.5 flex-wrap", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-xs font-bold text-slate-600 flex items-center gap-1 mr-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Filter, { className: "w-3.5 h-3.5 text-slate-400" }),
-          "L\u1ECDc nhanh ph\xE1c \u0111\u1ED3:"
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
-          "button",
-          {
-            type: "button",
-            onClick: () => setSelectedFilterRisk("all"),
-            className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "all" ? "bg-teal-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
-            children: [
-              "T\u1EA5t c\u1EA3 (",
-              allRegimens.length,
-              ")"
-            ]
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
-          "button",
-          {
-            type: "button",
-            onClick: () => setSelectedFilterRisk("base"),
-            className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "base" ? "bg-teal-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
-            children: "Ph\xE1c \u0111\u1ED3 Kh\u1EDFi \u0111\u1EA7u N\u1EC1n"
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
-          "button",
-          {
-            type: "button",
-            onClick: () => setSelectedFilterRisk("mrsa"),
-            className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "mrsa" ? "bg-amber-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
-            children: "+ Nguy c\u01A1 MRSA"
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
-          "button",
-          {
-            type: "button",
-            onClick: () => setSelectedFilterRisk("esbl"),
-            className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "esbl" ? "bg-indigo-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
-            children: "+ Nguy c\u01A1 ESBL"
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
-          "button",
-          {
-            type: "button",
-            onClick: () => setSelectedFilterRisk("pseudo_acineto"),
-            className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${selectedFilterRisk === "pseudo_acineto" ? "bg-rose-600 text-white shadow-2xs" : "bg-slate-100 hover:bg-slate-200 text-slate-700"}`,
-            children: "+ Pseudomonas / Acineto \u0111a kh\xE1ng"
-          }
-        )
       ] })
     ] }),
-    activeTab === "regimens" && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "space-y-4", children: regimens.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-8 text-center bg-white rounded-2xl border border-slate-200/90 shadow-xs", children: [
+    guidelineSource === "bvbnd" && bvbndTab === "regimens" && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "space-y-4", children: bvbndRegimens.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-8 text-center bg-white rounded-2xl border border-slate-200/90 shadow-xs", children: [
       /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Info, { className: "w-8 h-8 text-slate-400 mx-auto mb-2" }),
       /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-slate-700 text-sm font-semibold", children: "Kh\xF4ng t\xECm th\u1EA5y ph\xE1c \u0111\u1ED3 kh\u1EDBp v\u1EDBi b\u1ED9 l\u1ECDc c\u1EE5 th\u1EC3 hi\u1EC7n t\u1EA1i." }),
       /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
@@ -59185,13 +61048,13 @@ var StepEmpiric = ({
           onClick: () => setSelectedFilterRisk("all"),
           className: "mt-3 px-4 py-2 text-xs font-bold text-teal-700 bg-teal-50 hover:bg-teal-100 rounded-xl transition-all cursor-pointer",
           children: [
-            "Hi\u1EC3n th\u1ECB t\u1EA5t c\u1EA3 ph\xE1c \u0111\u1ED3 cho v\u1ECB tr\xED n\xE0y (",
-            allRegimens.length,
+            "Hi\u1EC3n th\u1ECB t\u1EA5t c\u1EA3 ph\xE1c \u0111\u1ED3 BVBND cho v\u1ECB tr\xED n\xE0y (",
+            allBvbndRegimens.length,
             ")"
           ]
         }
       )
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "grid grid-cols-1 gap-4", children: regimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "grid grid-cols-1 gap-4", children: bvbndRegimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
       "div",
       {
         className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs hover:border-teal-300 transition-all",
@@ -59240,7 +61103,7 @@ var StepEmpiric = ({
                         /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: drug.infusionNoteVi })
                       ] })
                     ] }),
-                    isCalculatedActive && dosingResult && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-3 p-3 rounded-xl bg-white border border-teal-300 shadow-2xs space-y-2.5 animate-fadeIn", children: [
+                    isCalculatedActive && dosingResult && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-3 p-3 rounded-xl bg-white border border-teal-300 shadow-2xs space-y-2.5", children: [
                       /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center justify-between gap-1 flex-wrap pb-1.5 border-b border-slate-100", children: [
                         /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1.5", children: [
                           /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-500 animate-pulse" }),
@@ -59257,7 +61120,7 @@ var StepEmpiric = ({
                         ] }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200", children: "100% li\u1EC1u chu\u1EA9n" }) })
                       ] }),
                       dosingResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-xs bg-amber-50/80 p-2 rounded-lg border border-amber-200/70 text-amber-950", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "font-extrabold text-amber-900", children: "Li\u1EC1u n\u1EA1p (Loading):" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "font-extrabold text-amber-900", children: "Li\u1EC1u n\u1EA1p:" }),
                         " ",
                         /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "font-medium", children: dosingResult.loadingDoseTextVi })
                       ] }),
@@ -59269,10 +61132,6 @@ var StepEmpiric = ({
                           /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: dosingResult.infusionInstructionsVi })
                         ] })
                       ] }),
-                      dosingResult.renalAdjustmentAdviceVi && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-[11px] text-slate-600 bg-slate-50 p-2 rounded-lg border border-slate-200/70 flex items-start gap-1.5 leading-relaxed", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ShieldAlert, { className: "w-3.5 h-3.5 text-teal-600 shrink-0 mt-0.5" }),
-                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: dosingResult.renalAdjustmentAdviceVi })
-                      ] }),
                       dosingResult.orderTextVi && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "pt-1 flex items-center justify-between gap-2 flex-wrap", children: [
                         /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
                           "button",
@@ -59280,7 +61139,6 @@ var StepEmpiric = ({
                             type: "button",
                             onClick: () => handleCopyOrder(dosingResult.orderTextVi, drug.drugId),
                             className: "px-2.5 py-1 text-[11px] font-bold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-1 cursor-pointer transition-all shadow-2xs",
-                            title: "Sao ch\xE9p y l\u1EC7nh \u0111i\u1EC1u d\u01B0\u1EE1ng v\xE0o clipboard",
                             children: copiedDrugId === drug.drugId ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_jsx_runtime20.Fragment, { children: [
                               /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Check, { className: "w-3 h-3 text-emerald-600" }),
                               /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-emerald-700 font-extrabold", children: "\u0110\xE3 sao ch\xE9p!" })
@@ -59316,10 +61174,9 @@ var StepEmpiric = ({
                             type: "button",
                             onClick: () => onCalculateDoseForDrug(drug.drugId),
                             className: `px-2.5 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer shadow-2xs ${isCalculatedActive ? "bg-teal-700 text-white" : "bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200"}`,
-                            title: `T\xEDnh li\u1EC1u ${drugDisplayName} tr\u1EF1c ti\u1EBFp t\u1EA1i ch\u1ED7 theo CrCl ${renal?.crcl ?? 90} mL/ph\xFAt`,
                             children: [
                               /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Zap, { className: "w-3 h-3 text-amber-500" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: isCalculatedActive ? "\u0110ang hi\u1EC3n th\u1ECB" : "T\xEDnh li\u1EC1u t\u1EA1i \u0111\xE2y" })
+                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: isCalculatedActive ? "\u0110ang hi\u1EC3n th\u1ECB" : "T\xEDnh CrCl" })
                             ]
                           }
                         ),
@@ -59328,10 +61185,11 @@ var StepEmpiric = ({
                           {
                             type: "button",
                             onClick: () => onSelectDrugForDosing(drug.drugId),
-                            className: "px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-700 active:scale-95 text-white shadow-2xs transition-all flex items-center gap-1 cursor-pointer",
-                            title: `Xem b\u1EA3ng t\xEDnh li\u1EC1u c\xE1 th\u1EC3 h\xF3a, t\u01B0\u01A1ng t\xE1c thu\u1ED1c v\xE0 l\u1ECDc m\xE1u c\u1EE7a ${drugDisplayName}`,
+                            className: "px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-2xs transition-all flex items-center gap-1 cursor-pointer",
+                            title: "Chuy\u1EC3n sang B\u1EA3ng t\xEDnh li\u1EC1u chi ti\u1EBFt & ki\u1EC3m tra t\u01B0\u01A1ng t\xE1c thu\u1ED1c DDI",
                             children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "B\u1EA3ng t\xEDnh li\u1EC1u & DDI" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Calculator, { className: "w-3 h-3" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Li\u1EC1u & DDI" }),
                               /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ArrowRight, { className: "w-3 h-3" })
                             ]
                           }
@@ -59347,7 +61205,7 @@ var StepEmpiric = ({
           regimen.combinationRulesVi && regimen.combinationRulesVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-4 p-3.5 rounded-xl bg-teal-50/60 border border-teal-100", children: [
             /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("h4", { className: "text-xs font-bold text-teal-950 mb-1.5 flex items-center gap-1.5", children: [
               /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Info, { className: "w-3.5 h-3.5 text-teal-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Quy t\u1EAFc ph\u1ED1i h\u1EE3p l\xE2m s\xE0ng:" })
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Quy t\u1EAFc ph\u1ED1i h\u1EE3p l\xE2m s\xE0ng (BVBND 2026):" })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("ul", { className: "list-disc list-inside text-xs text-slate-700 space-y-1", children: regimen.combinationRulesVi.map((rule, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("li", { children: rule }, rIdx)) })
           ] }),
@@ -59362,7 +61220,7 @@ var StepEmpiric = ({
       },
       regimen.id
     )) }) }),
-    activeTab === "antibiogram" && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "space-y-4", children: antibiogramData ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
+    guidelineSource === "bvbnd" && bvbndTab === "antibiogram" && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "space-y-4", children: antibiogramData ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
       /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
         /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("h3", { className: "text-base font-extrabold text-slate-900", children: [
@@ -59429,6 +61287,260 @@ var StepEmpiric = ({
       /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Info, { className: "w-8 h-8 text-slate-400 mx-auto mb-2" }),
       /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-slate-600 text-sm font-medium", children: "Ch\u01B0a c\xF3 d\u1EEF li\u1EC7u Antibiogram ri\xEAng cho v\u1ECB tr\xED nhi\u1EC5m tr\xF9ng n\xE0y. Vui l\xF2ng tham kh\u1EA3o b\xE1o c\xE1o vi sinh chung c\u1EE7a B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi n\u0103m 2024." })
     ] }) }),
+    guidelineSource === "who" && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "space-y-4", children: whoRegimens.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-8 text-center bg-white rounded-2xl border border-slate-200/90 shadow-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Info, { className: "w-8 h-8 text-slate-400 mx-auto mb-2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-slate-700 text-sm font-semibold", children: "Kh\xF4ng t\xECm th\u1EA5y ph\xE1c \u0111\u1ED3 WHO kh\u1EDBp v\u1EDBi b\u1ED9 l\u1ECDc \u0111\xE3 ch\u1ECDn." }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+        "button",
+        {
+          type: "button",
+          onClick: () => {
+            setWhoFilterLine("all");
+            setWhoFilterSetting("all");
+            setWhoFilterAware("all");
+          },
+          className: "mt-3 px-4 py-2 text-xs font-bold text-sky-700 bg-sky-50 hover:bg-sky-100 rounded-xl transition-all cursor-pointer",
+          children: [
+            "\u0110\u1EB7t l\u1EA1i t\u1EA5t c\u1EA3 b\u1ED9 l\u1ECDc WHO (",
+            allWhoRegimensForSite.length,
+            " ph\xE1c \u0111\u1ED3)"
+          ]
+        }
+      )
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "grid grid-cols-1 gap-4", children: whoRegimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+      "div",
+      {
+        className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs hover:border-sky-300 transition-all space-y-4",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-start justify-between gap-2 pb-3 border-b border-slate-100", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap mb-1", children: [
+                regimen.chapterNumber && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-sky-100 text-sky-900 border border-sky-300", children: [
+                  "Ch.",
+                  regimen.chapterNumber
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                  "span",
+                  {
+                    title: regimen.line === "first_choice" ? "L\u1EF1a ch\u1ECDn \u0111\u1EA7u tay (First Choice)" : "L\u1EF1a ch\u1ECDn thay th\u1EBF (Second Choice)",
+                    className: `px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1 ${regimen.line === "first_choice" ? "bg-emerald-100 text-emerald-800 border border-emerald-300" : "bg-amber-100 text-amber-800 border border-amber-300"}`,
+                    children: [
+                      regimen.line === "first_choice" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Star, { className: "w-3 h-3 text-emerald-600" }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.RefreshCw, { className: "w-3 h-3 text-amber-600" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: regimen.line === "first_choice" ? "\u0110\u1EA7u tay" : "L\u1EF1a ch\u1ECDn 2" })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                  "span",
+                  {
+                    title: regimen.clinicalSetting === "primary_care" ? "Ch\u0103m s\xF3c ban \u0111\u1EA7u / Ngo\u1EA1i tr\xFA" : "Tuy\u1EBFn b\u1EC7nh vi\u1EC7n / N\u1ED9i tr\xFA",
+                    className: "px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200 flex items-center gap-1",
+                    children: [
+                      regimen.clinicalSetting === "primary_care" ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Stethoscope, { className: "w-3 h-3 text-teal-600" }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Building2, { className: "w-3 h-3 text-sky-600" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: regimen.clinicalSetting === "primary_care" ? "Ngo\u1EA1i tr\xFA" : "B\u1EC7nh vi\u1EC7n" })
+                    ]
+                  }
+                ),
+                regimen.durationVi && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                  "span",
+                  {
+                    title: `Th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB khuy\u1EBFn c\xE1o: ${regimen.durationVi}`,
+                    className: "px-2 py-0.5 rounded text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1",
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Clock, { className: "w-3 h-3 text-teal-600" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: regimen.durationVi })
+                    ]
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: regimen.titleVi }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { className: "text-xs text-slate-500 italic mt-0.5", children: [
+                regimen.diseaseNameEn,
+                " \u2022 ",
+                regimen.titleEn
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(SourceBadge, { source: regimen.source })
+          ] }),
+          regimen.nonAntibioticCareVi && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-3 rounded-xl bg-blue-50/70 border border-blue-200 text-xs text-blue-950 flex items-start gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.HeartPulse, { className: "w-4 h-4 text-blue-600 shrink-0 mt-0.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { className: "font-bold", children: "Ch\u0103m s\xF3c kh\xF4ng d\xF9ng kh\xE1ng sinh (Non-antibiotic care):" }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "mt-0.5 text-blue-900 leading-relaxed", children: regimen.nonAntibioticCareVi })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-500", children: "Thu\u1ED1c ch\u1EC9 \u0111\u1ECBnh theo WHO AWaRe:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: regimen.drugs.map((drug, dIdx) => {
+              const drugDisplayName = drug.nameVi || drug.drugName || "Kh\xE1ng sinh";
+              const doseText = drug.standardDoseVi || drug.dosageVi || "Theo h\u01B0\u1EDBng d\u1EABn";
+              const routeText = drug.route || "IV";
+              const hasDosingTool = Boolean(drug.drugId);
+              const isCalculatedActive = selectedDrugId === drug.drugId && Boolean(dosingResult);
+              return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "div",
+                {
+                  className: `p-3.5 rounded-xl border transition-all flex flex-col justify-between ${isCalculatedActive ? "border-sky-500 ring-2 ring-sky-500/20 bg-sky-50/30 shadow-xs" : "border-slate-200/80 bg-slate-50/70 hover:bg-white hover:border-sky-200 hover:shadow-xs"}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "font-bold text-sm text-slate-900 flex items-center gap-1.5 flex-wrap", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: drugDisplayName }),
+                          drug.awareCategory && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: `px-1.5 py-0.2 rounded text-[10px] font-black uppercase tracking-wider ${drug.awareCategory === "Access" ? "bg-emerald-100 text-emerald-800 border border-emerald-300" : drug.awareCategory === "Watch" ? "bg-amber-100 text-amber-800 border border-amber-300" : "bg-rose-100 text-rose-800 border border-rose-300"}`, children: drug.awareCategory }),
+                          isCalculatedActive && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "px-1.5 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-teal-600 text-white", children: "\u0110ang t\xEDnh" })
+                        ] }),
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200/80 text-slate-700 shrink-0", children: routeText })
+                      ] }),
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-1.5 text-xs text-slate-700", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "font-semibold text-slate-900", children: "Li\u1EC1u chu\u1EA9n WHO:" }),
+                        " ",
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-slate-800 font-medium", children: doseText })
+                      ] }),
+                      drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-1.5 text-[11px] text-sky-900 bg-sky-50 px-2.5 py-1 rounded-md border border-sky-200/70 flex items-center gap-1.5 font-medium", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Info, { className: "w-3 h-3 text-sky-600 shrink-0" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: drug.infusionNoteVi })
+                      ] })
+                    ] }),
+                    isCalculatedActive && dosingResult && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-3 p-3 rounded-xl bg-white border border-teal-300 shadow-2xs space-y-2", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center justify-between gap-1 flex-wrap pb-1 border-b border-slate-100", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-[11px] font-extrabold uppercase text-teal-900", children: [
+                          "Li\u1EC1u C\xE1 Th\u1EC3 H\xF3a (CrCl ",
+                          renal?.crcl,
+                          " mL/p)"
+                        ] }),
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800", children: dosingResult.reductionPercentage ? `Gi\u1EA3m ${dosingResult.reductionPercentage}% li\u1EC1u` : "100% li\u1EC1u chu\u1EA9n" })
+                      ] }),
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-xs bg-teal-50/90 p-2 rounded-lg border border-teal-200 text-teal-950", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-sm font-black", children: dosingResult.maintenanceDoseTextVi }),
+                        dosingResult.infusionInstructionsVi && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] text-teal-800 mt-0.5", children: dosingResult.infusionInstructionsVi })
+                      ] })
+                    ] }),
+                    hasDosingTool && drug.drugId && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/80 flex items-center justify-between gap-2 flex-wrap", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-[11px] text-sky-800 font-medium flex items-center gap-1", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Calculator, { className: "w-3.5 h-3.5 text-sky-600 shrink-0" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "C\xF3 m\xE1y t\xEDnh li\u1EC1u" })
+                      ] }),
+                      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+                        onCalculateDoseForDrug && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                          "button",
+                          {
+                            type: "button",
+                            onClick: () => onCalculateDoseForDrug(drug.drugId),
+                            className: `px-2.5 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer shadow-2xs ${isCalculatedActive ? "bg-sky-700 text-white" : "bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-200"}`,
+                            children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Zap, { className: "w-3 h-3 text-amber-500" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: isCalculatedActive ? "\u0110ang t\xEDnh" : "T\xEDnh CrCl" })
+                            ]
+                          }
+                        ),
+                        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                          "button",
+                          {
+                            type: "button",
+                            onClick: () => onSelectDrugForDosing(drug.drugId),
+                            className: "px-2.5 py-1 text-xs font-bold rounded-lg bg-sky-600 hover:bg-sky-700 text-white shadow-2xs transition-all flex items-center gap-1 cursor-pointer",
+                            title: "Chuy\u1EC3n sang B\u1EA3ng t\xEDnh li\u1EC1u chi ti\u1EBFt & ki\u1EC3m tra t\u01B0\u01A1ng t\xE1c thu\u1ED1c DDI",
+                            children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Calculator, { className: "w-3 h-3" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Li\u1EC1u & DDI" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ArrowRight, { className: "w-3 h-3" })
+                            ]
+                          }
+                        )
+                      ] })
+                    ] })
+                  ]
+                },
+                dIdx
+              );
+            }) })
+          ] }),
+          regimen.combinationRulesVi && regimen.combinationRulesVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-3.5 rounded-xl bg-sky-50/60 border border-sky-100", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("h4", { className: "text-xs font-bold text-sky-950 mb-1 flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Info, { className: "w-3.5 h-3.5 text-sky-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Th\xF4ng \u0111i\u1EC7p l\xE2m s\xE0ng c\u1ED1t l\xF5i c\u1EE7a WHO:" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("ul", { className: "list-disc list-inside text-xs text-slate-700 space-y-1", children: regimen.combinationRulesVi.map((rule, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("li", { children: rule }, rIdx)) })
+          ] }),
+          regimen.cautionVi && regimen.cautionVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-3 rounded-xl bg-amber-50/70 border border-amber-200/80 text-xs text-amber-950", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("h4", { className: "font-bold flex items-center gap-1.5 mb-1 text-amber-900", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ShieldAlert, { className: "w-3.5 h-3.5 text-amber-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "L\u01B0u \xFD an to\xE0n & Chuy\u1EC3n \u0111\u1ED5i \u0111\u01B0\u1EDDng d\xF9ng (IV-to-PO):" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("ul", { className: "list-disc list-inside text-xs text-amber-900 space-y-0.5", children: regimen.cautionVi.map((c, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("li", { children: c }, cIdx)) })
+          ] })
+        ]
+      },
+      regimen.id
+    )) }) }),
+    guidelineSource === "compare" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "p-4 rounded-2xl bg-gradient-to-r from-purple-50 via-teal-50 to-sky-50 border border-purple-200 shadow-2xs", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-start gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "p-2.5 rounded-xl bg-purple-600 text-white shrink-0 shadow-xs", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Scale, { className: "w-5 h-5" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h3", { className: "text-base font-extrabold text-purple-950", children: "\u0110\u1ED1i Chi\u1EBFu Chi\u1EBFn L\u01B0\u1EE3c: BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026 vs WHO AWaRe 2022" }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { className: "text-xs text-slate-600 mt-1 leading-relaxed", children: [
+            "B\u1EA3ng so s\xE1nh \u0111a chi\u1EC1u gi\xFAp B\xE1c s\u0129 v\xE0 D\u01B0\u1EE3c s\u0129 l\xE2m s\xE0ng th\u1EA5u hi\u1EC3u l\xFD do kh\xE1c bi\u1EC7t gi\u1EEFa ",
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "H\u01B0\u1EDBng d\u1EABn \u0111\u1ECBa ph\u01B0\u01A1ng BVBND" }),
+            " (\u0111\xE1p \u1EE9ng \xE1p l\u1EF1c \u0111\u1EC1 kh\xE1ng cao t\u1EA1i TP.HCM) v\xE0 ",
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("strong", { children: "Khuy\u1EBFn c\xE1o to\xE0n c\u1EA7u WHO" }),
+            " (\u01B0u ti\xEAn b\u1EA3o t\u1ED3n nh\xF3m Ti\u1EBFp c\u1EADn v\xE0 r\xFAt ng\u1EAFn th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB)."
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-5 rounded-2xl bg-white border border-teal-200 shadow-xs space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center justify-between pb-3 border-b border-teal-100", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center space-x-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-3 h-3 rounded-full bg-teal-500" }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h4", { className: "text-sm font-extrabold text-slate-900", children: "B\u1EC7nh Vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi (2026)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200", children: "Tuy\u1EBFn cu\u1ED1i Truy\u1EC1n Nhi\u1EC5m TP.HCM" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-xs text-slate-700 space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "font-bold text-slate-900", children: [
+              "\u0110\u1EB7c \u0111i\u1EC3m ch\xEDnh cho ",
+              comparisonData.siteLabelVi,
+              ":"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("ul", { className: "list-disc list-inside space-y-1.5 text-slate-600", children: comparisonData.bvbndKeyPointsVi.map((pt, idx) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("li", { className: "leading-relaxed", children: pt }, idx)) })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-5 rounded-2xl bg-white border border-sky-200 shadow-xs space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center justify-between pb-3 border-b border-sky-100", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center space-x-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-3 h-3 rounded-full bg-sky-500" }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h4", { className: "text-sm font-extrabold text-slate-900", children: "WHO AWaRe Antibiotic Book (2022)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-sky-50 text-sky-800 border border-sky-200", children: "Chu\u1EA9n To\xE0n C\u1EA7u WHO" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-xs text-slate-700 space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "font-bold text-slate-900", children: [
+              "\u0110\u1EB7c \u0111i\u1EC3m ch\xEDnh cho ",
+              comparisonData.siteLabelVi,
+              ":"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("ul", { className: "list-disc list-inside space-y-1.5 text-slate-600", children: comparisonData.whoKeyPointsVi.map((pt, idx) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("li", { className: "leading-relaxed", children: pt }, idx)) })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("h4", { className: "text-xs font-black uppercase tracking-wider text-slate-600 flex items-center gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.FileCheck, { className: "w-4 h-4 text-purple-600" }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "\u0110i\u1EC3m Kh\xE1c Bi\u1EC7t M\u1EA5u Ch\u1ED1t & Nh\u1EADn \u0110\u1ECBnh L\xE2m S\xE0ng:" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "space-y-2", children: comparisonData.keyDifferencesVi.map((diff, idx) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-800 flex items-start gap-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "w-5 h-5 rounded-full bg-purple-100 text-purple-800 font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5", children: idx + 1 }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "leading-relaxed", children: diff })
+        ] }, idx)) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-4 rounded-2xl bg-amber-50/80 border border-amber-300 text-xs text-amber-950 space-y-1.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2 text-amber-900 font-extrabold", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Stethoscope, { className: "w-4 h-4 text-amber-700 shrink-0" }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "T\u01B0 V\u1EA5n D\u01B0\u1EE3c L\xE2m S\xE0ng (Clinical Pharmacist Stewardship Advice):" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "leading-relaxed pl-6 text-amber-900 font-medium", children: comparisonData.stewardshipAdviceVi })
+      ] })
+    ] }),
     /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5", children: [
       /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
         "button",
@@ -59438,7 +61550,7 @@ var StepEmpiric = ({
           className: "w-full sm:w-auto px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]",
           children: [
             /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ArrowLeft, { className: "w-4 h-4" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Quay l\u1EA1i Giai \u0111o\u1EA1n 1 (\u0110\xE1nh gi\xE1 & Ph\xE2n t\u1EA7ng)" })
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Quay l\u1EA1i B\u01B0\u1EDBc 1 (\u0110\xE1nh gi\xE1 & Ph\xE2n t\u1EA7ng)" })
           ]
         }
       ),
@@ -59449,7 +61561,7 @@ var StepEmpiric = ({
           onClick: onNextStep,
           className: "w-full sm:w-auto px-5 py-2.5 text-xs sm:text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl shadow-sm transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Ti\u1EBFp t\u1EE5c: Giai \u0111o\u1EA1n 3 (T\xE1i \u0111\xE1nh gi\xE1 48-72h)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "Ti\u1EBFp t\u1EE5c: B\u01B0\u1EDBc 3 (C\xE1 th\u1EC3 h\xF3a t\xEDnh li\u1EC1u)" }),
             /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ArrowRight, { className: "w-4 h-4" })
           ]
         }
@@ -59514,16 +61626,17 @@ var StepReassess = ({
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-xs text-slate-500 mt-1", children: "L\u01B0u \u0111\u1ED3 \u0111\xE1nh gi\xE1 l\u1EA1i sau 48-72h, \u0111i\u1EC1u tr\u1ECB tr\xFAng \u0111\xEDch vi khu\u1EA9n \u0111a kh\xE1ng (CRE, DTR-PA, CRAB), b\u1EA3ng ki\u1EC3m ng\u01B0ng kh\xE1ng sinh an to\xE0n v\xE0 chuy\u1EC3n \u0111\u1ED5i IV sang PO." })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 pt-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "grid grid-cols-2 lg:grid-cols-4 gap-1.5 pt-3", children: [
         /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => setSubTab("decision_tree"),
-            className: `px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "decision_tree" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+            className: `px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "decision_tree" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+            title: "L\u01B0u \u0111\u1ED3 t\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0ng & vi sinh 48-72h (BVBND 2026)",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Clock, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "1. L\u01B0u \u0111\u1ED3 48-72h (BVBND)" })
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "1. L\u01B0u \u0111\u1ED3 48-72h" })
             ]
           }
         ),
@@ -59532,7 +61645,8 @@ var StepReassess = ({
           {
             type: "button",
             onClick: () => setSubTab("mdr_pathways"),
-            className: `px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "mdr_pathways" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+            className: `px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "mdr_pathways" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+            title: "\u0110i\u1EC1u tr\u1ECB tr\xFAng \u0111\xEDch vi khu\u1EA9n \u0111a kh\xE1ng CRE, DTR-PA, CRAB",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Crosshair, { className: "w-3.5 h-3.5 shrink-0" }),
               /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "2. Tr\xFAng \u0110\xEDch VK\u0110K" })
@@ -59544,10 +61658,11 @@ var StepReassess = ({
           {
             type: "button",
             onClick: () => setSubTab("stop_criteria"),
-            className: `px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "stop_criteria" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+            className: `px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "stop_criteria" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+            title: "B\u1EA3ng ki\u1EC3m ti\xEAu chu\u1EA9n ng\u01B0ng kh\xE1ng sinh an to\xE0n",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Ban, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "3. B\u1EA3ng Ki\u1EC3m Ng\u01B0ng KS" })
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "3. Ng\u01B0ng Kh\xE1ng Sinh" })
             ]
           }
         ),
@@ -59556,10 +61671,11 @@ var StepReassess = ({
           {
             type: "button",
             onClick: () => setSubTab("iv_to_po"),
-            className: `px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "iv_to_po" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+            className: `px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "iv_to_po" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+            title: "Ti\xEAu chu\u1EA9n v\xE0 danh m\u1EE5c chuy\u1EC3n \u0111\u1ED5i kh\xE1ng sinh t\u1EEB \u0111\u01B0\u1EDDng ti\xEAm sang \u0111\u01B0\u1EDDng u\u1ED1ng (IV to PO)",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ArrowRightLeft, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "4. Chuy\u1EC3n Ti\xEAm sang U\u1ED1ng" })
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "4. Chuy\u1EC3n IV-sang-PO" })
             ]
           }
         )
@@ -60027,11 +62143,11 @@ var DecisionSummaryCard = ({
             /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Ch\u1EC9 \u0110\u1ECBnh & \u1ED4 Nhi\u1EC5m" }),
             /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-teal-600 font-semibold", children: "Ch\u1EC9nh s\u1EEDa" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center space-x-2 mt-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center space-x-1.5 mt-1.5", children: [
             state.indicationConfirmed ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.CheckCircle2, { className: "w-4 h-4 text-emerald-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.AlertTriangle, { className: "w-4 h-4 text-amber-500 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-xs font-bold text-slate-800 break-words", children: state.indicationConfirmed ? "\u0110\u1EE7 ti\xEAu chu\u1EA9n ch\u1EC9 \u0111\u1ECBnh" : "Nghi ng\u1EDD / C\u1EA7n theo d\xF5i" })
+            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-xs font-bold text-slate-800 break-words", children: state.indicationConfirmed ? "C\xF3 ch\u1EC9 \u0111\u1ECBnh c\u1EA5p t\xEDnh" : "C\u1EA7n theo d\xF5i th\xEAm" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center space-x-1.5 text-xs text-slate-600 mt-1 pl-6", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center space-x-1.5 text-xs text-slate-600 mt-1 pl-5", children: [
             /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.User, { className: "w-3.5 h-3.5 text-slate-400 shrink-0" }),
             /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("span", { className: "break-words", children: [
               state.population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em",
@@ -60039,7 +62155,7 @@ var DecisionSummaryCard = ({
               siteLabels[state.site] || state.site
             ] })
           ] }),
-          state.site === "sepsis" && state.sepsisSource && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "text-[11px] text-rose-600 font-medium pl-6 mt-0.5", children: sepsisSourceLabels[state.sepsisSource] || state.sepsisSource })
+          state.site === "sepsis" && state.sepsisSource && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "text-[11px] text-rose-600 font-medium pl-5 mt-0.5", children: sepsisSourceLabels[state.sepsisSource] || state.sepsisSource })
         ]
       }
     ),
@@ -60070,11 +62186,11 @@ var DecisionSummaryCard = ({
             state.checkedSpecificRisks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "flex flex-wrap gap-1", children: state.checkedSpecificRisks.map((r) => /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-200/80 text-rose-800", children: r === "mrsa" ? "MRSA" : r === "esbl" ? "ESBL" : r === "pseudo_acineto" ? "Pseudo/Acineto" : "Enterococcus" }, r)) }),
             riskResult.isGramPosGramNegCoRisk && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-800 border border-red-200 flex items-center space-x-1", children: [
               /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "\u26A0\uFE0F" }),
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "B\u1EAFt bu\u1ED9c ph\u1ED1i h\u1EE3p Gram(+) & Gram(-)" })
+              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Ph\u1ED1i h\u1EE3p Gram(+) & Gram(-)" })
             ] }),
             riskResult.isDualGramNegRisk && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-200 flex items-center space-x-1", children: [
               /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "\u26A1" }),
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "\u01AFu ti\xEAn di\u1EC7t Pseudo / Acineto" })
+              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Di\u1EC7t Pseudo / Acineto" })
             ] })
           ] })
         ]
@@ -60093,7 +62209,7 @@ var DecisionSummaryCard = ({
           /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center space-x-2 mt-1.5", children: [
             /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Pill, { className: "w-4 h-4 text-teal-600 shrink-0" }),
             /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("span", { className: "text-xs font-bold text-slate-800", children: [
-              "BVBND 2026 (",
+              "BVBND 2026 \u2022 WHO AWaRe (",
               isGroup2 ? "Ph\u1ED5 r\u1ED9ng \u0111a kh\xE1ng" : "Ph\xE1c \u0111\u1ED3 chu\u1EA9n",
               ")"
             ] })
@@ -60107,10 +62223,10 @@ var DecisionSummaryCard = ({
         {
           type: "button",
           onClick: () => onSwitchToDosing(state.selectedDrugForDosing),
-          className: "w-full py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm flex items-center justify-center space-x-2 transition-all cursor-pointer",
+          className: "w-full py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm flex items-center justify-center space-x-1.5 transition-all cursor-pointer",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Pill, { className: "w-3.5 h-3.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Sang Ph\xE2n H\u1EC7 2: T\xEDnh Li\u1EC1u & CrCl" }),
+            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Calculator, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "T\xEDnh Li\u1EC1u & CrCl" }),
             /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.ArrowRight, { className: "w-3.5 h-3.5" })
           ]
         }
@@ -60316,64 +62432,71 @@ K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0
   const stagesList = [
     {
       stage: 1,
-      badge: "B\u01B0\u1EDBc 1",
+      badge: "1. \u0110\xE1nh Gi\xE1",
+      sub: "NHSN \u2022 Nguy c\u01A1 VK\u0110K",
       title: "\u0110\xE1nh Gi\xE1 & Ph\xE2n T\u1EA7ng",
       desc: "Ti\xEAu chu\u1EA9n NHSN \u2022 \u1ED4 nhi\u1EC5m \u2022 \u0110i\u1EC3m SOFA & Nguy c\u01A1 VK\u0110K",
       icon: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.ClipboardCheck, { className: "w-4 h-4" })
     },
     {
       stage: 2,
-      badge: "B\u01B0\u1EDBc 2",
-      title: "Ph\xE1c \u0110\u1ED3 BVBND 2026",
-      desc: "Ph\xE1c \u0111\u1ED3 kh\u1EDFi \u0111\u1EA7u BVBND \u2022 Antibiogram vi sinh",
+      badge: "2. Ph\xE1c \u0110\u1ED3",
+      sub: "BVBND 2026 \u2022 WHO AWaRe",
+      title: "Ph\xE1c \u0110\u1ED3 BVBND & WHO",
+      desc: "Ph\xE1c \u0111\u1ED3 BVBND 2026 \u2022 WHO AWaRe 2022 \u2022 Antibiogram vi sinh",
       icon: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Pill, { className: "w-4 h-4" })
     },
     {
       stage: 3,
-      badge: "B\u01B0\u1EDBc 3",
+      badge: "3. T\xEDnh Li\u1EC1u",
+      sub: "43 KS \u2022 CrCl & DDI",
       title: "T\xEDnh Li\u1EC1u & An To\xE0n D\u01B0\u1EE3c",
       desc: "43 Kh\xE1ng sinh \u2022 Hi\u1EC7u ch\u1EC9nh CrCl/HD/CRRT \u2022 C\u1EA3nh b\xE1o DDI",
       icon: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Activity, { className: "w-4 h-4" })
     },
     {
       stage: 4,
-      badge: "B\u01B0\u1EDBc 4",
+      badge: "4. T\xE1i \u0110\xE1nh Gi\xE1",
+      sub: "48-72h \u2022 Xu\u1ED1ng thang",
       title: "T\xE1i \u0110\xE1nh Gi\xE1 48-72h",
       desc: "\u0110\xE1p \u1EE9ng l\xE2m s\xE0ng & KS\u0110 \u2022 Xu\u1ED1ng thang \u2022 Ng\u01B0ng KS / IV-to-PO",
       icon: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Clock, { className: "w-4 h-4" })
     }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-5", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "bg-white rounded-3xl border border-slate-200/90 p-3 sm:p-4 shadow-xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-2.5 sm:p-3 shadow-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-100", children: [
         /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "px-2.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-teal-100 text-teal-800", children: "Quy Tr\xECnh 4 B\u01B0\u1EDBc Chu\u1EA9n H\xF3a" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-xs text-slate-500 hidden sm:inline", children: "L\u01B0u \u0111\u1ED3 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026 \u2022 NHSN-CDC \u2022 Q\u0110 5631/BYT" })
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-teal-100 text-teal-800", children: "Quy Tr\xECnh 4 B\u01B0\u1EDBc" }),
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-[11px] text-slate-500 hidden md:inline", children: "BVBND 2026 \u2022 WHO AWaRe \u2022 NHSN-CDC" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center space-x-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center space-x-1.5 self-end sm:self-auto", children: [
           /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
             "button",
             {
               type: "button",
               onClick: handleCopyConsultationSummary,
-              className: `px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer border ${copiedSummary ? "bg-emerald-600 text-white border-emerald-600" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+              className: `px-2.5 py-1 rounded-xl text-xs font-bold transition-all flex items-center space-x-1 cursor-pointer border ${copiedSummary ? "bg-emerald-600 text-white border-emerald-600" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
               title: "Sao ch\xE9p to\xE0n b\u1ED9 t\xF3m t\u1EAFt h\u1ED9i ch\u1EA9n \u0111\u1EC3 d\xE1n v\xE0o B\u1EC7nh \xE1n EMR/HIS",
+              "aria-label": "Sao ch\xE9p t\xF3m t\u1EAFt EMR",
               children: [
-                copiedSummary ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Check, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Copy, { className: "w-3.5 h-3.5 text-slate-500" }),
-                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: copiedSummary ? "\u0110\xE3 sao ch\xE9p EMR" : "Sao ch\xE9p t\xF3m t\u1EAFt EMR" })
+                copiedSummary ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Check, { className: "w-3.5 h-3.5 text-white" }) : /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Copy, { className: "w-3.5 h-3.5 text-slate-500" }),
+                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-[11px]", children: copiedSummary ? "\u0110\xE3 sao ch\xE9p" : "EMR" })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-2 rounded-xl p-1 bg-slate-100 border border-slate-200 text-xs font-bold", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "inline-flex rounded-xl p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold", children: [
             /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setViewMode("stepper"),
-                className: `px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center justify-center space-x-1 ${viewMode === "stepper" ? "bg-white text-teal-900 shadow-2xs" : "text-slate-600 hover:text-slate-900"}`,
+                className: `p-1.5 rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${viewMode === "stepper" ? "bg-white text-teal-900 shadow-2xs" : "text-slate-600 hover:text-slate-900"}`,
+                title: "Ch\u1EBF \u0111\u1ED9 T\u1EEBng B\u01B0\u1EDBc l\xE2m s\xE0ng",
+                "aria-label": "T\u1EEBng b\u01B0\u1EDBc",
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.LayoutList, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "hidden sm:inline", children: "T\u1EEBng B\u01B0\u1EDBc" })
+                  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "hidden sm:inline text-[11px]", children: "T\u1EEBng B\u01B0\u1EDBc" })
                 ]
               }
             ),
@@ -60382,10 +62505,12 @@ K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0
               {
                 type: "button",
                 onClick: () => setViewMode("all-in-one"),
-                className: `px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center justify-center space-x-1 ${viewMode === "all-in-one" ? "bg-white text-teal-900 shadow-2xs" : "text-slate-600 hover:text-slate-900"}`,
+                className: `p-1.5 rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${viewMode === "all-in-one" ? "bg-white text-teal-900 shadow-2xs" : "text-slate-600 hover:text-slate-900"}`,
+                title: "Ch\u1EBF \u0111\u1ED9 Xem To\xE0n B\u1ED9 tr\xEAn 1 trang",
+                "aria-label": "To\xE0n b\u1ED9",
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Layers, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "hidden sm:inline", children: "To\xE0n B\u1ED9" })
+                  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "hidden sm:inline text-[11px]", children: "To\xE0n B\u1ED9" })
                 ]
               }
             )
@@ -60406,22 +62531,22 @@ K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }
             },
-            className: `p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-start space-x-2.5 ${isActive ? "border-teal-500 bg-teal-50/80 ring-2 ring-teal-500/20 text-teal-950 shadow-xs" : isCompleted ? "border-slate-200 bg-white text-slate-800 hover:border-slate-300" : "border-slate-100 bg-slate-50/60 text-slate-500 hover:bg-slate-50"}`,
+            title: st.desc,
+            className: `p-2.5 rounded-2xl border text-left transition-all cursor-pointer flex items-center space-x-2.5 ${isActive ? "border-teal-500 bg-teal-50/90 ring-2 ring-teal-500/20 text-teal-950 shadow-xs" : isCompleted ? "border-slate-200 bg-white text-slate-800 hover:border-slate-300" : "border-slate-100 bg-slate-50/60 text-slate-500 hover:bg-slate-50"}`,
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
                 "div",
                 {
-                  className: `w-7 h-7 rounded-xl shrink-0 flex items-center justify-center font-bold text-xs ${isActive ? "bg-teal-600 text-white shadow-xs" : isCompleted ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-600"}`,
-                  children: isCompleted ? "\u2713" : st.stage
+                  className: `w-8 h-8 rounded-xl shrink-0 flex items-center justify-center font-bold text-xs ${isActive ? "bg-teal-600 text-white shadow-xs" : isCompleted ? "bg-emerald-500 text-white" : "bg-slate-200/80 text-slate-600"}`,
+                  children: isCompleted ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Check, { className: "w-4 h-4 text-white" }) : st.icon
                 }
               ),
               /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "min-w-0 flex-1", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center justify-between", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-[10px] font-black uppercase tracking-wider text-slate-400", children: st.badge }),
+                  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-xs font-black text-slate-900 truncate", children: st.badge }),
                   isActive && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-500 shrink-0" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-xs font-black text-slate-900 mt-0.5 truncate leading-tight", children: st.title }),
-                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] text-slate-500 mt-0.5 line-clamp-1 leading-tight", children: st.desc })
+                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[10px] font-semibold text-slate-500 truncate mt-0.5", children: st.sub })
               ] })
             ]
           },
@@ -60511,7 +62636,7 @@ K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0
       (viewMode === "all-in-one" || currentStage === 2) && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { id: "section-stage-2", className: "space-y-4", children: [
         viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200", children: [
           /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "2" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "B\u01B0\u1EDBc 2: L\u1EF1a Ch\u1ECDn Ph\xE1c \u0110\u1ED3 Kh\u1EDFi \u0110\u1EA7u BVBND 2026 & Antibiogram Vi Sinh" })
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "B\u01B0\u1EDBc 2: L\u1EF1a Ch\u1ECDn Ph\xE1c \u0110\u1ED3 BVBND 2026 & WHO AWaRe \u2022 Antibiogram Vi Sinh" })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
           StepEmpiric,
@@ -60562,7 +62687,7 @@ K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0
               className: "px-4 py-2.5 rounded-2xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all flex items-center space-x-1.5 cursor-pointer",
               children: [
                 /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.ArrowLeft, { className: "w-4 h-4" }),
-                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "Quay l\u1EA1i B\u01B0\u1EDBc 2 (Ph\xE1c \u0111\u1ED3 BVBND)" })
+                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "Quay l\u1EA1i B\u01B0\u1EDBc 2 (Ph\xE1c \u0111\u1ED3 BVBND & WHO)" })
               ]
             }
           ),

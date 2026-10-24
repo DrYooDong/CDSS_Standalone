@@ -170,11 +170,11 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
   ];
 
   const presets = [
-    { id: 'vap_severe', label: 'VAP Thở Máy (ICU • SOFA 8)', desc: 'Nguy cơ cao VKĐK Nhóm 2' },
-    { id: 'cap_standard', label: 'CAP Viêm Phổi (Khoa Nội • SOFA 0)', desc: 'Ít nguy cơ Nhóm 1' },
-    { id: 'sepsis_cirrhosis', label: 'Sepsis / SBP Xơ Gan (CLIF-SOFA 13)', desc: 'Nguy cơ cao VKĐK' },
-    { id: 'cauti_elderly', label: 'CAUTI Tiết Niệu Sonde Lưu', desc: 'Có nguy cơ ESBL/Pseudomonas' },
-    { id: 'ssti_cellulitis', label: 'SSTI Viêm Mô Tế Bào', desc: 'Ít nguy cơ Nhóm 1' }
+    { id: 'vap_severe', icon: '⚡', label: 'VAP ICU (SOFA 8)', desc: 'VAP Thở Máy ICU • Nguy cơ cao VKĐK Nhóm 2' },
+    { id: 'cap_standard', icon: '🫁', label: 'CAP Nội (SOFA 0)', desc: 'Viêm Phổi Cộng Đồng Khoa Nội • Ít nguy cơ Nhóm 1' },
+    { id: 'sepsis_cirrhosis', icon: '🩸', label: 'Sepsis Xơ Gan', desc: 'Sepsis / SBP Viêm Phúc Mạc Xơ Gan • CLIF-SOFA 13' },
+    { id: 'cauti_elderly', icon: '🚽', label: 'CAUTI Tiết Niệu', desc: 'Nhiễm trùng tiểu Sonde lưu • Nguy cơ ESBL/Pseudomonas' },
+    { id: 'ssti_cellulitis', icon: '🩹', label: 'SSTI Mô Tế Bào', desc: 'Viêm mô tế bào da mô mềm • Ít nguy cơ Nhóm 1' }
   ];
 
   const activeNhsnSection = NHSN_CRITERIA_SECTIONS.find(s => s.id === selectedSyndrome) || NHSN_CRITERIA_SECTIONS[0];
@@ -212,28 +212,28 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
   return (
     <div className="space-y-4">
       {/* Top Banner: Quick Preset Picker Bar */}
-      <div className="bg-gradient-to-r from-teal-900 via-slate-900 to-sky-950 text-white rounded-2xl p-3.5 shadow-sm border border-teal-500/30">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
-          <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0">
-              <Sparkles className="w-4 h-4" />
+      <div className="bg-gradient-to-r from-teal-900 via-slate-900 to-sky-950 text-white rounded-2xl p-3 shadow-sm border border-teal-500/30">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2.5">
+          <div className="flex items-center space-x-2">
+            <div className="w-7 h-7 rounded-lg bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0">
+              <Sparkles className="w-3.5 h-3.5" />
             </div>
             <div>
-              <div className="flex items-center space-x-2">
-                <span className="text-xs font-black uppercase tracking-wider text-teal-400">
-                  Mẫu Ca Lâm Sàng Điển Hình
+              <div className="flex items-center space-x-1.5">
+                <span className="text-[11px] font-black uppercase tracking-wider text-teal-400">
+                  Mẫu Ca Điển Hình
                 </span>
-                <span className="text-[10px] bg-teal-500/20 text-teal-200 px-2 py-0.5 rounded-full border border-teal-400/20">
-                  1-Click Nhanh
+                <span className="text-[9px] bg-teal-500/20 text-teal-200 px-1.5 py-0.2 rounded-full border border-teal-400/20">
+                  1-Click
                 </span>
               </div>
-              <p className="text-[11px] text-slate-300 mt-0.5">
-                Nạp nhanh thông số ca bệnh mẫu để kiểm thử và phân tầng tức thì
+              <p className="text-[10px] text-slate-300">
+                Nạp nhanh ca bệnh mẫu để kiểm thử phân tầng
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full scrollbar-none sm:flex-wrap">
+          <div className="flex items-center gap-1 overflow-x-auto pb-0.5 max-w-full scrollbar-none sm:flex-wrap">
             {presets.map(p => {
               const isSelected = activePreset === p.id;
               return (
@@ -241,13 +241,14 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
                   key={p.id}
                   type="button"
                   onClick={() => handleSelectPreset(p.id)}
-                  className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center space-x-1.5 shrink-0 whitespace-nowrap ${
+                  className={`px-2 py-1 rounded-lg text-[11px] font-semibold transition-all cursor-pointer flex items-center space-x-1 shrink-0 whitespace-nowrap ${
                     isSelected
                       ? 'bg-teal-500 text-slate-950 font-bold shadow-sm ring-2 ring-white/30'
                       : 'bg-white/10 text-slate-200 hover:bg-white/20 hover:text-white border border-white/10'
                   }`}
                   title={p.desc}
                 >
+                  <span>{p.icon}</span>
                   <span>{p.label}</span>
                 </button>
               );
@@ -255,10 +256,10 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             <button
               type="button"
               onClick={() => handleSelectPreset('custom')}
-              className="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-1 shrink-0 whitespace-nowrap cursor-pointer"
+              className="px-2 py-1 rounded-lg text-[11px] font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-1 shrink-0 whitespace-nowrap cursor-pointer"
               title="Làm mới để tự nhập ca bệnh"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
+              <RotateCcw className="w-3 h-3" />
               <span>Tự nhập</span>
             </button>
           </div>
@@ -440,24 +441,26 @@ export const StepAssessmentStratification: React.FC<StepAssessmentStratification
             <button
               type="button"
               onClick={() => onConfirmIndication(true)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center flex items-center justify-center space-x-1.5 ${
                 indicationConfirmed
                   ? 'bg-teal-600 text-white shadow-xs'
                   : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
               }`}
             >
-              ✓ Xác nhận có chỉ định
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>Có chỉ định</span>
             </button>
             <button
               type="button"
               onClick={() => onConfirmIndication(false)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-center flex items-center justify-center space-x-1.5 ${
                 !indicationConfirmed
                   ? 'bg-amber-600 text-white shadow-xs'
                   : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
               }`}
             >
-              Chưa rõ / Nghi do virus
+              <AlertTriangle className="w-3.5 h-3.5" />
+              <span>Chưa đủ bằng chứng</span>
             </button>
           </div>
         </div>

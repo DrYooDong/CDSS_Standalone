@@ -228,7 +228,7 @@ export function generatePdfConsultationReport(data: ConsultationReportData): voi
   doc.text(`${isEn ? 'Generated on' : 'Thoi gian xuat'}: ${dateStr}`, margin, y + 24);
 
   // Save the PDF
-  const filename = `CDSS_KhangSinh_${data.drug.id}_${patientId}_${now.toISOString().slice(0, 10)}.pdf`;
+  const filename = `CDSS_KhangSinh_${data.drug.id}_${now.toISOString().slice(0, 10)}.pdf`;
   doc.save(filename);
 }
 

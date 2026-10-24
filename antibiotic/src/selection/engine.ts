@@ -21,6 +21,7 @@ import {
   getCombinationGuidance
 } from './data/riskFactors';
 import { findEmpiricRegimens } from './data/empiricRegimens';
+import { findWhoRegimens, WHO_REGIMENS } from './data/whoRegimens';
 import { 
   EVIDENCE_BASED_DURATIONS, 
   STOP_ANTIBIOTIC_CHECKLIST, 
@@ -180,7 +181,7 @@ export function classifyRiskGroup(
 }
 
 /**
- * 2. EMPIRIC REGIMEN SELECTION
+ * 2. EMPIRIC REGIMEN SELECTION (BVBND 2026)
  */
 export function getEmpiricRegimens(
   site: InfectionSite,
@@ -190,6 +191,173 @@ export function getEmpiricRegimens(
   specificRisks: SpecificPathogenRisk[] = []
 ): EmpiricRegimen[] {
   return findEmpiricRegimens(site, population, riskGroup, sepsisSource, specificRisks);
+}
+
+/**
+ * 2b. WHO AWARE REGIMEN SELECTION
+ * Source: The WHO AWaRe antibiotic book (Geneva 2022, ISBN 978-92-4-006238-2)
+ */
+export function getWhoRegimens(
+  site: InfectionSite | string,
+  population: Population = 'adult',
+  options?: {
+    sepsisSource?: SepsisSource;
+    setting?: 'all' | 'primary_care' | 'hospital';
+    line?: 'all' | 'first_choice' | 'second_choice';
+    awareCategory?: 'all' | 'Access' | 'Watch' | 'Reserve';
+  }
+): EmpiricRegimen[] {
+  return findWhoRegimens(site, population, options);
+}
+
+/**
+ * 2c. GUIDELINE COMPARISON HELPER (BVBND 2026 vs WHO AWaRe 2022)
+ */
+export interface GuidelineComparisonItem {
+  site: InfectionSite;
+  siteLabelVi: string;
+  bvbndKeyPointsVi: string[];
+  whoKeyPointsVi: string[];
+  keyDifferencesVi: string[];
+  stewardshipAdviceVi: string;
+}
+
+export function getGuidelineComparison(site: InfectionSite, _population: Population = 'adult'): GuidelineComparisonItem {
+  const comparisons: Record<InfectionSite, GuidelineComparisonItem> = {
+    respiratory: {
+      site: 'respiratory',
+      siteLabelVi: 'Nhiễm trùng hô hấp (CAP / HAP / VAP)',
+      bvbndKeyPointsVi: [
+        'Nhóm 1: Ưu tiên Amox/Clav hoặc Ceftriaxone +/- Azithromycin (phủ không điển hình) hoặc FQ hô hấp đơn trị.',
+        'Nhóm 2 (HAP/VAP): Khởi đầu ngay Piperacillin/Tazo liều cao truyền 3-4h hoặc Meropenem khi có sốc/ESBL; phối hợp Vancomycin nếu có nguy cơ MRSA.',
+        'Dựa trên vi sinh tại BVBND: Trực khuẩn Gram âm kháng Cephalosporin >60%, Acinetobacter baumannii kháng Carbapenem >70%.'
+      ],
+      whoKeyPointsVi: [
+        'Thể nhẹ (Chăm sóc ban đầu): Khuyến cáo số 1 thế giới là Amoxicillin uống liều cao đơn trị (Nhóm Tiếp Cận - Access). Thời gian chỉ 5 ngày (trẻ em 3 ngày ở vùng HIV thấp).',
+        'Thể nặng (Nhập viện): Ceftriaxone hoặc Cefotaxime (+ Clarithromycin nếu CURB-65 ≥ 2). Khuyến cáo thời gian dùng 5 ngày.',
+        'HAP không thở máy nguy cơ thấp: Ưu tiên Amox/Clav IV hoặc Ceftriaxone (thời gian 7 ngày). Chỉ dùng Pip/Tazo khi có nguy cơ cao Pseudomonas.'
+      ],
+      keyDifferencesVi: [
+        'Thời gian điều trị: WHO khuyến cáo 5 ngày cho CAP (rút ngắn rõ rệt so với phác đồ 7-10 ngày truyền thống).',
+        'Kháng sinh đầu tay: WHO đẩy mạnh Amoxicillin đơn trị (Access) cho CAP ngoại trú, trong khi thực hành tại Việt Nam thường kê đơn Cephalosporin thế hệ 2-3 (Watch) hoặc FQ.',
+        'BVBND nâng bậc nhanh hơn lên Carbapenem trong HAP do tỷ lệ vi khuẩn đa kháng nội viện tại TP.HCM rất cao.'
+      ],
+      stewardshipAdviceVi: 'Với CAP nhẹ điều trị ngoại trú: Ưu tiên theo WHO dùng Amoxicillin 1g q8h để bảo tồn nhóm Watch. Với HAP/VAP tại ICU: Tuân thủ BVBND 2026 vì áp lực vi khuẩn đa kháng tại chỗ rất lớn.'
+    },
+    sepsis: {
+      site: 'sepsis',
+      siteLabelVi: 'Nhiễm khuẩn huyết & Sốc nhiễm khuẩn',
+      bvbndKeyPointsVi: [
+        'Nhóm 1: Ceftriaxone 2g q24h hoặc Cefotaxime 2g q8h kết hợp kiểm soát ổ nhiễm.',
+        'Nhóm 2: Bắt buộc dùng BL-BLI phổ rộng liều cao (Pip/Tazo 4.5g q6h) hoặc Meropenem 1-2g q8h truyền kéo dài 3h.',
+        'Bắt buộc phối hợp chống Gram(+) nếu có catheter hoặc tiền sử MRSA; ưu tiên kháng sinh diệt Acinetobacter/Pseudomonas.'
+      ],
+      whoKeyPointsVi: [
+        'Không rõ nguồn: Ceftriaxone/Cefotaxime PHỐI HỢP Amikacin 15 mg/kg/ngày (hoặc Gentamicin 5 mg/kg/ngày).',
+        'Chiến lược tiết kiệm Carbapenem (Carbapenem-sparing): Amikacin giữ hoạt tính diệt khuẩn mạnh và phủ tốt ESBL, giúp giảm dùng Meropenem.',
+        'Thời gian điều trị tiêu chuẩn: 7 ngày đối với nhiễm khuẩn huyết không rõ nguồn.'
+      ],
+      keyDifferencesVi: [
+        'WHO khuyến cáo dùng Cephalosporin thế hệ 3 + Amikacin như một phác đồ đầu tay tiết kiệm Carbapenem, trong khi BVBND phân tầng Group 2 sẽ ưu tiên Meropenem hoặc Pip/Tazo.',
+        'WHO nhấn mạnh thời gian điều trị ngắn ngày (7 ngày) nếu kiểm soát ổ nhiễm tốt.'
+      ],
+      stewardshipAdviceVi: 'Tại cấp cứu khi bệnh nhân sốc nhiễm khuẩn chưa rõ nguồn và chưa có bằng chứng sốc do Acinetobacter/CRE: Có thể áp dụng phác đồ tiết kiệm Carbapenem Ceftriaxone + Amikacin theo WHO, sau đó tái đánh giá sau 48-72h.'
+    },
+    urinary: {
+      site: 'urinary',
+      siteLabelVi: 'Nhiễm trùng tiết niệu (Viêm bàng quang / Viêm bể thận)',
+      bvbndKeyPointsVi: [
+        'Viêm bàng quang: Amox/Clav, Cefuroxime hoặc Fosfomycin đường uống. BVBND ghi nhận E. coli kháng Ciprofloxacin >70-80%.',
+        'Viêm bể thận / Nhóm 2: Ceftriaxone, Piperacillin/Tazobactam hoặc Carbapenem tùy tiền sử ESBL.',
+        'Antibiogram BVBND: E. coli sinh ESBL chiếm ~50-60% các mẫu phân lập nước tiểu.'
+      ],
+      whoKeyPointsVi: [
+        'Viêm bàng quang cấp: Lựa chọn ưu tiên số 1 thế giới là NITROFURANTOIN 100mg q12h x 5 ngày (Access). Không bao giờ dùng cho viêm bể thận.',
+        'Viêm bể thận cấp: Ngoại trú dùng Ciprofloxacin 500mg q12h x 7 ngày. Nhập viện: Ceftriaxone/Cefotaxime (+/- Amikacin 15mg/kg q24h cho ESBL).',
+        'Thời gian điều trị: 3-5 ngày cho viêm bàng quang ở nữ; 7 ngày cho viêm bể thận.'
+      ],
+      keyDifferencesVi: [
+        'WHO đặt Nitrofurantoin là thuốc số 1 cho viêm bàng quang cấp vì nồng độ cao trong nước tiểu và ít kháng thuốc, hạn chế tối đa Fluoroquinolone.',
+        'Với viêm bể thận nghi ngờ ESBL: WHO khuyến cáo dùng đơn trị hoặc phối hợp Amikacin (Access) thay vì Carbapenem.'
+      ],
+      stewardshipAdviceVi: 'Ưu tiên chỉ định Nitrofurantoin cho viêm bàng quang cấp theo WHO (tránh dùng Ciprofloxacin vì tỷ lệ kháng tại VN quá cao). Với viêm bể thận nhập viện, cân nhắc Amikacin để tiết kiệm Carbapenem.'
+    },
+    skin_soft_tissue: {
+      site: 'skin_soft_tissue',
+      siteLabelVi: 'Da & Mô mềm (SSTI / Viêm cân hoại tử)',
+      bvbndKeyPointsVi: [
+        'Nhóm 1: Oxacillin/Cloxacillin IV, Cefazolin hoặc Amox/Clav; dị ứng dùng Clindamycin.',
+        'Nhóm 2: Thêm Vancomycin phủ MRSA. Viêm cân mạc hoại tử phối hợp Carbapenem/Pip-Tazo + Clindamycin/Vancomycin.'
+      ],
+      whoKeyPointsVi: [
+        'Thể nhẹ (viêm mô tế bào, chốc): Cloxacillin, Cefalexin hoặc Amox/Clav đường uống nhóm Tiếp cận (Access) trong 5-7 ngày.',
+        'Viêm cân hoại tử (Necrotizing Fasciitis): Piperacillin/Tazo 4.5g q6h + CLINDAMYCIN 900mg q8h (ức chế độc tố vi khuẩn - anti-toxin).',
+        'Phẫu thuật cắt lọc mô hoại tử khẩn cấp là yếu tố quyết định số 1.'
+      ],
+      keyDifferencesVi: [
+        'Cả hai hướng dẫn đều thống nhất cao về vai trò bắt buộc của Clindamycin liều cao (900mg q8h) trong viêm cân hoại tử để ức chế độc tố GAS/Tụ cầu.',
+        'WHO khuyến cáo thời gian điều trị ngắn 5-7 ngày cho viêm mô tế bào nhẹ không biến chứng.'
+      ],
+      stewardshipAdviceVi: 'Kháng sinh nhóm Tiếp cận (Cloxacillin, Cefazolin, Amox/Clav) đạt hiệu quả vượt trội cho phần lớn nhiễm trùng da mô mềm thông thường.'
+    },
+    peritoneal: {
+      site: 'peritoneal',
+      siteLabelVi: 'Dịch báng / Viêm phúc mạc (SBP)',
+      bvbndKeyPointsVi: [
+        'SBP Nhóm 1: Cefotaxime 2g q8h hoặc Ceftriaxone 2g q24h x 5-7 ngày.',
+        'SBP Nhóm 2 (Xơ gan nặng CLIF-SOFA ≥ 12, nằm viện gần đây): Khởi đầu Meropenem 1g q8h +/- Daptomycin/Vancomycin do nguy cơ cao ESBL và Enterococcus.'
+      ],
+      whoKeyPointsVi: [
+        'Nhiễm trùng ổ bụng thể nhẹ-vừa: Amox/Clav IV hoặc Ceftriaxone/Cefotaxime + Metronidazole.',
+        'Nhiễm trùng ổ bụng nặng / nguy cơ ESBL: Piperacillin/Tazo hoặc Meropenem.',
+        'Thời gian điều trị: 4-5 ngày sau khi đã kiểm soát được nguồn nhiễm.'
+      ],
+      keyDifferencesVi: [
+        'BVBND có lưu đồ chuyên biệt cho bệnh nhân xơ gan cổ trướng (SBP) với phân tầng điểm CLIF-SOFA, trong khi WHO gom chung trong nhóm nhiễm trùng ổ bụng (Intra-abdominal).'
+      ],
+      stewardshipAdviceVi: 'Bệnh nhân xơ gan báng bụng có nhiễm trùng: Nên ưu tiên theo lưu đồ chuyên sâu BVBND 2026 (đánh giá CLIF-SOFA) để xử trí kịp thời nguy cơ suy đa tạng.'
+    },
+    gastrointestinal: {
+      site: 'gastrointestinal',
+      siteLabelVi: 'Tiêu hóa & Ổ bụng (Viêm túi mật, ruột thừa, áp xe gan, C. difficile)',
+      bvbndKeyPointsVi: [
+        'Viêm túi mật / đường mật: Ceftriaxone/Cefotaxime + Metronidazole hoặc Cefoperazone/Sulbactam.',
+        'Áp xe gan: Ceftriaxone + Metronidazole; cấy mủ tìm Klebsiella pneumoniae sinh K1/K2.'
+      ],
+      whoKeyPointsVi: [
+        'Viêm túi mật cắt bỏ thành công không biến chứng: Ngừng kháng sinh ngay sau mổ (không cần dùng tiếp).',
+        'Clostridioides difficile: BẮT BUỘC dùng Vancomycin ĐƯỜNG UỐNG (125mg q6h x 10 ngày). Vancomycin tiêm tĩnh mạch không có tác dụng.',
+        'Áp xe gan: Ceftriaxone + Metronidazole trong 4 tuần (kết hợp chọc hút dẫn lưu mủ).'
+      ],
+      keyDifferencesVi: [
+        'WHO khuyến cáo không tiếp tục kháng sinh sau phẫu thuật cắt ruột thừa hoặc túi mật không biến chứng (giảm nguy cơ đề kháng và C. diff).',
+        'WHO hướng dẫn chi tiết về điều trị C. diff bằng Vancomycin đường uống.'
+      ],
+      stewardshipAdviceVi: 'Kiểm soát triệt để nguồn nhiễm bằng phẫu thuật hoặc dẫn lưu là chìa khóa số 1. Ngừng kháng sinh sớm sau mổ sạch-nhiễm theo khuyến cáo của WHO.'
+    },
+    cns: {
+      site: 'cns',
+      siteLabelVi: 'Thần kinh trung ương (Viêm màng não mủ)',
+      bvbndKeyPointsVi: [
+        'Khởi đầu Ceftriaxone 2g q12h (4g/ngày) hoặc Cefotaxime 2g q6h (8g/ngày).',
+        'Bổ sung Vancomycin liều cao ngấm màng não nếu nghi ngờ Phế cầu kháng Cephalosporin hoặc sau phẫu thuật thần kinh.',
+        'Cân nhắc Ampicillin nếu nghi ngờ Listeria monocytogenes.'
+      ],
+      whoKeyPointsVi: [
+        'Đầu tay: Ceftriaxone 2g q12h (4g/ngày) hoặc Cefotaxime 2g q6h (8g/ngày).',
+        'Thêm Ampicillin 2g q4h IV nếu bệnh nhân ≥ 50 tuổi hoặc có thai (diệt Listeria).',
+        'Dexamethasone 0.15 mg/kg q6h tiêm cùng liều kháng sinh đầu tiên; chỉ tiếp tục nếu là Phế cầu.',
+        'Thời gian: Phế cầu 10-14 ngày; Não mô cầu 5-7 ngày; Listeria 21 ngày.'
+      ],
+      keyDifferencesVi: [
+        'Hai hướng dẫn rất tương đồng về liều màng não gấp đôi thông thường của Cephalosporin thế hệ 3 và chỉ định Dexamethasone.',
+        'WHO đưa ra thời gian điều trị nhắm đích rất rõ cho từng chủng vi khuẩn cụ thể.'
+      ],
+      stewardshipAdviceVi: 'Luôn dùng liều Ceftriaxone 2g mỗi 12h (tổng 4g/ngày) để thuốc đạt nồng độ diệt khuẩn trong dịch não tủy. Dùng Dexamethasone ngay trước hoặc cùng liều kháng sinh đầu tiên.'
+    }
+  };
+
+  return comparisons[site] || comparisons.respiratory;
 }
 
 /**
@@ -370,4 +538,5 @@ export function getMdrPathway(category: MdrPathogenCategory) {
 
 export { getAntibiogramForSite, BVBND_ANTIBIOGRAMS } from './data/antibiogram';
 export { MDR_PATHWAYS };
+export { WHO_REGIMENS } from './data/whoRegimens';
 
