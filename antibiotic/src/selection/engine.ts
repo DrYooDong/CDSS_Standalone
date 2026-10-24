@@ -459,9 +459,11 @@ export function evaluateStopCriteria(
 ) {
   const benchmark = EVIDENCE_BASED_DURATIONS.find(b => {
     if (site === 'respiratory') return b.conditionVi.includes('Viêm phổi');
-    if (site === 'peritoneal') return b.conditionVi.includes('ổ bụng');
+    if (site === 'peritoneal' || site === 'gastrointestinal') return b.conditionVi.includes('ổ bụng');
     if (site === 'urinary') return b.conditionVi.includes('tiết niệu');
     if (site === 'sepsis') return b.conditionVi.includes('huyết');
+    if (site === 'skin_soft_tissue') return b.conditionVi.includes('da và mô mềm');
+    if (site === 'cns') return b.conditionVi.includes('màng não');
     return false;
   }) || EVIDENCE_BASED_DURATIONS[0];
 

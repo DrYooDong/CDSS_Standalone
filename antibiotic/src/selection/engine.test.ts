@@ -12,6 +12,8 @@ import {
 } from './engine';
 
 import { SeverityAssessment } from './types';
+import { extractDrugData, calculateDose } from '../utils/drugDataExtractor';
+import { calculateRenalMetrics } from '../utils/clinicalFormulas';
 
 function runTests() {
   console.log('--- STARTING CLINICAL ENGINE TESTS ---');
@@ -144,6 +146,33 @@ function runTests() {
   );
   assert(stop3.canStop === false, 'Missing 1 clinical criteria -> CANNOT STOP');
 
+  // GI / Intra-abdominal: minDays is 4 (STOP-IT trial)
+  const stopGi = evaluateStopCriteria(
+    ['crit_afebrile', 'crit_hemodynamic', 'crit_oxygenation', 'crit_local_signs', 'crit_oral_intake'],
+    ['crit_pct'],
+    4,
+    'gastrointestinal'
+  );
+  assert(stopGi.canStop === true && stopGi.minDays === 4, 'GI / Intra-abdominal benchmark: 4 days min');
+
+  // SSTI: minDays is 5
+  const stopSsti = evaluateStopCriteria(
+    ['crit_afebrile', 'crit_hemodynamic', 'crit_oxygenation', 'crit_local_signs', 'crit_oral_intake'],
+    ['crit_pct'],
+    5,
+    'skin_soft_tissue'
+  );
+  assert(stopSsti.canStop === true && stopSsti.minDays === 5, 'SSTI benchmark: 5 days min');
+
+  // CNS (Meningitis): minDays is 10
+  const stopCns = evaluateStopCriteria(
+    ['crit_afebrile', 'crit_hemodynamic', 'crit_oxygenation', 'crit_local_signs', 'crit_oral_intake'],
+    ['crit_pct'],
+    9,
+    'cns'
+  );
+  assert(stopCns.canStop === false && stopCns.minDays === 10, 'CNS / Meningitis benchmark: 10 days min (9 days CANNOT STOP)');
+
   // 5. IV-TO-PO SWITCH TESTS (BYT 2020)
   console.log('\n[TEST GROUP 5: IV-to-PO Switch Engine]');
   
@@ -154,6 +183,21 @@ function runTests() {
   const switch2 = evaluateIvToPo(false, true, true, false, 'Levofloxacin IV');
   assert(switch2.isEligible === false, 'Still fever -> NOT ELIGIBLE');
   assert(switch2.blockingReasonsVi.some(r => r.includes('sốt')), 'Lists fever as blocking reason');
+
+  console.log('\n[TEST GROUP 6: PK/PD & Dosing Safeguard Calculations]');
+  // Vancomycin loading dose in obesity (BMI >= 30): capped at 2000 mg
+  const vancoData = extractDrugData('vancomycin');
+  const obesePatient = { age: 45, gender: 'm' as const, weight: 110, height: 165, scr: 90, scrUnit: 'umol' as const, dialysis: 'none' as const };
+  const obeseRenal = calculateRenalMetrics(obesePatient, vancoData.weightRule);
+  const vancoObeseDose = calculateDose(vancoData, obeseRenal, 'standard', obesePatient);
+  assert(vancoObeseDose.loadingDoseTextVi?.includes('2.000 mg') === true, 'Vancomycin loading dose in obesity capped at 2.000 mg');
+
+  // Colistin maintenance start interval in renal failure (CrCl <= 40 mL/min): starts 24h after loading dose
+  const colistinData = extractDrugData('colistin');
+  const renalFailPatient = { age: 70, gender: 'm' as const, weight: 60, height: 168, scr: 220, scrUnit: 'umol' as const, dialysis: 'none' as const };
+  const failRenal = calculateRenalMetrics(renalFailPatient, colistinData.weightRule);
+  const colistinFailDose = calculateDose(colistinData, failRenal, 'standard', renalFailPatient);
+  assert(colistinFailDose.selectedRowNoteVi?.includes('24 giờ') === true, 'Colistin maintenance interval delayed to 24h when CrCl <= 40');
 
   console.log(`\nALL ${passed}/${total} CLINICAL TESTS PASSED SUCCESSFULLY!`);
 }

@@ -1702,9 +1702,9 @@ export function findEmpiricRegimens(
   const baseRegimens = candidates.filter(r => !r.specificRisk);
   const targetedRegimens = candidates.filter(r => r.specificRisk && specificRisks.includes(r.specificRisk));
 
-  // If user selected specific pathogen risks, show both the base regimen and targeted add-on regimens
+  // If user selected specific pathogen risks, show targeted add-on regimens first, then base regimens
   if (targetedRegimens.length > 0) {
-    return [...baseRegimens, ...targetedRegimens];
+    return [...targetedRegimens, ...baseRegimens];
   }
 
   // If no specific risk selected, return the base group 2 regimens

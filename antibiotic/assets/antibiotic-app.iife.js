@@ -56782,7 +56782,7 @@
     const baseRegimens = candidates.filter((r) => !r.specificRisk);
     const targetedRegimens = candidates.filter((r) => r.specificRisk && specificRisks.includes(r.specificRisk));
     if (targetedRegimens.length > 0) {
-      return [...baseRegimens, ...targetedRegimens];
+      return [...targetedRegimens, ...baseRegimens];
     }
     if (baseRegimens.length > 0) {
       return baseRegimens;
@@ -58317,6 +58317,24 @@
       trialName: "BVBND Protocol",
       noteVi: "10 - 14 ng\xE0y do nguy c\u01A1 t\xE1i ph\xE1t cao.",
       source: { doc: "BVBND_LuuDo", page: 3 }
+    },
+    {
+      conditionVi: "Nhi\u1EC5m tr\xF9ng da v\xE0 m\xF4 m\u1EC1m (SSTI / Vi\xEAm m\xF4 t\u1EBF b\xE0o)",
+      conditionEn: "Skin and Soft Tissue Infection (SSTI / Cellulitis)",
+      minDays: 5,
+      maxDays: 7,
+      trialName: "IDSA SSTI Guidelines; Cranendonk 2017 trial",
+      noteVi: "5 - 7 ng\xE0y cho vi\xEAm m\xF4 t\u1EBF b\xE0o \u0111\xE1p \u1EE9ng t\u1ED1t; kh\xF4ng bi\u1EBFn ch\u1EE9ng kh\xF4ng k\xE9o d\xE0i qu\xE1 7 ng\xE0y.",
+      source: { doc: "BVBND_HDSDKS", page: 10 }
+    },
+    {
+      conditionVi: "Vi\xEAm m\xE0ng n\xE3o m\u1EE7 (Bacterial Meningitis)",
+      conditionEn: "Acute Bacterial Meningitis",
+      minDays: 10,
+      maxDays: 21,
+      trialName: "IDSA / ESCMID Meningitis Guidelines",
+      noteVi: "N\xE3o m\xF4 c\u1EA7u 5-7 ng\xE0y; Ph\u1EBF c\u1EA7u 10-14 ng\xE0y; Listeria/Gram(-) 21 ng\xE0y. Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh ng\u01B0ng s\u1EDBm.",
+      source: { doc: "BVBND_HDSDKS", page: 12 }
     }
   ];
   var STOP_ANTIBIOTIC_CHECKLIST = {
@@ -58656,16 +58674,18 @@
             hasDosingCalculator: true
           },
           {
+            drugId: "colistin",
             nameVi: "Polymyxin B (ho\u1EB7c Colistin)",
             nameEn: "Polymyxin B or Colistin",
-            standardDoseVi: "Polymyxin B li\u1EC1u n\u1EA1p 2 - 2.5 mg/kg, sau \u0111\xF3 1.25 - 1.5 mg/kg q12h",
-            hasDosingCalculator: false
+            standardDoseVi: "Polymyxin B li\u1EC1u n\u1EA1p 2 - 2.5 mg/kg, sau \u0111\xF3 1.25 - 1.5 mg/kg q12h; ho\u1EB7c Colistin n\u1EA1p 9 MIU, duy tr\xEC theo CrCl",
+            hasDosingCalculator: true
           },
           {
+            drugId: "tigecyclin",
             nameVi: "Minocycline (ho\u1EB7c Tigecycline)",
             nameEn: "Minocycline or Tigecycline",
             standardDoseVi: "Minocycline 200mg IV/PO q12h; Tigecycline n\u1EA1p 200mg, duy tr\xEC 100mg q12h",
-            hasDosingCalculator: false
+            hasDosingCalculator: true
           }
         ]
       ],
@@ -59492,9 +59512,11 @@
   function evaluateStopCriteria(checkedClinicalIds, checkedLabIds, currentDaysOnAbx, site) {
     const benchmark = EVIDENCE_BASED_DURATIONS.find((b) => {
       if (site === "respiratory") return b.conditionVi.includes("Vi\xEAm ph\u1ED5i");
-      if (site === "peritoneal") return b.conditionVi.includes("\u1ED5 b\u1EE5ng");
+      if (site === "peritoneal" || site === "gastrointestinal") return b.conditionVi.includes("\u1ED5 b\u1EE5ng");
       if (site === "urinary") return b.conditionVi.includes("ti\u1EBFt ni\u1EC7u");
       if (site === "sepsis") return b.conditionVi.includes("huy\u1EBFt");
+      if (site === "skin_soft_tissue") return b.conditionVi.includes("da v\xE0 m\xF4 m\u1EC1m");
+      if (site === "cns") return b.conditionVi.includes("m\xE0ng n\xE3o");
       return false;
     }) || EVIDENCE_BASED_DURATIONS[0];
     const minDurationMet = currentDaysOnAbx >= benchmark.minDays;
@@ -63009,8 +63031,8 @@ K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0
         maintenanceDoseTextVi: `${perDoseCba} mg CBA (~${perDoseMiu} MIU) m\u1ED7i 12 gi\u1EDD (q12h)`,
         maintenanceDoseTextEn: `${perDoseCba} mg CBA (~${perDoseMiu} MIU) every 12 hours (q12h)`,
         selectedRowLabel: rowLabel,
-        selectedRowNoteVi: "Li\u1EC1u duy tr\xEC b\u1EAFt \u0111\u1EA7u sau li\u1EC1u n\u1EA1p 12 gi\u1EDD. D\xF9ng theo ho\u1EA1t t\xEDnh colistin base (CBA): 1 MIU \u2248 33,3 mg CBA (1 tri\u1EC7u IU CMS \u2248 30 mg CBA).",
-        selectedRowNoteEn: "Maintenance dose starts 12 hours after loading dose. Expressed in Colistin Base Activity (CBA): 1 MIU \u2248 33.3 mg CBA.",
+        selectedRowNoteVi: crcl <= 40 ? "Li\u1EC1u duy tr\xEC b\u1EAFt \u0111\u1EA7u sau li\u1EC1u n\u1EA1p 24 gi\u1EDD (th\u1EDDi gian b\xE1n th\u1EA3i CMS k\xE9o d\xE0i \u1EDF suy th\u1EADn CrCl \u2264 40 mL/ph\xFAt). D\xF9ng theo ho\u1EA1t t\xEDnh colistin base (CBA): 1 MIU \u2248 33,3 mg CBA (1 tri\u1EC7u IU CMS \u2248 30 mg CBA)." : "Li\u1EC1u duy tr\xEC b\u1EAFt \u0111\u1EA7u sau li\u1EC1u n\u1EA1p 12 gi\u1EDD. D\xF9ng theo ho\u1EA1t t\xEDnh colistin base (CBA): 1 MIU \u2248 33,3 mg CBA (1 tri\u1EC7u IU CMS \u2248 30 mg CBA).",
+        selectedRowNoteEn: crcl <= 40 ? "Maintenance starts 24 hours after loading dose due to prolonged CMS half-life in renal impairment (CrCl \u2264 40 mL/min). Expressed in Colistin Base Activity (CBA): 1 MIU \u2248 33.3 mg CBA." : "Maintenance dose starts 12 hours after loading dose. Expressed in Colistin Base Activity (CBA): 1 MIU \u2248 33.3 mg CBA.",
         infusionInstructionsVi: "Pha trong 100-250 mL NaCl 0,9% ho\u1EB7c Glucose 5%, truy\u1EC1n t\u0129nh m\u1EA1ch trong 60 ph\xFAt",
         infusionInstructionsEn: "Dilute in 100-250 mL NS 0.9% or D5W, infuse IV over 60 minutes",
         orderTextVi: `Ch\u1EBF ph\u1EA9m: Colistimethate sodium (l\u1ECD 1 MIU ho\u1EB7c 2 MIU)
@@ -63055,10 +63077,23 @@ Infusion Duration: 60 min`,
     let loadingVi = null;
     let loadingEn = null;
     if (drug.isVancomycin) {
-      const ldMin = Math.round(25 * usedWeight);
-      const ldMax = Math.min(3e3, Math.round(30 * usedWeight));
-      loadingVi = `25-30 mg/kg th\u1EF1c t\u1EBF (${ldMin} - ${ldMax} mg, t\u1ED1i \u0111a 3.000 mg), truy\u1EC1n trong 1,5 - 2,5 gi\u1EDD`;
-      loadingEn = `25-30 mg/kg actual weight (${ldMin} - ${ldMax} mg, max 3,000 mg), infused over 1.5 - 2.5 hours`;
+      const tbw = patient.weight || usedWeight;
+      if (renal.isArc) {
+        const ldVal = Math.min(3e3, Math.round(15 * tbw));
+        loadingVi = `15 mg/kg c\xE2n n\u1EB7ng th\u1EF1c t\u1EBF (~${ldVal} mg, t\u1ED1i \u0111a 3.000 mg) t\u1EA1i HSTC, sau \u0111\xF3 chuy\u1EC3n truy\u1EC1n li\xEAn t\u1EE5c \u0111\u1EC3 \u0111\u1EA1t n\u1ED3ng \u0111\u1ED9 m\u1EE5c ti\xEAu trong t\u0103ng thanh th\u1EA3i th\u1EADn (ARC)`;
+        loadingEn = `15 mg/kg actual weight (~${ldVal} mg, max 3,000 mg) in ICU, followed by continuous infusion for augmented renal clearance (ARC)`;
+      } else if (crcl < 30 || renal.bmi !== null && renal.bmi >= 30) {
+        const ldMin = Math.round(20 * tbw);
+        const ldMax = Math.min(2e3, Math.round(25 * tbw));
+        const reasonVi = crcl < 30 ? "suy th\u1EADn n\u1EB7ng (CrCl < 30 mL/ph\xFAt)" : `b\xE9o ph\xEC (BMI ${renal.bmi} \u2265 30)`;
+        loadingVi = `20-25 mg/kg c\xE2n n\u1EB7ng th\u1EF1c t\u1EBF (${ldMin} - ${ldMax} mg, t\u1ED1i \u0111a 2.000 mg) do ${reasonVi}, truy\u1EC1n trong 1,5 - 2 gi\u1EDD`;
+        loadingEn = `20-25 mg/kg actual weight (${ldMin} - ${ldMax} mg, max 2,000 mg) due to ${crcl < 30 ? "severe renal impairment" : "obesity"}, infused over 1.5 - 2 hours`;
+      } else {
+        const ldMin = Math.round(25 * tbw);
+        const ldMax = Math.min(3e3, Math.round(30 * tbw));
+        loadingVi = `25-30 mg/kg c\xE2n n\u1EB7ng th\u1EF1c t\u1EBF (${ldMin} - ${ldMax} mg, t\u1ED1i \u0111a 3.000 mg), truy\u1EC1n trong 1,5 - 2,5 gi\u1EDD`;
+        loadingEn = `25-30 mg/kg actual weight (${ldMin} - ${ldMax} mg, max 3,000 mg), infused over 1.5 - 2.5 hours`;
+      }
     } else if (drug.id === "teicoplanin") {
       loadingVi = "6 mg/kg (ho\u1EB7c 12 mg/kg trong nhi\u1EC5m khu\u1EA9n n\u1EB7ng) m\u1ED7i 12 gi\u1EDD x 3-5 li\u1EC1u n\u1EA1p \u0111\u1EA7u ti\xEAn";
       loadingEn = "6 mg/kg (or 12 mg/kg in severe infections) q12h x 3-5 loading doses";

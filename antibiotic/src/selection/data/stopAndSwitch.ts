@@ -89,6 +89,24 @@ export const EVIDENCE_BASED_DURATIONS: DurationBenchmark[] = [
     trialName: 'BVBND Protocol',
     noteVi: '10 - 14 ngày do nguy cơ tái phát cao.',
     source: { doc: 'BVBND_LuuDo', page: 3 }
+  },
+  {
+    conditionVi: 'Nhiễm trùng da và mô mềm (SSTI / Viêm mô tế bào)',
+    conditionEn: 'Skin and Soft Tissue Infection (SSTI / Cellulitis)',
+    minDays: 5,
+    maxDays: 7,
+    trialName: 'IDSA SSTI Guidelines; Cranendonk 2017 trial',
+    noteVi: '5 - 7 ngày cho viêm mô tế bào đáp ứng tốt; không biến chứng không kéo dài quá 7 ngày.',
+    source: { doc: 'BVBND_HDSDKS', page: 10 }
+  },
+  {
+    conditionVi: 'Viêm màng não mủ (Bacterial Meningitis)',
+    conditionEn: 'Acute Bacterial Meningitis',
+    minDays: 10,
+    maxDays: 21,
+    trialName: 'IDSA / ESCMID Meningitis Guidelines',
+    noteVi: 'Não mô cầu 5-7 ngày; Phế cầu 10-14 ngày; Listeria/Gram(-) 21 ngày. Chống chỉ định ngưng sớm.',
+    source: { doc: 'BVBND_HDSDKS', page: 12 }
   }
 ];
 

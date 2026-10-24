@@ -191,16 +191,18 @@ export const MDR_PATHWAYS: Record<string, MdrTargetedPathway> = {
           hasDosingCalculator: true
         },
         {
+          drugId: 'colistin',
           nameVi: 'Polymyxin B (hoặc Colistin)',
           nameEn: 'Polymyxin B or Colistin',
-          standardDoseVi: 'Polymyxin B liều nạp 2 - 2.5 mg/kg, sau đó 1.25 - 1.5 mg/kg q12h',
-          hasDosingCalculator: false
+          standardDoseVi: 'Polymyxin B liều nạp 2 - 2.5 mg/kg, sau đó 1.25 - 1.5 mg/kg q12h; hoặc Colistin nạp 9 MIU, duy trì theo CrCl',
+          hasDosingCalculator: true
         },
         {
+          drugId: 'tigecyclin',
           nameVi: 'Minocycline (hoặc Tigecycline)',
           nameEn: 'Minocycline or Tigecycline',
           standardDoseVi: 'Minocycline 200mg IV/PO q12h; Tigecycline nạp 200mg, duy trì 100mg q12h',
-          hasDosingCalculator: false
+          hasDosingCalculator: true
         }
       ]
     ],

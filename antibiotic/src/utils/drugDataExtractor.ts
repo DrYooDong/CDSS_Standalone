@@ -149,8 +149,12 @@ export function calculateDose(
       maintenanceDoseTextVi: `${perDoseCba} mg CBA (~${perDoseMiu} MIU) mỗi 12 giờ (q12h)`,
       maintenanceDoseTextEn: `${perDoseCba} mg CBA (~${perDoseMiu} MIU) every 12 hours (q12h)`,
       selectedRowLabel: rowLabel,
-      selectedRowNoteVi: 'Liều duy trì bắt đầu sau liều nạp 12 giờ. Dùng theo hoạt tính colistin base (CBA): 1 MIU ≈ 33,3 mg CBA (1 triệu IU CMS ≈ 30 mg CBA).',
-      selectedRowNoteEn: 'Maintenance dose starts 12 hours after loading dose. Expressed in Colistin Base Activity (CBA): 1 MIU ≈ 33.3 mg CBA.',
+      selectedRowNoteVi: crcl <= 40
+        ? 'Liều duy trì bắt đầu sau liều nạp 24 giờ (thời gian bán thải CMS kéo dài ở suy thận CrCl ≤ 40 mL/phút). Dùng theo hoạt tính colistin base (CBA): 1 MIU ≈ 33,3 mg CBA (1 triệu IU CMS ≈ 30 mg CBA).'
+        : 'Liều duy trì bắt đầu sau liều nạp 12 giờ. Dùng theo hoạt tính colistin base (CBA): 1 MIU ≈ 33,3 mg CBA (1 triệu IU CMS ≈ 30 mg CBA).',
+      selectedRowNoteEn: crcl <= 40
+        ? 'Maintenance starts 24 hours after loading dose due to prolonged CMS half-life in renal impairment (CrCl ≤ 40 mL/min). Expressed in Colistin Base Activity (CBA): 1 MIU ≈ 33.3 mg CBA.'
+        : 'Maintenance dose starts 12 hours after loading dose. Expressed in Colistin Base Activity (CBA): 1 MIU ≈ 33.3 mg CBA.',
       infusionInstructionsVi: 'Pha trong 100-250 mL NaCl 0,9% hoặc Glucose 5%, truyền tĩnh mạch trong 60 phút',
       infusionInstructionsEn: 'Dilute in 100-250 mL NS 0.9% or D5W, infuse IV over 60 minutes',
       orderTextVi: `Chế phẩm: Colistimethate sodium (lọ 1 MIU hoặc 2 MIU)\nLiều nạp: 9 MIU (~300 mg CBA)\nLiều duy trì: ${perDoseCba} mg CBA (~${perDoseMiu} MIU) q12h\nDung môi: NaCl 0,9% 100-250 mL\nThời gian truyền: 60 phút`,
@@ -199,10 +203,23 @@ export function calculateDose(
   let loadingVi: string | null = null;
   let loadingEn: string | null = null;
   if (drug.isVancomycin) {
-    const ldMin = Math.round(25 * usedWeight);
-    const ldMax = Math.min(3000, Math.round(30 * usedWeight));
-    loadingVi = `25-30 mg/kg thực tế (${ldMin} - ${ldMax} mg, tối đa 3.000 mg), truyền trong 1,5 - 2,5 giờ`;
-    loadingEn = `25-30 mg/kg actual weight (${ldMin} - ${ldMax} mg, max 3,000 mg), infused over 1.5 - 2.5 hours`;
+    const tbw = patient.weight || usedWeight;
+    if (renal.isArc) {
+      const ldVal = Math.min(3000, Math.round(15 * tbw));
+      loadingVi = `15 mg/kg cân nặng thực tế (~${ldVal} mg, tối đa 3.000 mg) tại HSTC, sau đó chuyển truyền liên tục để đạt nồng độ mục tiêu trong tăng thanh thải thận (ARC)`;
+      loadingEn = `15 mg/kg actual weight (~${ldVal} mg, max 3,000 mg) in ICU, followed by continuous infusion for augmented renal clearance (ARC)`;
+    } else if (crcl < 30 || (renal.bmi !== null && renal.bmi >= 30)) {
+      const ldMin = Math.round(20 * tbw);
+      const ldMax = Math.min(2000, Math.round(25 * tbw));
+      const reasonVi = crcl < 30 ? 'suy thận nặng (CrCl < 30 mL/phút)' : `béo phì (BMI ${renal.bmi} ≥ 30)`;
+      loadingVi = `20-25 mg/kg cân nặng thực tế (${ldMin} - ${ldMax} mg, tối đa 2.000 mg) do ${reasonVi}, truyền trong 1,5 - 2 giờ`;
+      loadingEn = `20-25 mg/kg actual weight (${ldMin} - ${ldMax} mg, max 2,000 mg) due to ${crcl < 30 ? 'severe renal impairment' : 'obesity'}, infused over 1.5 - 2 hours`;
+    } else {
+      const ldMin = Math.round(25 * tbw);
+      const ldMax = Math.min(3000, Math.round(30 * tbw));
+      loadingVi = `25-30 mg/kg cân nặng thực tế (${ldMin} - ${ldMax} mg, tối đa 3.000 mg), truyền trong 1,5 - 2,5 giờ`;
+      loadingEn = `25-30 mg/kg actual weight (${ldMin} - ${ldMax} mg, max 3,000 mg), infused over 1.5 - 2.5 hours`;
+    }
   } else if (drug.id === 'teicoplanin') {
     loadingVi = '6 mg/kg (hoặc 12 mg/kg trong nhiễm khuẩn nặng) mỗi 12 giờ x 3-5 liều nạp đầu tiên';
     loadingEn = '6 mg/kg (or 12 mg/kg in severe infections) q12h x 3-5 loading doses';
