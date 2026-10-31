@@ -10,8 +10,7 @@ import {
   SusceptibilityStatus
 } from '../../selection/types';
 import { classifyRiskGroup } from '../../selection/engine';
-import { StepAssessmentStratification } from './StepAssessmentStratification';
-import { StepEmpiric } from './StepEmpiric';
+import { StepAssessmentAndRegimens } from './StepAssessmentAndRegimens';
 import { StepReassess } from './StepReassess';
 import { DecisionSummaryCard } from './DecisionSummaryCard';
 import { 
@@ -34,10 +33,11 @@ import {
 
 import { DoseResult } from '../../utils/drugDataExtractor';
 import { PatientState, CalculatedRenalMetrics } from '../../types';
+import { calculateRenalMetrics } from '../../utils/clinicalFormulas';
 
 interface SelectionWizardProps {
-  currentStage: 1 | 2 | 3 | 4;
-  onStageChange: (stage: 1 | 2 | 3 | 4) => void;
+  currentStage: 1 | 2;
+  onStageChange: (stage: 1 | 2) => void;
   onSelectDrugForDosing: (drugId?: string) => void;
   onOpenGuidelineAtlas?: (imageId?: string) => void;
   dosingResult?: DoseResult | null;
@@ -47,6 +47,8 @@ interface SelectionWizardProps {
   onCalculateDoseForDrug?: (drugId: string) => void;
   onPatientChange?: (updated: Partial<PatientState>) => void;
   onExportPdf?: () => void;
+  detailedDrugId?: string | null;
+  onToggleDetailedDrug?: (drugId: string | null) => void;
   children?: React.ReactNode; // Dosing & Safety Workspace
 }
 
@@ -62,19 +64,39 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
   onCalculateDoseForDrug,
   onPatientChange,
   onExportPdf,
+  detailedDrugId: externalDetailedDrugId,
+  onToggleDetailedDrug: externalToggleDetailedDrug,
   children
 }) => {
   const [viewMode, setViewMode] = useState<'stepper' | 'all-in-one'>('stepper');
   const [copiedSummary, setCopiedSummary] = useState(false);
+  const [internalDetailedDrugId, setInternalDetailedDrugId] = useState<string | null>(null);
+
+  const activeDetailedDrugId = externalDetailedDrugId !== undefined ? externalDetailedDrugId : internalDetailedDrugId;
+  const handleToggleDetailed = (dId: string | null) => {
+    if (externalToggleDetailedDrug) {
+      externalToggleDetailedDrug(dId);
+    } else {
+      setInternalDetailedDrugId(dId);
+    }
+    if (dId) {
+      onSelectDrugForDosing(dId);
+    }
+  };
+
+  const activePatient: PatientState = patient || {
+    scr: 90,
+    scrUnit: 'umol',
+    age: 60,
+    gender: 'm',
+    weight: 60,
+    height: 165,
+    dialysis: 'none'
+  };
+  const activeRenal: CalculatedRenalMetrics = renal || calculateRenalMetrics(activePatient);
 
   // Clinical State
   const [indicationConfirmed, setIndicationConfirmed] = useState<boolean>(true);
-  const [checkedNhsnIds, setCheckedNhsnIds] = useState<string[]>([
-    'vae_vac',
-    'vae_ivac',
-    'pneu_sputum_purulent',
-    'pneu_xray'
-  ]);
   const [population, setPopulation] = useState<Population>('adult');
   const [site, setSite] = useState<InfectionSite>('respiratory');
   const [sepsisSource, setSepsisSource] = useState<SepsisSource | undefined>(undefined);
@@ -103,96 +125,10 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
   const [susceptibilityStatus, setSusceptibilityStatus] = useState<SusceptibilityStatus>('sensitive');
   const [daysOnAntibiotic, setDaysOnAntibiotic] = useState<number>(3);
 
-  // Toggle helpers
-  const handleToggleNhsnId = (id: string) => {
-    setCheckedNhsnIds(prev =>
-      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
-    );
-  };
-
-  const handleToggleGeneralRisk = (id: string) => {
-    setCheckedGeneralRiskIds(prev =>
-      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
-    );
-  };
-
   const handleToggleSpecificRisk = (risk: SpecificPathogenRisk) => {
     setCheckedSpecificRisks(prev =>
       prev.includes(risk) ? prev.filter(x => x !== risk) : [...prev, risk]
     );
-  };
-
-  const handleToggleSpecificRiskFactor = (factorId: string) => {
-    setCheckedSpecificRiskFactorIds(prev =>
-      prev.includes(factorId) ? prev.filter(x => x !== factorId) : [...prev, factorId]
-    );
-  };
-
-  // Presets handler
-  const handleApplyPreset = (presetKey: string) => {
-    if (presetKey === 'vap_severe') {
-      setPopulation('adult');
-      setIsChronicLiverDisease(false);
-      setSite('respiratory');
-      setSepsisSource(undefined);
-      setIndicationConfirmed(true);
-      setCheckedNhsnIds(['vae_vac', 'vae_ivac', 'pneu_sputum_purulent', 'pneu_xray']);
-      setSofaScore(8);
-      setCheckedGeneralRiskIds(['hospital_90d', 'invasive_device', 'iv_abx_30d']);
-      setCheckedSpecificRisks(['pseudo_acineto', 'mrsa']);
-      setCheckedSpecificRiskFactorIds(['ps_icu_5d', 'ps_devices', 'mrsa_cvc_foley']);
-    } else if (presetKey === 'cap_standard') {
-      setPopulation('adult');
-      setIsChronicLiverDisease(false);
-      setSite('respiratory');
-      setSepsisSource(undefined);
-      setIndicationConfirmed(true);
-      setCheckedNhsnIds(['pneu_fever_wbc', 'pneu_cough_dyspnea', 'pneu_rales', 'pneu_xray']);
-      setSofaScore(0);
-      setCheckedGeneralRiskIds([]);
-      setCheckedSpecificRisks([]);
-      setCheckedSpecificRiskFactorIds([]);
-    } else if (presetKey === 'sepsis_cirrhosis') {
-      setPopulation('adult');
-      setIsChronicLiverDisease(true);
-      setSite('peritoneal');
-      setSepsisSource('peritoneal');
-      setIndicationConfirmed(true);
-      setCheckedNhsnIds(['sbp_ascites_pmfn', 'sbp_fever_abdominal_pain']);
-      setClifSofaScore(13);
-      setCheckedGeneralRiskIds(['chronic_disease', 'hospital_90d']);
-      setCheckedSpecificRisks(['esbl']);
-      setCheckedSpecificRiskFactorIds(['esbl_steroid', 'esbl_tubes']);
-    } else if (presetKey === 'cauti_elderly') {
-      setPopulation('adult');
-      setIsChronicLiverDisease(false);
-      setSite('urinary');
-      setSepsisSource(undefined);
-      setIndicationConfirmed(true);
-      setCheckedNhsnIds(['cauti_fever', 'cauti_pyuria', 'cauti_catheter_days']);
-      setSofaScore(1);
-      setCheckedGeneralRiskIds(['invasive_device', 'age_over_60']);
-      setCheckedSpecificRisks(['esbl', 'pseudo_acineto']);
-      setCheckedSpecificRiskFactorIds(['esbl_tubes', 'ps_devices']);
-    } else if (presetKey === 'ssti_cellulitis') {
-      setPopulation('adult');
-      setIsChronicLiverDisease(false);
-      setSite('skin_soft_tissue');
-      setSepsisSource(undefined);
-      setIndicationConfirmed(true);
-      setCheckedNhsnIds(['ssti_erythema_warmth', 'ssti_purulent']);
-      setSofaScore(0);
-      setCheckedGeneralRiskIds([]);
-      setCheckedSpecificRisks([]);
-      setCheckedSpecificRiskFactorIds([]);
-    } else if (presetKey === 'custom') {
-      setCheckedGeneralRiskIds([]);
-      setCheckedSpecificRisks([]);
-      setCheckedSpecificRiskFactorIds([]);
-      setSofaScore(0);
-      setPsofaScore(0);
-      setClifSofaScore(0);
-    }
   };
 
   // Severity & Risk Classification
@@ -210,11 +146,31 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     checkedSpecificRiskFactorIds
   );
 
+  // Quick 1-click group adjust
+  const handleQuickGroupSelect = (targetGroup: 'group_1' | 'group_2') => {
+    if (targetGroup === 'group_1') {
+      setCheckedGeneralRiskIds([]);
+      setCheckedSpecificRisks([]);
+      setCheckedSpecificRiskFactorIds([]);
+      setSofaScore(0);
+      setPsofaScore(0);
+      setClifSofaScore(0);
+    } else {
+      if (!checkedGeneralRiskIds.includes('hospital_90d')) {
+        setCheckedGeneralRiskIds(prev => [...prev, 'hospital_90d', 'iv_abx_30d']);
+      }
+      if (!checkedSpecificRisks.includes('pseudo_acineto')) {
+        setCheckedSpecificRisks(prev => [...prev, 'pseudo_acineto']);
+      }
+      if (sofaScore < 2) setSofaScore(4);
+    }
+  };
+
   // Compile wizard state object for DecisionSummaryCard
   const wizardState: SelectionWizardState = {
     currentStep: (currentStage === 1 ? 1 : currentStage === 2 ? 4 : 5) as 1 | 2 | 3 | 4 | 5,
     indicationConfirmed,
-    nhsnCheckedIds: checkedNhsnIds,
+    nhsnCheckedIds: [],
     population,
     site,
     sepsisSource,
@@ -261,38 +217,22 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
     setTimeout(() => setCopiedSummary(false), 2500);
   };
 
-  // 4 Master Clinical Stages List (Icon-First Streamlined Pipeline)
+  // 2 Unified Clinical Stages (Step 1: Phác đồ & Tính liều, Step 2: Tái đánh giá 48-72h)
   const stagesList = [
     {
       stage: 1 as const,
-      badge: '1. Đánh Giá',
-      sub: 'NHSN • Nguy cơ VKĐK',
-      title: 'Đánh Giá & Phân Tầng',
-      desc: 'Tiêu chuẩn NHSN • Ổ nhiễm • Điểm SOFA & Nguy cơ VKĐK',
-      icon: <ClipboardCheck className="w-4 h-4" />
-    },
-    {
-      stage: 2 as const,
-      badge: '2. Phác Đồ',
-      sub: 'BVBND 2026 • WHO AWaRe',
-      title: 'Phác Đồ BVBND & WHO',
-      desc: 'Phác đồ BVBND 2026 • WHO AWaRe 2022 • Antibiogram vi sinh',
+      badge: '1. Phác Đồ & Tính Liều',
+      sub: 'BVBND 2026 • Tính liều trực tiếp',
+      title: 'Phác Đồ & Cá Thể Hóa Liều',
+      desc: 'Đánh giá ổ nhiễm, phân tầng nguy cơ VKĐK, tính liều trực tiếp theo CrCl và bảng chi tiết kháng sinh',
       icon: <Pill className="w-4 h-4" />
     },
     {
-      stage: 3 as const,
-      badge: '3. Tính Liều',
-      sub: '43 KS • CrCl & DDI',
-      title: 'Tính Liều & An Toàn Dược',
-      desc: '43 Kháng sinh • Hiệu chỉnh CrCl/HD/CRRT • Cảnh báo DDI',
-      icon: <Activity className="w-4 h-4" />
-    },
-    {
-      stage: 4 as const,
-      badge: '4. Tái Đánh Giá',
-      sub: '48-72h • Xuống thang',
-      title: 'Tái Đánh Giá 48-72h',
-      desc: 'Đáp ứng lâm sàng & KSĐ • Xuống thang • Ngưng KS / IV-to-PO',
+      stage: 2 as const,
+      badge: '2. Tái Đánh Giá',
+      sub: '48-72h • Xuống thang KSĐ',
+      title: 'Tái Đánh Giá 48-72h & Quản Lý Kháng Sinh (AMS)',
+      desc: 'Đáp ứng lâm sàng & KSĐ • Xuống thang • Ngưng KS / Chuyển đường uống IV-to-PO',
       icon: <Clock className="w-4 h-4" />
     }
   ];
@@ -307,10 +247,10 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-100">
           <div className="flex items-center space-x-2">
             <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-teal-100 text-teal-800">
-              Quy Trình 4 Bước
+              Quy Trình 2 Bước
             </span>
             <span className="text-[11px] text-slate-500 hidden md:inline">
-              BVBND 2026 • WHO AWaRe • NHSN-CDC
+              BVBND 2026 • Tính Liều Trực Tiếp &amp; Bảng Cụ Thể • Tái Đánh Giá 48-72h
             </span>
           </div>
 
@@ -365,8 +305,8 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
           </div>
         </div>
 
-        {/* 4-Step Interactive Pipeline (Streamlined Icon-First Header) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+        {/* 2-Step Interactive Pipeline Header */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {stagesList.map((st) => {
             const isActive = currentStage === st.stage;
             const isCompleted = currentStage > st.stage;
@@ -440,23 +380,35 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
                 </span>
               </div>
               <div className="text-[11px] text-slate-500 truncate mt-0.5">
-                {population === 'adult' ? 'Người lớn' : 'Trẻ em'} • SOFA: {activeSeverity.scoreValue}đ • CrCl: {renal?.crcl} mL/p
+                {population === 'adult' ? 'Người lớn' : 'Trẻ em'} • SOFA: {activeSeverity.scoreValue}đ • CrCl: {activeRenal.crcl} mL/p
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
-            {currentStage < 4 && (
+            {currentStage === 1 ? (
               <button
                 type="button"
                 onClick={() => {
-                  onStageChange((currentStage + 1) as 1 | 2 | 3 | 4);
+                  onStageChange(2);
                   window.scrollTo({ top: 80, behavior: 'smooth' });
                 }}
                 className="w-full sm:w-auto px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs flex items-center justify-center space-x-1 cursor-pointer"
               >
-                <span>Sang Bước {currentStage + 1}</span>
+                <span>Sang Bước 2</span>
                 <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  onStageChange(1);
+                  window.scrollTo({ top: 80, behavior: 'smooth' });
+                }}
+                className="w-full sm:w-auto px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 shadow-xs flex items-center justify-center space-x-1 cursor-pointer"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Về Bước 1</span>
               </button>
             )}
           </div>
@@ -468,7 +420,7 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
       <div className="w-full space-y-6">
         
         {/* ============================================================== */}
-        {/* STEP 1: ASSESSMENT & STRATIFICATION (NHSN & MDR RISK) */}
+        {/* STEP 1: UNIFIED CLINICAL ASSESSMENT, REGIMENS & DIRECT DOSING */}
         {/* ============================================================== */}
         {(viewMode === 'all-in-one' || currentStage === 1) && (
           <div id="section-stage-1" className="space-y-4">
@@ -476,148 +428,58 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
               <div className="flex items-center space-x-2 pt-2 pb-1 border-b border-slate-200">
                 <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">1</span>
                 <h2 className="text-base font-extrabold text-slate-900">
-                  Bước 1: Đánh Giá Nhiễm Trùng &amp; Phân Tầng Nguy Cơ VKĐK
+                  Bước 1: Đánh Giá, Lựa Chọn Phác Đồ BVBND 2026 &amp; Cá Thể Hóa Tính Liều
                 </h2>
               </div>
             )}
             
-            <StepAssessmentStratification
-              indicationConfirmed={indicationConfirmed}
-              onConfirmIndication={setIndicationConfirmed}
-              checkedNhsnIds={checkedNhsnIds}
-              onToggleNhsnId={handleToggleNhsnId}
-              population={population}
-              onSelectPopulation={setPopulation}
+            <StepAssessmentAndRegimens
               site={site}
               onSelectSite={setSite}
+              population={population}
+              onSelectPopulation={setPopulation}
+              isChronicLiverDisease={isChronicLiverDisease}
+              onToggleChronicLiver={setIsChronicLiverDisease}
               sepsisSource={sepsisSource}
               onSelectSepsisSource={setSepsisSource}
-              checkedGeneralRiskIds={checkedGeneralRiskIds}
-              onToggleGeneralRisk={handleToggleGeneralRisk}
-              checkedSpecificRiskFactorIds={checkedSpecificRiskFactorIds}
-              onToggleSpecificRiskFactor={handleToggleSpecificRiskFactor}
+              riskResult={riskResult}
+              onQuickGroupSelect={handleQuickGroupSelect}
               sofaScore={sofaScore}
               onSofaChange={setSofaScore}
               psofaScore={psofaScore}
               onPsofaChange={setPsofaScore}
               clifSofaScore={clifSofaScore}
               onClifSofaChange={setClifSofaScore}
-              isChronicLiverDisease={isChronicLiverDisease}
-              onToggleChronicLiver={setIsChronicLiverDisease}
               checkedSpecificRisks={checkedSpecificRisks}
               onToggleSpecificRisk={handleToggleSpecificRisk}
-              riskResult={riskResult}
-              onApplyPreset={handleApplyPreset}
-              onNextStage={() => {
+              patient={activePatient}
+              renal={activeRenal}
+              selectedDrugId={selectedDrugId || 'meropenem'}
+              onSelectDrug={(drugId) => {
+                onSelectDrugForDosing(drugId);
+                handleToggleDetailed(drugId);
+              }}
+              detailedDrugId={activeDetailedDrugId}
+              onToggleDetailedDrug={handleToggleDetailed}
+              onNextStep={() => {
                 onStageChange(2);
                 window.scrollTo({ top: 80, behavior: 'smooth' });
               }}
+              onOpenGuidelineAtlas={onOpenGuidelineAtlas}
             />
           </div>
         )}
 
         {/* ============================================================== */}
-        {/* STEP 2: EMPIRIC REGIMENS & ANTIBIOGRAM (BVBND 2026 GUIDELINES) */}
+        {/* STEP 2: 48-72h REASSESSMENT & ANTIMICROBIAL STEWARDSHIP (AMS) */}
         {/* ============================================================== */}
         {(viewMode === 'all-in-one' || currentStage === 2) && (
-          <div id="section-stage-2" className="space-y-4">
+          <div id="section-stage-2" className="space-y-6">
             {viewMode === 'all-in-one' && (
               <div className="flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200">
                 <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">2</span>
                 <h2 className="text-base font-extrabold text-slate-900">
-                  Bước 2: Lựa Chọn Phác Đồ BVBND 2026 &amp; WHO AWaRe • Antibiogram Vi Sinh
-                </h2>
-              </div>
-            )}
-
-            <StepEmpiric
-              site={site}
-              population={population}
-              riskGroup={riskResult.group}
-              sepsisSource={sepsisSource}
-              specificRisks={checkedSpecificRisks}
-              onSelectDrugForDosing={(drugId) => {
-                onSelectDrugForDosing(drugId);
-                onStageChange(3);
-                window.scrollTo({ top: 80, behavior: 'smooth' });
-              }}
-              onOpenGuidelineAtlas={onOpenGuidelineAtlas}
-              dosingResult={dosingResult}
-              selectedDrugId={selectedDrugId}
-              patient={patient}
-              renal={renal}
-              onCalculateDoseForDrug={onCalculateDoseForDrug}
-              onPatientChange={onPatientChange}
-              onNextStep={() => {
-                onStageChange(3);
-                window.scrollTo({ top: 80, behavior: 'smooth' });
-              }}
-              onPrevStep={() => {
-                onStageChange(1);
-                window.scrollTo({ top: 80, behavior: 'smooth' });
-              }}
-            />
-          </div>
-        )}
-
-        {/* ============================================================== */}
-        {/* STEP 3: PRECISION DOSING & DRUG SAFETY WORKSPACE (43 ANTIBIOTICS) */}
-        {/* ============================================================== */}
-        {(viewMode === 'all-in-one' || currentStage === 3) && (
-          <div id="section-stage-3" className="space-y-4">
-            {viewMode === 'all-in-one' && (
-              <div className="flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200">
-                <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">3</span>
-                <h2 className="text-base font-extrabold text-slate-900">
-                  Bước 3: Cá Thể Hóa Tính Liều &amp; An Toàn Dược (43 Kháng Sinh)
-                </h2>
-              </div>
-            )}
-
-            {/* Seamless Embedded Dosing & Safety Workspace */}
-            {children}
-
-            {/* Step 3 Navigation Controls */}
-            {viewMode === 'stepper' && (
-              <div className="bg-white p-4 rounded-3xl border border-slate-200/90 shadow-xs flex items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    onStageChange(2);
-                    window.scrollTo({ top: 80, behavior: 'smooth' });
-                  }}
-                  className="px-4 py-2.5 rounded-2xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all flex items-center space-x-1.5 cursor-pointer"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  <span>Quay lại Bước 2 (Phác đồ BVBND &amp; WHO)</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    onStageChange(4);
-                    window.scrollTo({ top: 80, behavior: 'smooth' });
-                  }}
-                  className="px-5 py-2.5 rounded-2xl text-xs font-bold bg-teal-600 hover:bg-teal-700 text-white shadow-md shadow-teal-600/20 transition-all flex items-center space-x-1.5 cursor-pointer"
-                >
-                  <span>Sang Bước 4: Tái Đánh Giá 48-72h</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* ============================================================== */}
-        {/* STEP 4: 48-72h REASSESSMENT & ANTIMICROBIAL STEWARDSHIP (AMS) */}
-        {/* ============================================================== */}
-        {(viewMode === 'all-in-one' || currentStage === 4) && (
-          <div id="section-stage-4" className="space-y-6">
-            {viewMode === 'all-in-one' && (
-              <div className="flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200">
-                <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">4</span>
-                <h2 className="text-base font-extrabold text-slate-900">
-                  Bước 4: Tái Đánh Giá 48-72h, Xuống Thang &amp; Quản Lý Kháng Sinh (AMS)
+                  Bước 2: Tái Đánh Giá 48-72h, Xuống Thang &amp; Quản Lý Kháng Sinh (AMS)
                 </h2>
               </div>
             )}
@@ -627,11 +489,15 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
               onOpenGuidelineAtlas={onOpenGuidelineAtlas}
               onSelectDrugForDosing={(drugId) => {
                 onSelectDrugForDosing(drugId);
-                onStageChange(3);
-                window.scrollTo({ top: 80, behavior: 'smooth' });
+                handleToggleDetailed(drugId);
+                onStageChange(1);
+                setTimeout(() => {
+                  const el = document.getElementById('detailed-drug-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
               }}
               onPrevStep={() => {
-                onStageChange(3);
+                onStageChange(1);
                 window.scrollTo({ top: 80, behavior: 'smooth' });
               }}
             />
@@ -642,13 +508,18 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
                 state={wizardState}
                 riskResult={riskResult}
                 onNavigateStep={(s) => {
-                  onStageChange(s as 1 | 2 | 3 | 4);
+                  onStageChange(s as 1 | 2);
                   window.scrollTo({ top: 80, behavior: 'smooth' });
                 }}
                 onSwitchToDosing={(drugId) => {
-                  onSelectDrugForDosing(drugId);
-                  onStageChange(3);
-                  window.scrollTo({ top: 80, behavior: 'smooth' });
+                  const targetDrug = drugId || selectedDrugId || 'meropenem';
+                  onSelectDrugForDosing(targetDrug);
+                  handleToggleDetailed(targetDrug);
+                  onStageChange(1);
+                  setTimeout(() => {
+                    const el = document.getElementById('detailed-drug-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
                 }}
                 currentStage={currentStage}
               />
@@ -664,7 +535,7 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
                     Hoàn Tất Quy Trình Hội Chẩn InfectoDose CDSS
                   </h3>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Bạn đã hoàn thành đánh giá toàn diện 4 bước từ tiếp nhận, phân tầng nguy cơ VKĐK, lựa chọn phác đồ BVBND 2026, cá thể hóa liều theo CrCl {renal?.crcl} mL/phút, và lập kế hoạch tái đánh giá 48-72h.
+                    Bạn đã hoàn thành đánh giá toàn diện 2 bước từ tiếp nhận, phân tầng nguy cơ &amp; lựa chọn phác đồ BVBND 2026 kèm tính liều trực tiếp theo CrCl {activeRenal.crcl} mL/phút, và lập kế hoạch tái đánh giá 48-72h.
                   </p>
                 </div>
 

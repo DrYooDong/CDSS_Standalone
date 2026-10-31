@@ -20,6 +20,7 @@ import { AmrModal } from './components/AmrModal';
 import { OriginalPreviewModal } from './components/OriginalPreviewModal';
 import { PdfConsultationModal } from './components/PdfConsultationModal';
 import { GuidelineImageModal } from './components/selection/GuidelineImageModal';
+import { DrugDetailModal } from './components/DrugDetailModal';
 
 import { 
   Pill, 
@@ -61,7 +62,8 @@ export default function App() {
   const [patient, setPatient] = useState<PatientState>(DEFAULT_PATIENT);
   const [selectedDrugId, setSelectedDrugId] = useState<string>('meropenem');
   const [selectedScenario, setSelectedScenario] = useState<string>('standard');
-  const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(1);
+  const [currentStep, setCurrentStep] = useState<1 | 2>(1);
+  const [detailedDrugId, setDetailedDrugId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<ViewSectionTab>('all');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
 
@@ -160,22 +162,16 @@ export default function App() {
     setSelectedDrugId('meropenem');
     setSelectedScenario('standard');
     setCurrentStep(1);
+    setDetailedDrugId(null);
     setActiveTab('all');
   };
 
   const handleSelectDrugFromSelection = (drugId?: string) => {
     if (drugId) {
-      handleCalculateDoseInSelection(drugId, true);
+      setSelectedDrugId(drugId);
+      handleCalculateDoseInSelection(drugId, false);
+      setDetailedDrugId(drugId);
     }
-    setCurrentStep(3);
-    setTimeout(() => {
-      const el = document.getElementById('unified-dosing-workspace') || document.getElementById('dosing-card-anchor');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        window.scrollTo({ top: 80, behavior: 'smooth' });
-      }
-    }, 100);
   };
 
   const activeScenarioObj = drugDetails.scenarios.find(s => s.key === selectedScenario);
@@ -196,7 +192,7 @@ export default function App() {
 
   const isEn = language === 'en';
 
-  // Render Live Dosing & Safety Workspace (Embedded in Step 3)
+  // Render Live Dosing & Safety Workspace (Housed inside DrugDetailModal)
   const renderDosingWorkspace = () => (
     <div id="unified-dosing-workspace" className="space-y-4">
       
@@ -207,49 +203,10 @@ export default function App() {
         onSelect={(drugId) => {
           setSelectedDrugId(drugId);
           handleCalculateDoseInSelection(drugId);
+          setDetailedDrugId(drugId);
         }}
         language={language}
       />
-
-      {/* 2. Dosing Workspace Informative Status Banner */}
-      <div className="bg-gradient-to-r from-teal-800 via-teal-900 to-slate-900 text-white p-4 rounded-3xl shadow-xs border border-teal-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-teal-600 rounded-2xl text-white shadow-xs shrink-0">
-            <Calculator className="w-6 h-6" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[10px] font-black uppercase tracking-wider bg-teal-400/20 text-teal-200 px-2.5 py-0.5 rounded-full border border-teal-400/30">
-                Bước 3: Cá Thể Hóa Tính Liều
-              </span>
-              <h3 className="text-base font-black text-white">
-                An Toàn Dược Lâm Sàng &amp; Hiệu Chỉnh Liều Theo Thận
-              </h3>
-            </div>
-            <div className="text-xs text-teal-100/90 mt-1 flex items-center gap-2 flex-wrap">
-              <span>Thuốc đang tính: <strong className="text-amber-300 font-extrabold">{activeDrug.name}</strong> ({activeDrug.group})</span>
-              <span>•</span>
-              <span>CrCl: <strong className="text-white font-bold">{renal.crcl} mL/phút</strong> ({renal.categoryLabelVi})</span>
-              <span>•</span>
-              <span>Lọc máu: <strong className="text-white font-bold">{patient.dialysis === 'none' ? 'Không' : patient.dialysis.toUpperCase()}</strong></span>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2 shrink-0">
-          <button
-            type="button"
-            onClick={() => {
-              setCurrentStep(2);
-              window.scrollTo({ top: 80, behavior: 'smooth' });
-            }}
-            className="px-3 py-1.5 text-xs font-bold rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer flex items-center gap-1.5"
-          >
-            <ChevronUp className="w-3.5 h-3.5" />
-            <span>Về Bước 2 (Phác đồ BVBND)</span>
-          </button>
-        </div>
-      </div>
 
       {/* 3. Clinical Section Segmented Navigation Tabs */}
       <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-1.5 no-print">
@@ -464,7 +421,7 @@ export default function App() {
             />
           </aside>
 
-          {/* Right Column (All Devices): 4-Step Clinical Guided Pipeline */}
+          {/* Right Column (All Devices): 2-Stage Clinical Guided Pipeline */}
           <div className="flex-1 min-w-0 space-y-6">
             <SelectionWizard
               currentStage={currentStep}
@@ -478,9 +435,15 @@ export default function App() {
               onCalculateDoseForDrug={handleCalculateDoseInSelection}
               onPatientChange={handlePatientChange}
               onExportPdf={() => setIsPdfModalOpen(true)}
-            >
-              {renderDosingWorkspace()}
-            </SelectionWizard>
+              detailedDrugId={detailedDrugId}
+              onToggleDetailedDrug={(dId) => {
+                setDetailedDrugId(dId);
+                if (dId) {
+                  setSelectedDrugId(dId);
+                  handleCalculateDoseInSelection(dId, false);
+                }
+              }}
+            />
           </div>
 
         </div>
@@ -547,10 +510,21 @@ export default function App() {
         onSelectDrug={(drugId) => {
           setSelectedDrugId(drugId);
           handleCalculateDoseInSelection(drugId);
-          setCurrentStep(3);
+          setDetailedDrugId(drugId);
         }}
         language={language}
       />
+
+      {/* Detailed Antibiotic Popup Modal Dialog */}
+      <DrugDetailModal
+        isOpen={Boolean(detailedDrugId)}
+        onClose={() => setDetailedDrugId(null)}
+        drug={activeDrug}
+        renal={renal}
+        patient={patient}
+      >
+        {renderDosingWorkspace()}
+      </DrugDetailModal>
 
       {/* Modals */}
       <AmrModal

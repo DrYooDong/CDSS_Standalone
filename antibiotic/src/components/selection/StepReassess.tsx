@@ -769,7 +769,7 @@ export const StepReassess: React.FC<StepReassessProps> = ({
           className="w-full sm:w-auto px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Quay lại Giai đoạn 2 (Phác đồ khởi đầu &amp; Vi sinh)</span>
+          <span>Quay lại Bước 1 (Phác đồ &amp; Tính liều)</span>
         </button>
       </div>
     </div>

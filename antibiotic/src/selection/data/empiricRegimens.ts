@@ -1683,12 +1683,15 @@ export function findEmpiricRegimens(
   sepsisSource?: string,
   specificRisks: string[] = []
 ): EmpiricRegimen[] {
+  // Normalize infection site: 'gastrointestinal' maps to 'peritoneal' in BVBND 2026 dataset (Intra-abdominal & SBP)
+  const normalizedSite = site === 'gastrointestinal' ? 'peritoneal' : site;
+
   // First get all matching population, site, riskGroup
   const candidates = EMPIRIC_REGIMENS.filter(reg => {
     if (reg.population !== population) return false;
-    if (reg.site !== site) return false;
+    if (reg.site !== normalizedSite && reg.site !== site) return false;
     if (reg.riskGroup !== riskGroup) return false;
-    if (site === 'sepsis' && sepsisSource && reg.sepsisSource && reg.sepsisSource !== sepsisSource) {
+    if (normalizedSite === 'sepsis' && sepsisSource && reg.sepsisSource && reg.sepsisSource !== sepsisSource) {
       return false;
     }
     return true;

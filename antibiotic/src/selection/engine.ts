@@ -455,17 +455,30 @@ export function evaluateStopCriteria(
   checkedClinicalIds: string[],
   checkedLabIds: string[],
   currentDaysOnAbx: number,
-  site: InfectionSite
+  site: InfectionSite,
+  subCondition?: string
 ) {
-  const benchmark = EVIDENCE_BASED_DURATIONS.find(b => {
-    if (site === 'respiratory') return b.conditionVi.includes('Viêm phổi');
-    if (site === 'peritoneal' || site === 'gastrointestinal') return b.conditionVi.includes('ổ bụng');
-    if (site === 'urinary') return b.conditionVi.includes('tiết niệu');
-    if (site === 'sepsis') return b.conditionVi.includes('huyết');
-    if (site === 'skin_soft_tissue') return b.conditionVi.includes('da và mô mềm');
-    if (site === 'cns') return b.conditionVi.includes('màng não');
+  let benchmark = subCondition ? EVIDENCE_BASED_DURATIONS.find(b => {
+    const sc = subCondition.toLowerCase();
+    if ((sc.includes('vap') || sc.includes('thở máy')) && b.conditionVi.includes('thở máy')) return true;
+    if (sc.includes('nfng') && b.conditionVi.includes('không lên men')) return true;
+    if (sc.includes('cap') && b.conditionVi.includes('cộng đồng')) return true;
+    if (sc.includes('staph') && b.conditionVi.includes('Tụ cầu')) return true;
+    if (sc.includes('endocarditis') && b.conditionVi.includes('nội tâm mạc')) return true;
     return false;
-  }) || EVIDENCE_BASED_DURATIONS[0];
+  }) : undefined;
+
+  if (!benchmark) {
+    benchmark = EVIDENCE_BASED_DURATIONS.find(b => {
+      if (site === 'respiratory') return b.conditionVi.includes('Viêm phổi');
+      if (site === 'peritoneal' || site === 'gastrointestinal') return b.conditionVi.includes('ổ bụng');
+      if (site === 'urinary') return b.conditionVi.includes('tiết niệu');
+      if (site === 'sepsis') return b.conditionVi.includes('huyết');
+      if (site === 'skin_soft_tissue') return b.conditionVi.includes('da và mô mềm');
+      if (site === 'cns') return b.conditionVi.includes('màng não');
+      return false;
+    }) || EVIDENCE_BASED_DURATIONS[0];
+  }
 
   const minDurationMet = currentDaysOnAbx >= benchmark.minDays;
   const clinicalCriteriaMet = checkedClinicalIds.length === STOP_ANTIBIOTIC_CHECKLIST.clinicalCriteria.length; // 5/5

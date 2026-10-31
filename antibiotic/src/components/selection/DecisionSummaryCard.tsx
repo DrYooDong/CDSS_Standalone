@@ -17,7 +17,7 @@ import { SelectionWizardState, RiskClassificationResult } from '../../selection/
 interface DecisionSummaryCardProps {
   state: SelectionWizardState;
   riskResult: RiskClassificationResult;
-  onNavigateStep: (step: 1 | 2 | 3) => void;
+  onNavigateStep: (step: 1 | 2) => void;
   onSwitchToDosing: (drugId?: string) => void;
   currentStage?: number;
 }
@@ -57,7 +57,7 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
           <span>Tóm Tắt Quyết Định CDSS</span>
         </h3>
         <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
-          Giai đoạn {currentStage}/3
+          Giai đoạn {currentStage}/2
         </span>
       </div>
 
@@ -154,19 +154,19 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
         )}
       </div>
 
-      {/* 3. Stage 2 Bridge: Empiric Regimen */}
+      {/* 3. Stage 1 Bridge: Empiric Regimen & Live Dosing */}
       <div 
-        onClick={() => onNavigateStep(2)}
+        onClick={() => onNavigateStep(1)}
         className="p-3 rounded-xl border border-slate-100 hover:border-teal-300 bg-slate-50/60 cursor-pointer transition-all hover:shadow-2xs"
       >
         <div className="flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-          <span>Phác Đồ & Antibiogram</span>
-          <span className="text-teal-600 font-semibold">Giai đoạn 2</span>
+          <span>Phác Đồ & Liều Trực Tiếp</span>
+          <span className="text-teal-600 font-semibold">Bước 1</span>
         </div>
         <div className="flex items-center space-x-2 mt-1.5">
           <Pill className="w-4 h-4 text-teal-600 shrink-0" />
           <span className="text-xs font-bold text-slate-800">
-            BVBND 2026 &bull; WHO AWaRe ({isGroup2 ? 'Phổ rộng đa kháng' : 'Phác đồ chuẩn'})
+            BVBND 2026 &bull; Tính liều trực tiếp ({isGroup2 ? 'Phổ rộng đa kháng' : 'Phác đồ chuẩn'})
           </span>
         </div>
       </div>

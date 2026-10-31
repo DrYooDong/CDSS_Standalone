@@ -22,8 +22,8 @@ interface StickyPatientBarProps {
   renal: CalculatedRenalMetrics;
   dialysis: DialysisMode;
   selectedDrugName?: string;
-  currentStep: 1 | 2 | 3 | 4;
-  onStepChange: (step: 1 | 2 | 3 | 4) => void;
+  currentStep: 1 | 2;
+  onStepChange: (step: 1 | 2) => void;
   onOpenQuickPatient: () => void;
   onOpenDrugSearch?: () => void;
   onExportPdf?: () => void;
@@ -160,11 +160,11 @@ export const StickyPatientBar: React.FC<StickyPatientBarProps> = ({
         </div>
       </div>
 
-      {/* 2. MOBILE BOTTOM NAVIGATION DOCK (Thumb-friendly workflow bar for smartphones < 768px) */}
+      {/* 2. MOBILE BOTTOM NAVIGATION DOCK (Thumb-friendly 2-step workflow bar for smartphones < 768px) */}
       <nav aria-label="Clinical steps on mobile" className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-lg px-2 py-1.5 no-print">
-        <div className="grid grid-cols-4 gap-1">
+        <div className="grid grid-cols-2 gap-2">
           
-          {/* Step 1 */}
+          {/* Step 1: Phác đồ & Tính liều */}
           <button
             type="button"
             onClick={() => onStepChange(1)}
@@ -174,13 +174,13 @@ export const StickyPatientBar: React.FC<StickyPatientBarProps> = ({
                 : 'text-slate-500 hover:text-slate-900 font-medium'
             }`}
           >
-            <ClipboardCheck className={`w-4 h-4 mb-0.5 ${currentStep === 1 ? 'text-teal-600' : 'text-slate-400'}`} />
-            <span className="text-[10px] leading-tight text-center">
-              1. Đánh giá
+            <Pill className={`w-4 h-4 mb-0.5 ${currentStep === 1 ? 'text-teal-600' : 'text-slate-400'}`} />
+            <span className="text-[10px] leading-tight text-center font-bold">
+              1. Phác đồ &amp; Liều
             </span>
           </button>
 
-          {/* Step 2 */}
+          {/* Step 2: Tái đánh giá 48-72h */}
           <button
             type="button"
             onClick={() => onStepChange(2)}
@@ -190,44 +190,9 @@ export const StickyPatientBar: React.FC<StickyPatientBarProps> = ({
                 : 'text-slate-500 hover:text-slate-900 font-medium'
             }`}
           >
-            <Pill className={`w-4 h-4 mb-0.5 ${currentStep === 2 ? 'text-teal-600' : 'text-slate-400'}`} />
-            <span className="text-[10px] leading-tight text-center">
-              2. Phác đồ
-            </span>
-          </button>
-
-          {/* Step 3 */}
-          <button
-            type="button"
-            onClick={() => onStepChange(3)}
-            className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer relative ${
-              currentStep === 3
-                ? 'bg-teal-50 text-teal-800 font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 font-medium'
-            }`}
-          >
-            <Activity className={`w-4 h-4 mb-0.5 ${currentStep === 3 ? 'text-teal-600' : 'text-slate-400'}`} />
-            <span className="text-[10px] leading-tight text-center">
-              3. Tính liều
-            </span>
-            {selectedDrugName && (
-              <span className="absolute top-1 right-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span>
-            )}
-          </button>
-
-          {/* Step 4 */}
-          <button
-            type="button"
-            onClick={() => onStepChange(4)}
-            className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${
-              currentStep === 4
-                ? 'bg-teal-50 text-teal-800 font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 font-medium'
-            }`}
-          >
-            <Clock className={`w-4 h-4 mb-0.5 ${currentStep === 4 ? 'text-teal-600' : 'text-slate-400'}`} />
-            <span className="text-[10px] leading-tight text-center">
-              4. Tái đánh giá
+            <Clock className={`w-4 h-4 mb-0.5 ${currentStep === 2 ? 'text-teal-600' : 'text-slate-400'}`} />
+            <span className="text-[10px] leading-tight text-center font-bold">
+              2. Tái đánh giá
             </span>
           </button>
 

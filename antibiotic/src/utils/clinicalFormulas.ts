@@ -102,7 +102,19 @@ export function calculateRenalMetrics(
   let categoryLabelVi = 'Bình thường (CrCl ≥ 90 mL/phút)';
   let categoryLabelEn = 'Normal (CrCl ≥ 90 mL/min)';
 
-  if (isArc) {
+  if (patient.dialysis === 'hd') {
+    renalCategory = 'esrd';
+    categoryLabelVi = 'Lọc máu ngắt quãng (IHD / HD)';
+    categoryLabelEn = 'Intermittent Hemodialysis (IHD)';
+  } else if (patient.dialysis === 'crrt') {
+    renalCategory = 'esrd';
+    categoryLabelVi = 'Lọc máu liên tục (CRRT)';
+    categoryLabelEn = 'Continuous Renal Replacement Therapy (CRRT)';
+  } else if (patient.dialysis === 'capd') {
+    renalCategory = 'esrd';
+    categoryLabelVi = 'Lọc màng bụng (CAPD)';
+    categoryLabelEn = 'Peritoneal Dialysis (CAPD)';
+  } else if (isArc) {
     renalCategory = 'arc';
     categoryLabelVi = 'Tăng thanh thải thận ARC (CrCl > 130 mL/phút)';
     categoryLabelEn = 'Augmented Renal Clearance ARC (> 130 mL/min)';

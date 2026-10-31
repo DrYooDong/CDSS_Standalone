@@ -8,7 +8,7 @@ async function run() {
   console.log('[build-css] Starting full Tailwind CSS compilation...');
   
   // 1. Load Tailwind v4 compiler
-  const { compile } = await import('file:///C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/@tailwindcss/node/dist/index.js');
+  const { compile } = await import('@tailwindcss/node');
   
   // 2. Scan all candidates from src/
   function scanFiles(dir) {

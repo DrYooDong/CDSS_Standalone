@@ -187,6 +187,14 @@ export function calculateDose(
     doseText = doseRaw;
   }
 
+  // Fallback to matchedRow.empty for safety warnings (e.g. Imipenem CrCl < 15, Doripenem CrCl < 10)
+  const isSafetyWarning = (!doseText || doseText.trim() === '') && !!matchedRow?.empty;
+  if (isSafetyWarning && matchedRow?.empty) {
+    doseText = matchedRow.empty;
+  } else if (!doseText || doseText.trim() === '') {
+    doseText = 'Không có khuyến cáo liều xác minh ở mức CrCl này (cân nhắc đổi kháng sinh hoặc tham khảo dược lâm sàng)';
+  }
+
   // Handle mg/kg weight multiplier if applicable
   if (doseText.includes('mg/kg')) {
     doseText = doseText.replace(/(\d+(?:[.,]\d+)?)(?:\s*-\s*(\d+(?:[.,]\d+)?))?\s*mg(?:\s+TMP)?\/kg/g, (match, a, b) => {
@@ -254,10 +262,25 @@ export function calculateDose(
   let adviceVi = 'Chức năng thận ở mức này yêu cầu phác đồ chuẩn tương ứng.';
   let adviceEn = 'Renal function in this range corresponds to standard regimen.';
 
-  if (renal.isArc) {
+  if (isSafetyWarning) {
+    adviceVi = `CẢNH BÁO AN TOÀN ĐẶC BIỆT: ${doseText}`;
+    adviceEn = `SPECIAL SAFETY WARNING: ${doseText}`;
+  } else if (patient.dialysis === 'hd') {
+    adviceVi = `LỌC MÁU NGẮT QUÃNG (HD/IHD): Lưu ý dùng liều bổ sung SAU MỖI BUỔI LỌC MÁU để bù lượng thuốc bị màng lọc thải trừ. Xem chi tiết bảng Lọc máu.`;
+    adviceEn = `HEMODIALYSIS (HD/IHD): Note post-dialysis supplemental dose to compensate for filter clearance. Refer to Dialysis table.`;
+  } else if (patient.dialysis === 'crrt') {
+    adviceVi = `LỌC MÁU LIÊN TỤC (CRRT): CRRT thanh thải thuốc liên tục 24/24h, thường KHÔNG GIẢM LIỀU SÂU như suy thận thông thường để tránh nồng độ dưới ngưỡng. Xem chi tiết bảng Lọc máu.`;
+    adviceEn = `CONTINUOUS RENAL REPLACEMENT (CRRT): Constant 24/7 drug clearance, do NOT over-reduce dose to avoid subtherapeutic levels. Refer to Dialysis table.`;
+  } else if (patient.dialysis === 'capd') {
+    adviceVi = `LỌC MÀNG BỤNG (CAPD): Xem chi tiết liều toàn thân và liều pha vào dịch lọc màng bụng (IP) trong bảng Lọc máu.`;
+    adviceEn = `PERITONEAL DIALYSIS (CAPD): Refer to systemic and intraperitoneal (IP) dosing in Dialysis table.`;
+  } else if (renal.isArc) {
     adviceVi = 'CẢNH BÁO TĂNG THANH THẢI THẬN (ARC > 130 mL/phút): Bệnh nhân có nguy cơ nồng độ thuốc dưới ngưỡng điều trị. Cân nhắc dùng liều tối đa cho phép hoặc áp dụng truyền kéo dài/liên tục, theo dõi TDM nồng độ đáy.';
     adviceEn = 'AUGMENTED RENAL CLEARANCE WARNING (ARC > 130 mL/min): High risk of subtherapeutic drug concentrations. Consider maximum allowable dose or extended/continuous infusion with TDM monitoring.';
-  } else if (renal.renalCategory === 'severe' || renal.renalCategory === 'esrd') {
+  } else if (renal.renalCategory === 'esrd') {
+    adviceVi = `Suy thận giai đoạn cuối (CrCl ${renal.crcl} mL/phút): Đã hiệu chỉnh giảm liều tối đa và kéo dài khoảng cách dùng liều. Theo dõi chặt chẽ độc tính tích lũy.`;
+    adviceEn = `End-stage renal disease (CrCl ${renal.crcl} mL/min): Maximum dose reduction and extended interval applied. Monitor closely for toxic accumulation.`;
+  } else if (renal.renalCategory === 'severe') {
     adviceVi = `Suy thận nặng (CrCl ${renal.crcl} mL/phút): Đã kéo dài khoảng cách dùng liều hoặc giảm liều đơn độc để tránh tích lũy độc tính. Tránh dùng thuốc độc thận phối hợp.`;
     adviceEn = `Severe renal impairment (CrCl ${renal.crcl} mL/min): Dose and/or interval adjusted to avoid toxic drug accumulation. Avoid concurrent nephrotoxic agents.`;
   } else if (renal.renalCategory === 'moderate') {
@@ -265,8 +288,11 @@ export function calculateDose(
     adviceEn = `Moderate renal impairment (CrCl ${renal.crcl} mL/min): Dosage adjusted per protocol to balance antimicrobial efficacy and renal clearance.`;
   }
 
-  const orderTextVi = `Chế phẩm: ${drug.name} (${drug.forms || drug.route})\n${loadingVi ? `Liều nạp: ${loadingVi}\n` : ''}Liều duy trì: ${doseText}\n${drug.order ? `Dung môi: NaCl 0,9% hoặc Glucose 5% ${drug.order.vol} mL\nThời gian truyền: ${drug.order.time} phút` : `Đường dùng: ${drug.route}`}`;
-  const orderTextEn = `Medication: ${drug.name} (${drug.forms || drug.route})\n${loadingEn ? `Loading Dose: ${loadingEn}\n` : ''}Maintenance Dose: ${doseText}\n${drug.order ? `Solvent: 0.9% NaCl or 5% Dextrose ${drug.order.vol} mL\nInfusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
+  const orderDoseLabelVi = isSafetyWarning ? 'Lưu ý/Cảnh báo' : 'Liều duy trì';
+  const orderDoseLabelEn = isSafetyWarning ? 'Warning/Note' : 'Maintenance Dose';
+
+  const orderTextVi = `Chế phẩm: ${drug.name} (${drug.forms || drug.route})\n${loadingVi ? `Liều nạp: ${loadingVi}\n` : ''}${orderDoseLabelVi}: ${doseText}\n${drug.order && !isSafetyWarning ? `Dung môi: NaCl 0,9% hoặc Glucose 5% ${drug.order.vol} mL\nThời gian truyền: ${drug.order.time} phút` : `Đường dùng: ${drug.route}`}`;
+  const orderTextEn = `Medication: ${drug.name} (${drug.forms || drug.route})\n${loadingEn ? `Loading Dose: ${loadingEn}\n` : ''}${orderDoseLabelEn}: ${doseText}\n${drug.order && !isSafetyWarning ? `Solvent: 0.9% NaCl or 5% Dextrose ${drug.order.vol} mL\nInfusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
 
   return {
     loadingDoseTextVi: loadingVi,
