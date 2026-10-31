@@ -131,6 +131,44 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     );
   };
 
+  const handleToggleGeneralRisk = (factorId: string) => {
+    setCheckedGeneralRiskIds(prev =>
+      prev.includes(factorId) ? prev.filter(x => x !== factorId) : [...prev, factorId]
+    );
+  };
+
+  const handleToggleSpecificRiskFactor = (factorId: string) => {
+    setCheckedSpecificRiskFactorIds(prev => {
+      const next = prev.includes(factorId) ? prev.filter(x => x !== factorId) : [...prev, factorId];
+      // Automatically sync corresponding SpecificPathogenRisk
+      let riskType: SpecificPathogenRisk | null = null;
+      if (factorId.startsWith('mrsa_')) riskType = 'mrsa';
+      else if (factorId.startsWith('esbl_')) riskType = 'esbl';
+      else if (factorId.startsWith('ps_')) riskType = 'pseudo_acineto';
+      else if (factorId.startsWith('ent_')) riskType = 'enterococcus';
+      else if (factorId.startsWith('candida_')) riskType = 'candida';
+
+      if (riskType) {
+        if (!next.includes(factorId)) {
+          const hasOther = next.some(id => {
+            if (riskType === 'mrsa') return id.startsWith('mrsa_');
+            if (riskType === 'esbl') return id.startsWith('esbl_');
+            if (riskType === 'pseudo_acineto') return id.startsWith('ps_');
+            if (riskType === 'enterococcus') return id.startsWith('ent_');
+            if (riskType === 'candida') return id.startsWith('candida_');
+            return false;
+          });
+          if (!hasOther) {
+            setCheckedSpecificRisks(r => r.filter(x => x !== riskType));
+          }
+        } else {
+          setCheckedSpecificRisks(r => (r.includes(riskType!) ? r : [...r, riskType!]));
+        }
+      }
+      return next;
+    });
+  };
+
   // Severity & Risk Classification
   const activeSeverity = {
     scoreType: population === 'pediatric' ? ('psofa' as const) : isChronicLiverDisease ? ('clif_sofa' as const) : ('sofa' as const),
@@ -452,6 +490,10 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
               onClifSofaChange={setClifSofaScore}
               checkedSpecificRisks={checkedSpecificRisks}
               onToggleSpecificRisk={handleToggleSpecificRisk}
+              checkedGeneralRiskIds={checkedGeneralRiskIds}
+              onToggleGeneralRisk={handleToggleGeneralRisk}
+              checkedSpecificRiskFactorIds={checkedSpecificRiskFactorIds}
+              onToggleSpecificRiskFactor={handleToggleSpecificRiskFactor}
               patient={activePatient}
               renal={activeRenal}
               selectedDrugId={selectedDrugId || 'meropenem'}

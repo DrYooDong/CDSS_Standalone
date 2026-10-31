@@ -224,6 +224,61 @@ export const ENTEROCOCCUS_RISK_FACTORS: RiskFactorItem[] = [
     labelEn: 'Indwelling Foley catheter OR prior cephalosporin/vancomycin exposure',
     category: 'enterococcus',
     source: { doc: 'BVBND_PhanNhom', page: 3 }
+  },
+  {
+    id: 'ent_biliary_gi_surgery',
+    labelVi: 'Tiền sử phẫu thuật can thiệp đường mật hoặc ổ bụng phức tạp nhiều lần',
+    labelEn: 'Prior biliary tract intervention or complex abdominal surgery',
+    category: 'enterococcus',
+    source: { doc: 'BVBND_PhanNhom', page: 3 }
+  }
+];
+
+export const CRE_RISK_FACTORS: RiskFactorItem[] = [
+  {
+    id: 'cre_history',
+    labelVi: 'Tiền căn nhiễm hoặc cấy phân lập vi khuẩn đường ruột kháng Carbapenem (CRE)',
+    labelEn: 'Prior colonization or infection with Carbapenem-Resistant Enterobacterales (CRE)',
+    category: 'general',
+    source: { doc: 'BVBND_HDSDKS', page: 14 }
+  },
+  {
+    id: 'cre_icu_transfer',
+    labelVi: 'Chuyển viện từ khoa ICU / bệnh viện có tỷ lệ lưu hành chủng CRE cao',
+    labelEn: 'Transfer from high CRE prevalence ICU / healthcare facility',
+    category: 'general',
+    source: { doc: 'BVBND_HDSDKS', page: 14 }
+  },
+  {
+    id: 'cre_carbapenem_prior',
+    labelVi: 'Đã dùng Carbapenem kéo dài (≥ 7-10 ngày) trong đợt điều trị hiện tại',
+    labelEn: 'Prolonged exposure to carbapenem (≥ 7-10 days)',
+    category: 'general',
+    source: { doc: 'BVBND_HDSDKS', page: 14 }
+  }
+];
+
+export const CANDIDA_RISK_FACTORS: RiskFactorItem[] = [
+  {
+    id: 'candida_tpn_cvc',
+    labelVi: 'Đặt catheter tĩnh mạch trung tâm lưu dài ngày VÀ nuôi dưỡng tĩnh mạch hoàn toàn (TPN)',
+    labelEn: 'Long-term central venous catheter (CVC) AND total parenteral nutrition (TPN)',
+    category: 'candida',
+    source: { doc: 'BVBND_PhanNhom', page: 3 }
+  },
+  {
+    id: 'candida_broad_abx',
+    labelVi: 'Dùng kháng sinh phổ rộng kéo dài > 7-10 ngày không đáp ứng lâm sàng',
+    labelEn: 'Prolonged broad-spectrum antibiotic therapy > 7-10 days',
+    category: 'candida',
+    source: { doc: 'BVBND_PhanNhom', page: 3 }
+  },
+  {
+    id: 'candida_gi_leak',
+    labelVi: 'Phẫu thuật đường tiêu hóa nhiều lần, rò tiêu hóa hoặc viêm tụy hoại tử',
+    labelEn: 'Repeated gastrointestinal surgeries, GI leak, or necrotizing pancreatitis',
+    category: 'candida',
+    source: { doc: 'BVBND_PhanNhom', page: 3 }
   }
 ];
 
@@ -234,7 +289,9 @@ export const ALL_SPECIFIC_RISK_FACTORS: RiskFactorItem[] = [
   ...MRSA_RISK_FACTORS,
   ...ESBL_RISK_FACTORS,
   ...PSEUDO_ACINETO_RISK_FACTORS,
-  ...ENTEROCOCCUS_RISK_FACTORS
+  ...ENTEROCOCCUS_RISK_FACTORS,
+  ...CRE_RISK_FACTORS,
+  ...CANDIDA_RISK_FACTORS
 ];
 
 /**
@@ -247,6 +304,7 @@ export function inferSpecificRisksFromFactorIds(factorIds: string[]): import('..
     else if (id.startsWith('esbl_')) risks.add('esbl');
     else if (id.startsWith('ps_')) risks.add('pseudo_acineto');
     else if (id.startsWith('ent_')) risks.add('enterococcus');
+    else if (id.startsWith('candida_')) risks.add('candida');
   }
   return Array.from(risks);
 }

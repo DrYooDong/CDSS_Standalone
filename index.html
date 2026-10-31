@@ -37,7 +37,7 @@
   
   <!-- CliniPortal CDSS Shell Styles & Theme Script -->
   <link rel="stylesheet" href="./shared/cdss-shell.css">
-  <link rel="stylesheet" href="./css/cdss-hub.css?v=2.7.0">
+  <link rel="stylesheet" href="./css/cdss-hub.css?v=3.2.0">
   <script src="./shared/cdss-shell.js"></script>
 </head>
 <body>
@@ -48,19 +48,22 @@
         <div class="cdss-brand-icon">
           <img src="./shared/cdss-logo.svg" alt="CDSS Logo" class="cdss-brand-logo-img" style="width:24px; height:24px; display:block;" />
         </div>
-        <span class="cdss-brand-name">CDSS Platform Suite</span>
+        <span class="cdss-brand-name">CDSS Platform</span>
       </a>
       <i class="fa-solid fa-chevron-right separator"></i>
-      <span class="active"><i class="fa-solid fa-shapes text-teal-600"></i> Trung Tâm Quyết Định Lâm Sàng (10 CDSS)</span>
+      <span class="active"><i class="fa-solid fa-shapes text-teal-600"></i> 10 CDSS Lâm Sàng</span>
     </div>
 
     <div class="cdss-portal-nav-right">
-      <a href="#cdss-search-input" class="cdss-portal-nav-btn cdss-portal-icon-btn" title="Tìm kiếm công cụ CDSS nhanh (Phím /)" aria-label="Tìm kiếm">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </a>
-      <a href="#cdss-rapid-bar" class="cdss-portal-nav-btn cdss-portal-icon-btn" title="Truy cập nhanh tình huống cấp cứu khẩn cấp" aria-label="Tình huống cấp cứu">
-        <i class="fa-solid fa-bolt-lightning text-amber-500"></i>
-      </a>
+      <button id="nav-calc-btn" class="cdss-portal-nav-btn cdss-portal-icon-btn" title="Máy tính lâm sàng cấp tốc (Alt+C)" aria-label="Máy tính lâm sàng">
+        <i class="fa-solid fa-calculator"></i>
+      </button>
+      <button id="nav-stat-btn" class="cdss-portal-nav-btn cdss-portal-icon-btn" title="Lọc tình huống cấp cứu STAT (Alt+S)" aria-label="Cấp cứu STAT">
+        <i class="fa-solid fa-bolt-lightning text-rose-500"></i>
+      </button>
+      <button id="nav-shortcuts-btn" class="cdss-portal-nav-btn cdss-portal-icon-btn" title="Phím tắt thao tác nhanh (?)" aria-label="Phím tắt">
+        <i class="fa-solid fa-keyboard"></i>
+      </button>
       <button id="theme-toggle" class="cdss-portal-theme-btn" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
         <i class="fa-solid fa-moon"></i>
       </button>
@@ -70,18 +73,7 @@
   <!-- CDSS Hub Application Mount Container -->
   <main id="cdss-hub-app"></main>
 
-  <footer style="border-top: 1px solid var(--color-border); padding: 1.75rem 1.25rem; text-align: center; font-size: 0.78rem; color: var(--color-text-muted); background: var(--color-surface);">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
-      <div>
-        <strong>CDSS Platform Suite</strong> — Hỗ trợ quyết định lâm sàng tại giường bệnh (10 Modules)
-      </div>
-      <div>
-        Chuẩn Bộ Y Tế Việt Nam &amp; EBM Quốc Tế · 100% Client-side
-      </div>
-    </div>
-  </footer>
-
   <!-- CDSS Hub Application Bundle (Pre-bundled IIFE) -->
-  <script src="./cdss-hub-bundle.js?v=2.7.0"></script>
+  <script src="./cdss-hub-bundle.js?v=3.2.0"></script>
 </body>
 </html>
