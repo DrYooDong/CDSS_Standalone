@@ -21,6 +21,15 @@ import { calculateRenalMetrics } from '../../utils/clinicalFormulas';
 import { PatientState, CalculatedRenalMetrics } from '../../types';
 import { SourceBadge } from './SourceBadge';
 import {
+  GENERAL_MDR_RISK_FACTORS,
+  MRSA_RISK_FACTORS,
+  ESBL_RISK_FACTORS,
+  PSEUDO_ACINETO_RISK_FACTORS,
+  ENTEROCOCCUS_RISK_FACTORS,
+  CRE_RISK_FACTORS,
+  CANDIDA_RISK_FACTORS
+} from '../../selection/data/riskFactors';
+import {
   Stethoscope,
   Droplet,
   Flame,
@@ -29,6 +38,7 @@ import {
   Layers,
   User,
   Baby,
+  Shield,
   ShieldAlert,
   ShieldCheck,
   AlertCircle,
@@ -43,11 +53,14 @@ import {
   Calculator,
   Filter,
   Check,
+  CheckCircle2,
   Star,
   RefreshCw,
   Copy,
   FileText,
   ChevronDown,
+  ChevronUp,
+  ChevronRight,
   ArrowDown
 } from 'lucide-react';
 
@@ -70,6 +83,10 @@ interface StepAssessmentAndRegimensProps {
   onClifSofaChange: (val: number) => void;
   checkedSpecificRisks: SpecificPathogenRisk[];
   onToggleSpecificRisk: (risk: SpecificPathogenRisk) => void;
+  checkedGeneralRiskIds?: string[];
+  onToggleGeneralRisk?: (factorId: string) => void;
+  checkedSpecificRiskFactorIds?: string[];
+  onToggleSpecificRiskFactor?: (factorId: string) => void;
   patient: PatientState;
   renal: CalculatedRenalMetrics;
   selectedDrugId: string;
@@ -100,6 +117,10 @@ export const StepAssessmentAndRegimens: React.FC<StepAssessmentAndRegimensProps>
   onClifSofaChange,
   checkedSpecificRisks,
   onToggleSpecificRisk,
+  checkedGeneralRiskIds = [],
+  onToggleGeneralRisk,
+  checkedSpecificRiskFactorIds = [],
+  onToggleSpecificRiskFactor,
   patient,
   renal,
   selectedDrugId,
@@ -114,6 +135,9 @@ export const StepAssessmentAndRegimens: React.FC<StepAssessmentAndRegimensProps>
   const [activeGuidelineSource, setActiveGuidelineSource] = useState<'bvbnd' | 'who' | 'antibiogram' | 'compare'>('bvbnd');
   const [selectedFilterRisk, setSelectedFilterRisk] = useState<string>('all');
   const [copiedDrugId, setCopiedDrugId] = useState<string | null>(null);
+  const [showGeneralRisks, setShowGeneralRisks] = useState<boolean>(false);
+  const [expandedPathogen, setExpandedPathogen] = useState<string | null>(null);
+  const [showAllCriteria, setShowAllCriteria] = useState<boolean>(false);
 
   const isGroup2 = riskResult.group === 'group_2';
 
@@ -509,81 +533,270 @@ export const StepAssessmentAndRegimens: React.FC<StepAssessmentAndRegimensProps>
             </div>
           </div>
 
+          {/* 1.3.1 Bảng Kiểm 8 Yếu Tố Nguy Cơ Chung Nhiễm VKĐK (BVBND 2026) */}
+          <div className="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/70 shadow-2xs">
+            <button
+              type="button"
+              onClick={() => setShowGeneralRisks(!showGeneralRisks)}
+              className="w-full p-3 flex items-center justify-between text-left hover:bg-slate-100/80 transition-colors cursor-pointer"
+            >
+              <div className="flex items-center space-x-2.5 min-w-0">
+                <div className={`p-1.5 rounded-xl ${checkedGeneralRiskIds.length > 0 ? 'bg-amber-100 text-amber-800' : 'bg-slate-200/80 text-slate-600'}`}>
+                  <Shield className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                    <span>Bảng Kiểm 8 Tiêu Chí Nguy Cơ Vi Khuẩn Đa Kháng Chung (BVBND 2026)</span>
+                  </div>
+                  <div className="text-[11px] text-slate-500 truncate mt-0.5">
+                    Có ≥ 1 tiêu chí HOẶC SOFA ≥ 2 → Tự động xếp vào <strong>Nhóm 2 (Nguy cơ cao VKĐK)</strong>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2 shrink-0">
+                <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full border ${
+                  checkedGeneralRiskIds.length > 0
+                    ? 'bg-amber-100 text-amber-900 border-amber-300'
+                    : 'bg-slate-200/60 text-slate-600 border-slate-300'
+                }`}>
+                  Đã chọn {checkedGeneralRiskIds.length}/8 tiêu chí
+                </span>
+                {showGeneralRisks ? (
+                  <ChevronUp className="w-4 h-4 text-slate-500" />
+                ) : (
+                  <ChevronDown className="w-4 h-4 text-slate-500" />
+                )}
+              </div>
+            </button>
+
+            {showGeneralRisks && (
+              <div className="p-3 border-t border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2 gap-2">
+                {GENERAL_MDR_RISK_FACTORS.map(factor => {
+                  const isChecked = checkedGeneralRiskIds.includes(factor.id);
+                  return (
+                    <label
+                      key={factor.id}
+                      className={`flex items-start space-x-2.5 p-2.5 rounded-xl border text-xs cursor-pointer transition-all ${
+                        isChecked
+                          ? 'border-amber-400 bg-amber-50/70 text-slate-900 shadow-2xs font-semibold'
+                          : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => {
+                          if (onToggleGeneralRisk) {
+                            onToggleGeneralRisk(factor.id);
+                          }
+                        }}
+                        className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="leading-snug text-slate-900">{factor.labelVi}</div>
+                        {factor.noteVi && (
+                          <div className="text-[10px] text-slate-500 mt-1 font-normal leading-relaxed">
+                            {factor.noteVi}
+                          </div>
+                        )}
+                        <div className="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-wider">
+                          Nguồn: BVBND Lưu đồ phân nhóm, tr.2
+                        </div>
+                      </div>
+                    </label>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
           {/* 1.4 Tác Nhân Vi Khuẩn Đa Kháng Cụ Thể Cần Bao Phủ */}
-          <div className="space-y-2 pt-1">
+          <div className="space-y-3 pt-2">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <span className="text-xs font-bold text-slate-800">
                 Tác Nhân Đa Kháng Cần Bao Phủ Cụ Thể (BVBND 2026):
               </span>
-              <span className="text-[11px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded-md border border-teal-200">
-                Đã chọn: {checkedSpecificRisks.length} tác nhân
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-bold text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-md border border-teal-200">
+                  Đã nhận diện: {checkedSpecificRisks.length} tác nhân
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setShowAllCriteria(!showAllCriteria)}
+                  className="px-2.5 py-1 rounded-xl text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-colors cursor-pointer flex items-center space-x-1"
+                >
+                  <span>{showAllCriteria ? 'Thu gọn tiêu chí' : 'Xem toàn bộ tiêu chí BVBND'}</span>
+                  {showAllCriteria ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                </button>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+            {/* Pathogens with Criteria Accordion & Instant Checklist */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
                 {
                   id: 'mrsa' as SpecificPathogenRisk,
-                  title: 'MRSA',
-                  name: 'Tụ cầu vàng kháng Methicillin',
-                  sub: 'Vancomycin / Linezolid',
-                  isTarget: site === 'skin_soft_tissue'
+                  title: 'Tụ Cầu Vàng Kháng Methicillin (MRSA)',
+                  shortName: 'MRSA',
+                  name: 'Staphylococcus aureus kháng methicillin',
+                  sub: 'Vancomycin / Linezolid / Daptomycin',
+                  isTarget: site === 'skin_soft_tissue',
+                  targetLabel: '🎯 Gợi ý theo ổ Da & Mô mềm / Catheter',
+                  color: 'rose',
+                  factors: MRSA_RISK_FACTORS
                 },
                 {
                   id: 'pseudo_acineto' as SpecificPathogenRisk,
-                  title: 'Pseudomonas / Acineto',
-                  name: 'Trực khuẩn mủ xanh & Acineto đa kháng',
-                  sub: 'Carbapenem / Colistin / Piptaz',
-                  isTarget: site === 'respiratory' || site === 'sepsis'
+                  title: 'Pseudomonas & Acinetobacter Đa Kháng',
+                  shortName: 'Pseudomonas / Acineto',
+                  name: 'P. aeruginosa & Acinetobacter baumannii (DTR-PA / CRAB)',
+                  sub: 'Carbapenem / Colistin / Piptaz / Cefepime',
+                  isTarget: site === 'respiratory' || site === 'sepsis',
+                  targetLabel: '🎯 Gợi ý theo ổ Hô hấp / Nhiễm trùng huyết',
+                  color: 'purple',
+                  factors: PSEUDO_ACINETO_RISK_FACTORS
                 },
                 {
                   id: 'esbl' as SpecificPathogenRisk,
-                  title: 'Enterobacterales ESBL',
-                  name: 'E. coli, Klebsiella sinh ESBL',
+                  title: 'Enterobacterales Sinh Men ESBL',
+                  shortName: 'Enterobacterales ESBL',
+                  name: 'E. coli, Klebsiella pneumoniae sinh ESBL',
                   sub: 'Carbapenem / Aminoglycoside',
-                  isTarget: site === 'urinary' || site === 'peritoneal'
+                  isTarget: site === 'urinary' || site === 'peritoneal' || site === 'gastrointestinal',
+                  targetLabel: '🎯 Gợi ý theo ổ Tiết niệu / Tiêu hóa / SBP',
+                  color: 'amber',
+                  factors: ESBL_RISK_FACTORS
                 },
                 {
                   id: 'enterococcus' as SpecificPathogenRisk,
-                  title: 'Enterococcus (VRE)',
+                  title: 'Enterococcus spp. (VRE / Ampicillin-R)',
+                  shortName: 'Enterococcus (VRE)',
                   name: 'Cầu khuẩn ruột kháng Ampicillin / VRE',
                   sub: 'Ampicillin / Linezolid / Daptomycin',
-                  isTarget: site === 'urinary'
+                  isTarget: site === 'urinary' && checkedGeneralRiskIds.includes('invasive_device'),
+                  targetLabel: '🎯 Gợi ý khi có sonde lưu kéo dài / can thiệp mật',
+                  color: 'indigo',
+                  factors: ENTEROCOCCUS_RISK_FACTORS
+                },
+                {
+                  id: 'candida' as SpecificPathogenRisk,
+                  title: 'Nấm Xâm Lấn (Candida spp.)',
+                  shortName: 'Candida xâm lấn',
+                  name: 'Nhiễm nấm xâm lấn ICU / ổ bụng phức tạp',
+                  sub: 'Echinocandin (Caspofungin) / Fluconazole',
+                  isTarget: site === 'gastrointestinal' || isChronicLiverDisease,
+                  targetLabel: '🎯 Gợi ý ICU dùng KS dài ngày + TPN',
+                  color: 'teal',
+                  factors: CANDIDA_RISK_FACTORS
                 }
               ].map(spec => {
                 const isChecked = checkedSpecificRisks.includes(spec.id);
+                const isExpanded = showAllCriteria || expandedPathogen === spec.id;
+                const activeFactorCount = spec.factors.filter(f => checkedSpecificRiskFactorIds.includes(f.id)).length;
+
                 return (
-                  <label
+                  <div
                     key={spec.id}
-                    className={`p-2.5 rounded-2xl border transition-all cursor-pointer flex items-start gap-2 ${
+                    className={`rounded-2xl border transition-all ${
                       isChecked
-                        ? 'border-rose-500 bg-rose-50/70 text-slate-900 shadow-2xs font-semibold'
+                        ? 'border-rose-400 bg-rose-50/40 ring-1 ring-rose-400/30 shadow-2xs'
                         : spec.isTarget
-                        ? 'border-sky-300 bg-sky-50/30 text-slate-700'
-                        : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'
+                        ? 'border-sky-300 bg-sky-50/20'
+                        : 'border-slate-200 bg-white hover:border-slate-300'
                     }`}
                   >
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={() => onToggleSpecificRisk(spec.id)}
-                      className="rounded text-rose-600 focus:ring-rose-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
-                    />
-                    <div className="min-w-0 flex-1 leading-snug">
-                      <div className="flex items-center gap-1 flex-wrap">
-                        <span className="text-xs font-black text-slate-900">{spec.title}</span>
-                        {spec.isTarget && (
-                          <span className="text-[9px] font-bold px-1 py-0.2 rounded bg-sky-100 text-sky-800">
-                            Gợi ý
-                          </span>
-                        )}
-                      </div>
-                      <div className="text-[10px] text-slate-500 truncate mt-0.5">{spec.name}</div>
-                      <div className="text-[10px] text-teal-700 font-semibold mt-1">
-                        {spec.sub}
-                      </div>
+                    <div className="p-3 flex items-start justify-between gap-2.5">
+                      <label className="flex items-start space-x-2.5 cursor-pointer flex-1 min-w-0">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => onToggleSpecificRisk(spec.id)}
+                          className="rounded text-rose-600 focus:ring-rose-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
+                        />
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center space-x-1.5 flex-wrap gap-y-1">
+                            <span className={`text-xs font-black ${isChecked ? 'text-rose-950' : 'text-slate-900'} break-words`}>
+                              {spec.title}
+                            </span>
+                            {spec.isTarget && (
+                              <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800">
+                                {spec.targetLabel}
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-[11px] text-slate-500 mt-0.5 truncate">
+                            {spec.name}
+                          </div>
+                          <div className="text-[11px] text-teal-800 font-semibold mt-1">
+                            Thuốc bao phủ: <strong className="text-teal-900">{spec.sub}</strong>
+                          </div>
+                        </div>
+                      </label>
+
+                      <button
+                        type="button"
+                        onClick={() => setExpandedPathogen(isExpanded ? null : spec.id)}
+                        className={`px-2 py-1 rounded-xl text-[11px] font-bold transition-all cursor-pointer flex items-center space-x-1 shrink-0 ${
+                          isExpanded
+                            ? 'bg-slate-200 text-slate-800'
+                            : activeFactorCount > 0
+                            ? 'bg-rose-100 text-rose-800 font-black'
+                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        }`}
+                        title="Xem các tiêu chí lâm sàng nghi ngờ theo BV Bệnh Nhiệt Đới"
+                      >
+                        <span>{activeFactorCount > 0 ? `${activeFactorCount}/${spec.factors.length} tiêu chí` : 'Tiêu chí'}</span>
+                        {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                      </button>
                     </div>
-                  </label>
+
+                    {/* Expandable Criteria Checklist Panel */}
+                    {isExpanded && (
+                      <div className="px-3 pb-3 pt-2 border-t border-slate-100/90 space-y-1.5 bg-slate-50/70 rounded-b-2xl">
+                        <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1 flex items-center justify-between">
+                          <span>Tiêu chí lâm sàng nghi ngờ (BVBND 2026):</span>
+                          <span className="text-[9px] text-slate-400">Chọn để tự động kích hoạt bao phủ</span>
+                        </div>
+                        {spec.factors.map(fact => {
+                          const isFactorChecked = checkedSpecificRiskFactorIds.includes(fact.id);
+                          return (
+                            <label
+                              key={fact.id}
+                              className={`flex items-start space-x-2 p-2 rounded-xl border text-[11px] cursor-pointer transition-all ${
+                                isFactorChecked
+                                  ? 'bg-white border-rose-400 font-semibold text-slate-900 shadow-2xs ring-1 ring-rose-400/20'
+                                  : 'border-slate-200/80 bg-white/80 hover:bg-white text-slate-700'
+                              }`}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={isFactorChecked}
+                                onChange={() => {
+                                  if (onToggleSpecificRiskFactor) {
+                                    onToggleSpecificRiskFactor(fact.id);
+                                  }
+                                  if (!isChecked) {
+                                    onToggleSpecificRisk(spec.id);
+                                  }
+                                }}
+                                className="rounded text-rose-600 focus:ring-rose-500 w-3.5 h-3.5 mt-0.5 cursor-pointer shrink-0"
+                              />
+                              <div className="flex-1 leading-snug">
+                                <span className={isFactorChecked ? 'text-slate-900' : 'text-slate-700'}>
+                                  {fact.labelVi}
+                                </span>
+                                {fact.noteVi && (
+                                  <div className="text-[10px] text-slate-500 mt-0.5 font-normal leading-relaxed">
+                                    {fact.noteVi}
+                                  </div>
+                                )}
+                              </div>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>

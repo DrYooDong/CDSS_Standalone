@@ -50,7 +50,13 @@ export function classifyRisk(
   }
 ): RiskClassificationResult {
   const generalRiskCount = selectedGeneralRiskIds.length;
-  const isHighSeverity = severity.isHighSeverity;
+  const isHighSeverity = severity.isHighSeverity !== undefined
+    ? severity.isHighSeverity
+    : (severity.scoreType === 'psofa'
+        ? severity.scoreValue >= 8
+        : severity.scoreType === 'clif_sofa'
+        ? severity.scoreValue >= 12
+        : severity.scoreValue >= 2);
   const site = options?.site || 'respiratory';
   const specificFactorIds = options?.specificRiskFactorIds || [];
 
