@@ -23,6 +23,8 @@ export interface DenguePatientInput {
   inrValue?: number;
   cvpValue?: number;
   preferredFluid?: 'auto' | 'ringer_lactate' | 'ringer_acetate' | 'nacl_09';
+  isPregnant3rdTrimester?: boolean;
+  dayOfIllness?: number;
 }
 
 export interface WeightCalculationResult {
@@ -213,6 +215,7 @@ export interface DengueCDSSPlan {
   abcsChecklist: ABCSChecklist;
   alerts: CDSSAlertItem[];
   nursingInstructions: string[];
+  discontinuationChecklist?: string[];
   soapExportText: string;
   createdAt: string;
 }

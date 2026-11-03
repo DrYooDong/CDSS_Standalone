@@ -104,106 +104,107 @@ var DENGUE_FLUID_TEMPLATES = {
     child: [
       {
         stageName: "C\u1EEF 1: B\xF9 d\u1ECBch ban \u0111\u1EA7u (Tr\u1EBB em)",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 6,
         rateOptions: [6, 7],
         defaultDurationHours: 2,
         durationOptions: [1, 2, 3],
         hctCheckRequired: true,
-        notes: "\u0110o l\u1EA1i Hct sau 2 gi\u1EDD. N\u1EBFu Hct gi\u1EA3m v\xE0 l\xE2m s\xE0ng c\u1EA3i thi\u1EC7n -> chuy\u1EC3n C\u1EEF 2."
+        notes: "Ph\u1EE5 l\u1EE5c 4 BYT 2023: Truy\u1EC1n RL ho\u1EB7c NaCl 0.9% 6 - 7 ml/kg/h trong 1 - 3 gi\u1EDD. \u0110o l\u1EA1i Hct sau 2 gi\u1EDD. N\u1EBFu Hct gi\u1EA3m v\xE0 l\xE2m s\xE0ng c\u1EA3i thi\u1EC7n -> chuy\u1EC3n C\u1EEF 2."
       },
       {
         stageName: "C\u1EEF 2: Gi\u1EA3m t\u1ED1c \u0111\u1ED9 b\u1EADc 1",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 5,
         rateOptions: [5],
         defaultDurationHours: 3,
         durationOptions: [2, 3, 4],
         hctCheckRequired: true,
-        notes: "\u0110\xE1nh gi\xE1 sinh hi\u1EC7u, l\u01B0\u1EE3ng n\u01B0\u1EDBc ti\u1EC3u v\xE0 Hct tr\u01B0\u1EDBc khi quy\u1EBFt \u0111\u1ECBnh gi\u1EA3m ti\u1EBFp."
+        notes: "Ph\u1EE5 l\u1EE5c 4 BYT 2023: Truy\u1EC1n 5 ml/kg/h trong 2 - 4 gi\u1EDD. \u0110\xE1nh gi\xE1 sinh hi\u1EC7u, l\u01B0\u1EE3ng n\u01B0\u1EDBc ti\u1EC3u v\xE0 Hct tr\u01B0\u1EDBc khi quy\u1EBFt \u0111\u1ECBnh gi\u1EA3m ti\u1EBFp."
       },
       {
-        stageName: "C\u1EEF 3: Gi\u1EA3m t\u1ED1c \u0111\u1ED9 b\u1EADc 2",
+        stageName: "C\u1EEF 3: Gi\u1EA3m t\u1ED1c \u0111\u1ED9 b\u1EADc 2 & Cai d\u1ECBch",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 3,
         rateOptions: [3],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4, 5, 6],
-        hctCheckRequired: false,
-        notes: "Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 1 ml/kg/h. Theo d\xF5i s\xE1t tri gi\xE1c."
-      },
-      {
-        stageName: "C\u1EEF 4: Gi\u1EA3m t\u1ED1c \u0111\u1ED9 duy tr\xEC & Cai d\u1ECBch",
-        defaultRateMlKgH: 1.5,
-        rateOptions: [1.5],
-        defaultDurationHours: 6,
-        durationOptions: [4, 6, 8, 12, 18],
+        defaultDurationHours: 3,
+        durationOptions: [2, 3, 4],
         hctCheckRequired: true,
-        notes: "C\xE2n nh\u1EAFc ng\u01B0ng d\u1ECBch khi b\u1EC7nh nh\xE2n \u0103n u\u1ED1ng \u0111\u01B0\u1EE3c, m\u1EA1ch HA \u1ED5n \u0111\u1ECBnh, h\u1EBFt s\u1ED1t \u2265 48h."
+        notes: "Ph\u1EE5 l\u1EE5c 4 BYT 2023: N\u1EBFu m\u1EA1ch, HA \u1ED5n \u0111\u1ECBnh, Hct gi\u1EA3m, n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1 ml/kg/h: gi\u1EA3m xu\u1ED1ng 3 ml/kg/h trong 2 - 4 gi\u1EDD. Sau \u0111\xF3 n\u1EBFu l\xE2m s\xE0ng ti\u1EBFp t\u1EE5c c\u1EA3i thi\u1EC7n, Hct b\xECnh th\u01B0\u1EDDng -> NG\u01AFNG D\u1ECACH sau 24 - 48 gi\u1EDD (Ph\u1EE5 l\u1EE5c 4 kh\xF4ng c\xF3 b\u1EADc 1.5 ml/kg/h \u1EDF tr\u1EBB em DHCB)."
       }
     ],
     adolescent: [
       {
-        stageName: "C\u1EEF 1: Kh\u1EDFi \u0111\u1EA7u (Thi\u1EBFu ni\xEAn 13-15 tu\u1ED5i)",
+        stageName: "C\u1EEF 1: Kh\u1EDFi \u0111\u1EA7u (Thi\u1EBFu ni\xEAn 13-16 tu\u1ED5i)",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 6,
         rateOptions: [6, 7],
         defaultDurationHours: 1,
         durationOptions: [1, 1.5, 2],
         hctCheckRequired: true,
-        notes: "Th\u1EDDi gian m\u1ED7i n\u1EA5c t\u1ED1c \u0111\u1ED9 b\u1EB1ng 1/2 tr\u1EBB em nh\u1EB1m tr\xE1nh th\u1EEBa d\u1ECBch qu\xE1 t\u1EA3i."
+        notes: "Ph\u1EE5 l\u1EE5c 5 BYT 2023: RL ho\u1EB7c NaCl 0.9% 6 - 7 ml/kg/h trong 1 - 2 gi\u1EDD. Th\u1EDDi gian m\u1ED7i n\u1EA5c t\u1ED1c \u0111\u1ED9 ng\u1EAFn h\u01A1n tr\u1EBB nh\u1ECF nh\u1EB1m tr\xE1nh qu\xE1 t\u1EA3i d\u1ECBch."
       },
       {
         stageName: "C\u1EEF 2: Gi\u1EA3m t\u1ED1c \u0111\u1ED9 n\u1EA5c 1",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 5,
         rateOptions: [5],
         defaultDurationHours: 1.5,
         durationOptions: [1, 1.5, 2],
         hctCheckRequired: true,
-        notes: "Ki\u1EC3m tra m\u1EA1ch, HA v\xE0 SpO2."
+        notes: "Ph\u1EE5 l\u1EE5c 5 BYT 2023: Truy\u1EC1n 5 ml/kg/h trong 1 - 2 gi\u1EDD. Ki\u1EC3m tra m\u1EA1ch, HA v\xE0 SpO2."
       },
       {
         stageName: "C\u1EEF 3: Gi\u1EA3m t\u1ED1c \u0111\u1ED9 n\u1EA5c 2",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 3,
         rateOptions: [3],
         defaultDurationHours: 2,
-        durationOptions: [2, 3],
+        durationOptions: [2, 3, 4],
         hctCheckRequired: false,
-        notes: "Theo d\xF5i n\u01B0\u1EDBc ti\u1EC3u, ph\xE1t hi\u1EC7n s\u1EDBm d\u1EA5u hi\u1EC7u t\xE1i s\u1ED1c."
+        notes: "Ph\u1EE5 l\u1EE5c 5 BYT 2023: Truy\u1EC1n 3 ml/kg/h trong 2 - 4 gi\u1EDD. Theo d\xF5i n\u01B0\u1EDBc ti\u1EC3u, ph\xE1t hi\u1EC7n s\u1EDBm d\u1EA5u hi\u1EC7u t\xE1i s\u1ED1c."
       },
       {
         stageName: "C\u1EEF 4: Duy tr\xEC & Ng\u01B0ng d\u1ECBch",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
-        defaultDurationHours: 4,
-        durationOptions: [2, 4, 6],
+        defaultDurationHours: 6,
+        durationOptions: [4, 6, 8, 12],
         hctCheckRequired: true,
-        notes: "H\u1EBFt s\u1ED1t, h\u1ED3i ph\u1EE5c th\u1EC3 t\xEDch n\u1ED9i m\u1EA1ch, cai truy\u1EC1n t\u0129nh m\u1EA1ch s\u1EDBm."
+        notes: "Ph\u1EE5 l\u1EE5c 5 BYT 2023: Duy tr\xEC 1.5 ml/kg/h trong 4 - 12 gi\u1EDD. NG\u01AFNG D\u1ECACH Sau 12 - 24 gi\u1EDD khi l\xE2m s\xE0ng \u1ED5n \u0111\u1ECBnh."
       }
     ],
     adult: [
       {
         stageName: "C\u1EEF 1: B\xF9 ban \u0111\u1EA7u (Ng\u01B0\u1EDDi l\u1EDBn \u2265 16 tu\u1ED5i)",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 6,
         rateOptions: [6],
         defaultDurationHours: 2,
-        durationOptions: [1, 2, 3],
+        durationOptions: [1, 2],
         hctCheckRequired: true,
-        notes: "Theo d\xF5i Hct, SpO2 v\xE0 ti\u1EBFng th\u1EDF \u1EDF ph\u1ED5i (ran \u1EA9m \u0111\xE1y ph\u1ED5i)."
+        notes: "Ph\u1EE5 l\u1EE5c 6 & M\u1EE5c B2.1.5: RL ho\u1EB7c NaCl 0.9% 6 ml/kg/h trong 1 - 2 gi\u1EDD. Ch\xFA \xFD: N\u1EBFu c\xF3 bi\u1EC3u hi\u1EC7n s\u1ED1c, li\u1EC1u ch\u1ED1ng s\u1ED1c \u0111\u1EA7u ti\xEAn B\u1EAET BU\u1ED8C l\xE0 CAO PH\xC2N T\u1EEC 10 - 15 ml/kg/h."
       },
       {
         stageName: "C\u1EEF 2: Gi\u1EA3m t\u1ED1c \u0111\u1ED9 b\u1EADc 1",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 3,
         rateOptions: [3],
         defaultDurationHours: 3,
         durationOptions: [2, 3, 4],
         hctCheckRequired: true,
-        notes: "Theo d\xF5i \u0111\xE1p \u1EE9ng tri gi\xE1c v\xE0 n\u01B0\u1EDBc ti\u1EC3u."
+        notes: "Ph\u1EE5 l\u1EE5c 6 BYT 2023: Truy\u1EC1n 3 ml/kg/h trong 2 - 4 gi\u1EDD. Theo d\xF5i \u0111\xE1p \u1EE9ng tri gi\xE1c, m\u1EA1ch, HA v\xE0 n\u01B0\u1EDBc ti\u1EC3u."
       },
       {
         stageName: "C\u1EEF 3: Duy tr\xEC & Cai d\u1ECBch",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
         defaultDurationHours: 6,
         durationOptions: [6, 8, 12, 18],
         hctCheckRequired: true,
-        notes: "Duy tr\xEC 1.5 ml/kg/h trong 6 - 18 gi\u1EDD (Ph\u1EE5 l\u1EE5c 6). Ng\u01B0ng d\u1ECBch sau 12 - 24 gi\u1EDD khi l\xE2m s\xE0ng \u1ED5n \u0111\u1ECBnh."
+        notes: "Ph\u1EE5 l\u1EE5c 6 BYT 2023: Duy tr\xEC 1.5 ml/kg/h trong 6 - 18 gi\u1EDD. NG\u01AFNG D\u1ECACH Sau 12 - 24 gi\u1EDD khi l\xE2m s\xE0ng \u1ED5n \u0111\u1ECBnh."
       }
     ]
   },
@@ -211,63 +212,60 @@ var DENGUE_FLUID_TEMPLATES = {
   shock: {
     child: [
       {
-        stageName: "C\u1EEF 1: T\u1EA3i d\u1ECBch ch\u1ED1ng s\u1ED1c (20 ml/kg/1h ho\u1EB7c 20 ml/kg/30ph n\u1EBFu t\u1EE5t HA n\u1EB7ng)",
+        stageName: "C\u1EEF 1: T\u1EA3i d\u1ECBch ch\u1ED1ng s\u1ED1c ban \u0111\u1EA7u (20 ml/kg/1h ho\u1EB7c 20 ml/kg/30ph)",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 20,
-        rateOptions: [15, 20, 40],
+        rateOptions: [20, 40],
         defaultDurationHours: 1,
         durationOptions: [0.5, 1],
         hctCheckRequired: true,
-        notes: "D\u1ECBch tinh th\u1EC3 20 ml/kg/1h (ho\u1EB7c Ringer Acetate / NaCl 0.9% n\u1EBFu c\xF3 t\u1ED5n th\u01B0\u01A1ng gan). N\u1EBFu t\u1EE5t HA n\u1EB7ng (HATT < 70 + 2xTu\u1ED5i \u1EDF tr\u1EBB < 10T ho\u1EB7c < 90 mmHg \u1EDF tr\u1EBB \u2265 10T): B\u01A1m 20 ml/kg trong 30 ph\xFAt (t\u1ED1c \u0111\u1ED9 40 ml/kg/h x 0.5h theo Ph\u1EE5 l\u1EE5c 8 BYT 2023). \u0110\xE1nh gi\xE1 l\u1EA1i m\u1EA1ch, HA v\xE0 Hct ngay sau c\u1EEF."
+        notes: "Ph\u1EE5 l\u1EE5c 8 BYT 2023: D\u1ECBch tinh th\u1EC3 RL ho\u1EB7c NaCl 0.9% 20 ml/kg/1h (ho\u1EB7c Ringer Acetate / NaCl 0.9% n\u1EBFu c\xF3 t\u1ED5n th\u01B0\u01A1ng gan). N\u1EBFu t\u1EE5t HA n\u1EB7ng: B\u01A1m 20 ml/kg trong 30 ph\xFAt (t\u1ED1c \u0111\u1ED9 c\xE0i m\xE1y 40 ml/kg/h x 0.5h). \u0110\xE1nh gi\xE1 l\u1EA1i m\u1EA1ch, HA v\xE0 Hct ngay sau c\u1EEF."
       },
       {
         stageName: "C\u1EEF 2: Ra s\u1ED1c - Gi\u1EA3m xu\u1ED1ng 10 ml/kg/h",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 10,
         rateOptions: [10],
         defaultDurationHours: 1,
         durationOptions: [1, 2],
         hctCheckRequired: true,
-        notes: "N\u1EBFu kh\xF4ng ra s\u1ED1c ho\u1EB7c Hct t\u0103ng cao -> h\u1ED9i ch\u1EA9n \u0111\u1ED5i Cao ph\xE2n t\u1EED."
+        notes: "Ph\u1EE5 l\u1EE5c 8 BYT 2023: Truy\u1EC1n 10 ml/kg/h trong 1 - 2 gi\u1EDD. N\u1EBFu kh\xF4ng ra s\u1ED1c ho\u1EB7c Hct t\u0103ng cao -> h\u1ED9i ch\u1EA9n \u0111\u1ED5i Cao ph\xE2n t\u1EED."
       },
       {
         stageName: "C\u1EEF 3: Ti\u1EBFp t\u1EE5c gi\u1EA3m xu\u1ED1ng 7.5 ml/kg/h",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 7.5,
         rateOptions: [7.5],
         defaultDurationHours: 2,
         durationOptions: [1, 2],
         hctCheckRequired: false,
-        notes: "Duy tr\xEC t\u01B0 th\u1EBF n\u1EB1m ngang, \u1EE7 \u1EA5m."
+        notes: "Ph\u1EE5 l\u1EE5c 8 BYT 2023: Truy\u1EC1n 7.5 ml/kg/h trong 1 - 2 gi\u1EDD n\u1EBFu l\xE2m s\xE0ng c\u1EA3i thi\u1EC7n v\xE0 Hct gi\u1EA3m."
       },
       {
         stageName: "C\u1EEF 4: Gi\u1EA3m xu\u1ED1ng 5 ml/kg/h",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 5,
         rateOptions: [5],
-        defaultDurationHours: 4,
-        durationOptions: [2, 4],
+        defaultDurationHours: 3,
+        durationOptions: [3, 4],
         hctCheckRequired: true,
-        notes: "Ki\u1EC3m tra Hct m\u1ED7i 2-4h."
+        notes: "Ph\u1EE5 l\u1EE5c 8 BYT 2023: Truy\u1EC1n 5 ml/kg/h trong 3 - 4 gi\u1EDD (options: 3 - 4h). Ki\u1EC3m tra Hct m\u1ED7i 2-4h."
       },
       {
-        stageName: "C\u1EEF 5: Gi\u1EA3m xu\u1ED1ng 3 ml/kg/h",
+        stageName: "C\u1EEF 5: Gi\u1EA3m xu\u1ED1ng 3 ml/kg/h & Cai d\u1ECBch",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 3,
         rateOptions: [3],
         defaultDurationHours: 4,
-        durationOptions: [3, 4, 6],
-        hctCheckRequired: false,
-        notes: "Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1 ml/kg/h."
-      },
-      {
-        stageName: "C\u1EEF 6: Duy tr\xEC 1.5 ml/kg/h & Cai d\u1ECBch",
-        defaultRateMlKgH: 1.5,
-        rateOptions: [1.5],
-        defaultDurationHours: 6,
-        durationOptions: [4, 6, 8, 12],
+        durationOptions: [4, 5, 6],
         hctCheckRequired: true,
-        notes: "T\u1ED5ng th\u1EDDi gian truy\u1EC1n d\u1ECBch ch\u1ED1ng s\u1ED1c th\u01B0\u1EDDng kh\xF4ng qu\xE1 24 - 48 gi\u1EDD."
+        notes: "Ph\u1EE5 l\u1EE5c 8 BYT 2023: Truy\u1EC1n 3 ml/kg/h trong 4 - 6 gi\u1EDD. N\u1EBFu b\u1EC7nh nh\xE2n ra s\u1ED1c (m\u1EA1ch b\xECnh th\u01B0\u1EDDng, HA b\xECnh th\u01B0\u1EDDng, Hct b\xECnh th\u01B0\u1EDDng, n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 ml/kg/h) -> NG\u01AFNG D\u1ECACH sau 24 - 48 gi\u1EDD. (Ph\u1EE5 l\u1EE5c 8 kh\xF4ng c\xF3 b\u1EADc 1.5 ml/kg/h \u1EDF tr\u1EBB em)."
       }
     ],
     adolescent: [
       {
         stageName: "C\u1EEF 1: T\u1EA3i nhanh ch\u1ED1ng s\u1ED1c gi\u1EDD \u0111\u1EA7u (20 ml/kg/h)",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 20,
         rateOptions: [20],
         defaultDurationHours: 1,
@@ -277,15 +275,17 @@ var DENGUE_FLUID_TEMPLATES = {
       },
       {
         stageName: "C\u1EEF 2: Ra s\u1ED1c - Gi\u1EA3m xu\u1ED1ng 10 ml/kg/h",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 10,
         rateOptions: [10],
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: "Th\u1EDDi gian gi\u1EA3m n\u1EA5c b\u1EB1ng 1/2 tr\u1EBB nh\u1ECF nh\u1EB1m tr\xE1nh qu\xE1 t\u1EA3i d\u1ECBch. N\u1EBFu \u1ED5n \u0111\u1ECBnh chuy\u1EC3n C\u1EEF 3."
+        notes: "Th\u1EDDi gian gi\u1EA3m n\u1EA5c b\u1EB1ng 1/2 tr\u1EBB nh\u1ECF (1 gi\u1EDD) nh\u1EB1m tr\xE1nh qu\xE1 t\u1EA3i d\u1ECBch (Ph\u1EE5 l\u1EE5c 11)."
       },
       {
         stageName: "C\u1EEF 3: Gi\u1EA3m xu\u1ED1ng 7.5 ml/kg/h",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 7.5,
         rateOptions: [7.5],
         defaultDurationHours: 1,
@@ -295,35 +295,29 @@ var DENGUE_FLUID_TEMPLATES = {
       },
       {
         stageName: "C\u1EEF 4: Gi\u1EA3m xu\u1ED1ng 5 ml/kg/h",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 5,
         rateOptions: [5],
         defaultDurationHours: 1,
-        durationOptions: [1, 2],
+        durationOptions: [1],
         hctCheckRequired: true,
-        notes: "\u0110o l\u1EA1i Hct v\xE0 ki\u1EC3m tra sinh hi\u1EC7u tr\u01B0\u1EDBc khi gi\u1EA3m ti\u1EBFp."
+        notes: "Truy\u1EC1n 5 ml/kg/h trong 1 gi\u1EDD theo Ph\u1EE5 l\u1EE5c 11. \u0110o l\u1EA1i Hct v\xE0 ki\u1EC3m tra sinh hi\u1EC7u tr\u01B0\u1EDBc khi chuy\u1EC3n sang duy tr\xEC."
       },
       {
-        stageName: "C\u1EEF 5: Gi\u1EA3m xu\u1ED1ng 3 ml/kg/h",
-        defaultRateMlKgH: 3,
-        rateOptions: [3],
-        defaultDurationHours: 4,
-        durationOptions: [4, 5, 6],
-        hctCheckRequired: false,
-        notes: "Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 ml/kg/h trong 4 - 6 gi\u1EDD."
-      },
-      {
-        stageName: "C\u1EEF 6: Duy tr\xEC 1.5 ml/kg/h & Cai d\u1ECBch",
+        stageName: "C\u1EEF 5: Duy tr\xEC 1.5 ml/kg/h & Cai d\u1ECBch",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
         defaultDurationHours: 12,
         durationOptions: [12, 14, 18],
         hctCheckRequired: true,
-        notes: "Duy tr\xEC 1.5 ml/kg/h trong 12 - 18 gi\u1EDD. Ng\u01B0ng d\u1ECBch sau 24 gi\u1EDD khi ra s\u1ED1c ho\xE0n to\xE0n."
+        notes: "Ph\u1EE5 l\u1EE5c 11 BYT 2023: Nh\xE1nh \u0111i\u1EC7n gi\u1EA3i t\u1EEB 5 ml/kg/h x 1h chuy\u1EC3n th\u1EB3ng sang duy tr\xEC 1.5 ml/kg/h trong 12 - 18 gi\u1EDD. NG\u01AFNG D\u1ECACH Sau 24 gi\u1EDD."
       }
     ],
     adult: [
       {
         stageName: "C\u1EEF 1: T\u1EA3i d\u1ECBch ch\u1ED1ng s\u1ED1c ng\u01B0\u1EDDi l\u1EDBn (15 ml/kg/h)",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 15,
         rateOptions: [15],
         defaultDurationHours: 1,
@@ -333,6 +327,7 @@ var DENGUE_FLUID_TEMPLATES = {
       },
       {
         stageName: "C\u1EEF 2: Ra s\u1ED1c - Ti\u1EBFp t\u1EE5c 10 ml/kg/h trong 2 gi\u1EDD",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 10,
         rateOptions: [10],
         defaultDurationHours: 2,
@@ -342,6 +337,7 @@ var DENGUE_FLUID_TEMPLATES = {
       },
       {
         stageName: "C\u1EEF 3: Gi\u1EA3m xu\u1ED1ng 6 ml/kg/h trong 2 gi\u1EDD",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 6,
         rateOptions: [6],
         defaultDurationHours: 2,
@@ -351,6 +347,7 @@ var DENGUE_FLUID_TEMPLATES = {
       },
       {
         stageName: "C\u1EEF 4: Gi\u1EA3m xu\u1ED1ng 3 ml/kg/h trong 5 - 7 gi\u1EDD",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 3,
         rateOptions: [3],
         defaultDurationHours: 5,
@@ -360,6 +357,7 @@ var DENGUE_FLUID_TEMPLATES = {
       },
       {
         stageName: "C\u1EEF 5: Duy tr\xEC 1.5 ml/kg/h trong 12 gi\u1EDD & Cai d\u1ECBch",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 1.5,
         rateOptions: [1.5],
         defaultDurationHours: 12,
@@ -373,93 +371,143 @@ var DENGUE_FLUID_TEMPLATES = {
   severe_shock: {
     child: [
       {
-        stageName: "C\u1EEF 1: B\u01A1m tr\u1EF1c ti\u1EBFp t\u0129nh m\u1EA1ch 15-20 ml/kg trong 15 ph\xFAt",
-        defaultRateMlKgH: 60,
-        // Tương đương 15ml/kg trong 15 phút (0.25h)
-        rateOptions: [60, 80],
+        stageName: "C\u1EEF 1: B\u01A1m tr\u1EF1c ti\u1EBFp t\u0129nh m\u1EA1ch 20 ml/kg trong 15 ph\xFAt",
+        fluidKind: "crystalloid",
+        defaultRateMlKgH: 80,
+        // Tương đương 20ml/kg trong 15 phút (0.25h)
+        rateOptions: [80],
         defaultDurationHours: 0.25,
         durationOptions: [0.25],
         hctCheckRequired: true,
-        notes: "D\xF9ng b\u01A1m ti\xEAm ho\u1EB7c t\xFAi \xE9p truy\u1EC1n nhanh tr\u1EF1c ti\u1EBFp. L\u1EADp 2 \u0111\u01B0\u1EDDng truy\u1EC1n t\u0129nh m\u1EA1ch l\u1EDBn."
+        notes: "M\u1EE5c C1.2 & Ph\u1EE5 l\u1EE5c 12 BYT 2023: D\xF9ng b\u01A1m ti\xEAm to b\u01A1m tr\u1EF1c ti\u1EBFp TM Ringer Lactate ho\u1EB7c NaCl 0.9% 20 ml/kg trong v\xF2ng 15 ph\xFAt. L\u1EADp ngay 2 \u0111\u01B0\u1EDDng truy\u1EC1n l\u1EDBn."
       },
       {
-        stageName: "C\u1EEF 2: N\u1EBFu ra s\u1ED1c -> Gi\u1EA3m xu\u1ED1ng 10 ml/kg/h",
+        stageName: "C\u1EEF 2: Ra s\u1ED1c -> Ti\u1EBFp n\u1ED1i ngay CAO PH\xC2N T\u1EEC 10 ml/kg/h trong 1 gi\u1EDD",
+        fluidKind: "colloid",
         defaultRateMlKgH: 10,
-        rateOptions: [10],
+        rateOptions: [10, 15, 20],
         defaultDurationHours: 1,
-        durationOptions: [1, 2],
+        durationOptions: [1],
         hctCheckRequired: true,
-        notes: "N\u1EBFu KH\xD4NG ra s\u1ED1c ho\u1EB7c Hct t\u0103ng: \u0111\u1ED5i ngay sang D\u1ECBch Cao Ph\xE2n T\u1EED (Dextran 40/HES 200) 10-15 ml/kg/h."
+        notes: "Chu\u1EA9n Ph\u1EE5 l\u1EE5c 12 & M\u1EE5c C1.2: N\u1EBFu m\u1EA1ch r\xF5, HA b\xECnh th\u01B0\u1EDDng h\u1EBFt k\u1EB9t -> B\u1EAET BU\u1ED8C cho Cao ph\xE2n t\u1EED (Dextran 40 / 6% HES 200) 10 ml/kg/h x 1h (n\u1EBFu HA c\xF2n k\u1EB9t/t\u1EE5t: CPT 15-20 ml/kg/h)."
       },
       {
-        stageName: "C\u1EEF 3: Gi\u1EA3m xu\u1ED1ng 7.5 ml/kg/h",
+        stageName: "C\u1EEF 3: Gi\u1EA3m Cao Ph\xE2n T\u1EED xu\u1ED1ng 7.5 ml/kg/h",
+        fluidKind: "colloid",
         defaultRateMlKgH: 7.5,
         rateOptions: [7.5],
         defaultDurationHours: 2,
         durationOptions: [1, 2],
         hctCheckRequired: false,
-        notes: "Theo d\xF5i li\xEAn t\u1EE5c SpO2, ECG, CVP n\u1EBFu c\xF3 ch\u1EC9 \u0111\u1ECBnh."
+        notes: "Ph\u1EE5 l\u1EE5c 12 BYT 2023: Gi\u1EA3m CPT xu\u1ED1ng 7.5 ml/kg/h trong 1 - 2 gi\u1EDD n\u1EBFu c\u1EA3i thi\u1EC7n l\xE2m s\xE0ng v\xE0 Hct gi\u1EA3m."
       },
       {
-        stageName: "C\u1EEF 4: Gi\u1EA3m xu\u1ED1ng 5 ml/kg/h",
+        stageName: "C\u1EEF 4: Gi\u1EA3m Cao Ph\xE2n T\u1EED xu\u1ED1ng 5 ml/kg/h",
+        fluidKind: "colloid",
+        defaultRateMlKgH: 5,
+        rateOptions: [5],
+        defaultDurationHours: 2,
+        durationOptions: [1, 2],
+        hctCheckRequired: true,
+        notes: "Ph\u1EE5 l\u1EE5c 12 BYT 2023: Gi\u1EA3m CPT xu\u1ED1ng 5 ml/kg/h trong 1 - 2 gi\u1EDD. Ki\u1EC3m tra 7 ti\xEAu chu\u1EA9n Ph\u1EE5 l\u1EE5c 10 tr\u01B0\u1EDBc khi chuy\u1EC3n sang \u0111i\u1EC7n gi\u1EA3i."
+      },
+      {
+        stageName: "C\u1EEF 5: Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i RL/NaCl 0.9% 5 ml/kg/h (Ph\u1EE5 l\u1EE5c 12)",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 5,
         rateOptions: [5],
         defaultDurationHours: 3,
         durationOptions: [2, 3, 4],
         hctCheckRequired: true,
-        notes: "\u0110\xE1nh gi\xE1 d\u1EA5u hi\u1EC7u h\u1ED3i ph\u1EE5c t\u01B0\u1EDBi m\xE1u m\xF4."
+        notes: "Ph\u1EE5 l\u1EE5c 12 & M\u1EE5c C1.2: Ra s\u1ED1c v\xE0 Hct b\xECnh th\u01B0\u1EDDng chuy\u1EC3n sang \u0111i\u1EC7n gi\u1EA3i RL ho\u1EB7c NaCl 0.9% 5 ml/kg/h trong 2 - 4 gi\u1EDD."
       },
       {
-        stageName: "C\u1EEF 5: Gi\u1EA3m 3 -> 1.5 ml/kg/h & Cai d\u1ECBch",
-        defaultRateMlKgH: 3,
-        rateOptions: [3],
-        defaultDurationHours: 4,
-        durationOptions: [3, 4],
+        stageName: "C\u1EEF 6: Duy tr\xEC \u0111i\u1EC7n gi\u1EA3i 2 - 3 ml/kg/h & Cai d\u1ECBch",
+        fluidKind: "crystalloid",
+        defaultRateMlKgH: 2.5,
+        rateOptions: [2, 2.5, 3],
+        defaultDurationHours: 24,
+        durationOptions: [24, 28, 36],
         hctCheckRequired: true,
-        notes: "Chuy\u1EC3n d\u1EA7n sang duy tr\xEC 1.5 ml/kg/h khi huy\u1EBFt \u0111\u1ED9ng ho\xE0n to\xE0n \u1ED5n \u0111\u1ECBnh."
+        notes: "Ph\u1EE5 l\u1EE5c 12 & M\u1EE5c C1.2: Ti\u1EBFp \u0111\u1EBFn duy tr\xEC \u0111i\u1EC7n gi\u1EA3i 2 - 3 ml/kg/h trong 24 - 36 gi\u1EDD. Xem x\xE9t ng\u01B0ng d\u1ECBch sau 24 - 48 gi\u1EDD n\u1EBFu m\u1EA1ch, HA, Hct b\xECnh th\u01B0\u1EDDng ho\u1EB7c n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 ml/kg/h."
       }
     ],
     adolescent: [
       {
-        stageName: "C\u1EEF 1: B\u01A1m tr\u1EF1c ti\u1EBFp t\u0129nh m\u1EA1ch 15-20 ml/kg trong 15 ph\xFAt",
-        defaultRateMlKgH: 60,
-        rateOptions: [60, 80],
+        stageName: "C\u1EEF 1: B\u01A1m tr\u1EF1c ti\u1EBFp t\u0129nh m\u1EA1ch 20 ml/kg trong 15 ph\xFAt",
+        fluidKind: "crystalloid",
+        defaultRateMlKgH: 80,
+        rateOptions: [80],
         defaultDurationHours: 0.25,
         durationOptions: [0.25],
         hctCheckRequired: true,
-        notes: "Kh\u1EA9n tr\u01B0\u01A1ng l\u1EADp \u0111\u01B0\u1EDDng truy\u1EC1n l\u1EDBn, \u0111o Hct t\u1EA1i gi\u01B0\u1EDDng."
+        notes: "Kh\u1EA9n tr\u01B0\u01A1ng l\u1EADp \u0111\u01B0\u1EDDng truy\u1EC1n l\u1EDBn, b\u01A1m tr\u1EF1c ti\u1EBFp 20 ml/kg trong 15 ph\xFAt theo M\u1EE5c C1.2 BYT 2023."
       },
       {
-        stageName: "C\u1EEF 2: D\u1ECBch tinh th\u1EC3 ho\u1EB7c Cao ph\xE2n t\u1EED 10 ml/kg/h",
+        stageName: "C\u1EEF 2: Ra s\u1ED1c -> Ti\u1EBFp n\u1ED1i ngay CAO PH\xC2N T\u1EEC 10 ml/kg/h trong 1 gi\u1EDD",
+        fluidKind: "colloid",
         defaultRateMlKgH: 10,
-        rateOptions: [10],
+        rateOptions: [10, 15, 20],
         defaultDurationHours: 1,
         durationOptions: [1],
         hctCheckRequired: true,
-        notes: "\u0110\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng sau 1 gi\u1EDD."
+        notes: "Chu\u1EA9n Ph\u1EE5 l\u1EE5c 11 & 12: Chuy\u1EC3n ngay sang D\u1ECBch Cao Ph\xE2n T\u1EED (Dextran 40/HES 200) 10 ml/kg/h trong 1 gi\u1EDD."
       },
       {
-        stageName: "C\u1EEF 3: Gi\u1EA3m xu\u1ED1ng 5 ml/kg/h",
+        stageName: "C\u1EEF 3: Gi\u1EA3m Cao Ph\xE2n T\u1EED xu\u1ED1ng 7.5 ml/kg/h",
+        fluidKind: "colloid",
+        defaultRateMlKgH: 7.5,
+        rateOptions: [7.5],
+        defaultDurationHours: 1,
+        durationOptions: [1],
+        hctCheckRequired: false,
+        notes: "Th\u1EDDi gian gi\u1EA3m n\u1EA5c CPT b\u1EB1ng 1/2 tr\u1EBB nh\u1ECF (1 gi\u1EDD) theo Ph\u1EE5 l\u1EE5c 11."
+      },
+      {
+        stageName: "C\u1EEF 4: Gi\u1EA3m Cao Ph\xE2n T\u1EED xu\u1ED1ng 5 ml/kg/h",
+        fluidKind: "colloid",
         defaultRateMlKgH: 5,
         rateOptions: [5],
-        defaultDurationHours: 2,
-        durationOptions: [1, 2],
-        hctCheckRequired: false,
-        notes: "Theo d\xF5i s\xE1t n\u01B0\u1EDBc ti\u1EC3u v\xE0 \xE1p l\u1EF1c t\u0129nh m\u1EA1ch trung t\xE2m."
+        defaultDurationHours: 1,
+        durationOptions: [1],
+        hctCheckRequired: true,
+        notes: "Truy\u1EC1n CPT 5 ml/kg/h trong 1 gi\u1EDD. \u0110\xE1nh gi\xE1 \u0111i\u1EC1u ki\u1EC7n chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i theo Ph\u1EE5 l\u1EE5c 10."
       },
       {
-        stageName: "C\u1EEF 4: Duy tr\xEC 3 -> 1.5 ml/kg/h",
+        stageName: "C\u1EEF 5: Chuy\u1EC3n \u0111i\u1EC7n gi\u1EA3i RL/NaCl 0.9% 5 ml/kg/h trong 1 - 2 gi\u1EDD",
+        fluidKind: "crystalloid",
+        defaultRateMlKgH: 5,
+        rateOptions: [5],
+        defaultDurationHours: 1.5,
+        durationOptions: [1, 1.5, 2],
+        hctCheckRequired: true,
+        notes: "Chuy\u1EC3n sang dung d\u1ECBch \u0111i\u1EC7n gi\u1EA3i 5 ml/kg/h trong 1 - 2 gi\u1EDD theo Ph\u1EE5 l\u1EE5c 11."
+      },
+      {
+        stageName: "C\u1EEF 6: Gi\u1EA3m \u0111i\u1EC7n gi\u1EA3i 3 ml/kg/h trong 4 - 6 gi\u1EDD",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 3,
         rateOptions: [3],
-        defaultDurationHours: 3,
-        durationOptions: [2, 3],
+        defaultDurationHours: 4,
+        durationOptions: [4, 5, 6],
+        hctCheckRequired: false,
+        notes: "Duy tr\xEC \u0111i\u1EC7n gi\u1EA3i 3 ml/kg/h trong 4 - 6 gi\u1EDD theo Ph\u1EE5 l\u1EE5c 11."
+      },
+      {
+        stageName: "C\u1EEF 7: Duy tr\xEC 1.5 ml/kg/h trong 12 - 18 gi\u1EDD & Cai d\u1ECBch",
+        fluidKind: "crystalloid",
+        defaultRateMlKgH: 1.5,
+        rateOptions: [1.5],
+        defaultDurationHours: 12,
+        durationOptions: [12, 14, 18],
         hctCheckRequired: true,
-        notes: "Cai d\u1ECBch s\u1EDBm, tr\xE1nh qu\xE1 t\u1EA3i t\xE1i h\u1EA5p thu."
+        notes: "Duy tr\xEC 1.5 ml/kg/h trong 12 - 18 gi\u1EDD. NG\u01AFNG D\u1ECACH Sau 24 gi\u1EDD."
       }
     ],
     adult: [
       {
         stageName: "C\u1EEF 1: B\u01A1m tr\u1EF1c ti\u1EBFp 15 ml/kg trong 15 ph\xFAt",
+        fluidKind: "crystalloid",
         defaultRateMlKgH: 60,
         rateOptions: [60],
         defaultDurationHours: 0.25,
@@ -469,6 +517,7 @@ var DENGUE_FLUID_TEMPLATES = {
       },
       {
         stageName: "C\u1EEF 2: Ti\u1EBFp n\u1ED1i ngay Cao Ph\xE2n T\u1EED 15 ml/kg/h trong 1 gi\u1EDD",
+        fluidKind: "colloid",
         defaultRateMlKgH: 15,
         rateOptions: [15],
         defaultDurationHours: 1,
@@ -897,24 +946,24 @@ var DENGUE_COLLOID_TEMPLATES = {
       notes: "Chuy\u1EC3n sang dung d\u1ECBch \u0111i\u1EC7n gi\u1EA3i an to\xE0n."
     },
     {
-      stageName: "C\u1EEF 6: Gi\u1EA3m \u0111i\u1EC7n gi\u1EA3i 3 ml/kg/h",
+      stageName: "C\u1EEF 6: Gi\u1EA3m \u0111i\u1EC7n gi\u1EA3i 3 ml/kg/h trong 4 - 6 gi\u1EDD",
       fluidKind: "crystalloid",
       defaultRateMlKgH: 3,
       rateOptions: [3],
-      defaultDurationHours: 3,
-      durationOptions: [2, 3],
+      defaultDurationHours: 4,
+      durationOptions: [4, 5, 6],
       hctCheckRequired: true,
-      notes: "\u0110\xE1nh gi\xE1 n\u01B0\u1EDBc ti\u1EC3u v\xE0 tri gi\xE1c."
+      notes: "Ph\u1EE5 l\u1EE5c 11 BYT 2023: Duy tr\xEC \u0111i\u1EC7n gi\u1EA3i 3 ml/kg/h trong 4 - 6 gi\u1EDD. \u0110\xE1nh gi\xE1 n\u01B0\u1EDBc ti\u1EC3u v\xE0 tri gi\xE1c."
     },
     {
-      stageName: "C\u1EEF 7: Duy tr\xEC 1.5 ml/kg/h & Cai d\u1ECBch",
+      stageName: "C\u1EEF 7: Duy tr\xEC 1.5 ml/kg/h trong 12 - 18 gi\u1EDD & Cai d\u1ECBch",
       fluidKind: "crystalloid",
       defaultRateMlKgH: 1.5,
       rateOptions: [1.5],
       defaultDurationHours: 12,
-      durationOptions: [6, 12, 18],
+      durationOptions: [12, 14, 18],
       hctCheckRequired: true,
-      notes: "Duy tr\xEC v\xE0 chu\u1EA9n b\u1ECB ng\u01B0ng d\u1ECBch sau 24 gi\u1EDD."
+      notes: "Ph\u1EE5 l\u1EE5c 11 BYT 2023: Duy tr\xEC 1.5 ml/kg/h trong 12 - 18 gi\u1EDD. NG\u01AFNG D\u1ECACH Sau 24 gi\u1EDD."
     }
   ],
   adult: [
@@ -979,6 +1028,14 @@ var DENGUE_DE_ESCALATION_CHECKLIST = [
   "\xC1p l\u1EF1c t\u0129nh m\u1EA1ch trung t\xE2m (CVP) trong kho\u1EA3ng 10 - 15 cmH2O (n\u1EBFu c\xF3 \u0111o CVP)",
   "ScvO2 \u2265 70% ho\u1EB7c Lactate m\xE1u b\xECnh th\u01B0\u1EDDng < 2.0 mmol/L (n\u1EBFu c\xF3 x\xE9t nghi\u1EC7m)"
 ];
+var DENGUE_DISCONTINUATION_CHECKLIST = [
+  "L\xE2m s\xE0ng \u1ED5n \u0111\u1ECBnh: B\u1EC7nh nh\xE2n t\u1EC9nh t\xE1o, ti\u1EBFp x\xFAc t\u1ED1t, chi \u1EA5m, CRT < 2 gi\xE2y, m\u1EA1ch r\xF5, huy\u1EBFt \xE1p b\xECnh th\u01B0\u1EDDng theo tu\u1ED5i.",
+  "L\u01B0u l\u01B0\u1EE3ng b\xE0i ti\u1EBFt n\u01B0\u1EDBc ti\u1EC3u kh\xE1: N\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1.0 ml/kg/gi\u1EDD (\u1EDF ng\u01B0\u1EDDi l\u1EDBn v\xE0 tr\u1EBB em).",
+  "Hematocrit (Hct) \u1ED5n \u0111\u1ECBnh v\xE0 c\xF3 xu h\u01B0\u1EDBng gi\u1EA3m d\u1EA7n v\u1EC1 m\u1EE9c gi\xE1 tr\u1ECB n\u1EC1n b\xECnh th\u01B0\u1EDDng.",
+  "Th\u1EDDi \u0111i\u1EC3m th\xEDch h\u1EE3p: \u0110\xE3 qua 24 gi\u1EDD k\u1EC3 t\u1EEB khi h\u1EBFt s\u1ED1c ho\xE0n to\xE0n (n\xF3i chung kh\xF4ng c\u1EA7n thi\u1EBFt b\xF9 d\u1ECBch sau khi h\u1EBFt s\u1ED1c 24 gi\u1EDD).",
+  "D\u1EA5u hi\u1EC7u b\u01B0\u1EDBc v\xE0o giai \u0111o\u1EA1n h\u1ED3i ph\u1EE5c: Th\u01B0\u1EDDng v\xE0o ng\xE0y th\u1EE9 6 - 7 c\u1EE7a b\u1EC7nh (h\u1EBFt s\u1ED1t \u2265 48h kh\xF4ng d\xF9ng h\u1EA1 s\u1ED1t, th\xE8m \u0103n, m\u1EA1ch ch\u1EADm l\u1EA1i, ti\u1EC3u nhi\u1EC1u).",
+  "C\u1EA2NH B\xC1O NGUY HI\u1EC2M: B\u1EAET BU\u1ED8C NG\u01AFNG D\u1ECACH NGAY L\u1EACP T\u1EE8C n\u1EBFu c\xF3 bi\u1EC3u hi\u1EC7n qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n, suy h\xF4 h\u1EA5p, ran \u1EA9m d\xE2ng \u1EDF \u0111\xE1y ph\u1ED5i ho\u1EB7c d\u1ECDa ph\xF9 ph\u1ED5i c\u1EA5p."
+];
 
 // dengue/dengue-engine.ts
 function classifyAgeGroup(ageYears) {
@@ -986,9 +1043,30 @@ function classifyAgeGroup(ageYears) {
   if (ageYears >= 13) return "adolescent";
   return "child";
 }
-function calculateWeightAdjustment(ageYears, gender, actualWeightKg, heightCm) {
+function calculateWeightAdjustment(ageYears, gender, actualWeightKg, heightCm, isPregnant3rdTrimester) {
   const isAdult = ageYears >= 16;
   const stdWeight = getCDCStandardWeight(Math.min(16, ageYears), gender);
+  if (isPregnant3rdTrimester && gender === "female") {
+    const effectiveHeight = heightCm && heightCm >= 100 ? heightCm : 155;
+    const ibwRaw = 45.5 + 0.91 * (effectiveHeight - 152.4);
+    const ibw = Math.round(ibwRaw * 10) / 10;
+    const adjBwRaw = ibwRaw + 0.4 * (actualWeightKg - ibwRaw);
+    const adjBw = Math.round(adjBwRaw * 10) / 10;
+    const adjustedWeightKg2 = Math.max(ibw, Math.min(actualWeightKg, adjBw));
+    const tableRounded = Math.round(adjustedWeightKg2);
+    return {
+      actualWeightKg,
+      standardWeightKg: ibw,
+      isObese: true,
+      ratioToStandard: Math.round(actualWeightKg / ibw * 100) / 100,
+      adjustedWeightKg: adjustedWeightKg2,
+      idealWeightKg: ibw,
+      isAdultMethod: true,
+      tableRoundedWeightKg: tableRounded,
+      formulaNote: `Ph\u1EE5 n\u1EEF mang thai 3 th\xE1ng cu\u1ED1i: \xC1p d\u1EE5ng C\xE2n N\u1EB7ng Hi\u1EC7u Ch\u1EC9nh theo M\u1EE5c C.2.6 (Trang 28 Q\u0110 2760/BYT) v\u1EDBi CN th\u1EF1c l\xFAc nh\u1EADp vi\u1EC7n ${actualWeightKg} kg \u279C CN hi\u1EC7u ch\u1EC9nh = ${adjustedWeightKg2} kg (IBW = ${ibw} kg).`,
+      warningText: `C\u1EA3nh b\xE1o PNCT 3 th\xE1ng cu\u1ED1i: B\u1EAFt bu\u1ED9c d\xF9ng C\xE2n N\u1EB7ng Hi\u1EC7u Ch\u1EC9nh ${adjustedWeightKg2} kg \u0111\u1EC3 t\xEDnh b\xF9 d\u1ECBch ch\u1ED1ng s\u1ED1c theo M\u1EE5c C.2.6 BYT 2023 nh\u1EB1m ph\xF2ng ng\u1EEBa qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n, ph\xF9 ph\u1ED5i c\u1EA5p v\xE0 theo d\xF5i s\xE1t tim thai.`
+    };
+  }
   if (isAdult) {
     if (heightCm && heightCm >= 100) {
       const heightM = heightCm / 100;
@@ -1138,14 +1216,16 @@ function calculateFluidSchedule(patient, effectiveWeightKg, customDurations, cus
     } else {
       bottlePrefix = `Duy tr\xEC \u0111\u01B0\u1EDDng truy\u1EC1n`;
     }
-    const contraNote = fluidInfo.isContraindicatedRL ? " - C\u1EA5m RL do men gan t\u0103ng" : "";
-    const emrOrderText = `${bottlePrefix} ${fluidInfo.name} (TTM) t\u1ED1c \u0111\u1ED9 ${pumpRateMlH} ml/h (t\u1ED5ng d\u1ECBch ~ ${rate}ml/kg/h x ${duration}h${contraNote})`;
+    const isColloidStage = tpl.fluidKind === "colloid" || tpl.stageName.includes("Cao Ph\xE2n T\u1EED") || tpl.stageName.includes("CPT");
+    const stageFluidName = isColloidStage ? "Cao Ph\xE2n T\u1EED (Dextran 40 / 6% HES 200)" : fluidInfo.name;
+    const contraNote = !isColloidStage && fluidInfo.isContraindicatedRL ? " - C\u1EA5m RL do men gan t\u0103ng" : "";
+    const emrOrderText = isColloidStage ? `${bottlePrefix} Cao Ph\xE2n T\u1EED Dextran 40 / 6% HES 200 (TTM) t\u1ED1c \u0111\u1ED9 ${pumpRateMlH} ml/h (t\u1ED5ng d\u1ECBch ~ ${rate}ml/kg/h x ${duration}h - CPT)` : `${bottlePrefix} ${fluidInfo.name} (TTM) t\u1ED1c \u0111\u1ED9 ${pumpRateMlH} ml/h (t\u1ED5ng d\u1ECBch ~ ${rate}ml/kg/h x ${duration}h${contraNote})`;
     prevRemainingMl = remainingAfterStep;
     prevBottleIdx = bottlesToHang > 0 ? currentBottleIdx : prevBottleIdx;
     rows.push({
       stepIndex: idx + 1,
       stageName: tpl.stageName,
-      fluidName: fluidInfo.name,
+      fluidName: stageFluidName,
       durationHours: duration,
       rateMlKgH: rate,
       pumpRateMlH,
@@ -1632,6 +1712,36 @@ function calculateBranchDecision(patient, effectiveWeightKg) {
       ]
     };
   }
+  if (patient.severity === "warning_signs" && (response === "refractory" || response === "worsened")) {
+    if (isAdult) {
+      return {
+        branchType: "cpt",
+        title: "NG\u01AF\u1EDCI L\u1EDAN DHCB V\xC0O S\u1ED0C: LI\u1EC0U \u0110\u1EA6U B\u1EAET BU\u1ED8C D\xD9NG CAO PH\xC2N T\u1EEC (Ph\u1EE5 l\u1EE5c 6)",
+        recommendedFluid: "Cao Ph\xE2n T\u1EED: Dextran 40 ho\u1EB7c 6% HES 200 (10 - 15 ml/kg/h trong 1 gi\u1EDD)",
+        rateMlKgH: 15,
+        durationHours: 1,
+        reasoning: "Chu\u1EA9n Ph\u1EE5 l\u1EE5c 6 & M\u1EE5c B2.1.5 BYT 2023: B\u1EC7nh nh\xE2n ng\u01B0\u1EDDi l\u1EDBn c\xF3 DHCB \u0111ang truy\u1EC1n d\u1ECBch nh\u01B0ng xu\u1EA5t hi\u1EC7n s\u1ED1c (m\u1EA1ch nhanh nh\u1EB9 kh\xF3 b\u1EAFt, HA t\u1EE5t/k\u1EB9t, Hct t\u0103ng). B\u1EAET BU\u1ED8C d\xF9ng li\u1EC1u ch\u1ED1ng s\u1ED1c \u0111\u1EA7u ti\xEAn l\xE0 CAO PH\xC2N T\u1EEC 10 - 15 ml/kg/h trong 1 gi\u1EDD (kh\xF4ng b\xF9 l\u1EA1i d\u1ECBch tinh th\u1EC3 15 ml/kg/h do t\xEDnh th\u1EA5m th\xE0nh m\u1EA1ch \u0111\xE3 tho\xE1t d\u1ECBch n\u1EB7ng).",
+        warnings: [
+          "\u0110o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng ngay sau 1 gi\u1EDD truy\u1EC1n CPT.",
+          "N\u1EBFu ra s\u1ED1c: chuy\u1EC3n sang Ringer Lactate/NaCl 0.9% 10 ml/kg/h trong 2h -> 6 ml/kg/h x 2h -> 3 ml/kg/h x 5-7h -> 1.5 ml/kg/h x 12h.",
+          "N\u1EBFu kh\xF4ng c\u1EA3i thi\u1EC7n: CPT l\u1EA7n 2 li\u1EC1u 10 ml/kg/h trong 1 gi\u1EDD v\xE0 k\xEDch ho\u1EA1t L\u01B0u \u0111\u1ED3 Ph\u1EE5 l\u1EE5c 18."
+        ]
+      };
+    } else {
+      return {
+        branchType: "cpt",
+        title: "TR\u1EBA EM DHCB DI\u1EC4N TI\u1EBEN X\u1EA4U / V\xC0O S\u1ED0C (Ph\u1EE5 l\u1EE5c 4)",
+        recommendedFluid: "\u0110i\u1EC7n gi\u1EA3i 10 - 20 ml/kg/h x 1h (n\u1EBFu t\u1ED5ng d\u1ECBch \u2264 60 ml/kg) HO\u1EB6C CPT 10 - 20 ml/kg/h x 1h (n\u1EBFu t\u1ED5ng d\u1ECBch > 60 ml/kg)",
+        rateMlKgH: 15,
+        durationHours: 1,
+        reasoning: "Ph\u1EE5 l\u1EE5c 4 BYT 2023: N\u1EBFu m\u1EA1ch nhanh, HA t\u1EE5t ho\u1EB7c k\u1EB9t, Hct t\u0103ng: Ki\u1EC3m tra t\u1ED5ng d\u1ECBch truy\u1EC1n \u0111\xE3 nh\u1EADn: N\u1EBFu \u2264 60 ml/kg t\u0103ng t\u1ED1c \u0111\u1ED9 \u0111i\u1EC7n gi\u1EA3i 10 - 20 ml/kg/h x 1h; n\u1EBFu > 60 ml/kg chuy\u1EC3n sang Cao ph\xE2n t\u1EED 10 - 20 ml/kg/h x 1h. Sau \u0111\xF3 x\u1EED tr\xED ti\u1EBFp theo ph\xE1c \u0111\u1ED3 s\u1ED1c SXHD.",
+        warnings: [
+          "\u0110i\u1EC1u tr\u1ECB toan m\xE1u, xu\u1EA5t huy\u1EBFt, h\u1EA1 \u0111\u01B0\u1EDDng huy\u1EBFt, h\u1EA1 calci n\u1EBFu c\xF3.",
+          "Theo d\xF5i s\xE1t m\u1EA1ch, HA m\u1ED7i 15 - 30 ph\xFAt."
+        ]
+      };
+    }
+  }
   const isHctHigh = currentHct !== void 0 && currentHct >= 40;
   if ((isHctHigh || response === "refractory") && patient.severity !== "warning_signs") {
     const cptRate = isAdult ? 15 : 20;
@@ -1680,7 +1790,13 @@ function calculateBranchDecision(patient, effectiveWeightKg) {
 }
 function generateDengueCDSSPlan(patient, customDurations, customRates) {
   const ageGroup = classifyAgeGroup(patient.ageYears);
-  const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg, patient.heightCm);
+  const weightResult = calculateWeightAdjustment(
+    patient.ageYears,
+    patient.gender,
+    patient.actualWeightKg,
+    patient.heightCm,
+    patient.isPregnant3rdTrimester
+  );
   const effectiveWeight = weightResult.adjustedWeightKg;
   const { rows, totalVolumeMl, totalDurationHours, fluidInfo } = calculateFluidSchedule(
     patient,
@@ -1772,24 +1888,78 @@ function generateDengueCDSSPlan(patient, customDurations, customRates) {
       ruleCode: "ACUTE_LIVER_FAILURE_ALERT"
     });
   }
-  if (totalDurationHours > 24) {
+  if (patient.severity === "warning_signs") {
+    if (ageGroup === "child") {
+      if (totalDurationHours > 48) {
+        alerts.push({
+          id: "alert_prolonged_fluid_warning_child",
+          level: "danger",
+          title: "TH\u1EDCI GIAN TRUY\u1EC0N D\u1ECACH DHCB TR\u1EBA EM V\u01AF\u1EE2T QU\xC1 48 GI\u1EDC",
+          message: "Theo Ph\u1EE5 l\u1EE5c 4 Q\u0110 2760/BYT: Th\u1EDDi gian truy\u1EC1n d\u1ECBch DHCB tr\u1EBB em th\xF4ng th\u01B0\u1EDDng kh\xF4ng qu\xE1 24 - 48 gi\u1EDD. C\u1EA7n \u0111\xE1nh gi\xE1 k\u1EF9 nguy c\u01A1 qu\xE1 t\u1EA3i d\u1ECBch, tr\xE0n d\u1ECBch m\xE0ng ph\u1ED5i/m\xE0ng b\u1EE5ng g\xE2y suy h\xF4 h\u1EA5p.",
+          ruleCode: "FLUID_OVERLOAD_RISK"
+        });
+      }
+    } else {
+      if (totalDurationHours > 24) {
+        alerts.push({
+          id: "alert_prolonged_fluid_warning_adult",
+          level: "warning",
+          title: "TH\u1EDCI GIAN TRUY\u1EC0N D\u1ECACH DHCB V\u01AF\u1EE2T QU\xC1 24 GI\u1EDC (PH\u1EE4 L\u1EE4C 5 & 6)",
+          message: "Theo Ph\u1EE5 l\u1EE5c 5 & 6 Q\u0110 2760/BYT: Th\u1EDDi gian truy\u1EC1n d\u1ECBch DHCB thi\u1EBFu ni\xEAn/ng\u01B0\u1EDDi l\u1EDBn ch\u1EC9 t\u1EEB 12 - 24 gi\u1EDD. R\xE0 so\xE1t ng\u01B0ng d\u1ECBch ngay n\u1EBFu l\xE2m s\xE0ng \u1ED5n \u0111\u1ECBnh, m\u1EA1ch/HA b\xECnh th\u01B0\u1EDDng v\xE0 Hct \u1ED5n \u0111\u1ECBnh.",
+          ruleCode: "FLUID_OVERLOAD_RISK"
+        });
+      }
+    }
+  } else {
+    if (ageGroup === "adolescent") {
+      if (totalDurationHours > 24) {
+        alerts.push({
+          id: "alert_prolonged_shock_fluid_adolescent",
+          level: "warning",
+          title: "TH\u1EDCI GIAN CH\u1ED0NG S\u1ED0C THI\u1EBEU NI\xCAN V\u01AF\u1EE2T QU\xC1 24 GI\u1EDC (PH\u1EE4 L\u1EE4C 11)",
+          message: "Theo Ph\u1EE5 l\u1EE5c 11 Q\u0110 2760/BYT: Th\u1EDDi gian ch\u1ED1ng s\u1ED1c th\xF4ng th\u01B0\u1EDDng \u1EDF thi\u1EBFu ni\xEAn kh\xF4ng qu\xE1 24 gi\u1EDD. Ng\u1EEBng d\u1ECBch truy\u1EC1n khi h\u1EBFt s\u1ED1c 24 gi\u1EDD.",
+          ruleCode: "FLUID_OVERLOAD_RISK"
+        });
+      }
+    } else {
+      if (totalDurationHours > 48) {
+        alerts.push({
+          id: "alert_prolonged_shock_fluid_danger",
+          level: "danger",
+          title: "TH\u1EDCI GIAN CH\u1ED0NG S\u1ED0C V\u01AF\u1EE2T QU\xC1 48 GI\u1EDC (NGUY C\u01A0 QU\xC1 T\u1EA2I C\u1EA4P)",
+          message: "Theo Q\u0110 2760/BYT: Th\u1EDDi gian ch\u1ED1ng s\u1ED1c th\xF4ng th\u01B0\u1EDDng kh\xF4ng qu\xE1 24 - 48 gi\u1EDD. B\u1EAFt bu\u1ED9c ki\u1EC3m tra CVP, si\xEAu \xE2m m\xE0ng ph\u1ED5i/m\xE0ng b\u1EE5ng, ran \u1EA9m ph\u1ED5i v\xE0 \xE1p d\u1EE5ng ti\xEAu chu\u1EA9n ng\u01B0ng d\u1ECBch.",
+          ruleCode: "FLUID_OVERLOAD_RISK"
+        });
+      } else if (totalDurationHours > 24) {
+        alerts.push({
+          id: "alert_prolonged_shock_fluid_monitor",
+          level: "info",
+          title: "TH\u1EDCI GIAN CH\u1ED0NG S\u1ED0C > 24 GI\u1EDC (R\xC0 SO\xC1T CAI D\u1ECACH)",
+          message: "Quy chu\u1EA9n BYT: Ng\u1EEBng d\u1ECBch truy\u1EC1n khi h\u1EBFt s\u1ED1c 24 gi\u1EDD (t\u1ED5ng th\u1EDDi gian 24 - 48 gi\u1EDD). N\u1EBFu huy\u1EBFt \u0111\u1ED9ng \u1ED5n \u0111\u1ECBnh v\xE0 Hct b\xECnh th\u01B0\u1EDDng, chu\u1EA9n b\u1ECB k\u1EBF ho\u1EA1ch ng\u01B0ng d\u1ECBch.",
+          ruleCode: "FLUID_MONITOR_24H"
+        });
+      }
+    }
+  }
+  if (patient.dayOfIllness && patient.dayOfIllness >= 6) {
     alerts.push({
-      id: "alert_prolonged_fluid",
+      id: "alert_reabsorption_phase",
       level: "warning",
-      title: "T\u1ED4NG TH\u1EDCI GIAN TRUY\u1EC0N D\u1ECACH > 24 GI\u1EDC",
-      message: "Nguy c\u01A1 t\xE1i h\u1EA5p thu d\u1ECBch l\xF2ng m\u1EA1ch g\xE2y ph\xF9 ph\u1ED5i c\u1EA5p ho\u1EB7c suy h\xF4 h\u1EA5p do tr\xE0n d\u1ECBch m\xE0ng ph\u1ED5i/m\xE0ng b\u1EE5ng. R\xE0 so\xE1t gi\u1EA3m t\u1ED1c \u0111\u1ED9 v\xE0 cai d\u1ECBch s\u1EDBm.",
-      ruleCode: "FLUID_OVERLOAD_RISK"
+      title: "B\u1EC6NH NH\xC2N NG\xC0Y TH\u1EE8 6 - 7: GIAI \u0110O\u1EA0N T\xC1I H\u1EA4P THU D\u1ECACH T\u1EF0 NHI\xCAN",
+      message: `B\u1EC7nh nh\xE2n \u1EDF ng\xE0y th\u1EE9 ${patient.dayOfIllness} c\u1EE7a b\u1EC7nh. \u0110\xE2y l\xE0 giai \u0111o\u1EA1n h\u1ED3i ph\u1EE5c v\xE0 d\u1ECBch gian b\xE0o b\u1EAFt \u0111\u1EA7u t\xE1i h\u1EA5p thu \u1ED3 \u1EA1t tr\u1EDF l\u1EA1i l\xF2ng m\u1EA1ch (k\xE9o d\xE0i 48-72h). C\u1EA7n gi\u1EA3m t\u1ED1c \u0111\u1ED9 ho\u1EB7c ng\u01B0ng truy\u1EC1n d\u1ECBch ngay khi l\xE2m s\xE0ng \u1ED5n \u0111\u1ECBnh \u0111\u1EC3 ng\u0103n ng\u1EEBa ph\xF9 ph\u1ED5i c\u1EA5p.`,
+      ruleCode: "REABSORPTION_PHASE_DAY6_7"
     });
   }
   const dateStr = (/* @__PURE__ */ new Date()).toLocaleDateString("vi-VN");
   const soapLines = [
     `--- K\u1EBE HO\u1EA0CH \u0110I\u1EC0U TR\u1ECA & CH\u1ED0NG S\u1ED0C SXHD DENGUE (CDSS BYT 2023) [${dateStr}] ---`,
-    `B\u1EC7nh nh\xE2n: ${patient.ageYears} tu\u1ED5i, Gi\u1EDBi t\xEDnh: ${patient.gender === "male" ? "Nam" : "N\u1EEF"}`,
+    `B\u1EC7nh nh\xE2n: ${patient.ageYears} tu\u1ED5i, Gi\u1EDBi t\xEDnh: ${patient.gender === "male" ? "Nam" : "N\u1EEF"}${patient.dayOfIllness ? ` | Ng\xE0y b\u1EC7nh: Ng\xE0y ${patient.dayOfIllness}` : ""}`,
     `Ph\xE2n \u0111\u1ED9: ${patient.severity === "warning_signs" ? "SXHD c\xF3 D\u1EA5u hi\u1EC7u c\u1EA3nh b\xE1o" : patient.severity === "shock" ? "S\u1ED1c SXHD" : "S\u1ED1c SXHD n\u1EB7ng nguy k\u1ECBch"}`,
     `C\xE2n n\u1EB7ng th\u1EF1c: ${patient.actualWeightKg} kg | C\xE2n n\u1EB7ng chu\u1EA9n/IBW: ${weightResult.standardWeightKg} kg | C\xE2n n\u1EB7ng t\xEDnh d\u1ECBch: ${effectiveWeight} kg`,
     ...weightResult.isObese ? [
       patient.ageYears >= 16 ? `[L\u01AFU \xDD HI\u1EC6U CH\u1EC8NH NG\u01AF\u1EDCI L\u1EDAN]: \u0110\xE3 hi\u1EC7u ch\u1EC9nh theo Ph\u1EE5 l\u1EE5c 9 BYT (BMI ${weightResult.bmi ?? ""} kg/m\xB2 \u2265 25: IBW = ${weightResult.idealWeightKg} kg, CN hi\u1EC7u ch\u1EC9nh = ${effectiveWeight} kg) \u0111\u1EC3 tr\xE1nh qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n.` : `[L\u01AFU \xDD HI\u1EC6U CH\u1EC8NH TR\u1EBA EM]: \u0110\xE3 hi\u1EC7u ch\u1EC9nh theo B\u1EA3ng CDC 2014 (${effectiveWeight} kg) cho tr\u1EBB d\u01B0 c\xE2n/b\xE9o ph\xEC. C\u1EA7n theo d\xF5i s\xE1t CVP.`
     ] : [],
+    ...patient.isPregnant3rdTrimester ? [`[L\u01AFU \xDD PNCT 3 TH\xC1NG CU\u1ED0I]: \u0110\xE3 hi\u1EC7u ch\u1EC9nh theo M\u1EE5c C.2.6 Q\u0110 2760/BYT (C\xE2n n\u1EB7ng tr\u01B0\u1EDBc mang thai + 1 kg m\u1ED7i th\xE1ng 3 th\xE1ng cu\u1ED1i = ${effectiveWeight} kg).`] : [],
     ...patient.currentHctPercent ? [`Hct hi\u1EC7n t\u1EA1i: ${patient.currentHctPercent}% | \u0110\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng: ${patient.clinicalResponse || "Theo d\xF5i"}`] : [],
     `
 1. NH\xC1NH X\u1EEC TR\xCD L\xC2M S\xC0NG: ${branchDecision.title}`,
@@ -1818,7 +1988,10 @@ function generateDengueCDSSPlan(patient, customDurations, customRates) {
     `  \u2022 G\xF3i ABCS: Acidosis (Bicarbonate 4.2% ${Math.round(2 * effectiveWeight)} ml); Calcium (Calci clorua 10% 2-5ml); Sugar (Dextrose 30% ${Math.round(1.5 * effectiveWeight)} ml).`,
     ...nacProtocol.indicated ? [`  \u2022 Ph\xE1c \u0111\u1ED3 NAC Suy gan: T\u1EA5n c\xF4ng 150mg/kg (1h) -> 50mg/kg (4h) -> 100mg/kg (16h) -> Duy tr\xEC 6.25mg/kg/h. Tuy\u1EC7t \u0111\u1ED1i TR\xC1NH Ringer Lactate & Paracetamol.`] : [],
     `
-6. \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N: \u0110o Hct tr\u01B0\u1EDBc m\u1ED7i l\u1EA7n gi\u1EA3m t\u1ED1c \u0111\u1ED9; Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1.0 ml/kg/h; B\xE1o BS ngay n\u1EBFu n\u01B0\u1EDBc ti\u1EC3u < 0.5 ml/kg/h ho\u1EB7c ran \u1EA9m ph\u1ED5i.`
+6. TI\xCAU CHU\u1EA8N NG\u01AFNG TRUY\u1EC0N D\u1ECACH (TRANG 17 Q\u0110 2760/BYT):`,
+    ...DENGUE_DISCONTINUATION_CHECKLIST.map((c) => `  \u2022 ${c}`),
+    `
+7. \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N: \u0110o Hct tr\u01B0\u1EDBc m\u1ED7i l\u1EA7n gi\u1EA3m t\u1ED1c \u0111\u1ED9; Duy tr\xEC n\u01B0\u1EDBc ti\u1EC3u \u2265 0.5 - 1.0 ml/kg/h; B\xE1o BS ngay n\u1EBFu n\u01B0\u1EDBc ti\u1EC3u < 0.5 ml/kg/h ho\u1EB7c ran \u1EA9m ph\u1ED5i.`
   ];
   return {
     patient,
@@ -1840,6 +2013,7 @@ function generateDengueCDSSPlan(patient, customDurations, customRates) {
     abcsChecklist,
     alerts,
     nursingInstructions: DENGUE_NURSING_CHECKLIST,
+    discontinuationChecklist: DENGUE_DISCONTINUATION_CHECKLIST,
     soapExportText: soapLines.join("\n"),
     createdAt: (/* @__PURE__ */ new Date()).toISOString()
   };
@@ -1848,6 +2022,45 @@ function generateDengueCDSSPlan(patient, customDurations, customRates) {
 // dengue/dengue-ui.ts
 var CLINICAL_SAMPLE_CASES = [
   // 1. Nhóm Bù Dịch Ban Đầu & Phân Tầng Thể Trạng
+  {
+    id: "pregnant-3rd-trimester",
+    category: "initial",
+    icon: "fa-solid fa-person-breastfeeding",
+    label: "Thai Ph\u1EE5 28T 3 Th\xE1ng Cu\u1ED1i (58kg)",
+    tag: "M\u1EE5c C.2.6 BYT",
+    input: {
+      ageYears: 28,
+      gender: "female",
+      actualWeightKg: 58,
+      heightCm: 158,
+      dayOfIllness: 4,
+      isPregnant3rdTrimester: true,
+      severity: "warning_signs",
+      clinicalResponse: "good",
+      currentHctPercent: 39,
+      baselineHctPercent: 33
+    },
+    clinicalHighlight: "Ph\u1EE5 n\u1EEF mang thai 3 th\xE1ng cu\u1ED1i: Hi\u1EC7u ch\u1EC9nh c\xE2n n\u1EB7ng = C\xE2n tr\u01B0\u1EDBc mang thai + 1 kg/th\xE1ng 3 th\xE1ng cu\u1ED1i (M\u1EE5c C.2.6)."
+  },
+  {
+    id: "reabsorption-day6",
+    category: "initial",
+    icon: "fa-solid fa-triangle-exclamation",
+    label: "Nam 22T Ng\xE0y 6 (T\xE1i H\u1EA5p Thu)",
+    tag: "Trang 17 BYT",
+    input: {
+      ageYears: 22,
+      gender: "male",
+      actualWeightKg: 60,
+      heightCm: 168,
+      dayOfIllness: 6,
+      severity: "warning_signs",
+      clinicalResponse: "good",
+      currentHctPercent: 41,
+      baselineHctPercent: 40
+    },
+    clinicalHighlight: "B\u1EC7nh nh\xE2n ng\xE0y 6: Giai \u0111o\u1EA1n t\xE1i h\u1EA5p thu t\u1EF1 nhi\xEAn (trang 16-17). C\u1EA7n r\xE0 so\xE1t ng\u01B0ng d\u1ECBch ngay tr\xE1nh ph\xF9 ph\u1ED5i c\u1EA5p."
+  },
   {
     id: "child-obese",
     category: "initial",
@@ -2271,10 +2484,31 @@ var DengueCDSSController = class {
                     </select>
                   </div>
 
-                  <!-- Gi\u1EDD b\u1EAFt \u0111\u1EA7u truy\u1EC1n -->
-                  <div class="cdss-form-group">
-                    <label class="cdss-form-label" for="input-starttime">M\u1ED1c Gi\u1EDD B\u1EAFt \u0110\u1EA7u Truy\u1EC1n</label>
-                    <input type="time" id="input-starttime" value="${curTime}" class="cdss-input" />
+                  <!-- Ng\xE0y th\u1EE9 c\u1EE7a b\u1EC7nh & M\u1ED1c Gi\u1EDD B\u1EAFt \u0110\u1EA7u Truy\u1EC1n -->
+                  <div class="cdss-form-row">
+                    <div class="cdss-form-group">
+                      <label class="cdss-form-label" for="input-day-of-illness">
+                        <span>Ng\xE0y Th\u1EE9 B\u1EC7nh</span>
+                        <small style="font-size:0.68rem; color:var(--cdss-text-muted);">(1 - 14 ng\xE0y)</small>
+                      </label>
+                      <div class="cdss-input-group">
+                        <input type="number" id="input-day-of-illness" min="1" max="14" value="4" step="1" placeholder="4" class="cdss-input" />
+                        <span class="cdss-input-suffix">ng\xE0y</span>
+                      </div>
+                    </div>
+
+                    <div class="cdss-form-group">
+                      <label class="cdss-form-label" for="input-starttime">M\u1ED1c Gi\u1EDD B\u1EAFt \u0110\u1EA7u</label>
+                      <input type="time" id="input-starttime" value="${curTime}" class="cdss-input" />
+                    </div>
+                  </div>
+
+                  <!-- T\xF9y ch\u1ECDn Ph\u1EE5 n\u1EEF mang thai 3 th\xE1ng cu\u1ED1i (M\u1EE5c C.2.6) -->
+                  <div class="cdss-form-group" id="pregnant-checkbox-group" style="margin-top: -0.25rem;">
+                    <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.76rem; font-weight:700; color:var(--cdss-primary); cursor:pointer;">
+                      <input type="checkbox" id="input-pregnant-3rd" style="width:16px; height:16px; accent-color:var(--cdss-primary);" />
+                      <span><i class="fa-solid fa-person-breastfeeding"></i> Ph\u1EE5 n\u1EEF mang thai 3 th\xE1ng cu\u1ED1i (M\u1EE5c C.2.6 BYT)</span>
+                    </label>
                   </div>
                 </form>
               </div>
@@ -2674,6 +2908,15 @@ var DengueCDSSController = class {
     if (bleedCheckbox) {
       bleedCheckbox.checked = !!sample.input.massiveBleeding;
     }
+    if (sample.input.dayOfIllness !== void 0) {
+      this.setInputValue("input-day-of-illness", sample.input.dayOfIllness.toString());
+    } else {
+      this.setInputValue("input-day-of-illness", "4");
+    }
+    const pregCheckbox = document.getElementById("input-pregnant-3rd");
+    if (pregCheckbox) {
+      pregCheckbox.checked = !!sample.input.isPregnant3rdTrimester;
+    }
     if (sample.category === "refractory") {
       this.activeWorkspaceMode = "refractory_suite";
       if (sample.input.clinicalResponse === "refractory_hct_high") {
@@ -2742,11 +2985,15 @@ var DengueCDSSController = class {
     const massiveBleeding = document.getElementById("input-bleeding")?.checked || false;
     const liverEnzymesAST_ALT = parseFloat(document.getElementById("input-ast-alt")?.value) || void 0;
     const plateletsCount = parseFloat(document.getElementById("input-platelets")?.value) || void 0;
+    const dayOfIllness = parseFloat(document.getElementById("input-day-of-illness")?.value) || void 0;
+    const isPregnant3rdTrimester = document.getElementById("input-pregnant-3rd")?.checked || false;
     return {
       ageYears: age,
       gender,
       actualWeightKg: weight,
       heightCm: height,
+      dayOfIllness,
+      isPregnant3rdTrimester,
       severity,
       startTime,
       clinicalResponse: response,
@@ -2782,12 +3029,12 @@ var DengueCDSSController = class {
     if (isAdult) {
       const hasHeight = patient.heightCm && patient.heightCm >= 100;
       const bmiStr = weightResult.bmi !== void 0 ? `${weightResult.bmi} kg/m\xB2` : "Ch\u01B0a c\xF3";
-      const bmiStatusText = !hasHeight ? "C\u1EA7n nh\u1EADp Chi\u1EC1u cao" : isObese ? `BMI ${weightResult.bmi} (\u2265 25: Th\u1EEBa C\xE2n / B\xE9o Ph\xEC)` : `BMI ${weightResult.bmi} (< 25: Th\u1EC3 Tr\u1EA1ng Chu\u1EA9n)`;
-      const bmiBadgeClass = !hasHeight ? "cdss-weight-status-badge--warning" : isObese ? "cdss-weight-status-badge--obese" : "cdss-weight-status-badge--normal";
+      const bmiStatusText = patient.isPregnant3rdTrimester ? "PNCT 3 Th\xE1ng Cu\u1ED1i (M\u1EE5c C.2.6)" : !hasHeight ? "C\u1EA7n nh\u1EADp Chi\u1EC1u cao" : isObese ? `BMI ${weightResult.bmi} (\u2265 25: Th\u1EEBa C\xE2n / B\xE9o Ph\xEC)` : `BMI ${weightResult.bmi} (< 25: Th\u1EC3 Tr\u1EA1ng Chu\u1EA9n)`;
+      const bmiBadgeClass = patient.isPregnant3rdTrimester ? "cdss-weight-status-badge--warning" : !hasHeight ? "cdss-weight-status-badge--warning" : isObese ? "cdss-weight-status-badge--obese" : "cdss-weight-status-badge--normal";
       box.innerHTML = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:4px;">
           <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); display:flex; align-items:center; gap:4px;">
-            <i class="fa-solid fa-scale-balanced text-primary"></i> C\xE2n N\u1EB7ng T\xEDnh D\u1ECBch (Ph\u1EE5 L\u1EE5c 9 BYT)
+            <i class="fa-solid fa-scale-balanced text-primary"></i> ${patient.isPregnant3rdTrimester ? "C\xE2n N\u1EB7ng PNCT 3 Th\xE1ng Cu\u1ED1i (M\u1EE5c C.2.6)" : "C\xE2n N\u1EB7ng T\xEDnh D\u1ECBch (Ph\u1EE5 L\u1EE5c 9 BYT)"}
           </span>
           <span class="cdss-weight-status-badge ${bmiBadgeClass}" style="font-size:0.7rem; font-weight:700;">
             ${bmiStatusText}
@@ -3650,6 +3897,50 @@ var DengueCDSSController = class {
     }).join("")}
         </div>
       </section>
+
+      <!-- B\u1EA2NG KI\u1EC2M TI\xCAU CHU\u1EA8N NG\u01AFNG TRUY\u1EC0N D\u1ECACH (TRANG 17 Q\u0110 2760/BYT) -->
+      <section class="cdss-table-card" style="margin-top: 1.25rem; border: 1.5px solid rgba(13, 148, 136, 0.35);">
+        <div class="cdss-table-header-wrap" style="background: rgba(13, 148, 136, 0.05); padding: 0.85rem 1rem; border-bottom: 1px solid var(--cdss-border);">
+          <div class="cdss-table-title-area">
+            <h2 class="cdss-table-title" style="color: var(--cdss-primary); font-size: 0.95rem;">
+              <i class="fa-solid fa-clipboard-check"></i> Ti\xEAu Chu\u1EA9n Ng\u01B0ng Truy\u1EC1n D\u1ECBch (Trang 17 Q\u0110 2760/Q\u0110-BYT)
+              <span class="cdss-table-title-badge" style="background: rgba(13, 148, 136, 0.15); color: var(--cdss-primary);">
+                An To\xE0n Cai D\u1ECBch
+              </span>
+            </h2>
+            <p class="cdss-table-desc" style="color: var(--cdss-text-muted); font-size: 0.78rem;">
+              C\u1EA7n r\xE0 so\xE1t ng\u01B0ng truy\u1EC1n d\u1ECBch s\u1EDBm nh\u1EA5t c\xF3 th\u1EC3 khi \u0111\u1EA1t c\xE1c ti\xEAu chu\u1EA9n d\u01B0\u1EDBi \u0111\xE2y \u0111\u1EC3 <strong>ph\xF2ng ng\u1EEBa ph\xF9 ph\u1ED5i c\u1EA5p v\xE0 tr\xE0n d\u1ECBch \u0111a m\xE0ng</strong>.
+            </p>
+          </div>
+          <button type="button" id="btn-copy-discontinue-checklist" class="cdss-btn-copy-all" style="background: var(--cdss-surface); border: 1px solid var(--cdss-border); color: var(--cdss-text);" title="Copy b\u1EA3ng ki\u1EC3m ng\u01B0ng d\u1ECBch v\xE0o EMR" aria-label="Copy B\u1EA3ng Ki\u1EC3m Ng\u01B0ng D\u1ECBch">
+            <i class="fa-regular fa-copy"></i>
+            <span>Copy B\u1EA3ng Ki\u1EC3m</span>
+          </button>
+        </div>
+
+        <div style="padding: 1rem;">
+          <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+            ${(plan.discontinuationChecklist || DENGUE_DISCONTINUATION_CHECKLIST).map((item, idx) => `
+              <label style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0.8rem; background: var(--cdss-surface-alt); border: 1px solid var(--cdss-border-subtle); border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+                <input type="checkbox" class="discontinue-chk-item" data-idx="${idx}" style="margin-top: 0.2rem; width: 17px; height: 17px; accent-color: var(--cdss-primary);" />
+                <span style="font-size: 0.82rem; line-height: 1.45; color: var(--cdss-text); font-weight: 500;">
+                  ${item.replace(/^(Huyết động ổn định|Hct giảm|Lượng nước tiểu|Đã qua 24 giờ|Bệnh nhân bước vào|DỪNG DỊCH NGAY LẬP TỨC)/, "<strong>$1</strong>")}
+                </span>
+              </label>
+            `).join("")}
+          </div>
+
+          <div id="discontinue-status-bar" style="margin-top: 0.9rem; padding: 0.75rem 1rem; border-radius: 8px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; color: #b45309;">
+              <i class="fa-solid fa-triangle-exclamation" style="font-size: 1rem;"></i>
+              <span id="discontinue-status-text">\u0110ang duy tr\xEC truy\u1EC1n d\u1ECBch theo b\u1EADc ph\xE1c \u0111\u1ED3. \u0110\xE1nh gi\xE1 l\u1EA1i l\xE2m s\xE0ng v\xE0 Hct tr\u01B0\u1EDBc m\u1ED7i l\u1EA7n gi\u1EA3m li\u1EC1u.</span>
+            </div>
+            <span id="discontinue-count-badge" style="font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; background: rgba(245, 158, 11, 0.2); color: #b45309;">
+              0/6 Ti\xEAu chu\u1EA9n
+            </span>
+          </div>
+        </div>
+      </section>
     `;
     const selects = container.querySelectorAll(".cdss-duration-select");
     selects.forEach((sel) => {
@@ -3721,6 +4012,69 @@ var DengueCDSSController = class {
         this.customRates = {};
         this.recalculate();
         this.showToast("\u0110\xE3 kh\xF4i ph\u1EE5c th\xF4ng s\u1ED1 th\u1EDDi l\u01B0\u1EE3ng v\xE0 t\u1ED1c \u0111\u1ED9 chu\u1EA9n theo B\u1ED9 Y T\u1EBF!");
+      });
+    }
+    const copyDiscontinueBtn = container.querySelector("#btn-copy-discontinue-checklist");
+    if (copyDiscontinueBtn) {
+      copyDiscontinueBtn.addEventListener("click", () => {
+        const items = plan.discontinuationChecklist || DENGUE_DISCONTINUATION_CHECKLIST;
+        const checklistText = [
+          `--- TI\xCAU CHU\u1EA8N NG\u01AFNG TRUY\u1EC0N D\u1ECACH SXHD (TRANG 17 Q\u0110 2760/Q\u0110-BYT) ---`,
+          ...items.map((item, idx) => `[ ] ${idx + 1}. ${item}`)
+        ].join("\n");
+        this.copyToClipboard(checklistText, "\u0110\xE3 copy B\u1EA3ng ki\u1EC3m Ti\xEAu chu\u1EA9n Ng\u01B0ng Truy\u1EC1n D\u1ECBch v\xE0o EMR!");
+        const icon = copyDiscontinueBtn.querySelector("i");
+        if (icon) {
+          icon.className = "fa-solid fa-check text-success";
+          copyDiscontinueBtn.classList.add("copied");
+          setTimeout(() => {
+            icon.className = "fa-regular fa-copy";
+            copyDiscontinueBtn.classList.remove("copied");
+          }, 1500);
+        }
+      });
+    }
+    const discontinueCheckboxes = container.querySelectorAll(".discontinue-chk-item");
+    const statusBar = container.querySelector("#discontinue-status-bar");
+    const statusText = container.querySelector("#discontinue-status-text");
+    const countBadge = container.querySelector("#discontinue-count-badge");
+    if (discontinueCheckboxes.length > 0 && statusBar && statusText && countBadge) {
+      discontinueCheckboxes.forEach((chk) => {
+        chk.addEventListener("change", () => {
+          let checkedCount = 0;
+          let isDangerChecked = false;
+          discontinueCheckboxes.forEach((c) => {
+            if (c.checked) {
+              checkedCount++;
+              if (c.getAttribute("data-idx") === "5") {
+                isDangerChecked = true;
+              }
+            }
+          });
+          countBadge.textContent = `${checkedCount}/${discontinueCheckboxes.length} Ti\xEAu chu\u1EA9n`;
+          if (isDangerChecked) {
+            statusBar.style.background = "rgba(239, 68, 68, 0.12)";
+            statusBar.style.borderColor = "rgba(239, 68, 68, 0.4)";
+            statusText.style.color = "var(--cdss-danger)";
+            countBadge.style.background = "rgba(239, 68, 68, 0.25)";
+            countBadge.style.color = "var(--cdss-danger)";
+            statusText.innerHTML = "<strong>C\u1EA2NH B\xC1O NGUY C\u01A0 QU\xC1 T\u1EA2I:</strong> D\u1EEBng ngay truy\u1EC1n d\u1ECBch! Ki\u1EC3m tra ran \u1EA9m ph\u1ED5i, \u0111o CVP, si\xEAu \xE2m m\xE0ng ph\u1ED5i v\xE0 c\xE2n nh\u1EAFc ch\u1EC9 \u0111\u1ECBnh Furosemid.";
+          } else if (checkedCount >= 4) {
+            statusBar.style.background = "rgba(16, 185, 129, 0.12)";
+            statusBar.style.borderColor = "rgba(16, 185, 129, 0.4)";
+            statusText.style.color = "#047857";
+            countBadge.style.background = "rgba(16, 185, 129, 0.25)";
+            countBadge.style.color = "#047857";
+            statusText.innerHTML = "<strong>\u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N AN TO\xC0N \u0110\u1EC2 NG\u01AFNG D\u1ECACH:</strong> Huy\u1EBFt \u0111\u1ED9ng v\xE0 Hct \u1ED5n \u0111\u1ECBnh, n\u01B0\u1EDBc ti\u1EC3u t\u1ED1t. Ti\u1EBFn h\xE0nh kh\xF3a d\u1ECBch ho\u1EB7c duy tr\xEC KVO theo d\xF5i.";
+          } else {
+            statusBar.style.background = "rgba(245, 158, 11, 0.08)";
+            statusBar.style.borderColor = "rgba(245, 158, 11, 0.3)";
+            statusText.style.color = "#b45309";
+            countBadge.style.background = "rgba(245, 158, 11, 0.2)";
+            countBadge.style.color = "#b45309";
+            statusText.textContent = "\u0110ang duy tr\xEC truy\u1EC1n d\u1ECBch theo b\u1EADc ph\xE1c \u0111\u1ED3. \u0110\xE1nh gi\xE1 l\u1EA1i l\xE2m s\xE0ng v\xE0 Hct tr\u01B0\u1EDBc m\u1ED7i l\u1EA7n gi\u1EA3m li\u1EC1u.";
+          }
+        });
       });
     }
   }

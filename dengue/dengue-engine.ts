@@ -31,7 +31,8 @@ import {
   DENGUE_REFRACTORY_SCENARIOS,
   DENGUE_COLLOID_METADATA,
   DENGUE_COLLOID_TEMPLATES,
-  DENGUE_DE_ESCALATION_CHECKLIST
+  DENGUE_DE_ESCALATION_CHECKLIST,
+  DENGUE_DISCONTINUATION_CHECKLIST
 } from './dengue-data';
 
 /**
@@ -59,10 +60,35 @@ export function calculateWeightAdjustment(
   ageYears: number,
   gender: Gender,
   actualWeightKg: number,
-  heightCm?: number
+  heightCm?: number,
+  isPregnant3rdTrimester?: boolean
 ): WeightCalculationResult {
   const isAdult = ageYears >= 16;
   const stdWeight = getCDCStandardWeight(Math.min(16, ageYears), gender);
+
+  // 0. PHỤ NỮ MANG THAI 3 THÁNG CUỐI — Áp dụng Mục C.2.6 (Trang 28 QĐ 2760/QĐ-BYT)
+  if (isPregnant3rdTrimester && gender === 'female') {
+    const effectiveHeight = heightCm && heightCm >= 100 ? heightCm : 155;
+    const ibwRaw = 45.5 + 0.91 * (effectiveHeight - 152.4);
+    const ibw = Math.round(ibwRaw * 10) / 10;
+    const adjBwRaw = ibwRaw + 0.4 * (actualWeightKg - ibwRaw);
+    const adjBw = Math.round(adjBwRaw * 10) / 10;
+    const adjustedWeightKg = Math.max(ibw, Math.min(actualWeightKg, adjBw));
+    const tableRounded = Math.round(adjustedWeightKg);
+
+    return {
+      actualWeightKg,
+      standardWeightKg: ibw,
+      isObese: true,
+      ratioToStandard: Math.round((actualWeightKg / ibw) * 100) / 100,
+      adjustedWeightKg,
+      idealWeightKg: ibw,
+      isAdultMethod: true,
+      tableRoundedWeightKg: tableRounded,
+      formulaNote: `Phụ nữ mang thai 3 tháng cuối: Áp dụng Cân Nặng Hiệu Chỉnh theo Mục C.2.6 (Trang 28 QĐ 2760/BYT) với CN thực lúc nhập viện ${actualWeightKg} kg ➜ CN hiệu chỉnh = ${adjustedWeightKg} kg (IBW = ${ibw} kg).`,
+      warningText: `Cảnh báo PNCT 3 tháng cuối: Bắt buộc dùng Cân Nặng Hiệu Chỉnh ${adjustedWeightKg} kg để tính bù dịch chống sốc theo Mục C.2.6 BYT 2023 nhằm phòng ngừa quá tải tuần hoàn, phù phổi cấp và theo dõi sát tim thai.`
+    };
+  }
 
   // 1. NGƯỜI LỚN (>= 16 TUỔI) — Áp dụng Phụ lục 9 QĐ 2760/QĐ-BYT
   if (isAdult) {
@@ -285,8 +311,12 @@ export function calculateFluidSchedule(
       bottlePrefix = `Duy trì đường truyền`;
     }
 
-    const contraNote = fluidInfo.isContraindicatedRL ? ' - Cấm RL do men gan tăng' : '';
-    const emrOrderText = `${bottlePrefix} ${fluidInfo.name} (TTM) tốc độ ${pumpRateMlH} ml/h (tổng dịch ~ ${rate}ml/kg/h x ${duration}h${contraNote})`;
+    const isColloidStage = tpl.fluidKind === 'colloid' || tpl.stageName.includes('Cao Phân Tử') || tpl.stageName.includes('CPT');
+    const stageFluidName = isColloidStage ? 'Cao Phân Tử (Dextran 40 / 6% HES 200)' : fluidInfo.name;
+    const contraNote = (!isColloidStage && fluidInfo.isContraindicatedRL) ? ' - Cấm RL do men gan tăng' : '';
+    const emrOrderText = isColloidStage
+      ? `${bottlePrefix} Cao Phân Tử Dextran 40 / 6% HES 200 (TTM) tốc độ ${pumpRateMlH} ml/h (tổng dịch ~ ${rate}ml/kg/h x ${duration}h - CPT)`
+      : `${bottlePrefix} ${fluidInfo.name} (TTM) tốc độ ${pumpRateMlH} ml/h (tổng dịch ~ ${rate}ml/kg/h x ${duration}h${contraNote})`;
 
     prevRemainingMl = remainingAfterStep;
     prevBottleIdx = bottlesToHang > 0 ? currentBottleIdx : prevBottleIdx;
@@ -294,7 +324,7 @@ export function calculateFluidSchedule(
     rows.push({
       stepIndex: idx + 1,
       stageName: tpl.stageName,
-      fluidName: fluidInfo.name,
+      fluidName: stageFluidName,
       durationHours: duration,
       rateMlKgH: rate,
       pumpRateMlH,
@@ -930,7 +960,41 @@ export function calculateBranchDecision(
     };
   }
 
-  // 2. Nhánh Thất Thoát Huyết Tương Nặng - Đổi Cao Phân Tử
+  // 2. Nhánh SXHD Có Dấu Hiệu Cảnh Báo Diễn Tiến Vào Sốc (Phụ lục 4 & 6)
+  if (patient.severity === 'warning_signs' && (response === 'refractory' || response === 'worsened')) {
+    if (isAdult) {
+      // Phụ lục 6 & Mục B2.1.5: Người lớn DHCB có biểu hiện sốc -> Liều chống sốc đầu tiên BẮT BUỘC là Cao Phân Tử 10 - 15 ml/kg/h!
+      return {
+        branchType: 'cpt',
+        title: 'NGƯỜI LỚN DHCB VÀO SỐC: LIỀU ĐẦU BẮT BUỘC DÙNG CAO PHÂN TỬ (Phụ lục 6)',
+        recommendedFluid: 'Cao Phân Tử: Dextran 40 hoặc 6% HES 200 (10 - 15 ml/kg/h trong 1 giờ)',
+        rateMlKgH: 15,
+        durationHours: 1,
+        reasoning: 'Chuẩn Phụ lục 6 & Mục B2.1.5 BYT 2023: Bệnh nhân người lớn có DHCB đang truyền dịch nhưng xuất hiện sốc (mạch nhanh nhẹ khó bắt, HA tụt/kẹt, Hct tăng). BẮT BUỘC dùng liều chống sốc đầu tiên là CAO PHÂN TỬ 10 - 15 ml/kg/h trong 1 giờ (không bù lại dịch tinh thể 15 ml/kg/h do tính thấm thành mạch đã thoát dịch nặng).',
+        warnings: [
+          'Đo lại Hct tại giường ngay sau 1 giờ truyền CPT.',
+          'Nếu ra sốc: chuyển sang Ringer Lactate/NaCl 0.9% 10 ml/kg/h trong 2h -> 6 ml/kg/h x 2h -> 3 ml/kg/h x 5-7h -> 1.5 ml/kg/h x 12h.',
+          'Nếu không cải thiện: CPT lần 2 liều 10 ml/kg/h trong 1 giờ và kích hoạt Lưu đồ Phụ lục 18.'
+        ]
+      };
+    } else {
+      // Trẻ em DHCB diễn tiến xấu (Phụ lục 4)
+      return {
+        branchType: 'cpt',
+        title: 'TRẺ EM DHCB DIỄN TIẾN XẤU / VÀO SỐC (Phụ lục 4)',
+        recommendedFluid: 'Điện giải 10 - 20 ml/kg/h x 1h (nếu tổng dịch ≤ 60 ml/kg) HOẶC CPT 10 - 20 ml/kg/h x 1h (nếu tổng dịch > 60 ml/kg)',
+        rateMlKgH: 15,
+        durationHours: 1,
+        reasoning: 'Phụ lục 4 BYT 2023: Nếu mạch nhanh, HA tụt hoặc kẹt, Hct tăng: Kiểm tra tổng dịch truyền đã nhận: Nếu ≤ 60 ml/kg tăng tốc độ điện giải 10 - 20 ml/kg/h x 1h; nếu > 60 ml/kg chuyển sang Cao phân tử 10 - 20 ml/kg/h x 1h. Sau đó xử trí tiếp theo phác đồ sốc SXHD.',
+        warnings: [
+          'Điều trị toan máu, xuất huyết, hạ đường huyết, hạ calci nếu có.',
+          'Theo dõi sát mạch, HA mỗi 15 - 30 phút.'
+        ]
+      };
+    }
+  }
+
+  // 3. Nhánh Thất Thoát Huyết Tương Nặng - Đổi Cao Phân Tử
   const isHctHigh = currentHct !== undefined && currentHct >= 40;
   if ((isHctHigh || response === 'refractory') && patient.severity !== 'warning_signs') {
     const cptRate = isAdult ? 15 : 20;
@@ -949,7 +1013,7 @@ export function calculateBranchDecision(
     };
   }
 
-  // 3. Nhánh Sốc Thất Bại Bù Dịch / Tái Sốc Kéo Dài
+  // 4. Nhánh Sốc Thất Bại Bù Dịch / Tái Sốc Kéo Dài
   if (response === 'refractory' || response === 'worsened') {
     return {
       branchType: 'refractory_shock',
@@ -993,7 +1057,13 @@ export function generateDengueCDSSPlan(
   customRates?: Record<number, number>
 ): DengueCDSSPlan {
   const ageGroup = classifyAgeGroup(patient.ageYears);
-  const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg, patient.heightCm);
+  const weightResult = calculateWeightAdjustment(
+    patient.ageYears,
+    patient.gender,
+    patient.actualWeightKg,
+    patient.heightCm,
+    patient.isPregnant3rdTrimester
+  );
   const effectiveWeight = weightResult.adjustedWeightKg;
 
   const { rows, totalVolumeMl, totalDurationHours, fluidInfo } = calculateFluidSchedule(
@@ -1101,13 +1171,73 @@ export function generateDengueCDSSPlan(
     });
   }
 
-  if (totalDurationHours > 24) {
+  // Cảnh báo thời gian truyền dịch chuẩn hóa theo QĐ 2760/BYT 2023
+  if (patient.severity === 'warning_signs') {
+    if (ageGroup === 'child') {
+      if (totalDurationHours > 48) {
+        alerts.push({
+          id: 'alert_prolonged_fluid_warning_child',
+          level: 'danger',
+          title: 'THỜI GIAN TRUYỀN DỊCH DHCB TRẺ EM VƯỢT QUÁ 48 GIỜ',
+          message: 'Theo Phụ lục 4 QĐ 2760/BYT: Thời gian truyền dịch DHCB trẻ em thông thường không quá 24 - 48 giờ. Cần đánh giá kỹ nguy cơ quá tải dịch, tràn dịch màng phổi/màng bụng gây suy hô hấp.',
+          ruleCode: 'FLUID_OVERLOAD_RISK'
+        });
+      }
+    } else {
+      // Thiếu niên hoặc Người lớn: Phụ lục 5 & 6 quy định ngưng dịch sau 12 - 24 giờ
+      if (totalDurationHours > 24) {
+        alerts.push({
+          id: 'alert_prolonged_fluid_warning_adult',
+          level: 'warning',
+          title: 'THỜI GIAN TRUYỀN DỊCH DHCB VƯỢT QUÁ 24 GIỜ (PHỤ LỤC 5 & 6)',
+          message: 'Theo Phụ lục 5 & 6 QĐ 2760/BYT: Thời gian truyền dịch DHCB thiếu niên/người lớn chỉ từ 12 - 24 giờ. Rà soát ngưng dịch ngay nếu lâm sàng ổn định, mạch/HA bình thường và Hct ổn định.',
+          ruleCode: 'FLUID_OVERLOAD_RISK'
+        });
+      }
+    }
+  } else {
+    // Sốc hoặc Sốc nặng
+    if (ageGroup === 'adolescent') {
+      // Phụ lục 11: Thiếu niên chống sốc thông thường không quá 24 giờ
+      if (totalDurationHours > 24) {
+        alerts.push({
+          id: 'alert_prolonged_shock_fluid_adolescent',
+          level: 'warning',
+          title: 'THỜI GIAN CHỐNG SỐC THIẾU NIÊN VƯỢT QUÁ 24 GIỜ (PHỤ LỤC 11)',
+          message: 'Theo Phụ lục 11 QĐ 2760/BYT: Thời gian chống sốc thông thường ở thiếu niên không quá 24 giờ. Ngừng dịch truyền khi hết sốc 24 giờ.',
+          ruleCode: 'FLUID_OVERLOAD_RISK'
+        });
+      }
+    } else {
+      // Trẻ em (Phụ lục 8 & 12) và Người lớn (Phụ lục 16.1 & 16.2): 24 - 48 giờ
+      if (totalDurationHours > 48) {
+        alerts.push({
+          id: 'alert_prolonged_shock_fluid_danger',
+          level: 'danger',
+          title: 'THỜI GIAN CHỐNG SỐC VƯỢT QUÁ 48 GIỜ (NGUY CƠ QUÁ TẢI CẤP)',
+          message: 'Theo QĐ 2760/BYT: Thời gian chống sốc thông thường không quá 24 - 48 giờ. Bắt buộc kiểm tra CVP, siêu âm màng phổi/màng bụng, ran ẩm phổi và áp dụng tiêu chuẩn ngưng dịch.',
+          ruleCode: 'FLUID_OVERLOAD_RISK'
+        });
+      } else if (totalDurationHours > 24) {
+        alerts.push({
+          id: 'alert_prolonged_shock_fluid_monitor',
+          level: 'info',
+          title: 'THỜI GIAN CHỐNG SỐC > 24 GIỜ (RÀ SOÁT CAI DỊCH)',
+          message: 'Quy chuẩn BYT: Ngừng dịch truyền khi hết sốc 24 giờ (tổng thời gian 24 - 48 giờ). Nếu huyết động ổn định và Hct bình thường, chuẩn bị kế hoạch ngưng dịch.',
+          ruleCode: 'FLUID_MONITOR_24H'
+        });
+      }
+    }
+  }
+
+  // Cảnh báo giai đoạn tái hấp thu (Ngày thứ 6 - 7 của bệnh theo trang 16 - 17 BYT)
+  if (patient.dayOfIllness && patient.dayOfIllness >= 6) {
     alerts.push({
-      id: 'alert_prolonged_fluid',
+      id: 'alert_reabsorption_phase',
       level: 'warning',
-      title: 'TỔNG THỜI GIAN TRUYỀN DỊCH > 24 GIỜ',
-      message: 'Nguy cơ tái hấp thu dịch lòng mạch gây phù phổi cấp hoặc suy hô hấp do tràn dịch màng phổi/màng bụng. Rà soát giảm tốc độ và cai dịch sớm.',
-      ruleCode: 'FLUID_OVERLOAD_RISK'
+      title: 'BỆNH NHÂN NGÀY THỨ 6 - 7: GIAI ĐOẠN TÁI HẤP THU DỊCH TỰ NHIÊN',
+      message: `Bệnh nhân ở ngày thứ ${patient.dayOfIllness} của bệnh. Đây là giai đoạn hồi phục và dịch gian bào bắt đầu tái hấp thu ồ ạt trở lại lòng mạch (kéo dài 48-72h). Cần giảm tốc độ hoặc ngưng truyền dịch ngay khi lâm sàng ổn định để ngăn ngừa phù phổi cấp.`,
+      ruleCode: 'REABSORPTION_PHASE_DAY6_7'
     });
   }
 
@@ -1115,7 +1245,7 @@ export function generateDengueCDSSPlan(
   const dateStr = new Date().toLocaleDateString('vi-VN');
   const soapLines = [
     `--- KẾ HOẠCH ĐIỀU TRỊ & CHỐNG SỐC SXHD DENGUE (CDSS BYT 2023) [${dateStr}] ---`,
-    `Bệnh nhân: ${patient.ageYears} tuổi, Giới tính: ${patient.gender === 'male' ? 'Nam' : 'Nữ'}`,
+    `Bệnh nhân: ${patient.ageYears} tuổi, Giới tính: ${patient.gender === 'male' ? 'Nam' : 'Nữ'}${patient.dayOfIllness ? ` | Ngày bệnh: Ngày ${patient.dayOfIllness}` : ''}`,
     `Phân độ: ${patient.severity === 'warning_signs' ? 'SXHD có Dấu hiệu cảnh báo' : patient.severity === 'shock' ? 'Sốc SXHD' : 'Sốc SXHD nặng nguy kịch'}`,
     `Cân nặng thực: ${patient.actualWeightKg} kg | Cân nặng chuẩn/IBW: ${weightResult.standardWeightKg} kg | Cân nặng tính dịch: ${effectiveWeight} kg`,
     ...(weightResult.isObese ? [
@@ -1123,6 +1253,7 @@ export function generateDengueCDSSPlan(
         ? `[LƯU Ý HIỆU CHỈNH NGƯỜI LỚN]: Đã hiệu chỉnh theo Phụ lục 9 BYT (BMI ${weightResult.bmi ?? ''} kg/m² ≥ 25: IBW = ${weightResult.idealWeightKg} kg, CN hiệu chỉnh = ${effectiveWeight} kg) để tránh quá tải tuần hoàn.`
         : `[LƯU Ý HIỆU CHỈNH TRẺ EM]: Đã hiệu chỉnh theo Bảng CDC 2014 (${effectiveWeight} kg) cho trẻ dư cân/béo phì. Cần theo dõi sát CVP.`
     ] : []),
+    ...(patient.isPregnant3rdTrimester ? [`[LƯU Ý PNCT 3 THÁNG CUỐI]: Đã hiệu chỉnh theo Mục C.2.6 QĐ 2760/BYT (Cân nặng trước mang thai + 1 kg mỗi tháng 3 tháng cuối = ${effectiveWeight} kg).`] : []),
     ...(patient.currentHctPercent ? [`Hct hiện tại: ${patient.currentHctPercent}% | Đánh giá đáp ứng: ${patient.clinicalResponse || 'Theo dõi'}`] : []),
     `\n1. NHÁNH XỬ TRÍ LÂM SÀNG: ${branchDecision.title}`,
     `  • Hướng xử trí: ${branchDecision.recommendedFluid}`,
@@ -1145,7 +1276,9 @@ export function generateDengueCDSSPlan(
     `  • HCL (khi Hct < 35%): Truyền ${Math.round(5 * effectiveWeight)} - ${Math.round(10 * effectiveWeight)} ml trong 1-2h song song CPT 10 ml/kg/h.`,
     `  • Gói ABCS: Acidosis (Bicarbonate 4.2% ${Math.round(2 * effectiveWeight)} ml); Calcium (Calci clorua 10% 2-5ml); Sugar (Dextrose 30% ${Math.round(1.5 * effectiveWeight)} ml).`,
     ...(nacProtocol.indicated ? [`  • Phác đồ NAC Suy gan: Tấn công 150mg/kg (1h) -> 50mg/kg (4h) -> 100mg/kg (16h) -> Duy trì 6.25mg/kg/h. Tuyệt đối TRÁNH Ringer Lactate & Paracetamol.`] : []),
-    `\n6. ĐIỀU DƯỠNG AN TOÀN: Đo Hct trước mỗi lần giảm tốc độ; Duy trì nước tiểu ≥ 0.5 - 1.0 ml/kg/h; Báo BS ngay nếu nước tiểu < 0.5 ml/kg/h hoặc ran ẩm phổi.`
+    `\n6. TIÊU CHUẨN NGƯNG TRUYỀN DỊCH (TRANG 17 QĐ 2760/BYT):`,
+    ...DENGUE_DISCONTINUATION_CHECKLIST.map(c => `  • ${c}`),
+    `\n7. ĐIỀU DƯỠNG AN TOÀN: Đo Hct trước mỗi lần giảm tốc độ; Duy trì nước tiểu ≥ 0.5 - 1.0 ml/kg/h; Báo BS ngay nếu nước tiểu < 0.5 ml/kg/h hoặc ran ẩm phổi.`
   ];
 
   return {
@@ -1168,6 +1301,7 @@ export function generateDengueCDSSPlan(
     abcsChecklist,
     alerts,
     nursingInstructions: DENGUE_NURSING_CHECKLIST,
+    discontinuationChecklist: DENGUE_DISCONTINUATION_CHECKLIST,
     soapExportText: soapLines.join('\n'),
     createdAt: new Date().toISOString()
   };

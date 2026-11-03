@@ -33,7 +33,8 @@ import {
   getAdultShockCell,
   DENGUE_COLLOID_METADATA,
   DENGUE_COLLOID_TEMPLATES,
-  DENGUE_DE_ESCALATION_CHECKLIST
+  DENGUE_DE_ESCALATION_CHECKLIST,
+  DENGUE_DISCONTINUATION_CHECKLIST
 } from './dengue-data';
 
 export type WorkspaceMode = 'fluid_schedule' | 'colloid_schedule' | 'refractory_suite' | 'vasopressors' | 'nursing_checklist';
@@ -50,6 +51,8 @@ interface ClinicalSampleCase {
     gender: Gender;
     actualWeightKg: number;
     heightCm?: number;
+    dayOfIllness?: number;
+    isPregnant3rdTrimester?: boolean;
     severity: DengueSeverity;
     clinicalResponse?: string;
     currentHctPercent?: number;
@@ -58,12 +61,52 @@ interface ClinicalSampleCase {
     liverEnzymesAST_ALT?: number;
     plateletsCount?: number;
     cvpValue?: number;
+    preferredFluid?: 'auto' | 'ringer_lactate' | 'ringer_acetate' | 'nacl_09';
   };
   clinicalHighlight: string;
 }
 
 const CLINICAL_SAMPLE_CASES: ClinicalSampleCase[] = [
   // 1. Nhóm Bù Dịch Ban Đầu & Phân Tầng Thể Trạng
+  {
+    id: 'pregnant-3rd-trimester',
+    category: 'initial',
+    icon: 'fa-solid fa-person-breastfeeding',
+    label: 'Thai Phụ 28T 3 Tháng Cuối (58kg)',
+    tag: 'Mục C.2.6 BYT',
+    input: {
+      ageYears: 28,
+      gender: 'female',
+      actualWeightKg: 58,
+      heightCm: 158,
+      dayOfIllness: 4,
+      isPregnant3rdTrimester: true,
+      severity: 'warning_signs',
+      clinicalResponse: 'good',
+      currentHctPercent: 39,
+      baselineHctPercent: 33
+    },
+    clinicalHighlight: 'Phụ nữ mang thai 3 tháng cuối: Hiệu chỉnh cân nặng = Cân trước mang thai + 1 kg/tháng 3 tháng cuối (Mục C.2.6).'
+  },
+  {
+    id: 'reabsorption-day6',
+    category: 'initial',
+    icon: 'fa-solid fa-triangle-exclamation',
+    label: 'Nam 22T Ngày 6 (Tái Hấp Thu)',
+    tag: 'Trang 17 BYT',
+    input: {
+      ageYears: 22,
+      gender: 'male',
+      actualWeightKg: 60,
+      heightCm: 168,
+      dayOfIllness: 6,
+      severity: 'warning_signs',
+      clinicalResponse: 'good',
+      currentHctPercent: 41,
+      baselineHctPercent: 40
+    },
+    clinicalHighlight: 'Bệnh nhân ngày 6: Giai đoạn tái hấp thu tự nhiên (trang 16-17). Cần rà soát ngưng dịch ngay tránh phù phổi cấp.'
+  },
   {
     id: 'child-obese',
     category: 'initial',
@@ -493,10 +536,31 @@ export class DengueCDSSController {
                     </select>
                   </div>
 
-                  <!-- Giờ bắt đầu truyền -->
-                  <div class="cdss-form-group">
-                    <label class="cdss-form-label" for="input-starttime">Mốc Giờ Bắt Đầu Truyền</label>
-                    <input type="time" id="input-starttime" value="${curTime}" class="cdss-input" />
+                  <!-- Ngày thứ của bệnh & Mốc Giờ Bắt Đầu Truyền -->
+                  <div class="cdss-form-row">
+                    <div class="cdss-form-group">
+                      <label class="cdss-form-label" for="input-day-of-illness">
+                        <span>Ngày Thứ Bệnh</span>
+                        <small style="font-size:0.68rem; color:var(--cdss-text-muted);">(1 - 14 ngày)</small>
+                      </label>
+                      <div class="cdss-input-group">
+                        <input type="number" id="input-day-of-illness" min="1" max="14" value="4" step="1" placeholder="4" class="cdss-input" />
+                        <span class="cdss-input-suffix">ngày</span>
+                      </div>
+                    </div>
+
+                    <div class="cdss-form-group">
+                      <label class="cdss-form-label" for="input-starttime">Mốc Giờ Bắt Đầu</label>
+                      <input type="time" id="input-starttime" value="${curTime}" class="cdss-input" />
+                    </div>
+                  </div>
+
+                  <!-- Tùy chọn Phụ nữ mang thai 3 tháng cuối (Mục C.2.6) -->
+                  <div class="cdss-form-group" id="pregnant-checkbox-group" style="margin-top: -0.25rem;">
+                    <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.76rem; font-weight:700; color:var(--cdss-primary); cursor:pointer;">
+                      <input type="checkbox" id="input-pregnant-3rd" style="width:16px; height:16px; accent-color:var(--cdss-primary);" />
+                      <span><i class="fa-solid fa-person-breastfeeding"></i> Phụ nữ mang thai 3 tháng cuối (Mục C.2.6 BYT)</span>
+                    </label>
                   </div>
                 </form>
               </div>
@@ -933,6 +997,17 @@ export class DengueCDSSController {
       bleedCheckbox.checked = !!sample.input.massiveBleeding;
     }
 
+    if (sample.input.dayOfIllness !== undefined) {
+      this.setInputValue('input-day-of-illness', sample.input.dayOfIllness.toString());
+    } else {
+      this.setInputValue('input-day-of-illness', '4');
+    }
+
+    const pregCheckbox = document.getElementById('input-pregnant-3rd') as HTMLInputElement | null;
+    if (pregCheckbox) {
+      pregCheckbox.checked = !!sample.input.isPregnant3rdTrimester;
+    }
+
     // Auto-switch workspace mode & sub-tab according to clinical category
     if (sample.category === 'refractory') {
       this.activeWorkspaceMode = 'refractory_suite';
@@ -1014,12 +1089,16 @@ export class DengueCDSSController {
     const massiveBleeding = (document.getElementById('input-bleeding') as HTMLInputElement)?.checked || false;
     const liverEnzymesAST_ALT = parseFloat((document.getElementById('input-ast-alt') as HTMLInputElement)?.value) || undefined;
     const plateletsCount = parseFloat((document.getElementById('input-platelets') as HTMLInputElement)?.value) || undefined;
+    const dayOfIllness = parseFloat((document.getElementById('input-day-of-illness') as HTMLInputElement)?.value) || undefined;
+    const isPregnant3rdTrimester = (document.getElementById('input-pregnant-3rd') as HTMLInputElement)?.checked || false;
 
     return {
       ageYears: age,
       gender,
       actualWeightKg: weight,
       heightCm: height,
+      dayOfIllness,
+      isPregnant3rdTrimester,
       severity,
       startTime,
       clinicalResponse: response,
@@ -1059,24 +1138,28 @@ export class DengueCDSSController {
     const isObese = weightResult.isObese;
 
     if (isAdult) {
-      // Giao diện cho Người lớn (Phụ lục 9 QĐ 2760/BYT)
+      // Giao diện cho Người lớn (Phụ lục 9 QĐ 2760/BYT hoặc Mục C.2.6 PNCT)
       const hasHeight = patient.heightCm && patient.heightCm >= 100;
       const bmiStr = weightResult.bmi !== undefined ? `${weightResult.bmi} kg/m²` : 'Chưa có';
-      const bmiStatusText = !hasHeight
-        ? 'Cần nhập Chiều cao'
-        : isObese
-          ? `BMI ${weightResult.bmi} (≥ 25: Thừa Cân / Béo Phì)`
-          : `BMI ${weightResult.bmi} (< 25: Thể Trạng Chuẩn)`;
-      const bmiBadgeClass = !hasHeight
+      const bmiStatusText = patient.isPregnant3rdTrimester
+        ? 'PNCT 3 Tháng Cuối (Mục C.2.6)'
+        : !hasHeight
+          ? 'Cần nhập Chiều cao'
+          : isObese
+            ? `BMI ${weightResult.bmi} (≥ 25: Thừa Cân / Béo Phì)`
+            : `BMI ${weightResult.bmi} (< 25: Thể Trạng Chuẩn)`;
+      const bmiBadgeClass = patient.isPregnant3rdTrimester
         ? 'cdss-weight-status-badge--warning'
-        : isObese
-          ? 'cdss-weight-status-badge--obese'
-          : 'cdss-weight-status-badge--normal';
+        : !hasHeight
+          ? 'cdss-weight-status-badge--warning'
+          : isObese
+            ? 'cdss-weight-status-badge--obese'
+            : 'cdss-weight-status-badge--normal';
 
       box.innerHTML = `
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:4px;">
           <span style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--cdss-text-muted); display:flex; align-items:center; gap:4px;">
-            <i class="fa-solid fa-scale-balanced text-primary"></i> Cân Nặng Tính Dịch (Phụ Lục 9 BYT)
+            <i class="fa-solid fa-scale-balanced text-primary"></i> ${patient.isPregnant3rdTrimester ? 'Cân Nặng PNCT 3 Tháng Cuối (Mục C.2.6)' : 'Cân Nặng Tính Dịch (Phụ Lục 9 BYT)'}
           </span>
           <span class="cdss-weight-status-badge ${bmiBadgeClass}" style="font-size:0.7rem; font-weight:700;">
             ${bmiStatusText}
@@ -1998,6 +2081,50 @@ export class DengueCDSSController {
           }).join('')}
         </div>
       </section>
+
+      <!-- BẢNG KIỂM TIÊU CHUẨN NGƯNG TRUYỀN DỊCH (TRANG 17 QĐ 2760/BYT) -->
+      <section class="cdss-table-card" style="margin-top: 1.25rem; border: 1.5px solid rgba(13, 148, 136, 0.35);">
+        <div class="cdss-table-header-wrap" style="background: rgba(13, 148, 136, 0.05); padding: 0.85rem 1rem; border-bottom: 1px solid var(--cdss-border);">
+          <div class="cdss-table-title-area">
+            <h2 class="cdss-table-title" style="color: var(--cdss-primary); font-size: 0.95rem;">
+              <i class="fa-solid fa-clipboard-check"></i> Tiêu Chuẩn Ngưng Truyền Dịch (Trang 17 QĐ 2760/QĐ-BYT)
+              <span class="cdss-table-title-badge" style="background: rgba(13, 148, 136, 0.15); color: var(--cdss-primary);">
+                An Toàn Cai Dịch
+              </span>
+            </h2>
+            <p class="cdss-table-desc" style="color: var(--cdss-text-muted); font-size: 0.78rem;">
+              Cần rà soát ngưng truyền dịch sớm nhất có thể khi đạt các tiêu chuẩn dưới đây để <strong>phòng ngừa phù phổi cấp và tràn dịch đa màng</strong>.
+            </p>
+          </div>
+          <button type="button" id="btn-copy-discontinue-checklist" class="cdss-btn-copy-all" style="background: var(--cdss-surface); border: 1px solid var(--cdss-border); color: var(--cdss-text);" title="Copy bảng kiểm ngưng dịch vào EMR" aria-label="Copy Bảng Kiểm Ngưng Dịch">
+            <i class="fa-regular fa-copy"></i>
+            <span>Copy Bảng Kiểm</span>
+          </button>
+        </div>
+
+        <div style="padding: 1rem;">
+          <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+            ${(plan.discontinuationChecklist || DENGUE_DISCONTINUATION_CHECKLIST).map((item, idx) => `
+              <label style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0.8rem; background: var(--cdss-surface-alt); border: 1px solid var(--cdss-border-subtle); border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+                <input type="checkbox" class="discontinue-chk-item" data-idx="${idx}" style="margin-top: 0.2rem; width: 17px; height: 17px; accent-color: var(--cdss-primary);" />
+                <span style="font-size: 0.82rem; line-height: 1.45; color: var(--cdss-text); font-weight: 500;">
+                  ${item.replace(/^(Huyết động ổn định|Hct giảm|Lượng nước tiểu|Đã qua 24 giờ|Bệnh nhân bước vào|DỪNG DỊCH NGAY LẬP TỨC)/, '<strong>$1</strong>')}
+                </span>
+              </label>
+            `).join('')}
+          </div>
+
+          <div id="discontinue-status-bar" style="margin-top: 0.9rem; padding: 0.75rem 1rem; border-radius: 8px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; color: #b45309;">
+              <i class="fa-solid fa-triangle-exclamation" style="font-size: 1rem;"></i>
+              <span id="discontinue-status-text">Đang duy trì truyền dịch theo bậc phác đồ. Đánh giá lại lâm sàng và Hct trước mỗi lần giảm liều.</span>
+            </div>
+            <span id="discontinue-count-badge" style="font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; background: rgba(245, 158, 11, 0.2); color: #b45309;">
+              0/6 Tiêu chuẩn
+            </span>
+          </div>
+        </div>
+      </section>
     `;
 
     // Attach row duration select events
@@ -2079,6 +2206,75 @@ export class DengueCDSSController {
         this.customRates = {};
         this.recalculate();
         this.showToast('Đã khôi phục thông số thời lượng và tốc độ chuẩn theo Bộ Y Tế!');
+      });
+    }
+
+    // Tương tác Bảng Kiểm Tiêu Chuẩn Ngưng Truyền Dịch (Discontinuation Checklist)
+    const copyDiscontinueBtn = container.querySelector('#btn-copy-discontinue-checklist');
+    if (copyDiscontinueBtn) {
+      copyDiscontinueBtn.addEventListener('click', () => {
+        const items = plan.discontinuationChecklist || DENGUE_DISCONTINUATION_CHECKLIST;
+        const checklistText = [
+          `--- TIÊU CHUẨN NGƯNG TRUYỀN DỊCH SXHD (TRANG 17 QĐ 2760/QĐ-BYT) ---`,
+          ...items.map((item, idx) => `[ ] ${idx + 1}. ${item}`)
+        ].join('\n');
+        this.copyToClipboard(checklistText, 'Đã copy Bảng kiểm Tiêu chuẩn Ngưng Truyền Dịch vào EMR!');
+        const icon = copyDiscontinueBtn.querySelector('i');
+        if (icon) {
+          icon.className = 'fa-solid fa-check text-success';
+          copyDiscontinueBtn.classList.add('copied');
+          setTimeout(() => {
+            icon.className = 'fa-regular fa-copy';
+            copyDiscontinueBtn.classList.remove('copied');
+          }, 1500);
+        }
+      });
+    }
+
+    const discontinueCheckboxes = container.querySelectorAll<HTMLInputElement>('.discontinue-chk-item');
+    const statusBar = container.querySelector<HTMLElement>('#discontinue-status-bar');
+    const statusText = container.querySelector<HTMLElement>('#discontinue-status-text');
+    const countBadge = container.querySelector<HTMLElement>('#discontinue-count-badge');
+
+    if (discontinueCheckboxes.length > 0 && statusBar && statusText && countBadge) {
+      discontinueCheckboxes.forEach(chk => {
+        chk.addEventListener('change', () => {
+          let checkedCount = 0;
+          let isDangerChecked = false;
+          discontinueCheckboxes.forEach(c => {
+            if (c.checked) {
+              checkedCount++;
+              if (c.getAttribute('data-idx') === '5') {
+                isDangerChecked = true;
+              }
+            }
+          });
+
+          countBadge.textContent = `${checkedCount}/${discontinueCheckboxes.length} Tiêu chuẩn`;
+
+          if (isDangerChecked) {
+            statusBar.style.background = 'rgba(239, 68, 68, 0.12)';
+            statusBar.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+            statusText.style.color = 'var(--cdss-danger)';
+            countBadge.style.background = 'rgba(239, 68, 68, 0.25)';
+            countBadge.style.color = 'var(--cdss-danger)';
+            statusText.innerHTML = '<strong>CẢNH BÁO NGUY CƠ QUÁ TẢI:</strong> Dừng ngay truyền dịch! Kiểm tra ran ẩm phổi, đo CVP, siêu âm màng phổi và cân nhắc chỉ định Furosemid.';
+          } else if (checkedCount >= 4) {
+            statusBar.style.background = 'rgba(16, 185, 129, 0.12)';
+            statusBar.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+            statusText.style.color = '#047857';
+            countBadge.style.background = 'rgba(16, 185, 129, 0.25)';
+            countBadge.style.color = '#047857';
+            statusText.innerHTML = '<strong>ĐỦ ĐIỀU KIỆN AN TOÀN ĐỂ NGƯNG DỊCH:</strong> Huyết động và Hct ổn định, nước tiểu tốt. Tiến hành khóa dịch hoặc duy trì KVO theo dõi.';
+          } else {
+            statusBar.style.background = 'rgba(245, 158, 11, 0.08)';
+            statusBar.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+            statusText.style.color = '#b45309';
+            countBadge.style.background = 'rgba(245, 158, 11, 0.2)';
+            countBadge.style.color = '#b45309';
+            statusText.textContent = 'Đang duy trì truyền dịch theo bậc phác đồ. Đánh giá lại lâm sàng và Hct trước mỗi lần giảm liều.';
+          }
+        });
       });
     }
   }
