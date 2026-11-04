@@ -337,20 +337,20 @@ export default function App() {
       {/* Main Content Layout */}
       <main className="max-w-7xl mx-auto w-full px-3 sm:px-6 py-4 flex-1">
         {/* Core Task Segmented Switch (Initial Dosing vs TDM Adjustment) */}
-        <div className="flex bg-slate-200/80 p-1 rounded-xl max-w-lg mx-auto mb-4 font-semibold text-xs shadow-2xs">
+        <div className="flex bg-slate-200/90 p-1 rounded-2xl max-w-xl mx-auto mb-4 font-bold text-xs shadow-2xs border border-slate-300/60">
           <button
             type="button"
             onClick={() => {
               setClinicalTask('initial_dosing');
               setMobileTab('dosing');
             }}
-            className={`flex-1 py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-all ${
+            className={`flex-1 py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer ${
               clinicalTask === 'initial_dosing' 
-                ? 'bg-white text-slate-900 shadow-xs font-bold' 
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white text-teal-950 shadow-xs font-extrabold ring-1 ring-slate-200' 
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
             }`}
           >
-            <Pill className="w-4 h-4 text-teal-700" />
+            <Pill className={`w-4 h-4 ${clinicalTask === 'initial_dosing' ? 'text-teal-600' : 'text-slate-400'}`} />
             <span>1. Tính Liều Khởi Đầu</span>
           </button>
           <button
@@ -359,13 +359,13 @@ export default function App() {
               setClinicalTask('tdm_adjustment');
               setMobileTab('tdm');
             }}
-            className={`flex-1 py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-all ${
+            className={`flex-1 py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer ${
               clinicalTask === 'tdm_adjustment' 
-                ? 'bg-white text-slate-900 shadow-xs font-bold' 
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white text-indigo-950 shadow-xs font-extrabold ring-1 ring-indigo-200/80' 
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
             }`}
           >
-            <Activity className="w-4 h-4 text-indigo-700" />
+            <Activity className={`w-4 h-4 ${clinicalTask === 'tdm_adjustment' ? 'text-indigo-600' : 'text-slate-400'}`} />
             <span>2. Chỉnh Liều TDM (AUC24)</span>
           </button>
         </div>

@@ -36,14 +36,16 @@ const ignoreCssPlugin = {
   try {
     console.log('[build-hepa] Compiling HepaCDSS bundles...');
 
-    const antibioticNm = path.resolve(__dirname, '../antibiotic/node_modules');
+    const nmPath = fs.existsSync(path.resolve(__dirname, '../antibiotic/node_modules'))
+      ? path.resolve(__dirname, '../antibiotic/node_modules')
+      : path.resolve(__dirname, '../node_modules');
     const aliasConfig = {
       '@': path.resolve(__dirname, 'src'),
-      'lucide-react': path.resolve(antibioticNm, 'lucide-react'),
-      'react': path.resolve(antibioticNm, 'react'),
-      'react-dom': path.resolve(antibioticNm, 'react-dom'),
-      'react/jsx-runtime': path.resolve(antibioticNm, 'react/jsx-runtime.js'),
-      'react/jsx-dev-runtime': path.resolve(antibioticNm, 'react/jsx-dev-runtime.js'),
+      'lucide-react': path.resolve(nmPath, 'lucide-react'),
+      'react': path.resolve(nmPath, 'react'),
+      'react-dom': path.resolve(nmPath, 'react-dom'),
+      'react/jsx-runtime': path.resolve(nmPath, 'react/jsx-runtime.js'),
+      'react/jsx-dev-runtime': path.resolve(nmPath, 'react/jsx-dev-runtime.js'),
     };
     if (jspdfPath) {
       aliasConfig['jspdf'] = jspdfPath;
