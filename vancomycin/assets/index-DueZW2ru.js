@@ -50075,26 +50075,108 @@ var TdmCalculatorCard = ({
   tdmInput,
   tdmResult,
   regimenMethod,
+  patient,
+  renal,
   mic = 1,
   onChange,
+  onMethodChange,
   onApplyAdjustment
 }) => {
   const isContinuous = regimenMethod === "continuous";
   const [showChart, setShowChart] = (0, import_react6.useState)(false);
   const intermittentMethod = tdmInput.intermittentMethod || "bayesian_single";
+  const [rawDose, setRawDose] = (0, import_react6.useState)(String(tdmInput.currentDoseMg ?? 1e3));
+  const [rawInterval, setRawInterval] = (0, import_react6.useState)(String(tdmInput.currentIntervalHours ?? 12));
+  const [rawDuration, setRawDuration] = (0, import_react6.useState)(String(tdmInput.infusionDurationHours ?? 1.5));
+  const [rawSingleConc, setRawSingleConc] = (0, import_react6.useState)(
+    tdmInput.singleConcentration !== void 0 && tdmInput.singleConcentration !== null ? String(tdmInput.singleConcentration) : ""
+  );
+  const [rawPeakConc, setRawPeakConc] = (0, import_react6.useState)(
+    tdmInput.peakConcentration !== void 0 && tdmInput.peakConcentration !== null ? String(tdmInput.peakConcentration) : ""
+  );
+  const [rawTroughConc, setRawTroughConc] = (0, import_react6.useState)(
+    tdmInput.troughConcentration !== void 0 && tdmInput.troughConcentration !== null ? String(tdmInput.troughConcentration) : ""
+  );
+  const [rawContDailyDose, setRawContDailyDose] = (0, import_react6.useState)(
+    String(tdmInput.currentContinuousDailyDoseMg ?? 2e3)
+  );
+  const [rawCss, setRawCss] = (0, import_react6.useState)(
+    tdmInput.steadyStateConcentration !== void 0 && tdmInput.steadyStateConcentration !== null ? String(tdmInput.steadyStateConcentration) : ""
+  );
+  (0, import_react6.useEffect)(() => {
+    setRawDose(String(tdmInput.currentDoseMg ?? 1e3));
+    setRawInterval(String(tdmInput.currentIntervalHours ?? 12));
+    setRawDuration(String(tdmInput.infusionDurationHours ?? 1.5));
+    setRawSingleConc(
+      tdmInput.singleConcentration !== void 0 && tdmInput.singleConcentration !== null ? String(tdmInput.singleConcentration) : ""
+    );
+    setRawPeakConc(
+      tdmInput.peakConcentration !== void 0 && tdmInput.peakConcentration !== null ? String(tdmInput.peakConcentration) : ""
+    );
+    setRawTroughConc(
+      tdmInput.troughConcentration !== void 0 && tdmInput.troughConcentration !== null ? String(tdmInput.troughConcentration) : ""
+    );
+    setRawContDailyDose(String(tdmInput.currentContinuousDailyDoseMg ?? 2e3));
+    setRawCss(
+      tdmInput.steadyStateConcentration !== void 0 && tdmInput.steadyStateConcentration !== null ? String(tdmInput.steadyStateConcentration) : ""
+    );
+  }, [
+    tdmInput.currentDoseMg,
+    tdmInput.currentIntervalHours,
+    tdmInput.infusionDurationHours,
+    tdmInput.singleConcentration,
+    tdmInput.peakConcentration,
+    tdmInput.troughConcentration,
+    tdmInput.currentContinuousDailyDoseMg,
+    tdmInput.steadyStateConcentration
+  ]);
+  const handleSelectMode = (mode) => {
+    if (mode === "continuous") {
+      onMethodChange?.("continuous");
+      onChange({
+        regimenType: "continuous",
+        currentContinuousDailyDoseMg: tdmInput.currentContinuousDailyDoseMg || 2e3
+      });
+    } else {
+      onMethodChange?.("intermittent");
+      onChange({
+        regimenType: "intermittent",
+        intermittentMethod: mode
+      });
+    }
+  };
   const loadPreset = (type) => {
+    if (type === "clear") {
+      setRawSingleConc("");
+      setRawPeakConc("");
+      setRawTroughConc("");
+      setRawCss("");
+      onChange({
+        singleConcentration: void 0,
+        troughConcentration: void 0,
+        peakConcentration: void 0,
+        steadyStateConcentration: void 0
+      });
+      return;
+    }
     if (isContinuous) {
       if (type === "optimal") {
+        setRawContDailyDose("2000");
+        setRawCss("22.0");
         onChange({
           currentContinuousDailyDoseMg: 2e3,
           steadyStateConcentration: 22
         });
       } else if (type === "low") {
+        setRawContDailyDose("1500");
+        setRawCss("14.0");
         onChange({
           currentContinuousDailyDoseMg: 1500,
           steadyStateConcentration: 14
         });
       } else {
+        setRawContDailyDose("2500");
+        setRawCss("32.0");
         onChange({
           currentContinuousDailyDoseMg: 2500,
           steadyStateConcentration: 32
@@ -50102,6 +50184,10 @@ var TdmCalculatorCard = ({
       }
     } else if (intermittentMethod === "bayesian_single") {
       if (type === "optimal") {
+        setRawDose("1000");
+        setRawInterval("12");
+        setRawDuration("1.5");
+        setRawSingleConc("11.5");
         onChange({
           currentDoseMg: 1e3,
           currentIntervalHours: 12,
@@ -50112,6 +50198,10 @@ var TdmCalculatorCard = ({
           singleDoseNumber: 2
         });
       } else if (type === "low") {
+        setRawDose("1000");
+        setRawInterval("12");
+        setRawDuration("1.5");
+        setRawSingleConc("6.0");
         onChange({
           currentDoseMg: 1e3,
           currentIntervalHours: 12,
@@ -50122,6 +50212,10 @@ var TdmCalculatorCard = ({
           singleDoseNumber: 2
         });
       } else {
+        setRawDose("1250");
+        setRawInterval("12");
+        setRawDuration("2.0");
+        setRawSingleConc("22.5");
         onChange({
           currentDoseMg: 1250,
           currentIntervalHours: 12,
@@ -50134,6 +50228,11 @@ var TdmCalculatorCard = ({
       }
     } else {
       if (type === "optimal") {
+        setRawDose("1000");
+        setRawInterval("12");
+        setRawDuration("1.5");
+        setRawPeakConc("28.5");
+        setRawTroughConc("11.5");
         onChange({
           currentDoseMg: 1e3,
           currentIntervalHours: 12,
@@ -50144,6 +50243,11 @@ var TdmCalculatorCard = ({
           troughTimeBeforeNextHours: 0.5
         });
       } else if (type === "low") {
+        setRawDose("1000");
+        setRawInterval("12");
+        setRawDuration("1.5");
+        setRawPeakConc("18.0");
+        setRawTroughConc("6.0");
         onChange({
           currentDoseMg: 1e3,
           currentIntervalHours: 12,
@@ -50154,6 +50258,11 @@ var TdmCalculatorCard = ({
           troughTimeBeforeNextHours: 0.5
         });
       } else {
+        setRawDose("1250");
+        setRawInterval("12");
+        setRawDuration("2.0");
+        setRawPeakConc("42.0");
+        setRawTroughConc("23.0");
         onChange({
           currentDoseMg: 1250,
           currentIntervalHours: 12,
@@ -50166,77 +50275,127 @@ var TdmCalculatorCard = ({
       }
     }
   };
-  const getAttainmentColor = (att) => {
-    switch (att) {
-      case "target":
-        return {
-          bg: "bg-emerald-50 border-emerald-300 text-emerald-950",
-          badge: "bg-emerald-600 text-white",
-          text: "text-emerald-700",
-          label: "\u0110\u1EA0T \u0110\xCDCH \u0110I\u1EC0U TR\u1ECA (AUC 400 - 600 mg\xB7h/L)",
-          actionDesc: "N\u1ED3ng \u0111\u1ED9 thu\u1ED1c t\u1ED1i \u01B0u v\u1EC1 hi\u1EC7u qu\u1EA3 di\u1EC7t khu\u1EA9n v\xE0 an to\xE0n th\u1EADn. Ti\u1EBFp t\u1EE5c duy tr\xEC ph\xE1c \u0111\u1ED3."
-        };
-      case "subtherapeutic":
-        return {
-          bg: "bg-amber-50 border-amber-300 text-amber-950",
-          badge: "bg-amber-500 text-white",
-          text: "text-amber-700",
-          label: "D\u01AF\u1EDAI M\u1EE4C TI\xCAU (AUC < 400 mg\xB7h/L)",
-          actionDesc: "Nguy c\u01A1 th\u1EA5t b\u1EA1i \u0111i\u1EC1u tr\u1ECB ho\u1EB7c ch\u1ECDn l\u1ECDc ch\u1EE7ng vi khu\u1EA9n kh\xE1ng thu\u1ED1c. C\u1EA7n t\u0103ng li\u1EC1u."
-        };
-      case "supratherapeutic":
-      default:
-        return {
-          bg: "bg-rose-50 border-rose-300 text-rose-950",
-          badge: "bg-rose-600 text-white",
-          text: "text-rose-700",
-          label: "V\u01AF\u1EE2T NG\u01AF\u1EE0NG AN TO\xC0N (AUC > 600 mg\xB7h/L)",
-          actionDesc: "Nguy c\u01A1 \u0111\u1ED9c t\xEDnh th\u1EADn (AKI) t\u0103ng g\u1EA5p 3\u20134 l\u1EA7n. C\u1EA7n t\u1EA1m ng\u1EEBng li\u1EC1u ho\u1EB7c gi\u1EA3m li\u1EC1u."
-        };
+  const getAttainmentColor = (att, hasToxicWarning) => {
+    if (hasToxicWarning || att === "supratherapeutic") {
+      return {
+        bg: "bg-rose-50 border-rose-300 text-rose-950",
+        badge: "bg-rose-600 text-white",
+        text: "text-rose-700",
+        label: "V\u01AF\u1EE2T NG\u01AF\u1EE0NG AN TO\xC0N (AUC > 600 mg\xB7h/L ho\u1EB7c \u0110\xE1y \u2265 20)",
+        actionDesc: "Nguy c\u01A1 \u0111\u1ED9c t\xEDnh th\u1EADn (AKI) t\u0103ng cao! C\u1EA7n t\u1EA1m ng\u1EEBng li\u1EC1u v\xE0 gi\u1EA3m ph\xE1c \u0111\u1ED3 \u0111i\u1EC1u tr\u1ECB."
+      };
     }
+    if (att === "target") {
+      return {
+        bg: "bg-emerald-50 border-emerald-300 text-emerald-950",
+        badge: "bg-emerald-600 text-white",
+        text: "text-emerald-700",
+        label: "\u0110\u1EA0T \u0110\xCDCH \u0110I\u1EC0U TR\u1ECA (AUC 400 - 600 mg\xB7h/L)",
+        actionDesc: "N\u1ED3ng \u0111\u1ED9 vancomycin t\u1ED1i \u01B0u v\u1EC1 hi\u1EC7u qu\u1EA3 di\u1EC7t khu\u1EA9n v\xE0 an to\xE0n th\u1EADn. Ti\u1EBFp t\u1EE5c duy tr\xEC ph\xE1c \u0111\u1ED3."
+      };
+    }
+    return {
+      bg: "bg-amber-50 border-amber-300 text-amber-950",
+      badge: "bg-amber-500 text-white",
+      text: "text-amber-700",
+      label: "D\u01AF\u1EDAI M\u1EE4C TI\xCAU (AUC < 400 mg\xB7h/L)",
+      actionDesc: "Nguy c\u01A1 th\u1EA5t b\u1EA1i \u0111i\u1EC1u tr\u1ECB ho\u1EB7c ch\u1ECDn l\u1ECDc ch\u1EE7ng vi khu\u1EA9n kh\xE1ng thu\u1ED1c. C\u1EA7n t\u0103ng li\u1EC1u."
+    };
   };
-  const statusStyle = getAttainmentColor(tdmResult.targetAttainment);
-  const sampleConcentration = tdmInput.singleConcentration ?? tdmInput.troughConcentration ?? "";
-  const preferredRegimen = tdmResult.preferredAdjustedRegimen || tdmResult.adjustedRegimens?.find((r) => r.isPreferred);
+  const hasToxicity = Boolean(
+    tdmResult.isHighTroughRisk || tdmResult.holdDoseHours && tdmResult.holdDoseHours > 0 || tdmResult.cMinEstimated && tdmResult.cMinEstimated >= 20 || tdmResult.auc24 > 600
+  );
+  const statusStyle = getAttainmentColor(tdmResult.targetAttainment, hasToxicity);
+  const preferredRegimen = tdmResult.preferredAdjustedRegimen || tdmResult.adjustedRegimens?.find((r) => r.isPreferred) || (tdmResult.adjustedRegimens && tdmResult.adjustedRegimens.length > 0 ? tdmResult.adjustedRegimens[0] : void 0);
+  const hasResults = tdmResult.auc24 > 0;
   return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { id: "tdm-calculator-card", className: "bg-white rounded-2xl border border-slate-200 shadow-xs p-4 sm:p-5 space-y-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-2.5", children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "w-8 h-8 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0 border border-indigo-100 shadow-2xs", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Activity, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "w-9 h-9 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0 border border-indigo-100 shadow-2xs", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Activity, { className: "w-5 h-5" }) }),
         /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("h2", { className: "text-sm sm:text-base font-extrabold text-slate-900 tracking-tight flex items-center gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Hi\u1EC7u Ch\u1EC9nh Li\u1EC1u Vancomycin D\u1EF1a Tr\xEAn N\u1ED3ng \u0110\u1ED9 (TDM)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-bold px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-800", children: "ASHP/IDSA 2020" })
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h2", { className: "text-sm sm:text-base font-extrabold text-slate-900 tracking-tight", children: "Hi\u1EC7u Ch\u1EC9nh Li\u1EC1u Vancomycin D\u1EF1a Tr\xEAn N\u1ED3ng \u0110\u1ED9 (TDM)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800", children: "ASHP/IDSA 2020" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-xs text-slate-500", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-xs text-slate-500 mt-0.5", children: [
             "\u0110\xEDch \u0111i\u1EC1u tr\u1ECB t\u1ED1i \u01B0u: AUC24 / MIC = ",
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "400 \u2013 600 mg\xB7h/L" }),
-            " (gi\u1EA3m t\u1ED1i \u0111a nguy c\u01A1 suy th\u1EADn c\u1EA5p)"
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { className: "text-slate-700", children: "400 \u2013 600 mg\xB7h/L" }),
+            " (gi\u1EA3m t\u1ED1i \u0111a nguy c\u01A1 suy th\u1EADn c\u1EA5p AKI)"
           ] })
         ] })
       ] }),
-      !isContinuous && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex bg-slate-100 p-0.5 rounded-xl text-xs font-semibold self-start sm:self-auto border border-slate-200/80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex bg-slate-100 p-1 rounded-xl text-xs font-semibold border border-slate-200/80 self-start sm:self-auto overflow-x-auto max-w-full", children: [
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
           "button",
           {
             type: "button",
-            onClick: () => onChange({ intermittentMethod: "bayesian_single" }),
-            className: `px-3 py-1 rounded-lg transition-all cursor-pointer ${intermittentMethod === "bayesian_single" ? "bg-white text-teal-900 shadow-2xs font-bold" : "text-slate-500 hover:text-slate-800"}`,
-            children: "Bayesian 1 m\u1EABu \u0111\xE1y"
+            onClick: () => handleSelectMode("bayesian_single"),
+            className: `px-2.5 py-1.5 rounded-lg transition-all cursor-pointer whitespace-nowrap text-xs ${!isContinuous && intermittentMethod === "bayesian_single" ? "bg-white text-teal-950 shadow-xs font-extrabold ring-1 ring-slate-200" : "text-slate-600 hover:text-slate-900"}`,
+            children: "Bayesian 1 M\u1EABu (Chu\u1EA9n)"
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
           "button",
           {
             type: "button",
-            onClick: () => onChange({ intermittentMethod: "two_point" }),
-            className: `px-3 py-1 rounded-lg transition-all cursor-pointer ${intermittentMethod === "two_point" ? "bg-white text-indigo-900 shadow-2xs font-bold" : "text-slate-500 hover:text-slate-800"}`,
-            children: "2 m\u1EABu (Peak - Trough)"
+            onClick: () => handleSelectMode("two_point"),
+            className: `px-2.5 py-1.5 rounded-lg transition-all cursor-pointer whitespace-nowrap text-xs ${!isContinuous && intermittentMethod === "two_point" ? "bg-white text-indigo-950 shadow-xs font-extrabold ring-1 ring-indigo-200" : "text-slate-600 hover:text-slate-900"}`,
+            children: "2 M\u1EABu (\u0110\u1EC9nh - \u0110\xE1y)"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+          "button",
+          {
+            type: "button",
+            onClick: () => handleSelectMode("continuous"),
+            className: `px-2.5 py-1.5 rounded-lg transition-all cursor-pointer whitespace-nowrap text-xs ${isContinuous ? "bg-white text-teal-950 shadow-xs font-extrabold ring-1 ring-teal-200" : "text-slate-600 hover:text-slate-900"}`,
+            children: "Truy\u1EC1n Li\xEAn T\u1EE5c (CIV)"
           }
         )
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 p-2.5 bg-slate-50 rounded-xl border border-slate-200/70 text-xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "text-[11px] font-bold text-slate-600 flex items-center gap-1.5", children: [
+    patient && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 p-2.5 bg-slate-50 rounded-xl border border-slate-200/80 text-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 text-slate-700 font-medium", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(User, { className: "w-3.5 h-3.5 text-indigo-600 shrink-0" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-slate-900", children: patient.name || patient.id }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-slate-400", children: "\u2022" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
+          patient.age,
+          " tu\u1ED5i (",
+          patient.gender === "male" ? "Nam" : "N\u1EEF",
+          ")"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-slate-400", children: "\u2022" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
+          patient.weight,
+          " kg"
+        ] }),
+        renal && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-slate-400", children: "\u2022" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
+            "CrCl: ",
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { className: "text-indigo-900", children: renal.crcl }),
+            " mL/ph\xFAt"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-slate-400", children: "\u2022" }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
+            "SCr: ",
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: patient.scrValue }),
+            " ",
+            patient.scrUnit === "umol_L" ? "\xB5mol/L" : "mg/dL"
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[11px] text-slate-500 font-semibold", children: "MIC:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "px-1.5 py-0.5 rounded bg-white border border-slate-200 font-mono font-bold text-slate-800 text-[11px]", children: [
+          mic,
+          " mg/L"
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 p-2.5 bg-indigo-50/40 rounded-xl border border-indigo-100 text-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "text-[11px] font-bold text-indigo-950 flex items-center gap-1.5", children: [
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Sparkles, { className: "w-3.5 h-3.5 text-amber-500" }),
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "K\u1ECBch b\u1EA3n th\u1EED nghi\u1EC7m nhanh:" })
       ] }),
@@ -50267,6 +50426,19 @@ var TdmCalculatorCard = ({
             className: "px-2.5 py-1 bg-white hover:bg-rose-50 text-rose-800 border border-rose-200 rounded-lg font-bold text-[11px] transition-all cursor-pointer shadow-2xs",
             children: "\u{1F6A8} Nguy c\u01A1 \u0111\u1ED9c th\u1EADn (\u0110\xE1y > 20)"
           }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => loadPreset("clear"),
+            className: "px-2 py-1 bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 rounded-lg font-medium text-[11px] transition-all cursor-pointer flex items-center gap-1",
+            title: "X\xF3a tr\u1EAFng \u0111\u1EC3 t\u1EF1 nh\u1EADp",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(RotateCcw, { className: "w-3 h-3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "X\xF3a" })
+            ]
+          }
         )
       ] })
     ] }),
@@ -50274,12 +50446,12 @@ var TdmCalculatorCard = ({
       /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center justify-between text-xs font-bold text-slate-700", children: [
         /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "flex items-center gap-1.5 uppercase tracking-wide", children: [
           /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "w-4 h-4 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px]", children: "1" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Th\xF4ng tin ph\xE1c \u0111\u1ED3 & N\u1ED3ng \u0111\u1ED9 \u0111o \u0111\u01B0\u1EE3c" })
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Th\xF4ng tin ph\xE1c \u0111\u1ED3 & N\u1ED3ng \u0111\u1ED9 x\xE9t nghi\u1EC7m" })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-slate-400 font-normal", children: "ASHP/IDSA 2020 Standard" })
       ] }),
       isContinuous ? (
-        /* Truyền liên tục */
+        /* TRUYỀN LIÊN TỤC (CIV) */
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-3", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3", children: [
           /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
             /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-1", children: "Li\u1EC1u truy\u1EC1n li\xEAn t\u1EE5c hi\u1EC7n t\u1EA1i:" }),
@@ -50291,8 +50463,19 @@ var TdmCalculatorCard = ({
                   min: "500",
                   max: "5000",
                   step: "100",
-                  value: tdmInput.currentContinuousDailyDoseMg || 2e3,
-                  onChange: (e) => onChange({ currentContinuousDailyDoseMg: Number(e.target.value) }),
+                  value: rawContDailyDose,
+                  onChange: (e) => {
+                    const val = e.target.value;
+                    setRawContDailyDose(val);
+                    const num = Number(val);
+                    if (!isNaN(num) && num > 0) {
+                      onChange({
+                        currentContinuousDailyDoseMg: num,
+                        continuousDailyDoseMg: num,
+                        continuousRateMgPerHour: Math.round(num / 24)
+                      });
+                    }
+                  },
                   placeholder: "2000",
                   className: "w-full h-9 px-3 text-xs font-bold font-mono bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none"
                 }
@@ -50300,9 +50483,11 @@ var TdmCalculatorCard = ({
               /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-3 top-2.5 text-xs text-slate-400 font-semibold", children: "mg/24h" })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-[11px] text-slate-500 mt-1", children: [
-              "T\u1ED1c \u0111\u1ED9: ",
-              ((tdmInput.currentContinuousDailyDoseMg || 2e3) / 24).toFixed(1),
-              " mg/gi\u1EDD"
+              "T\u1ED1c \u0111\u1ED9 truy\u1EC1n: ",
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("strong", { children: [
+                (Number(rawContDailyDose || 2e3) / 24).toFixed(1),
+                " mg/gi\u1EDD"
+              ] })
             ] })
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
@@ -50315,50 +50500,72 @@ var TdmCalculatorCard = ({
                   min: "1",
                   max: "100",
                   step: "0.1",
-                  value: tdmInput.steadyStateConcentration || "",
-                  onChange: (e) => onChange({ steadyStateConcentration: Number(e.target.value) }),
+                  value: rawCss,
+                  onChange: (e) => {
+                    const val = e.target.value;
+                    setRawCss(val);
+                    if (val === "") {
+                      onChange({ steadyStateConcentration: void 0 });
+                    } else {
+                      const num = Number(val);
+                      if (!isNaN(num) && num >= 0) {
+                        onChange({ steadyStateConcentration: num });
+                      }
+                    }
+                  },
                   placeholder: "VD: 22.5",
-                  className: "w-full h-9 px-3 text-xs font-bold font-mono bg-white border border-teal-300 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none"
+                  className: "w-full h-9 px-3 text-xs font-bold font-mono bg-white border border-teal-400 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none"
                 }
               ),
               /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-3 top-2.5 text-xs text-slate-400 font-semibold", children: "mg/L" })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-[11px] text-slate-500 mt-1", children: [
-              "L\u1EA5y m\u1EABu sau \u2265 24h truy\u1EC1n li\xEAn t\u1EE5c (\u0110\xEDch: ",
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "20 \u2013 25 mg/L" }),
+              "L\u1EA5y m\u1EABu sau \u2265 24h truy\u1EC1n li\xEAn t\u1EE5c (Kho\u1EA3ng \u0111\xEDch t\u1ED1i \u01B0u: ",
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { className: "text-teal-700", children: "20 \u2013 25 mg/L" }),
               ")."
             ] })
           ] })
         ] }) })
       ) : (
-        /* Truyền ngắt quãng (Bayesian 1 mẫu hoặc 2 mẫu) */
+        /* TRUYỀN NGẮT QUÃNG (Bayesian 1 mẫu hoặc 2 mẫu) */
         /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "space-y-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-3 gap-2.5 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-3 bg-slate-50 rounded-xl border border-slate-200/90 text-xs", children: [
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block font-bold text-slate-700 mb-1", children: "Li\u1EC1u \u0111ang d\xF9ng:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-[11px] font-bold text-slate-700 mb-1", children: "Li\u1EC1u \u0111ang d\xF9ng:" }),
               /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "relative", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                   "input",
                   {
                     type: "number",
                     step: "50",
-                    value: tdmInput.currentDoseMg || "",
-                    onChange: (e) => onChange({ currentDoseMg: Number(e.target.value) }),
+                    value: rawDose,
+                    onChange: (e) => {
+                      const val = e.target.value;
+                      setRawDose(val);
+                      const num = Number(val);
+                      if (!isNaN(num) && num > 0) {
+                        onChange({ currentDoseMg: num });
+                      }
+                    },
                     placeholder: "1000",
-                    className: "w-full h-8 px-2.5 text-xs font-mono font-bold bg-white border border-slate-300 rounded-lg outline-none focus:border-teal-600"
+                    className: "w-full h-9 px-3 pr-8 text-xs font-mono font-bold bg-white border border-slate-300 rounded-lg outline-none focus:border-teal-600 shadow-2xs"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-2 top-2 text-[10px] text-slate-400", children: "mg" })
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-2.5 top-2.5 text-[10px] font-bold text-slate-400", children: "mg" })
               ] })
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block font-bold text-slate-700 mb-1", children: "Kho\u1EA3ng c\xE1ch li\u1EC1u:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-[11px] font-bold text-slate-700 mb-1", children: "Kho\u1EA3ng c\xE1ch li\u1EC1u:" }),
               /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
                 "select",
                 {
-                  value: tdmInput.currentIntervalHours,
-                  onChange: (e) => onChange({ currentIntervalHours: Number(e.target.value) }),
-                  className: "w-full h-8 px-2 text-xs font-bold bg-white border border-slate-300 rounded-lg outline-none cursor-pointer focus:border-teal-600",
+                  value: rawInterval,
+                  onChange: (e) => {
+                    const val = e.target.value;
+                    setRawInterval(val);
+                    onChange({ currentIntervalHours: Number(val) });
+                  },
+                  className: "w-full h-9 px-2.5 text-xs font-bold bg-white border border-slate-300 rounded-lg outline-none cursor-pointer focus:border-teal-600 shadow-2xs",
                   children: [
                     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "8", children: "M\u1ED7i 8 gi\u1EDD (q8h)" }),
                     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "12", children: "M\u1ED7i 12 gi\u1EDD (q12h)" }),
@@ -50371,7 +50578,7 @@ var TdmCalculatorCard = ({
               )
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block font-bold text-slate-700 mb-1", children: "Th\u1EDDi gian truy\u1EC1n:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-[11px] font-bold text-slate-700 mb-1", children: "Th\u1EDDi gian truy\u1EC1n:" }),
               /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "relative", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                   "input",
@@ -50380,27 +50587,34 @@ var TdmCalculatorCard = ({
                     step: "0.5",
                     min: "0.5",
                     max: "6",
-                    value: tdmInput.infusionDurationHours || "",
-                    onChange: (e) => onChange({ infusionDurationHours: Number(e.target.value) }),
+                    value: rawDuration,
+                    onChange: (e) => {
+                      const val = e.target.value;
+                      setRawDuration(val);
+                      const num = Number(val);
+                      if (!isNaN(num) && num > 0) {
+                        onChange({ infusionDurationHours: num });
+                      }
+                    },
                     placeholder: "1.5",
-                    className: "w-full h-8 px-2.5 text-xs font-mono font-bold bg-white border border-slate-300 rounded-lg outline-none focus:border-teal-600"
+                    className: "w-full h-9 px-3 pr-9 text-xs font-mono font-bold bg-white border border-slate-300 rounded-lg outline-none focus:border-teal-600 shadow-2xs"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-2 top-2 text-[10px] text-slate-400", children: "gi\u1EDD" })
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-2.5 top-2.5 text-[10px] font-bold text-slate-400", children: "gi\u1EDD" })
               ] })
             ] })
           ] }),
-          intermittentMethod === "bayesian_single" ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3.5 rounded-xl border border-teal-200 bg-teal-50/50 space-y-3", children: [
+          intermittentMethod === "bayesian_single" ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3.5 rounded-2xl border border-teal-200 bg-teal-50/40 space-y-3", children: [
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-teal-200/60", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-1.5", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(FlaskConical, { className: "w-4 h-4 text-teal-700" }),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-xs font-bold text-teal-950", children: "N\u1ED3ng \u0111\u1ED9 m\u1EABu duy nh\u1EA5t (Chu\u1EA9n ASHP 2020 Bayesian TDM)" })
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white flex items-center justify-center text-xs shadow-2xs font-bold shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(FlaskConical, { className: "w-3.5 h-3.5" }) }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-xs font-bold text-teal-950", children: "\u0110\u1ECBnh l\u01B0\u1EE3ng TDM M\u1EABu \u0110\xE1y (Bayesian Single-Sample)" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] text-teal-800 bg-teal-100 px-2 py-0.5 rounded font-bold", children: "Khuy\u1EBFn ngh\u1ECB l\u1EA5y m\u1EABu \u0111\xE1y (C_trough)" })
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] text-teal-800 bg-teal-100 px-2 py-0.5 rounded font-bold self-start sm:self-auto", children: "Khuy\u1EBFn ngh\u1ECB: R\xFAt m\xE1u tr\u01B0\u1EDBc c\u1EEF \u2264 30 ph\xFAt (C_trough)" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-12 gap-3 items-end", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "sm:col-span-5", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-xs font-bold text-teal-950 mb-1", children: "N\u1ED3ng \u0111\u1ED9 \u0111\xE1y \u0111o \u0111\u01B0\u1EE3c (C_trough):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-3 gap-3 items-start", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-[11px] font-bold text-teal-950 mb-1", children: "N\u1ED3ng \u0111\u1ED9 \u0111\xE1y \u0111o \u0111\u01B0\u1EE3c (C_trough):" }),
                 /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "relative", children: [
                   /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                     "input",
@@ -50409,52 +50623,83 @@ var TdmCalculatorCard = ({
                       step: "0.1",
                       min: "0.5",
                       max: "100",
-                      value: sampleConcentration,
+                      value: rawSingleConc,
                       onChange: (e) => {
-                        const val = Number(e.target.value);
-                        onChange({
-                          singleConcentration: val,
-                          troughConcentration: val
-                        });
+                        const val = e.target.value;
+                        setRawSingleConc(val);
+                        if (val === "") {
+                          onChange({
+                            singleConcentration: void 0,
+                            troughConcentration: void 0
+                          });
+                        } else {
+                          const num = Number(val);
+                          if (!isNaN(num) && num >= 0) {
+                            onChange({
+                              singleConcentration: num,
+                              troughConcentration: num
+                            });
+                          }
+                        }
                       },
                       placeholder: "VD: 11.5",
-                      className: "w-full h-10 px-3 text-base font-black font-mono bg-white border border-teal-300 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none"
+                      className: "w-full h-10 px-3 pr-12 text-base font-black font-mono bg-white border border-teal-300 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none shadow-2xs"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-3 top-3 text-xs text-slate-400 font-bold", children: "mg/L" })
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-3 top-2.5 text-xs text-slate-400 font-bold", children: "mg/L" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] text-teal-800 mt-1 font-semibold block", children: "Kho\u1EA3ng \u0111\xEDch an to\xE0n: 10 \u2013 15 mg/L" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-[11px] font-bold text-teal-950 mb-1", children: "Th\u1EDDi \u0111i\u1EC3m r\xFAt m\xE1u \u0111\xE1y:" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "relative", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+                    "select",
+                    {
+                      value: tdmInput.troughTimeBeforeNextHours ?? 0.5,
+                      onChange: (e) => onChange({ troughTimeBeforeNextHours: Number(e.target.value) }),
+                      className: "w-full h-10 pl-8 pr-7 bg-white border border-teal-300 rounded-xl font-bold text-xs text-slate-800 cursor-pointer outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 appearance-none shadow-2xs",
+                      children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "0.5", children: "Tr\u01B0\u1EDBc c\u1EEF k\u1EBF \u2264 30 ph\xFAt (Chu\u1EA9n)" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "1", children: "Tr\u01B0\u1EDBc c\u1EEF k\u1EBF 1.0 gi\u1EDD" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "1.5", children: "Tr\u01B0\u1EDBc c\u1EEF k\u1EBF 1.5 gi\u1EDD" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "2", children: "Tr\u01B0\u1EDBc c\u1EEF k\u1EBF 2.0 gi\u1EDD" })
+                      ]
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Clock, { className: "w-4 h-4 text-teal-600 absolute left-2.5 top-3 pointer-events-none" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ChevronDown, { className: "w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-3.5 pointer-events-none" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "text-[10px] text-slate-500 mt-1 font-medium block truncate", children: [
+                  "Gi\u1EDD th\u1EE9 ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { className: "text-slate-800 font-mono", children: Math.max(0, Number(rawInterval || 12) - (tdmInput.troughTimeBeforeNextHours ?? 0.5)).toFixed(1) }),
+                  " c\u1EE7a c\u1EEF li\u1EC1u"
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "sm:col-span-4", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-[11px] font-semibold text-slate-700 mb-1", children: "Th\u1EDDi \u0111i\u1EC3m r\xFAt m\xE1u \u0111\xE1y:" }),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "h-10 px-3 bg-white border border-teal-200 rounded-xl text-xs text-slate-700 flex items-center gap-2", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Clock, { className: "w-3.5 h-3.5 text-teal-600 shrink-0" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-                    "Tr\u01B0\u1EDBc c\u1EEF k\u1EBF \u2264 30 ph\xFAt (gi\u1EDD th\u1EE9 ",
-                    Math.max(0, (tdmInput.currentIntervalHours || 12) - 0.5),
-                    ")"
-                  ] })
-                ] })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "sm:col-span-3", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-[11px] font-semibold text-slate-700 mb-1", children: "M\u1EABu thu\u1ED9c c\u1EEF li\u1EC1u:" }),
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
-                  "select",
-                  {
-                    value: tdmInput.singleDoseNumber || 2,
-                    onChange: (e) => onChange({ singleDoseNumber: Number(e.target.value) }),
-                    className: "w-full h-10 px-2.5 bg-white border border-teal-200 rounded-xl font-bold text-xs text-slate-800 cursor-pointer outline-none",
-                    children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "1", children: "C\u1EEF 1 (kh\u1EDFi \u0111\u1EA7u)" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "2", children: "C\u1EEF 2 (trong 24h \u0111\u1EA7u)" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "3", children: "C\u1EEF 3 (kho\u1EA3ng 24-36h)" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "4", children: "C\u1EEF 4+ (\u0111\xE3 \u1ED5n \u0111\u1ECBnh)" })
-                    ]
-                  }
-                )
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "block text-[11px] font-bold text-teal-950 mb-1", children: "M\u1EABu thu\u1ED9c c\u1EEF li\u1EC1u:" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "relative", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+                    "select",
+                    {
+                      value: tdmInput.singleDoseNumber || 2,
+                      onChange: (e) => onChange({ singleDoseNumber: Number(e.target.value) }),
+                      className: "w-full h-10 px-3 pr-7 bg-white border border-teal-300 rounded-xl font-bold text-xs text-slate-800 cursor-pointer outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 appearance-none shadow-2xs",
+                      children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "1", children: "C\u1EEF 1 (kh\u1EDFi \u0111\u1EA7u)" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "2", children: "C\u1EEF 2 (khuy\xEAn d\xF9ng trong 24h \u0111\u1EA7u)" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "3", children: "C\u1EEF 3 (sau 24\u201336h)" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("option", { value: "4", children: "C\u1EEF 4+ (\u0111\xE3 \u0111\u1EA1t \u1ED5n \u0111\u1ECBnh)" })
+                      ]
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ChevronDown, { className: "w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-3.5 pointer-events-none" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] text-slate-500 mt-1 font-medium block", children: "Khuy\u1EBFn c\xE1o ASHP: L\u1EA5y tr\u01B0\u1EDBc c\u1EEF 2 ho\u1EB7c 3" })
               ] })
             ] })
           ] }) : (
-            /* 2 Mẫu (Đỉnh & Đáy) */
+            /* 2 MẪU (ĐỈNH & ĐÁY) */
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3", children: [
               /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3 bg-teal-50/50 rounded-xl border border-teal-200 space-y-2", children: [
                 /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center justify-between", children: [
@@ -50462,7 +50707,7 @@ var TdmCalculatorCard = ({
                     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(FlaskConical, { className: "w-3.5 h-3.5 text-teal-700" }),
                     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "N\u1ED3ng \u0111\u1ED9 \u0110\u1EC9nh (C_peak)" })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] text-teal-700", children: "1-2h sau truy\u1EC1n" })
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] text-teal-700 font-medium", children: "1-2h sau khi h\u1EBFt truy\u1EC1n" })
                 ] }),
                 /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "relative", children: [
                   /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
@@ -50470,10 +50715,21 @@ var TdmCalculatorCard = ({
                     {
                       type: "number",
                       step: "0.1",
-                      value: tdmInput.peakConcentration || "",
-                      onChange: (e) => onChange({ peakConcentration: Number(e.target.value) }),
+                      value: rawPeakConc,
+                      onChange: (e) => {
+                        const val = e.target.value;
+                        setRawPeakConc(val);
+                        if (val === "") {
+                          onChange({ peakConcentration: void 0 });
+                        } else {
+                          const num = Number(val);
+                          if (!isNaN(num) && num >= 0) {
+                            onChange({ peakConcentration: num });
+                          }
+                        }
+                      },
                       placeholder: "VD: 28.5",
-                      className: "w-full h-9 px-3 text-sm font-bold font-mono bg-white border border-teal-300 rounded-xl outline-none"
+                      className: "w-full h-9 px-3 text-sm font-bold font-mono bg-white border border-teal-400 rounded-xl outline-none"
                     }
                   ),
                   /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-3 top-2.5 text-xs text-slate-400", children: "mg/L" })
@@ -50485,7 +50741,7 @@ var TdmCalculatorCard = ({
                     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Clock, { className: "w-3.5 h-3.5 text-indigo-700" }),
                     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "N\u1ED3ng \u0111\u1ED9 \u0110\xE1y (C_trough)" })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] text-indigo-700", children: "\u2264 30p tr\u01B0\u1EDBc c\u1EEF k\u1EBF" })
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] text-indigo-700 font-medium", children: "\u2264 30p tr\u01B0\u1EDBc c\u1EEF ti\u1EBFp theo" })
                 ] }),
                 /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "relative", children: [
                   /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
@@ -50493,10 +50749,21 @@ var TdmCalculatorCard = ({
                     {
                       type: "number",
                       step: "0.1",
-                      value: tdmInput.troughConcentration || "",
-                      onChange: (e) => onChange({ troughConcentration: Number(e.target.value) }),
+                      value: rawTroughConc,
+                      onChange: (e) => {
+                        const val = e.target.value;
+                        setRawTroughConc(val);
+                        if (val === "") {
+                          onChange({ troughConcentration: void 0 });
+                        } else {
+                          const num = Number(val);
+                          if (!isNaN(num) && num >= 0) {
+                            onChange({ troughConcentration: num });
+                          }
+                        }
+                      },
                       placeholder: "VD: 11.5",
-                      className: "w-full h-9 px-3 text-sm font-bold font-mono bg-white border border-indigo-300 rounded-xl outline-none"
+                      className: "w-full h-9 px-3 text-sm font-bold font-mono bg-white border border-indigo-400 rounded-xl outline-none"
                     }
                   ),
                   /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "absolute right-3 top-2.5 text-xs text-slate-400", children: "mg/L" })
@@ -50507,7 +50774,7 @@ var TdmCalculatorCard = ({
         ] })
       )
     ] }),
-    tdmResult.auc24 > 0 ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: `p-4 rounded-xl border ${statusStyle.bg} transition-all space-y-3.5`, children: [
+    hasResults ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: `p-4 rounded-xl border ${statusStyle.bg} transition-all space-y-3.5`, children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center justify-between text-xs font-bold", children: [
         /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "flex items-center gap-1.5 uppercase tracking-wide", children: [
           /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "w-4 h-4 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px]", children: "2" }),
@@ -50515,7 +50782,7 @@ var TdmCalculatorCard = ({
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: `px-2.5 py-0.5 rounded-full text-xs font-black ${statusStyle.badge}`, children: statusStyle.label })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white/80 p-3.5 rounded-xl border border-slate-200/80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white/90 p-3.5 rounded-xl border border-slate-200/80", children: [
         /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-xs text-slate-500 font-semibold block", children: "AUC24 th\u1EF1c t\u1EBF \u01B0\u1EDBc t\xEDnh:" }),
           /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-baseline gap-2 mt-0.5", children: [
@@ -50523,7 +50790,7 @@ var TdmCalculatorCard = ({
             /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-xs font-bold text-slate-600", children: "mg\xB7h/L" }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "text-xs text-slate-500 ml-1", children: [
               "(AUC24/MIC = ",
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { className: "font-mono text-slate-800", children: Math.round(tdmResult.auc24 / mic) }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { className: "font-mono text-slate-800", children: Math.round(tdmResult.auc24 / Math.max(0.1, mic)) }),
               ")"
             ] })
           ] }),
@@ -50552,7 +50819,7 @@ var TdmCalculatorCard = ({
             ] })
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-slate-400 block text-[10px] uppercase font-bold", children: "C_trough d\u1EF1 ki\u1EBFn" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-slate-400 block text-[10px] uppercase font-bold", children: isContinuous ? "C_ss \u0111o \u0111\u01B0\u1EE3c" : "C_trough d\u1EF1 ki\u1EBFn" }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: `font-mono font-bold ${(tdmResult.cMinEstimated || 0) >= 20 ? "text-rose-600" : "text-slate-800"}`, children: [
               tdmResult.cMinEstimated || "-",
               " mg/L"
@@ -50560,7 +50827,7 @@ var TdmCalculatorCard = ({
           ] })
         ] })
       ] }),
-      (tdmResult.isHighTroughRisk || tdmResult.holdDoseHours && tdmResult.holdDoseHours > 0) && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3.5 rounded-xl bg-rose-100 border border-rose-300 text-rose-950 space-y-1.5", children: [
+      hasToxicity && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3.5 rounded-xl bg-rose-100 border border-rose-300 text-rose-950 space-y-1.5", children: [
         /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-2 font-black text-xs text-rose-900", children: [
           /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ShieldAlert, { className: "w-4 h-4 text-rose-600 shrink-0" }),
           /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "C\u1EA2NH B\xC1O NGUY C\u01A0 \u0110\u1ED8C T\xCDNH TH\u1EACN (AKI): N\u1ED2NG \u0110\u1ED8 V\u01AF\u1EE2T NG\u01AF\u1EE0NG AN TO\xC0N!" })
@@ -50599,21 +50866,16 @@ var TdmCalculatorCard = ({
                 " mg/24h"
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "text-base font-black text-slate-900", children: [
-              preferredRegimen.doseMg,
-              " mg m\u1ED7i ",
-              preferredRegimen.intervalHours,
-              " gi\u1EDD (q",
-              preferredRegimen.intervalHours,
-              "h)"
-            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-base font-black text-slate-900", children: isContinuous ? `T\u1ED1c \u0111\u1ED9: ${preferredRegimen.doseMg} mg/gi\u1EDD (T\u1ED5ng: ${preferredRegimen.dailyDoseMg} mg/24h)` : `${preferredRegimen.doseMg} mg m\u1ED7i ${preferredRegimen.intervalHours} gi\u1EDD (q${preferredRegimen.intervalHours}h)` }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-xs text-slate-600", children: [
               "D\u1EF1 ki\u1EBFn AUC24: ",
               /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("strong", { className: "text-slate-900", children: [
                 preferredRegimen.auc24,
                 " mg\xB7h/L"
               ] }),
-              " \u2022 N\u1ED3ng \u0111\u1ED9 \u0111\xE1y: ",
+              " \u2022 ",
+              isContinuous ? "N\u1ED3ng \u0111\u1ED9 Css" : "N\u1ED3ng \u0111\u1ED9 \u0111\xE1y",
+              ": ",
               /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("strong", { className: "text-slate-900", children: [
                 preferredRegimen.cTrough,
                 " mg/L"
@@ -50635,14 +50897,18 @@ var TdmCalculatorCard = ({
         ] }),
         tdmResult.adjustedRegimens && tdmResult.adjustedRegimens.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "space-y-1.5", children: [
           /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[11px] font-bold text-slate-700 block", children: "B\u1EA3ng so s\xE1nh c\xE1c ph\u01B0\u01A1ng \xE1n li\u1EC1u kh\u1EA3 thi (Candidate Regimens):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-2xs", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("table", { className: "w-full text-left text-xs border-collapse", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-2xs", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("table", { className: "w-full text-left text-xs border-collapse min-w-[560px]", children: [
             /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("thead", { className: "bg-slate-50 text-[10px] text-slate-500 font-bold uppercase tracking-wider border-b border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2 px-3", children: "Ph\xE1c \u0111\u1ED3 (Li\u1EC1u x C\u1EEF)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2 px-2.5", children: "T\u1ED5ng 24h" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2 px-2.5", children: "\u0110\xE1y (C_trough)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2 px-2.5", children: "AUC24 d\u1EF1 ki\u1EBFn" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2 px-2.5", children: "\u0110\xE1nh gi\xE1" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2 px-3 text-right", children: "Thao t\xE1c" })
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("th", { className: "py-2.5 px-3", children: [
+                "Ph\xE1c \u0111\u1ED3 (",
+                isContinuous ? "T\u1ED1c \u0111\u1ED9 mg/h" : "Li\u1EC1u x C\u1EEF",
+                ")"
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-2.5", children: "T\u1ED5ng 24h" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-2.5", children: isContinuous ? "C_ss d\u1EF1 ki\u1EBFn" : "\u0110\xE1y (C_trough)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-2.5", children: "AUC24 d\u1EF1 ki\u1EBFn" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-2.5", children: "\u0110\xE1nh gi\xE1" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("th", { className: "py-2.5 px-3 text-right", children: "Thao t\xE1c" })
             ] }) }),
             /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("tbody", { className: "divide-y divide-slate-100", children: tdmResult.adjustedRegimens.map((opt, idx) => {
               const isRec = opt.isPreferred ?? opt.isRecommended;
@@ -50656,31 +50922,26 @@ var TdmCalculatorCard = ({
                 {
                   className: `hover:bg-slate-50/80 transition-colors ${isRec ? "bg-emerald-50/50 font-semibold" : ""}`,
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "py-2 px-3 font-mono font-bold text-slate-900", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-1.5", children: [
-                      isRec && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "w-2 h-2 rounded-full bg-emerald-600" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-                        opt.doseMg,
-                        " mg q",
-                        opt.intervalHours,
-                        "h"
-                      ] }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "py-2.5 px-3 font-mono font-bold text-slate-900", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+                      isRec && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "w-2 h-2 rounded-full bg-emerald-600 shrink-0" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: isContinuous ? `${opt.doseMg} mg/gi\u1EDD` : `${opt.doseMg} mg q${opt.intervalHours}h` }),
                       isRec && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[9px] font-bold text-emerald-800 bg-emerald-100 px-1 py-0.2 rounded", children: "\u01AFu ti\xEAn" })
                     ] }) }),
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: "py-2 px-2.5 font-mono text-slate-600", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: "py-2.5 px-2.5 font-mono text-slate-600", children: [
                       opt.dailyDoseMg,
                       " mg"
                     ] }),
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: `py-2 px-2.5 font-mono ${isHighTrough ? "text-rose-600 font-bold" : "text-slate-700"}`, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: `py-2.5 px-2.5 font-mono ${isHighTrough ? "text-rose-600 font-bold" : "text-slate-700"}`, children: [
                       troughVal,
                       " mg/L"
                     ] }),
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: "py-2 px-2.5 font-mono font-bold text-slate-900", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("td", { className: "py-2.5 px-2.5 font-mono font-bold text-slate-900", children: [
                       aucVal,
                       " ",
                       /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-normal text-slate-400", children: "mg\xB7h/L" })
                     ] }),
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "py-2 px-2.5", children: isTarget ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded", children: "\u0110\u1EA1t \u0111\xEDch" }) : isSub ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded", children: "D\u01B0\u1EDBi \u0111\xEDch" }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-bold text-rose-800 bg-rose-100 px-1.5 py-0.5 rounded", children: "Qu\xE1 li\u1EC1u" }) }),
-                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "py-2 px-3 text-right", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "py-2.5 px-2.5", children: isTarget ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded", children: "\u0110\u1EA1t \u0111\xEDch" }) : isSub ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded", children: "D\u01B0\u1EDBi \u0111\xEDch" }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-bold text-rose-800 bg-rose-100 px-1.5 py-0.5 rounded", children: "Qu\xE1 li\u1EC1u" }) }),
+                    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "py-2.5 px-3 text-right", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
                       "button",
                       {
                         type: "button",
@@ -50704,7 +50965,18 @@ var TdmCalculatorCard = ({
           ] })
         ] })
       ] })
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "p-4 rounded-xl bg-slate-50 border border-dashed border-slate-300 text-center text-xs text-slate-500", children: "Nh\u1EADp n\u1ED3ng \u0111\u1ED9 \u0111\xE1y ho\u1EB7c n\u1ED3ng \u0111\u1ED9 m\u1EABu \u0111\u1EC3 h\u1EC7 th\u1ED1ng t\u1EF1 \u0111\u1ED9ng t\xEDnh to\xE1n AUC24 v\xE0 \u0111\u1EC1 xu\u1EA5t ph\xE1c \u0111\u1ED3 hi\u1EC7u ch\u1EC9nh li\u1EC1u." }),
+    ] }) : (
+      /* Empty State */
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-5 rounded-xl bg-slate-50 border border-dashed border-slate-300 text-center space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "w-8 h-8 rounded-full bg-slate-200 text-slate-500 mx-auto flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Info, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-xs font-bold text-slate-700", children: "Ch\u01B0a c\xF3 n\u1ED3ng \u0111\u1ED9 vancomycin x\xE9t nghi\u1EC7m" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-[11px] text-slate-500 max-w-md mx-auto", children: [
+          "Nh\u1EADp n\u1ED3ng \u0111\u1ED9 \u0111\xE1y C_trough (ho\u1EB7c C_ss n\u1EBFu truy\u1EC1n li\xEAn t\u1EE5c) \u1EDF B\u01B0\u1EDBc 1 \u1EDF tr\xEAn, ho\u1EB7c ch\u1ECDn m\u1ED9t ",
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "K\u1ECBch b\u1EA3n th\u1EED nghi\u1EC7m nhanh" }),
+          " \u0111\u1EC3 h\u1EC7 th\u1ED1ng t\u1EF1 \u0111\u1ED9ng t\xEDnh to\xE1n AUC24 v\xE0 \u0111\u1EC1 xu\u1EA5t ph\xE1c \u0111\u1ED3 hi\u1EC7u ch\u1EC9nh."
+        ] })
+      ] })
+    ),
     /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center justify-between border-t border-slate-100 pt-2.5", children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
         "button",
@@ -51766,6 +52038,42 @@ function evaluateTdm(tdm, patient, renal) {
       monitoringPlan2 = "Ki\u1EC3m tra l\u1EA1i n\u1ED3ng \u0111\u1ED9 TDM sau 24 gi\u1EDD \u0111i\u1EC1u ch\u1EC9nh t\u1ED1c \u0111\u1ED9 truy\u1EC1n. Theo d\xF5i s\xE1t ch\u1EE9c n\u0103ng th\u1EADn (SCr) m\u1ED7i ng\xE0y.";
     }
     const timingValidation2 = validateTdmSampleTiming(tdm);
+    const clEstimated = css > 0 ? Number((currentDailyMg / (css * 24)).toFixed(2)) : void 0;
+    const vdEstimated = patient?.weight ? Number((patient.weight * (patient.clinicalSetting === "icu" ? 0.85 : 0.72)).toFixed(1)) : 45;
+    const kel2 = clEstimated && vdEstimated ? Number((clEstimated / vdEstimated).toFixed(4)) : void 0;
+    const halfLifeHours = kel2 ? Number((Math.log(2) / kel2).toFixed(1)) : void 0;
+    const candidateRates = [
+      Math.max(25, suggestedRateMgH - 30),
+      Math.max(35, suggestedRateMgH - 20),
+      Math.max(45, suggestedRateMgH - 10),
+      suggestedRateMgH,
+      suggestedRateMgH + 10,
+      suggestedRateMgH + 20,
+      suggestedRateMgH + 30
+    ];
+    const uniqueRates = Array.from(new Set(candidateRates)).sort((a, b) => a - b);
+    const continuousRegimens = uniqueRates.map((rate) => {
+      const dailyMg = rate * 24;
+      const predCss = css > 0 && currentDailyMg > 0 ? Number((css * (dailyMg / currentDailyMg)).toFixed(1)) : 22;
+      const predAuc = Number((predCss * 24).toFixed(1));
+      const isWithinGoal = predAuc >= 400 && predAuc <= 600;
+      const isPreferred = rate === suggestedRateMgH;
+      return {
+        doseMg: rate,
+        intervalHours: 24,
+        infusionMinutes: 1440,
+        infusionHours: 24,
+        dailyDoseMg: dailyMg,
+        cPeak: predCss,
+        cTrough: predCss,
+        auc24: predAuc,
+        aucMicRatio: Number((predAuc / mic).toFixed(1)),
+        isWithinGoal,
+        isPreferred,
+        isHighTroughRisk: predCss >= 25
+      };
+    });
+    const preferredCont = continuousRegimens.find((r) => r.isPreferred) || continuousRegimens[0];
     return {
       auc24: auc242,
       auc24TargetMin: targetMin,
@@ -51773,6 +52081,10 @@ function evaluateTdm(tdm, patient, renal) {
       targetAttainment: attainment2,
       cMaxEstimated: css,
       cMinEstimated: css,
+      clEstimated,
+      vdEstimated,
+      kel: kel2,
+      halfLifeHours,
       estimationMethod: "continuous_css",
       adjustedDoseRecommendation: rec2,
       suggestedContinuousRateMgH: suggestedRateMgH,
@@ -51780,6 +52092,8 @@ function evaluateTdm(tdm, patient, renal) {
       predictedAuc24: predictedAuc,
       holdDoseHours: holdHours,
       monitoringPlan: monitoringPlan2,
+      adjustedRegimens: continuousRegimens,
+      preferredAdjustedRegimen: preferredCont,
       clinicalNote: `Truy\u1EC1n t\u0129nh m\u1EA1ch li\xEAn t\u1EE5c: AUC24 \u0111\u01B0\u1EE3c t\xEDnh ch\xEDnh x\xE1c b\u1EB1ng c\xF4ng th\u1EE9c AUC24 = Css \xD7 24. M\u1EE5c ti\xEAu Css l\xFD t\u01B0\u1EDFng: 20 \u2013 25 mg/L (t\u01B0\u01A1ng \u0111\u01B0\u01A1ng AUC 480 \u2013 600 mg\xB7h/L).`,
       timingValidation: timingValidation2
     };
@@ -53091,6 +53405,9 @@ function App() {
     setPatient((prev) => ({ ...prev, ...updated }));
   };
   const handleTdmChange = (updated) => {
+    if (updated.regimenType && updated.regimenType !== methodPreference) {
+      setMethodPreference(updated.regimenType);
+    }
     setTdmInput((prev) => ({ ...prev, ...updated }));
   };
   const handleReset = () => {
@@ -53227,12 +53544,21 @@ function App() {
     exportClinicalReportPDF(patient, renal, dosing, activeTdmInput, tdmResult);
   };
   const handleApplyAdjustment = (newDose, newInterval) => {
-    setTdmInput((prev) => ({
-      ...prev,
-      currentDoseMg: newDose,
-      currentIntervalHours: newInterval || prev.currentIntervalHours,
-      currentContinuousDailyDoseMg: methodPreference === "continuous" ? newDose : prev.currentContinuousDailyDoseMg
-    }));
+    if (methodPreference === "continuous") {
+      const daily = newDose <= 200 ? newDose * 24 : newDose;
+      setTdmInput((prev) => ({
+        ...prev,
+        currentContinuousDailyDoseMg: daily,
+        continuousDailyDoseMg: daily,
+        continuousRateMgPerHour: Math.round(daily / 24)
+      }));
+    } else {
+      setTdmInput((prev) => ({
+        ...prev,
+        currentDoseMg: newDose,
+        currentIntervalHours: newInterval || prev.currentIntervalHours
+      }));
+    }
   };
   return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "min-h-screen bg-slate-50 flex flex-col font-sans pb-16 md:pb-6", children: [
     /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
@@ -53408,8 +53734,11 @@ function App() {
             tdmInput: activeTdmInput,
             tdmResult,
             regimenMethod: methodPreference,
+            patient,
+            renal,
             mic: patient.mic || 1,
             onChange: handleTdmChange,
+            onMethodChange: setMethodPreference,
             onApplyAdjustment: handleApplyAdjustment
           }
         ) })

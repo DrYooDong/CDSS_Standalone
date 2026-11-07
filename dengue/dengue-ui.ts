@@ -298,6 +298,7 @@ export class DengueCDSSController {
   private interactiveDose: number = 5;
   private interactivePumpRate: number = 5;
   private deEscalationChecked: Record<number, boolean> = {};
+  private showFluidCompareTable: boolean = false;
 
   constructor(containerId: string) {
     const el = document.getElementById(containerId);
@@ -1117,6 +1118,34 @@ export class DengueCDSSController {
     this.renderPlan(this.currentPlan);
   }
 
+  public setFluidPreference(fluid: 'auto' | 'ringer_lactate' | 'ringer_acetate' | 'nacl_09'): void {
+    const input = this.getFormData();
+    const isLiverImpaired = !!(
+      (input.liverEnzymesAST_ALT && input.liverEnzymesAST_ALT >= 400) ||
+      input.clinicalResponse === 'liver_failure'
+    );
+
+    if (fluid === 'ringer_lactate' && isLiverImpaired) {
+      this.showToast('⚠️ Cảnh báo BYT: AST/ALT ≥ 400 U/L (tổn thương gan) - Chống chỉ định Ringer Lactate! Đã tự động giữ Ringer Acetate.');
+      fluid = 'ringer_acetate';
+    }
+
+    this.printFluidChoice = fluid;
+    const sidebarSelect = document.getElementById('input-preferred-fluid') as HTMLSelectElement | null;
+    if (sidebarSelect) {
+      sidebarSelect.value = fluid;
+    }
+    this.clearActivePreset();
+    this.recalculate();
+    const fluidNameMap: Record<string, string> = {
+      auto: 'Tự động (Theo BYT & Men Gan)',
+      ringer_lactate: 'Ringer Lactate',
+      ringer_acetate: 'Ringer Acetate',
+      nacl_09: 'Natri Clorid 0.9%'
+    };
+    this.showToast(`Đã chọn dịch truyền: ${fluidNameMap[fluid] || fluid}`);
+  }
+
   private renderPlan(plan: DengueCDSSPlan): void {
     this.renderWeightAnalysis(plan);
     this.renderAlerts(plan);
@@ -1805,17 +1834,205 @@ export class DengueCDSSController {
           </div>
         </div>
 
-        <div class="cdss-kpi-card">
+        <div class="cdss-kpi-card" id="kpi-card-fluid">
           <div class="cdss-kpi-icon cdss-kpi-icon--teal">
             <i class="fa-solid fa-bottle-water"></i>
           </div>
           <div class="cdss-kpi-content">
             <span class="cdss-kpi-label">Ước Tính Số Chai 500ml</span>
             <span class="cdss-kpi-value">${bottles500} <small>chai</small></span>
-            <span class="cdss-kpi-sub" style="font-weight:700; color:${plan.fluidInfo?.isContraindicatedRL ? 'var(--cdss-danger)' : 'inherit'};">${plan.fluidInfo?.name || 'Ringer Lactate'}</span>
+            <span class="cdss-kpi-sub" style="font-weight:700; color:${plan.fluidInfo?.isContraindicatedRL ? 'var(--cdss-danger)' : 'inherit'}; display:flex; align-items:center; gap:0.35rem; flex-wrap:wrap; margin-top:0.25rem;">
+              <span style="display:inline-flex; align-items:center; gap:0.25rem;">
+                <i class="fa-solid fa-droplet" style="color:${plan.fluidInfo?.isContraindicatedRL ? 'var(--cdss-danger)' : 'var(--cdss-primary)'}; font-size:0.75rem;"></i>
+                <span>${plan.fluidInfo?.name || 'Ringer Lactate'}</span>
+              </span>
+              <select id="kpi-quick-fluid-select" class="cdss-kpi-fluid-select" title="Đổi trực tiếp loại dịch truyền bù dịch" aria-label="Đổi dịch truyền">
+                <option value="auto" ${plan.patient.preferredFluid === 'auto' || !plan.patient.preferredFluid ? 'selected' : ''}>⚡ Tự động (${plan.fluidInfo?.name})</option>
+                <option value="ringer_lactate" ${plan.patient.preferredFluid === 'ringer_lactate' ? 'selected' : ''} ${plan.fluidInfo?.isContraindicatedRL ? 'disabled' : ''}>Ringer Lactate (Chuẩn BYT${plan.fluidInfo?.isContraindicatedRL ? ' - CẤM GAN' : ''})</option>
+                <option value="ringer_acetate" ${plan.patient.preferredFluid === 'ringer_acetate' ? 'selected' : ''}>Ringer Acetate (Ưu tiên suy gan)</option>
+                <option value="nacl_09" ${plan.patient.preferredFluid === 'nacl_09' ? 'selected' : ''}>Natri Clorid 0.9% (Đẳng trương)</option>
+              </select>
+            </span>
           </div>
         </div>
       </div>
+
+      <!-- BỘ CHỌN & ĐIỀU PHỐI DỊCH TRUYỀN PHÁC ĐỒ (BỘ Y TẾ 2023) -->
+      <section class="cdss-fluid-selector-card" id="cdss-fluid-selector-card">
+        <div class="cdss-fluid-selector-header">
+          <div class="cdss-fluid-selector-title-area">
+            <div class="cdss-kpi-icon cdss-kpi-icon--teal" style="width:34px; height:34px; min-width:34px; font-size:0.95rem;">
+              <i class="fa-solid fa-flask-vial"></i>
+            </div>
+            <div>
+              <h3 class="cdss-fluid-selector-title">
+                Lựa Chọn Loại Dịch Truyền Phác Đồ Bù Dịch (QĐ 2760/QĐ-BYT)
+                <span class="cdss-brand-badge" style="background:var(--cdss-primary-light); color:var(--cdss-primary); border-color:var(--cdss-primary); font-size:0.68rem;">
+                  Đang dùng: <strong>${plan.fluidInfo.name}</strong>
+                </span>
+                ${plan.fluidInfo.isContraindicatedRL ? `
+                  <span class="cdss-badge cdss-badge--danger" style="font-size:0.68rem;" title="${plan.fluidInfo.reason}">
+                    <i class="fa-solid fa-triangle-exclamation"></i> CẤM RINGER LACTATE (AST/ALT ${plan.patient.liverEnzymesAST_ALT || '≥ 400'} U/L)
+                  </span>
+                ` : ''}
+              </h3>
+              <p class="cdss-fluid-selector-desc">
+                Quyết định dịch tinh thể đẳng trương theo phân tầng tổn thương gan &amp; kiềm toan. Có thể chuyển nhanh sang phác đồ Cao phân tử (CPT) khi sốc trơ.
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.45rem; flex-wrap:wrap;">
+            <button type="button" id="btn-toggle-fluid-compare" class="cdss-action-btn" style="background:var(--cdss-surface); border:1px solid var(--cdss-border); color:var(--cdss-text); font-size:0.75rem; padding:0.35rem 0.65rem;" title="Xem bảng so sánh điện giải và chỉ định 3 loại dịch tinh thể">
+              <i class="fa-solid fa-scale-balanced" style="color:var(--cdss-primary);"></i>
+              <span>${this.showFluidCompareTable ? 'Ẩn So Sánh Điện Giải' : 'So Sánh Điện Giải 3 Dịch'}</span>
+            </button>
+            <button type="button" id="btn-switch-to-colloid" class="cdss-action-btn" style="background:rgba(245, 158, 11, 0.1); border:1px solid rgba(245, 158, 11, 0.35); color:#d97706; font-size:0.75rem; font-weight:600; padding:0.35rem 0.65rem;" title="Chuyển sang Phác đồ Cao Phân Tử Dextran 40 / 6% HES 200 (Phụ lục 10)">
+              <i class="fa-solid fa-shield-virus"></i>
+              <span>Phác Đồ Cao Phân Tử (CPT) <i class="fa-solid fa-arrow-right" style="font-size:0.65rem;"></i></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Tùy Chọn Dịch Truyền Tinh Thể (Tiles) -->
+        <div class="cdss-fluid-tiles-grid">
+          <!-- Tùy chọn 1: Tự động phân tầng -->
+          <div class="cdss-fluid-tile ${(!plan.patient.preferredFluid || plan.patient.preferredFluid === 'auto') ? 'is-active' : ''}" data-fluid-id="auto" role="button" tabindex="0" title="CDSS tự động phát hiện men gan để chọn dịch tinh thể an toàn nhất">
+            <div class="cdss-fluid-tile-head">
+              <span class="cdss-fluid-tile-name">
+                <i class="fa-solid fa-wand-magic-sparkles text-primary"></i> ⚡ Tự Động Chuẩn Hóa
+              </span>
+              <span class="cdss-fluid-tile-badge">${(!plan.patient.preferredFluid || plan.patient.preferredFluid === 'auto') ? 'Đang chọn' : 'Khuyến nghị'}</span>
+            </div>
+            <div class="cdss-fluid-tile-spec">
+              ${plan.fluidInfo.isContraindicatedRL ? '-> Tự đổi Ringer Acetate / NaCl 0.9%' : '-> Dùng Ringer Lactate chuẩn BYT'}
+            </div>
+            <div class="cdss-fluid-tile-desc">
+              Tự động phân tầng theo chỉ số men gan AST/ALT &amp; độ thanh thải. Tối ưu an toàn nhất theo QĐ 2760/QĐ-BYT.
+            </div>
+          </div>
+
+          <!-- Tùy chọn 2: Ringer Lactate -->
+          <div class="cdss-fluid-tile ${plan.patient.preferredFluid === 'ringer_lactate' ? 'is-active' : ''} ${plan.fluidInfo.isContraindicatedRL ? 'is-contraindicated' : ''}" data-fluid-id="ringer_lactate" role="button" tabindex="0" title="${plan.fluidInfo.isContraindicatedRL ? plan.fluidInfo.reason : 'Lựa chọn đầu tay chuẩn BYT cho bù dịch SXHD'}">
+            <div class="cdss-fluid-tile-head">
+              <span class="cdss-fluid-tile-name">
+                <i class="fa-solid fa-droplet text-primary"></i> Ringer Lactate (RL)
+              </span>
+              <span class="cdss-fluid-tile-badge">${plan.fluidInfo.isContraindicatedRL ? 'CẤM GAN CẤP' : (plan.patient.preferredFluid === 'ringer_lactate' ? 'Đang chọn' : 'Chuẩn BYT')}</span>
+            </div>
+            <div class="cdss-fluid-tile-spec">
+              Na⁺ 130 &bull; K⁺ 4 &bull; Cl⁻ 109 &bull; Lactate 28 mEq/L (273 mOsm/L)
+            </div>
+            <div class="cdss-fluid-tile-desc">
+              ${plan.fluidInfo.isContraindicatedRL
+                ? `<span style="color:var(--cdss-danger); font-weight:700;">Chống chỉ định tuyệt đối khi AST/ALT ≥ 400 U/L để tránh toan lactic tử vong!</span>`
+                : `Dịch tinh thể lựa chọn hàng đầu (First-line) bù thể tích lòng mạch trong SXHD theo BYT.`}
+            </div>
+          </div>
+
+          <!-- Tùy chọn 3: Ringer Acetat -->
+          <div class="cdss-fluid-tile ${plan.patient.preferredFluid === 'ringer_acetate' ? 'is-active' : ''}" data-fluid-id="ringer_acetate" role="button" tabindex="0" title="Chuyển hóa Acetate tại cơ ngoại biên, không tạo gánh nặng qua gan">
+            <div class="cdss-fluid-tile-head">
+              <span class="cdss-fluid-tile-name">
+                <i class="fa-solid fa-shield-heart" style="color:#059669;"></i> Ringer Acetat (RA)
+              </span>
+              <span class="cdss-fluid-tile-badge">${plan.patient.preferredFluid === 'ringer_acetate' ? 'Đang chọn' : 'Ưu tiên suy gan'}</span>
+            </div>
+            <div class="cdss-fluid-tile-spec">
+              Na⁺ 130 &bull; K⁺ 4 &bull; Cl⁻ 109 &bull; Acetate 28 mEq/L (270 mOsm/L)
+            </div>
+            <div class="cdss-fluid-tile-desc">
+              Acetate chuyển hóa tại cơ vân &amp; mô ngoại vi, không qua gan. Lựa chọn số 1 khi có tổn thương gan cấp, toan lactic hoặc Thalassemia.
+            </div>
+          </div>
+
+          <!-- Tùy chọn 4: Natri Clorid 0.9% -->
+          <div class="cdss-fluid-tile ${plan.patient.preferredFluid === 'nacl_09' ? 'is-active' : ''}" data-fluid-id="nacl_09" role="button" tabindex="0" title="Dung dịch muối đẳng trương thay thế khi không có RL/RA hoặc khi có hạ natri máu">
+            <div class="cdss-fluid-tile-head">
+              <span class="cdss-fluid-tile-name">
+                <i class="fa-solid fa-cube text-info"></i> NaCl 0.9% (Đẳng trương)
+              </span>
+              <span class="cdss-fluid-tile-badge">${plan.patient.preferredFluid === 'nacl_09' ? 'Đang chọn' : 'Thay thế'}</span>
+            </div>
+            <div class="cdss-fluid-tile-spec">
+              Na⁺ 154 &bull; Cl⁻ 154 mEq/L (308 mOsm/L)
+            </div>
+            <div class="cdss-fluid-tile-desc">
+              Dùng khi thiếu RL/RA hoặc khi có hạ natri máu. Lưu ý BYT: tránh truyền lượng lớn kéo dài để ngừa toan chuyển hóa tăng clo máu.
+            </div>
+          </div>
+        </div>
+
+        ${this.showFluidCompareTable ? `
+          <div class="cdss-fluid-compare-wrap">
+            <div style="font-size:0.78rem; font-weight:700; color:var(--cdss-text); margin-bottom:0.35rem; display:flex; align-items:center; gap:0.4rem;">
+              <i class="fa-solid fa-table" style="color:var(--cdss-primary);"></i> Bảng So Sánh Chi Tiết Điện Giải &amp; Đặc Tính Dược Lý Dịch Tinh Thể SXHD (QĐ 2760/QĐ-BYT)
+            </div>
+            <div class="cdss-table-scroll">
+              <table class="cdss-fluid-compare-table">
+                <thead>
+                  <tr>
+                    <th>Chỉ tiêu so sánh</th>
+                    <th>Ringer Lactate (RL)</th>
+                    <th>Ringer Acetat (RA)</th>
+                    <th>Natri Clorid 0.9% (NaCl)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Nồng độ Na⁺ (mmol/L)</strong></td>
+                    <td>130</td>
+                    <td>130</td>
+                    <td>154 (Cao hơn sinh lý)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nồng độ Cl⁻ (mmol/L)</strong></td>
+                    <td>109 (Gần sinh lý)</td>
+                    <td>109 (Gần sinh lý)</td>
+                    <td>154 (Nguy cơ tăng clo máu)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nồng độ K⁺ / Ca²⁺</strong></td>
+                    <td>K⁺ 4 / Ca²⁺ 1.5 mmol/L</td>
+                    <td>K⁺ 4 / Ca²⁺ 1.5 mmol/L</td>
+                    <td>0 / 0</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hệ đệm kiềm hóa</strong></td>
+                    <td>Lactate 28 mmol/L</td>
+                    <td>Acetate 28 mmol/L</td>
+                    <td>Không có hệ đệm</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cơ quan chuyển hóa đệm</strong></td>
+                    <td>Gan (oxy hóa tạo Bicarbonate)</td>
+                    <td>Cơ vân &amp; mô ngoại biên (không qua gan)</td>
+                    <td>Thận bài xuất</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Áp lực thẩm thấu</strong></td>
+                    <td>273 mOsm/L (Đẳng trương)</td>
+                    <td>270 mOsm/L (Đẳng trương)</td>
+                    <td>308 mOsm/L (Hơi ưu trương)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Chỉ định chính theo BYT</strong></td>
+                    <td>Sốt xuất huyết có DHCB, Sốc SXHD ban đầu</td>
+                    <td>SXHD kèm tổn thương gan (AST/ALT ≥ 400), toan chuyển hóa</td>
+                    <td>Thay thế khi thiếu RL/RA, kèm hạ Natri máu</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Chống chỉ định / Thận trọng</strong></td>
+                    <td><span style="color:var(--cdss-danger); font-weight:700;">Tổn thương gan cấp (AST/ALT ≥ 400 U/L), toan lactic</span></td>
+                    <td>Dị ứng tá dược; không trộn chung máu truyền (chứa Ca²⁺)</td>
+                    <td>Tránh truyền liều lớn kéo dài (gây toan tăng clo máu)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ` : ''}
+      </section>
 
       <!-- VISUAL FLUID TIMELINE -->
       <div class="cdss-timeline-card">
@@ -2206,6 +2423,55 @@ export class DengueCDSSController {
         this.customRates = {};
         this.recalculate();
         this.showToast('Đã khôi phục thông số thời lượng và tốc độ chuẩn theo Bộ Y Tế!');
+      });
+    }
+
+    // Tương tác Lựa Chọn Dịch Truyền Phác Đồ (Fluid Selection)
+    const quickFluidSelect = container.querySelector('#kpi-quick-fluid-select') as HTMLSelectElement | null;
+    if (quickFluidSelect) {
+      quickFluidSelect.addEventListener('change', (e) => {
+        const val = (e.target as HTMLSelectElement).value as any;
+        this.setFluidPreference(val);
+      });
+    }
+
+    const fluidTiles = container.querySelectorAll('.cdss-fluid-tile');
+    fluidTiles.forEach(tile => {
+      tile.addEventListener('click', () => {
+        const fluidId = tile.getAttribute('data-fluid-id') as any;
+        if (fluidId) {
+          this.setFluidPreference(fluidId);
+        }
+      });
+      tile.addEventListener('keydown', (e: Event) => {
+        const ke = e as KeyboardEvent;
+        if (ke.key === 'Enter' || ke.key === ' ') {
+          ke.preventDefault();
+          const fluidId = tile.getAttribute('data-fluid-id') as any;
+          if (fluidId) {
+            this.setFluidPreference(fluidId);
+          }
+        }
+      });
+    });
+
+    const toggleCompareBtn = container.querySelector('#btn-toggle-fluid-compare');
+    if (toggleCompareBtn) {
+      toggleCompareBtn.addEventListener('click', () => {
+        this.showFluidCompareTable = !this.showFluidCompareTable;
+        this.renderWorkspaceContent();
+      });
+    }
+
+    const switchColloidBtn = container.querySelector('#btn-switch-to-colloid');
+    if (switchColloidBtn) {
+      switchColloidBtn.addEventListener('click', () => {
+        this.activeWorkspaceMode = 'colloid_schedule';
+        if (this.currentPlan) {
+          this.updateWorkspaceModeSwitcher(this.currentPlan);
+        }
+        this.renderWorkspaceContent();
+        this.showToast('Đã chuyển sang Phác đồ Cao Phân Tử (CPT) - Phụ lục 10 BYT 2023');
       });
     }
 

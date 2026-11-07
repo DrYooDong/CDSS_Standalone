@@ -127,6 +127,9 @@ export default function App() {
   };
 
   const handleTdmChange = (updated: Partial<TdmInput>) => {
+    if (updated.regimenType && updated.regimenType !== methodPreference) {
+      setMethodPreference(updated.regimenType);
+    }
     setTdmInput((prev) => ({ ...prev, ...updated }));
   };
 
@@ -267,12 +270,21 @@ export default function App() {
   };
 
   const handleApplyAdjustment = (newDose: number, newInterval?: number) => {
-    setTdmInput((prev) => ({
-      ...prev,
-      currentDoseMg: newDose,
-      currentIntervalHours: newInterval || prev.currentIntervalHours,
-      currentContinuousDailyDoseMg: methodPreference === 'continuous' ? newDose : prev.currentContinuousDailyDoseMg
-    }));
+    if (methodPreference === 'continuous') {
+      const daily = newDose <= 200 ? newDose * 24 : newDose;
+      setTdmInput((prev) => ({
+        ...prev,
+        currentContinuousDailyDoseMg: daily,
+        continuousDailyDoseMg: daily,
+        continuousRateMgPerHour: Math.round(daily / 24)
+      }));
+    } else {
+      setTdmInput((prev) => ({
+        ...prev,
+        currentDoseMg: newDose,
+        currentIntervalHours: newInterval || prev.currentIntervalHours
+      }));
+    }
   };
 
   return (
@@ -444,8 +456,11 @@ export default function App() {
                 tdmInput={activeTdmInput}
                 tdmResult={tdmResult}
                 regimenMethod={methodPreference}
+                patient={patient}
+                renal={renal}
                 mic={patient.mic || 1.0}
                 onChange={handleTdmChange}
+                onMethodChange={setMethodPreference}
                 onApplyAdjustment={handleApplyAdjustment}
               />
             )}

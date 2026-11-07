@@ -1,38 +1,48 @@
 /**
  * CDSS Vancomycin TDM Calculator Card
  * Tính năng Giám sát TDM & Hiệu chỉnh liều Vancomycin theo AUC24 chuẩn ASHP/IDSA 2020.
- * Thiết kế đơn giản, dễ hiểu, chuyên nghiệp, tối ưu cho bác sĩ lâm sàng ra quyết định nhanh.
+ * Thiết kế đơn giản, dễ hiểu, chuyên nghiệp, chống giật lắc nhập liệu và chống tràn giao diện.
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Activity, 
   Target, 
   AlertTriangle, 
   CheckCircle2, 
-  TrendingUp, 
   LineChart as ChartIcon, 
   ChevronDown, 
   ChevronUp, 
   Clock, 
   FlaskConical, 
-  Sliders, 
   Sparkles, 
   ShieldAlert, 
   Calendar,
   Check,
-  Zap,
-  RotateCcw
+  RotateCcw,
+  User,
+  Droplet,
+  Info
 } from 'lucide-react';
-import { TdmInput, TdmEvaluationResult, InfusionMethod, ClinCalcDosingRegimen } from '../types';
+import { 
+  TdmInput, 
+  TdmEvaluationResult, 
+  InfusionMethod, 
+  ClinCalcDosingRegimen, 
+  PatientProfile, 
+  RenalCalculations 
+} from '../types';
 import { VancomycinPkChart } from './VancomycinPkChart';
 
 interface TdmCalculatorCardProps {
   tdmInput: TdmInput;
   tdmResult: TdmEvaluationResult;
   regimenMethod: InfusionMethod;
+  patient?: PatientProfile;
+  renal?: RenalCalculations;
   mic?: number;
   onChange: (updated: Partial<TdmInput>) => void;
+  onMethodChange?: (method: InfusionMethod) => void;
   onApplyAdjustment: (newDose: number, newInterval?: number) => void;
 }
 
@@ -40,30 +50,133 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
   tdmInput,
   tdmResult,
   regimenMethod,
+  patient,
+  renal,
   mic = 1.0,
   onChange,
+  onMethodChange,
   onApplyAdjustment
 }) => {
   const isContinuous = regimenMethod === 'continuous';
   const [showChart, setShowChart] = useState(false);
-
-  // Active intermittent calculation method
   const intermittentMethod = tdmInput.intermittentMethod || 'bayesian_single';
 
+  // Smooth string buffers for numeric inputs to eliminate "0" jumping and backspace bugs
+  const [rawDose, setRawDose] = useState<string>(String(tdmInput.currentDoseMg ?? 1000));
+  const [rawInterval, setRawInterval] = useState<string>(String(tdmInput.currentIntervalHours ?? 12));
+  const [rawDuration, setRawDuration] = useState<string>(String(tdmInput.infusionDurationHours ?? 1.5));
+  const [rawSingleConc, setRawSingleConc] = useState<string>(
+    tdmInput.singleConcentration !== undefined && tdmInput.singleConcentration !== null 
+      ? String(tdmInput.singleConcentration) 
+      : ''
+  );
+  const [rawPeakConc, setRawPeakConc] = useState<string>(
+    tdmInput.peakConcentration !== undefined && tdmInput.peakConcentration !== null 
+      ? String(tdmInput.peakConcentration) 
+      : ''
+  );
+  const [rawTroughConc, setRawTroughConc] = useState<string>(
+    tdmInput.troughConcentration !== undefined && tdmInput.troughConcentration !== null 
+      ? String(tdmInput.troughConcentration) 
+      : ''
+  );
+  const [rawContDailyDose, setRawContDailyDose] = useState<string>(
+    String(tdmInput.currentContinuousDailyDoseMg ?? 2000)
+  );
+  const [rawCss, setRawCss] = useState<string>(
+    tdmInput.steadyStateConcentration !== undefined && tdmInput.steadyStateConcentration !== null 
+      ? String(tdmInput.steadyStateConcentration) 
+      : ''
+  );
+
+  // Sync buffers if external load or reset occurs
+  useEffect(() => {
+    setRawDose(String(tdmInput.currentDoseMg ?? 1000));
+    setRawInterval(String(tdmInput.currentIntervalHours ?? 12));
+    setRawDuration(String(tdmInput.infusionDurationHours ?? 1.5));
+    setRawSingleConc(
+      tdmInput.singleConcentration !== undefined && tdmInput.singleConcentration !== null 
+        ? String(tdmInput.singleConcentration) 
+        : ''
+    );
+    setRawPeakConc(
+      tdmInput.peakConcentration !== undefined && tdmInput.peakConcentration !== null 
+        ? String(tdmInput.peakConcentration) 
+        : ''
+    );
+    setRawTroughConc(
+      tdmInput.troughConcentration !== undefined && tdmInput.troughConcentration !== null 
+        ? String(tdmInput.troughConcentration) 
+        : ''
+    );
+    setRawContDailyDose(String(tdmInput.currentContinuousDailyDoseMg ?? 2000));
+    setRawCss(
+      tdmInput.steadyStateConcentration !== undefined && tdmInput.steadyStateConcentration !== null 
+        ? String(tdmInput.steadyStateConcentration) 
+        : ''
+    );
+  }, [
+    tdmInput.currentDoseMg,
+    tdmInput.currentIntervalHours,
+    tdmInput.infusionDurationHours,
+    tdmInput.singleConcentration,
+    tdmInput.peakConcentration,
+    tdmInput.troughConcentration,
+    tdmInput.currentContinuousDailyDoseMg,
+    tdmInput.steadyStateConcentration
+  ]);
+
+  // Mode switcher handler
+  const handleSelectMode = (mode: 'bayesian_single' | 'two_point' | 'continuous') => {
+    if (mode === 'continuous') {
+      onMethodChange?.('continuous');
+      onChange({
+        regimenType: 'continuous',
+        currentContinuousDailyDoseMg: tdmInput.currentContinuousDailyDoseMg || 2000
+      });
+    } else {
+      onMethodChange?.('intermittent');
+      onChange({
+        regimenType: 'intermittent',
+        intermittentMethod: mode
+      });
+    }
+  };
+
   // Sample presets for quick clinical scenarios
-  const loadPreset = (type: 'optimal' | 'low' | 'toxic') => {
+  const loadPreset = (type: 'optimal' | 'low' | 'toxic' | 'clear') => {
+    if (type === 'clear') {
+      setRawSingleConc('');
+      setRawPeakConc('');
+      setRawTroughConc('');
+      setRawCss('');
+      onChange({
+        singleConcentration: undefined,
+        troughConcentration: undefined,
+        peakConcentration: undefined,
+        steadyStateConcentration: undefined
+      });
+      return;
+    }
+
     if (isContinuous) {
       if (type === 'optimal') {
+        setRawContDailyDose('2000');
+        setRawCss('22.0');
         onChange({ 
           currentContinuousDailyDoseMg: 2000,
           steadyStateConcentration: 22.0 
         });
       } else if (type === 'low') {
+        setRawContDailyDose('1500');
+        setRawCss('14.0');
         onChange({ 
           currentContinuousDailyDoseMg: 1500,
           steadyStateConcentration: 14.0 
         });
       } else {
+        setRawContDailyDose('2500');
+        setRawCss('32.0');
         onChange({ 
           currentContinuousDailyDoseMg: 2500,
           steadyStateConcentration: 32.0 
@@ -71,6 +184,10 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
       }
     } else if (intermittentMethod === 'bayesian_single') {
       if (type === 'optimal') {
+        setRawDose('1000');
+        setRawInterval('12');
+        setRawDuration('1.5');
+        setRawSingleConc('11.5');
         onChange({
           currentDoseMg: 1000,
           currentIntervalHours: 12,
@@ -81,6 +198,10 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
           singleDoseNumber: 2
         });
       } else if (type === 'low') {
+        setRawDose('1000');
+        setRawInterval('12');
+        setRawDuration('1.5');
+        setRawSingleConc('6.0');
         onChange({
           currentDoseMg: 1000,
           currentIntervalHours: 12,
@@ -91,6 +212,10 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
           singleDoseNumber: 2
         });
       } else {
+        setRawDose('1250');
+        setRawInterval('12');
+        setRawDuration('2.0');
+        setRawSingleConc('22.5');
         onChange({
           currentDoseMg: 1250,
           currentIntervalHours: 12,
@@ -104,6 +229,11 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
     } else {
       // 2-point PK
       if (type === 'optimal') {
+        setRawDose('1000');
+        setRawInterval('12');
+        setRawDuration('1.5');
+        setRawPeakConc('28.5');
+        setRawTroughConc('11.5');
         onChange({
           currentDoseMg: 1000,
           currentIntervalHours: 12,
@@ -114,6 +244,11 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
           troughTimeBeforeNextHours: 0.5
         });
       } else if (type === 'low') {
+        setRawDose('1000');
+        setRawInterval('12');
+        setRawDuration('1.5');
+        setRawPeakConc('18.0');
+        setRawTroughConc('6.0');
         onChange({
           currentDoseMg: 1000,
           currentIntervalHours: 12,
@@ -124,6 +259,11 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
           troughTimeBeforeNextHours: 0.5
         });
       } else {
+        setRawDose('1250');
+        setRawInterval('12');
+        setRawDuration('2.0');
+        setRawPeakConc('42.0');
+        setRawTroughConc('23.0');
         onChange({
           currentDoseMg: 1250,
           currentIntervalHours: 12,
@@ -137,96 +277,142 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
     }
   };
 
-  const getAttainmentColor = (att: string) => {
-    switch (att) {
-      case 'target':
-        return {
-          bg: 'bg-emerald-50 border-emerald-300 text-emerald-950',
-          badge: 'bg-emerald-600 text-white',
-          text: 'text-emerald-700',
-          label: 'ĐẠT ĐÍCH ĐIỀU TRỊ (AUC 400 - 600 mg·h/L)',
-          actionDesc: 'Nồng độ thuốc tối ưu về hiệu quả diệt khuẩn và an toàn thận. Tiếp tục duy trì phác đồ.'
-        };
-      case 'subtherapeutic':
-        return {
-          bg: 'bg-amber-50 border-amber-300 text-amber-950',
-          badge: 'bg-amber-500 text-white',
-          text: 'text-amber-700',
-          label: 'DƯỚI MỤC TIÊU (AUC < 400 mg·h/L)',
-          actionDesc: 'Nguy cơ thất bại điều trị hoặc chọn lọc chủng vi khuẩn kháng thuốc. Cần tăng liều.'
-        };
-      case 'supratherapeutic':
-      default:
-        return {
-          bg: 'bg-rose-50 border-rose-300 text-rose-950',
-          badge: 'bg-rose-600 text-white',
-          text: 'text-rose-700',
-          label: 'VƯỢT NGƯỠNG AN TOÀN (AUC > 600 mg·h/L)',
-          actionDesc: 'Nguy cơ độc tính thận (AKI) tăng gấp 3–4 lần. Cần tạm ngừng liều hoặc giảm liều.'
-        };
+  const getAttainmentColor = (att: string, hasToxicWarning: boolean) => {
+    if (hasToxicWarning || att === 'supratherapeutic') {
+      return {
+        bg: 'bg-rose-50 border-rose-300 text-rose-950',
+        badge: 'bg-rose-600 text-white',
+        text: 'text-rose-700',
+        label: 'VƯỢT NGƯỠNG AN TOÀN (AUC > 600 mg·h/L hoặc Đáy ≥ 20)',
+        actionDesc: 'Nguy cơ độc tính thận (AKI) tăng cao! Cần tạm ngừng liều và giảm phác đồ điều trị.'
+      };
     }
+    if (att === 'target') {
+      return {
+        bg: 'bg-emerald-50 border-emerald-300 text-emerald-950',
+        badge: 'bg-emerald-600 text-white',
+        text: 'text-emerald-700',
+        label: 'ĐẠT ĐÍCH ĐIỀU TRỊ (AUC 400 - 600 mg·h/L)',
+        actionDesc: 'Nồng độ vancomycin tối ưu về hiệu quả diệt khuẩn và an toàn thận. Tiếp tục duy trì phác đồ.'
+      };
+    }
+    return {
+      bg: 'bg-amber-50 border-amber-300 text-amber-950',
+      badge: 'bg-amber-500 text-white',
+      text: 'text-amber-700',
+      label: 'DƯỚI MỤC TIÊU (AUC < 400 mg·h/L)',
+      actionDesc: 'Nguy cơ thất bại điều trị hoặc chọn lọc chủng vi khuẩn kháng thuốc. Cần tăng liều.'
+    };
   };
 
-  const statusStyle = getAttainmentColor(tdmResult.targetAttainment);
-  const sampleConcentration = tdmInput.singleConcentration ?? tdmInput.troughConcentration ?? '';
+  const hasToxicity = Boolean(
+    tdmResult.isHighTroughRisk || 
+    (tdmResult.holdDoseHours && tdmResult.holdDoseHours > 0) ||
+    (tdmResult.cMinEstimated && tdmResult.cMinEstimated >= 20) ||
+    (tdmResult.auc24 > 600)
+  );
 
-  // Tìm phác đồ được khuyến nghị (Preferred)
+  const statusStyle = getAttainmentColor(tdmResult.targetAttainment, hasToxicity);
+
+  // Preferred regimen resolution
   const preferredRegimen = tdmResult.preferredAdjustedRegimen || 
-    tdmResult.adjustedRegimens?.find((r: ClinCalcDosingRegimen) => r.isPreferred);
+    tdmResult.adjustedRegimens?.find((r: ClinCalcDosingRegimen) => r.isPreferred) ||
+    (tdmResult.adjustedRegimens && tdmResult.adjustedRegimens.length > 0 ? tdmResult.adjustedRegimens[0] : undefined);
+
+  const hasResults = tdmResult.auc24 > 0;
 
   return (
     <div id="tdm-calculator-card" className="bg-white rounded-2xl border border-slate-200 shadow-xs p-4 sm:p-5 space-y-4">
-      {/* Header: Title & Minimalist Mode Selector */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-2">
+      {/* Header: Title & Clinical Badges */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-2.5">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0 border border-indigo-100 shadow-2xs">
-            <Activity className="w-4 h-4" />
+          <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0 border border-indigo-100 shadow-2xs">
+            <Activity className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
-              <span>Hiệu Chỉnh Liều Vancomycin Dựa Trên Nồng Độ (TDM)</span>
-              <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-800">
+            <div className="flex items-center gap-2">
+              <h2 className="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">
+                Hiệu Chỉnh Liều Vancomycin Dựa Trên Nồng Độ (TDM)
+              </h2>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">
                 ASHP/IDSA 2020
               </span>
-            </h2>
-            <p className="text-xs text-slate-500">
-              Đích điều trị tối ưu: AUC24 / MIC = <strong>400 – 600 mg·h/L</strong> (giảm tối đa nguy cơ suy thận cấp)
+            </div>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Đích điều trị tối ưu: AUC24 / MIC = <strong className="text-slate-700">400 – 600 mg·h/L</strong> (giảm tối đa nguy cơ suy thận cấp AKI)
             </p>
           </div>
         </div>
 
-        {/* Minimalist Method Toggle (when Intermittent) */}
-        {!isContinuous && (
-          <div className="flex bg-slate-100 p-0.5 rounded-xl text-xs font-semibold self-start sm:self-auto border border-slate-200/80">
-            <button
-              type="button"
-              onClick={() => onChange({ intermittentMethod: 'bayesian_single' })}
-              className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                intermittentMethod === 'bayesian_single'
-                  ? 'bg-white text-teal-900 shadow-2xs font-bold'
-                  : 'text-slate-500 hover:text-slate-800'
-              }`}
-            >
-              Bayesian 1 mẫu đáy
-            </button>
-            <button
-              type="button"
-              onClick={() => onChange({ intermittentMethod: 'two_point' })}
-              className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                intermittentMethod === 'two_point'
-                  ? 'bg-white text-indigo-900 shadow-2xs font-bold'
-                  : 'text-slate-500 hover:text-slate-800'
-              }`}
-            >
-              2 mẫu (Peak - Trough)
-            </button>
-          </div>
-        )}
+        {/* 3-Mode Selector Tabs */}
+        <div className="flex bg-slate-100 p-1 rounded-xl text-xs font-semibold border border-slate-200/80 self-start sm:self-auto overflow-x-auto max-w-full">
+          <button
+            type="button"
+            onClick={() => handleSelectMode('bayesian_single')}
+            className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer whitespace-nowrap text-xs ${
+              !isContinuous && intermittentMethod === 'bayesian_single'
+                ? 'bg-white text-teal-950 shadow-xs font-extrabold ring-1 ring-slate-200'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            Bayesian 1 Mẫu (Chuẩn)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectMode('two_point')}
+            className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer whitespace-nowrap text-xs ${
+              !isContinuous && intermittentMethod === 'two_point'
+                ? 'bg-white text-indigo-950 shadow-xs font-extrabold ring-1 ring-indigo-200'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            2 Mẫu (Đỉnh - Đáy)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectMode('continuous')}
+            className={`px-2.5 py-1.5 rounded-lg transition-all cursor-pointer whitespace-nowrap text-xs ${
+              isContinuous
+                ? 'bg-white text-teal-950 shadow-xs font-extrabold ring-1 ring-teal-200'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            Truyền Liên Tục (CIV)
+          </button>
+        </div>
       </div>
 
-      {/* Kịch bản nồng độ nhanh (Thử nghiệm 1 chạm) */}
-      <div className="flex flex-wrap items-center justify-between gap-2 p-2.5 bg-slate-50 rounded-xl border border-slate-200/70 text-xs">
-        <span className="text-[11px] font-bold text-slate-600 flex items-center gap-1.5">
+      {/* Patient Clinical Context Ribbon */}
+      {patient && (
+        <div className="flex flex-wrap items-center justify-between gap-2 p-2.5 bg-slate-50 rounded-xl border border-slate-200/80 text-xs">
+          <div className="flex items-center gap-2 text-slate-700 font-medium">
+            <User className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+            <span className="font-bold text-slate-900">{patient.name || patient.id}</span>
+            <span className="text-slate-400">•</span>
+            <span>{patient.age} tuổi ({patient.gender === 'male' ? 'Nam' : 'Nữ'})</span>
+            <span className="text-slate-400">•</span>
+            <span>{patient.weight} kg</span>
+            {renal && (
+              <>
+                <span className="text-slate-400">•</span>
+                <span>CrCl: <strong className="text-indigo-900">{renal.crcl}</strong> mL/phút</span>
+                <span className="text-slate-400">•</span>
+                <span>SCr: <strong>{patient.scrValue}</strong> {patient.scrUnit === 'umol_L' ? 'µmol/L' : 'mg/dL'}</span>
+              </>
+            )}
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[11px] text-slate-500 font-semibold">MIC:</span>
+            <span className="px-1.5 py-0.5 rounded bg-white border border-slate-200 font-mono font-bold text-slate-800 text-[11px]">
+              {mic} mg/L
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Quick Clinical Scenario Presets */}
+      <div className="flex flex-wrap items-center justify-between gap-2 p-2.5 bg-indigo-50/40 rounded-xl border border-indigo-100 text-xs">
+        <span className="text-[11px] font-bold text-indigo-950 flex items-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5 text-amber-500" />
           <span>Kịch bản thử nghiệm nhanh:</span>
         </span>
@@ -252,6 +438,15 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
           >
             🚨 Nguy cơ độc thận (Đáy &gt; 20)
           </button>
+          <button
+            type="button"
+            onClick={() => loadPreset('clear')}
+            className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 rounded-lg font-medium text-[11px] transition-all cursor-pointer flex items-center gap-1"
+            title="Xóa trắng để tự nhập"
+          >
+            <RotateCcw className="w-3 h-3" />
+            <span>Xóa</span>
+          </button>
         </div>
       </div>
 
@@ -260,13 +455,13 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
         <div className="flex items-center justify-between text-xs font-bold text-slate-700">
           <span className="flex items-center gap-1.5 uppercase tracking-wide">
             <span className="w-4 h-4 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px]">1</span>
-            <span>Thông tin phác đồ &amp; Nồng độ đo được</span>
+            <span>Thông tin phác đồ &amp; Nồng độ xét nghiệm</span>
           </span>
           <span className="text-slate-400 font-normal">ASHP/IDSA 2020 Standard</span>
         </div>
 
         {isContinuous ? (
-          /* Truyền liên tục */
+          /* TRUYỀN LIÊN TỤC (CIV) */
           <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
@@ -279,15 +474,26 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                     min="500"
                     max="5000"
                     step="100"
-                    value={tdmInput.currentContinuousDailyDoseMg || 2000}
-                    onChange={(e) => onChange({ currentContinuousDailyDoseMg: Number(e.target.value) })}
+                    value={rawContDailyDose}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setRawContDailyDose(val);
+                      const num = Number(val);
+                      if (!isNaN(num) && num > 0) {
+                        onChange({ 
+                          currentContinuousDailyDoseMg: num,
+                          continuousDailyDoseMg: num,
+                          continuousRateMgPerHour: Math.round(num / 24)
+                        });
+                      }
+                    }}
                     placeholder="2000"
                     className="w-full h-9 px-3 text-xs font-bold font-mono bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none"
                   />
                   <span className="absolute right-3 top-2.5 text-xs text-slate-400 font-semibold">mg/24h</span>
                 </div>
                 <p className="text-[11px] text-slate-500 mt-1">
-                  Tốc độ: {((tdmInput.currentContinuousDailyDoseMg || 2000) / 24).toFixed(1)} mg/giờ
+                  Tốc độ truyền: <strong>{(Number(rawContDailyDose || 2000) / 24).toFixed(1)} mg/giờ</strong>
                 </p>
               </div>
 
@@ -301,45 +507,67 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                     min="1"
                     max="100"
                     step="0.1"
-                    value={tdmInput.steadyStateConcentration || ''}
-                    onChange={(e) => onChange({ steadyStateConcentration: Number(e.target.value) })}
+                    value={rawCss}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setRawCss(val);
+                      if (val === '') {
+                        onChange({ steadyStateConcentration: undefined });
+                      } else {
+                        const num = Number(val);
+                        if (!isNaN(num) && num >= 0) {
+                          onChange({ steadyStateConcentration: num });
+                        }
+                      }
+                    }}
                     placeholder="VD: 22.5"
-                    className="w-full h-9 px-3 text-xs font-bold font-mono bg-white border border-teal-300 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none"
+                    className="w-full h-9 px-3 text-xs font-bold font-mono bg-white border border-teal-400 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none"
                   />
                   <span className="absolute right-3 top-2.5 text-xs text-slate-400 font-semibold">mg/L</span>
                 </div>
                 <p className="text-[11px] text-slate-500 mt-1">
-                  Lấy mẫu sau ≥ 24h truyền liên tục (Đích: <strong>20 – 25 mg/L</strong>).
+                  Lấy mẫu sau ≥ 24h truyền liên tục (Khoảng đích tối ưu: <strong className="text-teal-700">20 – 25 mg/L</strong>).
                 </p>
               </div>
             </div>
           </div>
         ) : (
-          /* Truyền ngắt quãng (Bayesian 1 mẫu hoặc 2 mẫu) */
+          /* TRUYỀN NGẮT QUÃNG (Bayesian 1 mẫu hoặc 2 mẫu) */
           <div className="space-y-3">
-            {/* Phác đồ đang dùng */}
-            <div className="grid grid-cols-3 gap-2.5 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+            {/* Phác đồ hiện tại */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-3 bg-slate-50 rounded-xl border border-slate-200/90 text-xs">
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Liều đang dùng:</label>
+                <label className="block text-[11px] font-bold text-slate-700 mb-1">Liều đang dùng:</label>
                 <div className="relative">
                   <input
                     type="number"
                     step="50"
-                    value={tdmInput.currentDoseMg || ''}
-                    onChange={(e) => onChange({ currentDoseMg: Number(e.target.value) })}
+                    value={rawDose}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setRawDose(val);
+                      const num = Number(val);
+                      if (!isNaN(num) && num > 0) {
+                        onChange({ currentDoseMg: num });
+                      }
+                    }}
                     placeholder="1000"
-                    className="w-full h-8 px-2.5 text-xs font-mono font-bold bg-white border border-slate-300 rounded-lg outline-none focus:border-teal-600"
+                    className="w-full h-9 px-3 pr-8 text-xs font-mono font-bold bg-white border border-slate-300 rounded-lg outline-none focus:border-teal-600 shadow-2xs"
                   />
-                  <span className="absolute right-2 top-2 text-[10px] text-slate-400">mg</span>
+                  <span className="absolute right-2.5 top-2.5 text-[10px] font-bold text-slate-400">mg</span>
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Khoảng cách liều:</label>
+                <label className="block text-[11px] font-bold text-slate-700 mb-1">Khoảng cách liều:</label>
                 <select
-                  value={tdmInput.currentIntervalHours}
-                  onChange={(e) => onChange({ currentIntervalHours: Number(e.target.value) })}
-                  className="w-full h-8 px-2 text-xs font-bold bg-white border border-slate-300 rounded-lg outline-none cursor-pointer focus:border-teal-600"
+                  value={rawInterval}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setRawInterval(val);
+                    onChange({ currentIntervalHours: Number(val) });
+                  }}
+                  className="w-full h-9 px-2.5 text-xs font-bold bg-white border border-slate-300 rounded-lg outline-none cursor-pointer focus:border-teal-600 shadow-2xs"
                 >
                   <option value="8">Mỗi 8 giờ (q8h)</option>
                   <option value="12">Mỗi 12 giờ (q12h)</option>
@@ -351,42 +579,51 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Thời gian truyền:</label>
+                <label className="block text-[11px] font-bold text-slate-700 mb-1">Thời gian truyền:</label>
                 <div className="relative">
                   <input
                     type="number"
                     step="0.5"
                     min="0.5"
                     max="6"
-                    value={tdmInput.infusionDurationHours || ''}
-                    onChange={(e) => onChange({ infusionDurationHours: Number(e.target.value) })}
+                    value={rawDuration}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setRawDuration(val);
+                      const num = Number(val);
+                      if (!isNaN(num) && num > 0) {
+                        onChange({ infusionDurationHours: num });
+                      }
+                    }}
                     placeholder="1.5"
-                    className="w-full h-8 px-2.5 text-xs font-mono font-bold bg-white border border-slate-300 rounded-lg outline-none focus:border-teal-600"
+                    className="w-full h-9 px-3 pr-9 text-xs font-mono font-bold bg-white border border-slate-300 rounded-lg outline-none focus:border-teal-600 shadow-2xs"
                   />
-                  <span className="absolute right-2 top-2 text-[10px] text-slate-400">giờ</span>
+                  <span className="absolute right-2.5 top-2.5 text-[10px] font-bold text-slate-400">giờ</span>
                 </div>
               </div>
             </div>
 
-            {/* Khung nhập nồng độ đo được */}
+            {/* Khung nhập nồng độ đo được (Bayesian 1 Mẫu) */}
             {intermittentMethod === 'bayesian_single' ? (
-              <div className="p-3.5 rounded-xl border border-teal-200 bg-teal-50/50 space-y-3">
+              <div className="p-3.5 rounded-2xl border border-teal-200 bg-teal-50/40 space-y-3">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-teal-200/60">
-                  <div className="flex items-center gap-1.5">
-                    <FlaskConical className="w-4 h-4 text-teal-700" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-lg bg-teal-600 text-white flex items-center justify-center text-xs shadow-2xs font-bold shrink-0">
+                      <FlaskConical className="w-3.5 h-3.5" />
+                    </div>
                     <span className="text-xs font-bold text-teal-950">
-                      Nồng độ mẫu duy nhất (Chuẩn ASHP 2020 Bayesian TDM)
+                      Định lượng TDM Mẫu Đáy (Bayesian Single-Sample)
                     </span>
                   </div>
-                  <span className="text-[10px] text-teal-800 bg-teal-100 px-2 py-0.5 rounded font-bold">
-                    Khuyến nghị lấy mẫu đáy (C_trough)
+                  <span className="text-[10px] text-teal-800 bg-teal-100 px-2 py-0.5 rounded font-bold self-start sm:self-auto">
+                    Khuyến nghị: Rút máu trước cữ ≤ 30 phút (C_trough)
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-start">
                   {/* Ô nhập nồng độ */}
-                  <div className="sm:col-span-5">
-                    <label className="block text-xs font-bold text-teal-950 mb-1">
+                  <div>
+                    <label className="block text-[11px] font-bold text-teal-950 mb-1">
                       Nồng độ đáy đo được (C_trough):
                     </label>
                     <div className="relative">
@@ -395,52 +632,85 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                         step="0.1"
                         min="0.5"
                         max="100"
-                        value={sampleConcentration}
+                        value={rawSingleConc}
                         onChange={(e) => {
-                          const val = Number(e.target.value);
-                          onChange({
-                            singleConcentration: val,
-                            troughConcentration: val
-                          });
+                          const val = e.target.value;
+                          setRawSingleConc(val);
+                          if (val === '') {
+                            onChange({
+                              singleConcentration: undefined,
+                              troughConcentration: undefined
+                            });
+                          } else {
+                            const num = Number(val);
+                            if (!isNaN(num) && num >= 0) {
+                              onChange({
+                                singleConcentration: num,
+                                troughConcentration: num
+                              });
+                            }
+                          }
                         }}
                         placeholder="VD: 11.5"
-                        className="w-full h-10 px-3 text-base font-black font-mono bg-white border border-teal-300 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none"
+                        className="w-full h-10 px-3 pr-12 text-base font-black font-mono bg-white border border-teal-300 rounded-xl focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 outline-none shadow-2xs"
                       />
-                      <span className="absolute right-3 top-3 text-xs text-slate-400 font-bold">mg/L</span>
+                      <span className="absolute right-3 top-2.5 text-xs text-slate-400 font-bold">mg/L</span>
                     </div>
+                    <span className="text-[10px] text-teal-800 mt-1 font-semibold block">
+                      Khoảng đích an toàn: 10 – 15 mg/L
+                    </span>
                   </div>
 
                   {/* Thời điểm lấy mẫu */}
-                  <div className="sm:col-span-4">
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  <div>
+                    <label className="block text-[11px] font-bold text-teal-950 mb-1">
                       Thời điểm rút máu đáy:
                     </label>
-                    <div className="h-10 px-3 bg-white border border-teal-200 rounded-xl text-xs text-slate-700 flex items-center gap-2">
-                      <Clock className="w-3.5 h-3.5 text-teal-600 shrink-0" />
-                      <span>Trước cữ kế ≤ 30 phút (giờ thứ {Math.max(0, (tdmInput.currentIntervalHours || 12) - 0.5)})</span>
+                    <div className="relative">
+                      <select
+                        value={tdmInput.troughTimeBeforeNextHours ?? 0.5}
+                        onChange={(e) => onChange({ troughTimeBeforeNextHours: Number(e.target.value) })}
+                        className="w-full h-10 pl-8 pr-7 bg-white border border-teal-300 rounded-xl font-bold text-xs text-slate-800 cursor-pointer outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 appearance-none shadow-2xs"
+                      >
+                        <option value="0.5">Trước cữ kế ≤ 30 phút (Chuẩn)</option>
+                        <option value="1">Trước cữ kế 1.0 giờ</option>
+                        <option value="1.5">Trước cữ kế 1.5 giờ</option>
+                        <option value="2">Trước cữ kế 2.0 giờ</option>
+                      </select>
+                      <Clock className="w-4 h-4 text-teal-600 absolute left-2.5 top-3 pointer-events-none" />
+                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-3.5 pointer-events-none" />
                     </div>
+                    <span className="text-[10px] text-slate-500 mt-1 font-medium block truncate">
+                      Giờ thứ <strong className="text-slate-800 font-mono">{(Math.max(0, Number(rawInterval || 12) - (tdmInput.troughTimeBeforeNextHours ?? 0.5))).toFixed(1)}</strong> của cữ liều
+                    </span>
                   </div>
 
                   {/* Cữ liều lấy mẫu */}
-                  <div className="sm:col-span-3">
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  <div>
+                    <label className="block text-[11px] font-bold text-teal-950 mb-1">
                       Mẫu thuộc cữ liều:
                     </label>
-                    <select
-                      value={tdmInput.singleDoseNumber || 2}
-                      onChange={(e) => onChange({ singleDoseNumber: Number(e.target.value) })}
-                      className="w-full h-10 px-2.5 bg-white border border-teal-200 rounded-xl font-bold text-xs text-slate-800 cursor-pointer outline-none"
-                    >
-                      <option value="1">Cữ 1 (khởi đầu)</option>
-                      <option value="2">Cữ 2 (trong 24h đầu)</option>
-                      <option value="3">Cữ 3 (khoảng 24-36h)</option>
-                      <option value="4">Cữ 4+ (đã ổn định)</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        value={tdmInput.singleDoseNumber || 2}
+                        onChange={(e) => onChange({ singleDoseNumber: Number(e.target.value) })}
+                        className="w-full h-10 px-3 pr-7 bg-white border border-teal-300 rounded-xl font-bold text-xs text-slate-800 cursor-pointer outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 appearance-none shadow-2xs"
+                      >
+                        <option value="1">Cữ 1 (khởi đầu)</option>
+                        <option value="2">Cữ 2 (khuyên dùng trong 24h đầu)</option>
+                        <option value="3">Cữ 3 (sau 24–36h)</option>
+                        <option value="4">Cữ 4+ (đã đạt ổn định)</option>
+                      </select>
+                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-3.5 pointer-events-none" />
+                    </div>
+                    <span className="text-[10px] text-slate-500 mt-1 font-medium block">
+                      Khuyến cáo ASHP: Lấy trước cữ 2 hoặc 3
+                    </span>
                   </div>
                 </div>
               </div>
             ) : (
-              /* 2 Mẫu (Đỉnh & Đáy) */
+              /* 2 MẪU (ĐỈNH & ĐÁY) */
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Đỉnh */}
                 <div className="p-3 bg-teal-50/50 rounded-xl border border-teal-200 space-y-2">
@@ -449,16 +719,27 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                       <FlaskConical className="w-3.5 h-3.5 text-teal-700" />
                       <span>Nồng độ Đỉnh (C_peak)</span>
                     </label>
-                    <span className="text-[10px] text-teal-700">1-2h sau truyền</span>
+                    <span className="text-[10px] text-teal-700 font-medium">1-2h sau khi hết truyền</span>
                   </div>
                   <div className="relative">
                     <input
                       type="number"
                       step="0.1"
-                      value={tdmInput.peakConcentration || ''}
-                      onChange={(e) => onChange({ peakConcentration: Number(e.target.value) })}
+                      value={rawPeakConc}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setRawPeakConc(val);
+                        if (val === '') {
+                          onChange({ peakConcentration: undefined });
+                        } else {
+                          const num = Number(val);
+                          if (!isNaN(num) && num >= 0) {
+                            onChange({ peakConcentration: num });
+                          }
+                        }
+                      }}
                       placeholder="VD: 28.5"
-                      className="w-full h-9 px-3 text-sm font-bold font-mono bg-white border border-teal-300 rounded-xl outline-none"
+                      className="w-full h-9 px-3 text-sm font-bold font-mono bg-white border border-teal-400 rounded-xl outline-none"
                     />
                     <span className="absolute right-3 top-2.5 text-xs text-slate-400">mg/L</span>
                   </div>
@@ -471,16 +752,27 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                       <Clock className="w-3.5 h-3.5 text-indigo-700" />
                       <span>Nồng độ Đáy (C_trough)</span>
                     </label>
-                    <span className="text-[10px] text-indigo-700">≤ 30p trước cữ kế</span>
+                    <span className="text-[10px] text-indigo-700 font-medium">≤ 30p trước cữ tiếp theo</span>
                   </div>
                   <div className="relative">
                     <input
                       type="number"
                       step="0.1"
-                      value={tdmInput.troughConcentration || ''}
-                      onChange={(e) => onChange({ troughConcentration: Number(e.target.value) })}
+                      value={rawTroughConc}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setRawTroughConc(val);
+                        if (val === '') {
+                          onChange({ troughConcentration: undefined });
+                        } else {
+                          const num = Number(val);
+                          if (!isNaN(num) && num >= 0) {
+                            onChange({ troughConcentration: num });
+                          }
+                        }
+                      }}
                       placeholder="VD: 11.5"
-                      className="w-full h-9 px-3 text-sm font-bold font-mono bg-white border border-indigo-300 rounded-xl outline-none"
+                      className="w-full h-9 px-3 text-sm font-bold font-mono bg-white border border-indigo-400 rounded-xl outline-none"
                     />
                     <span className="absolute right-3 top-2.5 text-xs text-slate-400">mg/L</span>
                   </div>
@@ -492,7 +784,7 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
       </div>
 
       {/* BƯỚC 2: KẾT QUẢ ĐÁNH GIÁ NỒNG ĐỘ & AUC24 */}
-      {tdmResult.auc24 > 0 ? (
+      {hasResults ? (
         <div className={`p-4 rounded-xl border ${statusStyle.bg} transition-all space-y-3.5`}>
           <div className="flex items-center justify-between text-xs font-bold">
             <span className="flex items-center gap-1.5 uppercase tracking-wide">
@@ -505,14 +797,14 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
           </div>
 
           {/* AUC24 Big Display */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white/80 p-3.5 rounded-xl border border-slate-200/80">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white/90 p-3.5 rounded-xl border border-slate-200/80">
             <div>
               <span className="text-xs text-slate-500 font-semibold block">AUC24 thực tế ước tính:</span>
               <div className="flex items-baseline gap-2 mt-0.5">
                 <span className="text-3xl font-black font-mono text-slate-900">{tdmResult.auc24}</span>
                 <span className="text-xs font-bold text-slate-600">mg·h/L</span>
                 <span className="text-xs text-slate-500 ml-1">
-                  (AUC24/MIC = <strong className="font-mono text-slate-800">{Math.round(tdmResult.auc24 / mic)}</strong>)
+                  (AUC24/MIC = <strong className="font-mono text-slate-800">{Math.round(tdmResult.auc24 / Math.max(0.1, mic))}</strong>)
                 </span>
               </div>
               <p className="text-xs text-slate-700 mt-1 font-medium">{statusStyle.actionDesc}</p>
@@ -533,7 +825,9 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                 <span className="font-mono font-bold text-slate-800">{tdmResult.halfLifeHours || '-'} giờ</span>
               </div>
               <div>
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">C_trough dự kiến</span>
+                <span className="text-slate-400 block text-[10px] uppercase font-bold">
+                  {isContinuous ? 'C_ss đo được' : 'C_trough dự kiến'}
+                </span>
                 <span className={`font-mono font-bold ${(tdmResult.cMinEstimated || 0) >= 20 ? 'text-rose-600' : 'text-slate-800'}`}>
                   {tdmResult.cMinEstimated || '-'} mg/L
                 </span>
@@ -542,7 +836,7 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
           </div>
 
           {/* CẢNH BÁO NGUY CƠ ĐỘC THẬN & TẠM NGƯNG LIỀU (HOLD DOSE) */}
-          {(tdmResult.isHighTroughRisk || (tdmResult.holdDoseHours && tdmResult.holdDoseHours > 0)) && (
+          {hasToxicity && (
             <div className="p-3.5 rounded-xl bg-rose-100 border border-rose-300 text-rose-950 space-y-1.5">
               <div className="flex items-center gap-2 font-black text-xs text-rose-900">
                 <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0" />
@@ -584,10 +878,13 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                     </span>
                   </div>
                   <div className="text-base font-black text-slate-900">
-                    {preferredRegimen.doseMg} mg mỗi {preferredRegimen.intervalHours} giờ (q{preferredRegimen.intervalHours}h)
+                    {isContinuous 
+                      ? `Tốc độ: ${preferredRegimen.doseMg} mg/giờ (Tổng: ${preferredRegimen.dailyDoseMg} mg/24h)`
+                      : `${preferredRegimen.doseMg} mg mỗi ${preferredRegimen.intervalHours} giờ (q${preferredRegimen.intervalHours}h)`
+                    }
                   </div>
                   <p className="text-xs text-slate-600">
-                    Dự kiến AUC24: <strong className="text-slate-900">{preferredRegimen.auc24} mg·h/L</strong> • Nồng độ đáy: <strong className="text-slate-900">{preferredRegimen.cTrough} mg/L</strong>
+                    Dự kiến AUC24: <strong className="text-slate-900">{preferredRegimen.auc24} mg·h/L</strong> • {isContinuous ? 'Nồng độ Css' : 'Nồng độ đáy'}: <strong className="text-slate-900">{preferredRegimen.cTrough} mg/L</strong>
                   </p>
                 </div>
 
@@ -609,15 +906,15 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                   Bảng so sánh các phương án liều khả thi (Candidate Regimens):
                 </span>
                 <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-2xs">
-                  <table className="w-full text-left text-xs border-collapse">
+                  <table className="w-full text-left text-xs border-collapse min-w-[560px]">
                     <thead className="bg-slate-50 text-[10px] text-slate-500 font-bold uppercase tracking-wider border-b border-slate-200">
                       <tr>
-                        <th className="py-2 px-3">Phác đồ (Liều x Cữ)</th>
-                        <th className="py-2 px-2.5">Tổng 24h</th>
-                        <th className="py-2 px-2.5">Đáy (C_trough)</th>
-                        <th className="py-2 px-2.5">AUC24 dự kiến</th>
-                        <th className="py-2 px-2.5">Đánh giá</th>
-                        <th className="py-2 px-3 text-right">Thao tác</th>
+                        <th className="py-2.5 px-3">Phác đồ ({isContinuous ? 'Tốc độ mg/h' : 'Liều x Cữ'})</th>
+                        <th className="py-2.5 px-2.5">Tổng 24h</th>
+                        <th className="py-2.5 px-2.5">{isContinuous ? 'C_ss dự kiến' : 'Đáy (C_trough)'}</th>
+                        <th className="py-2.5 px-2.5">AUC24 dự kiến</th>
+                        <th className="py-2.5 px-2.5">Đánh giá</th>
+                        <th className="py-2.5 px-3 text-right">Thao tác</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
@@ -636,10 +933,15 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                               isRec ? 'bg-emerald-50/50 font-semibold' : ''
                             }`}
                           >
-                            <td className="py-2 px-3 font-mono font-bold text-slate-900">
+                            <td className="py-2.5 px-3 font-mono font-bold text-slate-900">
                               <div className="flex items-center gap-1.5">
-                                {isRec && <span className="w-2 h-2 rounded-full bg-emerald-600" />}
-                                <span>{opt.doseMg} mg q{opt.intervalHours}h</span>
+                                {isRec && <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0" />}
+                                <span>
+                                  {isContinuous 
+                                    ? `${opt.doseMg} mg/giờ`
+                                    : `${opt.doseMg} mg q${opt.intervalHours}h`
+                                  }
+                                </span>
                                 {isRec && (
                                   <span className="text-[9px] font-bold text-emerald-800 bg-emerald-100 px-1 py-0.2 rounded">
                                     Ưu tiên
@@ -647,14 +949,14 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                                 )}
                               </div>
                             </td>
-                            <td className="py-2 px-2.5 font-mono text-slate-600">{opt.dailyDoseMg} mg</td>
-                            <td className={`py-2 px-2.5 font-mono ${isHighTrough ? 'text-rose-600 font-bold' : 'text-slate-700'}`}>
+                            <td className="py-2.5 px-2.5 font-mono text-slate-600">{opt.dailyDoseMg} mg</td>
+                            <td className={`py-2.5 px-2.5 font-mono ${isHighTrough ? 'text-rose-600 font-bold' : 'text-slate-700'}`}>
                               {troughVal} mg/L
                             </td>
-                            <td className="py-2 px-2.5 font-mono font-bold text-slate-900">
+                            <td className="py-2.5 px-2.5 font-mono font-bold text-slate-900">
                               {aucVal} <span className="text-[10px] font-normal text-slate-400">mg·h/L</span>
                             </td>
-                            <td className="py-2 px-2.5">
+                            <td className="py-2.5 px-2.5">
                               {isTarget ? (
                                 <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded">
                                   Đạt đích
@@ -669,7 +971,7 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                                 </span>
                               )}
                             </td>
-                            <td className="py-2 px-3 text-right">
+                            <td className="py-2.5 px-3 text-right">
                               <button
                                 type="button"
                                 onClick={() => onApplyAdjustment(opt.doseMg, opt.intervalHours)}
@@ -704,8 +1006,17 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
           </div>
         </div>
       ) : (
-        <div className="p-4 rounded-xl bg-slate-50 border border-dashed border-slate-300 text-center text-xs text-slate-500">
-          Nhập nồng độ đáy hoặc nồng độ mẫu để hệ thống tự động tính toán AUC24 và đề xuất phác đồ hiệu chỉnh liều.
+        /* Empty State */
+        <div className="p-5 rounded-xl bg-slate-50 border border-dashed border-slate-300 text-center space-y-2">
+          <div className="w-8 h-8 rounded-full bg-slate-200 text-slate-500 mx-auto flex items-center justify-center">
+            <Info className="w-4 h-4" />
+          </div>
+          <div className="text-xs font-bold text-slate-700">
+            Chưa có nồng độ vancomycin xét nghiệm
+          </div>
+          <p className="text-[11px] text-slate-500 max-w-md mx-auto">
+            Nhập nồng độ đáy C_trough (hoặc C_ss nếu truyền liên tục) ở Bước 1 ở trên, hoặc chọn một <strong>Kịch bản thử nghiệm nhanh</strong> để hệ thống tự động tính toán AUC24 và đề xuất phác đồ hiệu chỉnh.
+          </p>
         </div>
       )}
 

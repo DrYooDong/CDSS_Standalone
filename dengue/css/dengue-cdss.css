@@ -1064,6 +1064,189 @@
 }
 
 /* ============================================================
+   FLUID SELECTION COMPONENT (BỘ CHỌN DỊCH TRUYỀN PHÁC ĐỒ)
+   ============================================================ */
+.cdss-kpi-fluid-select {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.18rem 0.45rem;
+  border-radius: var(--cdss-radius-sm, 6px);
+  border: 1.5px solid var(--cdss-border);
+  background: var(--cdss-surface);
+  color: var(--cdss-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  max-width: 100%;
+  outline: none;
+}
+
+.cdss-kpi-fluid-select:hover,
+.cdss-kpi-fluid-select:focus {
+  border-color: var(--cdss-primary);
+  box-shadow: 0 0 0 2px var(--cdss-primary-light);
+}
+
+.cdss-fluid-selector-card {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--cdss-shadow-xs);
+  transition: all 0.2s ease;
+}
+
+.cdss-fluid-selector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.cdss-fluid-selector-title-area {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cdss-fluid-selector-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--cdss-text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cdss-fluid-selector-desc {
+  font-size: 0.76rem;
+  color: var(--cdss-text-muted);
+  margin: 0.2rem 0 0 0;
+}
+
+.cdss-fluid-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.cdss-fluid-tile {
+  background: var(--cdss-surface-alt, rgba(0, 0, 0, 0.02));
+  border: 1.5px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm, 8px);
+  padding: 0.75rem 0.85rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.cdss-fluid-tile:hover:not(.is-disabled) {
+  border-color: var(--cdss-primary);
+  background: var(--cdss-primary-light, rgba(14, 165, 233, 0.04));
+  transform: translateY(-1px);
+}
+
+.cdss-fluid-tile.is-active {
+  border-color: var(--cdss-primary);
+  background: var(--cdss-primary-light, rgba(14, 165, 233, 0.08));
+  box-shadow: 0 0 0 2px var(--cdss-primary-light);
+}
+
+.cdss-fluid-tile.is-contraindicated {
+  border-color: var(--cdss-danger);
+  background: rgba(239, 68, 68, 0.04);
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.cdss-fluid-tile-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.cdss-fluid-tile-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cdss-fluid-tile-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.12rem 0.35rem;
+  border-radius: 4px;
+  background: var(--cdss-border);
+  color: var(--cdss-text-muted);
+  text-transform: uppercase;
+}
+
+.cdss-fluid-tile.is-active .cdss-fluid-tile-badge {
+  background: var(--cdss-primary);
+  color: #fff;
+}
+
+.cdss-fluid-tile.is-contraindicated .cdss-fluid-tile-badge {
+  background: var(--cdss-danger);
+  color: #fff;
+}
+
+.cdss-fluid-tile-spec {
+  font-size: 0.7rem;
+  font-family: var(--cdss-font-mono, monospace);
+  color: var(--cdss-text-muted);
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+}
+
+.cdss-fluid-tile-desc {
+  font-size: 0.72rem;
+  color: var(--cdss-text-subtle);
+  line-height: 1.4;
+}
+
+.cdss-fluid-compare-wrap {
+  border-top: 1px dashed var(--cdss-border);
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.cdss-fluid-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.74rem;
+  margin-top: 0.5rem;
+}
+
+.cdss-fluid-compare-table th,
+.cdss-fluid-compare-table td {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--cdss-border);
+  text-align: left;
+}
+
+.cdss-fluid-compare-table th {
+  background: var(--cdss-surface-alt, rgba(0, 0, 0, 0.02));
+  font-weight: 600;
+  color: var(--cdss-text-muted);
+}
+
+
+/* ============================================================
    FLUID STAGE TIMELINE VISUALIZATION
    ============================================================ */
 .cdss-timeline-card {

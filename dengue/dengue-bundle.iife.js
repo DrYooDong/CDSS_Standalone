@@ -2275,6 +2275,7 @@ var DengueBundle = (() => {
     interactiveDose = 5;
     interactivePumpRate = 5;
     deEscalationChecked = {};
+    showFluidCompareTable = false;
     constructor(containerId) {
       const el = document.getElementById(containerId);
       if (!el) {
@@ -3035,6 +3036,28 @@ var DengueBundle = (() => {
       this.currentPlan = generateDengueCDSSPlan(input, this.customDurations, this.customRates);
       this.renderPlan(this.currentPlan);
     }
+    setFluidPreference(fluid) {
+      const input = this.getFormData();
+      const isLiverImpaired = !!(input.liverEnzymesAST_ALT && input.liverEnzymesAST_ALT >= 400 || input.clinicalResponse === "liver_failure");
+      if (fluid === "ringer_lactate" && isLiverImpaired) {
+        this.showToast("\u26A0\uFE0F C\u1EA3nh b\xE1o BYT: AST/ALT \u2265 400 U/L (t\u1ED5n th\u01B0\u01A1ng gan) - Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh Ringer Lactate! \u0110\xE3 t\u1EF1 \u0111\u1ED9ng gi\u1EEF Ringer Acetate.");
+        fluid = "ringer_acetate";
+      }
+      this.printFluidChoice = fluid;
+      const sidebarSelect = document.getElementById("input-preferred-fluid");
+      if (sidebarSelect) {
+        sidebarSelect.value = fluid;
+      }
+      this.clearActivePreset();
+      this.recalculate();
+      const fluidNameMap = {
+        auto: "T\u1EF1 \u0111\u1ED9ng (Theo BYT & Men Gan)",
+        ringer_lactate: "Ringer Lactate",
+        ringer_acetate: "Ringer Acetate",
+        nacl_09: "Natri Clorid 0.9%"
+      };
+      this.showToast(`\u0110\xE3 ch\u1ECDn d\u1ECBch truy\u1EC1n: ${fluidNameMap[fluid] || fluid}`);
+    }
     renderPlan(plan) {
       this.renderWeightAnalysis(plan);
       this.renderAlerts(plan);
@@ -3650,17 +3673,203 @@ var DengueBundle = (() => {
           </div>
         </div>
 
-        <div class="cdss-kpi-card">
+        <div class="cdss-kpi-card" id="kpi-card-fluid">
           <div class="cdss-kpi-icon cdss-kpi-icon--teal">
             <i class="fa-solid fa-bottle-water"></i>
           </div>
           <div class="cdss-kpi-content">
             <span class="cdss-kpi-label">\u01AF\u1EDBc T\xEDnh S\u1ED1 Chai 500ml</span>
             <span class="cdss-kpi-value">${bottles500} <small>chai</small></span>
-            <span class="cdss-kpi-sub" style="font-weight:700; color:${plan.fluidInfo?.isContraindicatedRL ? "var(--cdss-danger)" : "inherit"};">${plan.fluidInfo?.name || "Ringer Lactate"}</span>
+            <span class="cdss-kpi-sub" style="font-weight:700; color:${plan.fluidInfo?.isContraindicatedRL ? "var(--cdss-danger)" : "inherit"}; display:flex; align-items:center; gap:0.35rem; flex-wrap:wrap; margin-top:0.25rem;">
+              <span style="display:inline-flex; align-items:center; gap:0.25rem;">
+                <i class="fa-solid fa-droplet" style="color:${plan.fluidInfo?.isContraindicatedRL ? "var(--cdss-danger)" : "var(--cdss-primary)"}; font-size:0.75rem;"></i>
+                <span>${plan.fluidInfo?.name || "Ringer Lactate"}</span>
+              </span>
+              <select id="kpi-quick-fluid-select" class="cdss-kpi-fluid-select" title="\u0110\u1ED5i tr\u1EF1c ti\u1EBFp lo\u1EA1i d\u1ECBch truy\u1EC1n b\xF9 d\u1ECBch" aria-label="\u0110\u1ED5i d\u1ECBch truy\u1EC1n">
+                <option value="auto" ${plan.patient.preferredFluid === "auto" || !plan.patient.preferredFluid ? "selected" : ""}>\u26A1 T\u1EF1 \u0111\u1ED9ng (${plan.fluidInfo?.name})</option>
+                <option value="ringer_lactate" ${plan.patient.preferredFluid === "ringer_lactate" ? "selected" : ""} ${plan.fluidInfo?.isContraindicatedRL ? "disabled" : ""}>Ringer Lactate (Chu\u1EA9n BYT${plan.fluidInfo?.isContraindicatedRL ? " - C\u1EA4M GAN" : ""})</option>
+                <option value="ringer_acetate" ${plan.patient.preferredFluid === "ringer_acetate" ? "selected" : ""}>Ringer Acetate (\u01AFu ti\xEAn suy gan)</option>
+                <option value="nacl_09" ${plan.patient.preferredFluid === "nacl_09" ? "selected" : ""}>Natri Clorid 0.9% (\u0110\u1EB3ng tr\u01B0\u01A1ng)</option>
+              </select>
+            </span>
           </div>
         </div>
       </div>
+
+      <!-- B\u1ED8 CH\u1ECCN & \u0110I\u1EC0U PH\u1ED0I D\u1ECACH TRUY\u1EC0N PH\xC1C \u0110\u1ED2 (B\u1ED8 Y T\u1EBE 2023) -->
+      <section class="cdss-fluid-selector-card" id="cdss-fluid-selector-card">
+        <div class="cdss-fluid-selector-header">
+          <div class="cdss-fluid-selector-title-area">
+            <div class="cdss-kpi-icon cdss-kpi-icon--teal" style="width:34px; height:34px; min-width:34px; font-size:0.95rem;">
+              <i class="fa-solid fa-flask-vial"></i>
+            </div>
+            <div>
+              <h3 class="cdss-fluid-selector-title">
+                L\u1EF1a Ch\u1ECDn Lo\u1EA1i D\u1ECBch Truy\u1EC1n Ph\xE1c \u0110\u1ED3 B\xF9 D\u1ECBch (Q\u0110 2760/Q\u0110-BYT)
+                <span class="cdss-brand-badge" style="background:var(--cdss-primary-light); color:var(--cdss-primary); border-color:var(--cdss-primary); font-size:0.68rem;">
+                  \u0110ang d\xF9ng: <strong>${plan.fluidInfo.name}</strong>
+                </span>
+                ${plan.fluidInfo.isContraindicatedRL ? `
+                  <span class="cdss-badge cdss-badge--danger" style="font-size:0.68rem;" title="${plan.fluidInfo.reason}">
+                    <i class="fa-solid fa-triangle-exclamation"></i> C\u1EA4M RINGER LACTATE (AST/ALT ${plan.patient.liverEnzymesAST_ALT || "\u2265 400"} U/L)
+                  </span>
+                ` : ""}
+              </h3>
+              <p class="cdss-fluid-selector-desc">
+                Quy\u1EBFt \u0111\u1ECBnh d\u1ECBch tinh th\u1EC3 \u0111\u1EB3ng tr\u01B0\u01A1ng theo ph\xE2n t\u1EA7ng t\u1ED5n th\u01B0\u01A1ng gan &amp; ki\u1EC1m toan. C\xF3 th\u1EC3 chuy\u1EC3n nhanh sang ph\xE1c \u0111\u1ED3 Cao ph\xE2n t\u1EED (CPT) khi s\u1ED1c tr\u01A1.
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.45rem; flex-wrap:wrap;">
+            <button type="button" id="btn-toggle-fluid-compare" class="cdss-action-btn" style="background:var(--cdss-surface); border:1px solid var(--cdss-border); color:var(--cdss-text); font-size:0.75rem; padding:0.35rem 0.65rem;" title="Xem b\u1EA3ng so s\xE1nh \u0111i\u1EC7n gi\u1EA3i v\xE0 ch\u1EC9 \u0111\u1ECBnh 3 lo\u1EA1i d\u1ECBch tinh th\u1EC3">
+              <i class="fa-solid fa-scale-balanced" style="color:var(--cdss-primary);"></i>
+              <span>${this.showFluidCompareTable ? "\u1EA8n So S\xE1nh \u0110i\u1EC7n Gi\u1EA3i" : "So S\xE1nh \u0110i\u1EC7n Gi\u1EA3i 3 D\u1ECBch"}</span>
+            </button>
+            <button type="button" id="btn-switch-to-colloid" class="cdss-action-btn" style="background:rgba(245, 158, 11, 0.1); border:1px solid rgba(245, 158, 11, 0.35); color:#d97706; font-size:0.75rem; font-weight:600; padding:0.35rem 0.65rem;" title="Chuy\u1EC3n sang Ph\xE1c \u0111\u1ED3 Cao Ph\xE2n T\u1EED Dextran 40 / 6% HES 200 (Ph\u1EE5 l\u1EE5c 10)">
+              <i class="fa-solid fa-shield-virus"></i>
+              <span>Ph\xE1c \u0110\u1ED3 Cao Ph\xE2n T\u1EED (CPT) <i class="fa-solid fa-arrow-right" style="font-size:0.65rem;"></i></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 T\xF9y Ch\u1ECDn D\u1ECBch Truy\u1EC1n Tinh Th\u1EC3 (Tiles) -->
+        <div class="cdss-fluid-tiles-grid">
+          <!-- T\xF9y ch\u1ECDn 1: T\u1EF1 \u0111\u1ED9ng ph\xE2n t\u1EA7ng -->
+          <div class="cdss-fluid-tile ${!plan.patient.preferredFluid || plan.patient.preferredFluid === "auto" ? "is-active" : ""}" data-fluid-id="auto" role="button" tabindex="0" title="CDSS t\u1EF1 \u0111\u1ED9ng ph\xE1t hi\u1EC7n men gan \u0111\u1EC3 ch\u1ECDn d\u1ECBch tinh th\u1EC3 an to\xE0n nh\u1EA5t">
+            <div class="cdss-fluid-tile-head">
+              <span class="cdss-fluid-tile-name">
+                <i class="fa-solid fa-wand-magic-sparkles text-primary"></i> \u26A1 T\u1EF1 \u0110\u1ED9ng Chu\u1EA9n H\xF3a
+              </span>
+              <span class="cdss-fluid-tile-badge">${!plan.patient.preferredFluid || plan.patient.preferredFluid === "auto" ? "\u0110ang ch\u1ECDn" : "Khuy\u1EBFn ngh\u1ECB"}</span>
+            </div>
+            <div class="cdss-fluid-tile-spec">
+              ${plan.fluidInfo.isContraindicatedRL ? "-> T\u1EF1 \u0111\u1ED5i Ringer Acetate / NaCl 0.9%" : "-> D\xF9ng Ringer Lactate chu\u1EA9n BYT"}
+            </div>
+            <div class="cdss-fluid-tile-desc">
+              T\u1EF1 \u0111\u1ED9ng ph\xE2n t\u1EA7ng theo ch\u1EC9 s\u1ED1 men gan AST/ALT &amp; \u0111\u1ED9 thanh th\u1EA3i. T\u1ED1i \u01B0u an to\xE0n nh\u1EA5t theo Q\u0110 2760/Q\u0110-BYT.
+            </div>
+          </div>
+
+          <!-- T\xF9y ch\u1ECDn 2: Ringer Lactate -->
+          <div class="cdss-fluid-tile ${plan.patient.preferredFluid === "ringer_lactate" ? "is-active" : ""} ${plan.fluidInfo.isContraindicatedRL ? "is-contraindicated" : ""}" data-fluid-id="ringer_lactate" role="button" tabindex="0" title="${plan.fluidInfo.isContraindicatedRL ? plan.fluidInfo.reason : "L\u1EF1a ch\u1ECDn \u0111\u1EA7u tay chu\u1EA9n BYT cho b\xF9 d\u1ECBch SXHD"}">
+            <div class="cdss-fluid-tile-head">
+              <span class="cdss-fluid-tile-name">
+                <i class="fa-solid fa-droplet text-primary"></i> Ringer Lactate (RL)
+              </span>
+              <span class="cdss-fluid-tile-badge">${plan.fluidInfo.isContraindicatedRL ? "C\u1EA4M GAN C\u1EA4P" : plan.patient.preferredFluid === "ringer_lactate" ? "\u0110ang ch\u1ECDn" : "Chu\u1EA9n BYT"}</span>
+            </div>
+            <div class="cdss-fluid-tile-spec">
+              Na\u207A 130 &bull; K\u207A 4 &bull; Cl\u207B 109 &bull; Lactate 28 mEq/L (273 mOsm/L)
+            </div>
+            <div class="cdss-fluid-tile-desc">
+              ${plan.fluidInfo.isContraindicatedRL ? `<span style="color:var(--cdss-danger); font-weight:700;">Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh tuy\u1EC7t \u0111\u1ED1i khi AST/ALT \u2265 400 U/L \u0111\u1EC3 tr\xE1nh toan lactic t\u1EED vong!</span>` : `D\u1ECBch tinh th\u1EC3 l\u1EF1a ch\u1ECDn h\xE0ng \u0111\u1EA7u (First-line) b\xF9 th\u1EC3 t\xEDch l\xF2ng m\u1EA1ch trong SXHD theo BYT.`}
+            </div>
+          </div>
+
+          <!-- T\xF9y ch\u1ECDn 3: Ringer Acetat -->
+          <div class="cdss-fluid-tile ${plan.patient.preferredFluid === "ringer_acetate" ? "is-active" : ""}" data-fluid-id="ringer_acetate" role="button" tabindex="0" title="Chuy\u1EC3n h\xF3a Acetate t\u1EA1i c\u01A1 ngo\u1EA1i bi\xEAn, kh\xF4ng t\u1EA1o g\xE1nh n\u1EB7ng qua gan">
+            <div class="cdss-fluid-tile-head">
+              <span class="cdss-fluid-tile-name">
+                <i class="fa-solid fa-shield-heart" style="color:#059669;"></i> Ringer Acetat (RA)
+              </span>
+              <span class="cdss-fluid-tile-badge">${plan.patient.preferredFluid === "ringer_acetate" ? "\u0110ang ch\u1ECDn" : "\u01AFu ti\xEAn suy gan"}</span>
+            </div>
+            <div class="cdss-fluid-tile-spec">
+              Na\u207A 130 &bull; K\u207A 4 &bull; Cl\u207B 109 &bull; Acetate 28 mEq/L (270 mOsm/L)
+            </div>
+            <div class="cdss-fluid-tile-desc">
+              Acetate chuy\u1EC3n h\xF3a t\u1EA1i c\u01A1 v\xE2n &amp; m\xF4 ngo\u1EA1i vi, kh\xF4ng qua gan. L\u1EF1a ch\u1ECDn s\u1ED1 1 khi c\xF3 t\u1ED5n th\u01B0\u01A1ng gan c\u1EA5p, toan lactic ho\u1EB7c Thalassemia.
+            </div>
+          </div>
+
+          <!-- T\xF9y ch\u1ECDn 4: Natri Clorid 0.9% -->
+          <div class="cdss-fluid-tile ${plan.patient.preferredFluid === "nacl_09" ? "is-active" : ""}" data-fluid-id="nacl_09" role="button" tabindex="0" title="Dung d\u1ECBch mu\u1ED1i \u0111\u1EB3ng tr\u01B0\u01A1ng thay th\u1EBF khi kh\xF4ng c\xF3 RL/RA ho\u1EB7c khi c\xF3 h\u1EA1 natri m\xE1u">
+            <div class="cdss-fluid-tile-head">
+              <span class="cdss-fluid-tile-name">
+                <i class="fa-solid fa-cube text-info"></i> NaCl 0.9% (\u0110\u1EB3ng tr\u01B0\u01A1ng)
+              </span>
+              <span class="cdss-fluid-tile-badge">${plan.patient.preferredFluid === "nacl_09" ? "\u0110ang ch\u1ECDn" : "Thay th\u1EBF"}</span>
+            </div>
+            <div class="cdss-fluid-tile-spec">
+              Na\u207A 154 &bull; Cl\u207B 154 mEq/L (308 mOsm/L)
+            </div>
+            <div class="cdss-fluid-tile-desc">
+              D\xF9ng khi thi\u1EBFu RL/RA ho\u1EB7c khi c\xF3 h\u1EA1 natri m\xE1u. L\u01B0u \xFD BYT: tr\xE1nh truy\u1EC1n l\u01B0\u1EE3ng l\u1EDBn k\xE9o d\xE0i \u0111\u1EC3 ng\u1EEBa toan chuy\u1EC3n h\xF3a t\u0103ng clo m\xE1u.
+            </div>
+          </div>
+        </div>
+
+        ${this.showFluidCompareTable ? `
+          <div class="cdss-fluid-compare-wrap">
+            <div style="font-size:0.78rem; font-weight:700; color:var(--cdss-text); margin-bottom:0.35rem; display:flex; align-items:center; gap:0.4rem;">
+              <i class="fa-solid fa-table" style="color:var(--cdss-primary);"></i> B\u1EA3ng So S\xE1nh Chi Ti\u1EBFt \u0110i\u1EC7n Gi\u1EA3i &amp; \u0110\u1EB7c T\xEDnh D\u01B0\u1EE3c L\xFD D\u1ECBch Tinh Th\u1EC3 SXHD (Q\u0110 2760/Q\u0110-BYT)
+            </div>
+            <div class="cdss-table-scroll">
+              <table class="cdss-fluid-compare-table">
+                <thead>
+                  <tr>
+                    <th>Ch\u1EC9 ti\xEAu so s\xE1nh</th>
+                    <th>Ringer Lactate (RL)</th>
+                    <th>Ringer Acetat (RA)</th>
+                    <th>Natri Clorid 0.9% (NaCl)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>N\u1ED3ng \u0111\u1ED9 Na\u207A (mmol/L)</strong></td>
+                    <td>130</td>
+                    <td>130</td>
+                    <td>154 (Cao h\u01A1n sinh l\xFD)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>N\u1ED3ng \u0111\u1ED9 Cl\u207B (mmol/L)</strong></td>
+                    <td>109 (G\u1EA7n sinh l\xFD)</td>
+                    <td>109 (G\u1EA7n sinh l\xFD)</td>
+                    <td>154 (Nguy c\u01A1 t\u0103ng clo m\xE1u)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>N\u1ED3ng \u0111\u1ED9 K\u207A / Ca\xB2\u207A</strong></td>
+                    <td>K\u207A 4 / Ca\xB2\u207A 1.5 mmol/L</td>
+                    <td>K\u207A 4 / Ca\xB2\u207A 1.5 mmol/L</td>
+                    <td>0 / 0</td>
+                  </tr>
+                  <tr>
+                    <td><strong>H\u1EC7 \u0111\u1EC7m ki\u1EC1m h\xF3a</strong></td>
+                    <td>Lactate 28 mmol/L</td>
+                    <td>Acetate 28 mmol/L</td>
+                    <td>Kh\xF4ng c\xF3 h\u1EC7 \u0111\u1EC7m</td>
+                  </tr>
+                  <tr>
+                    <td><strong>C\u01A1 quan chuy\u1EC3n h\xF3a \u0111\u1EC7m</strong></td>
+                    <td>Gan (oxy h\xF3a t\u1EA1o Bicarbonate)</td>
+                    <td>C\u01A1 v\xE2n &amp; m\xF4 ngo\u1EA1i bi\xEAn (kh\xF4ng qua gan)</td>
+                    <td>Th\u1EADn b\xE0i xu\u1EA5t</td>
+                  </tr>
+                  <tr>
+                    <td><strong>\xC1p l\u1EF1c th\u1EA9m th\u1EA5u</strong></td>
+                    <td>273 mOsm/L (\u0110\u1EB3ng tr\u01B0\u01A1ng)</td>
+                    <td>270 mOsm/L (\u0110\u1EB3ng tr\u01B0\u01A1ng)</td>
+                    <td>308 mOsm/L (H\u01A1i \u01B0u tr\u01B0\u01A1ng)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ch\u1EC9 \u0111\u1ECBnh ch\xEDnh theo BYT</strong></td>
+                    <td>S\u1ED1t xu\u1EA5t huy\u1EBFt c\xF3 DHCB, S\u1ED1c SXHD ban \u0111\u1EA7u</td>
+                    <td>SXHD k\xE8m t\u1ED5n th\u01B0\u01A1ng gan (AST/ALT \u2265 400), toan chuy\u1EC3n h\xF3a</td>
+                    <td>Thay th\u1EBF khi thi\u1EBFu RL/RA, k\xE8m h\u1EA1 Natri m\xE1u</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh / Th\u1EADn tr\u1ECDng</strong></td>
+                    <td><span style="color:var(--cdss-danger); font-weight:700;">T\u1ED5n th\u01B0\u01A1ng gan c\u1EA5p (AST/ALT \u2265 400 U/L), toan lactic</span></td>
+                    <td>D\u1ECB \u1EE9ng t\xE1 d\u01B0\u1EE3c; kh\xF4ng tr\u1ED9n chung m\xE1u truy\u1EC1n (ch\u1EE9a Ca\xB2\u207A)</td>
+                    <td>Tr\xE1nh truy\u1EC1n li\u1EC1u l\u1EDBn k\xE9o d\xE0i (g\xE2y toan t\u0103ng clo m\xE1u)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ` : ""}
+      </section>
 
       <!-- VISUAL FLUID TIMELINE -->
       <div class="cdss-timeline-card">
@@ -4037,6 +4246,50 @@ var DengueBundle = (() => {
           this.customRates = {};
           this.recalculate();
           this.showToast("\u0110\xE3 kh\xF4i ph\u1EE5c th\xF4ng s\u1ED1 th\u1EDDi l\u01B0\u1EE3ng v\xE0 t\u1ED1c \u0111\u1ED9 chu\u1EA9n theo B\u1ED9 Y T\u1EBF!");
+        });
+      }
+      const quickFluidSelect = container.querySelector("#kpi-quick-fluid-select");
+      if (quickFluidSelect) {
+        quickFluidSelect.addEventListener("change", (e) => {
+          const val = e.target.value;
+          this.setFluidPreference(val);
+        });
+      }
+      const fluidTiles = container.querySelectorAll(".cdss-fluid-tile");
+      fluidTiles.forEach((tile) => {
+        tile.addEventListener("click", () => {
+          const fluidId = tile.getAttribute("data-fluid-id");
+          if (fluidId) {
+            this.setFluidPreference(fluidId);
+          }
+        });
+        tile.addEventListener("keydown", (e) => {
+          const ke = e;
+          if (ke.key === "Enter" || ke.key === " ") {
+            ke.preventDefault();
+            const fluidId = tile.getAttribute("data-fluid-id");
+            if (fluidId) {
+              this.setFluidPreference(fluidId);
+            }
+          }
+        });
+      });
+      const toggleCompareBtn = container.querySelector("#btn-toggle-fluid-compare");
+      if (toggleCompareBtn) {
+        toggleCompareBtn.addEventListener("click", () => {
+          this.showFluidCompareTable = !this.showFluidCompareTable;
+          this.renderWorkspaceContent();
+        });
+      }
+      const switchColloidBtn = container.querySelector("#btn-switch-to-colloid");
+      if (switchColloidBtn) {
+        switchColloidBtn.addEventListener("click", () => {
+          this.activeWorkspaceMode = "colloid_schedule";
+          if (this.currentPlan) {
+            this.updateWorkspaceModeSwitcher(this.currentPlan);
+          }
+          this.renderWorkspaceContent();
+          this.showToast("\u0110\xE3 chuy\u1EC3n sang Ph\xE1c \u0111\u1ED3 Cao Ph\xE2n T\u1EED (CPT) - Ph\u1EE5 l\u1EE5c 10 BYT 2023");
         });
       }
       const copyDiscontinueBtn = container.querySelector("#btn-copy-discontinue-checklist");

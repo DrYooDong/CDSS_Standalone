@@ -1256,6 +1256,50 @@ export function evaluateTdm(
     }
 
     const timingValidation = validateTdmSampleTiming(tdm);
+
+    // Calculate clearance & volume for continuous infusion
+    const clEstimated = css > 0 ? Number((currentDailyMg / (css * 24)).toFixed(2)) : undefined;
+    const vdEstimated = patient?.weight ? Number((patient.weight * (patient.clinicalSetting === 'icu' ? 0.85 : 0.72)).toFixed(1)) : 45;
+    const kel = (clEstimated && vdEstimated) ? Number((clEstimated / vdEstimated).toFixed(4)) : undefined;
+    const halfLifeHours = kel ? Number((Math.log(2) / kel).toFixed(1)) : undefined;
+
+    // Generate Candidate Continuous Regimens Matrix
+    const candidateRates = [
+      Math.max(25, suggestedRateMgH - 30),
+      Math.max(35, suggestedRateMgH - 20),
+      Math.max(45, suggestedRateMgH - 10),
+      suggestedRateMgH,
+      suggestedRateMgH + 10,
+      suggestedRateMgH + 20,
+      suggestedRateMgH + 30
+    ];
+    const uniqueRates = Array.from(new Set(candidateRates)).sort((a, b) => a - b);
+    const continuousRegimens: ClinCalcDosingRegimen[] = uniqueRates.map(rate => {
+      const dailyMg = rate * 24;
+      const predCss = css > 0 && currentDailyMg > 0
+        ? Number((css * (dailyMg / currentDailyMg)).toFixed(1))
+        : 22.0;
+      const predAuc = Number((predCss * 24).toFixed(1));
+      const isWithinGoal = predAuc >= 400 && predAuc <= 600;
+      const isPreferred = rate === suggestedRateMgH;
+      return {
+        doseMg: rate,
+        intervalHours: 24,
+        infusionMinutes: 1440,
+        infusionHours: 24,
+        dailyDoseMg: dailyMg,
+        cPeak: predCss,
+        cTrough: predCss,
+        auc24: predAuc,
+        aucMicRatio: Number((predAuc / mic).toFixed(1)),
+        isWithinGoal,
+        isPreferred,
+        isHighTroughRisk: predCss >= 25.0
+      };
+    });
+
+    const preferredCont = continuousRegimens.find(r => r.isPreferred) || continuousRegimens[0];
+
     return {
       auc24,
       auc24TargetMin: targetMin,
@@ -1263,6 +1307,10 @@ export function evaluateTdm(
       targetAttainment: attainment,
       cMaxEstimated: css,
       cMinEstimated: css,
+      clEstimated,
+      vdEstimated,
+      kel,
+      halfLifeHours,
       estimationMethod: 'continuous_css',
       adjustedDoseRecommendation: rec,
       suggestedContinuousRateMgH: suggestedRateMgH,
@@ -1270,6 +1318,8 @@ export function evaluateTdm(
       predictedAuc24: predictedAuc,
       holdDoseHours: holdHours,
       monitoringPlan,
+      adjustedRegimens: continuousRegimens,
+      preferredAdjustedRegimen: preferredCont,
       clinicalNote: `Truyền tĩnh mạch liên tục: AUC24 được tính chính xác bằng công thức AUC24 = Css × 24. Mục tiêu Css lý tưởng: 20 – 25 mg/L (tương đương AUC 480 – 600 mg·h/L).`,
       timingValidation
     };
