@@ -688,7 +688,9 @@
   function registerPwa() {
     if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.location.protocol.indexOf('http') === 0) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register(rootPrefix + 'sw.js').catch(function () {});
+        navigator.serviceWorker.register(rootPrefix + 'sw.js?v=' + Date.now()).then(function (reg) {
+          if (reg) reg.update();
+        }).catch(function () {});
       });
     }
   }

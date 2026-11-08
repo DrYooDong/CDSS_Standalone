@@ -141,102 +141,109 @@ export default function App() {
               </div>
             </div>
 
-            {/* Desktop Navigation Tabs (Hidden on mobile/tablet) */}
-            <nav className="hidden lg:flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+            {/* Desktop Navigation Tabs (Converted to Icon Buttons) */}
+            <nav className="hidden lg:flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-xl border border-slate-200/80 dark:border-slate-700" aria-label="Điều hướng chính">
               <button
+                type="button"
                 onClick={() => setDesktopTab('workbench')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                title="Bàn Làm Việc CDSS (Nhập liệu & Phân tích)"
+                aria-label="Bàn Làm Việc CDSS"
+                className={`p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${
                   desktopTab === 'workbench'
-                    ? 'bg-white dark:bg-slate-700 text-teal-700 dark:text-teal-300 shadow-2xs'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                    ? 'bg-white dark:bg-slate-700 text-teal-700 dark:text-teal-300 shadow-2xs font-bold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                 }`}
               >
                 <Activity className="w-4 h-4" />
-                <span>Bàn Làm Việc CDSS</span>
               </button>
 
               <button
+                type="button"
                 onClick={() => setDesktopTab('charts')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                title="Biểu Đồ So Sánh Các Dải Tham Chiếu"
+                aria-label="Biểu Đồ So Sánh"
+                className={`p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${
                   desktopTab === 'charts'
-                    ? 'bg-white dark:bg-slate-700 text-teal-700 dark:text-teal-300 shadow-2xs'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                    ? 'bg-white dark:bg-slate-700 text-teal-700 dark:text-teal-300 shadow-2xs font-bold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                 }`}
               >
                 <BarChart3 className="w-4 h-4" />
-                <span>Biểu Đồ So Sánh</span>
               </button>
 
               <button
+                type="button"
                 onClick={() => setDesktopTab('guide')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                title="Hướng Dẫn Cơ Bản & Quy Trình Chọc Dò"
+                aria-label="Hướng Dẫn Cơ Bản"
+                className={`p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${
                   desktopTab === 'guide'
-                    ? 'bg-teal-700 text-white shadow-2xs'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                    ? 'bg-teal-700 text-white shadow-2xs font-bold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50'
                 }`}
               >
                 <BookOpen className="w-4 h-4" />
-                <span>Hướng Dẫn Cơ Bản</span>
               </button>
             </nav>
 
-            {/* Quick Action Icons: Dark Mode Toggle, Presets, Print, Reset */}
-            <div className="flex items-center gap-1 shrink-0">
+            {/* Quick Action Icon Buttons: Dark Mode Toggle, Presets, Print, Reset, Back to Hub */}
+            <div className="flex items-center gap-1.5 shrink-0">
               {/* DARK MODE TOGGLE BUTTON */}
               <button
                 type="button"
                 onClick={() => setIsDarkMode(!isDarkMode)}
                 title={isDarkMode ? "Chuyển sang chế độ sáng" : "Chế độ nền tối (Ca đêm / Phòng cấp cứu)"}
-                className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5 shadow-2xs"
+                aria-label="Chuyển đổi giao diện sáng tối"
+                className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 transition-all cursor-pointer flex items-center justify-center shadow-2xs"
               >
                 {isDarkMode ? (
-                  <>
-                    <Sun className="w-4 h-4 text-amber-400" />
-                    <span className="text-[11px] font-bold text-amber-300 hidden md:inline">Sáng</span>
-                  </>
+                  <Sun className="w-4 h-4 text-amber-400" />
                 ) : (
-                  <>
-                    <Moon className="w-4 h-4 text-indigo-600" />
-                    <span className="text-[11px] font-bold text-slate-700 hidden md:inline">Đêm</span>
-                  </>
+                  <Moon className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                 )}
               </button>
 
+              {/* 7 CA MẪU PRESET BUTTON */}
               <button
                 type="button"
                 onClick={() => setIsPresetsModalOpen(true)}
-                title="Tải ca bệnh mẫu lâm sàng"
-                className="flex items-center gap-1 px-2.5 py-1.5 bg-teal-50 dark:bg-teal-950/60 hover:bg-teal-100 dark:hover:bg-teal-900 text-teal-800 dark:text-teal-300 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-2xs"
+                title="Tải ca bệnh mẫu lâm sàng (7 ca kinh điển)"
+                aria-label="Ca lâm sàng mẫu"
+                className="p-2 bg-teal-50 dark:bg-teal-950/60 hover:bg-teal-100 dark:hover:bg-teal-900 text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-800/60 rounded-xl transition-all cursor-pointer shadow-2xs flex items-center justify-center"
               >
-                <ClipboardList className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
-                <span className="hidden sm:inline">7 Ca Mẫu</span>
+                <ClipboardList className="w-4 h-4 text-teal-600 dark:text-teal-400" />
               </button>
 
+              {/* PRINT BUTTON */}
               <button
                 type="button"
                 onClick={handlePrint}
-                title="In phiếu CDSS"
-                className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all cursor-pointer hidden sm:flex"
+                title="In phiếu kết quả CDSS (A4)"
+                aria-label="In phiếu CDSS"
+                className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-800 transition-all cursor-pointer hidden sm:flex items-center justify-center"
               >
                 <Printer className="w-4 h-4" />
               </button>
 
+              {/* RESET BUTTON */}
               <button
                 type="button"
                 onClick={handleReset}
                 title="Đặt lại thông số mặc định"
-                className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all cursor-pointer"
+                aria-label="Đặt lại mặc định"
+                className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-800 transition-all cursor-pointer flex items-center justify-center"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
 
+              {/* BACK TO HUB CDSS */}
               <a
                 href="../index.html"
                 title="Trở về Trung tâm Quyết Định Lâm Sàng (Hub CDSS)"
-                className="flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition-all shadow-2xs ml-1"
+                aria-label="Trở về Hub CDSS"
+                className="p-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl border border-slate-200 dark:border-slate-700 transition-all shadow-2xs flex items-center justify-center ml-0.5"
               >
-                <ArrowLeft className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
-                <span className="hidden sm:inline">Hub CDSS</span>
+                <ArrowLeft className="w-4 h-4 text-slate-500 dark:text-slate-400" />
               </a>
             </div>
           </div>
@@ -312,11 +319,13 @@ export default function App() {
                   </p>
                 </div>
                 <button
+                  type="button"
                   onClick={() => setDesktopTab('workbench')}
-                  className="bg-white/10 hover:bg-white/20 text-white text-xs font-bold px-3 py-2 rounded-xl transition-all cursor-pointer flex items-center gap-1"
+                  title="Về Bàn Làm Việc CDSS"
+                  aria-label="Về Bàn Làm Việc CDSS"
+                  className="p-2.5 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all cursor-pointer flex items-center justify-center shrink-0"
                 >
-                  <span>Về Bàn Làm Việc</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <Activity className="w-5 h-5" />
                 </button>
               </div>
               <CSFCharts input={input} result={analysisResult} />
@@ -347,6 +356,8 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setMobileTab('cdss')}
+                  title="Xem Kết Quả CDSS"
+                  aria-label="Xem Kết Quả CDSS"
                   className="w-full bg-slate-900 dark:bg-slate-800 text-white p-3 rounded-2xl shadow-xl border border-teal-500/60 dark:border-teal-400/50 flex items-center justify-between gap-3 active:scale-[0.98] transition-all cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5 truncate">
@@ -361,8 +372,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <span className="flex items-center gap-1 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl shrink-0">
-                    <span>Xem Kết Quả</span>
+                  <span className="p-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl shrink-0 flex items-center justify-center shadow-2xs" title="Xem Kết Quả CDSS">
                     <ChevronRight className="w-4 h-4" />
                   </span>
                 </button>
@@ -374,22 +384,24 @@ export default function App() {
           {mobileTab === 'cdss' && (
             <div className="space-y-4">
               {/* Top back button */}
-              <div className="flex items-center justify-between bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-200 dark:border-slate-800">
+              <div className="flex items-center justify-between bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setMobileTab('input')}
-                  className="flex items-center gap-1 text-xs font-bold text-teal-700 dark:text-teal-400 hover:text-teal-900 dark:hover:text-teal-300 cursor-pointer"
+                  title="Sửa thông số xét nghiệm"
+                  aria-label="Sửa thông số xét nghiệm"
+                  className="p-2 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer flex items-center justify-center transition-all"
                 >
                   <ArrowLeft className="w-4 h-4" />
-                  <span>Sửa thông số xét nghiệm</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setMobileTab('charts')}
-                  className="flex items-center gap-1 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-pointer"
+                  title="Xem Biểu Đồ"
+                  aria-label="Xem Biểu Đồ"
+                  className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer flex items-center justify-center transition-all"
                 >
-                  <span>Xem Biểu Đồ</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <BarChart3 className="w-4 h-4" />
                 </button>
               </div>
 
@@ -400,22 +412,24 @@ export default function App() {
           {/* TAB 3: CHARTS ON MOBILE/TABLET */}
           {mobileTab === 'charts' && (
             <div className="space-y-4">
-              <div className="flex items-center justify-between bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-200 dark:border-slate-800">
+              <div className="flex items-center justify-between bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setMobileTab('cdss')}
-                  className="flex items-center gap-1 text-xs font-bold text-teal-700 dark:text-teal-400 hover:text-teal-900 dark:hover:text-teal-300 cursor-pointer"
+                  title="Về Kết Quả CDSS"
+                  aria-label="Về Kết Quả CDSS"
+                  className="p-2 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer flex items-center justify-center transition-all"
                 >
                   <ArrowLeft className="w-4 h-4" />
-                  <span>Về Kết Quả CDSS</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setMobileTab('input')}
-                  className="flex items-center gap-1 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-pointer"
+                  title="Sửa thông số"
+                  aria-label="Sửa thông số"
+                  className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer flex items-center justify-center transition-all"
                 >
-                  <span>Sửa thông số</span>
-                  <SlidersHorizontal className="w-3.5 h-3.5" />
+                  <SlidersHorizontal className="w-4 h-4" />
                 </button>
               </div>
 
@@ -440,22 +454,25 @@ export default function App() {
         <button
           type="button"
           onClick={() => setMobileTab('input')}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all cursor-pointer ${
-            mobileTab === 'input' ? 'text-teal-700 dark:text-teal-400 font-extrabold' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+          title="Nhập Liệu"
+          aria-label="Nhập Liệu"
+          className={`p-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center ${
+            mobileTab === 'input' ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 font-extrabold shadow-2xs' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <div className="relative">
             <SlidersHorizontal className="w-5 h-5" />
             <span className="w-1.5 h-1.5 rounded-full bg-teal-600 dark:bg-teal-400 absolute -top-0.5 -right-0.5"></span>
           </div>
-          <span className="text-[10px] mt-0.5">Nhập Liệu</span>
         </button>
 
         <button
           type="button"
           onClick={() => setMobileTab('cdss')}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all cursor-pointer ${
-            mobileTab === 'cdss' ? 'text-teal-700 dark:text-teal-400 font-extrabold' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+          title="CDSS Biện Giải"
+          aria-label="CDSS Biện Giải"
+          className={`p-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center ${
+            mobileTab === 'cdss' ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 font-extrabold shadow-2xs' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <div className="relative">
@@ -464,29 +481,30 @@ export default function App() {
               {topDiag.score}%
             </span>
           </div>
-          <span className="text-[10px] mt-0.5">CDSS Biện Giải</span>
         </button>
 
         <button
           type="button"
           onClick={() => setMobileTab('charts')}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all cursor-pointer ${
-            mobileTab === 'charts' ? 'text-teal-700 dark:text-teal-400 font-extrabold' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+          title="Biểu Đồ So Sánh"
+          aria-label="Biểu Đồ So Sánh"
+          className={`p-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center ${
+            mobileTab === 'charts' ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 font-extrabold shadow-2xs' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <BarChart3 className="w-5 h-5" />
-          <span className="text-[10px] mt-0.5">Biểu Đồ</span>
         </button>
 
         <button
           type="button"
           onClick={() => setMobileTab('guide')}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all cursor-pointer ${
-            mobileTab === 'guide' ? 'text-teal-700 dark:text-teal-400 font-extrabold' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+          title="Hướng Dẫn & Quy Trình"
+          aria-label="Hướng Dẫn & Quy Trình"
+          className={`p-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center ${
+            mobileTab === 'guide' ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 font-extrabold shadow-2xs' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <BookOpen className="w-5 h-5" />
-          <span className="text-[10px] mt-0.5">Hướng Dẫn</span>
         </button>
       </nav>
 

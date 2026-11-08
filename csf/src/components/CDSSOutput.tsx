@@ -325,10 +325,11 @@ ${top.recommendedActions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
           <button
             type="button"
             onClick={() => setShowAllDiff(!showAllDiff)}
-            className="p-1 text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 text-xs font-semibold flex items-center gap-1 cursor-pointer"
+            title={showAllDiff ? 'Thu gọn danh sách chẩn đoán' : `Xem tất cả ${result.likelihoods.length} chẩn đoán phân biệt`}
+            aria-label={showAllDiff ? 'Thu gọn' : 'Xem tất cả'}
+            className="p-1.5 text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 hover:bg-teal-50 dark:hover:bg-slate-800 rounded-lg text-xs font-semibold flex items-center justify-center transition-all cursor-pointer"
           >
-            <span>{showAllDiff ? 'Thu gọn' : `Tất cả (${result.likelihoods.length})`}</span>
-            {showAllDiff ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+            {showAllDiff ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
         </div>
 

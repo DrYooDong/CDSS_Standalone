@@ -72,58 +72,70 @@ export const CSFCharts: React.FC<Props> = ({ input, result }) => {
           </p>
         </div>
 
-        {/* Filter buttons converted into compact icon buttons on mobile / pills on desktop */}
-        <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl self-start sm:self-auto text-xs">
+        {/* Filter buttons converted into compact icon buttons */}
+        <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl self-start sm:self-auto text-xs" role="tablist">
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'all'}
             onClick={() => setActiveTab('all')}
             title="Xem tất cả 3 biểu đồ"
-            className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+            aria-label="Xem tất cả biểu đồ"
+            className={`p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${
               activeTab === 'all' 
                 ? 'bg-white dark:bg-slate-900 text-teal-800 dark:text-teal-300 shadow-2xs' 
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            <Grid3X3 className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Tất cả</span>
+            <Grid3X3 className="w-4 h-4" />
           </button>
 
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'glucose'}
             onClick={() => setActiveTab('glucose')}
-            title="Biểu đồ mức đường DNT"
-            className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+            title="Biểu đồ mức đường DNT (Glucose)"
+            aria-label="Biểu đồ Glucose"
+            className={`p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${
               activeTab === 'glucose' 
                 ? 'bg-white dark:bg-slate-900 text-amber-700 dark:text-amber-400 shadow-2xs' 
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            <Droplet className="w-3.5 h-3.5 text-amber-500" />
-            <span className="hidden sm:inline">Đường</span>
+            <Droplet className="w-4 h-4 text-amber-500" />
           </button>
 
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'protein'}
             onClick={() => setActiveTab('protein')}
             title="Biểu đồ mức protein DNT"
-            className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+            aria-label="Biểu đồ Protein"
+            className={`p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${
               activeTab === 'protein' 
                 ? 'bg-white dark:bg-slate-900 text-indigo-700 dark:text-indigo-400 shadow-2xs' 
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            <Dna className="w-3.5 h-3.5 text-indigo-500" />
-            <span className="hidden sm:inline">Protein</span>
+            <Dna className="w-4 h-4 text-indigo-500" />
           </button>
 
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'wbc'}
             onClick={() => setActiveTab('wbc')}
-            title="Biểu đồ số lượng bạch cầu"
-            className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
+            title="Biểu đồ số lượng bạch cầu (WBC)"
+            aria-label="Biểu đồ Bạch cầu"
+            className={`p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${
               activeTab === 'wbc' 
                 ? 'bg-white dark:bg-slate-900 text-rose-700 dark:text-rose-400 shadow-2xs' 
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            <Activity className="w-3.5 h-3.5 text-rose-500" />
-            <span className="hidden sm:inline">Bạch cầu</span>
+            <Activity className="w-4 h-4 text-rose-500" />
           </button>
         </div>
       </div>

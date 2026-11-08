@@ -9,7 +9,10 @@ import {
   ChevronDown, 
   ChevronUp,
   SlidersHorizontal,
-  Check
+  Check,
+  LayoutList,
+  Layers,
+  Flame
 } from 'lucide-react';
 
 interface Props {
@@ -67,22 +70,24 @@ export const CSFInputForm: React.FC<Props> = ({ input, onChange, onReset, onOpen
             </div>
           </div>
 
-          {/* Action buttons */}
-          <div className="flex items-center gap-2">
+          {/* Action buttons (Converted to Icon Buttons) */}
+          <div className="flex items-center gap-1.5">
             <button
               type="button"
               onClick={onOpenPresets}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-teal-600 hover:bg-teal-700 active:scale-95 text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-2xs"
+              title="Tải ca bệnh mẫu lâm sàng (7 ca kinh điển)"
+              aria-label="Ca lâm sàng mẫu"
+              className="p-2 bg-teal-600 hover:bg-teal-700 active:scale-95 text-white rounded-xl transition-all cursor-pointer shadow-2xs flex items-center justify-center"
             >
-              <ClipboardList className="w-3.5 h-3.5" />
-              <span>Ca Mẫu</span>
+              <ClipboardList className="w-4 h-4" />
             </button>
 
             <button
               type="button"
               onClick={onReset}
               title="Đặt lại thông số mặc định"
-              className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-800 active:scale-95 rounded-xl transition-all cursor-pointer"
+              aria-label="Đặt lại mặc định"
+              className="p-2 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-800 active:scale-95 rounded-xl border border-slate-200/60 dark:border-slate-800 transition-all cursor-pointer flex items-center justify-center"
             >
               <RotateCcw className="w-4 h-4" />
             </button>
@@ -92,24 +97,28 @@ export const CSFInputForm: React.FC<Props> = ({ input, onChange, onReset, onOpen
         {/* Simple Mode Toggle */}
         <div className="flex items-center justify-between pt-2.5 mt-2 border-t border-slate-200/60 dark:border-slate-800">
           <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Chế độ hiển thị:</span>
-          <div className="flex items-center bg-slate-200/70 dark:bg-slate-800 p-0.5 rounded-lg text-xs font-semibold">
+          <div className="flex items-center bg-slate-200/70 dark:bg-slate-800 p-0.5 rounded-lg text-xs font-semibold gap-0.5">
             <button
               type="button"
               onClick={() => setViewMode('standard')}
-              className={`px-3 py-1 rounded-md transition-all cursor-pointer ${
+              title="Chế độ Cơ Bản (Thường quy)"
+              aria-label="Chế độ Cơ Bản"
+              className={`p-1.5 rounded-md transition-all cursor-pointer flex items-center justify-center ${
                 viewMode === 'standard' ? 'bg-white dark:bg-slate-700 text-teal-800 dark:text-teal-200 shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              Cơ Bản (Thường quy)
+              <LayoutList className="w-4 h-4" />
             </button>
             <button
               type="button"
               onClick={() => setViewMode('full')}
-              className={`px-3 py-1 rounded-md transition-all cursor-pointer ${
+              title="Chế độ Đầy Đủ (Chi tiết)"
+              aria-label="Chế độ Đầy Đủ"
+              className={`p-1.5 rounded-md transition-all cursor-pointer flex items-center justify-center ${
                 viewMode === 'full' ? 'bg-white dark:bg-slate-700 text-teal-800 dark:text-teal-200 shadow-2xs font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              Đầy Đủ (Chi tiết)
+              <Layers className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -254,20 +263,24 @@ export const CSFInputForm: React.FC<Props> = ({ input, onChange, onReset, onOpen
               <Activity className="w-3.5 h-3.5 text-rose-500" />
               2. Tế Bào Học (WBC, RBC &amp; Dòng Tế Bào)
             </span>
-            <div className="flex items-center gap-1.5 text-[10px]">
+            <div className="flex items-center gap-1.5">
               <button
                 type="button"
                 onClick={() => onChange({ ...input, neutrophilPercent: 85, lymphocytePercent: 10, monocytePercent: 5 })}
-                className="text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-950/80 hover:bg-rose-200 font-bold px-1.5 py-0.5 rounded cursor-pointer"
+                title="Gán mẫu PMN mủ (85% PMN, 10% Lympho)"
+                aria-label="Gán PMN mủ"
+                className="p-1.5 text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-950/80 hover:bg-rose-200 rounded-lg cursor-pointer flex items-center justify-center transition-all"
               >
-                Gán PMN mủ
+                <Flame className="w-3.5 h-3.5" />
               </button>
               <button
                 type="button"
                 onClick={() => onChange({ ...input, neutrophilPercent: 15, lymphocytePercent: 75, monocytePercent: 10 })}
-                className="text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-950/80 hover:bg-teal-200 font-bold px-1.5 py-0.5 rounded cursor-pointer"
+                title="Gán mẫu Lympho ưu thế (75% Lympho, 15% PMN)"
+                aria-label="Gán Lympho"
+                className="p-1.5 text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-950/80 hover:bg-teal-200 rounded-lg cursor-pointer flex items-center justify-center transition-all"
               >
-                Gán Lympho
+                <Activity className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -657,11 +670,12 @@ export const CSFInputForm: React.FC<Props> = ({ input, onChange, onReset, onOpen
           <button
             type="button"
             onClick={() => setShowAdvancedTests(true)}
-            className="w-full p-2.5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-teal-500 dark:hover:border-teal-600 hover:bg-teal-50/50 dark:hover:bg-teal-950/20 text-slate-600 dark:text-slate-400 hover:text-teal-800 dark:hover:text-teal-300 text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+            title="Thêm Xét Nghiệm Vi Sinh, Test 3 Ống & Men ADA"
+            aria-label="Thêm Xét Nghiệm Vi Sinh, Test 3 Ống & Men ADA"
+            className="w-full p-2.5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-teal-500 dark:hover:border-teal-600 hover:bg-teal-50/50 dark:hover:bg-teal-950/20 text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-300 flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
-            <Microscope className="w-3.5 h-3.5" />
-            <span>Thêm Xét Nghiệm Vi Sinh, Test 3 Ống &amp; Men ADA...</span>
-            <ChevronDown className="w-3.5 h-3.5" />
+            <Microscope className="w-4 h-4" />
+            <ChevronDown className="w-4 h-4" />
           </button>
         )}
       </div>

@@ -24,9 +24,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/scheduler/cjs/scheduler.production.js
+// node_modules/scheduler/cjs/scheduler.production.js
 var require_scheduler_production = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/scheduler/cjs/scheduler.production.js"(exports) {
+  "node_modules/scheduler/cjs/scheduler.production.js"(exports) {
     "use strict";
     function push(heap, node) {
       var index = heap.length;
@@ -297,9 +297,9 @@ var require_scheduler_production = __commonJS({
   }
 });
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/scheduler/index.js
+// node_modules/scheduler/index.js
 var require_scheduler = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/scheduler/index.js"(exports, module) {
+  "node_modules/scheduler/index.js"(exports, module) {
     "use strict";
     if (true) {
       module.exports = require_scheduler_production();
@@ -309,9 +309,9 @@ var require_scheduler = __commonJS({
   }
 });
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/cjs/react.production.js
+// node_modules/react/cjs/react.production.js
 var require_react_production = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/cjs/react.production.js"(exports) {
+  "node_modules/react/cjs/react.production.js"(exports) {
     "use strict";
     var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
     var REACT_PORTAL_TYPE = Symbol.for("react.portal");
@@ -761,9 +761,9 @@ var require_react_production = __commonJS({
   }
 });
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/index.js
+// node_modules/react/index.js
 var require_react = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/index.js"(exports, module) {
+  "node_modules/react/index.js"(exports, module) {
     "use strict";
     if (true) {
       module.exports = require_react_production();
@@ -773,9 +773,9 @@ var require_react = __commonJS({
   }
 });
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/cjs/react-dom.production.js
+// node_modules/react-dom/cjs/react-dom.production.js
 var require_react_dom_production = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
+  "node_modules/react-dom/cjs/react-dom.production.js"(exports) {
     "use strict";
     var React7 = require_react();
     function formatProdErrorMessage(code) {
@@ -930,9 +930,9 @@ var require_react_dom_production = __commonJS({
   }
 });
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/index.js
+// node_modules/react-dom/index.js
 var require_react_dom = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/index.js"(exports, module) {
+  "node_modules/react-dom/index.js"(exports, module) {
     "use strict";
     function checkDCE() {
       if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -956,9 +956,9 @@ var require_react_dom = __commonJS({
   }
 });
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/cjs/react-dom-client.production.js
+// node_modules/react-dom/cjs/react-dom-client.production.js
 var require_react_dom_client_production = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
+  "node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
     "use strict";
     var Scheduler = require_scheduler();
     var React7 = require_react();
@@ -14502,9 +14502,9 @@ var require_react_dom_client_production = __commonJS({
   }
 });
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/client.js
+// node_modules/react-dom/client.js
 var require_client = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react-dom/client.js"(exports, module) {
+  "node_modules/react-dom/client.js"(exports, module) {
     "use strict";
     function checkDCE() {
       if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -14528,9 +14528,9 @@ var require_client = __commonJS({
   }
 });
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/cjs/react-jsx-runtime.production.js
+// node_modules/react/cjs/react-jsx-runtime.production.js
 var require_react_jsx_runtime_production = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
+  "node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
     "use strict";
     var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
     var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -14558,9 +14558,9 @@ var require_react_jsx_runtime_production = __commonJS({
   }
 });
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/jsx-runtime.js
+// node_modules/react/jsx-runtime.js
 var require_jsx_runtime = __commonJS({
-  "C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/react/jsx-runtime.js"(exports, module) {
+  "node_modules/react/jsx-runtime.js"(exports, module) {
     "use strict";
     if (true) {
       module.exports = require_react_jsx_runtime_production();
@@ -14570,13 +14570,13 @@ var require_jsx_runtime = __commonJS({
   }
 });
 
-// src/main.tsx
+// csf/src/main.tsx
 var import_client = __toESM(require_client(), 1);
 
-// src/App.tsx
+// csf/src/App.tsx
 var import_react8 = __toESM(require_react(), 1);
 
-// src/utils/csfAnalyzer.ts
+// csf/src/utils/csfAnalyzer.ts
 function normalizeInputs(input) {
   const proteinMgDl = input.proteinUnit === "g/L" ? input.protein * 100 : input.protein;
   const csfGlucoseMgDl = input.glucoseUnit === "mmol/L" ? input.csfGlucose * 18.018 : input.csfGlucose;
@@ -15084,7 +15084,7 @@ function analyzeCSF(input) {
   };
 }
 
-// src/data/presetCases.ts
+// csf/src/data/presetCases.ts
 var PRESET_CASES = [
   {
     id: "bacterial_strep",
@@ -15361,13 +15361,13 @@ var PRESET_CASES = [
   }
 ];
 
-// src/components/CSFInputForm.tsx
+// csf/src/components/CSFInputForm.tsx
 var import_react3 = __toESM(require_react(), 1);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/createLucideIcon.js
+// node_modules/lucide-react/dist/esm/createLucideIcon.js
 var import_react2 = __toESM(require_react());
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/shared/src/utils.js
+// node_modules/lucide-react/dist/esm/shared/src/utils.js
 var toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
 var toCamelCase = (string) => string.replace(
   /^([A-Z])|[\s-_]+(\w)/g,
@@ -15388,10 +15388,10 @@ var hasA11yProp = (props) => {
   }
 };
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/Icon.js
+// node_modules/lucide-react/dist/esm/Icon.js
 var import_react = __toESM(require_react());
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/defaultAttributes.js
+// node_modules/lucide-react/dist/esm/defaultAttributes.js
 var defaultAttributes = {
   xmlns: "http://www.w3.org/2000/svg",
   width: 24,
@@ -15404,7 +15404,7 @@ var defaultAttributes = {
   strokeLinejoin: "round"
 };
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/Icon.js
+// node_modules/lucide-react/dist/esm/Icon.js
 var Icon = (0, import_react.forwardRef)(
   ({
     color = "currentColor",
@@ -15435,7 +15435,7 @@ var Icon = (0, import_react.forwardRef)(
   )
 );
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/createLucideIcon.js
+// node_modules/lucide-react/dist/esm/createLucideIcon.js
 var createLucideIcon = (iconName, iconNode) => {
   const Component = (0, import_react2.forwardRef)(
     ({ className, ...props }, ref) => (0, import_react2.createElement)(Icon, {
@@ -15453,7 +15453,7 @@ var createLucideIcon = (iconName, iconNode) => {
   return Component;
 };
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/activity.js
+// node_modules/lucide-react/dist/esm/icons/activity.js
 var __iconNode = [
   [
     "path",
@@ -15465,14 +15465,14 @@ var __iconNode = [
 ];
 var Activity = createLucideIcon("activity", __iconNode);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/arrow-left.js
+// node_modules/lucide-react/dist/esm/icons/arrow-left.js
 var __iconNode2 = [
   ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
   ["path", { d: "M19 12H5", key: "x3x0zl" }]
 ];
 var ArrowLeft = createLucideIcon("arrow-left", __iconNode2);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/award.js
+// node_modules/lucide-react/dist/esm/icons/award.js
 var __iconNode3 = [
   [
     "path",
@@ -15485,7 +15485,7 @@ var __iconNode3 = [
 ];
 var Award = createLucideIcon("award", __iconNode3);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/book-marked.js
+// node_modules/lucide-react/dist/esm/icons/book-marked.js
 var __iconNode4 = [
   ["path", { d: "M10 2v8l3-3 3 3V2", key: "sqw3rj" }],
   [
@@ -15498,7 +15498,7 @@ var __iconNode4 = [
 ];
 var BookMarked = createLucideIcon("book-marked", __iconNode4);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/book-open.js
+// node_modules/lucide-react/dist/esm/icons/book-open.js
 var __iconNode5 = [
   ["path", { d: "M12 7v14", key: "1akyts" }],
   [
@@ -15511,7 +15511,7 @@ var __iconNode5 = [
 ];
 var BookOpen = createLucideIcon("book-open", __iconNode5);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/chart-column.js
+// node_modules/lucide-react/dist/esm/icons/chart-column.js
 var __iconNode6 = [
   ["path", { d: "M3 3v16a2 2 0 0 0 2 2h16", key: "c24i48" }],
   ["path", { d: "M18 17V9", key: "2bz60n" }],
@@ -15520,30 +15520,30 @@ var __iconNode6 = [
 ];
 var ChartColumn = createLucideIcon("chart-column", __iconNode6);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/check.js
+// node_modules/lucide-react/dist/esm/icons/check.js
 var __iconNode7 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
 var Check = createLucideIcon("check", __iconNode7);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/chevron-down.js
+// node_modules/lucide-react/dist/esm/icons/chevron-down.js
 var __iconNode8 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
 var ChevronDown = createLucideIcon("chevron-down", __iconNode8);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/chevron-right.js
+// node_modules/lucide-react/dist/esm/icons/chevron-right.js
 var __iconNode9 = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
 var ChevronRight = createLucideIcon("chevron-right", __iconNode9);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/chevron-up.js
+// node_modules/lucide-react/dist/esm/icons/chevron-up.js
 var __iconNode10 = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
 var ChevronUp = createLucideIcon("chevron-up", __iconNode10);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/circle-check.js
+// node_modules/lucide-react/dist/esm/icons/circle-check.js
 var __iconNode11 = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ];
 var CircleCheck = createLucideIcon("circle-check", __iconNode11);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/clipboard-list.js
+// node_modules/lucide-react/dist/esm/icons/clipboard-list.js
 var __iconNode12 = [
   ["rect", { width: "8", height: "4", x: "8", y: "2", rx: "1", ry: "1", key: "tgr4d6" }],
   [
@@ -15560,21 +15560,21 @@ var __iconNode12 = [
 ];
 var ClipboardList = createLucideIcon("clipboard-list", __iconNode12);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/clock.js
+// node_modules/lucide-react/dist/esm/icons/clock.js
 var __iconNode13 = [
   ["path", { d: "M12 6v6l4 2", key: "mmk7yg" }],
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
 ];
 var Clock = createLucideIcon("clock", __iconNode13);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/copy.js
+// node_modules/lucide-react/dist/esm/icons/copy.js
 var __iconNode14 = [
   ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
   ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
 ];
 var Copy = createLucideIcon("copy", __iconNode14);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/crosshair.js
+// node_modules/lucide-react/dist/esm/icons/crosshair.js
 var __iconNode15 = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["line", { x1: "22", x2: "18", y1: "12", y2: "12", key: "l9bcsi" }],
@@ -15584,7 +15584,7 @@ var __iconNode15 = [
 ];
 var Crosshair = createLucideIcon("crosshair", __iconNode15);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/dna.js
+// node_modules/lucide-react/dist/esm/icons/dna.js
 var __iconNode16 = [
   ["path", { d: "m10 16 1.5 1.5", key: "11lckj" }],
   ["path", { d: "m14 8-1.5-1.5", key: "1ohn8i" }],
@@ -15600,7 +15600,7 @@ var __iconNode16 = [
 ];
 var Dna = createLucideIcon("dna", __iconNode16);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/droplet.js
+// node_modules/lucide-react/dist/esm/icons/droplet.js
 var __iconNode17 = [
   [
     "path",
@@ -15612,7 +15612,7 @@ var __iconNode17 = [
 ];
 var Droplet = createLucideIcon("droplet", __iconNode17);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/eye.js
+// node_modules/lucide-react/dist/esm/icons/eye.js
 var __iconNode18 = [
   [
     "path",
@@ -15625,7 +15625,7 @@ var __iconNode18 = [
 ];
 var Eye = createLucideIcon("eye", __iconNode18);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/file-text.js
+// node_modules/lucide-react/dist/esm/icons/file-text.js
 var __iconNode19 = [
   ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
   ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
@@ -15635,8 +15635,20 @@ var __iconNode19 = [
 ];
 var FileText = createLucideIcon("file-text", __iconNode19);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/flask-conical.js
+// node_modules/lucide-react/dist/esm/icons/flame.js
 var __iconNode20 = [
+  [
+    "path",
+    {
+      d: "M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4",
+      key: "1slcih"
+    }
+  ]
+];
+var Flame = createLucideIcon("flame", __iconNode20);
+
+// node_modules/lucide-react/dist/esm/icons/flask-conical.js
+var __iconNode21 = [
   [
     "path",
     {
@@ -15647,35 +15659,35 @@ var __iconNode20 = [
   ["path", { d: "M6.453 15h11.094", key: "3shlmq" }],
   ["path", { d: "M8.5 2h7", key: "csnxdl" }]
 ];
-var FlaskConical = createLucideIcon("flask-conical", __iconNode20);
+var FlaskConical = createLucideIcon("flask-conical", __iconNode21);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/gauge.js
-var __iconNode21 = [
+// node_modules/lucide-react/dist/esm/icons/gauge.js
+var __iconNode22 = [
   ["path", { d: "m12 14 4-4", key: "9kzdfg" }],
   ["path", { d: "M3.34 19a10 10 0 1 1 17.32 0", key: "19p75a" }]
 ];
-var Gauge = createLucideIcon("gauge", __iconNode21);
+var Gauge = createLucideIcon("gauge", __iconNode22);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/grid-3x3.js
-var __iconNode22 = [
+// node_modules/lucide-react/dist/esm/icons/grid-3x3.js
+var __iconNode23 = [
   ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
   ["path", { d: "M3 9h18", key: "1pudct" }],
   ["path", { d: "M3 15h18", key: "5xshup" }],
   ["path", { d: "M9 3v18", key: "fh3hqa" }],
   ["path", { d: "M15 3v18", key: "14nvp0" }]
 ];
-var Grid3x3 = createLucideIcon("grid-3x3", __iconNode22);
+var Grid3x3 = createLucideIcon("grid-3x3", __iconNode23);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/info.js
-var __iconNode23 = [
+// node_modules/lucide-react/dist/esm/icons/info.js
+var __iconNode24 = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "M12 16v-4", key: "1dtifu" }],
   ["path", { d: "M12 8h.01", key: "e9boi3" }]
 ];
-var Info = createLucideIcon("info", __iconNode23);
+var Info = createLucideIcon("info", __iconNode24);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/layers.js
-var __iconNode24 = [
+// node_modules/lucide-react/dist/esm/icons/layers.js
+var __iconNode25 = [
   [
     "path",
     {
@@ -15698,19 +15710,30 @@ var __iconNode24 = [
     }
   ]
 ];
-var Layers = createLucideIcon("layers", __iconNode24);
+var Layers = createLucideIcon("layers", __iconNode25);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/maximize-2.js
-var __iconNode25 = [
+// node_modules/lucide-react/dist/esm/icons/layout-list.js
+var __iconNode26 = [
+  ["rect", { width: "7", height: "7", x: "3", y: "3", rx: "1", key: "1g98yp" }],
+  ["rect", { width: "7", height: "7", x: "3", y: "14", rx: "1", key: "1bb6yr" }],
+  ["path", { d: "M14 4h7", key: "3xa0d5" }],
+  ["path", { d: "M14 9h7", key: "1icrd9" }],
+  ["path", { d: "M14 15h7", key: "1mj8o2" }],
+  ["path", { d: "M14 20h7", key: "11slyb" }]
+];
+var LayoutList = createLucideIcon("layout-list", __iconNode26);
+
+// node_modules/lucide-react/dist/esm/icons/maximize-2.js
+var __iconNode27 = [
   ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
   ["path", { d: "m21 3-7 7", key: "1l2asr" }],
   ["path", { d: "m3 21 7-7", key: "tjx5ai" }],
   ["path", { d: "M9 21H3v-6", key: "wtvkvv" }]
 ];
-var Maximize2 = createLucideIcon("maximize-2", __iconNode25);
+var Maximize2 = createLucideIcon("maximize-2", __iconNode27);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/microscope.js
-var __iconNode26 = [
+// node_modules/lucide-react/dist/esm/icons/microscope.js
+var __iconNode28 = [
   ["path", { d: "M6 18h8", key: "1borvv" }],
   ["path", { d: "M3 22h18", key: "8prr45" }],
   ["path", { d: "M14 22a7 7 0 1 0 0-14h-1", key: "1jwaiy" }],
@@ -15718,10 +15741,10 @@ var __iconNode26 = [
   ["path", { d: "M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z", key: "1bmzmy" }],
   ["path", { d: "M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3", key: "1drr47" }]
 ];
-var Microscope = createLucideIcon("microscope", __iconNode26);
+var Microscope = createLucideIcon("microscope", __iconNode28);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/moon.js
-var __iconNode27 = [
+// node_modules/lucide-react/dist/esm/icons/moon.js
+var __iconNode29 = [
   [
     "path",
     {
@@ -15730,10 +15753,10 @@ var __iconNode27 = [
     }
   ]
 ];
-var Moon = createLucideIcon("moon", __iconNode27);
+var Moon = createLucideIcon("moon", __iconNode29);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/octagon-alert.js
-var __iconNode28 = [
+// node_modules/lucide-react/dist/esm/icons/octagon-alert.js
+var __iconNode30 = [
   ["path", { d: "M12 16h.01", key: "1drbdi" }],
   ["path", { d: "M12 8v4", key: "1got3b" }],
   [
@@ -15744,10 +15767,10 @@ var __iconNode28 = [
     }
   ]
 ];
-var OctagonAlert = createLucideIcon("octagon-alert", __iconNode28);
+var OctagonAlert = createLucideIcon("octagon-alert", __iconNode30);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/printer.js
-var __iconNode29 = [
+// node_modules/lucide-react/dist/esm/icons/printer.js
+var __iconNode31 = [
   [
     "path",
     {
@@ -15758,34 +15781,34 @@ var __iconNode29 = [
   ["path", { d: "M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6", key: "1itne7" }],
   ["rect", { x: "6", y: "14", width: "12", height: "8", rx: "1", key: "1ue0tg" }]
 ];
-var Printer = createLucideIcon("printer", __iconNode29);
+var Printer = createLucideIcon("printer", __iconNode31);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
-var __iconNode30 = [
+// node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
+var __iconNode32 = [
   ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
   ["path", { d: "M3 3v5h5", key: "1xhq8a" }]
 ];
-var RotateCcw = createLucideIcon("rotate-ccw", __iconNode30);
+var RotateCcw = createLucideIcon("rotate-ccw", __iconNode32);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/scale.js
-var __iconNode31 = [
+// node_modules/lucide-react/dist/esm/icons/scale.js
+var __iconNode33 = [
   ["path", { d: "m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z", key: "7g6ntu" }],
   ["path", { d: "m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z", key: "ijws7r" }],
   ["path", { d: "M7 21h10", key: "1b0cd5" }],
   ["path", { d: "M12 3v18", key: "108xh3" }],
   ["path", { d: "M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2", key: "3gwbw2" }]
 ];
-var Scale = createLucideIcon("scale", __iconNode31);
+var Scale = createLucideIcon("scale", __iconNode33);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/search.js
-var __iconNode32 = [
+// node_modules/lucide-react/dist/esm/icons/search.js
+var __iconNode34 = [
   ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
   ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
 ];
-var Search = createLucideIcon("search", __iconNode32);
+var Search = createLucideIcon("search", __iconNode34);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/shield-alert.js
-var __iconNode33 = [
+// node_modules/lucide-react/dist/esm/icons/shield-alert.js
+var __iconNode35 = [
   [
     "path",
     {
@@ -15796,10 +15819,10 @@ var __iconNode33 = [
   ["path", { d: "M12 8v4", key: "1got3b" }],
   ["path", { d: "M12 16h.01", key: "1drbdi" }]
 ];
-var ShieldAlert = createLucideIcon("shield-alert", __iconNode33);
+var ShieldAlert = createLucideIcon("shield-alert", __iconNode35);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
-var __iconNode34 = [
+// node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
+var __iconNode36 = [
   ["path", { d: "M10 5H3", key: "1qgfaw" }],
   ["path", { d: "M12 19H3", key: "yhmn1j" }],
   ["path", { d: "M14 3v4", key: "1sua03" }],
@@ -15810,10 +15833,10 @@ var __iconNode34 = [
   ["path", { d: "M8 10v4", key: "tgpxqk" }],
   ["path", { d: "M8 12H3", key: "a7s4jb" }]
 ];
-var SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode34);
+var SlidersHorizontal = createLucideIcon("sliders-horizontal", __iconNode36);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/sparkles.js
-var __iconNode35 = [
+// node_modules/lucide-react/dist/esm/icons/sparkles.js
+var __iconNode37 = [
   [
     "path",
     {
@@ -15825,20 +15848,20 @@ var __iconNode35 = [
   ["path", { d: "M22 4h-4", key: "gwowj6" }],
   ["circle", { cx: "4", cy: "20", r: "2", key: "6kqj1y" }]
 ];
-var Sparkles = createLucideIcon("sparkles", __iconNode35);
+var Sparkles = createLucideIcon("sparkles", __iconNode37);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/stethoscope.js
-var __iconNode36 = [
+// node_modules/lucide-react/dist/esm/icons/stethoscope.js
+var __iconNode38 = [
   ["path", { d: "M11 2v2", key: "1539x4" }],
   ["path", { d: "M5 2v2", key: "1yf1q8" }],
   ["path", { d: "M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1", key: "rb5t3r" }],
   ["path", { d: "M8 15a6 6 0 0 0 12 0v-3", key: "x18d4x" }],
   ["circle", { cx: "20", cy: "10", r: "2", key: "ts1r5v" }]
 ];
-var Stethoscope = createLucideIcon("stethoscope", __iconNode36);
+var Stethoscope = createLucideIcon("stethoscope", __iconNode38);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/sun.js
-var __iconNode37 = [
+// node_modules/lucide-react/dist/esm/icons/sun.js
+var __iconNode39 = [
   ["circle", { cx: "12", cy: "12", r: "4", key: "4exip2" }],
   ["path", { d: "M12 2v2", key: "tus03m" }],
   ["path", { d: "M12 20v2", key: "1lh1kg" }],
@@ -15849,10 +15872,10 @@ var __iconNode37 = [
   ["path", { d: "m6.34 17.66-1.41 1.41", key: "1m8zz5" }],
   ["path", { d: "m19.07 4.93-1.41 1.41", key: "1shlcs" }]
 ];
-var Sun = createLucideIcon("sun", __iconNode37);
+var Sun = createLucideIcon("sun", __iconNode39);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/syringe.js
-var __iconNode38 = [
+// node_modules/lucide-react/dist/esm/icons/syringe.js
+var __iconNode40 = [
   ["path", { d: "m18 2 4 4", key: "22kx64" }],
   ["path", { d: "m17 7 3-3", key: "1w1zoj" }],
   ["path", { d: "M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5", key: "1exhtz" }],
@@ -15860,10 +15883,10 @@ var __iconNode38 = [
   ["path", { d: "m5 19-3 3", key: "59f2uf" }],
   ["path", { d: "m14 4 6 6", key: "yqp9t2" }]
 ];
-var Syringe = createLucideIcon("syringe", __iconNode38);
+var Syringe = createLucideIcon("syringe", __iconNode40);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/triangle-alert.js
-var __iconNode39 = [
+// node_modules/lucide-react/dist/esm/icons/triangle-alert.js
+var __iconNode41 = [
   [
     "path",
     {
@@ -15874,16 +15897,16 @@ var __iconNode39 = [
   ["path", { d: "M12 9v4", key: "juzpu7" }],
   ["path", { d: "M12 17h.01", key: "p32p05" }]
 ];
-var TriangleAlert = createLucideIcon("triangle-alert", __iconNode39);
+var TriangleAlert = createLucideIcon("triangle-alert", __iconNode41);
 
-// C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/lucide-react/dist/esm/icons/x.js
-var __iconNode40 = [
+// node_modules/lucide-react/dist/esm/icons/x.js
+var __iconNode42 = [
   ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
   ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
 ];
-var X = createLucideIcon("x", __iconNode40);
+var X = createLucideIcon("x", __iconNode42);
 
-// src/components/CSFInputForm.tsx
+// csf/src/components/CSFInputForm.tsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
   const [viewMode, setViewMode] = (0, import_react3.useState)("standard");
@@ -15905,17 +15928,16 @@ var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
             /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { className: "text-[11px] text-slate-500 dark:text-slate-400", children: "\u0110i\u1EC1n nhanh c\xE1c ch\u1EC9 s\u1ED1 x\xE9t nghi\u1EC7m th\u01B0\u1EDDng quy" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
             "button",
             {
               type: "button",
               onClick: onOpenPresets,
-              className: "flex items-center gap-1.5 px-3 py-1.5 bg-teal-600 hover:bg-teal-700 active:scale-95 text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-2xs",
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClipboardList, { className: "w-3.5 h-3.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Ca M\u1EABu" })
-              ]
+              title: "T\u1EA3i ca b\u1EC7nh m\u1EABu l\xE2m s\xE0ng (7 ca kinh \u0111i\u1EC3n)",
+              "aria-label": "Ca l\xE2m s\xE0ng m\u1EABu",
+              className: "p-2 bg-teal-600 hover:bg-teal-700 active:scale-95 text-white rounded-xl transition-all cursor-pointer shadow-2xs flex items-center justify-center",
+              children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClipboardList, { className: "w-4 h-4" })
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
@@ -15924,7 +15946,8 @@ var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
               type: "button",
               onClick: onReset,
               title: "\u0110\u1EB7t l\u1EA1i th\xF4ng s\u1ED1 m\u1EB7c \u0111\u1ECBnh",
-              className: "p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-800 active:scale-95 rounded-xl transition-all cursor-pointer",
+              "aria-label": "\u0110\u1EB7t l\u1EA1i m\u1EB7c \u0111\u1ECBnh",
+              className: "p-2 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-800 active:scale-95 rounded-xl border border-slate-200/60 dark:border-slate-800 transition-all cursor-pointer flex items-center justify-center",
               children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcw, { className: "w-4 h-4" })
             }
           )
@@ -15932,14 +15955,16 @@ var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex items-center justify-between pt-2.5 mt-2 border-t border-slate-200/60 dark:border-slate-800", children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "text-[11px] font-medium text-slate-500 dark:text-slate-400", children: "Ch\u1EBF \u0111\u1ED9 hi\u1EC3n th\u1ECB:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex items-center bg-slate-200/70 dark:bg-slate-800 p-0.5 rounded-lg text-xs font-semibold", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex items-center bg-slate-200/70 dark:bg-slate-800 p-0.5 rounded-lg text-xs font-semibold gap-0.5", children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
             "button",
             {
               type: "button",
               onClick: () => setViewMode("standard"),
-              className: `px-3 py-1 rounded-md transition-all cursor-pointer ${viewMode === "standard" ? "bg-white dark:bg-slate-700 text-teal-800 dark:text-teal-200 shadow-2xs font-bold" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
-              children: "C\u01A1 B\u1EA3n (Th\u01B0\u1EDDng quy)"
+              title: "Ch\u1EBF \u0111\u1ED9 C\u01A1 B\u1EA3n (Th\u01B0\u1EDDng quy)",
+              "aria-label": "Ch\u1EBF \u0111\u1ED9 C\u01A1 B\u1EA3n",
+              className: `p-1.5 rounded-md transition-all cursor-pointer flex items-center justify-center ${viewMode === "standard" ? "bg-white dark:bg-slate-700 text-teal-800 dark:text-teal-200 shadow-2xs font-bold" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LayoutList, { className: "w-4 h-4" })
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
@@ -15947,8 +15972,10 @@ var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
             {
               type: "button",
               onClick: () => setViewMode("full"),
-              className: `px-3 py-1 rounded-md transition-all cursor-pointer ${viewMode === "full" ? "bg-white dark:bg-slate-700 text-teal-800 dark:text-teal-200 shadow-2xs font-bold" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
-              children: "\u0110\u1EA7y \u0110\u1EE7 (Chi ti\u1EBFt)"
+              title: "Ch\u1EBF \u0111\u1ED9 \u0110\u1EA7y \u0110\u1EE7 (Chi ti\u1EBFt)",
+              "aria-label": "Ch\u1EBF \u0111\u1ED9 \u0110\u1EA7y \u0110\u1EE7",
+              className: `p-1.5 rounded-md transition-all cursor-pointer flex items-center justify-center ${viewMode === "full" ? "bg-white dark:bg-slate-700 text-teal-800 dark:text-teal-200 shadow-2xs font-bold" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "w-4 h-4" })
             }
           )
         ] })
@@ -16080,14 +16107,16 @@ var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
             /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Activity, { className: "w-3.5 h-3.5 text-rose-500" }),
             "2. T\u1EBF B\xE0o H\u1ECDc (WBC, RBC & D\xF2ng T\u1EBF B\xE0o)"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex items-center gap-1.5 text-[10px]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex items-center gap-1.5", children: [
             /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
               "button",
               {
                 type: "button",
                 onClick: () => onChange({ ...input, neutrophilPercent: 85, lymphocytePercent: 10, monocytePercent: 5 }),
-                className: "text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-950/80 hover:bg-rose-200 font-bold px-1.5 py-0.5 rounded cursor-pointer",
-                children: "G\xE1n PMN m\u1EE7"
+                title: "G\xE1n m\u1EABu PMN m\u1EE7 (85% PMN, 10% Lympho)",
+                "aria-label": "G\xE1n PMN m\u1EE7",
+                className: "p-1.5 text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-950/80 hover:bg-rose-200 rounded-lg cursor-pointer flex items-center justify-center transition-all",
+                children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Flame, { className: "w-3.5 h-3.5" })
               }
             ),
             /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
@@ -16095,8 +16124,10 @@ var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
               {
                 type: "button",
                 onClick: () => onChange({ ...input, neutrophilPercent: 15, lymphocytePercent: 75, monocytePercent: 10 }),
-                className: "text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-950/80 hover:bg-teal-200 font-bold px-1.5 py-0.5 rounded cursor-pointer",
-                children: "G\xE1n Lympho"
+                title: "G\xE1n m\u1EABu Lympho \u01B0u th\u1EBF (75% Lympho, 15% PMN)",
+                "aria-label": "G\xE1n Lympho",
+                className: "p-1.5 text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-950/80 hover:bg-teal-200 rounded-lg cursor-pointer flex items-center justify-center transition-all",
+                children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Activity, { className: "w-3.5 h-3.5" })
               }
             )
           ] })
@@ -16500,11 +16531,12 @@ var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
         {
           type: "button",
           onClick: () => setShowAdvancedTests(true),
-          className: "w-full p-2.5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-teal-500 dark:hover:border-teal-600 hover:bg-teal-50/50 dark:hover:bg-teal-950/20 text-slate-600 dark:text-slate-400 hover:text-teal-800 dark:hover:text-teal-300 text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer",
+          title: "Th\xEAm X\xE9t Nghi\u1EC7m Vi Sinh, Test 3 \u1ED0ng & Men ADA",
+          "aria-label": "Th\xEAm X\xE9t Nghi\u1EC7m Vi Sinh, Test 3 \u1ED0ng & Men ADA",
+          className: "w-full p-2.5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-teal-500 dark:hover:border-teal-600 hover:bg-teal-50/50 dark:hover:bg-teal-950/20 text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-300 flex items-center justify-center gap-2 transition-all cursor-pointer",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Microscope, { className: "w-3.5 h-3.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Th\xEAm X\xE9t Nghi\u1EC7m Vi Sinh, Test 3 \u1ED0ng & Men ADA..." }),
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: "w-3.5 h-3.5" })
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Microscope, { className: "w-4 h-4" }),
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: "w-4 h-4" })
           ]
         }
       )
@@ -16512,7 +16544,7 @@ var CSFInputForm = ({ input, onChange, onReset, onOpenPresets }) => {
   ] });
 };
 
-// src/components/CDSSOutput.tsx
+// csf/src/components/CDSSOutput.tsx
 var import_react4 = __toESM(require_react(), 1);
 var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
 var CDSSOutput = ({ input, result }) => {
@@ -16726,16 +16758,15 @@ ${top.recommendedActions.map((a, i) => `${i + 1}. ${a}`).join("\n")}`;
     /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-3 transition-colors duration-200", children: [
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center justify-between", children: [
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h4", { className: "font-bold text-slate-800 dark:text-slate-200 text-xs sm:text-sm", children: "Ch\u1EA9n \u0110o\xE1n Ph\xE2n Bi\u1EC7t Kh\xE1c" }),
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
           "button",
           {
             type: "button",
             onClick: () => setShowAllDiff(!showAllDiff),
-            className: "p-1 text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 text-xs font-semibold flex items-center gap-1 cursor-pointer",
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: showAllDiff ? "Thu g\u1ECDn" : `T\u1EA5t c\u1EA3 (${result.likelihoods.length})` }),
-              showAllDiff ? /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ChevronUp, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ChevronDown, { className: "w-3.5 h-3.5" })
-            ]
+            title: showAllDiff ? "Thu g\u1ECDn danh s\xE1ch ch\u1EA9n \u0111o\xE1n" : `Xem t\u1EA5t c\u1EA3 ${result.likelihoods.length} ch\u1EA9n \u0111o\xE1n ph\xE2n bi\u1EC7t`,
+            "aria-label": showAllDiff ? "Thu g\u1ECDn" : "Xem t\u1EA5t c\u1EA3",
+            className: "p-1.5 text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 hover:bg-teal-50 dark:hover:bg-slate-800 rounded-lg text-xs font-semibold flex items-center justify-center transition-all cursor-pointer",
+            children: showAllDiff ? /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ChevronUp, { className: "w-4 h-4" }) : /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ChevronDown, { className: "w-4 h-4" })
           }
         )
       ] }),
@@ -16769,7 +16800,7 @@ ${top.recommendedActions.map((a, i) => `${i + 1}. ${a}`).join("\n")}`;
   ] });
 };
 
-// src/components/CSFCharts.tsx
+// csf/src/components/CSFCharts.tsx
 var import_react5 = __toESM(require_react(), 1);
 var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
 var CSFCharts = ({ input, result }) => {
@@ -16816,53 +16847,57 @@ var CSFCharts = ({ input, result }) => {
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "text-[11px] text-slate-500 dark:text-slate-400", children: "\u0110\u1ECBnh v\u1ECB ch\u1EC9 s\u1ED1 b\u1EC7nh nh\xE2n \u0111\u1ED1i chi\u1EBFu d\u1EA3i tham chi\u1EBFu qu\u1ED1c t\u1EBF" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl self-start sm:self-auto text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl self-start sm:self-auto text-xs", role: "tablist", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
           "button",
           {
+            type: "button",
+            role: "tab",
+            "aria-selected": activeTab === "all",
             onClick: () => setActiveTab("all"),
             title: "Xem t\u1EA5t c\u1EA3 3 bi\u1EC3u \u0111\u1ED3",
-            className: `flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${activeTab === "all" ? "bg-white dark:bg-slate-900 text-teal-800 dark:text-teal-300 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Grid3x3, { className: "w-3.5 h-3.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "hidden sm:inline", children: "T\u1EA5t c\u1EA3" })
-            ]
+            "aria-label": "Xem t\u1EA5t c\u1EA3 bi\u1EC3u \u0111\u1ED3",
+            className: `p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${activeTab === "all" ? "bg-white dark:bg-slate-900 text-teal-800 dark:text-teal-300 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Grid3x3, { className: "w-4 h-4" })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
           "button",
           {
+            type: "button",
+            role: "tab",
+            "aria-selected": activeTab === "glucose",
             onClick: () => setActiveTab("glucose"),
-            title: "Bi\u1EC3u \u0111\u1ED3 m\u1EE9c \u0111\u01B0\u1EDDng DNT",
-            className: `flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${activeTab === "glucose" ? "bg-white dark:bg-slate-900 text-amber-700 dark:text-amber-400 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Droplet, { className: "w-3.5 h-3.5 text-amber-500" }),
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "hidden sm:inline", children: "\u0110\u01B0\u1EDDng" })
-            ]
+            title: "Bi\u1EC3u \u0111\u1ED3 m\u1EE9c \u0111\u01B0\u1EDDng DNT (Glucose)",
+            "aria-label": "Bi\u1EC3u \u0111\u1ED3 Glucose",
+            className: `p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${activeTab === "glucose" ? "bg-white dark:bg-slate-900 text-amber-700 dark:text-amber-400 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Droplet, { className: "w-4 h-4 text-amber-500" })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
           "button",
           {
+            type: "button",
+            role: "tab",
+            "aria-selected": activeTab === "protein",
             onClick: () => setActiveTab("protein"),
             title: "Bi\u1EC3u \u0111\u1ED3 m\u1EE9c protein DNT",
-            className: `flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${activeTab === "protein" ? "bg-white dark:bg-slate-900 text-indigo-700 dark:text-indigo-400 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Dna, { className: "w-3.5 h-3.5 text-indigo-500" }),
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "hidden sm:inline", children: "Protein" })
-            ]
+            "aria-label": "Bi\u1EC3u \u0111\u1ED3 Protein",
+            className: `p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${activeTab === "protein" ? "bg-white dark:bg-slate-900 text-indigo-700 dark:text-indigo-400 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Dna, { className: "w-4 h-4 text-indigo-500" })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
           "button",
           {
+            type: "button",
+            role: "tab",
+            "aria-selected": activeTab === "wbc",
             onClick: () => setActiveTab("wbc"),
-            title: "Bi\u1EC3u \u0111\u1ED3 s\u1ED1 l\u01B0\u1EE3ng b\u1EA1ch c\u1EA7u",
-            className: `flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${activeTab === "wbc" ? "bg-white dark:bg-slate-900 text-rose-700 dark:text-rose-400 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Activity, { className: "w-3.5 h-3.5 text-rose-500" }),
-              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "hidden sm:inline", children: "B\u1EA1ch c\u1EA7u" })
-            ]
+            title: "Bi\u1EC3u \u0111\u1ED3 s\u1ED1 l\u01B0\u1EE3ng b\u1EA1ch c\u1EA7u (WBC)",
+            "aria-label": "Bi\u1EC3u \u0111\u1ED3 B\u1EA1ch c\u1EA7u",
+            className: `p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${activeTab === "wbc" ? "bg-white dark:bg-slate-900 text-rose-700 dark:text-rose-400 shadow-2xs" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Activity, { className: "w-4 h-4 text-rose-500" })
           }
         )
       ] })
@@ -17155,10 +17190,10 @@ var CSFCharts = ({ input, result }) => {
   ] });
 };
 
-// src/components/CSFGuide.tsx
+// csf/src/components/CSFGuide.tsx
 var import_react7 = __toESM(require_react(), 1);
 
-// src/components/LPProcedureGuide.tsx
+// csf/src/components/LPProcedureGuide.tsx
 var import_react6 = __toESM(require_react(), 1);
 var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
 var LPProcedureGuide = () => {
@@ -17923,7 +17958,7 @@ var LPProcedureGuide = () => {
   ] });
 };
 
-// src/components/CSFGuide.tsx
+// csf/src/components/CSFGuide.tsx
 var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
 var CSFGuide = () => {
   const [selectedTopic, setSelectedTopic] = (0, import_react7.useState)("lp_procedure");
@@ -18350,7 +18385,7 @@ var CSFGuide = () => {
   ] });
 };
 
-// src/components/PresetsModal.tsx
+// csf/src/components/PresetsModal.tsx
 var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
 var PresetsModal = ({ isOpen, onClose, onSelect, currentId }) => {
   if (!isOpen) return null;
@@ -18416,7 +18451,7 @@ var PresetsModal = ({ isOpen, onClose, onSelect, currentId }) => {
   ) });
 };
 
-// src/App.tsx
+// csf/src/App.tsx
 var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
 var INITIAL_INPUT = {
   patientAge: 35,
@@ -18507,69 +18542,62 @@ function App() {
             /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-[10px] text-slate-400 dark:text-slate-500 hidden sm:block truncate", children: "H\u1ED7 tr\u1EE3 quy\u1EBFt \u0111\u1ECBnh l\xE2m s\xE0ng CSF & H\u01B0\u1EDBng d\u1EABn y khoa" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("nav", { className: "hidden lg:flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("nav", { className: "hidden lg:flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-xl border border-slate-200/80 dark:border-slate-700", "aria-label": "\u0110i\u1EC1u h\u01B0\u1EDBng ch\xEDnh", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "button",
             {
+              type: "button",
               onClick: () => setDesktopTab("workbench"),
-              className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${desktopTab === "workbench" ? "bg-white dark:bg-slate-700 text-teal-700 dark:text-teal-300 shadow-2xs" : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"}`,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Activity, { className: "w-4 h-4" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "B\xE0n L\xE0m Vi\u1EC7c CDSS" })
-              ]
+              title: "B\xE0n L\xE0m Vi\u1EC7c CDSS (Nh\u1EADp li\u1EC7u & Ph\xE2n t\xEDch)",
+              "aria-label": "B\xE0n L\xE0m Vi\u1EC7c CDSS",
+              className: `p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${desktopTab === "workbench" ? "bg-white dark:bg-slate-700 text-teal-700 dark:text-teal-300 shadow-2xs font-bold" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Activity, { className: "w-4 h-4" })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "button",
             {
+              type: "button",
               onClick: () => setDesktopTab("charts"),
-              className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${desktopTab === "charts" ? "bg-white dark:bg-slate-700 text-teal-700 dark:text-teal-300 shadow-2xs" : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"}`,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChartColumn, { className: "w-4 h-4" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Bi\u1EC3u \u0110\u1ED3 So S\xE1nh" })
-              ]
+              title: "Bi\u1EC3u \u0110\u1ED3 So S\xE1nh C\xE1c D\u1EA3i Tham Chi\u1EBFu",
+              "aria-label": "Bi\u1EC3u \u0110\u1ED3 So S\xE1nh",
+              className: `p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${desktopTab === "charts" ? "bg-white dark:bg-slate-700 text-teal-700 dark:text-teal-300 shadow-2xs font-bold" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChartColumn, { className: "w-4 h-4" })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "button",
             {
+              type: "button",
               onClick: () => setDesktopTab("guide"),
-              className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${desktopTab === "guide" ? "bg-teal-700 text-white shadow-2xs" : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"}`,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(BookOpen, { className: "w-4 h-4" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "H\u01B0\u1EDBng D\u1EABn C\u01A1 B\u1EA3n" })
-              ]
+              title: "H\u01B0\u1EDBng D\u1EABn C\u01A1 B\u1EA3n & Quy Tr\xECnh Ch\u1ECDc D\xF2",
+              "aria-label": "H\u01B0\u1EDBng D\u1EABn C\u01A1 B\u1EA3n",
+              className: `p-2 rounded-lg transition-all cursor-pointer flex items-center justify-center ${desktopTab === "guide" ? "bg-teal-700 text-white shadow-2xs font-bold" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(BookOpen, { className: "w-4 h-4" })
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-1 shrink-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-1.5 shrink-0", children: [
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "button",
             {
               type: "button",
               onClick: () => setIsDarkMode(!isDarkMode),
               title: isDarkMode ? "Chuy\u1EC3n sang ch\u1EBF \u0111\u1ED9 s\xE1ng" : "Ch\u1EBF \u0111\u1ED9 n\u1EC1n t\u1ED1i (Ca \u0111\xEAm / Ph\xF2ng c\u1EA5p c\u1EE9u)",
-              className: "p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5 shadow-2xs",
-              children: isDarkMode ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Sun, { className: "w-4 h-4 text-amber-400" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-[11px] font-bold text-amber-300 hidden md:inline", children: "S\xE1ng" })
-              ] }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Moon, { className: "w-4 h-4 text-indigo-600" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-[11px] font-bold text-slate-700 hidden md:inline", children: "\u0110\xEAm" })
-              ] })
+              "aria-label": "Chuy\u1EC3n \u0111\u1ED5i giao di\u1EC7n s\xE1ng t\u1ED1i",
+              className: "p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 transition-all cursor-pointer flex items-center justify-center shadow-2xs",
+              children: isDarkMode ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Sun, { className: "w-4 h-4 text-amber-400" }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Moon, { className: "w-4 h-4 text-indigo-600 dark:text-indigo-400" })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "button",
             {
               type: "button",
               onClick: () => setIsPresetsModalOpen(true),
-              title: "T\u1EA3i ca b\u1EC7nh m\u1EABu l\xE2m s\xE0ng",
-              className: "flex items-center gap-1 px-2.5 py-1.5 bg-teal-50 dark:bg-teal-950/60 hover:bg-teal-100 dark:hover:bg-teal-900 text-teal-800 dark:text-teal-300 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-2xs",
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ClipboardList, { className: "w-3.5 h-3.5 text-teal-600 dark:text-teal-400" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "hidden sm:inline", children: "7 Ca M\u1EABu" })
-              ]
+              title: "T\u1EA3i ca b\u1EC7nh m\u1EABu l\xE2m s\xE0ng (7 ca kinh \u0111i\u1EC3n)",
+              "aria-label": "Ca l\xE2m s\xE0ng m\u1EABu",
+              className: "p-2 bg-teal-50 dark:bg-teal-950/60 hover:bg-teal-100 dark:hover:bg-teal-900 text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-800/60 rounded-xl transition-all cursor-pointer shadow-2xs flex items-center justify-center",
+              children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ClipboardList, { className: "w-4 h-4 text-teal-600 dark:text-teal-400" })
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
@@ -18577,8 +18605,9 @@ function App() {
             {
               type: "button",
               onClick: handlePrint,
-              title: "In phi\u1EBFu CDSS",
-              className: "p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all cursor-pointer hidden sm:flex",
+              title: "In phi\u1EBFu k\u1EBFt qu\u1EA3 CDSS (A4)",
+              "aria-label": "In phi\u1EBFu CDSS",
+              className: "p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-800 transition-all cursor-pointer hidden sm:flex items-center justify-center",
               children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Printer, { className: "w-4 h-4" })
             }
           ),
@@ -18588,20 +18617,19 @@ function App() {
               type: "button",
               onClick: handleReset,
               title: "\u0110\u1EB7t l\u1EA1i th\xF4ng s\u1ED1 m\u1EB7c \u0111\u1ECBnh",
-              className: "p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all cursor-pointer",
+              "aria-label": "\u0110\u1EB7t l\u1EA1i m\u1EB7c \u0111\u1ECBnh",
+              className: "p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-800 transition-all cursor-pointer flex items-center justify-center",
               children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(RotateCcw, { className: "w-4 h-4" })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "a",
             {
               href: "../index.html",
               title: "Tr\u1EDF v\u1EC1 Trung t\xE2m Quy\u1EBFt \u0110\u1ECBnh L\xE2m S\xE0ng (Hub CDSS)",
-              className: "flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition-all shadow-2xs ml-1",
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ArrowLeft, { className: "w-3.5 h-3.5 text-slate-500 dark:text-slate-400" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "hidden sm:inline", children: "Hub CDSS" })
-              ]
+              "aria-label": "Tr\u1EDF v\u1EC1 Hub CDSS",
+              className: "p-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl border border-slate-200 dark:border-slate-700 transition-all shadow-2xs flex items-center justify-center ml-0.5",
+              children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ArrowLeft, { className: "w-4 h-4 text-slate-500 dark:text-slate-400" })
             }
           )
         ] })
@@ -18669,15 +18697,15 @@ function App() {
               /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { className: "text-xl font-bold", children: "Bi\u1EC3u \u0110\u1ED3 So S\xE1nh: \u0110\u01B0\u1EDDng, Protein & B\u1EA1ch C\u1EA7u" }),
               /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-xs text-teal-100 dark:text-teal-200 mt-0.5", children: "T\u1EF1 \u0111\u1ED9ng \u0111\u1ECBnh v\u1ECB th\xF4ng s\u1ED1 b\u1EC7nh nh\xE2n v\xE0 \u0111\u1ED1i chi\u1EBFu v\u1EDBi c\xE1c kho\u1EA3ng b\u1EC7nh c\u1EA3nh kinh \u0111i\u1EC3n" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "button",
               {
+                type: "button",
                 onClick: () => setDesktopTab("workbench"),
-                className: "bg-white/10 hover:bg-white/20 text-white text-xs font-bold px-3 py-2 rounded-xl transition-all cursor-pointer flex items-center gap-1",
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "V\u1EC1 B\xE0n L\xE0m Vi\u1EC7c" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChevronRight, { className: "w-4 h-4" })
-                ]
+                title: "V\u1EC1 B\xE0n L\xE0m Vi\u1EC7c CDSS",
+                "aria-label": "V\u1EC1 B\xE0n L\xE0m Vi\u1EC7c CDSS",
+                className: "p-2.5 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all cursor-pointer flex items-center justify-center shrink-0",
+                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Activity, { className: "w-5 h-5" })
               }
             )
           ] }),
@@ -18701,6 +18729,8 @@ function App() {
             {
               type: "button",
               onClick: () => setMobileTab("cdss"),
+              title: "Xem K\u1EBFt Qu\u1EA3 CDSS",
+              "aria-label": "Xem K\u1EBFt Qu\u1EA3 CDSS",
               className: "w-full bg-slate-900 dark:bg-slate-800 text-white p-3 rounded-2xl shadow-xl border border-teal-500/60 dark:border-teal-400/50 flex items-center justify-between gap-3 active:scale-[0.98] transition-all cursor-pointer",
               children: [
                 /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-2.5 truncate", children: [
@@ -18714,67 +18744,60 @@ function App() {
                     /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "text-xs sm:text-sm font-bold text-white truncate", children: topDiag.nameVi })
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "flex items-center gap-1 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl shrink-0", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Xem K\u1EBFt Qu\u1EA3" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChevronRight, { className: "w-4 h-4" })
-                ] })
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "p-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl shrink-0 flex items-center justify-center shadow-2xs", title: "Xem K\u1EBFt Qu\u1EA3 CDSS", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChevronRight, { className: "w-4 h-4" }) })
               ]
             }
           ) })
         ] }),
         mobileTab === "cdss" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "space-y-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center justify-between bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-200 dark:border-slate-800", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center justify-between bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-200 dark:border-slate-800", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "button",
               {
                 type: "button",
                 onClick: () => setMobileTab("input"),
-                className: "flex items-center gap-1 text-xs font-bold text-teal-700 dark:text-teal-400 hover:text-teal-900 dark:hover:text-teal-300 cursor-pointer",
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ArrowLeft, { className: "w-4 h-4" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "S\u1EEDa th\xF4ng s\u1ED1 x\xE9t nghi\u1EC7m" })
-                ]
+                title: "S\u1EEDa th\xF4ng s\u1ED1 x\xE9t nghi\u1EC7m",
+                "aria-label": "S\u1EEDa th\xF4ng s\u1ED1 x\xE9t nghi\u1EC7m",
+                className: "p-2 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer flex items-center justify-center transition-all",
+                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ArrowLeft, { className: "w-4 h-4" })
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "button",
               {
                 type: "button",
                 onClick: () => setMobileTab("charts"),
-                className: "flex items-center gap-1 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-pointer",
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Xem Bi\u1EC3u \u0110\u1ED3" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChevronRight, { className: "w-4 h-4" })
-                ]
+                title: "Xem Bi\u1EC3u \u0110\u1ED3",
+                "aria-label": "Xem Bi\u1EC3u \u0110\u1ED3",
+                className: "p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer flex items-center justify-center transition-all",
+                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChartColumn, { className: "w-4 h-4" })
               }
             )
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(CDSSOutput, { input, result: analysisResult })
         ] }),
         mobileTab === "charts" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "space-y-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center justify-between bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-200 dark:border-slate-800", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center justify-between bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-200 dark:border-slate-800", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "button",
               {
                 type: "button",
                 onClick: () => setMobileTab("cdss"),
-                className: "flex items-center gap-1 text-xs font-bold text-teal-700 dark:text-teal-400 hover:text-teal-900 dark:hover:text-teal-300 cursor-pointer",
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ArrowLeft, { className: "w-4 h-4" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "V\u1EC1 K\u1EBFt Qu\u1EA3 CDSS" })
-                ]
+                title: "V\u1EC1 K\u1EBFt Qu\u1EA3 CDSS",
+                "aria-label": "V\u1EC1 K\u1EBFt Qu\u1EA3 CDSS",
+                className: "p-2 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer flex items-center justify-center transition-all",
+                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ArrowLeft, { className: "w-4 h-4" })
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "button",
               {
                 type: "button",
                 onClick: () => setMobileTab("input"),
-                className: "flex items-center gap-1 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-pointer",
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "S\u1EEDa th\xF4ng s\u1ED1" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SlidersHorizontal, { className: "w-3.5 h-3.5" })
-                ]
+                title: "S\u1EEDa th\xF4ng s\u1ED1",
+                "aria-label": "S\u1EEDa th\xF4ng s\u1ED1",
+                className: "p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer flex items-center justify-center transition-all",
+                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SlidersHorizontal, { className: "w-4 h-4" })
               }
             )
           ] }),
@@ -18789,61 +18812,57 @@ function App() {
         "aria-label": "\u0110i\u1EC1u h\u01B0\u1EDBng tr\xEAn thi\u1EBFt b\u1ECB di \u0111\u1ED9ng",
         className: "lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/90 dark:border-slate-800 shadow-lg px-2 py-1.5 flex items-center justify-around transition-colors duration-200",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "button",
             {
               type: "button",
               onClick: () => setMobileTab("input"),
-              className: `flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all cursor-pointer ${mobileTab === "input" ? "text-teal-700 dark:text-teal-400 font-extrabold" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "relative", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SlidersHorizontal, { className: "w-5 h-5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-teal-600 dark:bg-teal-400 absolute -top-0.5 -right-0.5" })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-[10px] mt-0.5", children: "Nh\u1EADp Li\u1EC7u" })
-              ]
+              title: "Nh\u1EADp Li\u1EC7u",
+              "aria-label": "Nh\u1EADp Li\u1EC7u",
+              className: `p-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center ${mobileTab === "input" ? "bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 font-extrabold shadow-2xs" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "relative", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SlidersHorizontal, { className: "w-5 h-5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-teal-600 dark:bg-teal-400 absolute -top-0.5 -right-0.5" })
+              ] })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "button",
             {
               type: "button",
               onClick: () => setMobileTab("cdss"),
-              className: `flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all cursor-pointer ${mobileTab === "cdss" ? "text-teal-700 dark:text-teal-400 font-extrabold" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "relative", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Activity, { className: "w-5 h-5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "absolute -top-1 -right-3.5 bg-rose-500 text-white text-[9px] font-bold px-1 rounded-full", children: [
-                    topDiag.score,
-                    "%"
-                  ] })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-[10px] mt-0.5", children: "CDSS Bi\u1EC7n Gi\u1EA3i" })
-              ]
+              title: "CDSS Bi\u1EC7n Gi\u1EA3i",
+              "aria-label": "CDSS Bi\u1EC7n Gi\u1EA3i",
+              className: `p-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center ${mobileTab === "cdss" ? "bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 font-extrabold shadow-2xs" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "relative", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Activity, { className: "w-5 h-5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "absolute -top-1 -right-3.5 bg-rose-500 text-white text-[9px] font-bold px-1 rounded-full", children: [
+                  topDiag.score,
+                  "%"
+                ] })
+              ] })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "button",
             {
               type: "button",
               onClick: () => setMobileTab("charts"),
-              className: `flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all cursor-pointer ${mobileTab === "charts" ? "text-teal-700 dark:text-teal-400 font-extrabold" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChartColumn, { className: "w-5 h-5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-[10px] mt-0.5", children: "Bi\u1EC3u \u0110\u1ED3" })
-              ]
+              title: "Bi\u1EC3u \u0110\u1ED3 So S\xE1nh",
+              "aria-label": "Bi\u1EC3u \u0110\u1ED3 So S\xE1nh",
+              className: `p-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center ${mobileTab === "charts" ? "bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 font-extrabold shadow-2xs" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChartColumn, { className: "w-5 h-5" })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
             "button",
             {
               type: "button",
               onClick: () => setMobileTab("guide"),
-              className: `flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all cursor-pointer ${mobileTab === "guide" ? "text-teal-700 dark:text-teal-400 font-extrabold" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(BookOpen, { className: "w-5 h-5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-[10px] mt-0.5", children: "H\u01B0\u1EDBng D\u1EABn" })
-              ]
+              title: "H\u01B0\u1EDBng D\u1EABn & Quy Tr\xECnh",
+              "aria-label": "H\u01B0\u1EDBng D\u1EABn & Quy Tr\xECnh",
+              className: `p-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center ${mobileTab === "guide" ? "bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 font-extrabold shadow-2xs" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(BookOpen, { className: "w-5 h-5" })
             }
           )
         ]
@@ -18868,7 +18887,7 @@ function App() {
   ] });
 }
 
-// src/main.tsx
+// csf/src/main.tsx
 var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
 (0, import_client.createRoot)(document.getElementById("root")).render(/* @__PURE__ */ (0, import_jsx_runtime8.jsx)(App, {}));
 /**
@@ -18955,11 +18974,13 @@ lucide-react/dist/esm/icons/dna.js:
 lucide-react/dist/esm/icons/droplet.js:
 lucide-react/dist/esm/icons/eye.js:
 lucide-react/dist/esm/icons/file-text.js:
+lucide-react/dist/esm/icons/flame.js:
 lucide-react/dist/esm/icons/flask-conical.js:
 lucide-react/dist/esm/icons/gauge.js:
 lucide-react/dist/esm/icons/grid-3x3.js:
 lucide-react/dist/esm/icons/info.js:
 lucide-react/dist/esm/icons/layers.js:
+lucide-react/dist/esm/icons/layout-list.js:
 lucide-react/dist/esm/icons/maximize-2.js:
 lucide-react/dist/esm/icons/microscope.js:
 lucide-react/dist/esm/icons/moon.js:

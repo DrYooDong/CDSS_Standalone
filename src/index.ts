@@ -238,173 +238,50 @@ export function initCDSSHub(containerId: string): void {
     container.innerHTML = `
       <div class="cdss-hub-workspace">
 
-        <!-- ================================================================
-             1. STAT RAPID EMERGENCY STRIP (1-Tap Immediate Jump)
-             ================================================================ -->
-        <div class="cdss-stat-rapid-strip" id="cdss-rapid-bar">
-          <div class="cdss-stat-strip-lead">
-            <i class="fa-solid fa-bolt-lightning text-rose-500"></i>
-            <span>Cấp Cứu STAT:</span>
-          </div>
-          <div class="cdss-stat-buttons-track">
-            ${STAT_TRIAGE_ITEMS.map(item => `
-              <a 
-                href="${item.slug}/index.html" 
-                class="cdss-stat-pill-btn" 
-                data-slug="${item.slug}"
-                title="${item.label}: ${item.trigger}"
-              >
-                <i class="${item.icon}" style="color: ${item.color};"></i>
-                <span class="cdss-stat-btn-title">${item.label}</span>
-                <i class="fa-solid fa-arrow-right cdss-stat-arrow"></i>
-              </a>
-            `).join('')}
-          </div>
-        </div>
-
-        <!-- ================================================================
-             2. SEARCH, CATEGORIES & VIEW SWITCHER
-             ================================================================ -->
-        <section class="cdss-control-deck">
-          <!-- Search & View Mode Switcher Row -->
-          <div class="cdss-search-row">
-            <div class="cdss-search-wrap">
-              <i class="fa-solid fa-magnifying-glass cdss-search-icon"></i>
-              <input 
-                id="cdss-search-input" 
-                type="text" 
-                class="cdss-search-input"
-                placeholder="Tra cứu nhanh CDSS, thuốc, bệnh lý, xét nghiệm (Nhấn / để tìm)..." 
-                value="${searchQuery}"
-                autocomplete="off"
-                spellcheck="false"
-              />
-              ${searchQuery ? `
-                <button id="cdss-clear-search" class="cdss-search-clear" title="Xóa tìm kiếm" aria-label="Xóa">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-              ` : `
-                <span class="cdss-search-kbd">/</span>
-              `}
-            </div>
-
-            <!-- View Mode Switcher (Icon Buttons Only) -->
-            <div class="cdss-view-switch-group">
-              <button 
-                type="button" 
-                class="cdss-view-icon-btn ${viewMode === 'grid' ? 'active' : ''}" 
-                data-mode="grid"
-                title="Dạng Thẻ Gọn (Grid)"
-                aria-label="Thẻ gọn"
-              >
-                <i class="fa-solid fa-table-cells-large"></i>
-              </button>
-              <button 
-                type="button" 
-                class="cdss-view-icon-btn ${viewMode === 'tiles' ? 'active' : ''}" 
-                data-mode="tiles"
-                title="Dạng Ma Trận Biểu Tượng (Tiles)"
-                aria-label="Ma trận biểu tượng"
-              >
-                <i class="fa-solid fa-grip"></i>
-              </button>
-              <button 
-                type="button" 
-                class="cdss-view-icon-btn ${viewMode === 'list' ? 'active' : ''}" 
-                data-mode="list"
-                title="Dạng Danh Sách Trực Đi Buồng (List)"
-                aria-label="Danh sách trực"
-              >
-                <i class="fa-solid fa-list-ul"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Category Filter Buttons -->
-          <div class="cdss-categories-bar">
-            ${categories.map(cat => {
-              const isActive = activeCategory === cat.id;
-              return `
-                <button 
-                  type="button" 
-                  class="cdss-cat-btn ${isActive ? 'active' : ''} ${cat.isStat ? 'stat-cat' : ''}" 
-                  data-cat="${cat.id}"
-                >
-                  <i class="${cat.icon}"></i>
-                  <span>${cat.label}</span>
-                </button>
-              `;
-            }).join('')}
-          </div>
-        </section>
-
-        <!-- ================================================================
-             3. PINNED & RECENT QUICK ACCESS CHIPS
-             ================================================================ -->
-        ${(pinnedModules.length > 0 || recentModules.length > 0) ? `
-          <div class="cdss-access-row">
-            ${pinnedModules.length > 0 ? `
-              <div class="cdss-chips-group">
-                <span class="cdss-chips-label"><i class="fa-solid fa-star text-amber-500"></i> Đã ghim:</span>
-                <div class="cdss-chips-list">
-                  ${pinnedModules.map(m => `
-                    <div class="cdss-chip">
-                      <a href="${m.standaloneUrl}" class="cdss-chip-link" data-slug="${m.slug}">
-                        <i class="${m.icon}"></i>
-                        <span>${m.shortTitle || m.title}</span>
-                      </a>
-                      <button type="button" class="cdss-chip-unpin" data-unpin-slug="${m.slug}" title="Bỏ ghim">
-                        <i class="fa-solid fa-xmark"></i>
-                      </button>
-                    </div>
-                  `).join('')}
-                </div>
-              </div>
-            ` : ''}
-
-            ${recentModules.length > 0 ? `
-              <div class="cdss-chips-group">
-                <span class="cdss-chips-label"><i class="fa-solid fa-clock-rotate-left text-slate-400"></i> Mới mở:</span>
-                <div class="cdss-chips-list">
-                  ${recentModules.map(m => `
-                    <a href="${m.standaloneUrl}" class="cdss-recent-chip" data-slug="${m.slug}" title="${m.title}">
-                      <i class="${m.icon}"></i>
-                      <span>${m.shortTitle || m.title}</span>
-                    </a>
-                  `).join('')}
-                </div>
-              </div>
-            ` : ''}
-          </div>
-        ` : ''}
-
-        <!-- Active Results / Status Strip -->
-        <div class="cdss-results-bar">
-          <div class="cdss-results-text">
-            <span>Hiển thị <strong>${filtered.length}</strong> / ${CDSS_MODULES.length} công cụ</span>
-            ${activeCategory !== 'all' ? `
-              <span class="cdss-active-tag">
-                ${categories.find(c => c.id === activeCategory)?.label}
-                <button type="button" data-reset="category" title="Bỏ lọc">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
+        <!-- Header Bar with Bento Switcher -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-6 border-b border-slate-200/80 dark:border-slate-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-300 bg-teal-50 dark:bg-teal-950/60 px-3 py-1 rounded-xl border border-teal-200/60 dark:border-teal-800/60">
+                10 CDSS Lâm Sàng
               </span>
-            ` : ''}
-            ${searchQuery ? `
-              <span class="cdss-active-tag">
-                "${searchQuery}"
-                <button type="button" data-reset="search" title="Xóa tìm kiếm">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-              </span>
-            ` : ''}
+              <span class="text-xs text-slate-400 dark:text-slate-500 hidden md:inline">· Chuẩn EBM &amp; Bộ Y Tế</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 hidden sm:block">
+              Hệ thống hỗ trợ quyết định lâm sàng phân tầng nguy cơ, tính liều &amp; xử trí cấp cứu
+            </p>
           </div>
 
-          ${(activeCategory !== 'all' || searchQuery) ? `
-            <button type="button" id="cdss-reset-filters-btn" class="cdss-reset-btn">
-              <i class="fa-solid fa-rotate-left"></i> Đặt lại
+          <!-- View Mode Switcher (Icon Buttons Only) -->
+          <div class="cdss-view-switch-group self-start sm:self-auto">
+            <button 
+              type="button" 
+              class="cdss-view-icon-btn ${viewMode === 'grid' ? 'active' : ''}" 
+              data-mode="grid"
+              title="Bố Cục Bento Chuyên Nghiệp (Bento Grid)"
+              aria-label="Bố cục Bento"
+            >
+              <i class="fa-solid fa-table-cells-large"></i>
             </button>
-          ` : ''}
+            <button 
+              type="button" 
+              class="cdss-view-icon-btn ${viewMode === 'tiles' ? 'active' : ''}" 
+              data-mode="tiles"
+              title="Dạng Ma Trận Biểu Tượng (Tiles)"
+              aria-label="Ma trận biểu tượng"
+            >
+              <i class="fa-solid fa-grip"></i>
+            </button>
+            <button 
+              type="button" 
+              class="cdss-view-icon-btn ${viewMode === 'list' ? 'active' : ''}" 
+              data-mode="list"
+              title="Dạng Danh Sách Trực Đi Buồng (List)"
+              aria-label="Danh sách trực"
+            >
+              <i class="fa-solid fa-list-ul"></i>
+            </button>
+          </div>
         </div>
 
         <!-- Empty State -->
@@ -422,13 +299,13 @@ export function initCDSSHub(containerId: string): void {
         ` : ''}
 
         <!-- ================================================================
-             4. VIEW MODES: CLEAN CARDS (NO LENGTHY TEXT), TILES MATRIX, COMPACT LIST
+             4. VIEW MODES: BENTO GRID, TILES MATRIX, COMPACT LIST
              ================================================================ -->
 
-        <!-- VIEW MODE 1: CLEAN CARDS GRID (DEFAULT) -->
+        <!-- VIEW MODE 1: MODERN BENTO CLINICAL GRID (DEFAULT) -->
         ${viewMode === 'grid' && filtered.length > 0 ? `
-          <div class="cdss-grid-clean">
-            ${filtered.map(m => renderCleanCard(m)).join('')}
+          <div class="cdss-bento-grid">
+            ${filtered.map(m => renderBentoCard(m)).join('')}
           </div>
         ` : ''}
 
@@ -628,67 +505,111 @@ export function initCDSSHub(containerId: string): void {
     attachEvents();
   }
 
-  // Render individual clean card (NO LENGTHY TEXT, ICON-OPTIMIZED)
-  function renderCleanCard(m: CDSSModuleMeta): string {
+  // Render individual Bento Box Card (Clinical Hierarchy, Features & Fast Launch)
+  function renderBentoCard(m: CDSSModuleMeta): string {
     const isPinned = pinnedSlugs.includes(m.slug);
     const isStat = m.urgency === 'stat';
 
+    // Bento Asymmetric Layout Slot
+    let bentoClass = 'bento-medium';
+    if (m.slug === 'dengue' || m.slug === 'ecg') {
+      bentoClass = 'bento-hero';
+    } else if (m.slug === 'diacare' || m.slug === 'inpatient') {
+      bentoClass = 'bento-wide';
+    }
+
+    // Contextual Launch Action Label
+    let actionLabel = 'Mở';
+    if (m.slug === 'dengue') actionLabel = 'Bù Dịch 4 Cột';
+    else if (m.slug === 'ecg') actionLabel = 'Đọc 12 Cần';
+    else if (m.slug === 'vancomycin') actionLabel = 'Chỉnh Liều TDM';
+    else if (m.slug === 'sepsis') actionLabel = 'Đánh Giá Sepsis';
+    else if (m.slug === 'csf') actionLabel = 'Phân Tích DNT';
+    else if (m.slug === 'abg') actionLabel = 'Đọc Khí Máu';
+    else if (m.slug === 'hepa') actionLabel = 'Sinh Hóa Gan';
+    else if (m.slug === 'antibiotic') actionLabel = 'Kê Kháng Sinh';
+    else if (m.slug === 'diacare') actionLabel = 'Phác Đồ Insulin';
+    else if (m.slug === 'inpatient') actionLabel = 'Khám Bệnh Án';
+
+    // Key Features for Bento Box
+    const maxPills = (bentoClass === 'bento-hero' || bentoClass === 'bento-wide') ? 4 : 2;
+    const featurePills = (m.features || []).slice(0, maxPills);
+
     return `
-      <article class="cdss-card-clean ${isStat ? 'is-stat-card' : ''}" data-slug="${m.slug}">
-        <div class="cdss-card-clean-top">
-          <!-- Icon Container -->
-          <div class="cdss-icon-box cdss-icon--${m.category}">
-            <i class="${m.icon}"></i>
-          </div>
-
-          <!-- Title & Department -->
-          <div class="cdss-card-title-col">
-            <div class="cdss-card-dept-row">
-              <span class="cdss-card-dept-label">${m.department || m.categoryName}</span>
-              ${isStat ? `<span class="cdss-stat-micro-badge"><i class="fa-solid fa-bolt-lightning"></i> STAT</span>` : ''}
+      <article class="cdss-bento-card ${bentoClass} ${isStat ? 'is-stat-bento' : ''}" data-slug="${m.slug}">
+        <div>
+          <!-- Top Row: Icon, Department, Urgency Badge & Pin Button -->
+          <div class="cdss-bento-header">
+            <div class="cdss-bento-icon-title">
+              <div class="cdss-bento-icon cdss-icon--${m.category}">
+                <i class="${m.icon}"></i>
+              </div>
+              <div class="cdss-bento-title-wrap">
+                <div class="cdss-bento-meta-row">
+                  <span>${m.department || m.categoryName}</span>
+                  ${isStat ? `<span class="cdss-bento-stat-tag"><i class="fa-solid fa-bolt-lightning"></i> STAT</span>` : ''}
+                </div>
+                <h3 class="cdss-bento-title">
+                  <a href="${m.standaloneUrl}" class="cdss-card-link-title" data-slug="${m.slug}">
+                    ${m.shortTitle || m.title}
+                  </a>
+                </h3>
+              </div>
             </div>
-            <h3 class="cdss-card-clean-title">
-              <a href="${m.standaloneUrl}" class="cdss-card-link-title" data-slug="${m.slug}">
-                ${m.shortTitle || m.title}
-              </a>
-            </h3>
-          </div>
-        </div>
 
-        <!-- Bottom Action Buttons Strip (Icon-optimized for rapid clinician interaction) -->
-        <div class="cdss-card-action-strip">
-          <div class="cdss-action-left-icons">
-            <!-- Pin Favorite Button -->
             <button 
               type="button" 
-              class="cdss-tool-icon-btn ${isPinned ? 'is-pinned' : ''}" 
+              class="cdss-bento-action-btn ${isPinned ? 'is-pinned' : ''}" 
               data-pin-slug="${m.slug}" 
               title="${isPinned ? 'Bỏ ghim khỏi đầu trang' : 'Ghim công cụ yêu thích'}"
               aria-label="${isPinned ? 'Bỏ ghim' : 'Ghim'}"
             >
               <i class="${isPinned ? 'fa-solid' : 'fa-regular'} fa-star"></i>
             </button>
+          </div>
 
-            <!-- Quick Info / Guideline Modal Button -->
+          <!-- Clinical Trigger & Summary -->
+          <p class="cdss-bento-desc">
+            ${m.shortDesc}
+          </p>
+
+          <!-- Bento Clinical Capabilities & Protocol Highlights -->
+          ${featurePills.length > 0 ? `
+            <div class="cdss-bento-features">
+              ${featurePills.map(f => `
+                <div class="cdss-bento-feat-pill">
+                  <i class="fa-solid fa-check"></i>
+                  <span>${f}</span>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- Bento Footer: Info EBM & Direct Launch Button -->
+        <div class="cdss-bento-footer">
+          <div class="cdss-bento-footer-left">
             <button 
               type="button" 
-              class="cdss-tool-icon-btn cdss-info-trigger-btn" 
+              class="cdss-bento-action-btn cdss-info-trigger-btn" 
               data-info-slug="${m.slug}" 
-              title="Xem nhanh chỉ định, hướng dẫn EBM &amp; phác đồ"
+              title="Xem căn cứ EBM, phác đồ &amp; hướng dẫn y khoa"
               aria-label="Thông tin lâm sàng"
             >
               <i class="fa-solid fa-circle-info"></i>
             </button>
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 font-semibold hidden sm:inline">
+              ${m.badge || ''}
+            </span>
           </div>
 
-          <!-- Primary Launch Button -->
           <a 
             href="${m.standaloneUrl}" 
-            class="cdss-launch-btn-clean" 
+            class="cdss-bento-launch-btn" 
             data-slug="${m.slug}"
-            title="Mở công cụ ${m.shortTitle || m.title}"
+            title="Mở ${m.shortTitle || m.title}"
           >
-            <span>Mở</span>
+            <span>${actionLabel}</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>

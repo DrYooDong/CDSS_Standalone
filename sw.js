@@ -1,5 +1,5 @@
 // CliniPortal CDSS Service Worker
-const CACHE_NAME = 'cliniportal-cdss-v3';
+const CACHE_NAME = 'cliniportal-cdss-v4.1';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -9,7 +9,12 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            console.log('Purged stale service worker cache:', key);
+            return caches.delete(key);
+          }
+        })
       );
     }).then(() => self.clients.claim())
   );

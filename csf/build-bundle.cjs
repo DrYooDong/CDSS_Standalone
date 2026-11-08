@@ -1,13 +1,13 @@
 const path = require('path');
-const nodeModulesPath = 'C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules';
+const nodeModulesPath = path.resolve(__dirname, '../node_modules');
 let esbuild;
 try {
-  esbuild = require(path.join(nodeModulesPath, 'esbuild'));
+  esbuild = require('esbuild');
 } catch {
   try {
-    esbuild = require('esbuild');
+    esbuild = require(path.join(nodeModulesPath, 'esbuild'));
   } catch {
-    esbuild = require('C:/Users/nguye/AppData/Roaming/npm/node_modules/esbuild');
+    esbuild = require('C:/Users/nguye/AppData/Local/Temp/docspace-pkg/node_modules/esbuild');
   }
 }
 

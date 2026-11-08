@@ -250,13 +250,6 @@
   }
 
   // src/index.ts
-  var STAT_TRIAGE_ITEMS = [
-    { slug: "dengue", label: "Dengue S\u1ED1c", trigger: "Hct cao, c\xF4 \u0111\u1EB7c m\xE1u, s\u1ED1c t\u1EE5t HA", icon: "fa-solid fa-droplet", color: "#e11d48" },
-    { slug: "sepsis", label: "Sepsis-3", trigger: "S\u1ED1t cao, t\u1EE5t HA, Lactate > 2, SOFA", icon: "fa-solid fa-biohazard", color: "#dc2626" },
-    { slug: "ecg", label: "ECG STEMI", trigger: "\u0110au ng\u1EF1c, STEMI \u0111\u1ECBnh khu, QTc, Caliper", icon: "fa-solid fa-heart-pulse", color: "#f43f5e" },
-    { slug: "abg", label: "Kh\xED M\xE1u ABG", trigger: "Toan ki\u1EC1m, PaO2/PaCO2, Anion Gap", icon: "fa-solid fa-lungs", color: "#0d9488" },
-    { slug: "csf", label: "D\u1ECBch N\xE3o T\u1EE7y", trigger: "S\u1ED1t, \u0111au \u0111\u1EA7u, vi\xEAm m\xE0ng n\xE3o, SAH", icon: "fa-solid fa-brain", color: "#9333ea" }
-  ];
   var PINNED_STORAGE_KEY = "cdss_pinned_module_slugs";
   var RECENT_STORAGE_KEY = "cdss_recent_module_slugs";
   var VIEW_MODE_STORAGE_KEY = "cdss_preferred_view_mode";
@@ -437,173 +430,50 @@
       container.innerHTML = `
       <div class="cdss-hub-workspace">
 
-        <!-- ================================================================
-             1. STAT RAPID EMERGENCY STRIP (1-Tap Immediate Jump)
-             ================================================================ -->
-        <div class="cdss-stat-rapid-strip" id="cdss-rapid-bar">
-          <div class="cdss-stat-strip-lead">
-            <i class="fa-solid fa-bolt-lightning text-rose-500"></i>
-            <span>C\u1EA5p C\u1EE9u STAT:</span>
-          </div>
-          <div class="cdss-stat-buttons-track">
-            ${STAT_TRIAGE_ITEMS.map((item) => `
-              <a 
-                href="${item.slug}/index.html" 
-                class="cdss-stat-pill-btn" 
-                data-slug="${item.slug}"
-                title="${item.label}: ${item.trigger}"
-              >
-                <i class="${item.icon}" style="color: ${item.color};"></i>
-                <span class="cdss-stat-btn-title">${item.label}</span>
-                <i class="fa-solid fa-arrow-right cdss-stat-arrow"></i>
-              </a>
-            `).join("")}
-          </div>
-        </div>
-
-        <!-- ================================================================
-             2. SEARCH, CATEGORIES & VIEW SWITCHER
-             ================================================================ -->
-        <section class="cdss-control-deck">
-          <!-- Search & View Mode Switcher Row -->
-          <div class="cdss-search-row">
-            <div class="cdss-search-wrap">
-              <i class="fa-solid fa-magnifying-glass cdss-search-icon"></i>
-              <input 
-                id="cdss-search-input" 
-                type="text" 
-                class="cdss-search-input"
-                placeholder="Tra c\u1EE9u nhanh CDSS, thu\u1ED1c, b\u1EC7nh l\xFD, x\xE9t nghi\u1EC7m (Nh\u1EA5n / \u0111\u1EC3 t\xECm)..." 
-                value="${searchQuery}"
-                autocomplete="off"
-                spellcheck="false"
-              />
-              ${searchQuery ? `
-                <button id="cdss-clear-search" class="cdss-search-clear" title="X\xF3a t\xECm ki\u1EBFm" aria-label="X\xF3a">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-              ` : `
-                <span class="cdss-search-kbd">/</span>
-              `}
-            </div>
-
-            <!-- View Mode Switcher (Icon Buttons Only) -->
-            <div class="cdss-view-switch-group">
-              <button 
-                type="button" 
-                class="cdss-view-icon-btn ${viewMode === "grid" ? "active" : ""}" 
-                data-mode="grid"
-                title="D\u1EA1ng Th\u1EBB G\u1ECDn (Grid)"
-                aria-label="Th\u1EBB g\u1ECDn"
-              >
-                <i class="fa-solid fa-table-cells-large"></i>
-              </button>
-              <button 
-                type="button" 
-                class="cdss-view-icon-btn ${viewMode === "tiles" ? "active" : ""}" 
-                data-mode="tiles"
-                title="D\u1EA1ng Ma Tr\u1EADn Bi\u1EC3u T\u01B0\u1EE3ng (Tiles)"
-                aria-label="Ma tr\u1EADn bi\u1EC3u t\u01B0\u1EE3ng"
-              >
-                <i class="fa-solid fa-grip"></i>
-              </button>
-              <button 
-                type="button" 
-                class="cdss-view-icon-btn ${viewMode === "list" ? "active" : ""}" 
-                data-mode="list"
-                title="D\u1EA1ng Danh S\xE1ch Tr\u1EF1c \u0110i Bu\u1ED3ng (List)"
-                aria-label="Danh s\xE1ch tr\u1EF1c"
-              >
-                <i class="fa-solid fa-list-ul"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Category Filter Buttons -->
-          <div class="cdss-categories-bar">
-            ${categories.map((cat) => {
-        const isActive = activeCategory === cat.id;
-        return `
-                <button 
-                  type="button" 
-                  class="cdss-cat-btn ${isActive ? "active" : ""} ${cat.isStat ? "stat-cat" : ""}" 
-                  data-cat="${cat.id}"
-                >
-                  <i class="${cat.icon}"></i>
-                  <span>${cat.label}</span>
-                </button>
-              `;
-      }).join("")}
-          </div>
-        </section>
-
-        <!-- ================================================================
-             3. PINNED & RECENT QUICK ACCESS CHIPS
-             ================================================================ -->
-        ${pinnedModules.length > 0 || recentModules.length > 0 ? `
-          <div class="cdss-access-row">
-            ${pinnedModules.length > 0 ? `
-              <div class="cdss-chips-group">
-                <span class="cdss-chips-label"><i class="fa-solid fa-star text-amber-500"></i> \u0110\xE3 ghim:</span>
-                <div class="cdss-chips-list">
-                  ${pinnedModules.map((m) => `
-                    <div class="cdss-chip">
-                      <a href="${m.standaloneUrl}" class="cdss-chip-link" data-slug="${m.slug}">
-                        <i class="${m.icon}"></i>
-                        <span>${m.shortTitle || m.title}</span>
-                      </a>
-                      <button type="button" class="cdss-chip-unpin" data-unpin-slug="${m.slug}" title="B\u1ECF ghim">
-                        <i class="fa-solid fa-xmark"></i>
-                      </button>
-                    </div>
-                  `).join("")}
-                </div>
-              </div>
-            ` : ""}
-
-            ${recentModules.length > 0 ? `
-              <div class="cdss-chips-group">
-                <span class="cdss-chips-label"><i class="fa-solid fa-clock-rotate-left text-slate-400"></i> M\u1EDBi m\u1EDF:</span>
-                <div class="cdss-chips-list">
-                  ${recentModules.map((m) => `
-                    <a href="${m.standaloneUrl}" class="cdss-recent-chip" data-slug="${m.slug}" title="${m.title}">
-                      <i class="${m.icon}"></i>
-                      <span>${m.shortTitle || m.title}</span>
-                    </a>
-                  `).join("")}
-                </div>
-              </div>
-            ` : ""}
-          </div>
-        ` : ""}
-
-        <!-- Active Results / Status Strip -->
-        <div class="cdss-results-bar">
-          <div class="cdss-results-text">
-            <span>Hi\u1EC3n th\u1ECB <strong>${filtered.length}</strong> / ${CDSS_MODULES.length} c\xF4ng c\u1EE5</span>
-            ${activeCategory !== "all" ? `
-              <span class="cdss-active-tag">
-                ${categories.find((c) => c.id === activeCategory)?.label}
-                <button type="button" data-reset="category" title="B\u1ECF l\u1ECDc">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
+        <!-- Header Bar with Bento Switcher -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-6 border-b border-slate-200/80 dark:border-slate-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-300 bg-teal-50 dark:bg-teal-950/60 px-3 py-1 rounded-xl border border-teal-200/60 dark:border-teal-800/60">
+                10 CDSS L\xE2m S\xE0ng
               </span>
-            ` : ""}
-            ${searchQuery ? `
-              <span class="cdss-active-tag">
-                "${searchQuery}"
-                <button type="button" data-reset="search" title="X\xF3a t\xECm ki\u1EBFm">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-              </span>
-            ` : ""}
+              <span class="text-xs text-slate-400 dark:text-slate-500 hidden md:inline">\xB7 Chu\u1EA9n EBM &amp; B\u1ED9 Y T\u1EBF</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 hidden sm:block">
+              H\u1EC7 th\u1ED1ng h\u1ED7 tr\u1EE3 quy\u1EBFt \u0111\u1ECBnh l\xE2m s\xE0ng ph\xE2n t\u1EA7ng nguy c\u01A1, t\xEDnh li\u1EC1u &amp; x\u1EED tr\xED c\u1EA5p c\u1EE9u
+            </p>
           </div>
 
-          ${activeCategory !== "all" || searchQuery ? `
-            <button type="button" id="cdss-reset-filters-btn" class="cdss-reset-btn">
-              <i class="fa-solid fa-rotate-left"></i> \u0110\u1EB7t l\u1EA1i
+          <!-- View Mode Switcher (Icon Buttons Only) -->
+          <div class="cdss-view-switch-group self-start sm:self-auto">
+            <button 
+              type="button" 
+              class="cdss-view-icon-btn ${viewMode === "grid" ? "active" : ""}" 
+              data-mode="grid"
+              title="B\u1ED1 C\u1EE5c Bento Chuy\xEAn Nghi\u1EC7p (Bento Grid)"
+              aria-label="B\u1ED1 c\u1EE5c Bento"
+            >
+              <i class="fa-solid fa-table-cells-large"></i>
             </button>
-          ` : ""}
+            <button 
+              type="button" 
+              class="cdss-view-icon-btn ${viewMode === "tiles" ? "active" : ""}" 
+              data-mode="tiles"
+              title="D\u1EA1ng Ma Tr\u1EADn Bi\u1EC3u T\u01B0\u1EE3ng (Tiles)"
+              aria-label="Ma tr\u1EADn bi\u1EC3u t\u01B0\u1EE3ng"
+            >
+              <i class="fa-solid fa-grip"></i>
+            </button>
+            <button 
+              type="button" 
+              class="cdss-view-icon-btn ${viewMode === "list" ? "active" : ""}" 
+              data-mode="list"
+              title="D\u1EA1ng Danh S\xE1ch Tr\u1EF1c \u0110i Bu\u1ED3ng (List)"
+              aria-label="Danh s\xE1ch tr\u1EF1c"
+            >
+              <i class="fa-solid fa-list-ul"></i>
+            </button>
+          </div>
         </div>
 
         <!-- Empty State -->
@@ -621,13 +491,13 @@
         ` : ""}
 
         <!-- ================================================================
-             4. VIEW MODES: CLEAN CARDS (NO LENGTHY TEXT), TILES MATRIX, COMPACT LIST
+             4. VIEW MODES: BENTO GRID, TILES MATRIX, COMPACT LIST
              ================================================================ -->
 
-        <!-- VIEW MODE 1: CLEAN CARDS GRID (DEFAULT) -->
+        <!-- VIEW MODE 1: MODERN BENTO CLINICAL GRID (DEFAULT) -->
         ${viewMode === "grid" && filtered.length > 0 ? `
-          <div class="cdss-grid-clean">
-            ${filtered.map((m) => renderCleanCard(m)).join("")}
+          <div class="cdss-bento-grid">
+            ${filtered.map((m) => renderBentoCard(m)).join("")}
           </div>
         ` : ""}
 
@@ -825,65 +695,103 @@
     `;
       attachEvents();
     }
-    function renderCleanCard(m) {
+    function renderBentoCard(m) {
       const isPinned = pinnedSlugs.includes(m.slug);
       const isStat = m.urgency === "stat";
+      let bentoClass = "bento-medium";
+      if (m.slug === "dengue" || m.slug === "ecg") {
+        bentoClass = "bento-hero";
+      } else if (m.slug === "diacare" || m.slug === "inpatient") {
+        bentoClass = "bento-wide";
+      }
+      let actionLabel = "M\u1EDF";
+      if (m.slug === "dengue") actionLabel = "B\xF9 D\u1ECBch 4 C\u1ED9t";
+      else if (m.slug === "ecg") actionLabel = "\u0110\u1ECDc 12 C\u1EA7n";
+      else if (m.slug === "vancomycin") actionLabel = "Ch\u1EC9nh Li\u1EC1u TDM";
+      else if (m.slug === "sepsis") actionLabel = "\u0110\xE1nh Gi\xE1 Sepsis";
+      else if (m.slug === "csf") actionLabel = "Ph\xE2n T\xEDch DNT";
+      else if (m.slug === "abg") actionLabel = "\u0110\u1ECDc Kh\xED M\xE1u";
+      else if (m.slug === "hepa") actionLabel = "Sinh H\xF3a Gan";
+      else if (m.slug === "antibiotic") actionLabel = "K\xEA Kh\xE1ng Sinh";
+      else if (m.slug === "diacare") actionLabel = "Ph\xE1c \u0110\u1ED3 Insulin";
+      else if (m.slug === "inpatient") actionLabel = "Kh\xE1m B\u1EC7nh \xC1n";
+      const maxPills = bentoClass === "bento-hero" || bentoClass === "bento-wide" ? 4 : 2;
+      const featurePills = (m.features || []).slice(0, maxPills);
       return `
-      <article class="cdss-card-clean ${isStat ? "is-stat-card" : ""}" data-slug="${m.slug}">
-        <div class="cdss-card-clean-top">
-          <!-- Icon Container -->
-          <div class="cdss-icon-box cdss-icon--${m.category}">
-            <i class="${m.icon}"></i>
-          </div>
-
-          <!-- Title & Department -->
-          <div class="cdss-card-title-col">
-            <div class="cdss-card-dept-row">
-              <span class="cdss-card-dept-label">${m.department || m.categoryName}</span>
-              ${isStat ? `<span class="cdss-stat-micro-badge"><i class="fa-solid fa-bolt-lightning"></i> STAT</span>` : ""}
+      <article class="cdss-bento-card ${bentoClass} ${isStat ? "is-stat-bento" : ""}" data-slug="${m.slug}">
+        <div>
+          <!-- Top Row: Icon, Department, Urgency Badge & Pin Button -->
+          <div class="cdss-bento-header">
+            <div class="cdss-bento-icon-title">
+              <div class="cdss-bento-icon cdss-icon--${m.category}">
+                <i class="${m.icon}"></i>
+              </div>
+              <div class="cdss-bento-title-wrap">
+                <div class="cdss-bento-meta-row">
+                  <span>${m.department || m.categoryName}</span>
+                  ${isStat ? `<span class="cdss-bento-stat-tag"><i class="fa-solid fa-bolt-lightning"></i> STAT</span>` : ""}
+                </div>
+                <h3 class="cdss-bento-title">
+                  <a href="${m.standaloneUrl}" class="cdss-card-link-title" data-slug="${m.slug}">
+                    ${m.shortTitle || m.title}
+                  </a>
+                </h3>
+              </div>
             </div>
-            <h3 class="cdss-card-clean-title">
-              <a href="${m.standaloneUrl}" class="cdss-card-link-title" data-slug="${m.slug}">
-                ${m.shortTitle || m.title}
-              </a>
-            </h3>
-          </div>
-        </div>
 
-        <!-- Bottom Action Buttons Strip (Icon-optimized for rapid clinician interaction) -->
-        <div class="cdss-card-action-strip">
-          <div class="cdss-action-left-icons">
-            <!-- Pin Favorite Button -->
             <button 
               type="button" 
-              class="cdss-tool-icon-btn ${isPinned ? "is-pinned" : ""}" 
+              class="cdss-bento-action-btn ${isPinned ? "is-pinned" : ""}" 
               data-pin-slug="${m.slug}" 
               title="${isPinned ? "B\u1ECF ghim kh\u1ECFi \u0111\u1EA7u trang" : "Ghim c\xF4ng c\u1EE5 y\xEAu th\xEDch"}"
               aria-label="${isPinned ? "B\u1ECF ghim" : "Ghim"}"
             >
               <i class="${isPinned ? "fa-solid" : "fa-regular"} fa-star"></i>
             </button>
+          </div>
 
-            <!-- Quick Info / Guideline Modal Button -->
+          <!-- Clinical Trigger & Summary -->
+          <p class="cdss-bento-desc">
+            ${m.shortDesc}
+          </p>
+
+          <!-- Bento Clinical Capabilities & Protocol Highlights -->
+          ${featurePills.length > 0 ? `
+            <div class="cdss-bento-features">
+              ${featurePills.map((f) => `
+                <div class="cdss-bento-feat-pill">
+                  <i class="fa-solid fa-check"></i>
+                  <span>${f}</span>
+                </div>
+              `).join("")}
+            </div>
+          ` : ""}
+        </div>
+
+        <!-- Bento Footer: Info EBM & Direct Launch Button -->
+        <div class="cdss-bento-footer">
+          <div class="cdss-bento-footer-left">
             <button 
               type="button" 
-              class="cdss-tool-icon-btn cdss-info-trigger-btn" 
+              class="cdss-bento-action-btn cdss-info-trigger-btn" 
               data-info-slug="${m.slug}" 
-              title="Xem nhanh ch\u1EC9 \u0111\u1ECBnh, h\u01B0\u1EDBng d\u1EABn EBM &amp; ph\xE1c \u0111\u1ED3"
+              title="Xem c\u0103n c\u1EE9 EBM, ph\xE1c \u0111\u1ED3 &amp; h\u01B0\u1EDBng d\u1EABn y khoa"
               aria-label="Th\xF4ng tin l\xE2m s\xE0ng"
             >
               <i class="fa-solid fa-circle-info"></i>
             </button>
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 font-semibold hidden sm:inline">
+              ${m.badge || ""}
+            </span>
           </div>
 
-          <!-- Primary Launch Button -->
           <a 
             href="${m.standaloneUrl}" 
-            class="cdss-launch-btn-clean" 
+            class="cdss-bento-launch-btn" 
             data-slug="${m.slug}"
-            title="M\u1EDF c\xF4ng c\u1EE5 ${m.shortTitle || m.title}"
+            title="M\u1EDF ${m.shortTitle || m.title}"
           >
-            <span>M\u1EDF</span>
+            <span>${actionLabel}</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
