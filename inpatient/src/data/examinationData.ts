@@ -952,7 +952,9 @@ export const EXAMINATION_MODULES: ExamModule[] = [
     highYieldPoints: [
       'Nghiệm pháp Cửa sổ Schamroth: Áp 2 mặt lưng móng tay trỏ vào nhau. Ở người bình thường xuất hiện khe hở hình thoi nhỏ. Khi bị ngón tay dùi trống, khe hở này biến mất hoàn toàn.',
       'Đo huyết áp: Bao đo quá nhỏ so với bắp tay sẽ làm số đo HA cao giả tạo (overestimation); bao đo quá to sẽ làm HA thấp giả tạo.',
-      'Run vỗ (Asterixis / Flapping tremor): Duỗi thẳng 2 tay ra trước và gập mu bàn tay tối đa trong 30 giây. Bàn tay giật nảy mất trương lực đột ngột -> Gặp trong Hôn mê gan, Suy hô hấp tăng CO2 máu (CO2 narcosis), Suy thận tăng urê máu.'
+      'Run vỗ (Asterixis / Flapping tremor): Duỗi thẳng 2 tay ra trước và gập mu bàn tay tối đa trong 30 giây. Bàn tay giật nảy mất trương lực đột ngột -> Gặp trong Hôn mê gan, Suy hô hấp tăng CO2 máu (CO2 narcosis), Suy thận tăng urê máu.',
+      'Dấu hiệu Phân ly mạch - nhiệt (Faget’s sign): Thân nhiệt tăng cao nhưng tần số mạch không tăng tương ứng theo sinh lý (bình thường tăng 1°C thì nhịp tim tăng 10-15 ck/phút). Bệnh nhân sốt 39-40°C mà nhịp tim < 70-80 ck/phút -> Chỉ điểm Sốt thương hàn, Bệnh Legionella, Sốt mò, Sốt vàng hoặc Sốt do thuốc (Drug fever).',
+      'Manh mối bọ mò đốt (Eschar): Vết loét mục hoại tử đáy vảy đen viền đỏ ở vùng kín ẩm (nách, bẹn, bìu, quanh hậu môn) không ngứa không đau. Bắt buộc cởi bỏ y phục khám toàn diện để không bỏ sót 100% bệnh Sốt mò (Orientia tsutsugamushi).'
     ],
     specialSigns: [
       {
@@ -972,6 +974,24 @@ export const EXAMINATION_MODULES: ExamModule[] = [
         description: 'Toàn bộ phiến móng có màu trắng đục mờ như kính mài, chỉ chừa lại một dải viền đỏ hồng hẹp 1-2 mm ở đầu xa móng.',
         indicates: 'Xơ gan nặng, suy tim sung huyết hoặc suy dinh dưỡng giảm albumin máu kéo dài.',
         clinicalPearl: 'Khác với móng Lindsay (móng nửa-nửa trong suy thận: 50% gốc móng màu trắng, 50% ngọn móng màu nâu đỏ).'
+      },
+      {
+        name: 'Dấu hiệu Phân ly Mạch - Nhiệt (Faget’s Sign / Relative Bradycardia)',
+        description: 'Nhịp tim chậm nghịch thường so với mức độ sốt cao (> 38.5 - 40°C mà nhịp tim < 75-80 lần/phút).',
+        indicates: 'Sốt thương hàn (Salmonella typhi), Viêm phổi do Legionella, Bệnh Sốt mò (Rickettsia), Bệnh Sốt vàng, Sốt do thuốc (Drug fever).',
+        clinicalPearl: 'Dấu hiệu đầu giường kinh điển giúp hướng nhanh tới các tác nhân nội bào hoặc sốt do thuốc trước khi có kết quả cấy máu.'
+      },
+      {
+        name: 'Vết Loét Mục Bọ Mò Đốt (Eschar / Tache Noire)',
+        description: 'Vết loét hình tròn/bầu dục kích thước 5-10 mm, trung tâm hoại tử đóng vảy mục màu đen, xung quanh có gờ ban đỏ nổi nhẹ, hoàn toàn không đau và không ngứa.',
+        indicates: 'Bệnh Sốt mò (Scrub typhus do vi khuẩn nội bào Orientia tsutsugamushi).',
+        clinicalPearl: 'Vị trí ưa thích của ấu trùng mò là vùng nếp kẽ kín ấm (nách, bẹn, nếp dưới vú, vùng bìu, quanh hậu môn). Phát hiện ra Eschar là chẩn đoán xác định mà không cần chờ huyết thanh!'
+      },
+      {
+        name: 'Dấu hiệu Quầng Sáng ĐM Thái Dương (Halo Sign)',
+        description: 'Vùng giảm âm hình quầng tròn đồng tâm (hypoechoic halo) bao quanh lòng mạch trên siêu âm Doppler màu động mạch thái dương do phù nề viêm thành mạch.',
+        indicates: 'Viêm động mạch tế bào khổng lồ (Giant Cell Arteritis - GCA / Temporal Arteritis).',
+        clinicalPearl: 'Có độ đặc hiệu rất cao (> 95%) ở bệnh nhân > 50 tuổi sốt kéo dài kèm đau đầu thái dương; giúp định vị chính xác vị trí cần phẫu thuật sinh thiết động mạch thái dương.'
       }
     ],
     references: "Macleod's Clinical Examination 14th Ed (Chapter 3: General aspects of examination); Bates' Guide to Physical Examination 13th Ed."

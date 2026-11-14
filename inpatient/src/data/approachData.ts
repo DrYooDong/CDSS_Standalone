@@ -1892,152 +1892,424 @@ export const APPROACH_TOPICS: ApproachTopic[] = [
   },
   {
     id: 'approach-fever-fuo',
-    title: 'Tiếp Cận Bệnh Nhân Sốt & Sốt Chưa Rõ Nguyên Nhân',
-    englishTitle: 'Approach to Fever & Pyrexia of Unknown Origin (Macleod Ch.3)',
+    title: 'Tiếp Cận Bệnh Nhân Sốt Kéo Dài & Sốt Chưa Rõ Nguyên Nhân (FUO)',
+    englishTitle: 'Approach to Prolonged Fever & Fever of Unknown Origin (FUO / IUO - Delphi Consensus & Macleod)',
     system: 'general',
     urgencyLevel: 'Urgent',
-    definition: 'Sốt là sự gia tăng thân nhiệt trung tâm do trung tâm điều nhiệt vùng dưới đồi thiết lập lại ngưỡng nhiệt (> 38.3°C). Sốt chưa rõ nguyên nhân (FUO) là sốt > 38.3°C kéo dài > 3 tuần mà không tìm ra nguyên nhân sau 3 ngày nhập viện hoặc 3 lần khám ngoại trú.',
-    pathophysiology: 'Nội độc tố vi khuẩn hoặc cytokine nội sinh (IL-1, IL-6, TNF-alpha) kích thích thụ thể nội mô mạch máu vùng dưới đồi sản xuất Prostaglandin E2 (PGE2), nâng điểm thiết lập thân nhiệt.',
+    definition: 'Sốt là sự gia tăng thân nhiệt trung tâm do trung tâm điều nhiệt vùng dưới đồi thiết lập lại ngưỡng nhiệt cao hơn bình thường (> 38.3°C / 101°F). Theo đồng thuận quốc tế (Delphi Consensus 2024), Sốt chưa rõ nguyên nhân (FUO cổ điển) ở người có miễn dịch bình thường đòi hỏi: thời gian sốt kéo dài ≥ 3 tuần, thân nhiệt ≥ 38.3°C trên ít nhất 3 lần đo, và chưa xác định được căn nguyên sau khi hoàn thành một Bộ xét nghiệm tối thiểu tiêu chuẩn (Minimal standard diagnostic tests) tại cơ sở y tế.',
+    pathophysiology: 'Các chất sinh nhiệt ngoại sinh (nội độc tố vi khuẩn LPS, siêu kháng nguyên, phức hợp miễn dịch) hoạt hóa bạch cầu đơn nhân và đại thực bào giải phóng các cytokine gây sốt nội sinh (IL-1β, IL-6, TNF-α, IFN-γ). Các cytokine này kích thích thụ thể nội mô mạch máu tại cơ quan mạch lá cùng (OVLT) thuộc vùng dưới đồi sản xuất Prostaglandin E2 (PGE2) qua enzyme COX-2. PGE2 gắn vào thụ thể EP3 tại nhân trước thị của vùng dưới đồi, nâng cao điểm thiết lập thân nhiệt (thermostatic set-point) -> kích hoạt phản xạ co mạch ngoại biên giữ nhiệt (lạnh run) và tăng sinh nhiệt cơ bắp (run cơ). Phân biệt với Tăng thân nhiệt (Hyperthermia - Say nắng, sốt cao ác tính, bão giáp): điểm thiết lập hạ đồi hoàn toàn bình thường, tích nhiệt vượt thải nhiệt và không đáp ứng với thuốc hạ sốt hạ đồi.',
     redFlags: [
-      'Dấu hiệu sốc nhiễm khuẩn (Septic Shock): Tụt huyết áp (HA tâm thu < 90 mmHg), lactate máu > 2 mmol/L dù đã bù đủ dịch.',
-      'Rối loạn tri giác, lú lẫn, cứng gáy, xuất huyết hoại tử da hình sao (Meningococcaemia).',
-      'Thở nhanh > 25 lần/phút, SpO2 < 92%, thiểu niệu vô niệu (Suy đa tạng theo thang điểm qSOFA/SOFA).',
-      'Bệnh nhân suy giảm miễn dịch nặng: Bạch cầu trung tính < 500/uL (Neutropenic fever sau hóa trị) hoặc HIV/AIDS.'
+      'Dấu hiệu Sốc nhiễm trùng (Septic Shock): Tụt huyết áp (HA tâm thu < 90 mmHg hoặc MAP < 65 mmHg), lactate máu > 2.0 mmol/L dù đã bù đủ dịch, thiểu niệu hoặc da nổi vân tím.',
+      'Hội chứng màng não & Nhiễm não mô cầu tối cấp: Sốt cao kèm lú lẫn, cứng gáy, dấu Kernig/Brudzinski (+), xuất huyết hoại tử hình sao (Purpura fulminans) lan nhanh trên da.',
+      'Thở nhanh > 25 lần/phút, SpO2 < 92%, suy đa tạng tiến triển nhanh (qSOFA ≥ 2 điểm hoặc điểm SOFA tăng ≥ 2).',
+      'Sốt hạ bạch cầu trung tính (Neutropenic Fever): Thân nhiệt ≥ 38.0°C kèm số lượng bạch cầu đa nhân trung tính ANC < 500/μL (hoặc dự kiến giảm < 500/μL trong 24-48h sau hóa trị) - Cấp cứu nội khoa ung thư cần kháng sinh chống trực khuẩn mủ xanh tĩnh mạch ngay.',
+      'Đe dọa mù mắt do Viêm động mạch tế bào khổng lồ (GCA): Bệnh nhân > 50 tuổi sốt kéo dài kèm đau đầu thái dương dữ dội, đau tăng khi chải đầu, đau cách hồi hàm khi nhai, mờ mắt thoáng qua hoặc song thị.',
+      'Hội chứng thực bào tế bào máu (HLH): Sốt cao liên tục kháng thuốc hạ sốt, gan lách to, suy gan cấp, Ferritin máu tăng cực cao (> 10.000 ng/mL), giảm 2-3 dòng tế bào máu và tụt Fibrinogen.'
     ],
     keyHistoryQuestions: [
       {
-        dimension: 'Yếu tố dịch tễ & Du lịch (Travel history)',
-        question: 'Trong vòng vài tuần đến vài tháng qua, bác có đi du lịch hay công tác ở vùng rừng núi, vùng lưu hành sốt rét, sốt xuất huyết hay vùng dịch tễ nào không?',
-        clinicalMeaning: 'Sốt rét có thể khởi phát sau nhiều tháng (P. vivax, P. ovale thể ngủ trong gan). Sốt xuất huyết Dengue ủ bệnh 4-10 ngày.'
+        dimension: 'Đặc điểm cơn sốt & Kiểu sốt (Fever Curve & Pattern)',
+        question: 'Cơn sốt đã kéo dài chính xác bao nhiêu ngày? Thân nhiệt đo tại nhà cao nhất là bao nhiêu? Sốt liên tục cả ngày, sốt cơn rét run, hay sốt có chu kỳ vài ngày lại hạ?',
+        clinicalMeaning: 'Sốt chu kỳ Pel-Ebstein (vài ngày sốt xen kẽ vài ngày không sốt): U lympho Hodgkin. Sốt cao vọt hàng ngày về chiều tối kèm ban cá hồi thoáng qua: Bệnh Still người lớn. Sốt chu kỳ cách nhật (48h) hoặc cách 2 ngày (72h): Ký sinh trùng sốt rét. Sốt cao dao động kèm rét run dữ dội: Nhiễm khuẩn huyết, áp-xe sâu hoặc viêm đường mật.'
       },
       {
-        dimension: 'Phơi nhiễm động vật & Nghề nghiệp (Exposures)',
-        question: 'Bác có tiếp xúc với gia súc, chuột, cắn bọ ve, uống sữa tươi chưa tiệt trùng hay ăn nem chua thịt sống không?',
-        clinicalMeaning: 'Bệnh Leptospira (nước tiểu chuột), Rickettsia / Sốt mò (vết mò đốt eschar), Brucellosis (sữa chưa tiệt trùng), Toxoplasmosis (mèo).'
+        dimension: 'Yếu tố dịch tễ & Lịch trình du lịch (Travel & Geography)',
+        question: 'Trong vòng 6-12 tháng qua, bác có đi rừng núi, vùng lưu hành sốt rét, vùng dịch sốt xuất huyết, vùng đất ngập nước hay ra nước ngoài không?',
+        clinicalMeaning: 'Sốt rét do Plasmodium vivax / P. ovale có thể ngủ trong gan tái phát sau nhiều tháng. Bệnh Melioidosis (Burkholderia pseudomallei) phơi nhiễm qua đất bùn hoặc nước ngập. Sốt mò (Orientia tsutsugamushi) phơi nhiễm ở vùng đồi núi, bụi rậm. Bệnh Leishmania phủ tạng từ vùng dịch tễ lưu hành.'
       },
       {
-        dimension: 'Đơn thuốc & Dị ứng (Drug Fever)',
-        question: 'Bác có mới bắt đầu uống loại thuốc kháng sinh, chống động kinh hay tim mạch nào trong 1-3 tuần qua không?',
-        clinicalMeaning: 'Sốt do thuốc (Drug fever): Bệnh nhân sốt cao nhưng toàn trạng vẫn tương đối khỏe khoắn, kèm tăng bạch cầu ái toan (Eosinophilia).'
+        dimension: 'Phơi nhiễm động vật & Thực phẩm (Animal Exposures & Diet)',
+        question: 'Bác có nuôi mèo, chó, gia súc hoặc tiếp xúc với chuột bọ; có uống sữa bò/dê tươi chưa tiệt trùng hay ăn nem chua, tiết canh, thịt tái sống không?',
+        clinicalMeaning: 'Bệnh Brucellosis lây qua sữa chưa tiệt trùng hoặc tiếp xúc trâu bò dê lợn. Bệnh mèo cào (Bartonella henselae) gây sốt kèm viêm hạch bán cấp. Bệnh Leptospira lây qua nước tiểu chuột. Bệnh Toxoplasmosis từ phân mèo. Áp-xe gan amip hoặc sán lá gan lớn (Fasciola) do ăn rau thủy sinh sống.'
+      },
+      {
+        dimension: 'Đơn thuốc & Tiền sử dị ứng (Drug-Induced Fever)',
+        question: 'Bác có mới bắt đầu dùng bất kỳ thuốc kháng sinh, thuốc chống co giật, thuốc tim mạch, Allopurinol hay thực phẩm chức năng nào trong 1-4 tuần gần đây không?',
+        clinicalMeaning: 'Sốt do thuốc (Drug fever) chiếm 5-10% các ca FUO. Thuốc thủ phạm thường gặp: beta-lactam, sulfonamide, vancomycin, carbamazepine, phenytoin, allopurinol, methyldopa, quinidine. Đặc trưng: bệnh nhân sốt cao nhưng trông tương đối khỏe khoắn ("relative well-being"), kèm tăng bạch cầu ái toan.'
+      },
+      {
+        dimension: 'Can thiệp xâm lấn & Phẫu thuật (Invasive Devices & Surgeries)',
+        question: 'Bác đã từng phẫu thuật ổ bụng, thay van tim nhân tạo, đặt máy tạo nhịp tim, đặt catheter tĩnh mạch trung tâm hoặc thay khớp nhân tạo chưa?',
+        clinicalMeaning: 'Áp-xe tồn lưu sâu kín đáo trong ổ bụng hoặc sau phúc mạc sau phẫu thuật. Viêm nội tâm mạc nhiễm trùng trên van tim nhân tạo (PVE) hoặc nhiễm trùng thiết bị cấy ghép tim mạch (CIED). Nhiễm trùng huyết liên quan catheter tĩnh mạch trung tâm. Viêm tủy xương quanh khớp nhân tạo.'
+      },
+      {
+        dimension: 'Triệu chứng B & Toàn thân (B-Symptoms & Systemic Review)',
+        question: 'Bác có sút cân nhiều không (> 10% trọng lượng trong 6 tháng)? Có hay bị vã mồ hôi ướt đẫm áo vào ban đêm? Có đau đầu một bên thái dương hay đau mỏi cứng đai vai, đai hông buổi sáng không?',
+        clinicalMeaning: 'Tam chứng B-symptoms (Sốt + Sụt cân + Mồ hôi trộm đêm) hướng nhiều đến U lympho ác tính hoặc Lao lan tỏa/Lao kê. Đau vùng thái dương kèm đau tăng khi chải đầu và cứng mỏi vùng đai vai/hông ở người > 50 tuổi là manh mối vàng của Viêm động mạch tế bào khổng lồ (GCA) phối hợp Đau đa cơ do thấp (PMR).'
+      },
+      {
+        dimension: 'Tình trạng suy giảm miễn dịch (Immunocompromised State)',
+        question: 'Bác có tiền sử đái tháo đường, suy thận mạn, xơ gan, nhiễm HIV, hoặc đang dùng thuốc Corticoid kéo dài, thuốc ức chế miễn dịch sinh học hay hóa trị ung thư không?',
+        clinicalMeaning: 'Cơ địa suy giảm miễn dịch làm mất đi các triệu chứng kinh điển của nhiễm trùng khu trú, dễ mắc các căn nguyên cơ hội nguy hiểm: Lao kê, Mycobacteria không điển hình (MAC), Nấm hệ thống (Histoplasma, Cryptococcus), CMV, Pneumocystis jirovecii.'
       }
     ],
     physicalExamFocus: [
       {
-        step: 'Khám toàn bộ bề mặt da',
-        finding: 'Vết cắn đáy đen viền đỏ (Eschar) ở nách, bẹn, vùng kín',
-        meaning: 'Bệnh Sốt mò (Scrub typhus do Orientia tsutsugamushi).'
+        step: 'Khám toàn bộ bề mặt da & Nếp kẽ kín',
+        finding: 'Vết loét vảy mục đen viền đỏ không đau (Eschar) ở nách, bẹn, bìu; ban đỏ màu cá hồi thoáng qua lúc sốt; nốt Janeway và Osler ở lòng bàn tay',
+        meaning: 'Vết Eschar khẳng định Sốt mò (Orientia tsutsugamushi); Ban cá hồi chỉ điểm Bệnh Still người lớn; Nốt Osler / Janeway chỉ điểm Viêm nội tâm mạc nhiễm khuẩn.'
       },
       {
-        step: 'Nghe tim tìm tiếng thổi',
-        finding: 'Tiếng thổi tâm thu mới xuất hiện kèm xuất huyết móng dạng vệt',
-        meaning: 'Viêm nội tâm mạc nhiễm khuẩn (Infective Endocarditis).'
+        step: 'Khám Động mạch thái dương (Người > 50 tuổi)',
+        finding: 'Đoạn động mạch thái dương nông một bên nổi gồ, ngoằn ngoèo, ấn đau chói, thành mạch dày xơ cứng hoặc mạch đập yếu/mất đập',
+        meaning: 'Manh mối then chốt của Viêm động mạch tế bào khổng lồ (GCA) - Cần chỉ định siêu âm Doppler mạch máu và dùng Corticoid sớm bảo vệ thị lực!'
+      },
+      {
+        step: 'Soi đáy mắt & Khám Mắt (Fundoscopy)',
+        finding: 'Đốm Roth (xuất huyết võng mạc có trung tâm trắng nhạt) hoặc Củ lao màng mạch (Choroidal tubercles dạng nốt vàng trắng tròn nhỏ)',
+        meaning: 'Đốm Roth cảnh báo Viêm nội tâm mạc nhiễm khuẩn (IE); Củ lao màng mạch là bằng chứng trực tiếp của Lao kê lan tỏa (Miliary TB).'
+      },
+      {
+        step: 'Răng hàm mặt & Tai mũi họng',
+        finding: 'Răng sâu nặng, gõ buốt cuống răng, mủ quanh cuống răng kín đáo; loét áp-tơ niêm mạc miệng; viêm xoang mủ mạn tính',
+        meaning: 'Áp-xe quanh cuống răng là nguyên nhân FUO thường bị bỏ sót; Loét miệng tái diễn gợi ý Lupus ban đỏ hệ thống (SLE), Hội chứng Behçet hoặc bệnh Crohn.'
+      },
+      {
+        step: 'Nghe tim & Đánh giá mạch - nhiệt',
+        finding: 'Tiếng thổi tâm thu hoặc tâm trương mới xuất hiện / biến đổi; Dấu phân ly mạch - nhiệt (Faget sign: sốt 39-40°C nhưng nhịp tim < 70-80 ck/phút)',
+        meaning: 'Tiếng thổi mới chỉ điểm Viêm nội tâm mạc nhiễm khuẩn (IE); Dấu Faget gợi ý Sốt thương hàn, Bệnh Legionella, Sốt mò hoặc Sốt do thuốc (Drug fever).'
       },
       {
         step: 'Sờ hạch bạch huyết toàn thân',
-        finding: 'Hạch to lan tỏa, sờ như cao su, gan lách to',
-        meaning: 'U lympho ác tính (Lymphoma) hoặc Lao hạch.'
+        finding: 'Hạch to nhiều chuỗi (cổ, thượng đòn, nách, bẹn), mật độ chắc đàn hồi như cao su (rubbery), dính chùm không đau; hoặc hạch Virchow bên trái',
+        meaning: 'U lympho ác tính (Hodgkin / Non-Hodgkin), Bệnh bạch cầu kinh / cấp, Lao hạch hoặc Di căn ung thư tạng ổ bụng.'
+      },
+      {
+        step: 'Khám Bụng, Gan lách & Thăm trực tràng - Tiết niệu',
+        finding: 'Lách to đơn độc hoặc kèm gan to; điểm đau sâu vùng hạ sườn/hố chậu; ấn đau tuyến tiền liệt qua thăm trực tràng; sờ thấy nốt mào tinh hoàn',
+        meaning: 'Lách to gợi ý U lympho, Bệnh Still, Viêm nội tâm mạc, Lao; Áp-xe sâu ổ bụng / tuyến tiền liệt; Nốt mào tinh hoàn chỉ điểm Lao sinh dục hoặc Viêm quanh ĐM nút (PAN).'
+      },
+      {
+        step: 'Khám Cột sống & Cơ xương khớp',
+        finding: 'Gõ đau chói khu trú tại mỏm gai đốt sống thắt lưng/ngực; hạn chế vận động thụ động khớp vai và đai hông; sưng nóng đỏ một khớp cấp tính',
+        meaning: 'Đau gõ gai sống chỉ điểm Viêm thân đốt sống - đĩa đệm nhiễm khuẩn (Spondylodiscitis); Đau đai vai/hông gợi ý Đau đa cơ do thấp (PMR); Viêm khớp nhiễm trùng.'
       }
     ],
     differentialDiagnosis: [
       {
-        category: 'Nhiễm trùng (Chiếm 30-40% FUO)',
+        category: '1. NHIỄM TRÙNG (Chiếm 20% - 40% FUO Cổ Điển)',
         diseases: [
           {
-            name: 'Lao ngoài phổi / Lao kê (Miliary TB)',
-            distinguishingFeatures: 'Sốt về chiều, sụt cân, ra mồ hôi trộm, tổn thương hạt kê trên X-quang phổi hoặc sinh thiết tạng.',
-            initialInvestigation: 'Cấy đờm, PCR lao GeneXpert, soi đáy mắt tìm củ lao màng mạch, khởi động phác đồ chống lao RHZE.',
+            name: 'Lao ngoài phổi & Lao kê lan tỏa (Extrapulmonary & Miliary TB)',
+            distinguishingFeatures: 'Sốt nhẹ về chiều, sụt cân, ra mồ hôi trộm đêm, thâm nhiễm hạt kê đối xứng 2 phế trường trên X-quang/CT ngực hoặc tổn thương màng bụng/màng tim.',
+            initialInvestigation: 'X-quang/CT ngực, cấy đờm/dịch màng tìm AFB, xét nghiệm PCR GeneXpert MTB/RIF, xét nghiệm IGRA (QuantiFERON), soi đáy mắt, sinh thiết tủy xương/tạng.',
             priority: 'cannot-miss'
           },
           {
-            name: 'Viêm nội tâm mạc nhiễm khuẩn (Infective Endocarditis)',
-            distinguishingFeatures: 'Sốt kéo dài, tiếng thổi tim mới, lách to, nước tiểu có hồng cầu vi thể, tổn thương Janeway/Osler.',
-            initialInvestigation: 'Cấy máu 3 bộ ở 3 vị trí khác nhau trước khi dùng kháng sinh, siêu âm tim qua thực quản (TEE).',
+            name: 'Viêm nội tâm mạc nhiễm khuẩn (Infective Endocarditis - IE)',
+            distinguishingFeatures: 'Sốt kéo dài, tiếng thổi tim mới hoặc biến đổi âm sắc tiếng thổi cũ, lách to, đái máu vi thể, tổn thương ngoại vi (Janeway, Osler, đốm Roth, xuất huyết móng).',
+            initialInvestigation: 'Cấy máu 3 bộ ở 3 vị trí khác nhau (gồm cả chai kỵ khí, ủ kéo dài), siêu âm tim qua thành ngực (TTE) và thực quản (TEE), tiêu chuẩn chẩn đoán Duke cải tiến.',
             priority: 'cannot-miss'
           },
           {
-            name: 'Áp xe ẩn sâu (Intra-abdominal / Pelvic Abscess)',
-            distinguishingFeatures: 'Sốt dao động mạnh kèm rét run, bạch cầu tăng cao, tiền sử phẫu thuật bụng.',
-            initialInvestigation: 'Chụp CT ngực bụng có cản quang, dẫn lưu ổ mủ qua da.',
+            name: 'Áp-xe ẩn sâu ổ bụng & Sau phúc mạc (Intra-abdominal / Pelvic Abscess)',
+            distinguishingFeatures: 'Sốt dao động mạnh kèm rét run, tăng bạch cầu đa nhân trung tính, tiền sử phẫu thuật bụng, viêm túi thừa hoặc nhiễm trùng tiết niệu/sinh dục.',
+            initialInvestigation: 'Chụp cắt lớp vi tính (CT) ngực - bụng - chậu có tiêm thuốc cản quang tĩnh mạch, chọc hút dịch mủ dưới hướng dẫn CT/siêu âm để nhuộm Gram và cấy vi sinh.',
             priority: 'cannot-miss'
+          },
+          {
+            name: 'Nhiễm trùng nhiệt đới & Nội bào (Sốt mò, Thương hàn, Brucella, Melioidosis)',
+            distinguishingFeatures: 'Sốt cao, dấu phân ly mạch - nhiệt (Faget sign), vết loét vảy mục Eschar ở nách/bẹn/bìu (sốt mò), tiền sử uống sữa tươi chưa tiệt trùng (Brucella) hoặc phơi nhiễm bùn đất.',
+            initialInvestigation: 'Huyết thanh học chẩn đoán sốt mò, cấy máu và cấy tủy xương tìm Salmonella typhi / Burkholderia pseudomallei, xét nghiệm huyết thanh Brucella (test Wright).',
+            priority: 'common'
+          },
+          {
+            name: 'Nhiễm Vi rút & Nấm / Ký sinh trùng cơ hội (CMV, EBV, HIV, Histoplasma, Leishmania)',
+            distinguishingFeatures: 'Hội chứng tăng bạch cầu đơn nhân (sốt, đau họng, hạch to, lách to), giảm tế bào máu nhiều dòng, cơ địa suy giảm miễn dịch hoặc đi vùng dịch tễ.',
+            initialInvestigation: 'Huyết thanh chẩn đoán HIV-1/2, PCR CMV và EBV đo tải lượng, sinh thiết tủy xương tìm nấm nội bào Histoplasma hoặc thể Leishmania (amastigote).',
+            priority: 'less-common'
           }
         ]
       },
       {
-        category: 'Bệnh tự miễn & Ác tính (Chiếm 30-40% FUO)',
+        category: '2. BỆNH VIÊM KHÔNG NHIỄM TRÙNG / TỰ MIỄN (NIID - Chiếm 10% - 30%)',
         diseases: [
           {
-            name: 'Bệnh Still người lớn (Adult-onset Still’s Disease)',
-            distinguishingFeatures: 'Sốt cao vọt hàng ngày về chiều, ban đỏ màu cá hồi thoáng qua lúc sốt, đau khớp, Ferritin máu tăng cực cao (> 1000-5000 ng/mL).',
-            initialInvestigation: 'Corticoid liều cao, thuốc ức chế IL-1 (Anakinra) sau khi loại trừ nhiễm trùng và ung thư.',
-            priority: 'less-common'
+            name: 'Bệnh Still khởi phát ở người lớn (Adult-onset Still’s Disease - AOSD)',
+            distinguishingFeatures: 'Sốt cao vọt hàng ngày về chiều tối (quotidian fever), ban đỏ màu cá hồi (salmon-pink) thoáng qua chỉ bùng lên lúc sốt, đau khớp, đau họng, Ferritin máu tăng cực cao (> 1000 - 5000 ng/mL).',
+            initialInvestigation: 'Định lượng Ferritin toàn phần và tỷ lệ Ferritin glycosylated (< 20%), áp dụng tiêu chuẩn phân loại Yamaguchi (sau khi đã loại trừ nhiễm trùng và u lympho).',
+            priority: 'cannot-miss'
           },
           {
-            name: 'U Lympho ác tính (Lymphoma)',
-            distinguishingFeatures: 'Sốt chu kỳ kiểu Pel-Ebstein, sút cân > 10%, mồ hôi đêm (tam chứng B symptoms), hạch to.',
-            initialInvestigation: 'Sinh thiết trọn vẹn một hạch bạch huyết (Excisional biopsy) để giải phẫu bệnh.',
+            name: 'Viêm động mạch tế bào khổng lồ (GCA) & Đau đa cơ do thấp (PMR)',
+            distinguishingFeatures: 'Thường gặp ở người > 50 tuổi; sốt kéo dài kèm đau đầu thái dương dữ dội, đau khi chải đầu, đau cách hồi hàm, mờ mắt thoáng qua; cứng mỏi đai vai và đai hông buổi sáng > 45 phút; ESR tăng cực cao (> 100 mm/h).',
+            initialInvestigation: 'Tốc độ máu lắng ESR, CRP, Siêu âm Doppler màu ĐM thái dương (dấu hiệu quầng sáng Halo sign), Sinh thiết động mạch thái dương bên đau; Dùng ngay Prednisone 40-60 mg/ngày nếu có dọa mất thị giác.',
             priority: 'cannot-miss'
+          },
+          {
+            name: 'Bệnh tạo keo hệ thống (Lupus ban đỏ hệ thống SLE, Viêm khớp dạng thấp)',
+            distinguishingFeatures: 'Ban cánh bướm mặt, rụng tóc, loét áp-tơ miệng không đau, đau đa khớp nhỏ nhỡ đối xứng, viêm thanh mạc màng phổi/màng ngoài tim, tổn thương thận.',
+            initialInvestigation: 'Kháng thể kháng nhân (ANA), anti-dsDNA, yếu tố dạng thấp (RF), anti-CCP, bổ thể C3, C4 giảm, tổng phân tích nước tiểu tìm trụ hồng cầu và protein niệu.',
+            priority: 'common'
+          },
+          {
+            name: 'Viêm mạch hệ thống & Bệnh u hạt (GPA / Wegener, PAN, Sarcoidosis)',
+            distinguishingFeatures: 'Tổn thương phổi phối hợp viêm cầu thận, loét mũi họng mạn tính, viêm dây thần kinh đa ổ (mononeuritis multiplex), hạch rốn phổi 2 bên, hồng ban nút.',
+            initialInvestigation: 'Xét nghiệm kháng thể ANCA (c-ANCA/PR3 và p-ANCA/MPO), Chụp CT ngực độ phân giải cao (HRCT), Đo nồng độ men ACE huyết thanh, Sinh thiết mô tổn thương.',
+            priority: 'less-common'
+          }
+        ]
+      },
+      {
+        category: '3. BỆNH LÝ ÁC TÍNH (Chiếm 15% - 30% FUO Cổ Điển)',
+        diseases: [
+          {
+            name: 'U Lympho ác tính (Hodgkin & U lympho không Hodgkin - NHL)',
+            distinguishingFeatures: 'Nguyên nhân ung thư hàng đầu gây FUO; sốt chu kỳ Pel-Ebstein, tam chứng B-symptoms (sụt cân > 10% trong 6 tháng, sốt cao, đổ mồ hôi đêm ướt áo), hạch to không đau mật độ cao su, ngứa da dai dẳng.',
+            initialInvestigation: 'Sinh thiết trọn vẹn một hạch bạch huyết (Excisional biopsy - không làm FNA vì không đánh giá được cấu trúc nang hạch), Chụp CT ngực bụng chậu cản quang hoặc 18F-FDG PET/CT toàn thân.',
+            priority: 'cannot-miss'
+          },
+          {
+            name: 'Bệnh bạch cầu cấp / mạn & Hội chứng loạn sinh tủy (Leukemias & MDS)',
+            distinguishingFeatures: 'Sốt do phóng thích pyrogen nội sinh hoặc nhiễm khuẩn thứ phát, thiếu máu tiến triển nhanh, xuất huyết dưới da/niêm mạc, gan lách to, đau xương.',
+            initialInvestigation: 'Tổng phân tích tế bào máu CBC, phết máu ngoại biên tìm tế bào non (blasts), Huyết tủy đồ và Sinh thiết tủy xương (Bone marrow biopsy) kết hợp Flow Cytometry.',
+            priority: 'cannot-miss'
+          },
+          {
+            name: 'Khối u đặc (Ung thư biểu mô tế bào thận RCC, K đại trực tràng, K gan, U nhầy nhĩ trái)',
+            distinguishingFeatures: 'Ung thư tế bào thận RCC (tiết IL-6 gây sốt kéo dài đơn độc, tiểu máu vi thể, đa hồng cầu); K đại trực tràng gây nhiễm khuẩn huyết Streptococcus gallolyticus; U nhầy nhĩ trái (Myxoma) gây sốt kèm tiếng thổi tim thay đổi tư thế.',
+            initialInvestigation: 'Chụp CT đa dãy ngực - bụng - chậu có cản quang, Siêu âm tim qua thành ngực (phát hiện khối u nhầy nhĩ trái), Nội soi đại trực tràng toàn bộ tầm soát ung thư.',
+            priority: 'common'
+          }
+        ]
+      },
+      {
+        category: '4. BỆNH LÝ HỖN HỢP & CĂN NGUYÊN KHÁC (Chiếm 5% - 20%)',
+        diseases: [
+          {
+            name: 'Sốt do thuốc (Drug-Induced Fever)',
+            distinguishingFeatures: 'Khởi phát 1-3 tuần sau dùng thuốc (kháng sinh beta-lactam, sulfonamide, allopurinol, carbamazepine, phenytoin, methyldopa); sốt cao nhưng bệnh nhân tỉnh táo tương đối khỏe khoắn ("relative well-being"), tăng bạch cầu ái toan.',
+            initialInvestigation: 'Đánh giá mối liên quan thời gian dùng thuốc; Thử nghiệm ngừng toàn bộ thuốc nghi ngờ trong 48-72 giờ: bệnh nhân cắt sốt hoàn toàn khẳng định chẩn đoán.',
+            priority: 'common'
+          },
+          {
+            name: 'Thuyên tắc huyết khối tĩnh mạch sâu (DVT) & Thuyên tắc phổi (PE)',
+            distinguishingFeatures: 'Sốt nhẹ đến vừa do phản ứng viêm thành mạch và nhồi máu mô phổi; khó thở khởi phát đột ngột, đau ngực màng phổi, sưng nóng đau một bên bắp chân, tiền sử bất động lâu ngày.',
+            initialInvestigation: 'Thang điểm Wells, xét nghiệm D-dimer máu, Siêu âm Doppler mạch máu chi dưới, Chụp cắt lớp vi tính mạch máu phổi (CTPA).',
+            priority: 'cannot-miss'
+          },
+          {
+            name: 'Hội chứng thực bào tế bào máu (Hemophagocytic Lymphohistiocytosis - HLH)',
+            distinguishingFeatures: 'Cơn bão cytokine viêm đe dọa tử vong; sốt cao liên tục không đáp ứng hạ sốt, gan lách to, suy gan cấp, vàng da, giảm ≥ 2 dòng tế bào máu ngoại vi, Ferritin máu tăng vọt (> 10.000 ng/mL), Triglyceride tăng, Fibrinogen giảm.',
+            initialInvestigation: 'Tiêu chuẩn chẩn đoán HLH-2004, Sinh thiết tủy xương tìm hình ảnh đại thực bào thực bào tế bào máu (Hemophagocytosis), định lượng sCD25 (chuỗi alpha thụ thể IL-2).',
+            priority: 'cannot-miss'
+          },
+          {
+            name: 'Viêm tuyến giáp bán cấp (Subacute Thyroiditis / De Quervain)',
+            distinguishingFeatures: 'Sốt kèm đau vùng trước cổ lan lên góc hàm hoặc tai, tuyến giáp sưng to ấn đau chói sau đợt nhiễm siêu vi đường hô hấp trên, hồi hộp run tay thoáng qua.',
+            initialInvestigation: 'Tốc độ máu lắng ESR tăng rất cao (> 50-100 mm/h), xét nghiệm chức năng tuyến giáp (TSH giảm, FT4 tăng), Siêu âm tuyến giáp thấy vùng giảm âm loang lổ, độ tập trung Iod phóng xạ (RAIU) giảm thấp.',
+            priority: 'common'
+          },
+          {
+            name: 'Sốt giả tạo (Factitious Fever) & Rối loạn điều nhiệt thói quen',
+            distinguishingFeatures: 'Thường gặp ở nhân viên y tế hoặc phụ nữ trẻ; nhiệt độ đo rất cao (> 40°C) nhưng da khô lạnh, không có mạch nhanh tương ứng, không rét run, nhiệt độ tụt nhanh bất thường; các dấu ấn viêm ESR, CRP hoàn toàn bình thường.',
+            initialInvestigation: 'Đo thân nhiệt trực tiếp có nhân viên y tế giám sát chặt chẽ tại giường, đo đồng thời nhiệt độ nước tiểu ngay sau khi bài xuất ra ngoài.',
+            priority: 'less-common'
+          }
+        ]
+      },
+      {
+        category: '5. SỐT CHƯA RÕ NGUYÊN NHÂN SAU KHẢO SÁT CHUẨN MỰC (Chiếm 10% - 50%)',
+        diseases: [
+          {
+            name: 'FUO chưa xác định căn nguyên có tiên lượng lành tính (Undiagnosed Benign FUO)',
+            distinguishingFeatures: 'Thỏa mãn tiêu chuẩn FUO nhưng đã hoàn thành đầy đủ Bộ xét nghiệm tối thiểu tiêu chuẩn và thăm dò bậc hai (gồm cả PET/CT và sinh thiết mô nghi ngờ) mà không phát hiện bệnh ác tính hay nhiễm trùng nặng; thể trạng chung bệnh nhân ổn định, không sụt cân tiến triển.',
+            initialInvestigation: 'Trấn an người bệnh, giữ vững nguyên tắc KHÔNG dùng kháng sinh/steroid bao vây bừa bãi; theo dõi ngoại trú định kỳ và lặp lại thăm khám lâm sàng hàng tuần (đa số các ca sẽ tự thoái lui trong vài tháng).',
+            priority: 'common'
           }
         ]
       }
     ],
     algorithm: {
-      title: 'Lưu đồ tiếp cận sốt cấp & sốt chưa rõ nguyên nhân (FUO)',
-      summary: 'Quy trình xử trí sốc nhiễm trùng, sốt giảm bạch cầu và các bước tầm soát căn nguyên FUO mạn tính.',
+      title: 'Lưu đồ Tiếp Cận Sốt Cấp & Sốt Không Rõ Nguyên Nhân (FUO & IUO Algorithm)',
+      summary: 'Quy trình chuẩn hóa theo Delphi Consensus: Phân tầng sốc nhiễm khuẩn, sàng lọc manh mối tiềm tàng (PDCs), bộ xét nghiệm tối thiểu tiêu chuẩn và thăm dò nâng cao (18F-FDG PET/CT & Sinh thiết mô).',
       startingPoint: 'node-fever-stability',
       nodes: [
         {
           id: 'node-fever-stability',
-          question: 'Bệnh nhân có dấu hiệu sốc nhiễm khuẩn (Tụt huyết áp, tri giác suy giảm, thở nhanh, lactate > 2)?',
+          question: 'Bệnh nhân có dấu hiệu sốc nhiễm khuẩn, suy hô hấp cấp hoặc đe dọa sinh mạng ngay lập tức?',
+          subtext: 'Đánh giá: HA tâm thu < 90 mmHg (hoặc MAP < 65), Lactate máu > 2.0 mmol/L dù đã bù dịch, thở nhanh > 25 lần/phút, SpO2 < 92%, lú lẫn cứng gáy, xuất huyết hoại tử da sao.',
           options: [
             {
-              label: 'CÓ - Sốc nhiễm trùng đe dọa tử vong',
-              diagnosis: 'CẤP CỨU NHIỄM KHUẨN HUYẾT -> Kháng sinh phổ rộng tiêm mạch trong 1 giờ đầu + Bù dịch 30ml/kg + Cấy máu 2 bộ!',
+              label: 'CÓ - Sốc nhiễm trùng / Đe dọa tử vong cấp cứu',
+              diagnosis: 'CẤP CỨU NHIỄM KHUẨN HUYẾT NGUY KỊCH -> Thực hiện Gói 1 giờ: Kháng sinh phổ rộng tiêm mạch (Meropenem / Cefepime + Vancomycin) + Bù dịch tinh thể 30 ml/kg + Cấy máu 2 bộ trước kháng sinh + Đo lactate máu nối tiếp + Hội chẩn Hồi sức tích cực ICU!',
               severity: 'urgent'
             },
             {
-              label: 'KHÔNG - Huyết động ổn định',
-              targetId: 'node-fever-neutropenia',
+              label: 'KHÔNG - Huyết động ổn định, thở êm',
+              targetId: 'node-fever-special-pop',
               severity: 'warning'
             }
           ]
         },
         {
-          id: 'node-fever-neutropenia',
-          question: 'Bệnh nhân có giảm bạch cầu trung tính (ANC < 500) hoặc đang điều trị hóa trị ung thư?',
+          id: 'node-fever-special-pop',
+          question: 'Bệnh nhân thuộc nhóm đối tượng lâm sàng đặc thù nào theo phân loại Durack & Street?',
+          subtext: 'Sốt giảm bạch cầu, Sốt bệnh viện, Sốt liên quan HIV, hoặc Người cao tuổi nghi ngờ Viêm động mạch thái dương.',
           options: [
             {
-              label: 'CÓ - Sốt hạ bạch cầu trung tính (Neutropenic Fever)',
-              diagnosis: 'CẤP CỨU NỘI KHOA UNG THƯ -> Dùng kháng sinh diệt trực khuẩn mủ xanh (Meropenem hoặc Cefepime) ngay lập tức!',
+              label: 'Sốt giảm bạch cầu hạt (Neutropenic FUO: ANC < 500/μL sau hóa trị)',
+              diagnosis: 'CẤP CỨU NỘI KHOA UNG THƯ -> Dùng ngay kháng sinh diệt trực khuẩn mủ xanh Pseudomonas (Cefepime 2g mỗi 8h hoặc Meropenem 1g mỗi 8h) tĩnh mạch trong vòng 60 phút, cấy máu qua tất cả các nòng catheter và ngoại vi, cách ly phòng áp lực dương!',
               severity: 'urgent'
             },
             {
-              label: 'KHÔNG - Bạch cầu bình thường, sốt kéo dài > 3 tuần',
-              targetId: 'node-fever-fuo-workup',
+              label: 'Sốt khởi phát sau nhập viện ≥ 24-48 giờ (Nosocomial FUO)',
+              diagnosis: 'Nghi ngờ Nhiễm khuẩn bệnh viện (Viêm phổi thở máy HAP/VAP, Nhiễm trùng huyết do catheter CVC, Nhiễm trùng tiểu, Viêm ruột màng giả do C. difficile, Sốt do thuốc) -> Rút/thay đổi catheter lưu, cấy máu, cấy đờm/nước tiểu, test độc tố C. difficile, rà soát và ngừng các thuốc nghi ngờ.',
+              severity: 'warning'
+            },
+            {
+              label: 'Bệnh nhân nhiễm HIV(+) sốt kéo dài (HIV-Associated FUO)',
+              diagnosis: 'Nghi ngờ Nhiễm trùng cơ hội nguy kịch hoặc U lympho (Lao lan tỏa, Mycobacteria không điển hình MAC, Nấm Cryptococcus / Histoplasma, CMV, U lympho tế bào B lớn) -> Đo tải lượng HIV, đếm tế bào CD4, cấy máu tìm nấm và AFB, chụp CT ngực bụng chậu, chọc dò dịch não tủy.',
+              severity: 'warning'
+            },
+            {
+              label: 'Bệnh nhân > 50 tuổi có đau đầu thái dương, đau khi chải đầu, đau cách hồi hàm, mờ mắt',
+              diagnosis: 'CẤP CỨU MẮT & MIỄN DỊCH -> Nghi ngờ Viêm động mạch tế bào khổng lồ (GCA) đe dọa mù vĩnh viễn -> Khởi động ngay Corticosteroid liều cao (Prednisone 40-60 mg/ngày), làm gấp ESR/CRP, chỉ định Siêu âm Doppler ĐM thái dương (Halo sign) và Sinh thiết động mạch thái dương!',
+              severity: 'urgent'
+            },
+            {
+              label: 'Bệnh nhân miễn dịch bình thường, sốt kéo dài ≥ 3 tuần (Khảo sát FUO Cổ Điển)',
+              targetId: 'node-fever-pdc-check',
               severity: 'routine'
             }
           ]
         },
         {
-          id: 'node-fever-fuo-workup',
-          question: 'Khám lâm sàng có phát hiện vết mò cắn, tiếng thổi tim mới, hay hạch to?',
+          id: 'node-fever-pdc-check',
+          question: 'Khám lâm sàng toàn diện và hỏi bệnh tỉ mỉ có phát hiện Manh mối chẩn đoán tiềm tàng (Potentially Diagnostic Clues - PDCs)?',
+          subtext: 'PDCs là các dấu hiệu định hướng khu trú: vết loét bọ mò Eschar, tiếng thổi tim mới, đau gõ gai sống, hạch ngoại biên to, đau ĐM thái dương, ban cá hồi, viêm một khớp.',
           options: [
             {
-              label: 'Có tiếng thổi tim mới hoặc tổn thương mạch ngoại vi',
-              diagnosis: 'Nghi ngờ Viêm nội tâm mạc -> Cấy máu 3 bộ + Siêu âm tim qua thành ngực / thực quản.',
+              label: 'CÓ - Phát hiện được manh mối lâm sàng khu trú rõ ràng (PDC positive)',
+              targetId: 'node-fever-pdc-targeted',
               severity: 'warning'
             },
             {
-              label: 'Không có dấu khu trú -> Tiến hành gói xét nghiệm FUO',
-              diagnosis: 'Tiếp cận FUO chuẩn mực: Cấy máu, cấy nước tiểu, CT ngực-bụng-chậu, Ferritin, ANA, ESR/CRP, cấy đờm tìm AFB/GeneXpert.',
+              label: 'KHÔNG - Khám toàn diện không tìm thấy dấu hiệu khu trú (PDC negative)',
+              targetId: 'node-fever-minimum-workup',
               severity: 'routine'
+            }
+          ]
+        },
+        {
+          id: 'node-fever-pdc-targeted',
+          question: 'Manh mối khu trú (PDC) phát hiện được trên lâm sàng là gì?',
+          subtext: 'Lựa chọn manh mối tương ứng để chỉ định xét nghiệm và xử trí đặc hiệu đích:',
+          options: [
+            {
+              label: 'Tiếng thổi tim mới / Biến đổi tiếng thổi cũ / Nốt Osler, Janeway, đốm Roth',
+              diagnosis: 'Nghi ngờ Viêm nội tâm mạc nhiễm khuẩn (IE) -> Cấy máu 3 bộ ở 3 vị trí khác nhau (gồm cả chai kỵ khí, ủ kéo dài 7-14 ngày) + Siêu âm tim qua thành ngực (TTE) và thực quản (TEE) khẩn cấp.',
+              severity: 'urgent'
+            },
+            {
+              label: 'Vết loét vảy mục đen viền đỏ không đau (Eschar) ở nách, bẹn, bìu, quanh hậu môn',
+              diagnosis: 'Chẩn đoán xác định Bệnh Sốt mò (Scrub typhus do Orientia tsutsugamushi) -> Điều trị đặc hiệu đích ngay với Doxycycline 100 mg x 2 lần/ngày trong 7 ngày (hoặc Azithromycin nếu phụ nữ có thai); bệnh nhân thường cắt sốt ngoạn mục sau 24-48 giờ!',
+              severity: 'warning'
+            },
+            {
+              label: 'Gõ đau chói mỏm gai đốt sống / Đau lưng dữ dội hạn chế vận động',
+              diagnosis: 'Nghi ngờ Viêm thân đốt sống - đĩa đệm nhiễm khuẩn (Spondylodiscitis) hoặc Áp-xe ngoài màng cứng -> Chụp Cộng hưởng từ MRI cột sống có tiêm thuốc đối quang từ Gadolinium + Cấy máu.',
+              severity: 'warning'
+            },
+            {
+              label: 'Hạch ngoại biên to dính chùm, sờ đàn hồi như cao su, hoặc hạch thượng đòn to',
+              diagnosis: 'Nghi ngờ U lympho ác tính, Lao hạch hoặc Ung thư di căn -> Sinh thiết trọn vẹn một hạch bạch huyết (Excisional biopsy - TUYỆT ĐỐI không chọc hút kim nhỏ FNA) làm mô bệnh học và hóa mô miễn dịch.',
+              severity: 'warning'
+            },
+            {
+              label: 'Sốt cao vọt buổi chiều + Ban đỏ cá hồi thoáng qua lúc sốt + Đau khớp + Đau họng',
+              diagnosis: 'Nghi ngờ Bệnh Still khởi phát ở người lớn (AOSD) -> Định lượng Ferritin toàn phần (> 1000 ng/mL) và Ferritin glycosylated (< 20%), áp dụng tiêu chuẩn Yamaguchi sau khi loại trừ nhiễm trùng và ung thư.',
+              severity: 'warning'
+            }
+          ]
+        },
+        {
+          id: 'node-fever-minimum-workup',
+          question: 'Kết quả Bộ xét nghiệm tối thiểu tiêu chuẩn (Minimal Diagnostic Workup) ghi nhận gì?',
+          subtext: 'Bộ xét nghiệm: CBC, phết máu, ESR, CRP, Ferritin, chức năng gan thận, cấy máu 3 bộ, cấy nước tiểu, tầm soát lao (XQ/IGRA), ANA, RF, CT ngực-bụng-chậu cản quang.',
+          options: [
+            {
+              label: 'Phù hợp Mô hình Efstathiou: CRP > 60 mg/L, Eosinophil < 40/mm³, Ferritin < 500 μg/L (≥ 2 yếu tố)',
+              diagnosis: 'Độ nhạy 91.4% và độ đặc hiệu 92.3% dự báo CĂN NGUYÊN NHIỄM TRÙNG -> Tập trung tối đa tìm ổ nhiễm trùng sâu: rà soát kỹ kết quả cấy máu, cấy nước tiểu, CT cản quang toàn thân, cấy đờm tìm AFB/GeneXpert và xét nghiệm huyết thanh nhiễm trùng nội bào.',
+              severity: 'urgent'
+            },
+            {
+              label: 'CT ngực - bụng - chậu có cản quang phát hiện khối u đặc, ổ áp-xe sâu hoặc hạch to bệnh lý',
+              diagnosis: 'Phát hiện tổn thương thực thể -> Chỉ định Chọc hút dẫn lưu mủ dưới hướng dẫn CT/siêu âm để nuôi cấy vi sinh; hoặc Sinh thiết lõi mô tổn thương (Core biopsy) làm giải phẫu bệnh xác định bản chất u/viêm u hạt.',
+              severity: 'warning'
+            },
+            {
+              label: 'Ferritin máu tăng cực cao (> 1000 - 5000 ng/mL), CRP tăng, cấy máu âm tính, CT âm tính',
+              diagnosis: 'Gợi ý mạnh Bệnh Still người lớn (AOSD) hoặc Hội chứng thực bào tế bào máu (HLH) -> Xét nghiệm Triglyceride, Fibrinogen máu, sinh thiết tủy xương tìm thực bào máu, hội chẩn chuyên khoa Dị ứng Miễn dịch Lâm sàng.',
+              severity: 'warning'
+            },
+            {
+              label: 'Bộ xét nghiệm cơ bản và CT toàn thân hoàn toàn ÂM TÍNH, chưa ra chẩn đoán',
+              targetId: 'node-fever-advanced-imaging',
+              severity: 'routine'
+            }
+          ]
+        },
+        {
+          id: 'node-fever-advanced-imaging',
+          question: 'Bước đánh giá giai đoạn 2: Chỉ định thăm dò chuyên sâu nâng cao nào?',
+          subtext: 'Theo đồng thuận Delphi Consensus: 18F-FDG PET/CT toàn thân là lựa chọn ưu tiên hàng đầu để định hướng vị trí sinh thiết mô đích.',
+          options: [
+            {
+              label: 'Chụp 18F-FDG PET/CT toàn thân phát hiện ổ tăng chuyển hóa glucose khu trú rõ',
+              targetId: 'node-fever-biopsy-trial',
+              severity: 'warning'
+            },
+            {
+              label: 'Nghi ngờ Viêm nội tâm mạc cấy máu âm tính (có van nhân tạo hoặc lâm sàng nghi ngờ cao)',
+              diagnosis: 'Chỉ định Siêu âm tim qua thực quản (TEE) tìm sùi nhỏ, áp-xe vòng van tim; phối hợp xét nghiệm huyết thanh chẩn đoán vi khuẩn khó mọc (Coxiella burnetii, Bartonella, Brucella).',
+              severity: 'urgent'
+            },
+            {
+              label: 'Nghi ngờ mầm bệnh khó nuôi cấy (Fastidious organisms, nấm hiếm, vi khuẩn không điển hình)',
+              diagnosis: 'Chỉ định Giải trình tự gen thế hệ mới (Next-Generation Sequencing - NGS) hoặc PCR đa mồi từ máu toàn phần hoặc mẫu mô dịch vô trùng.',
+              severity: 'warning'
+            },
+            {
+              label: '18F-FDG PET/CT và toàn bộ thăm dò nâng cao vẫn hoàn toàn bình thường',
+              diagnosis: 'Phân loại nhóm "FUO chưa xác định căn nguyên có tiên lượng lành tính" -> Bệnh nhân tổng trạng ổn định, không có cờ đỏ: Trấn an, theo dõi ngoại trú định kỳ, lặp lại thăm khám lâm sàng mỗi 1-2 tuần (đa số sốt sẽ tự thoái lui lành tính).',
+              severity: 'routine'
+            }
+          ]
+        },
+        {
+          id: 'node-fever-biopsy-trial',
+          question: 'Thủ thuật xâm lấn quyết định (Sinh thiết mô đích) và Thái độ xử trí điều trị thử:',
+          subtext: 'Thực hiện sinh thiết mô có tổn thương và tuân thủ nguyên tắc điều trị thử nghiêm ngặt:',
+          options: [
+            {
+              label: 'Sinh thiết mô đích dưới hướng dẫn PET/CT hoặc Sinh thiết tủy xương (Bone Marrow Biopsy)',
+              diagnosis: 'Thủ thuật xâm lấn có giá trị quyết định nhất -> Sinh thiết hạch sâu, sinh thiết tủy xương hoặc sinh thiết gan: cho tỷ lệ chẩn đoán xác định cao nhất đối với U lympho ác tính, Lao kê lan tỏa, Nấm hệ thống và Hội chứng thực bào máu (HLH).',
+              severity: 'urgent'
+            },
+            {
+              label: 'Nghi ngờ sốt do thuốc (Bệnh nhân tỉnh táo, sốt cao, có thuốc mới dùng trong 1-3 tuần)',
+              diagnosis: 'Thử nghiệm ngừng thuốc (Drug Withdrawal Test): Ngừng toàn bộ các thuốc không thiết yếu trong 48-72 giờ; cắt sốt hoàn toàn trong 72 giờ khẳng định chắc chắn sốt do thuốc mà không cần thêm xét nghiệm tốn kém.',
+              severity: 'routine'
+            },
+            {
+              label: 'Nguyên tắc điều trị thử có kiểm soát (Empirical Therapeutic Trials)',
+              diagnosis: 'Tuyệt đối KHÔNG dùng kháng sinh/steroid bao vây mò ở bệnh nhân ổn định! Chỉ cho phép điều trị thử trong 2 tình huống: (1) Nghi ngờ Viêm ĐM tế bào khổng lồ GCA dọa mất thị giác -> dùng ngay Prednisone liều cao; (2) Nghi ngờ Lao ở bệnh nhân suy kiệt nặng tiến triển mà mọi thăm dò đều bế tắc (sau khi đã lấy đủ bệnh phẩm vi sinh).',
+              severity: 'warning'
             }
           ]
         }
       ]
     },
     residentClinicalPearls: [
-      'Phân ly mạch - nhiệt (Faget’s sign): Thường khi sốt tăng 1°C thì nhịp tim tăng khoảng 10-15 nhịp/phút. Nếu bệnh nhân sốt cao 39-40°C mà nhịp tim vẫn chậm < 70-80 nhịp/phút, hãy nghĩ ngay đến: Sốt thương hàn (Typhoid fever), Bệnh Legionella, Bệnh sốt vàng hoặc Sốt do thuốc (Drug fever).',
-      'Khám vết đốt mò (Eschar): Bọ mò thường cắn ở những vùng da ẩm, ấm và kín đáo (nách, dưới bầu vú, bẹn, quanh hậu môn, bìu, rốn). Nếu không cởi bỏ quần áo bệnh nhân để khám toàn diện, bác sĩ sẽ bỏ sót 100% vết mò đốt và chẩn đoán nhầm thành nhiễm trùng huyết không rõ nguồn!'
+      'Dấu hiệu phân ly mạch - nhiệt (Faget’s sign): Quy luật sinh lý bình thường: thân nhiệt tăng 1°C thì nhịp tim tăng 10-15 nhịp/phút. Nếu bệnh nhân sốt cao 39-40°C mà nhịp tim vẫn chậm < 70-80 nhịp/phút, hãy nghĩ ngay đến 4 căn nguyên kinh điển: Sốt thương hàn (Typhoid fever), Bệnh Legionella, Sốt mò / Rickettsia, Sốt vàng và Sốt do thuốc (Drug fever).',
+      'Nguyên tắc khám lặp lại mỗi ngày (Serial Physical Examination): Trong FUO, giá trị của việc bác sĩ trực tiếp khám lại bệnh nhân từ đầu đến chân mỗi buổi sáng (soi đáy mắt, sờ nắn ĐM thái dương, khám răng hàm mặt, nghe tim, sờ hạch, thăm trực tràng và vạch các nếp kẽ da) cao hơn gấp nhiều lần so với việc chỉ định lặp lại hàng loạt xét nghiệm máu tốn kém.',
+      'Kỹ thuật tìm vết loét mục bọ mò đốt (Eschar): Bọ mò (chigger) thường cắn ở những vùng da ẩm, ấm và kín đáo (nách, dưới nếp lằn vú, bẹn, bìu, quanh hậu môn, vùng rốn). Vết Eschar thường hoàn toàn KHÔNG ĐAU, không ngứa, đáy đóng vảy đen xung quanh có viền đỏ. Nếu không yêu cầu bệnh nhân cởi bỏ hoàn toàn y phục để kiểm tra từng nếp gấp cơ thể, bác sĩ sẽ bỏ sót 100% vết mò đốt!',
+      'Kỷ luật thép: Không dùng kháng sinh hoặc Corticoid bao vây ở bệnh nhân FUO ổn định: Kháng sinh mò hoặc thuốc chống viêm làm mờ nhạt triệu chứng lâm sàng, âm tính hóa kết quả cấy vi khuẩn, che giấu diễn tiến sốt và làm chậm trễ thời gian chẩn đoán căn nguyên thực sự hàng tuần lễ. Chỉ dùng kháng sinh khi có sốc nhiễm trùng, giảm bạch cầu hạt hoặc suy giảm miễn dịch nặng.',
+      'Bộ ba kinh điển chẩn đoán Bệnh Still người lớn (AOSD): Sốt cao vọt hàng ngày về chiều tối + Ban dát đỏ màu cá hồi (Salmon-pink rash) thoáng qua chỉ bùng lên lúc đỉnh sốt rồi biến mất + Đau đa khớp đối xứng. Khi thấy Ferritin máu tăng vọt > 1.000–5.000 ng/mL kèm Ferritin glycosylated < 20%, hãy nghĩ ngay đến bệnh Still sau khi đã loại trừ nhiễm trùng và u lympho.',
+      'Sốt kéo dài ở người trên 50 tuổi: Không bao giờ được quên sờ nắn động mạch thái dương hai bên và hỏi triệu chứng đau cách hồi hàm hoặc đau mỏi vùng đai vai/hông. Viêm động mạch tế bào khổng lồ (GCA) và Đau đa cơ do thấp (PMR) là nguyên nhân gây sốt kéo dài hàng đầu ở nhóm tuổi này với ESR thường > 100 mm/h. Khởi động ngay Corticosteroid nếu có triệu chứng thị giác để bảo vệ thị lực cho bệnh nhân!',
+      'Vai trò thực sự của 18F-FDG PET/CT trong FUO: PET/CT không chỉ đơn thuần là một phương tiện chẩn đoán hình ảnh, mà giá trị lâm sàng lớn nhất của nó là một "Bản đồ sinh thiết đích" (Biopsy guide). PET/CT giúp bác sĩ lâm sàng nhìn thấy chính xác vị trí cơ quan nào đang chuyển hóa glucose mạnh nhất (hạch sâu trung thất, ổ viêm thành động mạch chủ, cơ sâu hay tủy xương) để định vị đường kim sinh thiết mô chính xác.',
+      'Sốt do thuốc (Drug fever) & Dấu hiệu "khỏe khoắn nghịch thường": Bệnh nhân có thể sốt rất cao 39-40°C kéo dài nhiều ngày nhưng toàn trạng trông tương đối tỉnh táo, hồng hào, sinh hoạt bình thường mà không có vẻ mặt nhiễm trùng nhiễm độc nặng nề (relative well-being). Thường kèm tăng nhẹ bạch cầu ái toan (eosinophil). Thao tác chẩn đoán đơn giản và quyết định nhất là ngừng thuốc nghi ngờ: bệnh nhân thường cắt sốt ngoạn mục trong vòng 48-72 giờ.'
     ]
   }
 ];

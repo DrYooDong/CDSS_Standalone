@@ -195,6 +195,22 @@ export const HISTORY_STEPS: HistoryStepGuide[] = [
 
 export const AMBIGUOUS_TERMS: AmbiguousTerm[] = [
   {
+    patientTerm: '"Tôi bị sốt dai dẳng / ngây ngấy sốt trong người" (Prolonged Fever / Pyrexia)',
+    commonUnderlyingProblems: [
+      'Sốt không rõ nguyên nhân (FUO cổ điển: Nhiễm trùng sâu, U lympho, Bệnh Still, Viêm động mạch thái dương GCA)',
+      'Sốt do thuốc (Drug-induced fever: beta-lactam, thuốc chống co giật, allopurinol)',
+      'Cảm giác bốc hỏa tiền mãn kinh hoặc cường giáp (không có sốt thực thể)',
+      'Sốt giả tạo (Factitious fever) hoặc Rối loạn điều nhiệt thói quen (Habitual hyperthermia)'
+    ],
+    usefulDistinguishingFeatures: [
+      'Đo nhiệt độ bằng nhiệt kế có nhân viên y tế giám sát: xác thực thân nhiệt > 38.3°C',
+      'Đo dấu hiệu phân ly mạch - nhiệt (Faget sign: sốt cao nhưng mạch chậm nghịch thường)',
+      'Khám toàn diện tìm vết loét mục bọ mò Eschar vùng nếp gấp kín và sờ ĐM thái dương ở người > 50 tuổi',
+      'Làm bộ xét nghiệm tối thiểu tiêu chuẩn: CBC, ESR, CRP, cấy máu 3 bộ, CT ngực-bụng-chậu'
+    ],
+    macleodTip: 'Cần phân biệt cảm giác chủ quan "nóng lạnh / bốc hỏa" của người bệnh với sốt thực thể được ghi nhận bằng nhiệt kế. Hướng dẫn bệnh nhân ghi nhật ký thân nhiệt sáng - tối trong 1-2 tuần.'
+  },
+  {
     patientTerm: '"Dị ứng" (Allergy)',
     commonUnderlyingProblems: [
       'Dị ứng qua trung gian IgE thật sự (mày đay, phù Quinke, sốc phản vệ)',
@@ -675,6 +691,19 @@ export const SPOT_DIAGNOSES: SpotDiagnosisItem[] = [
     ],
     underlyingCondition: 'Viêm dây thần kinh số VII ngoại vi cấp tính (thường do tái hoạt virus HSV-1 hoặc VZV).',
     macleodNote: 'Liệt dây VII trung ương (đột quỵ não) BẢO TỒN nếp nhăn trán do trán được chi phối vỏ não hai bên.'
+  },
+  {
+    id: 'temporal-arteritis-gca',
+    name: 'Viêm Động Mạch Thái Dương (Giant Cell Arteritis - GCA)',
+    faciesOrBody: 'Đoạn động mạch thái dương nông một bên nổi gồ ngoằn ngoèo dưới da, sưng đỏ nhẹ, ấn đau chói và mạch đập yếu hoặc mất đập ở người > 50 tuổi.',
+    classicSigns: [
+      'Đau đầu dữ dội vùng thái dương, đau tăng rõ rệt khi chải đầu (scalp tenderness)',
+      'Đau cách hồi cơ nhai khi nhai thức ăn (jaw claudication)',
+      'Mờ mắt thoáng qua (amaurosis fugax), nhìn đôi hoặc mất thị lực đột ngột một bên',
+      'Đau cứng khớp buổi sáng vùng đai vai và đai hông kéo dài > 45 phút (PMR)'
+    ],
+    underlyingCondition: 'Viêm động mạch tế bào khổng lồ (GCA) - Bệnh viêm mạch máu lớn/vừa tự miễn hàng đầu gây sốt kéo dài ở người cao tuổi.',
+    macleodNote: 'Cấp cứu nhãn khoa: Nếu nghi ngờ GCA có đe dọa thị giác, phải khởi động ngay Prednisone liều cao (40-60 mg/ngày) mà không được trì hoãn chờ kết quả sinh thiết động mạch thái dương!'
   }
 ];
 

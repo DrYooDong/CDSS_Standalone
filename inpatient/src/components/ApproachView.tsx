@@ -40,7 +40,7 @@ export const ApproachView: React.FC<ApproachViewProps> = ({
   onToggleBookmark,
   isBookmarked
 }) => {
-  const [selectedFilter, setSelectedFilter] = useState<'all' | 'Emergency' | 'Urgent' | 'cardiovascular' | 'respiratory' | 'gastrointestinal' | 'neurological' | 'musculoskeletal'>('all');
+  const [selectedFilter, setSelectedFilter] = useState<'all' | 'Emergency' | 'Urgent' | 'general' | 'cardiovascular' | 'respiratory' | 'gastrointestinal' | 'neurological' | 'musculoskeletal'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
 
@@ -77,6 +77,7 @@ export const ApproachView: React.FC<ApproachViewProps> = ({
           {[
             { id: 'all', label: 'Tất cả' },
             { id: 'Emergency', label: '🚨 Cấp cứu (Emergency)' },
+            { id: 'general', label: '🌡️ Sốt & Toàn thân (FUO)' },
             { id: 'cardiovascular', label: 'Tim mạch' },
             { id: 'respiratory', label: 'Hô hấp' },
             { id: 'gastrointestinal', label: 'Tiêu hóa' },
