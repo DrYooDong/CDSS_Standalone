@@ -321,6 +321,73 @@ export const pdfExport = {
       y += 2;
     });
 
+    // Initial Management
+    if (topic.initialManagement && topic.initialManagement.length > 0) {
+      checkPageBreak(35);
+      y += 2;
+      doc.setFontSize(12);
+      doc.setTextColor(15, 76, 129);
+      doc.text('HƯỚNG XỬ TRÍ BAN ĐẦU & CHUYỂN TUYẾN / HỘI CHẨN', margin, y);
+      y += 6;
+
+      topic.initialManagement.forEach((block) => {
+        checkPageBreak(20);
+        doc.setFontSize(9.5);
+        doc.setTextColor(15, 118, 110);
+        doc.text(`• ${block.title}`, margin + 2, y);
+        y += 4.5;
+
+        doc.setFontSize(8.5);
+        doc.setTextColor(51, 65, 85);
+        block.items.forEach((item) => {
+          const iLines = doc.splitTextToSize(`- ${item}`, maxLineWidth - 8);
+          checkPageBreak(iLines.length * 4 + 1);
+          doc.text(iLines, margin + 5, y);
+          y += iLines.length * 3.8 + 1;
+        });
+
+        if (block.alert) {
+          doc.setTextColor(180, 83, 9);
+          const aLines = doc.splitTextToSize(`! Lưu ý: ${block.alert}`, maxLineWidth - 8);
+          checkPageBreak(aLines.length * 4 + 2);
+          doc.text(aLines, margin + 5, y);
+          y += aLines.length * 3.8 + 2;
+        }
+        y += 1.5;
+      });
+    }
+
+    // Clinical Cases
+    if (topic.clinicalCases && topic.clinicalCases.length > 0) {
+      checkPageBreak(35);
+      y += 2;
+      doc.setFontSize(12);
+      doc.setTextColor(15, 76, 129);
+      doc.text('CA LÂM SÀNG MINH HỌA THỰC TẾ', margin, y);
+      y += 6;
+
+      topic.clinicalCases.forEach((c) => {
+        checkPageBreak(30);
+        doc.setFontSize(10);
+        doc.setTextColor(15, 23, 42);
+        doc.text(`${c.title} (${c.patientSummary})`, margin + 2, y);
+        y += 4.5;
+
+        doc.setFontSize(8.5);
+        doc.setTextColor(51, 65, 85);
+        const pLines = doc.splitTextToSize(`Bệnh cảnh: ${c.presentation}`, maxLineWidth - 6);
+        checkPageBreak(pLines.length * 4 + 2);
+        doc.text(pLines, margin + 4, y);
+        y += pLines.length * 3.8 + 1.5;
+
+        const dLines = doc.splitTextToSize(`Chẩn đoán: ${c.diagnosis} | Xử trí: ${c.managementAndOutcome}`, maxLineWidth - 6);
+        checkPageBreak(dLines.length * 4 + 3);
+        doc.setTextColor(22, 101, 52);
+        doc.text(dLines, margin + 4, y);
+        y += dLines.length * 3.8 + 3;
+      });
+    }
+
     // Resident Pearls
     if (topic.residentClinicalPearls.length > 0) {
       checkPageBreak(30);
@@ -337,6 +404,25 @@ export const pdfExport = {
         checkPageBreak(pLines.length * 4 + 2);
         doc.text(pLines, margin + 2, y);
         y += pLines.length * 4 + 2;
+      });
+    }
+
+    // References
+    if (topic.references && topic.references.length > 0) {
+      checkPageBreak(25);
+      y += 2;
+      doc.setFontSize(11);
+      doc.setTextColor(15, 76, 129);
+      doc.text('TÀI LIỆU THAM KHẢO (AMA)', margin, y);
+      y += 5;
+
+      doc.setFontSize(8);
+      doc.setTextColor(71, 85, 105);
+      topic.references.forEach((ref, idx) => {
+        const rLines = doc.splitTextToSize(`${idx + 1}. ${ref}`, maxLineWidth - 4);
+        checkPageBreak(rLines.length * 3.5 + 1);
+        doc.text(rLines, margin + 2, y);
+        y += rLines.length * 3.5 + 1;
       });
     }
 

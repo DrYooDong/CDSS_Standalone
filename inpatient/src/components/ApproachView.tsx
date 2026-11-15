@@ -19,7 +19,11 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
   Zap,
-  Activity
+  Activity,
+  ClipboardList,
+  Syringe,
+  FileText,
+  BookOpen
 } from 'lucide-react';
 import { AlgorithmViewer } from './AlgorithmViewer';
 import { pdfExport } from '../utils/pdfExport';
@@ -339,7 +343,7 @@ export const ApproachView: React.FC<ApproachViewProps> = ({
                   <span>Cây Quyết Định Lâm Sàng Tương Tác (Interactive CDSS Algorithm)</span>
                 </h3>
               </div>
-              <AlgorithmViewer algorithm={currentTopic.algorithm} />
+              <AlgorithmViewer key={currentTopic.id} algorithm={currentTopic.algorithm} />
             </div>
 
             {/* Key History Questions: SOCRATES / OPQRST */}
@@ -439,6 +443,157 @@ export const ApproachView: React.FC<ApproachViewProps> = ({
               ))}
             </div>
 
+            {/* Clinical Scores & Emergency Bundles */}
+            {currentTopic.clinicalScores && currentTopic.clinicalScores.length > 0 && (
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-xs space-y-5">
+                <div className="flex items-center space-x-2">
+                  <ClipboardList className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                  <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                    Thang Điểm Phân Tầng & Gói Xử Trí Khẩn (Scores & Bundles)
+                  </h3>
+                </div>
+                <div className="space-y-5">
+                  {currentTopic.clinicalScores.map((score, sIdx) => (
+                    <div key={sIdx} className="space-y-2.5">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <h4 className="font-bold text-sm text-slate-900 dark:text-white">{score.title}</h4>
+                        {score.source && (
+                          <span className="text-[11px] font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800 w-fit">
+                            {score.source}
+                          </span>
+                        )}
+                      </div>
+                      <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+                        <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                          <thead>
+                            <tr className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+                              {score.headers.map((h, hIdx) => (
+                                <th key={hIdx} className="px-3.5 py-2.5 font-bold border-b border-slate-200 dark:border-slate-700">
+                                  {h}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                            {score.rows.map((row, rIdx) => (
+                              <tr key={rIdx} className="bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                                {row.map((cell, cIdx) => (
+                                  <td
+                                    key={cIdx}
+                                    className={`px-3.5 py-2.5 align-top leading-relaxed ${
+                                      cIdx === 0
+                                        ? 'font-semibold text-slate-900 dark:text-white whitespace-nowrap'
+                                        : 'text-slate-700 dark:text-slate-300'
+                                    }`}
+                                  >
+                                    {cell}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      {score.notes && score.notes.length > 0 && (
+                        <div className="p-3 rounded-xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-200/70 dark:border-indigo-900/50 space-y-1">
+                          {score.notes.map((n, nIdx) => (
+                            <p key={nIdx} className="text-xs text-indigo-950 dark:text-indigo-200 leading-relaxed">
+                              • {n}
+                            </p>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Initial Management & Escalation */}
+            {currentTopic.initialManagement && currentTopic.initialManagement.length > 0 && (
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Syringe className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                  <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                    Hướng Xử Trí Ban Đầu & Chỉ Định Hội Chẩn / Chuyển ICU
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 gap-3.5">
+                  {currentTopic.initialManagement.map((block, mIdx) => (
+                    <div
+                      key={mIdx}
+                      className="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 space-y-2"
+                    >
+                      <h4 className="font-bold text-sm text-teal-900 dark:text-teal-300">{block.title}</h4>
+                      <ul className="space-y-1.5">
+                        {block.items.map((item, iIdx) => (
+                          <li key={iIdx} className="flex items-start space-x-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-teal-500 shrink-0 mt-2" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {block.alert && (
+                        <div className="mt-2 p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-900 dark:text-amber-200 font-medium flex items-start space-x-2">
+                          <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                          <span>{block.alert}</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Clinical Case Studies */}
+            {currentTopic.clinicalCases && currentTopic.clinicalCases.length > 0 && (
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-xs space-y-4">
+                <div className="flex items-center space-x-2">
+                  <FileText className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+                  <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                    Ca Lâm Sàng Minh Họa Thực Tế (Clinical Case Studies)
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  {currentTopic.clinicalCases.map((c, cIdx) => (
+                    <div
+                      key={cIdx}
+                      className="p-4 sm:p-5 rounded-xl border border-sky-200/80 dark:border-sky-900/60 bg-sky-50/40 dark:bg-sky-950/20 space-y-3"
+                    >
+                      <div>
+                        <h4 className="font-bold text-sm sm:text-base text-sky-950 dark:text-sky-200">{c.title}</h4>
+                        <p className="text-xs font-semibold text-sky-700 dark:text-sky-400 mt-0.5">{c.patientSummary}</p>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <strong className="text-slate-900 dark:text-white">Bệnh cảnh & Thăm khám: </strong>
+                        {c.presentation}
+                      </p>
+                      <div className="space-y-1">
+                        <strong className="text-xs sm:text-sm text-slate-900 dark:text-white block">Biện luận & Cận lâm sàng:</strong>
+                        <ul className="space-y-1 pl-1">
+                          {c.reasoningAndWorkup.map((rw, rwIdx) => (
+                            <li key={rwIdx} className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 flex items-start space-x-2 leading-relaxed">
+                              <span className="text-sky-600 dark:text-sky-400 font-bold">•</span>
+                              <span>{rw}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="p-3 rounded-lg bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/60 text-xs sm:text-sm space-y-1">
+                        <p className="font-bold text-emerald-900 dark:text-emerald-300">
+                          Chẩn đoán xác định: {c.diagnosis}
+                        </p>
+                        <p className="text-emerald-950 dark:text-emerald-200 leading-relaxed">
+                          <strong>Xử trí & Diễn tiến: </strong>
+                          {c.managementAndOutcome}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Resident Ward Rounds Pearls */}
             {currentTopic.residentClinicalPearls.length > 0 && (
               <div className="bg-gradient-to-r from-amber-50 dark:from-amber-950/40 via-orange-50 dark:via-orange-950/30 to-amber-100/60 dark:to-amber-900/30 rounded-2xl p-5 border border-amber-200 dark:border-amber-800/60 shadow-xs space-y-3">
@@ -454,6 +609,21 @@ export const ApproachView: React.FC<ApproachViewProps> = ({
                     </div>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {/* AMA References */}
+            {currentTopic.references && currentTopic.references.length > 0 && (
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-xs space-y-2.5">
+                <div className="flex items-center space-x-2 text-slate-800 dark:text-slate-200 font-bold text-sm">
+                  <BookOpen className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                  <span>Tài Liệu Tham Khảo (Chuẩn AMA)</span>
+                </div>
+                <ol className="list-decimal list-inside space-y-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  {currentTopic.references.map((ref, rIdx) => (
+                    <li key={rIdx}>{ref}</li>
+                  ))}
+                </ol>
               </div>
             )}
           </div>

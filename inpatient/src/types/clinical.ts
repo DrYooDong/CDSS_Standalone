@@ -113,6 +113,27 @@ export interface ApproachTopic {
   }[];
   algorithm: DiagnosticAlgorithm;
   residentClinicalPearls: string[];
+  clinicalScores?: {
+    title: string;
+    source?: string;
+    headers: string[];
+    rows: string[][];
+    notes?: string[];
+  }[];
+  initialManagement?: {
+    title: string;
+    items: string[];
+    alert?: string;
+  }[];
+  clinicalCases?: {
+    title: string;
+    patientSummary: string;
+    presentation: string;
+    reasoningAndWorkup: string[];
+    diagnosis: string;
+    managementAndOutcome: string;
+  }[];
+  references?: string[];
 }
 
 export interface PersonalNote {
