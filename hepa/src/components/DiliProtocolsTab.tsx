@@ -275,7 +275,7 @@ export const DiliProtocolsTab: React.FC<DiliProtocolsTabProps> = ({ result, inpu
               >
                 {COMMON_DILI_DRUGS.map((d, i) => (
                   <option key={i} value={d.name}>
-                    {d.name} ({d.category})
+                    {d.name} (LiverTox {d.liverToxClass} — {d.typicalPattern})
                   </option>
                 ))}
               </select>

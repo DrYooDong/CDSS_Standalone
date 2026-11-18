@@ -14,6 +14,22 @@ import {
 import { SeverityAssessment } from './types';
 import { extractDrugData, calculateDose } from '../utils/drugDataExtractor';
 import { calculateRenalMetrics } from '../utils/clinicalFormulas';
+import {
+  getAvailableScoresForSite,
+  calculateCurb65,
+  calculatePsi,
+  calculateAtsCap,
+  calculateCpis,
+  calculateQsofa,
+  calculateSofaFull,
+  calculateLrinec,
+  calculateUtiEsbl,
+  calculateClifSbp,
+  calculateTg18Biliary,
+  calculateCnsMeningitis,
+  buildDefaultCurb65,
+  buildDefaultLrinec
+} from './scoring/siteScoresEngine';
 
 function runTests() {
   console.log('--- STARTING CLINICAL ENGINE TESTS ---');
@@ -198,6 +214,95 @@ function runTests() {
   const failRenal = calculateRenalMetrics(renalFailPatient, colistinData.weightRule);
   const colistinFailDose = calculateDose(colistinData, failRenal, 'standard', renalFailPatient);
   assert(colistinFailDose.selectedRowNoteVi?.includes('24 giờ') === true, 'Colistin maintenance interval delayed to 24h when CrCl <= 40');
+
+  console.log('\n[TEST GROUP 7: Site-Specific Clinical Scoring Systems]');
+  // Context-aware score filtering
+  const respAdultScores = getAvailableScoresForSite('respiratory', 'adult').map(s => s.id);
+  assert(
+    respAdultScores.includes('curb65') && respAdultScores.includes('psi') && respAdultScores.includes('ats_cap') && respAdultScores.includes('cpis'),
+    'Respiratory adult provides CURB-65, PSI, ATS/IDSA, CPIS'
+  );
+  const respPedsScores = getAvailableScoresForSite('respiratory', 'pediatric').map(s => s.id);
+  assert(!respPedsScores.includes('curb65') && respPedsScores.includes('psofa_calc'), 'Respiratory pediatric excludes adult CURB-65 and includes pSOFA');
+
+  // Auto-prefill from PatientState
+  const elderlyCurb = buildDefaultCurb65({ age: 72, gender: 'm', weight: 60, height: 165, scr: 90, scrUnit: 'umol', dialysis: 'none' });
+  assert(elderlyCurb.ageOver65 === true, 'CURB-65 auto-prefills age >= 65 from patient state');
+  const lrinecDefault = buildDefaultLrinec(failRenal);
+  assert(lrinecDefault.crOver141 === true, 'LRINEC auto-prefills Scr > 141 umol/L from patient renal metrics');
+
+  // CURB-65 calculation
+  const curbLow = calculateCurb65({ confusion: false, ureaOver7Mmol: false, rrOver30: false, bpLow: false, ageOver65: false });
+  assert(curbLow.totalScore === 0 && curbLow.riskLevel === 'low', 'CURB-65 = 0 -> Low risk');
+  const curbHigh = calculateCurb65({ confusion: true, ureaOver7Mmol: true, rrOver30: true, bpLow: false, ageOver65: true });
+  assert(curbHigh.totalScore === 4 && curbHigh.riskLevel === 'critical', 'CURB-65 = 4 -> Critical risk');
+
+  // PSI / PORT calculation
+  const psiClass1 = calculatePsi({
+    age: 35, isFemale: true, nursingHome: false, neoplasticDisease: false, liverDisease: false, chf: false,
+    cerebrovascularDisease: false, renalDisease: false, alteredMentalStatus: false, rrOver30: false, sbpUnder90: false,
+    tempAbnormal: false, hrOver125: false, phUnder735: false, bunOver30: false, naUnder130: false,
+    glucoseOver250: false, hctUnder30: false, pao2Under60: false, pleuralEffusion: false
+  });
+  assert(psiClass1.displayScoreText.includes('Class I') && psiClass1.riskLevel === 'low', 'PSI young healthy female -> Class I');
+  const psiClass5 = calculatePsi({
+    age: 78, isFemale: false, nursingHome: true, neoplasticDisease: true, liverDisease: false, chf: true,
+    cerebrovascularDisease: false, renalDisease: true, alteredMentalStatus: true, rrOver30: true, sbpUnder90: false,
+    tempAbnormal: false, hrOver125: false, phUnder735: false, bunOver30: true, naUnder130: false,
+    glucoseOver250: false, hctUnder30: false, pao2Under60: false, pleuralEffusion: false
+  });
+  assert(psiClass5.totalScore > 130 && psiClass5.displayScoreText.includes('Class V') && psiClass5.riskLevel === 'critical', 'PSI > 130 -> Class V Critical');
+
+  // ATS/IDSA Severe CAP
+  const atsSevere = calculateAtsCap({
+    invasiveMechVent: false, septicShockVasopressors: false,
+    rrOver30: true, pao2Fio2Under250: true, multilobarInfiltrates: true,
+    confusion: false, bunOver20: false, wbcUnder4000: false, pltUnder100k: false, tempUnder36: false, hypotensionFluid: false
+  });
+  assert(atsSevere.riskLevel === 'high' && atsSevere.suggestedAction?.suggestGroup === 'group_2', 'ATS/IDSA 3 minor criteria -> Severe CAP');
+
+  // CPIS > 6
+  const cpisVap = calculateCpis({
+    tempScore: 2, wbcScore: 1, secretionsScore: 2, oxygenationLow: true, xrayScore: 2, progression: false, culturePositive: 0
+  });
+  assert(cpisVap.totalScore === 9 && cpisVap.riskLevel === 'high', 'CPIS = 9 (> 6) -> High suspicion of VAP');
+
+  // qSOFA & SOFA
+  const qsofaPos = calculateQsofa({ alteredMental: true, rrOver22: true, sbpUnder100: false });
+  assert(qsofaPos.totalScore === 2 && qsofaPos.riskLevel === 'high', 'qSOFA >= 2 -> Positive');
+  const sofaSepsis = calculateSofaFull({ resp: 2, coag: 1, liver: 0, cardio: 2, cns: 0, renal: 1 });
+  assert(sofaSepsis.totalScore === 6 && sofaSepsis.suggestedAction?.suggestSofaScore === 6, 'SOFA = 6 syncs back');
+
+  // LRINEC
+  const lrinecHigh = calculateLrinec({ crpOver150: true, wbcTier: 2, hbTier: 1, naUnder135: true, crOver141: true, glucoseOver10: false });
+  assert(lrinecHigh.totalScore === 11 && lrinecHigh.riskLevel === 'critical', 'LRINEC = 11 (>= 8) -> Critical necrotizing fasciitis risk');
+
+  // UTI ESBL Tumbarello
+  const utiEsbl = calculateUtiEsbl({
+    recentHospitalization: true, transferFromHealthcare: false, recentAbx3m: true,
+    urinaryCatheter: false, ageOver70: false, maleGender: true, isPyelonephritisOrSepsis: true
+  });
+  assert(utiEsbl.totalScore === 6 && utiEsbl.suggestedAction?.suggestSpecificRisks?.includes('esbl') === true, 'Tumbarello ESBL >= 6 triggers ESBL suggestion');
+
+  // CLIF-SOFA SBP + Albumin
+  const clifSbp = calculateClifSbp({
+    liverBiliTier: 3, renalCrTier: 2, brainHeGrade: 2, coagInrTier: 2, circMapVasopressor: 2, respPao2Fio2Tier: 1, sbpScrOver1Mgdl: true
+  });
+  assert(clifSbp.totalScore === 12 && clifSbp.riskLevel === 'critical' && (clifSbp.clinicalNotesVi?.[0].includes('ALBUMIN') ?? false), 'CLIF-SOFA = 12 triggers Group 2 and Albumin guidance');
+
+  // TG18 Biliary
+  const tg18Grade3 = calculateTg18Biliary({
+    cardioVasopressor: true, neuroAltered: false, respPao2Fio2Under300: false, renalCrOver176: false, hepaticInrOver15: false, hematoPltUnder100k: false,
+    wbcAbnormal: false, highFever39: false, ageOver75: false, hyperbilirubinemia: false, hypoalbuminemia: false
+  });
+  assert(tg18Grade3.totalScore === 3 && tg18Grade3.riskLevel === 'critical', 'TG18 with organ dysfunction -> Grade III');
+
+  // CNS Meningitis (BMS + Listeria)
+  const cnsMeningitis = calculateCnsMeningitis({
+    gramStainPositive: true, csfProteinOver80: true, peripheralAncOver10k: false, csfAncOver1000: true, seizureAtPresentation: false,
+    ageOver50: true, immunocompromisedOrPregnant: false, neurosurgeryOrShunt: false
+  });
+  assert(cnsMeningitis.totalScore === 4 && (cnsMeningitis.clinicalNotesVi?.some(n => n.includes('Ampicillin')) ?? false), 'BMS = 4 + age >= 50 triggers Listeria Ampicillin warning');
 
   console.log(`\nALL ${passed}/${total} CLINICAL TESTS PASSED SUCCESSFULLY!`);
 }

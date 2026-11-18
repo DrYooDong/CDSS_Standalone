@@ -3,6 +3,8 @@
  * Based on BV Bệnh Nhiệt Đới (2026) & Quyết định 5631/QĐ-BYT (2020)
  */
 
+import type { ScoreCalculationResult } from './scoring/scoringTypes';
+
 export type Population = 'adult' | 'pediatric';
 
 export type InfectionSite = 
@@ -254,4 +256,5 @@ export interface SelectionWizardState {
   checkedStopCriteriaIds: string[];
   checkedIvToPoCriteriaIds: string[];
   daysOnAntibiotic: number;
+  calculatedScores?: Record<string, ScoreCalculationResult>;
 }

@@ -3106,7 +3106,7 @@ var EcgCDSSController = class {
     const pAmpMm = (pAmpMv * 10).toFixed(1);
     const isPNormal = pDurMs < 120 && pAmpMv < 0.25 && pAmpMv > -0.05;
     const prDurMs = m.prInterval;
-    const prElevMv = leadData.prSegment.elevation || 0;
+    const prElevMv = leadData.prSegment.deviation || 0;
     const isPrNormal = prDurMs >= 120 && prDurMs <= 200 && Math.abs(prElevMv) < 0.05;
     const qDurMs = Math.round((leadData.qWave.dur || 0.02) * 1e3);
     const qAmpMv = Math.abs(leadData.qWave.amp || 0);
@@ -3572,8 +3572,8 @@ var EcgCDSSController = class {
     ctx.restore();
     ctx.fillStyle = "#dc2626";
     for (const pt of poincare.points) {
-      const px = toX(pt.rrCurrent);
-      const py = toY(pt.rrNext);
+      const px = toX(pt.rrN);
+      const py = toY(pt.rrN1);
       if (px >= padding && px <= w - padding && py >= padding && py <= h - padding) {
         ctx.beginPath();
         ctx.arc(px, py, 2.5, 0, Math.PI * 2);
@@ -3614,18 +3614,20 @@ var EcgCDSSController = class {
     const padX = 25;
     const centerY = h * 0.55;
     const plotW = w - padX * 2;
-    const maxT = points[points.length - 1].timeSec;
+    const minT = points[0].timeMs;
+    const maxT = points[points.length - 1].timeMs;
+    const spanT = Math.max(1, maxT - minT);
     const scaleY = 70;
-    const toX = (t) => padX + t / maxT * plotW;
+    const toX = (t) => padX + (t - minT) / spanT * plotW;
     const toY = (v) => centerY - v * scaleY;
     ctx.fillStyle = "rgba(239, 68, 68, 0.15)";
     ctx.beginPath();
-    ctx.moveTo(toX(points[0].timeSec), toY(points[0].meanVoltage + points[0].stdDev));
+    ctx.moveTo(toX(points[0].timeMs), toY(points[0].upperMv));
     for (let i = 1; i < points.length; i++) {
-      ctx.lineTo(toX(points[i].timeSec), toY(points[i].meanVoltage + points[i].stdDev));
+      ctx.lineTo(toX(points[i].timeMs), toY(points[i].upperMv));
     }
     for (let i = points.length - 1; i >= 0; i--) {
-      ctx.lineTo(toX(points[i].timeSec), toY(points[i].meanVoltage - points[i].stdDev));
+      ctx.lineTo(toX(points[i].timeMs), toY(points[i].lowerMv));
     }
     ctx.closePath();
     ctx.fill();
@@ -3640,9 +3642,9 @@ var EcgCDSSController = class {
     ctx.strokeStyle = "#b91c1c";
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(toX(points[0].timeSec), toY(points[0].meanVoltage));
+    ctx.moveTo(toX(points[0].timeMs), toY(points[0].meanMv));
     for (let i = 1; i < points.length; i++) {
-      ctx.lineTo(toX(points[i].timeSec), toY(points[i].meanVoltage));
+      ctx.lineTo(toX(points[i].timeMs), toY(points[i].meanMv));
     }
     ctx.stroke();
   }

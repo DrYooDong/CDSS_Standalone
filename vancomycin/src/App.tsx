@@ -77,7 +77,8 @@ export default function App() {
     troughConcentration: 11.5,
     troughTimeBeforeNextHours: 0.5,
     steadyStateConcentration: 22.0,
-    currentContinuousDailyDoseMg: 2000
+    continuousDailyDoseMg: 2000,
+    continuousRateMgPerHour: Math.round(2000 / 24)
   });
 
   // Calculate Renal & Body Metrics
@@ -153,7 +154,8 @@ export default function App() {
       troughConcentration: undefined,
       troughTimeBeforeNextHours: 0.5,
       steadyStateConcentration: undefined,
-      currentContinuousDailyDoseMg: 2000
+      continuousDailyDoseMg: 2000,
+      continuousRateMgPerHour: Math.round(2000 / 24)
     });
   };
 
@@ -180,7 +182,8 @@ export default function App() {
       setTdmInput((prev) => ({
         ...prev,
         regimenType: 'continuous',
-        currentContinuousDailyDoseMg: 2500,
+        continuousDailyDoseMg: 2500,
+        continuousRateMgPerHour: Math.round(2500 / 24),
         steadyStateConcentration: 23.5
       }));
     } else if (sampleType === 'ckd_camau') {
@@ -274,7 +277,6 @@ export default function App() {
       const daily = newDose <= 200 ? newDose * 24 : newDose;
       setTdmInput((prev) => ({
         ...prev,
-        currentContinuousDailyDoseMg: daily,
         continuousDailyDoseMg: daily,
         continuousRateMgPerHour: Math.round(daily / 24)
       }));

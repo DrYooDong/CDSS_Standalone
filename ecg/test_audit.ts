@@ -98,6 +98,31 @@ let totalAuditedMetrics = 0;
 let matchingMetrics = 0;
 let rulePassCount = 0;
 
+// Expected primary diagnosis keyword per case to prevent silent clinical misdiagnosis
+const EXPECTED_DIAGNOSIS_KEYWORDS: Record<string, string[]> = {
+  'case-stemi-anterior': ['Anterior STEMI', 'Thành Trước'],
+  'case-stemi-inferior': ['Inferior STEMI', 'Thành Dưới'],
+  'case-complete-av-block': ['Độ III', 'Complete 3rd Degree AV Block'],
+  'case-afib-rvr': ['Rung Nhĩ', 'Atrial Fibrillation'],
+  'case-wpw-syndrome': ['WPW', 'Wolff - Parkinson - White'],
+  'case-ventricular-tachycardia': ['Nhịp Nhanh Thất', 'Ventricular Tachycardia'],
+  'case-hyperkalemia': ['Tăng Kali Máu', 'Hyperkalemia'],
+  'case-acute-pericarditis': ['Viêm Màng Ngoài Tim', 'Pericarditis'],
+  'case-pulmonary-embolism': ['Thuyên Tắc Phổi', 'Pulmonary Embolism'],
+  'case-digoxin-toxicity': ['Digoxin'],
+  'case-normal-ecg': ['Bình Thường'],
+  'case-lbbb': ['Bloc Nhánh Trái', 'LBBB'],
+  'case-rbbb': ['Bloc Nhánh Phải', 'RBBB'],
+  'case-lvh-strain': ['Phì Đại Thất Trái', 'LVH'],
+  'case-brugada-type1': ['Brugada Type 1'],
+  'case-torsades-de-pointes': ['Xoắn Đỉnh', 'Torsades'],
+  'case-aivr': ['AIVR', 'Nhịp Tự Thất Gia Tăng'],
+  'case-atrial-flutter': ['Cuồng Nhĩ', 'Atrial Flutter'],
+  'case-severe-hypokalemia': ['Hạ Kali Máu', 'Hypokalemia'],
+  'case-ventricular-fibrillation': ['Rung Thất', 'Ventricular Fibrillation'],
+  'case-av-block-mobitz1': ['Mobitz I', 'Wenckebach'],
+};
+
 for (const c of ECG_CASES) {
   console.log(`------------------------------------------------------------------------`);
   console.log(`[CASE ${c.id}] ${c.title} (${c.category}) — ${c.severity}`);
@@ -128,7 +153,15 @@ for (const c of ECG_CASES) {
     console.log(`  -> CHỐNG CHỈ ĐỊNH: ${conclusion.contraindications[0]}`);
   }
 
-  rulePassCount++;
+  const expectedKeywords = EXPECTED_DIAGNOSIS_KEYWORDS[c.id];
+  const matchedDiagnosis = !expectedKeywords || expectedKeywords.some(kw =>
+    conclusion.primaryDiagnosis.toLowerCase().includes(kw.toLowerCase())
+  );
+  if (matchedDiagnosis) {
+    rulePassCount++;
+  } else {
+    console.error(`  [FAIL] Expected diagnosis matching [${expectedKeywords.join(' | ')}], got "${conclusion.primaryDiagnosis}"`);
+  }
 }
 
 console.log('\n========================================================================');
@@ -139,8 +172,8 @@ console.log(` - Chỉ số đạt chuẩn/sai số sinh lý cho phép: ${matchin
 console.log(` - Đánh giá luật chẩn đoán CDSS thành công: ${rulePassCount}/${totalCases} ca`);
 console.log('========================================================================\n');
 
-if (matchingMetrics / totalAuditedMetrics < 0.85) {
-  console.error('[FAIL] Audit metric matching rate is below clinical standard 85%');
+if (matchingMetrics / totalAuditedMetrics < 0.85 || rulePassCount < totalCases) {
+  console.error('[FAIL] Audit metric matching rate < 85% or clinical rule mismatch detected');
   process.exit(1);
 } else {
   console.log('[SUCCESS] All unit tests and clinical case audits PASSED cleanly.');

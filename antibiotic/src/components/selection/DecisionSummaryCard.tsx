@@ -92,6 +92,20 @@ export const DecisionSummaryCard: React.FC<DecisionSummaryCardProps> = ({
             {sepsisSourceLabels[state.sepsisSource] || state.sepsisSource}
           </div>
         )}
+
+        {state.calculatedScores && Object.values(state.calculatedScores).length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-2 pl-5">
+            {Object.values(state.calculatedScores).map(sc => (
+              <span
+                key={sc.scoreId}
+                className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200"
+                title={sc.riskClassVi}
+              >
+                {sc.shortName}: {sc.displayScoreText}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* 2. Risk Stratification Group */}

@@ -709,6 +709,7 @@ export function calculateBloodProducts(
       id: 'hcl',
       productName: 'Khối Hồng Cầu Lắng (HCL)',
       indication: 'Sốc không cải thiện sau bù dịch 40-60 ml/kg kèm Hct < 35% hoặc Hct giảm nhanh > 20% so với ban đầu, hoặc xuất huyết tiêu hóa / phủ tạng ồ ạt.',
+      doseFormula: '5 - 10 ml/kg truyền tĩnh mạch (chỉnh liều nâng Hct mục tiêu 35 - 40%)',
       calculatedDose: isAdult
         ? `${hclMinMl} - ${hclMaxMl} ml (~${Math.max(1, Math.round(hclMinMl / 250))} - ${Math.max(1, Math.ceil(hclMaxMl / 250))} túi 250ml)`
         : `${hclMinMl} - ${hclMaxMl} ml (truyền máy / bơm tiêm điện)`,

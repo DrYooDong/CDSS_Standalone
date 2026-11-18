@@ -809,7 +809,7 @@ export const DENGUE_REFRACTORY_SCENARIOS: Record<string, RefractoryScenarioDef> 
   }
 };
 
-export const DENGUE_NON_RESPONSE_SCENARIOS = {
+export const DENGUE_NON_RESPONSE_SCENARIOS: Record<string, RefractoryScenarioDef> = {
   ...DENGUE_REFRACTORY_SCENARIOS,
   cpt_escalation: DENGUE_REFRACTORY_SCENARIOS.hct_high_cpt
 };

@@ -1519,6 +1519,7 @@ function calculateBloodProducts(patient, effectiveWeightKg) {
       id: "hcl",
       productName: "Kh\u1ED1i H\u1ED3ng C\u1EA7u L\u1EAFng (HCL)",
       indication: "S\u1ED1c kh\xF4ng c\u1EA3i thi\u1EC7n sau b\xF9 d\u1ECBch 40-60 ml/kg k\xE8m Hct < 35% ho\u1EB7c Hct gi\u1EA3m nhanh > 20% so v\u1EDBi ban \u0111\u1EA7u, ho\u1EB7c xu\u1EA5t huy\u1EBFt ti\xEAu h\xF3a / ph\u1EE7 t\u1EA1ng \u1ED3 \u1EA1t.",
+      doseFormula: "5 - 10 ml/kg truy\u1EC1n t\u0129nh m\u1EA1ch (ch\u1EC9nh li\u1EC1u n\xE2ng Hct m\u1EE5c ti\xEAu 35 - 40%)",
       calculatedDose: isAdult ? `${hclMinMl} - ${hclMaxMl} ml (~${Math.max(1, Math.round(hclMinMl / 250))} - ${Math.max(1, Math.ceil(hclMaxMl / 250))} t\xFAi 250ml)` : `${hclMinMl} - ${hclMaxMl} ml (truy\u1EC1n m\xE1y / b\u01A1m ti\xEAm \u0111i\u1EC7n)`,
       thresholdMet: !!(patient.currentHctPercent && patient.currentHctPercent <= 35) || !!patient.massiveBleeding,
       targetClinical: "Duy tr\xEC Hct m\u1EE5c ti\xEAu t\u1EEB 35% \u0111\u1EBFn 40%, c\u1EA3i thi\u1EC7n huy\u1EBFt \u0111\u1ED9ng, chi \u1EA5m, m\u1EA1ch ch\u1EADm l\u1EA1i.",
@@ -6070,14 +6071,16 @@ ${r.emrOrderText || ""}" aria-label="Copy Y L\u1EC7nh C\u1EEF ${r.stepIndex}">
         });
       });
     }
-    const totalVol = isColloid ? colloidPlan.totalScheduleMl : totalVolumeMl;
-    const totalDur = isColloid ? colloidPlan.totalDurationHours || 8 : totalDurationHours;
+    const colloidScheduleVol = isColloid ? colloidPlan.rows.reduce((sum, r) => sum + r.stepVolumeMl, 0) : 0;
+    const colloidScheduleDur = isColloid ? colloidPlan.rows.reduce((sum, r) => sum + r.durationHours, 0) : 0;
+    const totalVol = isColloid ? colloidScheduleVol : totalVolumeMl;
+    const totalDur = isColloid ? colloidScheduleDur || 8 : totalDurationHours;
     const mlPerKg = Math.round(totalVol / weightResult.adjustedWeightKg);
     let bottlesSummary = "";
     if (isColloid) {
       const colloidShort = this.selectedColloidType === "hes200" ? "6% HES 200" : "Dextran 40";
-      const cBot = Math.ceil(colloidPlan.totalColloidMl / 500);
-      const cryBot = Math.max(0, Math.ceil((colloidPlan.totalScheduleMl - colloidPlan.totalColloidMl) / 500));
+      const cBot = Math.ceil(colloidPlan.totalColloidVolumeMl / 500);
+      const cryBot = Math.max(0, Math.ceil((colloidScheduleVol - colloidPlan.totalColloidVolumeMl) / 500));
       bottlesSummary = `${cBot} chai ${colloidShort} (500ml) + ${cryBot} chai \u0110i\u1EC7n gi\u1EA3i (${plan.fluidInfo?.name || "Ringer Lactate"})`;
     } else {
       const b500 = Math.ceil(totalVolumeMl / 500);

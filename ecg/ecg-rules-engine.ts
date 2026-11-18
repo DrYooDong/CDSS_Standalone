@@ -130,14 +130,73 @@ export class EcgRulesEngine {
       }
     }
 
-    // Check Brugada Type 1
-    const isBrugadaType1 = (leads["V1"]?.stSegment?.slope === "coved" && (leads["V1"]?.stSegment?.elevation || 0) >= 0.20) ||
-                           (leads["V2"]?.stSegment?.slope === "coved" && (leads["V2"]?.stSegment?.elevation || 0) >= 0.20);
+    // Check Brugada Type 1: Coved ST elevation >= 2mm in V1/V2 followed by negative T wave,
+    // without widespread lateral/inferior ischemic changes or reciprocal ST depression
+    const hasBrugadaV1 =
+      leads["V1"]?.stSegment?.slope === "coved" &&
+      (leads["V1"]?.stSegment?.elevation || 0) >= 0.20 &&
+      ((leads["V1"]?.tWave?.amp || 0) < 0 || leads["V1"]?.tWave?.shape === "inverted");
+    const hasBrugadaV2 =
+      leads["V2"]?.stSegment?.slope === "coved" &&
+      (leads["V2"]?.stSegment?.elevation || 0) >= 0.20 &&
+      ((leads["V2"]?.tWave?.amp || 0) < 0 || leads["V2"]?.tWave?.shape === "inverted");
+    const hasIschemicSpreadOrReciprocal =
+      (stElevations["V4"] || 0) >= 0.15 ||
+      (stElevations["V5"] || 0) >= 0.15 ||
+      (stDepressions["II"] || 0) >= 0.10 ||
+      (stDepressions["III"] || 0) >= 0.10 ||
+      (stDepressions["aVF"] || 0) >= 0.10;
+    const isBrugadaType1 = (hasBrugadaV1 || hasBrugadaV2) && !hasIschemicSpreadOrReciprocal;
+
+    // Check Acute Pericarditis: Diffuse concave/upsloping ST elevation + PR depression, no non-aVR reciprocal depression
+    const elevLeadCount = Object.keys(stElevations).filter(l => l !== "aVR").length;
+    const hasPrDepression = ["I", "II", "V2", "V3", "V4", "V5", "V6"].some(
+      l => (leads[l as LeadName]?.prSegment?.deviation || 0) <= -0.05
+    );
+    const hasNonAvrReciprocalDepression = Object.keys(stDepressions).some(l => l !== "aVR");
+    const isAcutePericarditis = elevLeadCount >= 5 && hasPrDepression && !hasNonAvrReciprocalDepression;
+
+    // Check Digoxin scooped ST ("Salvador Dali mustache")
+    const scoopedLeadsCount = (["I", "II", "aVF", "V4", "V5", "V6"] as LeadName[]).filter(
+      l => leads[l]?.stSegment?.slope === "scooped" && (leads[l]?.stSegment?.elevation || 0) <= -0.10
+    ).length;
+    const isDigoxinToxicity = metrics.rhythmType.includes("Digoxin") || scoopedLeadsCount >= 2;
 
     // Check RBBB / LBBB
     const isWideQrs = metrics.qrsDuration >= 120;
     const isRbbb = isWideQrs && (leads["V1"]?.rPrimeWave?.amp || 0) > 0;
     const isLbbb = isWideQrs && (leads["V5"]?.rWave?.dur || 0) >= 0.05 && !isRbbb;
+
+    // Check Ventricular Tachycardia (VT) & AIVR & WPW & Complete AV Block & AFib & PE
+    const isVt =
+      metrics.rhythmType.includes("Nhịp nhanh thất") ||
+      (isWideQrs &&
+        metrics.heartRate >= 120 &&
+        !metrics.rhythmType.includes("Rung nhĩ") &&
+        !metrics.rhythmType.includes("Cuồng nhĩ") &&
+        (axis.angleDegrees <= -90 || axis.angleDegrees >= 120));
+    const isCompleteAvBlock =
+      metrics.rhythmType.includes("độ III") ||
+      metrics.rhythmType.includes("Phân ly nhĩ thất") ||
+      (metrics.heartRate <= 45 && metrics.prInterval === 0 && !metrics.rhythmType.includes("Rung nhĩ"));
+    const isWpw =
+      metrics.rhythmType.includes("WPW") ||
+      (metrics.prInterval > 0 && metrics.prInterval < 120 && metrics.qrsDuration >= 110);
+    const isAfib =
+      metrics.rhythmType.includes("Rung nhĩ") ||
+      (metrics.regularity === "Loạn nhịp hoàn toàn" && metrics.prInterval === 0);
+    const isAivr =
+      metrics.rhythmType.includes("AIVR") ||
+      metrics.rhythmType.includes("Nhịp tự thất gia tăng") ||
+      (isWideQrs && metrics.heartRate >= 50 && metrics.heartRate <= 110 && metrics.prInterval === 0 && !isAfib);
+    const hasS1Q3T3 =
+      (leads["I"]?.sWave?.amp || 0) <= -0.5 &&
+      (leads["III"]?.qWave?.amp || 0) <= -0.2 &&
+      (leads["III"]?.tWave?.shape === "inverted" || (leads["III"]?.tWave?.amp || 0) < 0);
+    const hasRvStrainT = (["V1", "V2", "V3"] as LeadName[]).filter(
+      l => leads[l]?.tWave?.shape === "inverted" || (leads[l]?.tWave?.amp || 0) < 0
+    ).length >= 2;
+    const isPulmonaryEmbolism = hasS1Q3T3 && hasRvStrainT;
 
     // -------------------------------------------------------------------------
     // DECISION SYNTHESIS & CLINICAL TRIAGE HIERARCHY
@@ -191,6 +250,28 @@ export class EcgRulesEngine {
           'Tăng tần số tim bằng Isoproterenol hoặc tạo nhịp tạm thời vượt tần số (Overdrive pacing > 90-100 l/p) để rút ngắn khoảng QT.'
         ],
         differentialDiagnoses: ['Nhịp nhanh thất đa hình thái do thiếu máu cơ tim', 'Rung thất'],
+        guidelineReference: '2022 ESC Guidelines for the management of patients with ventricular arrhythmias'
+      };
+    }
+
+    if (isVt) {
+      return {
+        primaryDiagnosis: 'Cơn Nhịp Nhanh Thất Đơn Dạng (Monomorphic Ventricular Tachycardia - VT)',
+        confidenceScore: 98,
+        culpritVesselOrEtiology: 'Vòng vào lại quanh mô sẹo cơ tim thất / Thiếu máu cơ tim nặng',
+        anatomicalTerritory: 'Tâm thất',
+        urgencyLevel: 'CẤP CỨU ĐỎ (NGUY KỊCH)',
+        diagnosticEvidences: [
+          { lead: 'V1', parameter: 'QRS Rộng & Trục Vô Định', measuredValue: `HR ${metrics.heartRate} bpm, QRS ${metrics.qrsDuration} ms, Trục ${axis.angleDegrees}°`, threshold: 'QRS >= 120 ms, đồng dạng V1-V6 / Trục Tây Bắc', significance: 'Tiêu chuẩn Brugada dương tính cho Nhịp nhanh thất.' }
+        ],
+        reciprocalFindings: [],
+        contraindications: ['CHỐNG CHỈ ĐỊNH Adenosine, Verapamil, Diltiazem (nguy cơ tụt huyết áp trụy mạch dẫn tới rung thất).'],
+        urgentActionPlan: [
+          'Nếu rối loạn huyết động (tụt HA, choáng ngất, đau ngực): Sốc điện đồng bộ ngay lập tức (100J - 200J).',
+          'Nếu huyết động tạm ổn: Amiodarone 150mg TM trong 10 phút, sau đó truyền duy trì 1mg/phút.',
+          'Kiểm tra và điều chỉnh điện giải (K+, Mg2+), đánh giá chỉ định cấy máy phá rung ICD.'
+        ],
+        differentialDiagnoses: ['Nhịp nhanh trên thất (SVT) dẫn truyền lệch hướng', 'AVRT ngược chiều (WPW)'],
         guidelineReference: '2022 ESC Guidelines for the management of patients with ventricular arrhythmias'
       };
     }
@@ -275,7 +356,28 @@ export class EcgRulesEngine {
       };
     }
 
-    // 3. ISCHEMIA & ACUTE CORONARY SYNDROMES (LMCA, Anterior STEMI, Inferior STEMI)
+    // 3. PERICARDITIS & ISCHEMIA / ACUTE CORONARY SYNDROMES (Pericarditis, LMCA, Inferior/Anterior STEMI)
+    if (isAcutePericarditis) {
+      return {
+        primaryDiagnosis: 'Viêm Màng Ngoài Tim Cấp (Acute Pericarditis Stage 1)',
+        confidenceScore: 97,
+        culpritVesselOrEtiology: 'Phản ứng viêm màng ngoài tim lan tỏa (do virus / tự miễn)',
+        anatomicalTerritory: 'Lan tỏa toàn bộ màng ngoài tim',
+        urgencyLevel: 'CẢNH GIÁC CAO (VÀNG)',
+        diagnosticEvidences: [
+          { lead: 'II', parameter: 'ST chênh lên lõm & PR chênh xuống', measuredValue: `ST chênh lên lõm ở ${elevLeadCount} đạo trình, PR chênh xuống`, threshold: 'ST lõm lan tỏa >= 5 đạo trình, không có soi gương', significance: 'Đặc trưng Viêm màng ngoài tim cấp giai đoạn 1.' }
+        ],
+        reciprocalFindings: ['aVR: PR chênh lên và ST chênh xuống đối nghịch điển hình.'],
+        contraindications: ['CHỐNG CHỈ ĐỊNH tiêu sợi huyết (nguy cơ tràn máu màng tim gây chèn ép tim tử vong)!'],
+        urgentActionPlan: [
+          'Kháng viêm NSAIDs liều cao (Ibuprofen 600mg x 3 lần/ngày hoặc Aspirin) phối hợp Colchicine 0.5mg x 1-2 lần/ngày.',
+          'Siêu âm tim cấp cứu tại giường kiểm tra tràn dịch màng ngoài tim / dấu hiệu chèn ép tim.'
+        ],
+        differentialDiagnoses: ['Nhồi máu cơ tim cấp (STEMI)', 'Tái cực sớm lành tính (BER)'],
+        guidelineReference: '2015 ESC Guidelines for the diagnosis and management of pericardial diseases'
+      };
+    }
+
     if (isAvrStemi) {
       evidences.push({
         lead: 'aVR',
@@ -376,7 +478,72 @@ export class EcgRulesEngine {
       };
     }
 
-    // 4. ATRIAL FLUTTER & SUPRAVENTRICULAR ARRHYTHMIAS
+    // 4. HIGH-GRADE AV BLOCK, TOXICITIES, PRE-EXCITATION & SUPRAVENTRICULAR ARRHYTHMIAS
+    if (isCompleteAvBlock) {
+      return {
+        primaryDiagnosis: 'Bloc Nhĩ - Thất Hoàn Toàn Độ III (Complete 3rd Degree AV Block)',
+        confidenceScore: 99,
+        culpritVesselOrEtiology: 'Phân ly nhĩ thất hoàn toàn / Tổn thương hệ thống dẫn truyền His-Purkinje',
+        anatomicalTerritory: 'Nút nhĩ thất / Bó His',
+        urgencyLevel: 'CẤP CỨU ĐỎ (NGUY KỊCH)',
+        diagnosticEvidences: [
+          { lead: 'II', parameter: 'Phân ly nhĩ thất', measuredValue: `Tần số thất ${metrics.heartRate} bpm, QRS ${metrics.qrsDuration} ms`, threshold: 'Sóng P và QRS đập hoàn toàn độc lập', significance: 'Nhịp thoát thất chậm, nguy cơ ngừng tim Stokes-Adams.' }
+        ],
+        reciprocalFindings: [],
+        contraindications: ['CHỐNG CHỈ ĐỊNH tuyệt đối các thuốc ức chế nút AV (Chẹn Beta, Verapamil, Diltiazem, Digoxin).'],
+        urgentActionPlan: [
+          'Đặt máy tạo nhịp tạm thời (qua da hoặc qua tĩnh mạch) ngay lập tức.',
+          'Chuẩn bị Isoproterenol hoặc Adrenaline truyền TM nếu chưa kịp tạo nhịp.',
+          'Hội chẩn tim mạch cấy máy tạo nhịp vĩnh viễn (DDD/VVI).'
+        ],
+        differentialDiagnoses: ['Bloc nhĩ thất độ II cao độ', 'Nhịp chậm xoang nặng'],
+        guidelineReference: '2018 ACC/AHA/HRS Guideline on the Evaluation and Management of Patients With Bradycardia'
+      };
+    }
+
+    if (isDigoxinToxicity) {
+      return {
+        primaryDiagnosis: 'Ngộ Độc Thuốc Trợ Tim Digoxin (Digoxin Toxicity)',
+        confidenceScore: 97,
+        culpritVesselOrEtiology: 'Tích lũy Digoxin quá liều (thường kèm hạ Kali máu / suy thận)',
+        anatomicalTerritory: 'Lan tỏa (chuyển đạo có R cao: DII, V4-V6)',
+        urgencyLevel: 'CẢNH GIÁC CAO (VÀNG)',
+        diagnosticEvidences: [
+          { lead: 'V5', parameter: 'ST chênh xuống hình đáy chén', measuredValue: `ST lõm dạng scooped (${scoopedLeadsCount} đạo trình), QTc ${qtc.bazett} ms`, threshold: 'ST đáy chén Salvador Dali + QT ngắn', significance: 'Dấu hiệu kinh điển của nhiễm độc Digitalis.' }
+        ],
+        reciprocalFindings: [],
+        contraindications: ['Tránh sốc điện chuyển nhịp trừ khi ngừng tuần hoàn; tuyệt đối không bù Canxi TM nhanh.'],
+        urgentActionPlan: [
+          'Ngừng ngay Digoxin và thuốc lợi tiểu thải Kali.',
+          'Bù Kali (mục tiêu 4.0 - 4.5 mEq/L) và Magie sulfate tĩnh mạch.',
+          'Chỉ định kháng thể đặc hiệu DigiFab (Digoxin Immune Fab) nếu rối loạn nhịp nặng hoặc tăng Kali máu.'
+        ],
+        differentialDiagnoses: ['Thiếu máu cơ tim dưới nội tâm mạc', 'Hạ Kali máu đơn thuần'],
+        guidelineReference: 'AHA/ACC Toxicology & Cardiac Glycoside Toxicity Guidelines'
+      };
+    }
+
+    if (isWpw) {
+      return {
+        primaryDiagnosis: 'Hội Chứng Tiền Kích Thích Wolff - Parkinson - White (WPW)',
+        confidenceScore: 98,
+        culpritVesselOrEtiology: 'Cầu nối dẫn truyền phụ nhĩ thất (Bó Kent)',
+        anatomicalTerritory: 'Đường dẫn truyền phụ nhĩ - thất',
+        urgencyLevel: 'CẢNH GIÁC CAO (VÀNG)',
+        diagnosticEvidences: [
+          { lead: 'V1', parameter: 'PR ngắn & Sóng Delta', measuredValue: `PR ${metrics.prInterval} ms, QRS ${metrics.qrsDuration} ms`, threshold: 'PR < 120 ms kèm sóng Delta và QRS >= 110 ms', significance: 'Tiền kích thích thất qua đường phụ Bó Kent.' }
+        ],
+        reciprocalFindings: [],
+        contraindications: ['CHỐNG CHỈ ĐỊNH Digoxin, Verapamil, Diltiazem nếu xuất hiện Rung nhĩ kèm WPW (nguy cơ rung thất đột tử).'],
+        urgentActionPlan: [
+          'Hội chẩn điện sinh lý tim triệt đốt cầu phụ qua catheter (RF Catheter Ablation).',
+          'Nếu đang có cơn nhịp nhanh vòng vào lại: dùng Procainamide/Amiodarone hoặc sốc điện nếu huyết động không ổn.'
+        ],
+        differentialDiagnoses: ['Bloc nhánh phải/trái', 'Hội chứng Lown-Ganong-Levine (LGL)'],
+        guidelineReference: '2019 ESC Guidelines for the management of patients with supraventricular tachycardia'
+      };
+    }
+
     if (metrics.rhythmType.includes("Cuồng nhĩ")) {
       return {
         primaryDiagnosis: 'Cuồng Nhĩ Điển Hình Dẫn Truyền 2:1 (Atrial Flutter with 2:1 Conduction)',
@@ -399,7 +566,49 @@ export class EcgRulesEngine {
       };
     }
 
-    // 5. ATRIOVENTRICULAR BLOCKS (Mobitz I / Wenckebach / Mobitz II / AVB 3)
+    if (isAfib) {
+      return {
+        primaryDiagnosis: 'Rung Nhĩ Đáp Ứng Thất Nhanh (Atrial Fibrillation)',
+        confidenceScore: 98,
+        culpritVesselOrEtiology: 'Hoạt động điện học hỗn loạn đa ổ trong tâm nhĩ / Tĩnh mạch phổi',
+        anatomicalTerritory: 'Tâm nhĩ',
+        urgencyLevel: 'CẢNH GIÁC CAO (VÀNG)',
+        diagnosticEvidences: [
+          { lead: 'V1', parameter: 'Mất sóng P & R-R loạn nhịp hoàn toàn', measuredValue: `HR ${metrics.heartRate} bpm, ${metrics.regularity}`, threshold: 'R-R không đều hoàn toàn, mất sóng P, có sóng f', significance: 'Nguy cơ cao hình thành huyết khối tiểu nhĩ trái gây đột quỵ.' }
+        ],
+        reciprocalFindings: [],
+        contraindications: ['Không chuyển nhịp bằng thuốc/sốc điện nếu khởi phát > 48h mà chưa loại trừ huyết khối tiểu nhĩ trái (TEE) hoặc chưa dùng kháng đông đủ 3 tuần.'],
+        urgentActionPlan: [
+          'Kiểm soát tần số thất bằng Metoprolol hoặc Diltiazem tĩnh mạch nếu HR > 110 bpm.',
+          'Đánh giá CHA2DS2-VASc và HAS-BLED để khởi trị thuốc kháng đông (DOAC).'
+        ],
+        differentialDiagnoses: ['Cuồng nhĩ dẫn truyền thay đổi', 'Nhịp nhanh nhĩ đa ổ (MAT)'],
+        guidelineReference: '2024 ESC Guidelines for the management of atrial fibrillation'
+      };
+    }
+
+    if (isAivr) {
+      return {
+        primaryDiagnosis: 'Nhịp Tự Thất Gia Tăng (Accelerated Idioventricular Rhythm - AIVR)',
+        confidenceScore: 95,
+        culpritVesselOrEtiology: 'Rối loạn nhịp tái tưới máu lành tính sau can thiệp mạch vành / Tăng tính tự động thất',
+        anatomicalTerritory: 'Tâm thất',
+        urgencyLevel: 'THEO DÕI THƯỜNG (XANH)',
+        diagnosticEvidences: [
+          { lead: 'II', parameter: 'QRS rộng đều tần số 50-110 bpm', measuredValue: `HR ${metrics.heartRate} bpm, QRS ${metrics.qrsDuration} ms, phân ly nhĩ thất`, threshold: 'QRS >= 120 ms, HR 50 - 110 bpm', significance: 'Dấu hiệu tái tưới máu mạch vành thành công, thường tự giới hạn.' }
+        ],
+        reciprocalFindings: [],
+        contraindications: ['CHỐNG CHỈ ĐỊNH Lidocaine, Amiodarone (có thể ức chế ổ chủ nhịp thoát duy nhất gây vô tâm thu)!'],
+        urgentActionPlan: [
+          'Theo dõi sát trên monitor; hầu hết tự hết khi nút xoang tăng tần số trở lại.',
+          'Chỉ xử trí bằng Atropine nếu mất đồng bộ nhĩ-thất gây tụt huyết áp.'
+        ],
+        differentialDiagnoses: ['Nhịp nhanh thất (VT)', 'Bloc nhánh trái (LBBB)'],
+        guidelineReference: 'AHA/ACC Post-Reperfusion Arrhythmia Management'
+      };
+    }
+
+    // 5. ATRIOVENTRICULAR BLOCKS (Mobitz I / Wenckebach)
     if (metrics.rhythmType.includes("Mobitz I") || metrics.rhythmType.includes("Wenckebach")) {
       return {
         primaryDiagnosis: 'Bloc Nhĩ Thất Độ II Mobitz I (Chu Kỳ Wenckebach)',
@@ -421,29 +630,29 @@ export class EcgRulesEngine {
       };
     }
 
-    // 6. VENTRICULAR HYPERTROPHY (LVH with Strain)
-    if (hypertrophy.isSokolowPositive || hypertrophy.isCornellPositive) {
+    // 6. PULMONARY EMBOLISM (S1Q3T3 & RV Strain)
+    if (isPulmonaryEmbolism) {
       return {
-        primaryDiagnosis: 'Phì Đại Thất Trái (Left Ventricular Hypertrophy - LVH) Kèm Quá Tải Thất (Strain Pattern)',
-        confidenceScore: 94,
-        culpritVesselOrEtiology: 'Tăng gánh áp lực thất trái mạn tính do Tăng huyết áp hoặc Hẹp van động mạch chủ',
-        anatomicalTerritory: 'Thành tự do và mỏm tâm thất trái',
-        urgencyLevel: 'CẢNH GIÁC CAO (VÀNG)',
+        primaryDiagnosis: 'Nghi Ngờ Thuyên Tắc Phổi Cấp (Acute Pulmonary Embolism - S1Q3T3 & RV Strain)',
+        confidenceScore: 95,
+        culpritVesselOrEtiology: 'Tăng áp động mạch phổi cấp tính & quá tải thất phải (thường do huyết khối DVT)',
+        anatomicalTerritory: 'Tâm thất phải & Động mạch phổi',
+        urgencyLevel: 'CẤP CỨU ĐỎ (NGUY KỊCH)',
         diagnosticEvidences: [
-          { lead: 'V5', parameter: 'Điện thế thất trái', measuredValue: `Sokolow-Lyon: ${hypertrophy.sokolowLyonMm} mm, Cornell: ${hypertrophy.cornellCriteriaMm} mm`, threshold: 'Sokolow-Lyon >= 35mm hoặc Cornell > 28mm nam / 20mm nữ', significance: 'Tăng khối lượng cơ tim thất trái rõ rệt.' }
+          { lead: 'III', parameter: 'Dấu hiệu McGinn-White (S1Q3T3) & T âm V1-V3', measuredValue: `HR ${metrics.heartRate} bpm, S sâu DI, Q & T âm DIII, T âm V1-V3`, threshold: 'S1Q3T3 + RV Strain V1-V4', significance: 'Phản ánh giãn và tăng gánh cấp buồng thất phải.' }
         ],
         reciprocalFindings: [],
-        contraindications: ['Không chẩn đoán nhồi máu cơ tim chỉ dựa vào ST chênh xuống dạng Strain ở V5-V6.'],
+        contraindications: ['Thận trọng bù dịch ồ ạt vì làm giãn thêm thất phải và đẩy vách liên thất chèn ép thất trái.'],
         urgentActionPlan: [
-          'Kiểm soát huyết áp tích cực theo mục tiêu ESC/ESH (thuốc ức chế men chuyển ACEi hoặc ARB giúp thoái triển phì đại cơ tim).',
-          'Siêu âm tim Doppler màu đo bề dày vách liên thất (IVS) và khối lượng cơ thất trái (LVMI).'
+          'Chụp CT động mạch phổi (CTPA) khẩn để chẩn đoán xác định.',
+          'Khởi trị kháng đông ngay (LMWH hoặc Heparin không phân đoạn); tiêu sợi huyết nếu sốc tụt huyết áp.'
         ],
-        differentialDiagnoses: ['Bệnh cơ tim phì đại (HCM)', 'Hẹp van động mạch chủ khít', 'Tim vận động viên'],
-        guidelineReference: '2023 ESH Guidelines for the management of arterial hypertension'
+        differentialDiagnoses: ['Hội chứng vành cấp', 'Tràn khí màng phổi áp lực', 'Tâm phế mạn đợt cấp'],
+        guidelineReference: '2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism'
       };
     }
 
-    // 6. Complete Bundle Branch Blocks
+    // 7. COMPLETE BUNDLE BRANCH BLOCKS (Checked before LVH voltage criteria)
     if (isRbbb) {
       return {
         primaryDiagnosis: 'Bloc Nhánh Phải Hoàn Toàn (Complete Right Bundle Branch Block - RBBB)',
@@ -477,6 +686,28 @@ export class EcgRulesEngine {
         urgentActionPlan: ['Áp dụng tiêu chuẩn Sgarbossa cải biên nếu nghi ngờ nhồi máu cơ tim đi kèm.', 'Siêu âm tim đánh giá chức năng tống máu thất trái (LVEF).'],
         differentialDiagnoses: ['Phì đại thất trái nặng', 'Nhịp tự thất'],
         guidelineReference: 'AHA/ACCF/HRS Recommendations for the Standardization and Interpretation of the ECG'
+      };
+    }
+
+    // 8. VENTRICULAR HYPERTROPHY (LVH with Strain)
+    if (hypertrophy.isSokolowLyonPositive || hypertrophy.isCornellPositive) {
+      return {
+        primaryDiagnosis: 'Phì Đại Thất Trái (Left Ventricular Hypertrophy - LVH) Kèm Quá Tải Thất (Strain Pattern)',
+        confidenceScore: 94,
+        culpritVesselOrEtiology: 'Tăng gánh áp lực thất trái mạn tính do Tăng huyết áp hoặc Hẹp van động mạch chủ',
+        anatomicalTerritory: 'Thành tự do và mỏm tâm thất trái',
+        urgencyLevel: 'CẢNH GIÁC CAO (VÀNG)',
+        diagnosticEvidences: [
+          { lead: 'V5', parameter: 'Điện thế thất trái', measuredValue: `Sokolow-Lyon: ${hypertrophy.sokolowLyonMm} mm, Cornell: ${hypertrophy.cornellCriteriaMm} mm`, threshold: 'Sokolow-Lyon >= 35mm hoặc Cornell > 28mm nam / 20mm nữ', significance: 'Tăng khối lượng cơ tim thất trái rõ rệt.' }
+        ],
+        reciprocalFindings: [],
+        contraindications: ['Không chẩn đoán nhồi máu cơ tim chỉ dựa vào ST chênh xuống dạng Strain ở V5-V6.'],
+        urgentActionPlan: [
+          'Kiểm soát huyết áp tích cực theo mục tiêu ESC/ESH (thuốc ức chế men chuyển ACEi hoặc ARB giúp thoái triển phì đại cơ tim).',
+          'Siêu âm tim Doppler màu đo bề dày vách liên thất (IVS) và khối lượng cơ thất trái (LVMI).'
+        ],
+        differentialDiagnoses: ['Bệnh cơ tim phì đại (HCM)', 'Hẹp van động mạch chủ khít', 'Tim vận động viên'],
+        guidelineReference: '2023 ESH Guidelines for the management of arterial hypertension'
       };
     }
 

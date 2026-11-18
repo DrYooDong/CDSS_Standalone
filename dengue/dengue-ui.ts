@@ -4421,15 +4421,17 @@ export class DengueCDSSController {
     }
 
     // 4. Tổng kết số liệu
-    const totalVol = isColloid ? colloidPlan.totalScheduleMl : totalVolumeMl;
-    const totalDur = isColloid ? (colloidPlan.totalDurationHours || 8) : totalDurationHours;
+    const colloidScheduleVol = isColloid ? colloidPlan.rows.reduce((sum, r) => sum + r.stepVolumeMl, 0) : 0;
+    const colloidScheduleDur = isColloid ? colloidPlan.rows.reduce((sum, r) => sum + r.durationHours, 0) : 0;
+    const totalVol = isColloid ? colloidScheduleVol : totalVolumeMl;
+    const totalDur = isColloid ? (colloidScheduleDur || 8) : totalDurationHours;
     const mlPerKg = Math.round(totalVol / weightResult.adjustedWeightKg);
 
     let bottlesSummary = '';
     if (isColloid) {
       const colloidShort = this.selectedColloidType === 'hes200' ? '6% HES 200' : 'Dextran 40';
-      const cBot = Math.ceil(colloidPlan.totalColloidMl / 500);
-      const cryBot = Math.max(0, Math.ceil((colloidPlan.totalScheduleMl - colloidPlan.totalColloidMl) / 500));
+      const cBot = Math.ceil(colloidPlan.totalColloidVolumeMl / 500);
+      const cryBot = Math.max(0, Math.ceil((colloidScheduleVol - colloidPlan.totalColloidVolumeMl) / 500));
       bottlesSummary = `${cBot} chai ${colloidShort} (500ml) + ${cryBot} chai Điện giải (${plan.fluidInfo?.name || 'Ringer Lactate'})`;
     } else {
       const b500 = Math.ceil(totalVolumeMl / 500);

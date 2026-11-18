@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   SelectionWizardState,
   Population,
@@ -9,6 +9,11 @@ import {
   CultureStatus,
   SusceptibilityStatus
 } from '../../selection/types';
+import {
+  ClinicalScoreId,
+  ScoreCalculationResult,
+  ScoreSuggestedAction
+} from '../../selection/scoring/scoringTypes';
 import { classifyRiskGroup } from '../../selection/engine';
 import { StepAssessmentAndRegimens } from './StepAssessmentAndRegimens';
 import { StepReassess } from './StepReassess';
@@ -118,6 +123,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     'ps_devices',
     'mrsa_cvc_foley'
   ]);
+  const [savedScores, setSavedScores] = useState<Partial<Record<ClinicalScoreId, ScoreCalculationResult>>>({});
 
   // 48-72h State
   const [clinicalResponse, setClinicalResponse] = useState<ClinicalResponseStatus>('improved');
@@ -204,6 +210,54 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     }
   };
 
+  const handleSaveScoreResult = useCallback((result: ScoreCalculationResult) => {
+    setSavedScores(prev => {
+      const existing = prev[result.scoreId];
+      if (
+        existing &&
+        existing.totalScore === result.totalScore &&
+        existing.displayScoreText === result.displayScoreText &&
+        existing.riskClassVi === result.riskClassVi
+      ) {
+        return prev;
+      }
+      return { ...prev, [result.scoreId]: result };
+    });
+  }, []);
+
+  const handleApplyScoreSuggestion = useCallback(
+    (action: ScoreSuggestedAction) => {
+      if (action.suggestSofaScore !== undefined) {
+        setSofaScore(action.suggestSofaScore);
+      }
+      if (action.suggestPsofaScore !== undefined) {
+        setPsofaScore(action.suggestPsofaScore);
+      }
+      if (action.suggestClifSofaScore !== undefined) {
+        setClifSofaScore(action.suggestClifSofaScore);
+        setIsChronicLiverDisease(true);
+      }
+      if (action.suggestGroup === 'group_1') {
+        setCheckedGeneralRiskIds([]);
+        setCheckedSpecificRisks([]);
+        setCheckedSpecificRiskFactorIds([]);
+        setSofaScore(0);
+        setPsofaScore(0);
+        setClifSofaScore(0);
+      } else if (action.suggestGroup === 'group_2') {
+        setCheckedGeneralRiskIds(prev =>
+          prev.length > 0 ? prev : ['hospital_90d']
+        );
+      }
+      if (action.suggestSpecificRisks && action.suggestSpecificRisks.length > 0) {
+        setCheckedSpecificRisks(prev =>
+          Array.from(new Set([...prev, ...action.suggestSpecificRisks!]))
+        );
+      }
+    },
+    []
+  );
+
   // Compile wizard state object for DecisionSummaryCard
   const wizardState: SelectionWizardState = {
     currentStep: (currentStage === 1 ? 1 : currentStage === 2 ? 4 : 5) as 1 | 2 | 3 | 4 | 5,
@@ -224,7 +278,8 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     susceptibilityStatus,
     checkedStopCriteriaIds: [],
     checkedIvToPoCriteriaIds: [],
-    daysOnAntibiotic
+    daysOnAntibiotic,
+    calculatedScores: savedScores as Record<string, ScoreCalculationResult>
   };
 
   // Copy clinical consultation summary to clipboard
@@ -240,11 +295,21 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
       cns: 'Thần kinh trung ương'
     };
 
+    const calculatedScoreEntries = Object.values(savedScores).filter(
+      (s): s is ScoreCalculationResult => Boolean(s)
+    );
+    const scoresSummaryLine =
+      calculatedScoreEntries.length > 0
+        ? `\nTHANG ĐIỂM CHUYÊN KHOA: ${calculatedScoreEntries
+            .map(s => `${s.shortName}: ${s.displayScoreText} (${s.riskClassVi})`)
+            .join(' | ')}`
+        : '';
+
     const text = `=== TÓM TẮT HỘI CHẨN LÂM SÀNG & KHÁNG SINH (InfectoDose CDSS) ===
 THÔNG SỐ LÂM SÀNG: ${population === 'adult' ? 'Người lớn' : 'Trẻ em'}, ${patient?.age} tuổi, ${patient?.gender === 'm' ? 'Nam' : 'Nữ'} | Cân nặng: ${patient?.weight} kg (IBW ${renal?.ibw} kg, BMI ${renal?.bmi})
 CHỨC NĂNG THẬN: Scr ${patient?.scr} ${patient?.scrUnit === 'umol' ? 'µmol/L' : 'mg/dL'} | CrCl: ${renal?.crcl} mL/phút (${renal?.categoryLabelVi}) | Lọc máu: ${patient?.dialysis === 'none' ? 'Không' : patient?.dialysis?.toUpperCase()}
 Ổ NHIỄM TRÙNG: ${siteNames[site] || site} | Đối tượng: ${population === 'adult' ? 'Người lớn' : 'Trẻ em'}
-ĐIỂM ĐỘ NẶNG: SOFA ${activeSeverity.scoreValue} điểm
+ĐIỂM ĐỘ NẶNG: ${activeSeverity.scoreType.toUpperCase()} ${activeSeverity.scoreValue} điểm${scoresSummaryLine}
 PHÂN TẦNG NGUY CƠ: ${isGroup2 ? 'NHÓM 2 (Nguy cơ cao vi khuẩn đa kháng MDR)' : 'NHÓM 1 (Ít nguy cơ VKĐK)'}
 KHÁNG SINH CHỈ ĐỊNH: ${selectedDrugId?.toUpperCase() || 'Kháng sinh theo phác đồ BVBND 2026'}
 ${dosingResult ? `LIỀU CÁ THỂ HÓA: Liều duy trì: ${dosingResult.maintenanceDoseTextVi} | Cách dùng: ${dosingResult.infusionInstructionsVi}` : ''}
@@ -508,6 +573,9 @@ KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ;
                 window.scrollTo({ top: 80, behavior: 'smooth' });
               }}
               onOpenGuidelineAtlas={onOpenGuidelineAtlas}
+              savedScores={savedScores}
+              onSaveScoreResult={handleSaveScoreResult}
+              onApplyScoreSuggestion={handleApplyScoreSuggestion}
             />
           </div>
         )}

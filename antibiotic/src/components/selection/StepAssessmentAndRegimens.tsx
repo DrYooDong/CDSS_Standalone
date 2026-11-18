@@ -20,6 +20,12 @@ import { extractDrugData, calculateDose, DoseResult, ExtractedDrugData } from '.
 import { calculateRenalMetrics } from '../../utils/clinicalFormulas';
 import { PatientState, CalculatedRenalMetrics } from '../../types';
 import { SourceBadge } from './SourceBadge';
+import { SiteScoreCalculators } from './SiteScoreCalculators';
+import {
+  ClinicalScoreId,
+  ScoreCalculationResult,
+  ScoreSuggestedAction
+} from '../../selection/scoring/scoringTypes';
 import {
   GENERAL_MDR_RISK_FACTORS,
   MRSA_RISK_FACTORS,
@@ -95,6 +101,9 @@ interface StepAssessmentAndRegimensProps {
   onToggleDetailedDrug: (drugId: string | null) => void;
   onNextStep: () => void;
   onOpenGuidelineAtlas?: (imageId?: string) => void;
+  savedScores?: Partial<Record<ClinicalScoreId, ScoreCalculationResult>>;
+  onSaveScoreResult?: (result: ScoreCalculationResult) => void;
+  onApplyScoreSuggestion?: (action: ScoreSuggestedAction) => void;
   children?: React.ReactNode; // Bảng hiển thị cụ thể kháng sinh (Dosing Workspace)
 }
 
@@ -129,6 +138,9 @@ export const StepAssessmentAndRegimens: React.FC<StepAssessmentAndRegimensProps>
   onToggleDetailedDrug,
   onNextStep,
   onOpenGuidelineAtlas,
+  savedScores = {},
+  onSaveScoreResult,
+  onApplyScoreSuggestion,
   children
 }) => {
   // Guideline source mode: 'bvbnd' (BV Bệnh Nhiệt Đới 2026) | 'who' (WHO AWaRe 2022) | 'antibiogram' | 'compare'
@@ -423,6 +435,20 @@ export const StepAssessmentAndRegimens: React.FC<StepAssessmentAndRegimensProps>
             </div>
           )}
         </div>
+
+        {/* 1.2b Thang điểm Lâm sàng Chuyên biệt theo Vị trí Nhiễm trùng */}
+        {onSaveScoreResult && onApplyScoreSuggestion && (
+          <SiteScoreCalculators
+            site={site}
+            population={population}
+            patient={patient}
+            renal={renal}
+            isChronicLiverDisease={isChronicLiverDisease}
+            savedScores={savedScores}
+            onSaveScoreResult={onSaveScoreResult}
+            onApplySuggestedAction={onApplyScoreSuggestion}
+          />
+        )}
 
         {/* 1.3 Phân Tầng Nguy Cơ VKĐK (Nhóm 1 vs Nhóm 2) & Điểm SOFA */}
         <div className="pt-3 border-t border-slate-100 space-y-3">

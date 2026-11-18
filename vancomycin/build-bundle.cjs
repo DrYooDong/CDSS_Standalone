@@ -24,7 +24,9 @@ try {
   }
 }
 
-const lucidePath = path.resolve(__dirname, '../antibiotic/node_modules/lucide-react/dist/cjs/lucide-react.js');
+const rootLucidePath = path.resolve(__dirname, '../node_modules/lucide-react/dist/cjs/lucide-react.js');
+const antibioticLucidePath = path.resolve(__dirname, '../antibiotic/node_modules/lucide-react/dist/cjs/lucide-react.js');
+const lucidePath = fs.existsSync(rootLucidePath) ? rootLucidePath : antibioticLucidePath;
 
 const ignoreCssPlugin = {
   name: 'ignore-css',

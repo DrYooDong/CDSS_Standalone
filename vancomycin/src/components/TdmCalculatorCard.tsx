@@ -81,7 +81,7 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
       : ''
   );
   const [rawContDailyDose, setRawContDailyDose] = useState<string>(
-    String(tdmInput.currentContinuousDailyDoseMg ?? 2000)
+    String(tdmInput.continuousDailyDoseMg ?? 2000)
   );
   const [rawCss, setRawCss] = useState<string>(
     tdmInput.steadyStateConcentration !== undefined && tdmInput.steadyStateConcentration !== null 
@@ -109,7 +109,7 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
         ? String(tdmInput.troughConcentration) 
         : ''
     );
-    setRawContDailyDose(String(tdmInput.currentContinuousDailyDoseMg ?? 2000));
+    setRawContDailyDose(String(tdmInput.continuousDailyDoseMg ?? 2000));
     setRawCss(
       tdmInput.steadyStateConcentration !== undefined && tdmInput.steadyStateConcentration !== null 
         ? String(tdmInput.steadyStateConcentration) 
@@ -122,17 +122,19 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
     tdmInput.singleConcentration,
     tdmInput.peakConcentration,
     tdmInput.troughConcentration,
-    tdmInput.currentContinuousDailyDoseMg,
+    tdmInput.continuousDailyDoseMg,
     tdmInput.steadyStateConcentration
   ]);
 
   // Mode switcher handler
   const handleSelectMode = (mode: 'bayesian_single' | 'two_point' | 'continuous') => {
     if (mode === 'continuous') {
+      const daily = tdmInput.continuousDailyDoseMg || 2000;
       onMethodChange?.('continuous');
       onChange({
         regimenType: 'continuous',
-        currentContinuousDailyDoseMg: tdmInput.currentContinuousDailyDoseMg || 2000
+        continuousDailyDoseMg: daily,
+        continuousRateMgPerHour: tdmInput.continuousRateMgPerHour || Math.round(daily / 24)
       });
     } else {
       onMethodChange?.('intermittent');
@@ -164,21 +166,24 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
         setRawContDailyDose('2000');
         setRawCss('22.0');
         onChange({ 
-          currentContinuousDailyDoseMg: 2000,
+          continuousDailyDoseMg: 2000,
+          continuousRateMgPerHour: Math.round(2000 / 24),
           steadyStateConcentration: 22.0 
         });
       } else if (type === 'low') {
         setRawContDailyDose('1500');
         setRawCss('14.0');
         onChange({ 
-          currentContinuousDailyDoseMg: 1500,
+          continuousDailyDoseMg: 1500,
+          continuousRateMgPerHour: Math.round(1500 / 24),
           steadyStateConcentration: 14.0 
         });
       } else {
         setRawContDailyDose('2500');
         setRawCss('32.0');
         onChange({ 
-          currentContinuousDailyDoseMg: 2500,
+          continuousDailyDoseMg: 2500,
+          continuousRateMgPerHour: Math.round(2500 / 24),
           steadyStateConcentration: 32.0 
         });
       }
@@ -481,7 +486,6 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
                       const num = Number(val);
                       if (!isNaN(num) && num > 0) {
                         onChange({ 
-                          currentContinuousDailyDoseMg: num,
                           continuousDailyDoseMg: num,
                           continuousRateMgPerHour: Math.round(num / 24)
                         });
