@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CDSS Đánh Giá Nhiễm Trùng &amp; Quản Lý Liều Kháng Sinh (InfectoDose) | CliniPortal CDSS</title>
-    <meta name="description" content="Hệ thống hỗ trợ ra quyết định lâm sàng (CDSS) 2 phân hệ hoàn chỉnh: Đánh giá nhiễm trùng NHSN-CDC, phân tầng nguy cơ vi khuẩn đa kháng MDR và phác đồ khởi đầu BV Bệnh Nhiệt Đới 2026; Tính toán liều 43 kháng sinh theo độ thanh thải Creatinine (Cockcroft-Gault), eGFR CKD-EPI 2021, lọc máu chu kỳ HD/CRRT/CAPD, cảnh báo tương tác thuốc DDI và xuất báo cáo hội chẩn PDF." />
-    <meta property="og:title" content="CDSS Đánh Giá Nhiễm Trùng &amp; Quản Lý Liều Kháng Sinh (InfectoDose) | CliniPortal CDSS" />
-    <meta property="og:description" content="Hệ thống hỗ trợ ra quyết định lâm sàng (CDSS) 2 phân hệ: Đánh giá nhiễm trùng NHSN-CDC, phân tầng nguy cơ vi khuẩn đa kháng và tính toán liều 43 kháng sinh chuẩn hóa." />
+    <title>InfectoSepsis CDSS v4.0 — Sepsis Giờ Vàng, Phân Tầng VKĐK &amp; Tính Liều 43 Kháng Sinh | CliniPortal CDSS</title>
+    <meta name="description" content="Siêu hệ thống hỗ trợ ra quyết định lâm sàng (CDSS) 3 giai đoạn liên hoàn: Sàng lọc Sepsis đa thang điểm (NICE NG253, Sepsis-3, Phoenix 2024, Obstetric SOFA, NEWS2, LP-NEWS, NLR) &amp; Hồi sức giờ vàng; Đánh giá nhiễm trùng NHSN-CDC, phân tầng nguy cơ vi khuẩn đa kháng MDR và phác đồ BV Bệnh Nhiệt Đới 2026; Tính liều 43 kháng sinh theo CrCl/eGFR/HD/CRRT/CAPD, cảnh báo DDI và tái đánh giá AMS 48-72h." />
+    <meta property="og:title" content="InfectoSepsis CDSS v4.0 — Sepsis Giờ Vàng, Phân Tầng VKĐK &amp; Tính Liều 43 Kháng Sinh | CliniPortal CDSS" />
+    <meta property="og:description" content="Siêu hệ thống CDSS 3 giai đoạn hợp nhất SepsisCDSS và InfectoDose: Sàng lọc Sepsis giờ vàng, phân tầng MDR BVBND 2026 và tính liều 43 kháng sinh chuẩn hóa." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -34,8 +34,13 @@
     <link rel="stylesheet" href="../shared/cdss-shell.css">
     <script src="../shared/cdss-shell.js"></script>
 
-    <link rel="stylesheet" href="./assets/index-DDo0RMpo.css">
-    <script type="module" src="./assets/index-DDo0RMpo.js?v=3.2.1"></script>
+    <script>
+      window.__CDSS_INITIAL_STAGE__ = 2;
+      window.__CDSS_ASSETS_BASE__ = './assets';
+    </script>
+
+    <link rel="stylesheet" href="./assets/index-DDo0RMpo.css?v=4.1.0">
+    <script type="module" src="./assets/index-DDo0RMpo.js?v=4.1.0"></script>
   </head>
   <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-600 selection:text-white">
     <!-- CliniPortal Master Navigation Bar -->
@@ -46,7 +51,7 @@
           <span class="font-bold">CDSS Platform Suite</span>
         </a>
         <i class="fa-solid fa-chevron-right separator"></i>
-        <span class="active"><i class="fa-solid fa-viruses text-teal-600"></i> Đánh Giá Nhiễm Trùng &amp; Kháng Sinh (InfectoDose CDSS)</span>
+        <span class="active"><i class="fa-solid fa-viruses text-teal-600"></i> InfectoSepsis CDSS v4.0 — Sepsis Giờ Vàng &amp; Quản Lý Kháng Sinh</span>
       </div>
 
       <div class="cdss-portal-nav-right">

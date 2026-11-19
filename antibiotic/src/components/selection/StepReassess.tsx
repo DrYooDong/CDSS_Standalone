@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   InfectionSite,
   ClinicalResponseStatus,
@@ -6,6 +6,7 @@ import {
   SusceptibilityStatus,
   MdrPathogenCategory
 } from '../../selection/types';
+import { PatientData, CDSSAssessmentResult } from '../../sepsis/types';
 import {
   evaluate48hReassessment,
   evaluateStopCriteria,
@@ -32,7 +33,9 @@ import {
   ShieldCheck,
   ShieldAlert,
   Info,
-  BookOpen
+  BookOpen,
+  Dna,
+  Activity
 } from 'lucide-react';
 
 interface StepReassessProps {
@@ -40,13 +43,21 @@ interface StepReassessProps {
   onSelectDrugForDosing: (drugId: string) => void;
   onPrevStep: () => void;
   onOpenGuidelineAtlas?: (imageId?: string) => void;
+  sepsisPatient?: PatientData;
+  sepsisResult?: CDSSAssessmentResult;
+  suggestedMdrCategory?: MdrPathogenCategory;
+  suggestedCreEnzyme?: 'kpc' | 'oxa48' | 'mbl';
 }
 
 export const StepReassess: React.FC<StepReassessProps> = ({
   site,
   onSelectDrugForDosing,
   onPrevStep,
-  onOpenGuidelineAtlas
+  onOpenGuidelineAtlas,
+  sepsisPatient,
+  sepsisResult,
+  suggestedMdrCategory,
+  suggestedCreEnzyme
 }) => {
   // Sub-tabs in Step 3
   const [subTab, setSubTab] = useState<'decision_tree' | 'mdr_pathways' | 'stop_criteria' | 'iv_to_po'>('decision_tree');
@@ -57,8 +68,24 @@ export const StepReassess: React.FC<StepReassessProps> = ({
   const [susceptibilityStatus, setSusceptibilityStatus] = useState<SusceptibilityStatus>('sensitive');
 
   // 2. MDR Pathways State
-  const [selectedMdr, setSelectedMdr] = useState<MdrPathogenCategory>('cre');
-  const [creEnzyme, setCreEnzyme] = useState<'kpc' | 'oxa48' | 'mbl'>('mbl');
+  const [selectedMdr, setSelectedMdr] = useState<MdrPathogenCategory>(suggestedMdrCategory || 'cre');
+  const [creEnzyme, setCreEnzyme] = useState<'kpc' | 'oxa48' | 'mbl'>(suggestedCreEnzyme || 'mbl');
+
+  // Auto-sync MDR target from Rapid Molecular T2Bacteria / T2Resistance findings
+  useEffect(() => {
+    if (suggestedMdrCategory) {
+      setSelectedMdr(suggestedMdrCategory);
+    }
+    if (suggestedCreEnzyme) {
+      setCreEnzyme(suggestedCreEnzyme);
+    }
+  }, [suggestedMdrCategory, suggestedCreEnzyme]);
+
+  useEffect(() => {
+    if (sepsisPatient?.bloodCultureResult) {
+      setCultureStatus(sepsisPatient.bloodCultureResult);
+    }
+  }, [sepsisPatient?.bloodCultureResult]);
 
   // 3. Stop Checklist State
   const [currentDays, setCurrentDays] = useState<number>(5);
@@ -118,6 +145,65 @@ export const StepReassess: React.FC<StepReassessProps> = ({
             </p>
           </div>
         </div>
+
+        {/* Live Sepsis Biomarkers & Rapid Molecular T2MR Bridge Strip */}
+        {sepsisPatient && sepsisResult && (
+          <div className="mt-3 p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="font-extrabold text-slate-800 flex items-center gap-1.5 text-[11px] uppercase tracking-wider">
+                <Activity className="w-3.5 h-3.5 text-teal-600" />
+                <span>Động Học Biomarker &amp; Vi Sinh Đồng Bộ Từ Giai Đoạn 1</span>
+              </span>
+              <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono">
+                <span className="px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-800 font-bold">
+                  SOFA: {sepsisResult.sofaScore}đ
+                </span>
+                {sepsisResult.lactateClearancePercent !== undefined && (
+                  <span className={`px-2 py-0.5 rounded border font-bold ${
+                    sepsisResult.lactateClearancePercent >= 10
+                      ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                      : 'bg-rose-50 border-rose-200 text-rose-800'
+                  }`}>
+                    Thanh thải Lac: {sepsisResult.lactateClearancePercent}%
+                  </span>
+                )}
+                {sepsisPatient.procalcitonin !== undefined && (
+                  <span className="px-2 py-0.5 rounded bg-white border border-slate-200 text-teal-800 font-bold">
+                    PCT: {sepsisPatient.procalcitonin} ng/mL
+                  </span>
+                )}
+                {sepsisResult.calculatedNlr !== undefined && (
+                  <span className="px-2 py-0.5 rounded bg-white border border-slate-200 text-indigo-800 font-bold">
+                    NLR: {sepsisResult.calculatedNlr}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {sepsisPatient.rapidMolecularT2Done && sepsisPatient.rapidMolecularResult === 'positive' && (
+              <div className="p-2.5 rounded-lg bg-purple-50 border border-purple-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="text-[11px] text-purple-950 flex items-start gap-1.5">
+                  <Dna className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
+                  <div>
+                    <strong>T2Bacteria / T2Resistance (+):</strong> {sepsisPatient.rapidMolecularPathogen || 'Chủng đa kháng'}
+                    {sepsisPatient.rapidMolecularResistanceGenes && sepsisPatient.rapidMolecularResistanceGenes.length > 0 && (
+                      <span> — Gen kháng: <strong>{sepsisPatient.rapidMolecularResistanceGenes.join(', ')}</strong></span>
+                    )}
+                  </div>
+                </div>
+                {subTab !== 'mdr_pathways' && (
+                  <button
+                    type="button"
+                    onClick={() => setSubTab('mdr_pathways')}
+                    className="px-2.5 py-1 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-[11px] font-bold shrink-0 cursor-pointer transition-colors"
+                  >
+                    Mở Phác Đồ Đích MDR →
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Sub-tab Navigation (Streamlined Icon-First) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 pt-3">

@@ -72,7 +72,16 @@ const ignoreCssPlugin = {
     });
     console.log('✓ Successfully compiled assets/antibiotic-app.iife.js (IIFE)');
 
-    // 3. Sync to dist/antibiotic/assets if dist exists
+    // 3. Sync to sepsis/assets/ so both entry points run the exact unified Super-CDSS bundle
+    const sepsisEsm = path.resolve(__dirname, '../sepsis/assets/index-DZY_YirH.js');
+    const sepsisIife = path.resolve(__dirname, '../sepsis/assets/sepsis-app.iife.js');
+    if (fs.existsSync(path.dirname(sepsisEsm))) {
+      fs.copyFileSync(path.resolve(__dirname, 'assets/index-DDo0RMpo.js'), sepsisEsm);
+      fs.copyFileSync(path.resolve(__dirname, 'assets/antibiotic-app.iife.js'), sepsisIife);
+      console.log('✓ Successfully synced unified JS bundles to sepsis/assets/!');
+    }
+
+    // 4. Sync to dist/antibiotic/assets and dist/sepsis/assets if dist exists
     const distJs1 = path.resolve(__dirname, '../dist/antibiotic/assets/index-DDo0RMpo.js');
     const distJs2 = path.resolve(__dirname, '../dist/antibiotic/assets/antibiotic-app.iife.js');
     if (fs.existsSync(path.dirname(distJs1))) {
@@ -81,7 +90,15 @@ const ignoreCssPlugin = {
       console.log('✓ Successfully synced JS bundles to dist/antibiotic/assets/!');
     }
 
-    console.log('[build-antibiotic] All production bundles updated successfully!');
+    const distSepsisEsm = path.resolve(__dirname, '../dist/sepsis/assets/index-DZY_YirH.js');
+    const distSepsisIife = path.resolve(__dirname, '../dist/sepsis/assets/sepsis-app.iife.js');
+    if (fs.existsSync(path.dirname(distSepsisEsm))) {
+      fs.copyFileSync(path.resolve(__dirname, 'assets/index-DDo0RMpo.js'), distSepsisEsm);
+      fs.copyFileSync(path.resolve(__dirname, 'assets/antibiotic-app.iife.js'), distSepsisIife);
+      console.log('✓ Successfully synced JS bundles to dist/sepsis/assets/!');
+    }
+
+    console.log('[build-antibiotic] All unified InfectoSepsis Super-CDSS bundles updated successfully!');
   } catch (err) {
     console.error('Bundle error:', err);
     process.exit(1);

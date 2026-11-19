@@ -22,12 +22,15 @@ import {
   Gauge
 } from 'lucide-react';
 import { CalculatedRenalMetrics, DialysisMode, Language, PatientState } from '../types';
+import { CDSSAssessmentResult } from '../sepsis/types';
 
 interface PatientSidebarProps {
   patient: PatientState;
   onChange: (updated: Partial<PatientState>) => void;
   renal: CalculatedRenalMetrics;
   dialysis: DialysisMode;
+  sepsisResult?: CDSSAssessmentResult;
+  onGoToSepsisStage?: () => void;
   language: Language;
   needsHeight?: boolean;
   isCollapsed: boolean;
@@ -39,6 +42,8 @@ export const PatientSidebar: React.FC<PatientSidebarProps> = ({
   onChange,
   renal,
   dialysis,
+  sepsisResult,
+  onGoToSepsisStage,
   language,
   needsHeight = false,
   isCollapsed,
@@ -136,7 +141,7 @@ export const PatientSidebar: React.FC<PatientSidebarProps> = ({
     const isModerate = renal.crcl >= 30 && renal.crcl < 60;
 
     return (
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden transition-all duration-200 flex flex-col">
+      <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden transition-all duration-200 flex flex-col">
         {/* Header */}
         <div className="p-3 bg-slate-900 text-white flex items-center justify-between">
           <div className="flex items-center space-x-2 min-w-0">
@@ -195,6 +200,14 @@ export const PatientSidebar: React.FC<PatientSidebarProps> = ({
               <span className="text-slate-500">Scr:</span>
               <span className="font-bold text-slate-800">{patient.scr} {patient.scrUnit === 'umol' ? 'µmol/L' : 'mg/dL'}</span>
             </div>
+            {sepsisResult && (
+              <div className="pt-1 border-t border-slate-200 flex items-center justify-between text-[10px] font-bold">
+                <span className="text-slate-500">Sepsis HUD:</span>
+                <span className={sepsisResult.urgencyLevel === 'emergency' ? 'text-rose-700' : sepsisResult.urgencyLevel === 'urgent' ? 'text-amber-700' : 'text-emerald-700'}>
+                  NEWS2 {sepsisResult.news2Score} • SOFA {sepsisResult.sofaScore}
+                </span>
+              </div>
+            )}
             {dialysis !== 'none' && (
               <div className="pt-1 border-t border-slate-200 flex items-center justify-between text-[10px] text-purple-800 font-black uppercase">
                 <span>Lọc máu:</span>
@@ -221,20 +234,20 @@ export const PatientSidebar: React.FC<PatientSidebarProps> = ({
   // VIEW 2: EXPANDED MODE (Full Interactive Medical HUD)
   // ==========================================
   return (
-    <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden transition-all duration-300">
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden transition-all duration-300">
       
       {/* Top Header with Collapse Action */}
-      <div className="p-3.5 bg-slate-900 text-white flex items-center justify-between">
-        <div className="flex items-center space-x-2.5">
-          <div className="w-8 h-8 rounded-xl bg-teal-500/20 text-teal-400 border border-teal-500/30 flex items-center justify-center">
+      <div className="px-3.5 py-3 bg-slate-900 text-white flex items-center justify-between">
+        <div className="flex items-center space-x-2.5 min-w-0">
+          <div className="w-8 h-8 rounded-xl bg-teal-500/20 text-teal-400 border border-teal-500/30 flex items-center justify-center shrink-0">
             <User className="w-4 h-4" />
           </div>
-          <div>
-            <h2 className="text-xs sm:text-sm font-bold block leading-tight text-white">
-              {isEn ? 'Patient & Renal Demographics' : 'Thông Số Bệnh Nhân & Thận'}
+          <div className="min-w-0">
+            <h2 className="text-xs font-extrabold block leading-tight text-white truncate">
+              {isEn ? 'Renal & Sepsis Cockpit' : 'Hồ Sơ Thận & Sepsis HUD'}
             </h2>
-            <p className="text-[10px] text-slate-400">
-              {isEn ? 'Cockcroft-Gault & Clinical Metrics' : 'Độ thanh thải CrCl & Cá thể hóa'}
+            <p className="text-[10px] text-slate-400 font-mono tabular-nums truncate">
+              CrCl {renal.crcl} mL/p{sepsisResult ? ` • SOFA ${sepsisResult.sofaScore}đ` : ''}
             </p>
           </div>
         </div>
@@ -242,7 +255,7 @@ export const PatientSidebar: React.FC<PatientSidebarProps> = ({
         <button
           type="button"
           onClick={onToggleCollapse}
-          className="flex items-center space-x-1 text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 py-1.5 rounded-xl transition-colors border border-slate-700 cursor-pointer"
+          className="flex items-center space-x-1 text-[11px] font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 py-1.5 rounded-xl transition-colors border border-slate-700 cursor-pointer shrink-0"
           title={isEn ? 'Collapse to mini strip' : 'Thu gọn bảng nhập'}
         >
           <Minimize2 className="w-3.5 h-3.5" />
@@ -499,6 +512,66 @@ export const PatientSidebar: React.FC<PatientSidebarProps> = ({
             <span>130+</span>
           </div>
         </div>
+
+        {/* Live Sepsis Quick Status HUD */}
+        {sepsisResult && (
+          <div className={`p-3 rounded-2xl border space-y-2 ${
+            sepsisResult.urgencyLevel === 'emergency'
+              ? 'bg-rose-50/80 border-rose-200'
+              : sepsisResult.urgencyLevel === 'urgent'
+              ? 'bg-amber-50/80 border-amber-200'
+              : 'bg-slate-50 border-slate-200'
+          }`}>
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-[10px] font-black uppercase tracking-wider text-slate-700 flex items-center gap-1">
+                <Flame className={`w-3.5 h-3.5 ${
+                  sepsisResult.urgencyLevel === 'emergency' ? 'text-rose-600' : sepsisResult.urgencyLevel === 'urgent' ? 'text-amber-600' : 'text-emerald-600'
+                }`} />
+                <span>Trạng Thái Sepsis</span>
+              </span>
+              <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase ${
+                sepsisResult.urgencyLevel === 'emergency'
+                  ? 'bg-rose-600 text-white'
+                  : sepsisResult.urgencyLevel === 'urgent'
+                  ? 'bg-amber-500 text-white'
+                  : 'bg-emerald-600 text-white'
+              }`}>
+                {sepsisResult.primaryDiagnosis === 'septic_shock'
+                  ? 'SỐC NK'
+                  : sepsisResult.primaryDiagnosis === 'confirmed_sepsis'
+                  ? 'SEPSIS'
+                  : sepsisResult.primaryDiagnosis === 'suspected_sepsis'
+                  ? 'NGHI SEPSIS'
+                  : sepsisResult.primaryDiagnosis === 'uncomplicated_infection'
+                  ? 'NK THƯỜNG'
+                  : 'ỔN ĐỊNH'}
+              </span>
+            </div>
+            <div className="grid grid-cols-3 gap-1.5 text-center font-mono text-[11px]">
+              <div className="bg-white/90 rounded-lg p-1.5 border border-slate-200/70">
+                <span className="text-[9px] text-slate-500 block font-sans">NEWS2</span>
+                <strong className="text-slate-900">{sepsisResult.news2Score}</strong>
+              </div>
+              <div className="bg-white/90 rounded-lg p-1.5 border border-slate-200/70">
+                <span className="text-[9px] text-slate-500 block font-sans">SOFA</span>
+                <strong className={sepsisResult.sofaScore >= 2 ? 'text-rose-700' : 'text-slate-900'}>{sepsisResult.sofaScore}</strong>
+              </div>
+              <div className="bg-white/90 rounded-lg p-1.5 border border-slate-200/70">
+                <span className="text-[9px] text-slate-500 block font-sans">MAP</span>
+                <strong className={sepsisResult.calculatedMap < 65 ? 'text-rose-700' : 'text-slate-900'}>{sepsisResult.calculatedMap}</strong>
+              </div>
+            </div>
+            {onGoToSepsisStage && (
+              <button
+                type="button"
+                onClick={onGoToSepsisStage}
+                className="w-full py-1.5 px-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 text-[11px] font-bold border border-slate-200 transition-colors cursor-pointer"
+              >
+                Chỉnh sinh hiệu &amp; Đánh giá Sepsis (Bước 1)
+              </button>
+            )}
+          </div>
+        )}
 
         {/* Advanced Clinical Anthropometrics Toggle */}
         <div>

@@ -1,14 +1,20 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function run() {
   console.log('[build-css] Starting full Tailwind CSS compilation...');
   
-  // 1. Load Tailwind v4 compiler
-  const { compile } = await import('@tailwindcss/node');
+  // 1. Load Tailwind v4 compiler (prefer local, fallback to root workspace node_modules)
+  let compile;
+  try {
+    ({ compile } = await import('@tailwindcss/node'));
+  } catch {
+    const rootTw = pathToFileURL(path.resolve(__dirname, '../node_modules/@tailwindcss/node/dist/index.mjs')).href;
+    ({ compile } = await import(rootTw));
+  }
   
   // 2. Scan all candidates from src/
   function scanFiles(dir) {
@@ -56,6 +62,13 @@ async function run() {
   fs.writeFileSync(path.resolve(__dirname, 'assets/index-DDo0RMpo.css'), compiledCss, 'utf8');
   fs.writeFileSync(path.resolve(__dirname, 'assets/index-DVhYFEXB.css'), compiledCss, 'utf8');
 
+  // Sync to sepsis/assets/
+  const sepsisCss = path.resolve(__dirname, '../sepsis/assets/index-hqFgRYgG.css');
+  if (fs.existsSync(path.dirname(sepsisCss))) {
+    fs.writeFileSync(sepsisCss, compiledCss, 'utf8');
+    console.log('[build-css] Successfully synced CSS to sepsis/assets/!');
+  }
+
   // Also sync to dist/
   const distCss1 = path.resolve(__dirname, '../dist/antibiotic/assets/index-DDo0RMpo.css');
   const distCss2 = path.resolve(__dirname, '../dist/antibiotic/assets/index-DVhYFEXB.css');
@@ -63,6 +76,12 @@ async function run() {
     fs.writeFileSync(distCss1, compiledCss, 'utf8');
     fs.writeFileSync(distCss2, compiledCss, 'utf8');
     console.log('[build-css] Successfully synced to dist/antibiotic/assets/!');
+  }
+
+  const distSepsisCss = path.resolve(__dirname, '../dist/sepsis/assets/index-hqFgRYgG.css');
+  if (fs.existsSync(path.dirname(distSepsisCss))) {
+    fs.writeFileSync(distSepsisCss, compiledCss, 'utf8');
+    console.log('[build-css] Successfully synced to dist/sepsis/assets/!');
   }
 
   console.log('[build-css] ✓ Complete! All Tailwind CSS utilities are now generated.');

@@ -6,7 +6,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Header } from './components/Header';
 import { PatientSidebar } from './components/PatientSidebar';
-import { StickyPatientBar } from './components/StickyPatientBar';
+import { StickyPatientBar, UnifiedStage } from './components/StickyPatientBar';
 import { QuickPatientDrawer } from './components/QuickPatientDrawer';
 import { DrugSearchModal } from './components/DrugSearchModal';
 import { AntibioticSearch } from './components/AntibioticSearch';
@@ -21,6 +21,9 @@ import { OriginalPreviewModal } from './components/OriginalPreviewModal';
 import { PdfConsultationModal } from './components/PdfConsultationModal';
 import { GuidelineImageModal } from './components/selection/GuidelineImageModal';
 import { DrugDetailModal } from './components/DrugDetailModal';
+import { ClinicalGuideModal } from './components/sepsis/ClinicalGuideModal';
+import { CaseHistoryModal } from './components/sepsis/CaseHistoryModal';
+import { PresetCasesModal } from './components/sepsis/PresetCasesModal';
 
 import { 
   Pill, 
@@ -28,13 +31,7 @@ import {
   ShieldAlert, 
   FileText, 
   BookOpen, 
-  LayoutGrid,
-  Calculator,
-  Sparkles,
-  Search,
-  Activity,
-  ArrowRight,
-  ChevronUp
+  LayoutGrid
 } from 'lucide-react';
 
 import { SelectionWizard } from './components/selection/SelectionWizard';
@@ -44,6 +41,16 @@ import { DRUG_INTERACTIONS } from './data/drugInteractions';
 import { calculateRenalMetrics } from './utils/clinicalFormulas';
 import { extractDrugData, calculateDose, DoseResult } from './utils/drugDataExtractor';
 import { ConsultationReportData } from './utils/pdfGenerator';
+
+// Unified Sepsis Engine & Bridge
+import { PatientData } from './sepsis/types';
+import { evaluatePatientCDSS } from './sepsis/calculators';
+import { NORMAL_PATIENT_CASE, PresetCase } from './sepsis/presetCases';
+import {
+  buildUnifiedConsultationSummary,
+  syncRenalToSepsisPatient,
+  syncSepsisToRenalPatient
+} from './sepsis/patientBridge';
 
 const DEFAULT_PATIENT: PatientState = {
   scr: 90,
@@ -55,17 +62,88 @@ const DEFAULT_PATIENT: PatientState = {
   dialysis: 'none'
 };
 
+interface SavedRecord {
+  id: string;
+  savedAt: string;
+  patientData: PatientData;
+}
+
 type ViewSectionTab = 'all' | 'dosing' | 'dialysis' | 'ddi' | 'notes' | 'refs';
 
+function getInitialStage(): UnifiedStage {
+  if (typeof window === 'undefined') return 2;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const stageParam = params.get('stage');
+    if (stageParam === '1' || stageParam === '2' || stageParam === '3') {
+      return Number(stageParam) as UnifiedStage;
+    }
+    const tabParam = (params.get('tab') || '').toLowerCase();
+    if (tabParam === 'sepsis') return 1;
+    if (tabParam === 'antibiotic' || tabParam === 'dosing') return 2;
+    if (tabParam === 'reassess' || tabParam === 'ams') return 3;
+
+    const winStage = (window as unknown as { __CDSS_INITIAL_STAGE__?: number }).__CDSS_INITIAL_STAGE__;
+    if (winStage === 1 || winStage === 2 || winStage === 3) {
+      return winStage;
+    }
+    if (window.location.pathname.toLowerCase().includes('/sepsis')) {
+      return 1;
+    }
+  } catch {
+    // ignore URL parse errors
+  }
+  return 2;
+}
+
+function buildInitialSepsisPatient(initialStage: UnifiedStage): PatientData {
+  if (initialStage === 1) {
+    return {
+      ...NORMAL_PATIENT_CASE,
+      id: 'current-patient'
+    };
+  }
+  return {
+    ...NORMAL_PATIENT_CASE,
+    id: 'current-patient',
+    ageYears: DEFAULT_PATIENT.age,
+    gender: DEFAULT_PATIENT.gender === 'f' ? 'female' : 'male',
+    weightKg: DEFAULT_PATIENT.weight,
+    heightCm: DEFAULT_PATIENT.height || 165,
+    dialysis: DEFAULT_PATIENT.dialysis,
+    creatinineUmolL: DEFAULT_PATIENT.scr
+  };
+}
+
 export default function App() {
+  const [initialStage] = useState<UnifiedStage>(() => getInitialStage());
   const [language, setLanguage] = useState<Language>('vi');
-  const [patient, setPatient] = useState<PatientState>(DEFAULT_PATIENT);
+  const [sepsisPatient, setSepsisPatient] = useState<PatientData>(() => buildInitialSepsisPatient(initialStage));
+  const [patient, setPatient] = useState<PatientState>(() => {
+    if (initialStage === 1) {
+      return syncSepsisToRenalPatient(NORMAL_PATIENT_CASE, {
+        ...DEFAULT_PATIENT,
+        age: NORMAL_PATIENT_CASE.ageYears,
+        weight: NORMAL_PATIENT_CASE.weightKg,
+        height: NORMAL_PATIENT_CASE.heightCm || 168
+      });
+    }
+    return DEFAULT_PATIENT;
+  });
+  const [sepsisSyncToken, setSepsisSyncToken] = useState<number>(0);
+
   const [selectedDrugId, setSelectedDrugId] = useState<string>('meropenem');
   const [selectedScenario, setSelectedScenario] = useState<string>('standard');
-  const [currentStep, setCurrentStep] = useState<1 | 2>(1);
+  const [currentStep, setCurrentStep] = useState<UnifiedStage>(initialStage);
+  const [viewMode, setViewMode] = useState<'stepper' | 'all-in-one'>('stepper');
   const [detailedDrugId, setDetailedDrugId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<ViewSectionTab>('all');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
+
+  // Saved Cases History (Compatible with existing SepsisCDSS localStorage)
+  const [savedCases, setSavedCases] = useState<SavedRecord[]>([]);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+  const [copiedSummary, setCopiedSummary] = useState(false);
 
   // Drawers & Modals
   const [isQuickPatientOpen, setIsQuickPatientOpen] = useState(false);
@@ -75,6 +153,21 @@ export default function App() {
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
   const [isGuidelineAtlasOpen, setIsGuidelineAtlasOpen] = useState(false);
   const [guidelineAtlasImageId, setGuidelineAtlasImageId] = useState<string | undefined>(undefined);
+  const [isPresetsOpen, setIsPresetsOpen] = useState(false);
+  const [isSepsisGuideOpen, setIsSepsisGuideOpen] = useState(false);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+
+  // Load saved cases from localStorage
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('sepsis_cdss_saved_cases');
+      if (stored) {
+        setSavedCases(JSON.parse(stored));
+      }
+    } catch (e) {
+      console.error('Failed to parse saved cases:', e);
+    }
+  }, []);
 
   // Global keyboard shortcut '/' to open instant drug search
   useEffect(() => {
@@ -87,6 +180,11 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  // Live Sepsis CDSS Assessment
+  const sepsisResult = useMemo(() => {
+    return evaluatePatientCDSS(sepsisPatient);
+  }, [sepsisPatient]);
 
   const handleOpenGuidelineAtlas = (imageId?: string) => {
     setGuidelineAtlasImageId(imageId);
@@ -125,6 +223,70 @@ export default function App() {
     setDosingResult(doseResult);
   }, [doseResult]);
 
+  // Bidirectional Patient Sync Handlers
+  const handlePatientChange = (updated: Partial<PatientState>) => {
+    setPatient(prev => {
+      const nextRenal = { ...prev, ...updated };
+      setSepsisPatient(prevSepsis => syncRenalToSepsisPatient(updated, prevSepsis, nextRenal));
+      return nextRenal;
+    });
+  };
+
+  const handleSepsisPatientChange = (updated: PatientData) => {
+    setSepsisPatient(updated);
+    setPatient(prevRenal => syncSepsisToRenalPatient(updated, prevRenal));
+    setSepsisSyncToken(t => t + 1);
+  };
+
+  const handleSelectPreset = (preset: PresetCase) => {
+    const cloned = { ...preset.patientData };
+    setSepsisPatient(cloned);
+    setPatient(prevRenal => syncSepsisToRenalPatient(cloned, prevRenal));
+    setSepsisSyncToken(t => t + 1);
+    setIsPresetsOpen(false);
+  };
+
+  const handleSaveCurrentCase = () => {
+    const newRecord: SavedRecord = {
+      id: `rec-${Date.now()}`,
+      savedAt: new Date().toISOString(),
+      patientData: {
+        ...sepsisPatient,
+        heightCm: patient.height || sepsisPatient.heightCm,
+        dialysis: patient.dialysis
+      }
+    };
+    const updated = [newRecord, ...savedCases].slice(0, 30);
+    setSavedCases(updated);
+    try {
+      localStorage.setItem('sepsis_cdss_saved_cases', JSON.stringify(updated));
+    } catch (e) {
+      console.error('Failed to save to localStorage:', e);
+    }
+    setSaveSuccess(true);
+    setTimeout(() => setSaveSuccess(false), 2000);
+  };
+
+  const handleDeleteCase = (id: string) => {
+    const updated = savedCases.filter((c) => c.id !== id);
+    setSavedCases(updated);
+    localStorage.setItem('sepsis_cdss_saved_cases', JSON.stringify(updated));
+  };
+
+  const handleClearAllCases = () => {
+    if (window.confirm('Bạn có chắc chắn muốn xóa toàn bộ lịch sử ca bệnh đã lưu?')) {
+      setSavedCases([]);
+      localStorage.removeItem('sepsis_cdss_saved_cases');
+    }
+  };
+
+  const handleLoadCase = (data: PatientData) => {
+    const cloned = { ...data };
+    setSepsisPatient(cloned);
+    setPatient(prevRenal => syncSepsisToRenalPatient(cloned, prevRenal));
+    setSepsisSyncToken(t => t + 1);
+  };
+
   // Handle direct calculation for drug
   const handleCalculateDoseInSelection = (drugId: string, autoScrollToDosing = false) => {
     const exists = ANTIBIOTICS.some(a => a.id === drugId);
@@ -153,15 +315,13 @@ export default function App() {
     return DRUG_INTERACTIONS.filter(di => di.antibioticIds.includes(selectedDrugId));
   }, [selectedDrugId]);
 
-  const handlePatientChange = (updated: Partial<PatientState>) => {
-    setPatient(prev => ({ ...prev, ...updated }));
-  };
-
   const handleReset = () => {
-    setPatient(DEFAULT_PATIENT);
+    const resetSepsis = buildInitialSepsisPatient(currentStep);
+    setSepsisPatient(resetSepsis);
+    setPatient(syncSepsisToRenalPatient(resetSepsis, DEFAULT_PATIENT));
+    setSepsisSyncToken(t => t + 1);
     setSelectedDrugId('meropenem');
     setSelectedScenario('standard');
-    setCurrentStep(1);
     setDetailedDrugId(null);
     setActiveTab('all');
   };
@@ -187,10 +347,29 @@ export default function App() {
     doseResult,
     interactions: drugInteractions,
     scenarioLabel,
-    language
+    language,
+    sepsisPatient,
+    sepsisResult
   };
 
   const isEn = language === 'en';
+  const showDesktopRenalSidebar = !(currentStep === 1 && viewMode === 'stepper');
+
+  const handleCopyUnifiedSummary = () => {
+    const text = buildUnifiedConsultationSummary({
+      patient,
+      renal,
+      sepsisPatient,
+      sepsisResult,
+      selectedDrugName: activeDrug.name,
+      doseSummaryVi: doseResult
+        ? `${doseResult.loadingDoseTextVi ? `Liều nạp ${doseResult.loadingDoseTextVi} | ` : ''}Liều duy trì ${doseResult.maintenanceDoseTextVi} | ${doseResult.infusionInstructionsVi}`
+        : undefined
+    });
+    navigator.clipboard.writeText(text);
+    setCopiedSummary(true);
+    setTimeout(() => setCopiedSummary(false), 2200);
+  };
 
   // Render Live Dosing & Safety Workspace (Housed inside DrugDetailModal)
   const renderDosingWorkspace = () => (
@@ -212,6 +391,7 @@ export default function App() {
       <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-1.5 no-print">
         <div className="flex flex-wrap items-center gap-1">
           <button
+            type="button"
             onClick={() => setActiveTab('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
               activeTab === 'all'
@@ -224,6 +404,7 @@ export default function App() {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('dosing')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
               activeTab === 'dosing'
@@ -236,6 +417,7 @@ export default function App() {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('dialysis')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
               activeTab === 'dialysis'
@@ -248,6 +430,7 @@ export default function App() {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('ddi')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
               activeTab === 'ddi'
@@ -265,6 +448,7 @@ export default function App() {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('notes')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
               activeTab === 'notes'
@@ -277,6 +461,7 @@ export default function App() {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('refs')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${
               activeTab === 'refs'
@@ -362,9 +547,9 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50/70 flex flex-col selection:bg-teal-600 selection:text-white pb-24 md:pb-8">
+    <div className="min-h-screen cockpit-canvas flex flex-col selection:bg-teal-600 selection:text-white pb-24 md:pb-8">
       
-      {/* 1. Main Navigation Header */}
+      {/* 1. Executive Clinical Command Header (Scroll-away, Cleanly Grouped) */}
       <Header
         language={language}
         onLanguageChange={setLanguage}
@@ -375,57 +560,78 @@ export default function App() {
         onOpenGuidelineAtlas={() => handleOpenGuidelineAtlas()}
         onOpenDrugSearch={() => setIsDrugSearchOpen(true)}
         onOpenQuickPatient={() => setIsQuickPatientOpen(true)}
+        onOpenPresets={() => setIsPresetsOpen(true)}
+        onOpenSepsisGuide={() => setIsSepsisGuideOpen(true)}
+        onOpenHistory={() => setIsHistoryOpen(true)}
+        savedCount={savedCases.length}
         selectedDrugName={activeDrug.name}
       />
 
-      {/* 2. Responsive Sticky Patient Capsule & Mobile Bottom Navigation Bar */}
+      {/* 2. Unified Sticky Clinical Command & Live Telemetry Dock (Zero Overlap with 54px Portal Navbar) */}
       <StickyPatientBar
         patient={patient}
         renal={renal}
         dialysis={patient.dialysis}
+        sepsisPatient={sepsisPatient}
+        sepsisResult={sepsisResult}
         selectedDrugName={activeDrug.name}
         currentStep={currentStep}
         onStepChange={(step) => {
           setCurrentStep(step);
-          window.scrollTo({ top: 80, behavior: 'smooth' });
+          if (viewMode === 'stepper') {
+            window.scrollTo({ top: 56, behavior: 'smooth' });
+          }
         }}
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        onCopyUnifiedSummary={handleCopyUnifiedSummary}
+        copiedSummary={copiedSummary}
         onOpenQuickPatient={() => setIsQuickPatientOpen(true)}
         onOpenDrugSearch={() => setIsDrugSearchOpen(true)}
         onExportPdf={() => setIsPdfModalOpen(true)}
         language={language}
       />
 
-      {/* 3. Main Clinical Workspace Layout */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+      {/* 3. Main Clinical Cockpit Workspace */}
+      <main className="flex-1 max-w-[1440px] w-full mx-auto px-3 sm:px-5 lg:px-6 py-4 sm:py-5">
         
-        <div className="lg:flex lg:gap-6 items-start">
+        <div className="lg:flex lg:gap-5 items-start">
           
-          {/* Left Column (Desktop / Laptop): Sticky Patient Demographics & Renal Metrics HUD */}
-          <aside 
-            aria-label="Patient and Renal Parameters" 
-            className={`hidden lg:block shrink-0 mb-6 lg:mb-0 transition-all duration-300 lg:sticky lg:top-32 ${
-              isSidebarCollapsed 
-                ? 'lg:w-[260px] xl:w-[280px]' 
-                : 'lg:w-[350px] xl:w-[380px]'
-            }`}
-          >
-            <PatientSidebar
-              patient={patient}
-              onChange={handlePatientChange}
-              renal={renal}
-              dialysis={patient.dialysis}
-              language={language}
-              needsHeight={activeDrug.needsHeight}
-              isCollapsed={isSidebarCollapsed}
-              onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            />
-          </aside>
+          {/* Left Cockpit Dock (Stages 2-3 & All-in-One): Independently Scrollable Renal & Sepsis HUD */}
+          {showDesktopRenalSidebar && (
+            <aside 
+              aria-label="Patient and Renal Parameters" 
+              className={`hidden lg:block shrink-0 mb-6 lg:mb-0 transition-all duration-200 lg:sticky lg:top-[116px] lg:max-h-[calc(100vh-132px)] lg:overflow-y-auto cockpit-dock-scroll lg:pr-1 ${
+                isSidebarCollapsed 
+                  ? 'lg:w-[250px] xl:w-[270px]' 
+                  : 'lg:w-[340px] xl:w-[365px]'
+              }`}
+            >
+              <PatientSidebar
+                patient={patient}
+                onChange={handlePatientChange}
+                renal={renal}
+                dialysis={patient.dialysis}
+                sepsisResult={sepsisResult}
+                onGoToSepsisStage={() => {
+                  setCurrentStep(1);
+                  window.scrollTo({ top: 56, behavior: 'smooth' });
+                }}
+                language={language}
+                needsHeight={activeDrug.needsHeight}
+                isCollapsed={isSidebarCollapsed}
+                onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              />
+            </aside>
+          )}
 
-          {/* Right Column (All Devices): 2-Stage Clinical Guided Pipeline */}
+          {/* Right/Main Column: 3-Stage Unified Clinical Pipeline */}
           <div className="flex-1 min-w-0 space-y-6">
             <SelectionWizard
               currentStage={currentStep}
               onStageChange={(st) => setCurrentStep(st)}
+              viewMode={viewMode}
+              onViewModeChange={setViewMode}
               onSelectDrugForDosing={handleSelectDrugFromSelection}
               onOpenGuidelineAtlas={handleOpenGuidelineAtlas}
               dosingResult={dosingResult}
@@ -443,6 +649,14 @@ export default function App() {
                   handleCalculateDoseInSelection(dId, false);
                 }
               }}
+              sepsisPatient={sepsisPatient}
+              sepsisResult={sepsisResult}
+              onSepsisPatientChange={handleSepsisPatientChange}
+              onSelectPreset={handleSelectPreset}
+              onSaveCase={handleSaveCurrentCase}
+              saveSuccess={saveSuccess}
+              onOpenSepsisGuide={() => setIsSepsisGuideOpen(true)}
+              sepsisSyncToken={sepsisSyncToken}
             />
           </div>
 
@@ -454,18 +668,25 @@ export default function App() {
       <div className="print-only p-8 text-black bg-white">
         <div className="border-b-2 border-black pb-4 mb-4 flex justify-between">
           <div>
-            <h1 className="text-xl font-bold uppercase">BỆNH VIỆN - KHOA DƯỢC LÂM SÀNG</h1>
-            <h2 className="text-sm font-semibold">PHIẾU HỘI CHẨN & QUẢN LÝ LIỀU KHÁNG SINH (CDSS)</h2>
+            <h1 className="text-xl font-bold uppercase">BỆNH VIỆN - HỘI CHẨN HỒI SỨC &amp; DƯỢC LÂM SÀNG</h1>
+            <h2 className="text-sm font-semibold">PHIẾU ĐÁNH GIÁ SEPSIS &amp; QUẢN LÝ LIỀU KHÁNG SINH (CDSS)</h2>
           </div>
           <div className="text-right text-xs">
             <p>Thời điểm tính: {new Date().toLocaleDateString('vi-VN')}</p>
-            <p className="font-semibold text-slate-600">CDSS INFECTODOSE v3.0</p>
+            <p className="font-semibold text-slate-600">INFECTOSEPSIS CDSS v4.0 SUPER</p>
           </div>
         </div>
 
-        <div className="mb-4 text-xs">
+        <div className="mb-3 text-xs">
           <p><strong>Thông số nhân trắc:</strong> {patient.age} tuổi / {patient.gender === 'm' ? 'Nam' : 'Nữ'} | <strong>Cân nặng:</strong> {patient.weight} kg {patient.height ? `| Chiều cao: ${patient.height} cm (IBW: ${renal.ibw} kg, BMI: ${renal.bmi})` : ''}</p>
           <p><strong>Sinh hóa &amp; Thận:</strong> Scr: {renal.scrUmol} µmol/L ({renal.scrMgdl} mg/dL) | <strong>CrCl (Cockcroft-Gault):</strong> {renal.crcl} mL/phút ({renal.categoryLabelVi}) {patient.dialysis !== 'none' ? `| Lọc máu: ${patient.dialysis.toUpperCase()}` : ''}</p>
+        </div>
+
+        <div className="border border-black p-3 mb-3 text-xs">
+          <p className="text-sm font-bold uppercase">Đánh giá Sepsis &amp; Huyết động: {sepsisResult.primaryDiagnosis.replace('_', ' ')}</p>
+          <p><strong>Điểm số:</strong> NEWS2: {sepsisResult.news2Score} | SOFA: {sepsisResult.sofaScore} | LP-NEWS: {sepsisResult.lpNewsScore} | SIRS: {sepsisResult.sirsScore}/4 | qSOFA: {sepsisResult.qsofaScore}/3 | NLR: {sepsisResult.calculatedNlr ?? 'N/A'}</p>
+          <p><strong>Sinh hiệu:</strong> HA {sepsisPatient.sbp}/{sepsisPatient.dbp} (MAP {sepsisResult.calculatedMap} mmHg) | HR {sepsisPatient.heartRate} | RR {sepsisPatient.respiratoryRate} | T° {sepsisPatient.temperature}°C | SpO2 {sepsisPatient.spo2}% | Lactate: {sepsisPatient.lactateInitial ?? 'N/A'} mmol/L</p>
+          <p><strong>Khung giờ vàng NICE:</strong> {sepsisResult.actions.antibioticTiming}</p>
         </div>
 
         <div className="border border-black p-3 mb-4 text-xs">
@@ -557,14 +778,35 @@ export default function App() {
         initialImageId={guidelineAtlasImageId}
       />
 
+      {/* Unified Sepsis Modals */}
+      <ClinicalGuideModal
+        isOpen={isSepsisGuideOpen}
+        onClose={() => setIsSepsisGuideOpen(false)}
+      />
+
+      <CaseHistoryModal
+        isOpen={isHistoryOpen}
+        onClose={() => setIsHistoryOpen(false)}
+        savedCases={savedCases}
+        onLoadCase={handleLoadCase}
+        onDeleteCase={handleDeleteCase}
+        onClearAll={handleClearAllCases}
+      />
+
+      <PresetCasesModal
+        isOpen={isPresetsOpen}
+        onClose={() => setIsPresetsOpen(false)}
+        onSelectCase={handleSelectPreset}
+      />
+
       {/* Footer */}
       <footer className="no-print bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 space-y-1">
           <p className="font-bold text-slate-700">
-            Hệ thống Hỗ Trợ Ra Quyết Định Lâm Sàng Kháng Sinh (InfectoDose CDSS v3.0 Pro)
+            Siêu Hệ Thống Hỗ Trợ Ra Quyết Định Lâm Sàng Nhiễm Trùng, Sepsis &amp; Kháng Sinh (InfectoSepsis CDSS v4.0 Super)
           </p>
           <p>
-            Tích hợp Hướng Dẫn BV Bệnh Nhiệt Đới 2026, Tiêu Chuẩn NHSN-CDC, QĐ 5631/BYT &amp; Dược Động Học Stanford/UCSF.
+            Hợp nhất NICE NG253 (2024/2026), Sepsis-3, Phoenix 2024, Hướng Dẫn BV Bệnh Nhiệt Đới 2026, WHO AWaRe, NHSN-CDC &amp; Dược Động Học Stanford/UCSF.
           </p>
         </div>
       </footer>

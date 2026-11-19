@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SepsisCDSS — Phân Tầng Nguy Cơ Nhiễm Trùng &amp; Sốc Nhiễm Khuẩn | CliniPortal CDSS</title>
-    <meta name="description" content="Hệ thống CDSS hỗ trợ sàng lọc, nhận diện và phân tầng nguy cơ nhiễm trùng, nhiễm khuẩn huyết (Sepsis) và sốc nhiễm khuẩn đa phương pháp (NICE 2024/2026, Sepsis-3, Phoenix 2024, Obstetric SOFA, LP-NEWS, NLR)." />
-    <meta property="og:title" content="SepsisCDSS — Phân Tầng Nguy Cơ Nhiễm Trùng &amp; Sốc Nhiễm Khuẩn | CliniPortal CDSS" />
-    <meta property="og:description" content="Hệ thống CDSS hỗ trợ sàng lọc, nhận diện và phân tầng nguy cơ nhiễm trùng, nhiễm khuẩn huyết (Sepsis) và sốc nhiễm khuẩn đa phương pháp (NICE 2024/2026, Sepsis-3, Phoenix 2024, Obstetric SOFA, LP-NEWS, NLR)." />
+    <title>InfectoSepsis CDSS v4.0 — Sàng Lọc Sepsis Giờ Vàng &amp; Quản Lý Liều Kháng Sinh | CliniPortal CDSS</title>
+    <meta name="description" content="Siêu hệ thống CDSS hợp nhất SepsisCDSS &amp; InfectoDose: Sàng lọc nhiễm khuẩn huyết &amp; sốc nhiễm khuẩn (NICE 2024/2026, Sepsis-3, Phoenix 2024, Obstetric SOFA, LP-NEWS, NLR) kết nối trực tiếp phác đồ BVBND 2026 và tính liều 43 kháng sinh theo CrCl/HD/CRRT." />
+    <meta property="og:title" content="InfectoSepsis CDSS v4.0 — Sàng Lọc Sepsis Giờ Vàng &amp; Quản Lý Liều Kháng Sinh | CliniPortal CDSS" />
+    <meta property="og:description" content="Siêu hệ thống CDSS hợp nhất SepsisCDSS &amp; InfectoDose: Sàng lọc nhiễm khuẩn huyết giờ vàng kết nối trực tiếp phác đồ kháng sinh và cá thể hóa liều." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -38,8 +38,13 @@
     <link rel="stylesheet" href="../shared/cdss-shell.css">
     <script src="../shared/cdss-shell.js"></script>
 
-    <link rel="stylesheet" href="./assets/index-hqFgRYgG.css">
-    <script type="module" crossorigin src="./assets/index-DZY_YirH.js"></script>
+    <script>
+      window.__CDSS_INITIAL_STAGE__ = 1;
+      window.__CDSS_ASSETS_BASE__ = '../antibiotic/assets';
+    </script>
+
+    <link rel="stylesheet" href="./assets/index-hqFgRYgG.css?v=4.1.0">
+    <script type="module" crossorigin src="./assets/index-DZY_YirH.js?v=4.1.0"></script>
   </head>
   <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-600 selection:text-white">
     <!-- CliniPortal Master Navigation Bar -->
@@ -50,7 +55,7 @@
           <span class="font-bold">CDSS Platform Suite</span>
         </a>
         <i class="fa-solid fa-chevron-right separator"></i>
-        <span class="active"><i class="fa-solid fa-biohazard text-teal-600"></i> Phân Tầng Nguy Cơ Nhiễm Trùng &amp; Sốc Nhiễm Khuẩn (SepsisCDSS)</span>
+        <span class="active"><i class="fa-solid fa-biohazard text-teal-600"></i> InfectoSepsis CDSS v4.0 — Sàng Lọc Sepsis &amp; Quản Lý Kháng Sinh</span>
       </div>
 
       <div class="cdss-portal-nav-right">

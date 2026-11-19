@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf';
 import { AntibioticItem, CalculatedRenalMetrics, DrugInteraction, Language, PatientState } from '../types';
+import { CDSSAssessmentResult, PatientData } from '../sepsis/types';
 import { DoseResult, ExtractedDrugData } from './drugDataExtractor';
 
 export interface ConsultationReportData {
@@ -11,6 +12,8 @@ export interface ConsultationReportData {
   interactions: DrugInteraction[];
   scenarioLabel: string;
   language: Language;
+  sepsisPatient?: PatientData;
+  sepsisResult?: CDSSAssessmentResult;
   consultDate?: string;
   consultantName?: string;
 }
@@ -87,6 +90,54 @@ export function generatePdfConsultationReport(data: ConsultationReportData): voi
   doc.text(`${isEn ? 'Status' : 'Phan loai'}: ${isEn ? data.renal.categoryLabelEn : data.renal.categoryLabelVi}`, col3, y + 27);
 
   y += 39;
+
+  // Integrated Sepsis & Hemodynamic Summary Box (when Sepsis data is present)
+  if (data.sepsisResult && data.sepsisPatient) {
+    const sr = data.sepsisResult;
+    const sp = data.sepsisPatient;
+    const isEmerg = sr.urgencyLevel === 'emergency';
+    if (isEmerg) {
+      doc.setFillColor(254, 242, 242);
+      doc.setDrawColor(248, 113, 113);
+    } else {
+      doc.setFillColor(240, 253, 250);
+      doc.setDrawColor(94, 234, 212);
+    }
+    doc.roundedRect(margin, y, pageWidth - 2 * margin, 26, 2, 2, 'FD');
+
+    doc.setTextColor(isEmerg ? 185 : 15, isEmerg ? 28 : 118, isEmerg ? 28 : 110);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.text(
+      isEn
+        ? `1B. SEPSIS & HEMODYNAMIC ASSESSMENT (${sr.primaryDiagnosis.toUpperCase()})`
+        : `1B. PHAN TANG NGUY CO SEPSIS & HUYET DONG (${sr.primaryDiagnosis.toUpperCase()})`,
+      margin + 4,
+      y + 6
+    );
+
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(30, 41, 59);
+    doc.text(
+      `NEWS2: ${sr.news2Score} | SOFA: ${sr.sofaScore} | LP-NEWS: ${sr.lpNewsScore} | SIRS: ${sr.sirsScore}/4 | qSOFA: ${sr.qsofaScore}/3 | NLR: ${sr.calculatedNlr ?? 'N/A'}`,
+      margin + 4,
+      y + 12.5
+    );
+    doc.text(
+      `BP: ${sp.sbp}/${sp.dbp} (MAP ${sr.calculatedMap} mmHg) | HR: ${sp.heartRate} | RR: ${sp.respiratoryRate} | T: ${sp.temperature}C | SpO2: ${sp.spo2}% | Lactate: ${sp.lactateInitial ?? 'N/A'} mmol/L`,
+      margin + 4,
+      y + 18.5
+    );
+    doc.setFont('helvetica', 'bold');
+    doc.text(
+      `NICE Max Delay: <= ${sr.niceAntibioticMaxDelayHours}h | Urgency: ${sr.urgencyLevel.toUpperCase()}`,
+      margin + 4,
+      y + 23.5
+    );
+
+    y += 31;
+  }
 
   // Antibiotic Dosing Recommendation Box
   doc.setFillColor(240, 248, 255);

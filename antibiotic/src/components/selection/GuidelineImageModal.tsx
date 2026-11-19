@@ -117,7 +117,8 @@ export const GuidelineImageModal: React.FC<GuidelineImageModalProps> = ({
     setZoomLevel(1);
   };
 
-  const imageSrc = `./assets/guidelines/${currentImage.imageFilename}`;
+  const assetsBase = (typeof window !== 'undefined' && (window as unknown as { __CDSS_ASSETS_BASE__?: string }).__CDSS_ASSETS_BASE__) || './assets';
+  const imageSrc = `${assetsBase}/guidelines/${currentImage.imageFilename}`;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200">

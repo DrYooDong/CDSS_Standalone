@@ -787,7 +787,7 @@ var require_scheduler = __commonJS({
 var require_react_dom_production = __commonJS({
   "antibiotic/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
     "use strict";
-    var React20 = require_react();
+    var React23 = require_react();
     function formatProdErrorMessage(code) {
       var url = "https://react.dev/errors/" + code;
       if (1 < arguments.length) {
@@ -829,7 +829,7 @@ var require_react_dom_production = __commonJS({
         implementation
       };
     }
-    var ReactSharedInternals = React20.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+    var ReactSharedInternals = React23.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
     function getCrossOriginStringAs(as, input) {
       if ("font" === as) return "";
       if ("string" === typeof input)
@@ -971,7 +971,7 @@ var require_react_dom_client_production = __commonJS({
   "antibiotic/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
     "use strict";
     var Scheduler = require_scheduler();
-    var React20 = require_react();
+    var React23 = require_react();
     var ReactDOM = require_react_dom();
     function formatProdErrorMessage(code) {
       var url = "https://react.dev/errors/" + code;
@@ -1262,7 +1262,7 @@ var require_react_dom_client_production = __commonJS({
       return null;
     }
     var isArrayImpl = Array.isArray;
-    var ReactSharedInternals = React20.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+    var ReactSharedInternals = React23.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
     var ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
     var sharedNotPendingObject = {
       pending: false,
@@ -14411,7 +14411,7 @@ var require_react_dom_client_production = __commonJS({
         0 === i && attemptExplicitHydrationTarget(target);
       }
     };
-    var isomorphicReactPackageVersion$jscomp$inline_2043 = React20.version;
+    var isomorphicReactPackageVersion$jscomp$inline_2043 = React23.version;
     if ("19.3.1" !== isomorphicReactPackageVersion$jscomp$inline_2043)
       throw Error(
         formatProdErrorMessage(
@@ -14654,7 +14654,7 @@ var require_lucide_react = __commonJS({
         }
       ]
     ];
-    var Activity11 = createLucideIcon("activity", __iconNode$px);
+    var Activity10 = createLucideIcon("activity", __iconNode$px);
     var __iconNode$pw = [
       ["path", { d: "M18 17.5a2.5 2.5 0 1 1-4 2.03V12", key: "yd12zl" }],
       [
@@ -15296,7 +15296,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M5 12h14", key: "1ays0h" }],
       ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
     ];
-    var ArrowRight10 = createLucideIcon("arrow-right", __iconNode$ok);
+    var ArrowRight11 = createLucideIcon("arrow-right", __iconNode$ok);
     var __iconNode$oj = [
       ["path", { d: "m3 8 4-4 4 4", key: "11wl7u" }],
       ["path", { d: "M7 4v16", key: "1glfcx" }],
@@ -15384,7 +15384,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "m5 12 7-7 7 7", key: "hav0vg" }],
       ["path", { d: "M12 19V5", key: "x0mq9r" }]
     ];
-    var ArrowUp2 = createLucideIcon("arrow-up", __iconNode$o7);
+    var ArrowUp = createLucideIcon("arrow-up", __iconNode$o7);
     var __iconNode$o6 = [
       ["path", { d: "m4 6 3-3 3 3", key: "9aidw8" }],
       ["path", { d: "M7 17V3", key: "19qxw1" }],
@@ -15475,7 +15475,7 @@ var require_lucide_react = __commonJS({
       ],
       ["path", { d: "M9 12h.01", key: "157uk2" }]
     ];
-    var Baby2 = createLucideIcon("baby", __iconNode$n_);
+    var Baby3 = createLucideIcon("baby", __iconNode$n_);
     var __iconNode$nZ = [
       ["path", { d: "M13.5 10.5 15 9", key: "1nsxvm" }],
       ["path", { d: "M4 4v15a1 1 0 0 0 1 1h15", key: "1w6lkd" }],
@@ -16454,7 +16454,7 @@ var require_lucide_react = __commonJS({
         }
       ]
     ];
-    var BookOpen7 = createLucideIcon("book-open", __iconNode$mw);
+    var BookOpen9 = createLucideIcon("book-open", __iconNode$mw);
     var __iconNode$mv = [
       ["path", { d: "M12 7v6", key: "lw1j43" }],
       [
@@ -16561,7 +16561,7 @@ var require_lucide_react = __commonJS({
       ["line", { x1: "12", x2: "12", y1: "7", y2: "13", key: "1cppfj" }],
       ["line", { x1: "15", x2: "9", y1: "10", y2: "10", key: "1gty7f" }]
     ];
-    var BookmarkPlus = createLucideIcon("bookmark-plus", __iconNode$ml);
+    var BookmarkPlus2 = createLucideIcon("bookmark-plus", __iconNode$ml);
     var __iconNode$mk = [
       ["path", { d: "m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z", key: "169p4p" }],
       ["path", { d: "m14.5 7.5-5 5", key: "3lb6iw" }],
@@ -17256,7 +17256,7 @@ var require_lucide_react = __commonJS({
       ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
       ["path", { d: "M3 10h18", key: "8toen8" }]
     ];
-    var Calendar = createLucideIcon("calendar", __iconNode$lq);
+    var Calendar2 = createLucideIcon("calendar", __iconNode$lq);
     var __iconNode$lp = [
       ["path", { d: "M14.564 14.558a3 3 0 1 1-4.122-4.121", key: "1rnrzw" }],
       ["path", { d: "m2 2 20 20", key: "1ooewy" }],
@@ -17715,7 +17715,7 @@ var require_lucide_react = __commonJS({
     ];
     var CheckLine = createLucideIcon("check-line", __iconNode$kH);
     var __iconNode$kG = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-    var Check9 = createLucideIcon("check", __iconNode$kG);
+    var Check10 = createLucideIcon("check", __iconNode$kG);
     var __iconNode$kF = [
       [
         "path",
@@ -17735,7 +17735,7 @@ var require_lucide_react = __commonJS({
     ];
     var Cherry = createLucideIcon("cherry", __iconNode$kE);
     var __iconNode$kD = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-    var ChevronDown6 = createLucideIcon("chevron-down", __iconNode$kD);
+    var ChevronDown8 = createLucideIcon("chevron-down", __iconNode$kD);
     var __iconNode$kC = [
       ["path", { d: "m17 18-6-6 6-6", key: "1yerx2" }],
       ["path", { d: "M7 6v12", key: "1p53r6" }]
@@ -17761,7 +17761,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "m7 6 5 5 5-5", key: "1lc07p" }],
       ["path", { d: "m7 13 5 5 5-5", key: "1d48rs" }]
     ];
-    var ChevronsDown = createLucideIcon("chevrons-down", __iconNode$kw);
+    var ChevronsDown2 = createLucideIcon("chevrons-down", __iconNode$kw);
     var __iconNode$kv = [
       ["path", { d: "M12 12h.01", key: "1mp3jc" }],
       ["path", { d: "M16 12h.01", key: "1l6xoz" }],
@@ -17779,7 +17779,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "m11 17-5-5 5-5", key: "13zhaf" }],
       ["path", { d: "m18 17-5-5 5-5", key: "h8a8et" }]
     ];
-    var ChevronsLeft = createLucideIcon("chevrons-left", __iconNode$kt);
+    var ChevronsLeft2 = createLucideIcon("chevrons-left", __iconNode$kt);
     var __iconNode$ks = [
       ["path", { d: "m20 17-5-5 5-5", key: "30x0n2" }],
       ["path", { d: "m4 17 5-5-5-5", key: "16spf4" }]
@@ -17789,7 +17789,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "m6 17 5-5-5-5", key: "xnjwq" }],
       ["path", { d: "m13 17 5-5-5-5", key: "17xmmf" }]
     ];
-    var ChevronsRight = createLucideIcon("chevrons-right", __iconNode$kr);
+    var ChevronsRight2 = createLucideIcon("chevrons-right", __iconNode$kr);
     var __iconNode$kq = [
       ["path", { d: "m7 15 5 5 5-5", key: "1hf1tw" }],
       ["path", { d: "m7 9 5-5 5 5", key: "sgt6xg" }]
@@ -17799,7 +17799,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "m17 11-5-5-5 5", key: "e8nh98" }],
       ["path", { d: "m17 18-5-5-5 5", key: "2avn1x" }]
     ];
-    var ChevronsUp = createLucideIcon("chevrons-up", __iconNode$kp);
+    var ChevronsUp2 = createLucideIcon("chevrons-up", __iconNode$kp);
     var __iconNode$ko = [
       ["path", { d: "M10.88 21.94 15.46 14", key: "xkve6t" }],
       ["path", { d: "M21.17 8H12", key: "19dcdn" }],
@@ -18173,7 +18173,7 @@ var require_lucide_react = __commonJS({
       ],
       ["path", { d: "m9 14 2 2 4-4", key: "df797q" }]
     ];
-    var ClipboardCheck4 = createLucideIcon("clipboard-check", __iconNode$jA);
+    var ClipboardCheck2 = createLucideIcon("clipboard-check", __iconNode$jA);
     var __iconNode$jz = [
       ["path", { d: "M16 14v2.2l1.6 1", key: "fo4ql5" }],
       ["path", { d: "M16 4h2a2 2 0 0 1 2 2v.832", key: "1ujtp2" }],
@@ -18312,7 +18312,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M12 6v6l-4-2", key: "cedpoo" }],
       ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
     ];
-    var Clock10 = createLucideIcon("clock-10", __iconNode$jn);
+    var Clock102 = createLucideIcon("clock-10", __iconNode$jn);
     var __iconNode$jm = [
       ["path", { d: "M12 6v6l-2-4", key: "ns39ag" }],
       ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
@@ -18885,7 +18885,7 @@ var require_lucide_react = __commonJS({
       ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
       ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
     ];
-    var Copy5 = createLucideIcon("copy", __iconNode$ih);
+    var Copy6 = createLucideIcon("copy", __iconNode$ih);
     var __iconNode$ig = [
       ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
       ["path", { d: "M14.83 14.83a4 4 0 1 1 0-5.66", key: "1i56pz" }]
@@ -19302,7 +19302,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "m7 18 2.891 2.891", key: "1sisit" }],
       ["path", { d: "M9 22c1.798-1.998 2.518-3.995 2.807-5.993", key: "q3hbxp" }]
     ];
-    var Dna = createLucideIcon("dna", __iconNode$hw);
+    var Dna6 = createLucideIcon("dna", __iconNode$hw);
     var __iconNode$hv = [
       ["path", { d: "M2 8h20", key: "d11cs7" }],
       ["rect", { width: "20", height: "16", x: "2", y: "4", rx: "2", key: "18n3k1" }],
@@ -19467,7 +19467,7 @@ var require_lucide_react = __commonJS({
         }
       ]
     ];
-    var Droplet4 = createLucideIcon("droplet", __iconNode$hg);
+    var Droplet7 = createLucideIcon("droplet", __iconNode$hg);
     var __iconNode$hf = [
       [
         "path",
@@ -20247,7 +20247,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M16 13H8", key: "t4e002" }],
       ["path", { d: "M16 17H8", key: "z1uh3a" }]
     ];
-    var FileText11 = createLucideIcon("file-text", __iconNode$f_);
+    var FileText10 = createLucideIcon("file-text", __iconNode$f_);
     var __iconNode$fZ = [
       ["path", { d: "M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4", key: "1pf5j1" }],
       ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
@@ -21444,7 +21444,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" }],
       ["path", { d: "M2 12h20", key: "9i4pu4" }]
     ];
-    var Globe4 = createLucideIcon("globe", __iconNode$e9);
+    var Globe3 = createLucideIcon("globe", __iconNode$e9);
     var __iconNode$e8 = [
       ["path", { d: "M22 5V2l-5.89 5.89", key: "1eenpo" }],
       ["circle", { cx: "16.6", cy: "15.89", r: "3", key: "xjtalx" }],
@@ -22007,7 +22007,7 @@ var require_lucide_react = __commonJS({
         }
       ]
     ];
-    var Heart = createLucideIcon("heart", __iconNode$dn);
+    var Heart4 = createLucideIcon("heart", __iconNode$dn);
     var __iconNode$dm = [
       ["path", { d: "M11 8c2-3-2-3 0-6", key: "1ldv5m" }],
       ["path", { d: "M15.5 8c2-3-2-3 0-6", key: "1otqoz" }],
@@ -22039,7 +22039,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M3 3v5h5", key: "1xhq8a" }],
       ["path", { d: "M12 7v5l4 2", key: "1fdv2h" }]
     ];
-    var History = createLucideIcon("history", __iconNode$dk);
+    var History3 = createLucideIcon("history", __iconNode$dk);
     var __iconNode$dj = [
       ["path", { d: "m9 11-6 6v3h9l3-3", key: "1a3l36" }],
       ["path", { d: "m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4", key: "14a9rk" }]
@@ -22426,7 +22426,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M12 16v-4", key: "1dtifu" }],
       ["path", { d: "M12 8h.01", key: "e9boi3" }]
     ];
-    var Info12 = createLucideIcon("info", __iconNode$cT);
+    var Info11 = createLucideIcon("info", __iconNode$cT);
     var __iconNode$cS = [
       ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
       ["path", { d: "M7 7h.01", key: "7u93v4" }],
@@ -22893,7 +22893,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M8 8v12", key: "1gg7y9" }],
       ["path", { d: "M4 4v16", key: "6qkkli" }]
     ];
-    var Library = createLucideIcon("library", __iconNode$cb);
+    var Library2 = createLucideIcon("library", __iconNode$cb);
     var __iconNode$ca = [
       ["path", { d: "M14 12h2v8", key: "c1fccl" }],
       ["path", { d: "M14 20h4", key: "lzx1xo" }],
@@ -24082,7 +24082,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z", key: "1bmzmy" }],
       ["path", { d: "M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3", key: "1drr47" }]
     ];
-    var Microscope = createLucideIcon("microscope", __iconNode$am);
+    var Microscope2 = createLucideIcon("microscope", __iconNode$am);
     var __iconNode$al = [
       ["rect", { width: "20", height: "15", x: "2", y: "4", rx: "2", key: "2no95f" }],
       ["rect", { width: "8", height: "7", x: "6", y: "8", rx: "1", key: "zh9wx" }],
@@ -25747,7 +25747,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6", key: "1itne7" }],
       ["rect", { x: "6", y: "14", width: "12", height: "8", rx: "1", key: "1ue0tg" }]
     ];
-    var Printer3 = createLucideIcon("printer", __iconNode$7G);
+    var Printer2 = createLucideIcon("printer", __iconNode$7G);
     var __iconNode$7F = [
       ["path", { d: "M5 7 3 5", key: "1yys58" }],
       ["path", { d: "M9 6V3", key: "1ptz9u" }],
@@ -26148,7 +26148,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
       ["path", { d: "M8 16H3v5", key: "1cv678" }]
     ];
-    var RefreshCw3 = createLucideIcon("refresh-cw", __iconNode$71);
+    var RefreshCw4 = createLucideIcon("refresh-cw", __iconNode$71);
     var __iconNode$70 = [
       [
         "path",
@@ -26765,7 +26765,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
       ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
     ];
-    var Search9 = createLucideIcon("search", __iconNode$61);
+    var Search7 = createLucideIcon("search", __iconNode$61);
     var __iconNode$60 = [
       ["path", { d: "M16 5a4 3 0 0 0-8 0c0 4 8 3 8 7a4 3 0 0 1-8 0", key: "vqan6v" }],
       ["path", { d: "M8 19a4 3 0 0 0 8 0c0-4-8-3-8-7a4 3 0 0 1 8 0", key: "wdjd8o" }]
@@ -26977,7 +26977,7 @@ var require_lucide_react = __commonJS({
       ],
       ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
     ];
-    var ShieldCheck8 = createLucideIcon("shield-check", __iconNode$5I);
+    var ShieldCheck7 = createLucideIcon("shield-check", __iconNode$5I);
     var __iconNode$5H = [
       [
         "path",
@@ -27556,7 +27556,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M22 4h-4", key: "gwowj6" }],
       ["circle", { cx: "4", cy: "20", r: "2", key: "6kqj1y" }]
     ];
-    var Sparkles11 = createLucideIcon("sparkles", __iconNode$4S);
+    var Sparkles12 = createLucideIcon("sparkles", __iconNode$4S);
     var __iconNode$4R = [
       ["rect", { width: "16", height: "20", x: "4", y: "2", rx: "2", key: "1nb95v" }],
       ["path", { d: "M12 6h.01", key: "1vi96p" }],
@@ -28311,7 +28311,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M8 15a6 6 0 0 0 12 0v-3", key: "x18d4x" }],
       ["circle", { cx: "20", cy: "10", r: "2", key: "ts1r5v" }]
     ];
-    var Stethoscope3 = createLucideIcon("stethoscope", __iconNode$3r);
+    var Stethoscope7 = createLucideIcon("stethoscope", __iconNode$3r);
     var __iconNode$3q = [
       ["path", { d: "M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z", key: "qazsjp" }],
       ["path", { d: "M15 3v4a2 2 0 0 0 2 2h4", key: "40519r" }]
@@ -28728,7 +28728,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M8.5 2h7", key: "csnxdl" }],
       ["path", { d: "M14.5 16h-5", key: "1ox875" }]
     ];
-    var TestTube = createLucideIcon("test-tube", __iconNode$2J);
+    var TestTube3 = createLucideIcon("test-tube", __iconNode$2J);
     var __iconNode$2I = [
       ["path", { d: "M9 2v17.5A2.5 2.5 0 0 1 6.5 22A2.5 2.5 0 0 1 4 19.5V2", key: "1hjrqt" }],
       ["path", { d: "M20 2v17.5a2.5 2.5 0 0 1-2.5 2.5a2.5 2.5 0 0 1-2.5-2.5V2", key: "16lc8n" }],
@@ -29179,7 +29179,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M3 6h18", key: "d0wm0j" }],
       ["path", { d: "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2", key: "e791ji" }]
     ];
-    var Trash2 = createLucideIcon("trash-2", __iconNode$1Z);
+    var Trash22 = createLucideIcon("trash-2", __iconNode$1Z);
     var __iconNode$1Y = [
       ["path", { d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6", key: "miytrc" }],
       ["path", { d: "M3 6h18", key: "d0wm0j" }],
@@ -29569,7 +29569,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
       ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }]
     ];
-    var UserCheck = createLucideIcon("user-check", __iconNode$1j);
+    var UserCheck2 = createLucideIcon("user-check", __iconNode$1j);
     var __iconNode$1i = [
       ["path", { d: "M10 15H6a4 4 0 0 0-4 4v2", key: "1nfge6" }],
       ["path", { d: "m14.305 16.53.923-.382", key: "1itpsq" }],
@@ -29710,7 +29710,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
       ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
     ];
-    var User7 = createLucideIcon("user", __iconNode$12);
+    var User8 = createLucideIcon("user", __iconNode$12);
     var __iconNode$11 = [
       ["path", { d: "M18 21a8 8 0 0 0-16 0", key: "3ypg7q" }],
       ["circle", { cx: "10", cy: "8", r: "5", key: "o932ke" }],
@@ -29723,7 +29723,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M22 21v-2a4 4 0 0 0-3-3.87", key: "kshegd" }],
       ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }]
     ];
-    var Users = createLucideIcon("users", __iconNode$10);
+    var Users2 = createLucideIcon("users", __iconNode$10);
     var __iconNode$$ = [
       ["path", { d: "m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8", key: "n7qcjb" }],
       [
@@ -30373,7 +30373,7 @@ var require_lucide_react = __commonJS({
       ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
       ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
     ];
-    var X11 = createLucideIcon("x", __iconNode$5);
+    var X14 = createLucideIcon("x", __iconNode$5);
     var __iconNode$4 = [
       [
         "path",
@@ -30427,7 +30427,7 @@ var require_lucide_react = __commonJS({
       AArrowUp,
       ALargeSmall,
       Accessibility,
-      Activity: Activity11,
+      Activity: Activity10,
       AirVent,
       Airplay,
       AlarmClock,
@@ -30501,11 +30501,11 @@ var require_lucide_react = __commonJS({
       ArrowLeftFromLine,
       ArrowLeftRight,
       ArrowLeftToLine,
-      ArrowRight: ArrowRight10,
+      ArrowRight: ArrowRight11,
       ArrowRightFromLine,
       ArrowRightLeft: ArrowRightLeft2,
       ArrowRightToLine,
-      ArrowUp: ArrowUp2,
+      ArrowUp,
       ArrowUp01,
       ArrowUp10,
       ArrowUpAZ,
@@ -30527,7 +30527,7 @@ var require_lucide_react = __commonJS({
       Award: Award2,
       Axe,
       Axis3d,
-      Baby: Baby2,
+      Baby: Baby3,
       Backpack,
       Badge,
       BadgeAlert,
@@ -30619,7 +30619,7 @@ var require_lucide_react = __commonJS({
       BookLock,
       BookMarked: BookMarked2,
       BookMinus,
-      BookOpen: BookOpen7,
+      BookOpen: BookOpen9,
       BookOpenCheck,
       BookOpenText,
       BookPlus,
@@ -30632,7 +30632,7 @@ var require_lucide_react = __commonJS({
       Bookmark,
       BookmarkCheck,
       BookmarkMinus,
-      BookmarkPlus,
+      BookmarkPlus: BookmarkPlus2,
       BookmarkX,
       BoomBox,
       Bot,
@@ -30670,7 +30670,7 @@ var require_lucide_react = __commonJS({
       Cake,
       CakeSlice,
       Calculator: Calculator6,
-      Calendar,
+      Calendar: Calendar2,
       Calendar1,
       CalendarArrowDown,
       CalendarArrowUp,
@@ -30736,25 +30736,25 @@ var require_lucide_react = __commonJS({
       ChartPie,
       ChartScatter,
       ChartSpline,
-      Check: Check9,
+      Check: Check10,
       CheckCheck,
       CheckLine,
       ChefHat,
       Cherry,
-      ChevronDown: ChevronDown6,
+      ChevronDown: ChevronDown8,
       ChevronFirst,
       ChevronLast,
       ChevronLeft: ChevronLeft3,
       ChevronRight: ChevronRight5,
       ChevronUp: ChevronUp6,
-      ChevronsDown,
+      ChevronsDown: ChevronsDown2,
       ChevronsDownUp,
-      ChevronsLeft,
+      ChevronsLeft: ChevronsLeft2,
       ChevronsLeftRight,
       ChevronsLeftRightEllipsis,
-      ChevronsRight,
+      ChevronsRight: ChevronsRight2,
       ChevronsRightLeft,
-      ChevronsUp,
+      ChevronsUp: ChevronsUp2,
       ChevronsUpDown,
       Chromium,
       Church,
@@ -30809,7 +30809,7 @@ var require_lucide_react = __commonJS({
       Citrus,
       Clapperboard,
       Clipboard,
-      ClipboardCheck: ClipboardCheck4,
+      ClipboardCheck: ClipboardCheck2,
       ClipboardClock,
       ClipboardCopy,
       ClipboardList,
@@ -30822,7 +30822,7 @@ var require_lucide_react = __commonJS({
       ClipboardX,
       Clock: Clock13,
       Clock1,
-      Clock10,
+      Clock10: Clock102,
       Clock11,
       Clock12,
       Clock2: Clock22,
@@ -30885,7 +30885,7 @@ var require_lucide_react = __commonJS({
       Contrast,
       Cookie,
       CookingPot,
-      Copy: Copy5,
+      Copy: Copy6,
       CopyCheck,
       CopyMinus,
       CopyPlus,
@@ -30939,7 +30939,7 @@ var require_lucide_react = __commonJS({
       Disc3,
       DiscAlbum,
       Divide,
-      Dna,
+      Dna: Dna6,
       DnaOff,
       Dock,
       Dog,
@@ -30955,7 +30955,7 @@ var require_lucide_react = __commonJS({
       Dribbble,
       Drill,
       Drone,
-      Droplet: Droplet4,
+      Droplet: Droplet7,
       DropletOff,
       Droplets: Droplets4,
       Drum,
@@ -31039,7 +31039,7 @@ var require_lucide_react = __commonJS({
       FileStack,
       FileSymlink,
       FileTerminal,
-      FileText: FileText11,
+      FileText: FileText10,
       FileType,
       FileType2,
       FileUp,
@@ -31151,7 +31151,7 @@ var require_lucide_react = __commonJS({
       Gitlab,
       GlassWater,
       Glasses,
-      Globe: Globe4,
+      Globe: Globe3,
       GlobeLock,
       Goal,
       Gpu,
@@ -31199,7 +31199,7 @@ var require_lucide_react = __commonJS({
       HeadphoneOff,
       Headphones,
       Headset,
-      Heart,
+      Heart: Heart4,
       HeartCrack,
       HeartHandshake: HeartHandshake2,
       HeartMinus,
@@ -31209,7 +31209,7 @@ var require_lucide_react = __commonJS({
       Heater,
       Hexagon,
       Highlighter,
-      History,
+      History: History3,
       Hop,
       HopOff,
       Hospital: Hospital2,
@@ -31237,7 +31237,7 @@ var require_lucide_react = __commonJS({
       Inbox,
       IndianRupee,
       Infinity: Infinity2,
-      Info: Info12,
+      Info: Info11,
       InspectionPanel,
       Instagram,
       Italic,
@@ -31279,7 +31279,7 @@ var require_lucide_react = __commonJS({
       Leaf,
       LeafyGreen,
       Lectern,
-      Library,
+      Library: Library2,
       LibraryBig,
       LifeBuoy,
       Ligature,
@@ -31398,7 +31398,7 @@ var require_lucide_react = __commonJS({
       MicOff,
       MicVocal,
       Microchip,
-      Microscope,
+      Microscope: Microscope2,
       Microwave,
       Milestone,
       Milk,
@@ -31569,7 +31569,7 @@ var require_lucide_react = __commonJS({
       Power,
       PowerOff,
       Presentation,
-      Printer: Printer3,
+      Printer: Printer2,
       PrinterCheck,
       Projector,
       Proportions,
@@ -31610,7 +31610,7 @@ var require_lucide_react = __commonJS({
       RedoDot,
       RefreshCcw,
       RefreshCcwDot,
-      RefreshCw: RefreshCw3,
+      RefreshCw: RefreshCw4,
       RefreshCwOff,
       Refrigerator,
       Regex,
@@ -31672,7 +31672,7 @@ var require_lucide_react = __commonJS({
       ScreenShareOff,
       Scroll,
       ScrollText,
-      Search: Search9,
+      Search: Search7,
       SearchCheck,
       SearchCode,
       SearchSlash,
@@ -31697,7 +31697,7 @@ var require_lucide_react = __commonJS({
       Shield: Shield2,
       ShieldAlert: ShieldAlert13,
       ShieldBan,
-      ShieldCheck: ShieldCheck8,
+      ShieldCheck: ShieldCheck7,
       ShieldEllipsis,
       ShieldHalf,
       ShieldMinus,
@@ -31750,7 +31750,7 @@ var require_lucide_react = __commonJS({
       Space,
       Spade,
       Sparkle,
-      Sparkles: Sparkles11,
+      Sparkles: Sparkles12,
       Speaker,
       Speech,
       SpellCheck,
@@ -31840,7 +31840,7 @@ var require_lucide_react = __commonJS({
       StarOff,
       StepBack,
       StepForward,
-      Stethoscope: Stethoscope3,
+      Stethoscope: Stethoscope7,
       Sticker,
       StickyNote,
       Store,
@@ -31886,7 +31886,7 @@ var require_lucide_react = __commonJS({
       Tent,
       TentTree,
       Terminal,
-      TestTube,
+      TestTube: TestTube3,
       TestTubeDiagonal,
       TestTubes,
       TextAlignCenter,
@@ -31936,7 +31936,7 @@ var require_lucide_react = __commonJS({
       TramFront,
       Transgender,
       Trash,
-      Trash2,
+      Trash2: Trash22,
       TreeDeciduous,
       TreePalm,
       TreePine,
@@ -31977,8 +31977,8 @@ var require_lucide_react = __commonJS({
       Unplug,
       Upload,
       Usb,
-      User: User7,
-      UserCheck,
+      User: User8,
+      UserCheck: UserCheck2,
       UserCog,
       UserLock,
       UserMinus,
@@ -31995,7 +31995,7 @@ var require_lucide_react = __commonJS({
       UserSearch,
       UserStar,
       UserX,
-      Users,
+      Users: Users2,
       UsersRound,
       Utensils,
       UtensilsCrossed,
@@ -32055,7 +32055,7 @@ var require_lucide_react = __commonJS({
       Workflow,
       Worm,
       Wrench,
-      X: X11,
+      X: X14,
       Youtube,
       Zap: Zap2,
       ZapOff,
@@ -32070,8 +32070,8 @@ var require_lucide_react = __commonJS({
     exports.ALargeSmallIcon = ALargeSmall;
     exports.Accessibility = Accessibility;
     exports.AccessibilityIcon = Accessibility;
-    exports.Activity = Activity11;
-    exports.ActivityIcon = Activity11;
+    exports.Activity = Activity10;
+    exports.ActivityIcon = Activity10;
     exports.ActivitySquare = SquareActivity;
     exports.ActivitySquareIcon = SquareActivity;
     exports.AirVent = AirVent;
@@ -32266,19 +32266,19 @@ var require_lucide_react = __commonJS({
     exports.ArrowLeftSquareIcon = SquareArrowLeft;
     exports.ArrowLeftToLine = ArrowLeftToLine;
     exports.ArrowLeftToLineIcon = ArrowLeftToLine;
-    exports.ArrowRight = ArrowRight10;
+    exports.ArrowRight = ArrowRight11;
     exports.ArrowRightCircle = CircleArrowRight;
     exports.ArrowRightCircleIcon = CircleArrowRight;
     exports.ArrowRightFromLine = ArrowRightFromLine;
     exports.ArrowRightFromLineIcon = ArrowRightFromLine;
-    exports.ArrowRightIcon = ArrowRight10;
+    exports.ArrowRightIcon = ArrowRight11;
     exports.ArrowRightLeft = ArrowRightLeft2;
     exports.ArrowRightLeftIcon = ArrowRightLeft2;
     exports.ArrowRightSquare = SquareArrowRight;
     exports.ArrowRightSquareIcon = SquareArrowRight;
     exports.ArrowRightToLine = ArrowRightToLine;
     exports.ArrowRightToLineIcon = ArrowRightToLine;
-    exports.ArrowUp = ArrowUp2;
+    exports.ArrowUp = ArrowUp;
     exports.ArrowUp01 = ArrowUp01;
     exports.ArrowUp01Icon = ArrowUp01;
     exports.ArrowUp10 = ArrowUp10;
@@ -32295,7 +32295,7 @@ var require_lucide_react = __commonJS({
     exports.ArrowUpFromDotIcon = ArrowUpFromDot;
     exports.ArrowUpFromLine = ArrowUpFromLine;
     exports.ArrowUpFromLineIcon = ArrowUpFromLine;
-    exports.ArrowUpIcon = ArrowUp2;
+    exports.ArrowUpIcon = ArrowUp;
     exports.ArrowUpLeft = ArrowUpLeft;
     exports.ArrowUpLeftFromCircle = CircleArrowOutUpLeft;
     exports.ArrowUpLeftFromCircleIcon = CircleArrowOutUpLeft;
@@ -32346,8 +32346,8 @@ var require_lucide_react = __commonJS({
     exports.Axis3DIcon = Axis3d;
     exports.Axis3d = Axis3d;
     exports.Axis3dIcon = Axis3d;
-    exports.Baby = Baby2;
-    exports.BabyIcon = Baby2;
+    exports.Baby = Baby3;
+    exports.BabyIcon = Baby3;
     exports.Backpack = Backpack;
     exports.BackpackIcon = Backpack;
     exports.Badge = Badge;
@@ -32550,10 +32550,10 @@ var require_lucide_react = __commonJS({
     exports.BookMarkedIcon = BookMarked2;
     exports.BookMinus = BookMinus;
     exports.BookMinusIcon = BookMinus;
-    exports.BookOpen = BookOpen7;
+    exports.BookOpen = BookOpen9;
     exports.BookOpenCheck = BookOpenCheck;
     exports.BookOpenCheckIcon = BookOpenCheck;
-    exports.BookOpenIcon = BookOpen7;
+    exports.BookOpenIcon = BookOpen9;
     exports.BookOpenText = BookOpenText;
     exports.BookOpenTextIcon = BookOpenText;
     exports.BookPlus = BookPlus;
@@ -32578,8 +32578,8 @@ var require_lucide_react = __commonJS({
     exports.BookmarkIcon = Bookmark;
     exports.BookmarkMinus = BookmarkMinus;
     exports.BookmarkMinusIcon = BookmarkMinus;
-    exports.BookmarkPlus = BookmarkPlus;
-    exports.BookmarkPlusIcon = BookmarkPlus;
+    exports.BookmarkPlus = BookmarkPlus2;
+    exports.BookmarkPlusIcon = BookmarkPlus2;
     exports.BookmarkX = BookmarkX;
     exports.BookmarkXIcon = BookmarkX;
     exports.BoomBox = BoomBox;
@@ -32656,7 +32656,7 @@ var require_lucide_react = __commonJS({
     exports.CakeSliceIcon = CakeSlice;
     exports.Calculator = Calculator6;
     exports.CalculatorIcon = Calculator6;
-    exports.Calendar = Calendar;
+    exports.Calendar = Calendar2;
     exports.Calendar1 = Calendar1;
     exports.Calendar1Icon = Calendar1;
     exports.CalendarArrowDown = CalendarArrowDown;
@@ -32677,7 +32677,7 @@ var require_lucide_react = __commonJS({
     exports.CalendarFoldIcon = CalendarFold;
     exports.CalendarHeart = CalendarHeart;
     exports.CalendarHeartIcon = CalendarHeart;
-    exports.CalendarIcon = Calendar;
+    exports.CalendarIcon = Calendar2;
     exports.CalendarMinus = CalendarMinus;
     exports.CalendarMinus2 = CalendarMinus2;
     exports.CalendarMinus2Icon = CalendarMinus2;
@@ -32790,14 +32790,14 @@ var require_lucide_react = __commonJS({
     exports.ChartScatterIcon = ChartScatter;
     exports.ChartSpline = ChartSpline;
     exports.ChartSplineIcon = ChartSpline;
-    exports.Check = Check9;
+    exports.Check = Check10;
     exports.CheckCheck = CheckCheck;
     exports.CheckCheckIcon = CheckCheck;
     exports.CheckCircle = CircleCheckBig;
     exports.CheckCircle2 = CircleCheck;
     exports.CheckCircle2Icon = CircleCheck;
     exports.CheckCircleIcon = CircleCheckBig;
-    exports.CheckIcon = Check9;
+    exports.CheckIcon = Check10;
     exports.CheckLine = CheckLine;
     exports.CheckLineIcon = CheckLine;
     exports.CheckSquare = SquareCheckBig;
@@ -32808,10 +32808,10 @@ var require_lucide_react = __commonJS({
     exports.ChefHatIcon = ChefHat;
     exports.Cherry = Cherry;
     exports.CherryIcon = Cherry;
-    exports.ChevronDown = ChevronDown6;
+    exports.ChevronDown = ChevronDown8;
     exports.ChevronDownCircle = CircleChevronDown;
     exports.ChevronDownCircleIcon = CircleChevronDown;
-    exports.ChevronDownIcon = ChevronDown6;
+    exports.ChevronDownIcon = ChevronDown8;
     exports.ChevronDownSquare = SquareChevronDown;
     exports.ChevronDownSquareIcon = SquareChevronDown;
     exports.ChevronFirst = ChevronFirst;
@@ -32836,24 +32836,24 @@ var require_lucide_react = __commonJS({
     exports.ChevronUpIcon = ChevronUp6;
     exports.ChevronUpSquare = SquareChevronUp;
     exports.ChevronUpSquareIcon = SquareChevronUp;
-    exports.ChevronsDown = ChevronsDown;
-    exports.ChevronsDownIcon = ChevronsDown;
+    exports.ChevronsDown = ChevronsDown2;
+    exports.ChevronsDownIcon = ChevronsDown2;
     exports.ChevronsDownUp = ChevronsDownUp;
     exports.ChevronsDownUpIcon = ChevronsDownUp;
-    exports.ChevronsLeft = ChevronsLeft;
-    exports.ChevronsLeftIcon = ChevronsLeft;
+    exports.ChevronsLeft = ChevronsLeft2;
+    exports.ChevronsLeftIcon = ChevronsLeft2;
     exports.ChevronsLeftRight = ChevronsLeftRight;
     exports.ChevronsLeftRightEllipsis = ChevronsLeftRightEllipsis;
     exports.ChevronsLeftRightEllipsisIcon = ChevronsLeftRightEllipsis;
     exports.ChevronsLeftRightIcon = ChevronsLeftRight;
-    exports.ChevronsRight = ChevronsRight;
-    exports.ChevronsRightIcon = ChevronsRight;
+    exports.ChevronsRight = ChevronsRight2;
+    exports.ChevronsRightIcon = ChevronsRight2;
     exports.ChevronsRightLeft = ChevronsRightLeft;
     exports.ChevronsRightLeftIcon = ChevronsRightLeft;
-    exports.ChevronsUp = ChevronsUp;
+    exports.ChevronsUp = ChevronsUp2;
     exports.ChevronsUpDown = ChevronsUpDown;
     exports.ChevronsUpDownIcon = ChevronsUpDown;
-    exports.ChevronsUpIcon = ChevronsUp;
+    exports.ChevronsUpIcon = ChevronsUp2;
     exports.Chrome = Chromium;
     exports.ChromeIcon = Chromium;
     exports.Chromium = Chromium;
@@ -32965,8 +32965,8 @@ var require_lucide_react = __commonJS({
     exports.Clapperboard = Clapperboard;
     exports.ClapperboardIcon = Clapperboard;
     exports.Clipboard = Clipboard;
-    exports.ClipboardCheck = ClipboardCheck4;
-    exports.ClipboardCheckIcon = ClipboardCheck4;
+    exports.ClipboardCheck = ClipboardCheck2;
+    exports.ClipboardCheckIcon = ClipboardCheck2;
     exports.ClipboardClock = ClipboardClock;
     exports.ClipboardClockIcon = ClipboardClock;
     exports.ClipboardCopy = ClipboardCopy;
@@ -32994,8 +32994,8 @@ var require_lucide_react = __commonJS({
     exports.ClipboardXIcon = ClipboardX;
     exports.Clock = Clock13;
     exports.Clock1 = Clock1;
-    exports.Clock10 = Clock10;
-    exports.Clock10Icon = Clock10;
+    exports.Clock10 = Clock102;
+    exports.Clock10Icon = Clock102;
     exports.Clock11 = Clock11;
     exports.Clock11Icon = Clock11;
     exports.Clock12 = Clock12;
@@ -33132,10 +33132,10 @@ var require_lucide_react = __commonJS({
     exports.CookieIcon = Cookie;
     exports.CookingPot = CookingPot;
     exports.CookingPotIcon = CookingPot;
-    exports.Copy = Copy5;
+    exports.Copy = Copy6;
     exports.CopyCheck = CopyCheck;
     exports.CopyCheckIcon = CopyCheck;
-    exports.CopyIcon = Copy5;
+    exports.CopyIcon = Copy6;
     exports.CopyMinus = CopyMinus;
     exports.CopyMinusIcon = CopyMinus;
     exports.CopyPlus = CopyPlus;
@@ -33246,8 +33246,8 @@ var require_lucide_react = __commonJS({
     exports.DivideIcon = Divide;
     exports.DivideSquare = SquareDivide;
     exports.DivideSquareIcon = SquareDivide;
-    exports.Dna = Dna;
-    exports.DnaIcon = Dna;
+    exports.Dna = Dna6;
+    exports.DnaIcon = Dna6;
     exports.DnaOff = DnaOff;
     exports.DnaOffIcon = DnaOff;
     exports.Dock = Dock;
@@ -33282,8 +33282,8 @@ var require_lucide_react = __commonJS({
     exports.DrillIcon = Drill;
     exports.Drone = Drone;
     exports.DroneIcon = Drone;
-    exports.Droplet = Droplet4;
-    exports.DropletIcon = Droplet4;
+    exports.Droplet = Droplet7;
+    exports.DropletIcon = Droplet7;
     exports.DropletOff = DropletOff;
     exports.DropletOffIcon = DropletOff;
     exports.Droplets = Droplets4;
@@ -33476,8 +33476,8 @@ var require_lucide_react = __commonJS({
     exports.FileSymlinkIcon = FileSymlink;
     exports.FileTerminal = FileTerminal;
     exports.FileTerminalIcon = FileTerminal;
-    exports.FileText = FileText11;
-    exports.FileTextIcon = FileText11;
+    exports.FileText = FileText10;
+    exports.FileTextIcon = FileText10;
     exports.FileType = FileType;
     exports.FileType2 = FileType2;
     exports.FileType2Icon = FileType2;
@@ -33728,10 +33728,10 @@ var require_lucide_react = __commonJS({
     exports.GlassWaterIcon = GlassWater;
     exports.Glasses = Glasses;
     exports.GlassesIcon = Glasses;
-    exports.Globe = Globe4;
+    exports.Globe = Globe3;
     exports.Globe2 = Earth;
     exports.Globe2Icon = Earth;
-    exports.GlobeIcon = Globe4;
+    exports.GlobeIcon = Globe3;
     exports.GlobeLock = GlobeLock;
     exports.GlobeLockIcon = GlobeLock;
     exports.Goal = Goal;
@@ -33840,12 +33840,12 @@ var require_lucide_react = __commonJS({
     exports.HeadphonesIcon = Headphones;
     exports.Headset = Headset;
     exports.HeadsetIcon = Headset;
-    exports.Heart = Heart;
+    exports.Heart = Heart4;
     exports.HeartCrack = HeartCrack;
     exports.HeartCrackIcon = HeartCrack;
     exports.HeartHandshake = HeartHandshake2;
     exports.HeartHandshakeIcon = HeartHandshake2;
-    exports.HeartIcon = Heart;
+    exports.HeartIcon = Heart4;
     exports.HeartMinus = HeartMinus;
     exports.HeartMinusIcon = HeartMinus;
     exports.HeartOff = HeartOff;
@@ -33864,8 +33864,8 @@ var require_lucide_react = __commonJS({
     exports.HexagonIcon = Hexagon;
     exports.Highlighter = Highlighter;
     exports.HighlighterIcon = Highlighter;
-    exports.History = History;
-    exports.HistoryIcon = History;
+    exports.History = History3;
+    exports.HistoryIcon = History3;
     exports.Home = House;
     exports.HomeIcon = House;
     exports.Hop = Hop;
@@ -33933,8 +33933,8 @@ var require_lucide_react = __commonJS({
     exports.IndianRupeeIcon = IndianRupee;
     exports.Infinity = Infinity2;
     exports.InfinityIcon = Infinity2;
-    exports.Info = Info12;
-    exports.InfoIcon = Info12;
+    exports.Info = Info11;
+    exports.InfoIcon = Info11;
     exports.Inspect = SquareMousePointer;
     exports.InspectIcon = SquareMousePointer;
     exports.InspectionPanel = InspectionPanel;
@@ -34031,10 +34031,10 @@ var require_lucide_react = __commonJS({
     exports.LecternIcon = Lectern;
     exports.LetterText = TextInitial;
     exports.LetterTextIcon = TextInitial;
-    exports.Library = Library;
+    exports.Library = Library2;
     exports.LibraryBig = LibraryBig;
     exports.LibraryBigIcon = LibraryBig;
-    exports.LibraryIcon = Library;
+    exports.LibraryIcon = Library2;
     exports.LibrarySquare = SquareLibrary;
     exports.LibrarySquareIcon = SquareLibrary;
     exports.LifeBuoy = LifeBuoy;
@@ -34135,7 +34135,7 @@ var require_lucide_react = __commonJS({
     exports.LucideAArrowUp = AArrowUp;
     exports.LucideALargeSmall = ALargeSmall;
     exports.LucideAccessibility = Accessibility;
-    exports.LucideActivity = Activity11;
+    exports.LucideActivity = Activity10;
     exports.LucideActivitySquare = SquareActivity;
     exports.LucideAirVent = AirVent;
     exports.LucideAirplay = Airplay;
@@ -34233,13 +34233,13 @@ var require_lucide_react = __commonJS({
     exports.LucideArrowLeftRight = ArrowLeftRight;
     exports.LucideArrowLeftSquare = SquareArrowLeft;
     exports.LucideArrowLeftToLine = ArrowLeftToLine;
-    exports.LucideArrowRight = ArrowRight10;
+    exports.LucideArrowRight = ArrowRight11;
     exports.LucideArrowRightCircle = CircleArrowRight;
     exports.LucideArrowRightFromLine = ArrowRightFromLine;
     exports.LucideArrowRightLeft = ArrowRightLeft2;
     exports.LucideArrowRightSquare = SquareArrowRight;
     exports.LucideArrowRightToLine = ArrowRightToLine;
-    exports.LucideArrowUp = ArrowUp2;
+    exports.LucideArrowUp = ArrowUp;
     exports.LucideArrowUp01 = ArrowUp01;
     exports.LucideArrowUp10 = ArrowUp10;
     exports.LucideArrowUpAZ = ArrowUpAZ;
@@ -34273,7 +34273,7 @@ var require_lucide_react = __commonJS({
     exports.LucideAxe = Axe;
     exports.LucideAxis3D = Axis3d;
     exports.LucideAxis3d = Axis3d;
-    exports.LucideBaby = Baby2;
+    exports.LucideBaby = Baby3;
     exports.LucideBackpack = Backpack;
     exports.LucideBadge = Badge;
     exports.LucideBadgeAlert = BadgeAlert;
@@ -34375,7 +34375,7 @@ var require_lucide_react = __commonJS({
     exports.LucideBookLock = BookLock;
     exports.LucideBookMarked = BookMarked2;
     exports.LucideBookMinus = BookMinus;
-    exports.LucideBookOpen = BookOpen7;
+    exports.LucideBookOpen = BookOpen9;
     exports.LucideBookOpenCheck = BookOpenCheck;
     exports.LucideBookOpenText = BookOpenText;
     exports.LucideBookPlus = BookPlus;
@@ -34389,7 +34389,7 @@ var require_lucide_react = __commonJS({
     exports.LucideBookmark = Bookmark;
     exports.LucideBookmarkCheck = BookmarkCheck;
     exports.LucideBookmarkMinus = BookmarkMinus;
-    exports.LucideBookmarkPlus = BookmarkPlus;
+    exports.LucideBookmarkPlus = BookmarkPlus2;
     exports.LucideBookmarkX = BookmarkX;
     exports.LucideBoomBox = BoomBox;
     exports.LucideBot = Bot;
@@ -34428,7 +34428,7 @@ var require_lucide_react = __commonJS({
     exports.LucideCake = Cake;
     exports.LucideCakeSlice = CakeSlice;
     exports.LucideCalculator = Calculator6;
-    exports.LucideCalendar = Calendar;
+    exports.LucideCalendar = Calendar2;
     exports.LucideCalendar1 = Calendar1;
     exports.LucideCalendarArrowDown = CalendarArrowDown;
     exports.LucideCalendarArrowUp = CalendarArrowUp;
@@ -34495,7 +34495,7 @@ var require_lucide_react = __commonJS({
     exports.LucideChartPie = ChartPie;
     exports.LucideChartScatter = ChartScatter;
     exports.LucideChartSpline = ChartSpline;
-    exports.LucideCheck = Check9;
+    exports.LucideCheck = Check10;
     exports.LucideCheckCheck = CheckCheck;
     exports.LucideCheckCircle = CircleCheckBig;
     exports.LucideCheckCircle2 = CircleCheck;
@@ -34504,7 +34504,7 @@ var require_lucide_react = __commonJS({
     exports.LucideCheckSquare2 = SquareCheck;
     exports.LucideChefHat = ChefHat;
     exports.LucideCherry = Cherry;
-    exports.LucideChevronDown = ChevronDown6;
+    exports.LucideChevronDown = ChevronDown8;
     exports.LucideChevronDownCircle = CircleChevronDown;
     exports.LucideChevronDownSquare = SquareChevronDown;
     exports.LucideChevronFirst = ChevronFirst;
@@ -34518,14 +34518,14 @@ var require_lucide_react = __commonJS({
     exports.LucideChevronUp = ChevronUp6;
     exports.LucideChevronUpCircle = CircleChevronUp;
     exports.LucideChevronUpSquare = SquareChevronUp;
-    exports.LucideChevronsDown = ChevronsDown;
+    exports.LucideChevronsDown = ChevronsDown2;
     exports.LucideChevronsDownUp = ChevronsDownUp;
-    exports.LucideChevronsLeft = ChevronsLeft;
+    exports.LucideChevronsLeft = ChevronsLeft2;
     exports.LucideChevronsLeftRight = ChevronsLeftRight;
     exports.LucideChevronsLeftRightEllipsis = ChevronsLeftRightEllipsis;
-    exports.LucideChevronsRight = ChevronsRight;
+    exports.LucideChevronsRight = ChevronsRight2;
     exports.LucideChevronsRightLeft = ChevronsRightLeft;
-    exports.LucideChevronsUp = ChevronsUp;
+    exports.LucideChevronsUp = ChevronsUp2;
     exports.LucideChevronsUpDown = ChevronsUpDown;
     exports.LucideChrome = Chromium;
     exports.LucideChromium = Chromium;
@@ -34583,7 +34583,7 @@ var require_lucide_react = __commonJS({
     exports.LucideCitrus = Citrus;
     exports.LucideClapperboard = Clapperboard;
     exports.LucideClipboard = Clipboard;
-    exports.LucideClipboardCheck = ClipboardCheck4;
+    exports.LucideClipboardCheck = ClipboardCheck2;
     exports.LucideClipboardClock = ClipboardClock;
     exports.LucideClipboardCopy = ClipboardCopy;
     exports.LucideClipboardEdit = ClipboardPen;
@@ -34598,7 +34598,7 @@ var require_lucide_react = __commonJS({
     exports.LucideClipboardX = ClipboardX;
     exports.LucideClock = Clock13;
     exports.LucideClock1 = Clock1;
-    exports.LucideClock10 = Clock10;
+    exports.LucideClock10 = Clock102;
     exports.LucideClock11 = Clock11;
     exports.LucideClock12 = Clock12;
     exports.LucideClock2 = Clock22;
@@ -34666,7 +34666,7 @@ var require_lucide_react = __commonJS({
     exports.LucideContrast = Contrast;
     exports.LucideCookie = Cookie;
     exports.LucideCookingPot = CookingPot;
-    exports.LucideCopy = Copy5;
+    exports.LucideCopy = Copy6;
     exports.LucideCopyCheck = CopyCheck;
     exports.LucideCopyMinus = CopyMinus;
     exports.LucideCopyPlus = CopyPlus;
@@ -34723,7 +34723,7 @@ var require_lucide_react = __commonJS({
     exports.LucideDivide = Divide;
     exports.LucideDivideCircle = CircleDivide;
     exports.LucideDivideSquare = SquareDivide;
-    exports.LucideDna = Dna;
+    exports.LucideDna = Dna6;
     exports.LucideDnaOff = DnaOff;
     exports.LucideDock = Dock;
     exports.LucideDog = Dog;
@@ -34741,7 +34741,7 @@ var require_lucide_react = __commonJS({
     exports.LucideDribbble = Dribbble;
     exports.LucideDrill = Drill;
     exports.LucideDrone = Drone;
-    exports.LucideDroplet = Droplet4;
+    exports.LucideDroplet = Droplet7;
     exports.LucideDropletOff = DropletOff;
     exports.LucideDroplets = Droplets4;
     exports.LucideDrum = Drum;
@@ -34838,7 +34838,7 @@ var require_lucide_react = __commonJS({
     exports.LucideFileStack = FileStack;
     exports.LucideFileSymlink = FileSymlink;
     exports.LucideFileTerminal = FileTerminal;
-    exports.LucideFileText = FileText11;
+    exports.LucideFileText = FileText10;
     exports.LucideFileType = FileType;
     exports.LucideFileType2 = FileType2;
     exports.LucideFileUp = FileUp;
@@ -34964,7 +34964,7 @@ var require_lucide_react = __commonJS({
     exports.LucideGitlab = Gitlab;
     exports.LucideGlassWater = GlassWater;
     exports.LucideGlasses = Glasses;
-    exports.LucideGlobe = Globe4;
+    exports.LucideGlobe = Globe3;
     exports.LucideGlobe2 = Earth;
     exports.LucideGlobeLock = GlobeLock;
     exports.LucideGoal = Goal;
@@ -35020,7 +35020,7 @@ var require_lucide_react = __commonJS({
     exports.LucideHeadphoneOff = HeadphoneOff;
     exports.LucideHeadphones = Headphones;
     exports.LucideHeadset = Headset;
-    exports.LucideHeart = Heart;
+    exports.LucideHeart = Heart4;
     exports.LucideHeartCrack = HeartCrack;
     exports.LucideHeartHandshake = HeartHandshake2;
     exports.LucideHeartMinus = HeartMinus;
@@ -35032,7 +35032,7 @@ var require_lucide_react = __commonJS({
     exports.LucideHelpingHand = HandHelping;
     exports.LucideHexagon = Hexagon;
     exports.LucideHighlighter = Highlighter;
-    exports.LucideHistory = History;
+    exports.LucideHistory = History3;
     exports.LucideHome = House;
     exports.LucideHop = Hop;
     exports.LucideHopOff = HopOff;
@@ -35066,7 +35066,7 @@ var require_lucide_react = __commonJS({
     exports.LucideIndentIncrease = ListIndentIncrease;
     exports.LucideIndianRupee = IndianRupee;
     exports.LucideInfinity = Infinity2;
-    exports.LucideInfo = Info12;
+    exports.LucideInfo = Info11;
     exports.LucideInspect = SquareMousePointer;
     exports.LucideInspectionPanel = InspectionPanel;
     exports.LucideInstagram = Instagram;
@@ -35115,7 +35115,7 @@ var require_lucide_react = __commonJS({
     exports.LucideLeafyGreen = LeafyGreen;
     exports.LucideLectern = Lectern;
     exports.LucideLetterText = TextInitial;
-    exports.LucideLibrary = Library;
+    exports.LucideLibrary = Library2;
     exports.LucideLibraryBig = LibraryBig;
     exports.LucideLibrarySquare = SquareLibrary;
     exports.LucideLifeBuoy = LifeBuoy;
@@ -35243,7 +35243,7 @@ var require_lucide_react = __commonJS({
     exports.LucideMicOff = MicOff;
     exports.LucideMicVocal = MicVocal;
     exports.LucideMicrochip = Microchip;
-    exports.LucideMicroscope = Microscope;
+    exports.LucideMicroscope = Microscope2;
     exports.LucideMicrowave = Microwave;
     exports.LucideMilestone = Milestone;
     exports.LucideMilk = Milk;
@@ -35450,7 +35450,7 @@ var require_lucide_react = __commonJS({
     exports.LucidePowerOff = PowerOff;
     exports.LucidePowerSquare = SquarePower;
     exports.LucidePresentation = Presentation;
-    exports.LucidePrinter = Printer3;
+    exports.LucidePrinter = Printer2;
     exports.LucidePrinterCheck = PrinterCheck;
     exports.LucideProjector = Projector;
     exports.LucideProportions = Proportions;
@@ -35491,7 +35491,7 @@ var require_lucide_react = __commonJS({
     exports.LucideRedoDot = RedoDot;
     exports.LucideRefreshCcw = RefreshCcw;
     exports.LucideRefreshCcwDot = RefreshCcwDot;
-    exports.LucideRefreshCw = RefreshCw3;
+    exports.LucideRefreshCw = RefreshCw4;
     exports.LucideRefreshCwOff = RefreshCwOff;
     exports.LucideRefrigerator = Refrigerator;
     exports.LucideRegex = Regex;
@@ -35560,7 +35560,7 @@ var require_lucide_react = __commonJS({
     exports.LucideScreenShareOff = ScreenShareOff;
     exports.LucideScroll = Scroll;
     exports.LucideScrollText = ScrollText;
-    exports.LucideSearch = Search9;
+    exports.LucideSearch = Search7;
     exports.LucideSearchCheck = SearchCheck;
     exports.LucideSearchCode = SearchCode;
     exports.LucideSearchSlash = SearchSlash;
@@ -35586,7 +35586,7 @@ var require_lucide_react = __commonJS({
     exports.LucideShield = Shield2;
     exports.LucideShieldAlert = ShieldAlert13;
     exports.LucideShieldBan = ShieldBan;
-    exports.LucideShieldCheck = ShieldCheck8;
+    exports.LucideShieldCheck = ShieldCheck7;
     exports.LucideShieldClose = ShieldX;
     exports.LucideShieldEllipsis = ShieldEllipsis;
     exports.LucideShieldHalf = ShieldHalf;
@@ -35649,7 +35649,7 @@ var require_lucide_react = __commonJS({
     exports.LucideSpace = Space;
     exports.LucideSpade = Spade;
     exports.LucideSparkle = Sparkle;
-    exports.LucideSparkles = Sparkles11;
+    exports.LucideSparkles = Sparkles12;
     exports.LucideSpeaker = Speaker;
     exports.LucideSpeech = Speech;
     exports.LucideSpellCheck = SpellCheck;
@@ -35740,10 +35740,10 @@ var require_lucide_react = __commonJS({
     exports.LucideStar = Star2;
     exports.LucideStarHalf = StarHalf;
     exports.LucideStarOff = StarOff;
-    exports.LucideStars = Sparkles11;
+    exports.LucideStars = Sparkles12;
     exports.LucideStepBack = StepBack;
     exports.LucideStepForward = StepForward;
-    exports.LucideStethoscope = Stethoscope3;
+    exports.LucideStethoscope = Stethoscope7;
     exports.LucideSticker = Sticker;
     exports.LucideStickyNote = StickyNote;
     exports.LucideStopCircle = CircleStop;
@@ -35793,7 +35793,7 @@ var require_lucide_react = __commonJS({
     exports.LucideTentTree = TentTree;
     exports.LucideTerminal = Terminal;
     exports.LucideTerminalSquare = SquareTerminal;
-    exports.LucideTestTube = TestTube;
+    exports.LucideTestTube = TestTube3;
     exports.LucideTestTube2 = TestTubeDiagonal;
     exports.LucideTestTubeDiagonal = TestTubeDiagonal;
     exports.LucideTestTubes = TestTubes;
@@ -35847,7 +35847,7 @@ var require_lucide_react = __commonJS({
     exports.LucideTramFront = TramFront;
     exports.LucideTransgender = Transgender;
     exports.LucideTrash = Trash;
-    exports.LucideTrash2 = Trash2;
+    exports.LucideTrash2 = Trash22;
     exports.LucideTreeDeciduous = TreeDeciduous;
     exports.LucideTreePalm = TreePalm;
     exports.LucideTreePine = TreePine;
@@ -35892,9 +35892,9 @@ var require_lucide_react = __commonJS({
     exports.LucideUpload = Upload;
     exports.LucideUploadCloud = CloudUpload;
     exports.LucideUsb = Usb;
-    exports.LucideUser = User7;
+    exports.LucideUser = User8;
     exports.LucideUser2 = UserRound;
-    exports.LucideUserCheck = UserCheck;
+    exports.LucideUserCheck = UserCheck2;
     exports.LucideUserCheck2 = UserRoundCheck;
     exports.LucideUserCircle = CircleUser;
     exports.LucideUserCircle2 = CircleUserRound;
@@ -35920,7 +35920,7 @@ var require_lucide_react = __commonJS({
     exports.LucideUserStar = UserStar;
     exports.LucideUserX = UserX;
     exports.LucideUserX2 = UserRoundX;
-    exports.LucideUsers = Users;
+    exports.LucideUsers = Users2;
     exports.LucideUsers2 = UsersRound;
     exports.LucideUsersRound = UsersRound;
     exports.LucideUtensils = Utensils;
@@ -35985,7 +35985,7 @@ var require_lucide_react = __commonJS({
     exports.LucideWorm = Worm;
     exports.LucideWrapText = TextWrap;
     exports.LucideWrench = Wrench;
-    exports.LucideX = X11;
+    exports.LucideX = X14;
     exports.LucideXCircle = CircleX;
     exports.LucideXOctagon = OctagonX;
     exports.LucideXSquare = SquareX;
@@ -36150,8 +36150,8 @@ var require_lucide_react = __commonJS({
     exports.MicVocalIcon = MicVocal;
     exports.Microchip = Microchip;
     exports.MicrochipIcon = Microchip;
-    exports.Microscope = Microscope;
-    exports.MicroscopeIcon = Microscope;
+    exports.Microscope = Microscope2;
+    exports.MicroscopeIcon = Microscope2;
     exports.Microwave = Microwave;
     exports.MicrowaveIcon = Microwave;
     exports.Milestone = Milestone;
@@ -36564,10 +36564,10 @@ var require_lucide_react = __commonJS({
     exports.PowerSquareIcon = SquarePower;
     exports.Presentation = Presentation;
     exports.PresentationIcon = Presentation;
-    exports.Printer = Printer3;
+    exports.Printer = Printer2;
     exports.PrinterCheck = PrinterCheck;
     exports.PrinterCheckIcon = PrinterCheck;
-    exports.PrinterIcon = Printer3;
+    exports.PrinterIcon = Printer2;
     exports.Projector = Projector;
     exports.ProjectorIcon = Projector;
     exports.Proportions = Proportions;
@@ -36646,8 +36646,8 @@ var require_lucide_react = __commonJS({
     exports.RefreshCcwDot = RefreshCcwDot;
     exports.RefreshCcwDotIcon = RefreshCcwDot;
     exports.RefreshCcwIcon = RefreshCcw;
-    exports.RefreshCw = RefreshCw3;
-    exports.RefreshCwIcon = RefreshCw3;
+    exports.RefreshCw = RefreshCw4;
+    exports.RefreshCwIcon = RefreshCw4;
     exports.RefreshCwOff = RefreshCwOff;
     exports.RefreshCwOffIcon = RefreshCwOff;
     exports.Refrigerator = Refrigerator;
@@ -36784,12 +36784,12 @@ var require_lucide_react = __commonJS({
     exports.ScrollIcon = Scroll;
     exports.ScrollText = ScrollText;
     exports.ScrollTextIcon = ScrollText;
-    exports.Search = Search9;
+    exports.Search = Search7;
     exports.SearchCheck = SearchCheck;
     exports.SearchCheckIcon = SearchCheck;
     exports.SearchCode = SearchCode;
     exports.SearchCodeIcon = SearchCode;
-    exports.SearchIcon = Search9;
+    exports.SearchIcon = Search7;
     exports.SearchSlash = SearchSlash;
     exports.SearchSlashIcon = SearchSlash;
     exports.SearchX = SearchX;
@@ -36835,8 +36835,8 @@ var require_lucide_react = __commonJS({
     exports.ShieldAlertIcon = ShieldAlert13;
     exports.ShieldBan = ShieldBan;
     exports.ShieldBanIcon = ShieldBan;
-    exports.ShieldCheck = ShieldCheck8;
-    exports.ShieldCheckIcon = ShieldCheck8;
+    exports.ShieldCheck = ShieldCheck7;
+    exports.ShieldCheckIcon = ShieldCheck7;
     exports.ShieldClose = ShieldX;
     exports.ShieldCloseIcon = ShieldX;
     exports.ShieldEllipsis = ShieldEllipsis;
@@ -36962,8 +36962,8 @@ var require_lucide_react = __commonJS({
     exports.SpadeIcon = Spade;
     exports.Sparkle = Sparkle;
     exports.SparkleIcon = Sparkle;
-    exports.Sparkles = Sparkles11;
-    exports.SparklesIcon = Sparkles11;
+    exports.Sparkles = Sparkles12;
+    exports.SparklesIcon = Sparkles12;
     exports.Speaker = Speaker;
     exports.SpeakerIcon = Speaker;
     exports.Speech = Speech;
@@ -37144,14 +37144,14 @@ var require_lucide_react = __commonJS({
     exports.StarIcon = Star2;
     exports.StarOff = StarOff;
     exports.StarOffIcon = StarOff;
-    exports.Stars = Sparkles11;
-    exports.StarsIcon = Sparkles11;
+    exports.Stars = Sparkles12;
+    exports.StarsIcon = Sparkles12;
     exports.StepBack = StepBack;
     exports.StepBackIcon = StepBack;
     exports.StepForward = StepForward;
     exports.StepForwardIcon = StepForward;
-    exports.Stethoscope = Stethoscope3;
-    exports.StethoscopeIcon = Stethoscope3;
+    exports.Stethoscope = Stethoscope7;
+    exports.StethoscopeIcon = Stethoscope7;
     exports.Sticker = Sticker;
     exports.StickerIcon = Sticker;
     exports.StickyNote = StickyNote;
@@ -37250,12 +37250,12 @@ var require_lucide_react = __commonJS({
     exports.TerminalIcon = Terminal;
     exports.TerminalSquare = SquareTerminal;
     exports.TerminalSquareIcon = SquareTerminal;
-    exports.TestTube = TestTube;
+    exports.TestTube = TestTube3;
     exports.TestTube2 = TestTubeDiagonal;
     exports.TestTube2Icon = TestTubeDiagonal;
     exports.TestTubeDiagonal = TestTubeDiagonal;
     exports.TestTubeDiagonalIcon = TestTubeDiagonal;
-    exports.TestTubeIcon = TestTube;
+    exports.TestTubeIcon = TestTube3;
     exports.TestTubes = TestTubes;
     exports.TestTubesIcon = TestTubes;
     exports.Text = TextAlignStart;
@@ -37357,8 +37357,8 @@ var require_lucide_react = __commonJS({
     exports.Transgender = Transgender;
     exports.TransgenderIcon = Transgender;
     exports.Trash = Trash;
-    exports.Trash2 = Trash2;
-    exports.Trash2Icon = Trash2;
+    exports.Trash2 = Trash22;
+    exports.Trash2Icon = Trash22;
     exports.TrashIcon = Trash;
     exports.TreeDeciduous = TreeDeciduous;
     exports.TreeDeciduousIcon = TreeDeciduous;
@@ -37448,13 +37448,13 @@ var require_lucide_react = __commonJS({
     exports.UploadIcon = Upload;
     exports.Usb = Usb;
     exports.UsbIcon = Usb;
-    exports.User = User7;
+    exports.User = User8;
     exports.User2 = UserRound;
     exports.User2Icon = UserRound;
-    exports.UserCheck = UserCheck;
+    exports.UserCheck = UserCheck2;
     exports.UserCheck2 = UserRoundCheck;
     exports.UserCheck2Icon = UserRoundCheck;
-    exports.UserCheckIcon = UserCheck;
+    exports.UserCheckIcon = UserCheck2;
     exports.UserCircle = CircleUser;
     exports.UserCircle2 = CircleUserRound;
     exports.UserCircle2Icon = CircleUserRound;
@@ -37463,7 +37463,7 @@ var require_lucide_react = __commonJS({
     exports.UserCog2 = UserRoundCog;
     exports.UserCog2Icon = UserRoundCog;
     exports.UserCogIcon = UserCog;
-    exports.UserIcon = User7;
+    exports.UserIcon = User8;
     exports.UserLock = UserLock;
     exports.UserLockIcon = UserLock;
     exports.UserMinus = UserMinus;
@@ -37504,10 +37504,10 @@ var require_lucide_react = __commonJS({
     exports.UserX2 = UserRoundX;
     exports.UserX2Icon = UserRoundX;
     exports.UserXIcon = UserX;
-    exports.Users = Users;
+    exports.Users = Users2;
     exports.Users2 = UsersRound;
     exports.Users2Icon = UsersRound;
-    exports.UsersIcon = Users;
+    exports.UsersIcon = Users2;
     exports.UsersRound = UsersRound;
     exports.UsersRoundIcon = UsersRound;
     exports.Utensils = Utensils;
@@ -37634,10 +37634,10 @@ var require_lucide_react = __commonJS({
     exports.WrapTextIcon = TextWrap;
     exports.Wrench = Wrench;
     exports.WrenchIcon = Wrench;
-    exports.X = X11;
+    exports.X = X14;
     exports.XCircle = CircleX;
     exports.XCircleIcon = CircleX;
-    exports.XIcon = X11;
+    exports.XIcon = X14;
     exports.XOctagon = OctagonX;
     exports.XOctagonIcon = OctagonX;
     exports.XSquare = SquareX;
@@ -62555,7 +62555,7 @@ var require_jspdf_umd_min = __commonJS({
         }, J2 = w2.__private__.convertPDFDateToDate = function(t3) {
           var e3 = parseInt(t3.substr(2, 4), 10), n3 = parseInt(t3.substr(6, 2), 10) - 1, r2 = parseInt(t3.substr(8, 2), 10), i2 = parseInt(t3.substr(10, 2), 10), a3 = parseInt(t3.substr(12, 2), 10), s2 = parseInt(t3.substr(14, 2), 10);
           return new Date(e3, n3, r2, i2, a3, s2, 0);
-        }, X12 = w2.__private__.setCreationDate = function(t3) {
+        }, X15 = w2.__private__.setCreationDate = function(t3) {
           var e3;
           if (void 0 === t3 && (t3 = /* @__PURE__ */ new Date()), t3 instanceof Date) e3 = Z2(t3);
           else {
@@ -62568,7 +62568,7 @@ var require_jspdf_umd_min = __commonJS({
           return "jsDate" === t3 && (e3 = J2(W2)), e3;
         };
         w2.setCreationDate = function(t3) {
-          return X12(t3), this;
+          return X15(t3), this;
         }, w2.getCreationDate = function(t3) {
           return K2(t3);
         };
@@ -63119,7 +63119,7 @@ var require_jspdf_umd_min = __commonJS({
             Nt2 = a2;
         }
         var Ee2 = null;
-        X12(), Y2();
+        X15(), Y2();
         var Oe2 = w2.__private__.getPageInfo = w2.getPageInfo = function(t3) {
           if (isNaN(t3) || t3 % 1 != 0) throw new Error("Invalid argument passed to jsPDF.getPageInfo");
           return { objId: Tt2[t3].objId, pageNumber: t3, pageContext: Tt2[t3] };
@@ -63253,33 +63253,33 @@ var require_jspdf_umd_min = __commonJS({
           if ("[object Array]" === Object.prototype.toString.call(t3)) {
             var J3;
             o3 = A3(t3), "left" !== l3 && (H3 = o3.map(Z3));
-            var X13, K3 = 0;
+            var X16, K3 = 0;
             if ("right" === l3) {
               e3 -= H3[0], t3 = [], C2 = o3.length;
-              for (var $3 = 0; $3 < C2; $3++) 0 === $3 ? (X13 = rn2(e3), J3 = an2(n3)) : (X13 = U2(K3 - H3[$3]), J3 = -W3), t3.push([o3[$3], X13, J3]), K3 = H3[$3];
+              for (var $3 = 0; $3 < C2; $3++) 0 === $3 ? (X16 = rn2(e3), J3 = an2(n3)) : (X16 = U2(K3 - H3[$3]), J3 = -W3), t3.push([o3[$3], X16, J3]), K3 = H3[$3];
             } else if ("center" === l3) {
               e3 -= H3[0] / 2, t3 = [], C2 = o3.length;
-              for (var Q3 = 0; Q3 < C2; Q3++) 0 === Q3 ? (X13 = rn2(e3), J3 = an2(n3)) : (X13 = U2((K3 - H3[Q3]) / 2), J3 = -W3), t3.push([o3[Q3], X13, J3]), K3 = H3[Q3];
+              for (var Q3 = 0; Q3 < C2; Q3++) 0 === Q3 ? (X16 = rn2(e3), J3 = an2(n3)) : (X16 = U2((K3 - H3[Q3]) / 2), J3 = -W3), t3.push([o3[Q3], X16, J3]), K3 = H3[Q3];
             } else if ("left" === l3) {
               t3 = [], C2 = o3.length;
               for (var tt3 = 0; tt3 < C2; tt3++) t3.push(o3[tt3]);
             } else if ("justify" === l3 && "Identity-H" === G3.encoding) {
               t3 = [], C2 = o3.length, u2 = 0 !== u2 ? u2 : V3;
-              for (var et3 = 0, nt3 = 0; nt3 < C2; nt3++) if (J3 = 0 === nt3 ? an2(n3) : -W3, X13 = 0 === nt3 ? rn2(e3) : et3, nt3 < C2 - 1) {
+              for (var et3 = 0, nt3 = 0; nt3 < C2; nt3++) if (J3 = 0 === nt3 ? an2(n3) : -W3, X16 = 0 === nt3 ? rn2(e3) : et3, nt3 < C2 - 1) {
                 var rt3 = U2((u2 - H3[nt3]) / (o3[nt3].split(" ").length - 1)), it3 = o3[nt3].split(" ");
-                t3.push([it3[0] + " ", X13, J3]), et3 = 0;
+                t3.push([it3[0] + " ", X16, J3]), et3 = 0;
                 for (var at3 = 1; at3 < it3.length; at3++) {
                   var st3 = (Z3(it3[at3 - 1] + " " + it3[at3]) - Z3(it3[at3])) * _3 + rt3;
                   at3 == it3.length - 1 ? t3.push([it3[at3], st3, 0]) : t3.push([it3[at3] + " ", st3, 0]), et3 -= st3;
                 }
-              } else t3.push([o3[nt3], X13, J3]);
+              } else t3.push([o3[nt3], X16, J3]);
               t3.push(["", et3, 0]);
             } else {
               if ("justify" !== l3) throw new Error('Unrecognized alignment option, use "left", "center", "right" or "justify".');
               for (t3 = [], C2 = o3.length, u2 = 0 !== u2 ? u2 : V3, nt3 = 0; nt3 < C2; nt3++) {
-                J3 = 0 === nt3 ? an2(n3) : -W3, X13 = 0 === nt3 ? rn2(e3) : 0;
+                J3 = 0 === nt3 ? an2(n3) : -W3, X16 = 0 === nt3 ? rn2(e3) : 0;
                 var ot3 = o3[nt3].split(" ").length - 1, ht3 = ot3 > 0 ? (u2 - H3[nt3]) / ot3 : 0;
-                nt3 < C2 - 1 ? Y3.push(O2(U2(ht3))) : Y3.push(0), t3.push([o3[nt3], X13, J3]);
+                nt3 < C2 - 1 ? Y3.push(O2(U2(ht3))) : Y3.push(0), t3.push([o3[nt3], X16, J3]);
               }
             }
           }
@@ -63734,12 +63734,12 @@ var require_jspdf_umd_min = __commonJS({
       }, J = T.__acroform__.clearBit = function(t2, e2) {
         if (t2 = t2 || 0, e2 = e2 || 0, isNaN(t2) || isNaN(e2)) throw new Error("Invalid arguments passed to jsPDF.API.__acroform__.clearBit");
         return t2 & ~(1 << e2);
-      }, X11 = T.__acroform__.getBit = function(t2, e2) {
+      }, X14 = T.__acroform__.getBit = function(t2, e2) {
         if (isNaN(t2) || isNaN(e2)) throw new Error("Invalid arguments passed to jsPDF.API.__acroform__.getBit");
         return t2 & 1 << e2 ? 1 : 0;
       }, K = T.__acroform__.getBitForPdf = function(t2, e2) {
         if (isNaN(t2) || isNaN(e2)) throw new Error("Invalid arguments passed to jsPDF.API.__acroform__.getBitForPdf");
-        return X11(t2, e2 - 1);
+        return X14(t2, e2 - 1);
       }, $ = T.__acroform__.setBitForPdf = function(t2, e2) {
         if (isNaN(t2) || isNaN(e2)) throw new Error("Invalid arguments passed to jsPDF.API.__acroform__.setBitForPdf");
         return Z(t2, e2 - 1);
@@ -68471,8 +68471,8 @@ var require_jspdf_umd_min = __commonJS({
               t4[f3] = z2 + H2, t4[f3 + 32] = z2 - H2;
               var V2 = 0.707106781 * (W2 + U2);
               t4[f3 + 16] = U2 + V2, t4[f3 + 48] = U2 - V2;
-              var G2 = 0.382683433 * ((z2 = q2 + T2) - (W2 = M3 + O3)), Y2 = 0.5411961 * z2 + G2, Z2 = 1.306562965 * W2 + G2, J2 = 0.707106781 * (H2 = T2 + M3), X12 = O3 + J2, K2 = O3 - J2;
-              t4[f3 + 40] = K2 + Y2, t4[f3 + 24] = K2 - Y2, t4[f3 + 8] = X12 + Z2, t4[f3 + 56] = X12 - Z2, f3++;
+              var G2 = 0.382683433 * ((z2 = q2 + T2) - (W2 = M3 + O3)), Y2 = 0.5411961 * z2 + G2, Z2 = 1.306562965 * W2 + G2, J2 = 0.707106781 * (H2 = T2 + M3), X15 = O3 + J2, K2 = O3 - J2;
+              t4[f3 + 40] = K2 + Y2, t4[f3 + 24] = K2 - Y2, t4[f3 + 8] = X15 + Z2, t4[f3 + 56] = X15 - Z2, f3++;
             }
             for (c4 = 0; c4 < 64; ++c4) u3 = t4[c4] * e4[c4], d2[c4] = u3 > 0 ? u3 + 0.5 | 0 : u3 - 0.5 | 0;
             return d2;
@@ -68787,7 +68787,7 @@ var require_jspdf_umd_min = __commonJS({
               else t3["VP8LMapColor" + r3](o3, h4, d4, p4, l4, c4, n4, s3, f4);
             };
           }
-          function X12(t4, e3, n3, r3, i3) {
+          function X15(t4, e3, n3, r3, i3) {
             for (n3 = e3 + n3; e3 < n3; ) {
               var a3 = t4[e3++];
               r3[i3++] = a3 >> 16 & 255, r3[i3++] = a3 >> 8 & 255, r3[i3++] = 255 & a3;
@@ -69090,7 +69090,7 @@ var require_jspdf_umd_min = __commonJS({
           }
           function Pt2() {
             var e3 = new sn2();
-            return null == e3 ? null : (e3.a = 0, e3.xb = pi2, nt2("Predictor", "VP8LPredictors"), nt2("Predictor", "VP8LPredictors_C"), nt2("PredictorAdd", "VP8LPredictorsAdd"), nt2("PredictorAdd", "VP8LPredictorsAdd_C"), Gn2 = G2, $n2 = Z2, Qn2 = X12, tr2 = K2, er2 = $2, nr2 = Q2, rr2 = tt2, t3.VP8LMapColor32b = Zn2, t3.VP8LMapColor8b = Xn2, e3);
+            return null == e3 ? null : (e3.a = 0, e3.xb = pi2, nt2("Predictor", "VP8LPredictors"), nt2("Predictor", "VP8LPredictors_C"), nt2("PredictorAdd", "VP8LPredictorsAdd"), nt2("PredictorAdd", "VP8LPredictorsAdd_C"), Gn2 = G2, $n2 = Z2, Qn2 = X15, tr2 = K2, er2 = $2, nr2 = Q2, rr2 = tt2, t3.VP8LMapColor32b = Zn2, t3.VP8LMapColor8b = Xn2, e3);
           }
           function Ft2(t4, n3, r3, o3, h4) {
             var l4 = 1, f4 = [t4], p4 = [n3], g4 = o3.m, m4 = o3.s, b4 = null, v4 = 0;
@@ -69132,7 +69132,7 @@ var require_jspdf_umd_min = __commonJS({
               }
               var H3;
               if (H3 = l4) e: {
-                var W3, V3, G3, Y3 = o3, Z3 = f4, J3 = p4, X13 = v4, K3 = r3, $3 = Y3.m, Q3 = Y3.s, tt3 = [null], et3 = 1, nt3 = 0, rt3 = $r2[X13];
+                var W3, V3, G3, Y3 = o3, Z3 = f4, J3 = p4, X16 = v4, K3 = r3, $3 = Y3.m, Q3 = Y3.s, tt3 = [null], et3 = 1, nt3 = 0, rt3 = $r2[X16];
                 n: for (; ; ) {
                   if (K3 && w3($3, 1)) {
                     var it3 = w3($3, 3) + 2, at3 = R2(Z3, it3), st3 = R2(J3, it3), ot3 = at3 * st3;
@@ -69145,7 +69145,7 @@ var require_jspdf_umd_min = __commonJS({
                   if ($3.h) break n;
                   for (V3 = 0; 5 > V3; ++V3) {
                     var lt3 = Zr2[V3];
-                    !V3 && 0 < X13 && (lt3 += 1 << X13), nt3 < lt3 && (nt3 = lt3);
+                    !V3 && 0 < X16 && (lt3 += 1 << X16), nt3 < lt3 && (nt3 = lt3);
                   }
                   var ct3 = s2(et3 * rt3, u3), ut3 = et3, ft3 = s2(ut3, d3);
                   if (null == ft3) var dt3 = null;
@@ -69159,7 +69159,7 @@ var require_jspdf_umd_min = __commonJS({
                   for (W3 = G3 = 0; W3 < et3; ++W3) {
                     var mt3 = dt3[W3], bt3 = mt3.G, vt3 = mt3.H, yt3 = 0, _t3 = 1, xt3 = 0;
                     for (V3 = 0; 5 > V3; ++V3) {
-                      lt3 = Zr2[V3], bt3[V3] = gt3, vt3[V3] = G3, !V3 && 0 < X13 && (lt3 += 1 << X13);
+                      lt3 = Zr2[V3], bt3[V3] = gt3, vt3[V3] = G3, !V3 && 0 < X16 && (lt3 += 1 << X16);
                       r: {
                         var At3, Lt3 = lt3, Nt3 = Y3, Pt3 = pt3, It3 = gt3, Ct3 = G3, jt3 = 0, Et3 = Nt3.m, Ot3 = w3(Et3, 1);
                         if (i2(Pt3, 0, 0, Lt3), Ot3) {
@@ -71500,11 +71500,11 @@ var require_jspdf_umd_min = __commonJS({
 });
 
 // antibiotic/src/main.tsx
-var import_react20 = __toESM(require_react(), 1);
+var import_react23 = __toESM(require_react(), 1);
 var import_client = __toESM(require_client(), 1);
 
 // antibiotic/src/App.tsx
-var import_react19 = __toESM(require_react(), 1);
+var import_react22 = __toESM(require_react(), 1);
 
 // antibiotic/src/components/Header.tsx
 var import_react = __toESM(require_react(), 1);
@@ -71592,119 +71592,244 @@ var Header = ({
   onOpenGuidelineAtlas,
   onOpenDrugSearch,
   onOpenQuickPatient,
+  onOpenPresets,
+  onOpenSepsisGuide,
+  onOpenHistory,
+  savedCount = 0,
   selectedDrugName
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = (0, import_react.useState)(false);
+  const [libraryOpen, setLibraryOpen] = (0, import_react.useState)(false);
+  const libraryRef = (0, import_react.useRef)(null);
   const isEn = language === "en";
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("header", { className: "sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-2xs", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "max-w-7xl mx-auto px-3 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center justify-between h-16", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center space-x-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "p-1 rounded-2xl bg-gradient-to-br from-slate-900 to-teal-950 shadow-md shadow-teal-500/20 border border-teal-500/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(CdssLogo, { size: "md" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center space-x-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("span", { className: "font-extrabold text-base sm:text-xl tracking-tight text-slate-900", children: [
-              "InfectoDose ",
+  (0, import_react.useEffect)(() => {
+    const handleClickOutside = (e) => {
+      if (libraryRef.current && !libraryRef.current.contains(e.target)) {
+        setLibraryOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("header", { className: "bg-white border-b border-slate-200/80 no-print relative z-40", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center justify-between h-14 sm:h-15 gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center space-x-2.5 min-w-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "p-1 rounded-xl bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 shadow-sm border border-teal-500/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(CdssLogo, { size: "sm" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "min-w-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("span", { className: "font-extrabold text-sm sm:text-lg tracking-tight text-slate-900 truncate", children: [
+              "InfectoSepsis ",
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "text-teal-600", children: "CDSS" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-800 border border-teal-200/60", children: "v3.0 Pro" }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200", children: "BVBND 2026 \u2022 WHO AWaRe 2022 \u2022 NHSN-CDC" })
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "inline-flex items-center px-1.5 py-0.5 rounded-md text-[10px] font-black tracking-wide bg-slate-900 text-teal-300 shrink-0", children: "v4.0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "hidden xl:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-800 border border-teal-200/80", children: "NICE NG253 \u2022 Sepsis-3 \u2022 Phoenix 2024 \u2022 BVBND 2026 \u2022 43 KS" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("p", { className: "text-[11px] text-slate-500 hidden sm:block", children: isEn ? "MDR Stratification & Precision Antibiotic Dosing" : "Ph\xE2n t\u1EA7ng VK\u0110K & T\xEDnh li\u1EC1u kh\xE1ng sinh c\xE1 th\u1EC3 h\xF3a" })
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("p", { className: "text-[11px] text-slate-500 hidden sm:block truncate", children: isEn ? "Integrated Sepsis Triage, Hour-1 Resuscitation, MDR Regimens & Renal Dosing Cockpit" : "Trung T\xE2m H\u1ED7 Tr\u1EE3 L\xE2m S\xE0ng H\u1EE3p Nh\u1EA5t: Sepsis Gi\u1EDD V\xE0ng, Ph\xE1c \u0110\u1ED3 MDR & T\xEDnh Li\u1EC1u Kh\xE1ng Sinh" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "hidden lg:flex items-center space-x-1.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "hidden lg:flex items-center gap-1.5 shrink-0", children: [
+        onOpenPresets && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: onOpenPresets,
+            className: "px-2.5 py-1.5 rounded-xl text-amber-900 bg-amber-50/90 hover:bg-amber-100 border border-amber-200/80 transition-colors flex items-center gap-1.5 text-xs font-bold cursor-pointer",
+            title: isEn ? "Load real clinical preset cases" : "N\u1EA1p ca l\xE2m s\xE0ng m\u1EABu th\u1EF1c t\u1EBF (Sepsis + Kh\xE1ng sinh)",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.Sparkles, { className: "w-3.5 h-3.5 text-amber-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: isEn ? "Presets" : "Ca m\u1EABu" })
+            ]
+          }
+        ),
         onOpenDrugSearch && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
           "button",
           {
             type: "button",
             onClick: onOpenDrugSearch,
-            className: "px-2.5 py-1.5 rounded-xl text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200/80 transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer",
+            className: "px-2.5 py-1.5 rounded-xl text-slate-700 bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200 transition-colors flex items-center gap-1.5 text-xs font-bold cursor-pointer",
             title: "Tra c\u1EE9u nhanh 43 kh\xE1ng sinh (Ph\xEDm t\u1EAFt /)",
             "aria-label": "Tra c\u1EE9u 43 kh\xE1ng sinh",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.Search, { className: "w-3.5 h-3.5 text-teal-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "text-[11px]", children: "43 KS" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("kbd", { className: "px-1 py-0.2 text-[9px] bg-white border border-slate-300 rounded text-slate-500 font-mono", children: "/" })
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: isEn ? "43 Drugs" : "Tra 43 KS" }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("kbd", { className: "px-1.5 py-0.2 text-[9px] bg-white border border-slate-300 rounded text-slate-500 font-mono", children: "/" })
             ]
           }
         ),
-        onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
-          "button",
-          {
-            id: "btn-open-bvbnd-atlas",
-            onClick: onOpenGuidelineAtlas,
-            className: "p-2 rounded-xl text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/80 transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer shadow-2xs",
-            title: isEn ? "BVBND 2026 Flowchart & Antibiogram Atlas" : "Xem Atlas L\u01B0u \u0111\u1ED3 G\u1ED1c & D\u1EEF li\u1EC7u Vi sinh BVBND 2026",
-            "aria-label": "Atlas BVBND",
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.BookOpen, { className: "w-4 h-4 text-emerald-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "hidden xl:inline text-[11px]", children: "Atlas BVBND" })
-            ]
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-          "button",
-          {
-            onClick: onOpenAmr,
-            className: "p-2 rounded-xl text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center justify-center cursor-pointer border border-slate-200/60",
-            title: isEn ? "Antimicrobial Resistance Data (Vietnam)" : "Tra c\u1EE9u d\u1EEF li\u1EC7u \u0111\u1EC1 kh\xE1ng kh\xE1ng sinh Vi\u1EC7t Nam",
-            "aria-label": "D\u1EEF li\u1EC7u \u0110\u1EC1 kh\xE1ng",
-            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.ShieldAlert, { className: "w-4 h-4 text-amber-600" })
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-          "button",
-          {
-            onClick: onOpenOriginal,
-            className: "p-2 rounded-xl text-teal-800 bg-teal-50 hover:bg-teal-100 transition-colors flex items-center justify-center cursor-pointer border border-teal-200/60",
-            title: isEn ? "View Original Stanford/UCSF Preview" : "Xem b\u1EA3n xem g\u1ED1c Stanford/UCSF",
-            "aria-label": "Giao di\u1EC7n g\u1ED1c",
-            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.ExternalLink, { className: "w-4 h-4 text-teal-600" })
-          }
-        ),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "relative", ref: libraryRef, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setLibraryOpen(!libraryOpen),
+              className: `px-2.5 py-1.5 rounded-xl border transition-all flex items-center gap-1.5 text-xs font-bold cursor-pointer relative ${libraryOpen ? "bg-slate-900 text-white border-slate-900 shadow-sm" : "bg-white hover:bg-slate-50 text-slate-700 border-slate-200"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.Library, { className: `w-3.5 h-3.5 ${libraryOpen ? "text-teal-300" : "text-teal-600"}` }),
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: isEn ? "Clinical Library" : "T\xE0i Li\u1EC7u & L\u1ECBch S\u1EED" }),
+                savedCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "px-1.5 min-w-[18px] h-4 rounded-full bg-teal-600 text-white text-[9px] font-black flex items-center justify-center", children: savedCount }),
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.ChevronDown, { className: `w-3.5 h-3.5 transition-transform ${libraryOpen ? "rotate-180" : ""}` })
+              ]
+            }
+          ),
+          libraryOpen && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "absolute right-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-slate-200/90 p-1.5 z-50 animate-fadeIn", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "px-2.5 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-slate-400", children: isEn ? "Guidelines & Evidence" : "H\u01B0\u1EDBng D\u1EABn & D\u1EEF Li\u1EC7u L\xE2m S\xE0ng" }),
+            onOpenSepsisGuide && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: () => {
+                  onOpenSepsisGuide();
+                  setLibraryOpen(false);
+                },
+                className: "w-full px-2.5 py-2 rounded-xl hover:bg-rose-50/80 text-left flex items-center gap-2.5 transition-colors cursor-pointer group",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.Stethoscope, { className: "w-4 h-4" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-xs font-bold text-slate-900 group-hover:text-rose-900", children: "H\u01B0\u1EDBng D\u1EABn Y Khoa Sepsis" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-[10px] text-slate-500 truncate", children: "NICE NG253, Phoenix 2024, NLR, T2MR" })
+                  ] })
+                ]
+              }
+            ),
+            onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+              "button",
+              {
+                id: "btn-open-bvbnd-atlas",
+                type: "button",
+                onClick: () => {
+                  onOpenGuidelineAtlas();
+                  setLibraryOpen(false);
+                },
+                className: "w-full px-2.5 py-2 rounded-xl hover:bg-emerald-50/80 text-left flex items-center gap-2.5 transition-colors cursor-pointer group",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.BookOpen, { className: "w-4 h-4" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-xs font-bold text-slate-900 group-hover:text-emerald-900", children: "Atlas L\u01B0u \u0110\u1ED3 BVBND 2026" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-[10px] text-slate-500 truncate", children: "\u1EA2nh ph\xE1c \u0111\u1ED3 g\u1ED1c & kh\xE1ng sinh \u0111\u1ED3" })
+                  ] })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: () => {
+                  onOpenAmr();
+                  setLibraryOpen(false);
+                },
+                className: "w-full px-2.5 py-2 rounded-xl hover:bg-amber-50/80 text-left flex items-center gap-2.5 transition-colors cursor-pointer group",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.ShieldAlert, { className: "w-4 h-4" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-xs font-bold text-slate-900 group-hover:text-amber-900", children: "\u0110\u1EC1 Kh\xE1ng Kh\xE1ng Sinh (AMR)" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-[10px] text-slate-500 truncate", children: "D\u1EEF li\u1EC7u gi\xE1m s\xE1t vi sinh Vi\u1EC7t Nam" })
+                  ] })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: () => {
+                  onOpenOriginal();
+                  setLibraryOpen(false);
+                },
+                className: "w-full px-2.5 py-2 rounded-xl hover:bg-teal-50/80 text-left flex items-center gap-2.5 transition-colors cursor-pointer group",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.ExternalLink, { className: "w-4 h-4" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-xs font-bold text-slate-900 group-hover:text-teal-900", children: "B\u1EA3n G\u1ED1c Stanford / UCSF" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-[10px] text-slate-500 truncate", children: "\u0110\u1ED1i chi\u1EBFu d\u01B0\u1EE3c \u0111\u1ED9ng h\u1ECDc g\u1ED1c" })
+                  ] })
+                ]
+              }
+            ),
+            onOpenHistory && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_jsx_runtime2.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "my-1.5 border-t border-slate-100" }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => {
+                    onOpenHistory();
+                    setLibraryOpen(false);
+                  },
+                  className: "w-full px-2.5 py-2 rounded-xl hover:bg-slate-100 text-left flex items-center justify-between transition-colors cursor-pointer",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center gap-2.5", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.History, { className: "w-4 h-4" }) }),
+                      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-xs font-bold text-slate-900", children: "L\u1ECBch S\u1EED Ca \u0110\xE3 L\u01B0u" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "text-[10px] text-slate-500", children: "H\u1ED3 s\u01A1 l\u01B0u tr\xEAn tr\xECnh duy\u1EC7t" })
+                      ] })
+                    ] }),
+                    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "px-2 py-0.5 rounded-full bg-teal-100 text-teal-800 text-[10px] font-black", children: savedCount })
+                  ]
+                }
+              )
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "h-5 w-px bg-slate-200 mx-0.5" }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
           "button",
           {
+            type: "button",
             onClick: onOpenPdfModal,
-            className: "p-2 sm:px-2.5 sm:py-1.5 rounded-xl text-white bg-teal-600 hover:bg-teal-700 shadow-sm transition-all flex items-center space-x-1 text-xs font-bold cursor-pointer",
-            title: isEn ? "Export PDF / Print Consultation Report" : "Xu\u1EA5t Phi\u1EBFu H\u1ED9i Ch\u1EA9n / In PDF",
-            "aria-label": "Xu\u1EA5t Phi\u1EBFu H\u1ED9i Ch\u1EA9n",
+            className: "px-3 py-1.5 rounded-xl text-white bg-teal-600 hover:bg-teal-700 shadow-xs transition-all flex items-center gap-1.5 text-xs font-bold cursor-pointer",
+            title: isEn ? "Export Unified PDF Consultation Report" : "Xu\u1EA5t Phi\u1EBFu H\u1ED9i Ch\u1EA9n Sepsis & Kh\xE1ng Sinh PDF",
+            "aria-label": "Xu\u1EA5t Phi\u1EBFu H\u1ED9i Ch\u1EA9n PDF",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.FileText, { className: "w-4 h-4" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "hidden xl:inline text-[11px]", children: "In PDF" })
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.FileText, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: isEn ? "PDF Report" : "Phi\u1EBFu PDF" })
             ]
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
           "button",
           {
+            type: "button",
             onClick: onReset,
-            className: "p-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors flex items-center justify-center cursor-pointer",
+            className: "p-1.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer",
             title: isEn ? "Reset to default patient" : "\u0110\u1EB7t l\u1EA1i th\xF4ng s\u1ED1 m\u1EB7c \u0111\u1ECBnh",
             "aria-label": "\u0110\u1EB7t l\u1EA1i th\xF4ng s\u1ED1",
             children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.RotateCcw, { className: "w-4 h-4" })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center bg-slate-100 p-0.5 rounded-xl border border-slate-200", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center bg-slate-100 p-0.5 rounded-lg border border-slate-200/80", children: [
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
             "button",
             {
+              type: "button",
               onClick: () => onLanguageChange("vi"),
-              className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${language === "vi" ? "bg-white text-teal-700 shadow-2xs" : "text-slate-600 hover:text-slate-900"}`,
-              children: "\u{1F1FB}\u{1F1F3} VI"
+              className: `px-2 py-1 rounded-md text-[10px] font-extrabold transition-all cursor-pointer ${language === "vi" ? "bg-white text-teal-700 shadow-2xs" : "text-slate-500 hover:text-slate-900"}`,
+              children: "VI"
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
             "button",
             {
+              type: "button",
               onClick: () => onLanguageChange("en"),
-              className: `px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${language === "en" ? "bg-white text-teal-700 shadow-2xs" : "text-slate-600 hover:text-slate-900"}`,
-              children: "\u{1F1EC}\u{1F1E7} EN"
+              className: `px-2 py-1 rounded-md text-[10px] font-extrabold transition-all cursor-pointer ${language === "en" ? "bg-white text-teal-700 shadow-2xs" : "text-slate-500 hover:text-slate-900"}`,
+              children: "EN"
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center space-x-1.5 lg:hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex items-center gap-1.5 lg:hidden shrink-0", children: [
+        onOpenPresets && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+          "button",
+          {
+            type: "button",
+            onClick: onOpenPresets,
+            className: "p-2 rounded-xl bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100 cursor-pointer",
+            title: "Ca l\xE2m s\xE0ng m\u1EABu",
+            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.Sparkles, { className: "w-4 h-4" })
+          }
+        ),
         onOpenDrugSearch && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
           "button",
           {
@@ -71715,26 +71840,13 @@ var Header = ({
             children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.Search, { className: "w-4 h-4 text-teal-600" })
           }
         ),
-        onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
-          "button",
-          {
-            id: "btn-open-bvbnd-atlas-mobile",
-            onClick: onOpenGuidelineAtlas,
-            className: "px-2.5 py-1.5 rounded-xl text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors flex items-center gap-1 text-xs font-bold shadow-2xs cursor-pointer",
-            title: isEn ? "BVBND 2026 Atlas" : "Xem Atlas L\u01B0u \u0111\u1ED3 BVBND 2026",
-            "aria-label": "Atlas BVBND",
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "font-extrabold text-[11px]", children: "Atlas" })
-            ]
-          }
-        ),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
           "button",
           {
+            type: "button",
             onClick: onOpenPdfModal,
             className: "p-2 rounded-xl bg-teal-600 text-white hover:bg-teal-700 shadow-2xs cursor-pointer",
-            title: isEn ? "PDF" : "Xu\u1EA5t phi\u1EBFu h\u1ED9i ch\u1EA9n",
+            title: "Xu\u1EA5t phi\u1EBFu h\u1ED9i ch\u1EA9n PDF",
             children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.FileText, { className: "w-4 h-4" })
           }
         ),
@@ -71742,8 +71854,10 @@ var Header = ({
           "button",
           {
             id: "btn-mobile-menu-toggle",
+            type: "button",
             onClick: () => setMobileMenuOpen(!mobileMenuOpen),
             className: "p-2 rounded-xl text-slate-600 hover:bg-slate-100 cursor-pointer",
+            "aria-label": "M\u1EDF menu",
             children: mobileMenuOpen ? /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.X, { className: "w-5 h-5" }) : /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.Menu, { className: "w-5 h-5" })
           }
         )
@@ -71751,13 +71865,48 @@ var Header = ({
     ] }) }),
     mobileMenuOpen && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-3 shadow-lg animate-slideUp", children: [
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "text-xs font-semibold text-slate-600 flex items-center justify-between pb-2 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Thu\u1ED1c \u0111ang ch\u1ECDn:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Kh\xE1ng sinh \u0111ang ch\u1ECDn:" }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "font-black text-teal-700", children: selectedDrugName })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "grid grid-cols-2 gap-2", children: [
+        onOpenSepsisGuide && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => {
+              onOpenSepsisGuide();
+              setMobileMenuOpen(false);
+            },
+            className: "flex items-center justify-center space-x-1.5 p-2.5 rounded-xl text-xs font-bold text-rose-800 bg-rose-50 hover:bg-rose-100 cursor-pointer",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.Stethoscope, { className: "w-4 h-4 text-rose-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "HD Sepsis" })
+            ]
+          }
+        ),
+        onOpenHistory && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => {
+              onOpenHistory();
+              setMobileMenuOpen(false);
+            },
+            className: "flex items-center justify-center space-x-1.5 p-2.5 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 cursor-pointer",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.History, { className: "w-4 h-4 text-teal-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("span", { children: [
+                "L\u1ECBch s\u1EED (",
+                savedCount,
+                ")"
+              ] })
+            ]
+          }
+        ),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
           "button",
           {
+            type: "button",
             onClick: () => {
               onOpenAmr();
               setMobileMenuOpen(false);
@@ -71765,13 +71914,14 @@ var Header = ({
             className: "flex items-center justify-center space-x-1.5 p-2.5 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 cursor-pointer",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.ShieldAlert, { className: "w-4 h-4 text-amber-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "D\u1EEF li\u1EC7u \u0110\u1EC1 kh\xE1ng" })
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "D\u1EEF li\u1EC7u AMR" })
             ]
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
           "button",
           {
+            type: "button",
             onClick: () => {
               onOpenOriginal();
               setMobileMenuOpen(false);
@@ -71779,7 +71929,7 @@ var Header = ({
             className: "flex items-center justify-center space-x-1.5 p-2.5 rounded-xl text-xs font-bold text-teal-800 bg-teal-50 hover:bg-teal-100 cursor-pointer",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_lucide_react.ExternalLink, { className: "w-4 h-4" }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Giao di\u1EC7n g\u1ED1c" })
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Stanford/UCSF" })
             ]
           }
         )
@@ -71787,6 +71937,7 @@ var Header = ({
       onOpenQuickPatient && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
         "button",
         {
+          type: "button",
           onClick: () => {
             onOpenQuickPatient();
             setMobileMenuOpen(false);
@@ -71801,6 +71952,7 @@ var Header = ({
       onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
         "button",
         {
+          type: "button",
           onClick: () => {
             onOpenGuidelineAtlas();
             setMobileMenuOpen(false);
@@ -71818,17 +71970,19 @@ var Header = ({
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
             "button",
             {
+              type: "button",
               onClick: () => onLanguageChange("vi"),
               className: `px-2.5 py-1 rounded text-xs font-bold ${language === "vi" ? "bg-white text-teal-700 shadow-2xs" : "text-slate-600"}`,
-              children: "\u{1F1FB}\u{1F1F3} Ti\u1EBFng Vi\u1EC7t"
+              children: "Ti\u1EBFng Vi\u1EC7t"
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
             "button",
             {
+              type: "button",
               onClick: () => onLanguageChange("en"),
               className: `px-2.5 py-1 rounded text-xs font-bold ${language === "en" ? "bg-white text-teal-700 shadow-2xs" : "text-slate-600"}`,
-              children: "\u{1F1EC}\u{1F1E7} English"
+              children: "English"
             }
           )
         ] })
@@ -71836,6 +71990,7 @@ var Header = ({
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
         "button",
         {
+          type: "button",
           onClick: () => {
             onReset();
             setMobileMenuOpen(false);
@@ -71860,6 +72015,8 @@ var PatientSidebar = ({
   onChange,
   renal,
   dialysis,
+  sepsisResult,
+  onGoToSepsisStage,
   language,
   needsHeight = false,
   isCollapsed,
@@ -71945,7 +72102,7 @@ var PatientSidebar = ({
     const genderLabel = isFemale ? isEn ? "Female" : "N\u1EEF" : isEn ? "Male" : "Nam";
     const isNormal = renal.crcl >= 60;
     const isModerate = renal.crcl >= 30 && renal.crcl < 60;
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden transition-all duration-200 flex flex-col", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden transition-all duration-200 flex flex-col", children: [
       /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "p-3 bg-slate-900 text-white flex items-center justify-between", children: [
         /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center space-x-2 min-w-0", children: [
           /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "w-6 h-6 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_lucide_react2.User, { className: "w-3.5 h-3.5" }) }),
@@ -72004,6 +72161,15 @@ var PatientSidebar = ({
               patient.scrUnit === "umol" ? "\xB5mol/L" : "mg/dL"
             ] })
           ] }),
+          sepsisResult && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "pt-1 border-t border-slate-200 flex items-center justify-between text-[10px] font-bold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "text-slate-500", children: "Sepsis HUD:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: sepsisResult.urgencyLevel === "emergency" ? "text-rose-700" : sepsisResult.urgencyLevel === "urgent" ? "text-amber-700" : "text-emerald-700", children: [
+              "NEWS2 ",
+              sepsisResult.news2Score,
+              " \u2022 SOFA ",
+              sepsisResult.sofaScore
+            ] })
+          ] }),
           dialysis !== "none" && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "pt-1 border-t border-slate-200 flex items-center justify-between text-[10px] text-purple-800 font-black uppercase", children: [
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: "L\u1ECDc m\xE1u:" }),
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: dialysis })
@@ -72024,13 +72190,18 @@ var PatientSidebar = ({
       ] })
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden transition-all duration-300", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "p-3.5 bg-slate-900 text-white flex items-center justify-between", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center space-x-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "w-8 h-8 rounded-xl bg-teal-500/20 text-teal-400 border border-teal-500/30 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_lucide_react2.User, { className: "w-4 h-4" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h2", { className: "text-xs sm:text-sm font-bold block leading-tight text-white", children: isEn ? "Patient & Renal Demographics" : "Th\xF4ng S\u1ED1 B\u1EC7nh Nh\xE2n & Th\u1EADn" }),
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "text-[10px] text-slate-400", children: isEn ? "Cockcroft-Gault & Clinical Metrics" : "\u0110\u1ED9 thanh th\u1EA3i CrCl & C\xE1 th\u1EC3 h\xF3a" })
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden transition-all duration-300", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "px-3.5 py-3 bg-slate-900 text-white flex items-center justify-between", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center space-x-2.5 min-w-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "w-8 h-8 rounded-xl bg-teal-500/20 text-teal-400 border border-teal-500/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_lucide_react2.User, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "min-w-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h2", { className: "text-xs font-extrabold block leading-tight text-white truncate", children: isEn ? "Renal & Sepsis Cockpit" : "H\u1ED3 S\u01A1 Th\u1EADn & Sepsis HUD" }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("p", { className: "text-[10px] text-slate-400 font-mono tabular-nums truncate", children: [
+            "CrCl ",
+            renal.crcl,
+            " mL/p",
+            sepsisResult ? ` \u2022 SOFA ${sepsisResult.sofaScore}\u0111` : ""
+          ] })
         ] })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
@@ -72038,7 +72209,7 @@ var PatientSidebar = ({
         {
           type: "button",
           onClick: onToggleCollapse,
-          className: "flex items-center space-x-1 text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 py-1.5 rounded-xl transition-colors border border-slate-700 cursor-pointer",
+          className: "flex items-center space-x-1 text-[11px] font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white px-2.5 py-1.5 rounded-xl transition-colors border border-slate-700 cursor-pointer shrink-0",
           title: isEn ? "Collapse to mini strip" : "Thu g\u1ECDn b\u1EA3ng nh\u1EADp",
           children: [
             /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_lucide_react2.Minimize2, { className: "w-3.5 h-3.5" }),
@@ -72282,6 +72453,38 @@ var PatientSidebar = ({
           /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: "130+" })
         ] })
       ] }),
+      sepsisResult && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: `p-3 rounded-2xl border space-y-2 ${sepsisResult.urgencyLevel === "emergency" ? "bg-rose-50/80 border-rose-200" : sepsisResult.urgencyLevel === "urgent" ? "bg-amber-50/80 border-amber-200" : "bg-slate-50 border-slate-200"}`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex items-center justify-between gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: "text-[10px] font-black uppercase tracking-wider text-slate-700 flex items-center gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_lucide_react2.Flame, { className: `w-3.5 h-3.5 ${sepsisResult.urgencyLevel === "emergency" ? "text-rose-600" : sepsisResult.urgencyLevel === "urgent" ? "text-amber-600" : "text-emerald-600"}` }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: "Tr\u1EA1ng Th\xE1i Sepsis" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: `text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase ${sepsisResult.urgencyLevel === "emergency" ? "bg-rose-600 text-white" : sepsisResult.urgencyLevel === "urgent" ? "bg-amber-500 text-white" : "bg-emerald-600 text-white"}`, children: sepsisResult.primaryDiagnosis === "septic_shock" ? "S\u1ED0C NK" : sepsisResult.primaryDiagnosis === "confirmed_sepsis" ? "SEPSIS" : sepsisResult.primaryDiagnosis === "suspected_sepsis" ? "NGHI SEPSIS" : sepsisResult.primaryDiagnosis === "uncomplicated_infection" ? "NK TH\u01AF\u1EDCNG" : "\u1ED4N \u0110\u1ECANH" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "grid grid-cols-3 gap-1.5 text-center font-mono text-[11px]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-white/90 rounded-lg p-1.5 border border-slate-200/70", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "text-[9px] text-slate-500 block font-sans", children: "NEWS2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("strong", { className: "text-slate-900", children: sepsisResult.news2Score })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-white/90 rounded-lg p-1.5 border border-slate-200/70", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "text-[9px] text-slate-500 block font-sans", children: "SOFA" }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("strong", { className: sepsisResult.sofaScore >= 2 ? "text-rose-700" : "text-slate-900", children: sepsisResult.sofaScore })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bg-white/90 rounded-lg p-1.5 border border-slate-200/70", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "text-[9px] text-slate-500 block font-sans", children: "MAP" }),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("strong", { className: sepsisResult.calculatedMap < 65 ? "text-rose-700" : "text-slate-900", children: sepsisResult.calculatedMap })
+          ] })
+        ] }),
+        onGoToSepsisStage && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+          "button",
+          {
+            type: "button",
+            onClick: onGoToSepsisStage,
+            className: "w-full py-1.5 px-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 text-[11px] font-bold border border-slate-200 transition-colors cursor-pointer",
+            children: "Ch\u1EC9nh sinh hi\u1EC7u & \u0110\xE1nh gi\xE1 Sepsis (B\u01B0\u1EDBc 1)"
+          }
+        )
+      ] }),
       /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { children: [
         /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
           "button",
@@ -72334,164 +72537,200 @@ var PatientSidebar = ({
 };
 
 // antibiotic/src/components/StickyPatientBar.tsx
-var import_react3 = __toESM(require_react(), 1);
 var import_lucide_react3 = __toESM(require_lucide_react(), 1);
 var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
 var StickyPatientBar = ({
   patient,
   renal,
   dialysis,
-  selectedDrugName,
+  sepsisPatient,
+  sepsisResult,
   currentStep,
   onStepChange,
+  viewMode,
+  onViewModeChange,
+  onCopyUnifiedSummary,
+  copiedSummary = false,
   onOpenQuickPatient,
-  onOpenDrugSearch,
-  onExportPdf,
   language
 }) => {
-  const [copied, setCopied] = (0, import_react3.useState)(false);
   const isEn = language === "en";
-  const getCrclColor = () => {
-    if (dialysis !== "none") return "bg-purple-100 text-purple-900 border-purple-300";
-    if (renal.isArc) return "bg-teal-100 text-teal-900 border-teal-300";
-    if (renal.crcl >= 90) return "bg-emerald-100 text-emerald-900 border-emerald-300";
-    if (renal.crcl >= 60) return "bg-blue-100 text-blue-900 border-blue-300";
-    if (renal.crcl >= 30) return "bg-amber-100 text-amber-900 border-amber-300";
-    if (renal.crcl >= 15) return "bg-orange-100 text-orange-900 border-orange-300";
-    return "bg-rose-100 text-rose-900 border-rose-300";
+  const getCrclStyle = () => {
+    if (dialysis !== "none") return "bg-purple-50 text-purple-900 border-purple-300";
+    if (renal.isArc) return "bg-teal-50 text-teal-900 border-teal-300";
+    if (renal.crcl >= 90) return "bg-emerald-50 text-emerald-900 border-emerald-300";
+    if (renal.crcl >= 60) return "bg-sky-50 text-sky-900 border-sky-300";
+    if (renal.crcl >= 30) return "bg-amber-50 text-amber-900 border-amber-300";
+    return "bg-rose-50 text-rose-900 border-rose-300";
   };
-  const getCrclBadgeBg = () => {
-    if (dialysis !== "none") return "bg-purple-600 text-white";
-    if (renal.isArc) return "bg-teal-600 text-white";
-    if (renal.crcl >= 90) return "bg-emerald-600 text-white";
-    if (renal.crcl >= 60) return "bg-blue-600 text-white";
-    if (renal.crcl >= 30) return "bg-amber-500 text-white";
-    if (renal.crcl >= 15) return "bg-orange-600 text-white";
-    return "bg-rose-600 text-white";
+  const genderText = patient.gender === "m" ? isEn ? "M" : "Nam" : isEn ? "F" : "N\u1EEF";
+  const isEmergency = sepsisResult?.urgencyLevel === "emergency";
+  const isUrgent = sepsisResult?.urgencyLevel === "urgent";
+  const hasPositiveT2 = sepsisPatient?.rapidMolecularT2Done && sepsisPatient?.rapidMolecularResult === "positive";
+  const stages = [
+    {
+      id: 1,
+      short: isEn ? "1. Sepsis & 1h" : "1. Sepsis & Gi\u1EDD V\xE0ng",
+      icon: import_lucide_react3.Stethoscope,
+      activeClass: "bg-rose-600 text-white shadow-sm",
+      dot: isEmergency ? "bg-rose-500 animate-ping" : isUrgent ? "bg-amber-500" : ""
+    },
+    {
+      id: 2,
+      short: isEn ? "2. Regimens & Dose" : "2. Ph\xE1c \u0110\u1ED3 & Li\u1EC1u KS",
+      icon: import_lucide_react3.Pill,
+      activeClass: "bg-teal-600 text-white shadow-sm",
+      dot: ""
+    },
+    {
+      id: 3,
+      short: isEn ? "3. 48-72h AMS" : "3. T\xE1i \u0110\xE1nh Gi\xE1 48-72h",
+      icon: import_lucide_react3.Clock,
+      activeClass: "bg-indigo-600 text-white shadow-sm",
+      dot: hasPositiveT2 ? "bg-purple-500" : ""
+    }
+  ];
+  const handleStageSelect = (stage) => {
+    onStepChange(stage);
+    if (viewMode === "all-in-one") {
+      const el = document.getElementById(`section-stage-${stage}`);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
-  const genderText = patient.gender === "m" ? isEn ? "Male" : "Nam" : isEn ? "Female" : "N\u1EEF";
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs no-print transition-all", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center justify-between gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "sticky top-[54px] z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs no-print", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6 py-2", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center justify-between gap-2.5", children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
         "button",
         {
           type: "button",
           onClick: onOpenQuickPatient,
-          className: "flex items-center space-x-2 text-left hover:bg-slate-100/80 p-1 rounded-xl transition-all cursor-pointer group min-w-0",
-          title: "Nh\u1EA5n \u0111\u1EC3 ch\u1EC9nh s\u1EEDa nhanh th\xF4ng s\u1ED1 b\u1EC7nh nh\xE2n",
+          className: "flex items-center gap-2 text-left hover:bg-slate-100/80 px-2 py-1 rounded-xl transition-all cursor-pointer group min-w-0 shrink-0",
+          title: "B\u1EA5m \u0111\u1EC3 ch\u1EC9nh s\u1EEDa nhanh nh\xE2n tr\u1EAFc & ch\u1EE9c n\u0103ng th\u1EADn",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "w-8 h-8 rounded-lg bg-teal-50 border border-teal-200/80 text-teal-700 flex items-center justify-center shrink-0 group-hover:bg-teal-600 group-hover:text-white transition-all shadow-2xs", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.User, { className: "w-4 h-4" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "min-w-0", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "font-black text-xs text-slate-900 truncate", children: [
-                  genderText,
-                  ", ",
-                  patient.age,
-                  " tu\u1ED5i \u2022 ",
-                  patient.weight,
-                  " kg"
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-[10px] text-teal-700 font-bold bg-teal-50 px-1.5 py-0.2 rounded border border-teal-200/60 hidden md:inline", children: [
-                  "Ch\u1EC9nh th\xF4ng s\u1ED1 ",
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Edit3, { className: "w-2.5 h-2.5 inline ml-0.5" })
-                ] })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: `w-7 h-7 rounded-lg border flex items-center justify-center shrink-0 transition-colors ${isEmergency ? "bg-rose-50 border-rose-300 text-rose-600 group-hover:bg-rose-600 group-hover:text-white" : "bg-teal-50 border-teal-200 text-teal-700 group-hover:bg-teal-600 group-hover:text-white"}`, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.User, { className: "w-3.5 h-3.5" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "min-w-0 leading-tight", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "font-extrabold text-xs text-slate-900 truncate tabular-nums", children: [
+                genderText,
+                ", ",
+                patient.age,
+                "t \u2022 ",
+                patient.weight,
+                "kg"
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-[11px] text-slate-600 font-semibold flex items-center gap-1.5 truncate", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
-                  "Scr: ",
-                  patient.scr,
-                  " ",
-                  patient.scrUnit === "umol" ? "\xB5mol/L" : "mg/dL"
-                ] }),
-                patient.height && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-slate-300", children: "\u2022" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
-                    patient.height,
-                    " cm"
-                  ] })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-slate-300 hidden sm:inline", children: "\u2022" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-slate-500 hidden sm:inline", children: [
-                  "IBW: ",
-                  renal.ibw,
-                  " kg"
-                ] })
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-[10px] text-slate-500 font-mono tabular-nums truncate", children: [
+                "SCr ",
+                patient.scr,
+                patient.scrUnit === "umol" ? "\xB5mol" : "mg",
+                patient.height ? ` \u2022 ${patient.height}cm` : ""
               ] })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center space-x-1.5 shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "hidden md:flex items-center gap-1.5 bg-slate-100/90 p-1 rounded-xl border border-slate-200/90", children: [
+        stages.map((st) => {
+          const Icon = st.icon;
+          const isActive = viewMode === "stepper" && currentStep === st.id;
+          return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+            "button",
+            {
+              type: "button",
+              onClick: () => handleStageSelect(st.id),
+              className: `relative px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap ${isActive ? st.activeClass : "text-slate-600 hover:text-slate-950 hover:bg-white/80"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon, { className: "w-3.5 h-3.5 shrink-0" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: st.short }),
+                st.dot && !isActive && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: `w-2 h-2 rounded-full ${st.dot}` }),
+                st.id === 3 && hasPositiveT2 && !isActive && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Dna, { className: "w-3 h-3 text-purple-600" })
+              ]
+            },
+            st.id
+          );
+        }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "w-px h-5 bg-slate-300/70 mx-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => onViewModeChange(viewMode === "stepper" ? "all-in-one" : "stepper"),
+            className: `px-2.5 py-1.5 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap ${viewMode === "all-in-one" ? "bg-slate-900 text-white shadow-xs" : "text-slate-600 hover:text-slate-900 hover:bg-white/80"}`,
+            title: viewMode === "all-in-one" ? "\u0110ang xem to\xE0n b\u1ED9 3 giai \u0111o\u1EA1n \u2014 B\u1EA5m \u0111\u1EC3 xem t\u1EEBng b\u01B0\u1EDBc" : "Xem to\xE0n b\u1ED9 3 giai \u0111o\u1EA1n tr\xEAn c\xF9ng 1 trang",
+            children: [
+              viewMode === "all-in-one" ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.LayoutList, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Layers, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "hidden xl:inline", children: viewMode === "all-in-one" ? "T\u1EEBng B\u01B0\u1EDBc" : "To\xE0n B\u1ED9" })
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-1.5 shrink-0", children: [
+        sepsisResult && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => handleStageSelect(1),
+            className: `hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-[11px] font-bold font-mono tabular-nums cursor-pointer transition-all ${isEmergency ? "bg-rose-600 text-white border-rose-700 shadow-xs" : isUrgent ? "bg-amber-50 text-amber-900 border-amber-300" : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"}`,
+            title: `Sepsis HUD: NEWS2 ${sepsisResult.news2Score} | SOFA ${sepsisResult.sofaScore} | MAP ${sepsisResult.calculatedMap} mmHg`,
+            children: [
+              isEmergency && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.AlertOctagon, { className: "w-3.5 h-3.5 animate-pulse shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "font-sans font-black", children: isEmergency ? `KS \u2264${sepsisResult.niceAntibioticMaxDelayHours}h` : `NEWS2 ${sepsisResult.news2Score}` }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "opacity-70 hidden xl:inline", children: "|" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "hidden xl:inline", children: [
+                "SOFA ",
+                sepsisResult.sofaScore
+              ] })
+            ]
+          }
+        ),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
           "button",
           {
             type: "button",
             onClick: onOpenQuickPatient,
-            className: `flex items-center space-x-1.5 px-2.5 py-1 rounded-xl border text-xs font-bold transition-transform active:scale-95 cursor-pointer shadow-2xs ${getCrclColor()}`,
-            title: "B\u1EA5m \u0111\u1EC3 xem v\xE0 s\u1EEDa chi ti\u1EBFt ch\u1EE9c n\u0103ng th\u1EADn",
+            className: `flex items-center gap-1 px-2.5 py-1 rounded-xl border text-[11px] font-bold font-mono tabular-nums cursor-pointer transition-transform active:scale-95 ${getCrclStyle()}`,
+            title: `\u0110\u1ED9 thanh th\u1EA3i Creatinine (Cockcroft-Gault): ${renal.crcl} mL/ph\xFAt (${renal.categoryLabelVi})`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Activity, { className: "w-3.5 h-3.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "font-black text-xs", children: [
-                "CrCl: ",
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Activity, { className: "w-3.5 h-3.5 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
+                "CrCl ",
                 renal.crcl
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] opacity-75 hidden sm:inline", children: "mL/p" }),
-              dialysis !== "none" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "uppercase text-[9px] font-black bg-purple-700 text-white px-1.5 py-0.2 rounded-md ml-0.5", children: dialysis })
+              dialysis !== "none" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "uppercase text-[9px] font-black bg-purple-700 text-white px-1 py-0.2 rounded", children: dialysis })
             ]
           }
         ),
-        onOpenDrugSearch && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+        onCopyUnifiedSummary && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
           "button",
           {
             type: "button",
-            onClick: onOpenDrugSearch,
-            className: "px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-all flex items-center space-x-1 cursor-pointer border border-slate-200",
-            title: "T\xECm nhanh trong 43 kh\xE1ng sinh (Ph\xEDm t\u1EAFt /)",
+            onClick: onCopyUnifiedSummary,
+            className: `px-2.5 py-1 rounded-xl text-[11px] font-bold border transition-all flex items-center gap-1 cursor-pointer ${copiedSummary ? "bg-emerald-600 text-white border-emerald-600" : "bg-white hover:bg-slate-100 text-slate-700 border-slate-200"}`,
+            title: "Sao ch\xE9p to\xE0n b\u1ED9 t\xF3m t\u1EAFt SBAR Sepsis & Kh\xE1ng sinh cho B\u1EC7nh \xE1n EMR/HIS",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Search, { className: "w-3.5 h-3.5 text-teal-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "hidden md:inline", children: "Tra thu\u1ED1c" }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("kbd", { className: "hidden lg:inline-block px-1 py-0.2 text-[9px] bg-white border border-slate-300 rounded text-slate-500 font-mono", children: "/" })
+              copiedSummary ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Check, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Copy, { className: "w-3.5 h-3.5 text-slate-500" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "hidden xl:inline", children: copiedSummary ? "\u0110\xE3 ch\xE9p" : "SBAR" })
             ]
-          }
-        ),
-        onExportPdf && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-          "button",
-          {
-            type: "button",
-            onClick: onExportPdf,
-            className: "p-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white transition-all cursor-pointer shadow-2xs flex items-center justify-center",
-            title: "Xu\u1EA5t phi\u1EBFu h\u1ED9i ch\u1EA9n l\xE2m s\xE0ng PDF",
-            children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.FileText, { className: "w-4 h-4" })
           }
         )
       ] })
     ] }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("nav", { "aria-label": "Clinical steps on mobile", className: "md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-lg px-2 py-1.5 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-2 gap-2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("nav", { "aria-label": "Clinical stages on mobile", className: "md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-lg px-2 py-1.5 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "grid grid-cols-3 gap-1.5", children: stages.map((st) => {
+      const Icon = st.icon;
+      const isActive = currentStep === st.id;
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
         "button",
         {
           type: "button",
-          onClick: () => onStepChange(1),
-          className: `flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${currentStep === 1 ? "bg-teal-50 text-teal-800 font-bold shadow-2xs" : "text-slate-500 hover:text-slate-900 font-medium"}`,
+          onClick: () => handleStageSelect(st.id),
+          className: `flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer relative ${isActive ? st.id === 1 ? "bg-rose-50 text-rose-800 font-bold shadow-2xs ring-1 ring-rose-200" : st.id === 2 ? "bg-teal-50 text-teal-800 font-bold shadow-2xs ring-1 ring-teal-200" : "bg-indigo-50 text-indigo-800 font-bold shadow-2xs ring-1 ring-indigo-200" : "text-slate-500 hover:text-slate-900 font-medium"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Pill, { className: `w-4 h-4 mb-0.5 ${currentStep === 1 ? "text-teal-600" : "text-slate-400"}` }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] leading-tight text-center font-bold", children: "1. Ph\xE1c \u0111\u1ED3 & Li\u1EC1u" })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Icon, { className: "w-4 h-4 mb-0.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] leading-tight text-center font-bold", children: st.id === 1 ? "1. Sepsis" : st.id === 2 ? "2. Ph\xE1c \u0111\u1ED3" : "3. 48-72h" }),
+            st.id === 1 && isEmergency && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "w-2 h-2 rounded-full bg-rose-500 animate-ping absolute top-1.5 right-3" })
           ]
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-        "button",
-        {
-          type: "button",
-          onClick: () => onStepChange(2),
-          className: `flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${currentStep === 2 ? "bg-teal-50 text-teal-800 font-bold shadow-2xs" : "text-slate-500 hover:text-slate-900 font-medium"}`,
-          children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_lucide_react3.Clock, { className: `w-4 h-4 mb-0.5 ${currentStep === 2 ? "text-teal-600" : "text-slate-400"}` }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] leading-tight text-center font-bold", children: "2. T\xE1i \u0111\xE1nh gi\xE1" })
-          ]
-        }
-      )
-    ] }) })
+        },
+        st.id
+      );
+    }) }) })
   ] });
 };
 
@@ -72855,7 +73094,7 @@ var QuickPatientDrawer = ({
 };
 
 // antibiotic/src/components/DrugSearchModal.tsx
-var import_react4 = __toESM(require_react(), 1);
+var import_react3 = __toESM(require_react(), 1);
 var import_lucide_react5 = __toESM(require_lucide_react(), 1);
 
 // antibiotic/src/data/antibiotics.ts
@@ -76041,18 +76280,18 @@ var DrugSearchModal = ({
   onSelectDrug,
   language
 }) => {
-  const [searchTerm, setSearchTerm] = (0, import_react4.useState)("");
-  const [selectedIndex, setSelectedIndex] = (0, import_react4.useState)(0);
-  const inputRef = (0, import_react4.useRef)(null);
+  const [searchTerm, setSearchTerm] = (0, import_react3.useState)("");
+  const [selectedIndex, setSelectedIndex] = (0, import_react3.useState)(0);
+  const inputRef = (0, import_react3.useRef)(null);
   const isEn = language === "en";
-  (0, import_react4.useEffect)(() => {
+  (0, import_react3.useEffect)(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 80);
       setSearchTerm("");
       setSelectedIndex(0);
     }
   }, [isOpen]);
-  const matchingAntibiotics = (0, import_react4.useMemo)(() => {
+  const matchingAntibiotics = (0, import_react3.useMemo)(() => {
     const query = searchTerm.toLowerCase().trim();
     if (!query) {
       const frequent = ANTIBIOTICS.filter((a) => FREQUENT_SUGGESTIONS.includes(a.id));
@@ -76198,7 +76437,7 @@ var DrugSearchModal = ({
 };
 
 // antibiotic/src/components/AntibioticSearch.tsx
-var import_react5 = __toESM(require_react(), 1);
+var import_react4 = __toESM(require_react(), 1);
 var import_lucide_react6 = __toESM(require_lucide_react(), 1);
 var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
 var FREQUENT_SUGGESTIONS2 = [
@@ -76216,14 +76455,14 @@ var AntibioticSearch = ({
   onSelect,
   language
 }) => {
-  const [searchTerm, setSearchTerm] = (0, import_react5.useState)("");
-  const [isOpen, setIsOpen] = (0, import_react5.useState)(false);
-  const [selectedIndex, setSelectedIndex] = (0, import_react5.useState)(0);
-  const containerRef = (0, import_react5.useRef)(null);
-  const inputRef = (0, import_react5.useRef)(null);
+  const [searchTerm, setSearchTerm] = (0, import_react4.useState)("");
+  const [isOpen, setIsOpen] = (0, import_react4.useState)(false);
+  const [selectedIndex, setSelectedIndex] = (0, import_react4.useState)(0);
+  const containerRef = (0, import_react4.useRef)(null);
+  const inputRef = (0, import_react4.useRef)(null);
   const isEn = language === "en";
   const activeDrug = antibiotics.find((a) => a.id === selectedId) || antibiotics[0];
-  (0, import_react5.useEffect)(() => {
+  (0, import_react4.useEffect)(() => {
     const handleKeyDown2 = (e) => {
       if (e.key === "/" && document.activeElement !== inputRef.current && document.activeElement?.tagName !== "INPUT") {
         e.preventDefault();
@@ -76234,7 +76473,7 @@ var AntibioticSearch = ({
     window.addEventListener("keydown", handleKeyDown2);
     return () => window.removeEventListener("keydown", handleKeyDown2);
   }, []);
-  (0, import_react5.useEffect)(() => {
+  (0, import_react4.useEffect)(() => {
     const handleClickOutside = (event) => {
       if (containerRef.current && !containerRef.current.contains(event.target)) {
         setIsOpen(false);
@@ -76243,7 +76482,7 @@ var AntibioticSearch = ({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-  const matchingAntibiotics = (0, import_react5.useMemo)(() => {
+  const matchingAntibiotics = (0, import_react4.useMemo)(() => {
     const query = searchTerm.toLowerCase().trim();
     if (!query) {
       const frequent = antibiotics.filter((a) => FREQUENT_SUGGESTIONS2.includes(a.id));
@@ -76433,7 +76672,7 @@ var AntibioticSearch = ({
 };
 
 // antibiotic/src/components/DosingRecommendationCard.tsx
-var import_react6 = __toESM(require_react(), 1);
+var import_react5 = __toESM(require_react(), 1);
 var import_lucide_react7 = __toESM(require_lucide_react(), 1);
 var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
 var DosingRecommendationCard = ({
@@ -76445,11 +76684,11 @@ var DosingRecommendationCard = ({
   language,
   onExportPdf
 }) => {
-  const [copied, setCopied] = (0, import_react6.useState)(false);
-  const [copiedOrder, setCopiedOrder] = (0, import_react6.useState)(false);
-  const [dilutionVolume, setDilutionVolume] = (0, import_react6.useState)(100);
-  const [infusionHours, setInfusionHours] = (0, import_react6.useState)(3);
-  const [showInfusionCalc, setShowInfusionCalc] = (0, import_react6.useState)(false);
+  const [copied, setCopied] = (0, import_react5.useState)(false);
+  const [copiedOrder, setCopiedOrder] = (0, import_react5.useState)(false);
+  const [dilutionVolume, setDilutionVolume] = (0, import_react5.useState)(100);
+  const [infusionHours, setInfusionHours] = (0, import_react5.useState)(3);
+  const [showInfusionCalc, setShowInfusionCalc] = (0, import_react5.useState)(false);
   const isEn = language === "en";
   const handleCopy = () => {
     const textToCopy = isEn ? doseResult.orderTextEn : doseResult.orderTextVi;
@@ -76775,7 +77014,7 @@ var RenalAdjustmentTable = ({
 };
 
 // antibiotic/src/components/DialysisPanel.tsx
-var import_react7 = __toESM(require_react(), 1);
+var import_react6 = __toESM(require_react(), 1);
 var import_lucide_react9 = __toESM(require_lucide_react(), 1);
 var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
 function parseRrtData(html, currentDialysis) {
@@ -76811,7 +77050,7 @@ var DialysisPanel = ({
   language
 }) => {
   const isEn = language === "en";
-  const colistinModes = (0, import_react7.useMemo)(() => [
+  const colistinModes = (0, import_react6.useMemo)(() => [
     {
       title: isEn ? "IHD - Intermittent Hemodialysis" : "IHD - Th\u1EADn nh\xE2n t\u1EA1o ng\u1EAFt qu\xE3ng chu k\u1EF3",
       isMatched: dialysis === "hd",
@@ -76843,7 +77082,7 @@ var DialysisPanel = ({
       note: isEn ? "High membrane clearance in CRRT requires near-normal dosing to prevent failure and emergent resistance." : "M\xE0ng l\u1ECDc CRRT \u0111\xE0o th\u1EA3i colistin li\xEAn t\u1EE5c v\u1EDBi \u0111\u1ED9 thanh th\u1EA3i cao. C\u1EA7n duy tr\xEC li\u1EC1u cao nh\u01B0 tr\xEAn \u0111\u1EC3 tr\xE1nh th\u1EA5t b\u1EA1i \u0111i\u1EC1u tr\u1ECB."
     }
   ], [dialysis, isEn]);
-  const parsedRrt = (0, import_react7.useMemo)(() => {
+  const parsedRrt = (0, import_react6.useMemo)(() => {
     if (drugDetails.isColistin) {
       return { modes: colistinModes, source: "International Consensus Guidelines for the Optimal Use of the Polymyxins (2019)" };
     }
@@ -76958,7 +77197,7 @@ var DialysisPanel = ({
 };
 
 // antibiotic/src/components/DrugInteractionChecker.tsx
-var import_react8 = __toESM(require_react(), 1);
+var import_react7 = __toESM(require_react(), 1);
 var import_lucide_react10 = __toESM(require_lucide_react(), 1);
 
 // antibiotic/src/data/drugInteractions.ts
@@ -77227,14 +77466,14 @@ var DrugInteractionChecker = ({
   antibioticName,
   language
 }) => {
-  const [selectedConcurrentDrugs, setSelectedConcurrentDrugs] = (0, import_react8.useState)([]);
-  const [customSearch, setCustomSearch] = (0, import_react8.useState)("");
-  const [expandedId, setExpandedId] = (0, import_react8.useState)(null);
+  const [selectedConcurrentDrugs, setSelectedConcurrentDrugs] = (0, import_react7.useState)([]);
+  const [customSearch, setCustomSearch] = (0, import_react7.useState)("");
+  const [expandedId, setExpandedId] = (0, import_react7.useState)(null);
   const isEn = language === "en";
-  const drugInteractions = (0, import_react8.useMemo)(() => {
+  const drugInteractions = (0, import_react7.useMemo)(() => {
     return DRUG_INTERACTIONS.filter((di) => di.antibioticIds.includes(antibioticId));
   }, [antibioticId]);
-  const commonMedsList = (0, import_react8.useMemo)(() => {
+  const commonMedsList = (0, import_react7.useMemo)(() => {
     return [
       { id: "valproate", vi: "Acid Valproic / Depakine", en: "Valproic Acid / Depakine" },
       { id: "vancomycin", vi: "Vancomycin (ti\xEAm truy\u1EC1n)", en: "Vancomycin (IV)" },
@@ -77261,7 +77500,7 @@ var DrugInteractionChecker = ({
   const toggleExpand = (id) => {
     setExpandedId(expandedId === id ? null : id);
   };
-  const activeDetectedAlerts = (0, import_react8.useMemo)(() => {
+  const activeDetectedAlerts = (0, import_react7.useMemo)(() => {
     return drugInteractions.filter((di) => {
       return selectedConcurrentDrugs.some((drugKey) => {
         if (drugKey === "valproate" && di.id.includes("valproate")) return true;
@@ -77397,7 +77636,7 @@ var DrugInteractionChecker = ({
 };
 
 // antibiotic/src/components/ClinicalNotesTiers.tsx
-var import_react9 = __toESM(require_react(), 1);
+var import_react8 = __toESM(require_react(), 1);
 var import_lucide_react11 = __toESM(require_lucide_react(), 1);
 var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
 function extractTiersFromHtml(html) {
@@ -77436,7 +77675,7 @@ var ClinicalNotesTiers = ({
   language
 }) => {
   const isEn = language === "en";
-  const colistinTiers = (0, import_react9.useMemo)(() => [
+  const colistinTiers = (0, import_react8.useMemo)(() => [
     {
       level: 1,
       title: isEn ? "Tier 1 - Critical Safety & Organ Toxicity" : "C\u1EA5p \u0111\u1ED9 1 - C\u1EA3nh b\xE1o an to\xE0n & \u0110\u1ED9c t\xEDnh c\u01A1 quan",
@@ -77462,7 +77701,7 @@ var ClinicalNotesTiers = ({
       ]
     }
   ], [isEn]);
-  const parsedTiers = (0, import_react9.useMemo)(() => {
+  const parsedTiers = (0, import_react8.useMemo)(() => {
     if (drugDetails.isColistin) {
       return colistinTiers;
     }
@@ -77556,7 +77795,7 @@ var ClinicalNotesTiers = ({
 };
 
 // antibiotic/src/components/ReferencesList.tsx
-var import_react10 = __toESM(require_react(), 1);
+var import_react9 = __toESM(require_react(), 1);
 var import_lucide_react12 = __toESM(require_lucide_react(), 1);
 var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
 function parseReferencesHtml(html) {
@@ -77624,7 +77863,7 @@ var ReferencesList = ({
   language
 }) => {
   const isEn = language === "en";
-  const references = (0, import_react10.useMemo)(() => {
+  const references = (0, import_react9.useMemo)(() => {
     const parsed = parseReferencesHtml(drugDetails.srcHtml);
     if (parsed.length > 0) return parsed;
     return DEFAULT_EVIDENCE_SOURCES;
@@ -77697,7 +77936,7 @@ var ReferencesList = ({
 };
 
 // antibiotic/src/components/AmrModal.tsx
-var import_react11 = __toESM(require_react(), 1);
+var import_react10 = __toESM(require_react(), 1);
 var import_lucide_react13 = __toESM(require_lucide_react(), 1);
 var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
 var AmrModal = ({
@@ -77707,10 +77946,10 @@ var AmrModal = ({
   selectedDrugName,
   language
 }) => {
-  const [selectedSpec, setSelectedSpec] = (0, import_react11.useState)(0);
-  const [searchTerm, setSearchTerm] = (0, import_react11.useState)("");
+  const [selectedSpec, setSelectedSpec] = (0, import_react10.useState)(0);
+  const [searchTerm, setSearchTerm] = (0, import_react10.useState)("");
   const isEn = language === "en";
-  const drugAmrData = (0, import_react11.useMemo)(() => {
+  const drugAmrData = (0, import_react10.useMemo)(() => {
     return AMR_DATA[selectedDrugId] || [];
   }, [selectedDrugId]);
   if (!isOpen) return null;
@@ -77821,7 +78060,7 @@ var AmrModal = ({
 };
 
 // antibiotic/src/components/OriginalPreviewModal.tsx
-var import_react12 = __toESM(require_react(), 1);
+var import_react11 = __toESM(require_react(), 1);
 var import_lucide_react14 = __toESM(require_lucide_react(), 1);
 
 // antibiotic/src/data/rawPreviewData.ts
@@ -77858,7 +78097,7 @@ var OriginalPreviewModal = ({
   language
 }) => {
   const isEn = language === "en";
-  const rawHtml = (0, import_react12.useMemo)(() => {
+  const rawHtml = (0, import_react11.useMemo)(() => {
     let html = decodePreviewSource(drugId);
     if (!html) return "";
     const scrVal = patient.scrUnit === "mgdl" ? Math.round(patient.scr * 88.4) : patient.scr;
@@ -77977,6 +78216,47 @@ function generatePdfConsultationReport(data) {
   doc.setFont("helvetica", "normal");
   doc.text(`${isEn ? "Status" : "Phan loai"}: ${isEn ? data.renal.categoryLabelEn : data.renal.categoryLabelVi}`, col3, y + 27);
   y += 39;
+  if (data.sepsisResult && data.sepsisPatient) {
+    const sr = data.sepsisResult;
+    const sp = data.sepsisPatient;
+    const isEmerg = sr.urgencyLevel === "emergency";
+    if (isEmerg) {
+      doc.setFillColor(254, 242, 242);
+      doc.setDrawColor(248, 113, 113);
+    } else {
+      doc.setFillColor(240, 253, 250);
+      doc.setDrawColor(94, 234, 212);
+    }
+    doc.roundedRect(margin, y, pageWidth - 2 * margin, 26, 2, 2, "FD");
+    doc.setTextColor(isEmerg ? 185 : 15, isEmerg ? 28 : 118, isEmerg ? 28 : 110);
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "bold");
+    doc.text(
+      isEn ? `1B. SEPSIS & HEMODYNAMIC ASSESSMENT (${sr.primaryDiagnosis.toUpperCase()})` : `1B. PHAN TANG NGUY CO SEPSIS & HUYET DONG (${sr.primaryDiagnosis.toUpperCase()})`,
+      margin + 4,
+      y + 6
+    );
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(30, 41, 59);
+    doc.text(
+      `NEWS2: ${sr.news2Score} | SOFA: ${sr.sofaScore} | LP-NEWS: ${sr.lpNewsScore} | SIRS: ${sr.sirsScore}/4 | qSOFA: ${sr.qsofaScore}/3 | NLR: ${sr.calculatedNlr ?? "N/A"}`,
+      margin + 4,
+      y + 12.5
+    );
+    doc.text(
+      `BP: ${sp.sbp}/${sp.dbp} (MAP ${sr.calculatedMap} mmHg) | HR: ${sp.heartRate} | RR: ${sp.respiratoryRate} | T: ${sp.temperature}C | SpO2: ${sp.spo2}% | Lactate: ${sp.lactateInitial ?? "N/A"} mmol/L`,
+      margin + 4,
+      y + 18.5
+    );
+    doc.setFont("helvetica", "bold");
+    doc.text(
+      `NICE Max Delay: <= ${sr.niceAntibioticMaxDelayHours}h | Urgency: ${sr.urgencyLevel.toUpperCase()}`,
+      margin + 4,
+      y + 23.5
+    );
+    y += 31;
+  }
   doc.setFillColor(240, 248, 255);
   doc.setDrawColor(15, 111, 186);
   doc.roundedRect(margin, y, pageWidth - 2 * margin, 42, 2, 2, "FD");
@@ -78106,7 +78386,7 @@ var PdfConsultationModal = ({
   const handlePrint = () => {
     triggerPrintConsultation();
   };
-  const { patient, renal, drug, doseResult, interactions, scenarioLabel } = reportData;
+  const { patient, renal, drug, doseResult, interactions, scenarioLabel, sepsisPatient, sepsisResult } = reportData;
   return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl max-w-3xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[92vh]", children: [
     /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-gradient-to-r from-blue-700 to-indigo-800 p-4 sm:p-5 text-white flex items-center justify-between shrink-0", children: [
       /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-3", children: [
@@ -78212,6 +78492,55 @@ var PdfConsultationModal = ({
               " kg (",
               renal.usedWeightType,
               ")"
+            ] })
+          ] })
+        ] })
+      ] }),
+      sepsisResult && sepsisPatient && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: `p-3 rounded-lg border ${sepsisResult.urgencyLevel === "emergency" ? "bg-rose-50/70 border-rose-200" : "bg-teal-50/50 border-teal-200"}`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: `font-bold text-xs uppercase ${sepsisResult.urgencyLevel === "emergency" ? "text-rose-900" : "text-teal-900"}`, children: [
+            "1B. ",
+            isEn ? "Sepsis & Hemodynamic Stratification" : "Ph\xE2n T\u1EA7ng Nguy C\u01A1 Sepsis & Huy\u1EBFt \u0110\u1ED9ng"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: `text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${sepsisResult.urgencyLevel === "emergency" ? "bg-rose-600 text-white" : sepsisResult.urgencyLevel === "urgent" ? "bg-amber-500 text-white" : "bg-emerald-600 text-white"}`, children: [
+            sepsisResult.primaryDiagnosis.replace("_", " "),
+            " \u2022 KS \u2264 ",
+            sepsisResult.niceAntibioticMaxDelayHours,
+            "h"
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-[11px] font-mono", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+            "NEWS2: ",
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: sepsisResult.news2Score })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+            "SOFA: ",
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: sepsisResult.sofaScore }),
+            " (qSOFA ",
+            sepsisResult.qsofaScore,
+            "/3)"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+            "LP-NEWS: ",
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: sepsisResult.lpNewsScore })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+            "MAP: ",
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("strong", { children: [
+              sepsisResult.calculatedMap,
+              " mmHg"
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+            "NLR: ",
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: sepsisResult.calculatedNlr ?? "N/A" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+            "Lactate: ",
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("strong", { children: [
+              sepsisPatient.lactateInitial ?? "N/A",
+              " mmol/L"
             ] })
           ] })
         ] })
@@ -78322,7 +78651,7 @@ var PdfConsultationModal = ({
 };
 
 // antibiotic/src/components/selection/GuidelineImageModal.tsx
-var import_react13 = __toESM(require_react(), 1);
+var import_react12 = __toESM(require_react(), 1);
 var import_lucide_react16 = __toESM(require_lucide_react(), 1);
 
 // antibiotic/src/selection/data/guidelineImages.ts
@@ -78790,13 +79119,13 @@ var GuidelineImageModal = ({
   currentPopulation = "adult",
   currentMdr
 }) => {
-  const [selectedId, setSelectedId] = (0, import_react13.useState)(initialImageId || "adult_resp_regimen");
-  const [zoomLevel, setZoomLevel] = (0, import_react13.useState)(1);
-  const [mobileTab, setMobileTab] = (0, import_react13.useState)("image");
-  const [isSidebarVisible, setIsSidebarVisible] = (0, import_react13.useState)(true);
-  const [filterPopulation, setFilterPopulation] = (0, import_react13.useState)("adult");
-  const [filterSite, setFilterSite] = (0, import_react13.useState)("respiratory");
-  (0, import_react13.useEffect)(() => {
+  const [selectedId, setSelectedId] = (0, import_react12.useState)(initialImageId || "adult_resp_regimen");
+  const [zoomLevel, setZoomLevel] = (0, import_react12.useState)(1);
+  const [mobileTab, setMobileTab] = (0, import_react12.useState)("image");
+  const [isSidebarVisible, setIsSidebarVisible] = (0, import_react12.useState)(true);
+  const [filterPopulation, setFilterPopulation] = (0, import_react12.useState)("adult");
+  const [filterSite, setFilterSite] = (0, import_react12.useState)("respiratory");
+  (0, import_react12.useEffect)(() => {
     if (isOpen) {
       if (initialImageId) {
         setSelectedId(initialImageId);
@@ -78822,13 +79151,13 @@ var GuidelineImageModal = ({
       setMobileTab("image");
     }
   }, [isOpen, initialImageId, currentSite, currentPopulation, currentMdr]);
-  const currentIndex = (0, import_react13.useMemo)(() => {
+  const currentIndex = (0, import_react12.useMemo)(() => {
     return GUIDELINE_IMAGES.findIndex((i) => i.id === selectedId);
   }, [selectedId]);
-  const currentImage = (0, import_react13.useMemo)(() => {
+  const currentImage = (0, import_react12.useMemo)(() => {
     return GUIDELINE_IMAGES[currentIndex >= 0 ? currentIndex : 0];
   }, [currentIndex]);
-  const currentPair = (0, import_react13.useMemo)(() => {
+  const currentPair = (0, import_react12.useMemo)(() => {
     if (currentImage.site !== "all" && currentImage.population !== "all") {
       return getGuidelineImagesForSite(currentImage.site, currentImage.population);
     }
@@ -78849,7 +79178,8 @@ var GuidelineImageModal = ({
     setSelectedId(GUIDELINE_IMAGES[nextIdx].id);
     setZoomLevel(1);
   };
-  const imageSrc = `./assets/guidelines/${currentImage.imageFilename}`;
+  const assetsBase = typeof window !== "undefined" && window.__CDSS_ASSETS_BASE__ || "./assets";
+  const imageSrc = `${assetsBase}/guidelines/${currentImage.imageFilename}`;
   return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "bg-white rounded-2xl max-w-7xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col h-[94vh] max-h-[980px]", children: [
     /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "bg-gradient-to-r from-teal-900 via-slate-900 to-indigo-950 text-white p-3 sm:p-4 flex items-center justify-between shrink-0 border-b border-teal-500/20", children: [
       /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center space-x-3 overflow-hidden", children: [
@@ -79242,7 +79572,7 @@ var GuidelineImageModal = ({
 };
 
 // antibiotic/src/components/DrugDetailModal.tsx
-var import_react14 = __toESM(require_react(), 1);
+var import_react13 = __toESM(require_react(), 1);
 var import_lucide_react17 = __toESM(require_lucide_react(), 1);
 var import_jsx_runtime18 = __toESM(require_jsx_runtime(), 1);
 var DrugDetailModal = ({
@@ -79253,7 +79583,7 @@ var DrugDetailModal = ({
   patient,
   children
 }) => {
-  (0, import_react14.useEffect)(() => {
+  (0, import_react13.useEffect)(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape" && isOpen) {
         onClose();
@@ -79262,7 +79592,7 @@ var DrugDetailModal = ({
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
-  (0, import_react14.useEffect)(() => {
+  (0, import_react13.useEffect)(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -79362,11 +79692,2045 @@ var DrugDetailModal = ({
   );
 };
 
+// antibiotic/src/components/sepsis/ClinicalGuideModal.tsx
+var import_react14 = __toESM(require_react(), 1);
+var import_lucide_react18 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime19 = __toESM(require_jsx_runtime(), 1);
+var ClinicalGuideModal = ({ isOpen, onClose }) => {
+  const [activeSection, setActiveSection] = (0, import_react14.useState)("intro");
+  if (!isOpen) return null;
+  const sections = [
+    { id: "intro", title: "1. Kh\xE1i Ni\u1EC7m & Ph\xE2n \u0110\u1ED9 Sepsis", icon: import_lucide_react18.BookOpen },
+    { id: "screening", title: "2. NEWS2 vs qSOFA vs SIRS", icon: import_lucide_react18.AlertTriangle },
+    { id: "pediatric", title: "3. Phoenix Pediatric Sepsis 2024", icon: import_lucide_react18.Baby },
+    { id: "maternal", title: "4. Sepsis S\u1EA3n Khoa (Thai K\u1EF3/H\u1EADu S\u1EA3n)", icon: import_lucide_react18.Heart },
+    { id: "biomarkers", title: "5. LP-NEWS, Lactate & NLR", icon: import_lucide_react18.Droplet },
+    { id: "molecular", title: "6. Ch\u1EA9n \u0110o\xE1n Ph\xE2n T\u1EED T2MR", icon: import_lucide_react18.Dna },
+    { id: "golden-hour", title: "7. Ph\xE1c \u0110\u1ED3 Gi\u1EDD V\xE0ng (Hour-1)", icon: import_lucide_react18.Clock }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "w-9 h-9 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_lucide_react18.BookOpen, { className: "w-5 h-5" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h3", { className: "text-base font-bold text-slate-900", children: "H\u01B0\u1EDBng D\u1EABn Y Khoa & S\xE0ng L\u1ECDc Sepsis Cho Ng\u01B0\u1EDDi M\u1EDBi" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-xs text-slate-500", children: "T\xF3m t\u1EAFt c\u01A1 s\u1EDF b\u1EB1ng ch\u1EE9ng NICE NG253, Sepsis-3, Phoenix 2024 & Biomarkers" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+        "button",
+        {
+          onClick: onClose,
+          className: "p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors",
+          children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_lucide_react18.X, { className: "w-5 h-5" })
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "px-4 py-2.5 bg-slate-50 border-b border-slate-200 flex items-center gap-1.5 overflow-x-auto shrink-0 scrollbar-none", children: sections.map((sec) => {
+      const Icon = sec.icon;
+      const isActive = activeSection === sec.id;
+      return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+        "button",
+        {
+          onClick: () => setActiveSection(sec.id),
+          className: `px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-colors flex items-center gap-1.5 ${isActive ? "bg-teal-600 text-white shadow-sm" : "bg-white text-slate-600 hover:bg-slate-200/70 border border-slate-200"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Icon, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: sec.title })
+          ]
+        },
+        sec.id
+      );
+    }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-5 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed flex-1", children: [
+      activeSection === "intro" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h4", { className: "font-bold text-slate-900 text-base", children: "Ti\u1EBFn Tr\xECnh \u0110\u1ECBnh Ngh\u0129a Sepsis: T\u1EEB SIRS \u0110\u1EBFn Sepsis-3" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { children: 'N\u0103m 2016, H\u1ED9i \u0111\u1ED3ng chuy\xEAn gia qu\u1ED1c t\u1EBF ch\xEDnh th\u1EE9c thay \u0111\u1ED5i \u0111\u1ECBnh ngh\u0129a Sepsis-3, b\xE3i b\u1ECF ho\xE0n to\xE0n ti\xEAu chu\u1EA9n SIRS v\xE0 kh\xE1i ni\u1EC7m "Severe Sepsis".' }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-3.5 rounded-lg bg-slate-50 border border-slate-200", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-[11px] font-bold text-slate-500 uppercase", children: "C\u1EA5p \u0111\u1ED9 1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h5", { className: "font-bold text-slate-900 mt-0.5", children: "Nhi\u1EC5m Khu\u1EA9n Th\u01B0\u1EDDng" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-xs text-slate-600 mt-1.5", children: "Ph\u1EA3n \u1EE9ng vi\xEAm khu tr\xFA, ch\u01B0a c\xF3 t\u1ED5n th\u01B0\u01A1ng ch\u1EE9c n\u0103ng c\u01A1 quan \u0111e d\u1ECDa t\u1EED vong." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-3.5 rounded-lg bg-amber-50 border border-amber-200", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-[11px] font-bold text-amber-800 uppercase", children: "C\u1EA5p \u0111\u1ED9 2 (Sepsis-3)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h5", { className: "font-bold text-amber-950 mt-0.5", children: "Nhi\u1EC5m Khu\u1EA9n Huy\u1EBFt" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { className: "text-xs text-amber-900 mt-1.5", children: [
+              "R\u1ED1i lo\u1EA1n ch\u1EE9c n\u0103ng c\u01A1 quan \u0111e d\u1ECDa t\u1EED vong do \u0111\xE1p \u1EE9ng kh\xF4ng \u0111i\u1EC1u h\xF2a c\u1EE7a c\u01A1 th\u1EC3. Ti\xEAu chu\u1EA9n: ",
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "\u0394SOFA \u2265 2 \u0111i\u1EC3m" }),
+              ". T\u1EF7 l\u1EC7 t\u1EED vong > 10%."
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-3.5 rounded-lg bg-rose-50 border border-rose-200", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-[11px] font-bold text-rose-800 uppercase", children: "C\u1EA5p \u0111\u1ED9 3 (Nguy k\u1ECBch)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h5", { className: "font-bold text-rose-950 mt-0.5", children: "S\u1ED1c Nhi\u1EC5m Khu\u1EA9n" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { className: "text-xs text-rose-900 mt-1.5", children: [
+              "T\u1EE5t huy\u1EBFt \xE1p k\xE9o d\xE0i c\u1EA7n thu\u1ED1c v\u1EADn m\u1EA1ch \u0111\u1EC3 duy tr\xEC ",
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "MAP \u2265 65 mmHg" }),
+              " v\xE0 ",
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Lactate > 2 mmol/L" }),
+              " sau khi \u0111\xE3 b\xF9 \u0111\u1EE7 th\u1EC3 t\xEDch d\u1ECBch. T\u1EED vong > 40%."
+            ] })
+          ] })
+        ] })
+      ] }),
+      activeSection === "screening" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h4", { className: "font-bold text-slate-900 text-base", children: "V\xEC Sao Khuy\xEAn KH\xD4NG D\xF9ng qSOFA \u0110\u01A1n \u0110\u1ED9c \u0110\u1EC3 S\xE0ng L\u1ECDc?" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
+          "Khuy\u1EBFn c\xE1o t\u1EEB ",
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Surviving Sepsis Campaign (SSC 2021)" }),
+          " v\xE0 ",
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "NICE NG253 (2024/2026)" }),
+          " n\xEAu r\xF5: qSOFA c\xF3 \u0111\u1ED9 \u0111\u1EB7c hi\u1EC7u cao nh\u01B0ng ",
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "\u0111\u1ED9 nh\u1EA1y r\u1EA5t th\u1EA5p (ch\u1EC9 24% - 50%)" }),
+          ", d\u1EC5 b\u1ECF s\xF3t b\u1EC7nh nh\xE2n giai \u0111o\u1EA1n s\u1EDBm."
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-3 bg-teal-50 border border-teal-200 rounded-lg", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-bold text-teal-900 block mb-1", children: "NICE NG253 \u01B0u ti\xEAn s\u1EED d\u1EE5ng NEWS2:" }),
+          "NEWS2 c\xF3 \u0111\u1ED9 nh\u1EA1y v\u01B0\u1EE3t tr\u1ED9i trong vi\u1EC7c ph\xE1t hi\u1EC7n s\u1EDBm di\u1EC5n bi\u1EBFn x\u1EA5u. \u0110\u1EB7c bi\u1EC7t ch\xFA \xFD ",
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: 'Quy t\u1EAFc "Th\xF4ng s\u1ED1 3 \u0111i\u1EC3m"' }),
+          ": b\u1EA5t k\u1EF3 sinh hi\u1EC7u n\xE0o \u0111\u1EA1t 3 \u0111i\u1EC3m (vd: HA t\xE2m thu \u2264 90 ho\u1EB7c Nh\u1ECBp th\u1EDF \u2265 25) \u0111\u1EC1u l\xE0 b\xE1o \u0111\u1ED9ng \u0111\u1ECF c\u1EA7n b\xE1c s\u0129 FY2+ \u0111\xE1nh gi\xE1 kh\u1EA9n c\u1EA5p t\u1EA1i gi\u01B0\u1EDDng."
+        ] })
+      ] }),
+      activeSection === "pediatric" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h4", { className: "font-bold text-slate-900 text-base", children: "Ti\xEAu Chu\u1EA9n Phoenix Pediatric Sepsis 2024 (JAMA)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { children: "\xC1p d\u1EE5ng cho tr\u1EBB em < 18 tu\u1ED5i, ch\xEDnh th\u1EE9c thay th\u1EBF ho\xE0n to\xE0n ti\xEAu chu\u1EA9n SIRS/IPSCC c\u0169 t\u1EEB th\xE1ng 1/2024:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("ul", { className: "list-disc pl-5 space-y-1.5 text-xs text-slate-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Sepsis Nhi:" }),
+            " Nghi ng\u1EDD nhi\u1EC5m khu\u1EA9n + T\u1ED5ng \u0111i\u1EC3m Phoenix Sepsis Score \u2265 2 \u0111i\u1EC3m (t\u1EEB 4 h\u1EC7: H\xF4 h\u1EA5p, Tim m\u1EA1ch, \u0110\xF4ng m\xE1u, Th\u1EA7n kinh)."
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "S\u1ED1c Nhi\u1EC5m Khu\u1EA9n Nhi:" }),
+            " Th\u1ECFa Sepsis + c\xF3 \u2265 1 \u0111i\u1EC3m t\u1EA1i h\u1EC7 Tim M\u1EA1ch (T\u1EE5t MAP theo tu\u1ED5i, ho\u1EB7c Lactate \u2265 5 mmol/L, ho\u1EB7c c\u1EA7n v\u1EADn m\u1EA1ch)."
+          ] })
+        ] })
+      ] }),
+      activeSection === "maternal" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h4", { className: "font-bold text-slate-900 text-base", children: "Sepsis S\u1EA3n Khoa (Fetal I+D Barcelona Guidelines)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { children: "Do thay \u0111\u1ED5i sinh l\xFD thai k\u1EF3 (nh\u1ECBp tim t\u0103ng, b\u1EA1ch c\u1EA7u t\u0103ng t\u1EDBi 16.9k\u201330k khi chuy\u1EC3n d\u1EA1, Creatinine sinh l\xFD gi\u1EA3m th\u1EA5p), c\u1EA7n d\xF9ng:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-3 bg-pink-50 border border-pink-200 rounded-lg", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-bold text-pink-900 block mb-1", children: "Obstetric qSOFA (s\xE0ng l\u1ECDc nhanh):" }),
+          "HATT < 90 mmHg (1\u0111), Nh\u1ECBp th\u1EDF \u2265 25 l\u1EA7n/ph\xFAt (1\u0111), \xDD th\u1EE9c bi\u1EBFn \u0111\u1ED5i (1\u0111). Khi \u0111\u1EA1t \u2265 2 \u0111i\u1EC3m: Kh\u1EA9n tr\u01B0\u01A1ng t\xEDnh Obstetric SOFA v\xE0 b\u1EAFt \u0111\u1EA7u ph\xE1c \u0111\u1ED3."
+        ] })
+      ] }),
+      activeSection === "biomarkers" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h4", { className: "font-bold text-slate-900 text-base", children: "D\u1EA5u \u1EA4n Sinh H\u1ECDc Nhi\u1EC5m Tr\xF9ng: \u0110\u1ED9ng H\u1ECDc, Ph\xE2n T\u1EA7ng NLR & Y\u1EBFu T\u1ED1 Nhi\u1EC5u" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-[10px] font-mono text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200", children: "EBM 2023 - 2026" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "rounded-lg border border-slate-200 overflow-hidden text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "bg-slate-100 p-2 font-bold text-slate-800 flex items-center justify-between text-[11px]", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "\u0110\u1ED9ng H\u1ECDc Bi\u1EBFn Thi\xEAn (P\xF3voa 2023 ICM & Zheng 2026):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-normal text-slate-500 text-[10px]", children: "\u0110\u1ED9ng h\u1ECDc quan tr\u1ECDng h\u01A1n gi\xE1 tr\u1ECB \u0111\u01A1n l\u1EBB" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 bg-white", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2.5 space-y-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-bold text-teal-900 block text-[11px]", children: "Procalcitonin (PCT)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-[10px] text-slate-600 leading-tight", children: [
+                "\u2022 Onset: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "2 \u2013 4 gi\u1EDD" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 Peak: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "~24 gi\u1EDD" }),
+                " (>10.000\xD7)",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 t\xBD: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "22 \u2013 35 gi\u1EDD" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 Ng\u01B0ng KS: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "gi\u1EA3m \u2265 80\u201390%" }),
+                " ho\u1EB7c < 0.5 ng/mL."
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2.5 space-y-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-bold text-indigo-900 block text-[11px]", children: "C-Reactive Protein (CRP)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-[10px] text-slate-600 leading-tight", children: [
+                "\u2022 Onset: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "4 \u2013 6 gi\u1EDD" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 Peak: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "36 \u2013 50 gi\u1EDD" }),
+                " (sau 2 ng\xE0y)",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 t\xBD: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "19 gi\u1EDD" }),
+                " (c\u1ED1 \u0111\u1ECBnh)",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 T\u1EF7 s\u1ED1 D4/D0 < 0.4: \u0110\xE1p \u1EE9ng nhanh."
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2.5 space-y-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-bold text-amber-900 block text-[11px]", children: "Interleukin-6 (IL-6)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-[10px] text-slate-600 leading-tight", children: [
+                "\u2022 Onset: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "1 \u2013 2 gi\u1EDD" }),
+                " (c\u1EF1c s\u1EDBm)",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 Peak: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "2 \u2013 4 gi\u1EDD" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 t\xBD: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "< 1 gi\u1EDD" }),
+                " (ng\u1EAFn)",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 C\u1EA3nh b\xE1o b\xE3o cytokine t\u1ED1i c\u1EA5p."
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2.5 space-y-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-bold text-rose-900 block text-[11px]", children: "Lactate M\xE1u" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-[10px] text-slate-600 leading-tight", children: [
+                "\u2022 T\u1EE9c th\u1EDDi khi c\xF3 gi\u1EA3m t\u01B0\u1EDBi m\xE1u.",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 t\xBD: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "20 \u2013 60 ph\xFAt" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("br", {}),
+                "\u2022 M\u1EE5c ti\xEAu: ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Thanh th\u1EA3i \u2265 10\u201320%" }),
+                " trong m\u1ED7i 2\u20136h \u0111\u1EA7u h\u1ED3i s\u1EE9c."
+              ] })
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-bold text-slate-800 text-xs", children: "T\u1EF7 s\u1ED1 Neutrophil / Lymphocyte (NLR) \u2014 Ph\xE2n T\u1EA7ng 4 M\u1EE9c:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-[10px] text-teal-800 font-mono bg-teal-50 px-1.5 py-0.2 rounded border border-teal-200", children: "Demni 2026, Naess 2017 & G\xFCrol 2015" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2 rounded-lg bg-emerald-50 border border-emerald-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "font-bold text-emerald-950", children: "< 3.0: M\u1EE9c 1" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[11px] font-semibold text-emerald-800", children: "B\xECnh Th\u01B0\u1EDDng" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5", children: "Sinh l\xFD an to\xE0n, kh\xF4ng \u01B0u th\u1EBF vi\xEAm c\u1EA5p." })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2 rounded-lg bg-amber-50 border border-amber-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "font-bold text-amber-950", children: "3.0 \u2013 5.9: M\u1EE9c 2" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[11px] font-semibold text-amber-800", children: "C\u1EA3nh B\xE1o" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5", children: "Stress nh\u1EB9 ho\u1EB7c vi\xEAm khu tr\xFA ti\u1EC1m \u1EA9n." })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2 rounded-lg bg-rose-50 border border-rose-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "font-bold text-rose-950", children: "6.0 \u2013 9.9: M\u1EE9c 3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[11px] font-semibold text-rose-800", children: "Nguy C\u01A1 Cao" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5", children: "\u0110\u1ED9 nh\u1EA1y 92%, NPV 97% t\u1EED vong 72h / SOFA." })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2 rounded-lg bg-rose-100 border border-rose-300", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "font-bold text-rose-950", children: "\u2265 10.0: M\u1EE9c 4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[11px] font-semibold text-rose-900", children: "B\xE1o \u0110\u1ED9ng Nguy K\u1ECBch" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-[10px] text-rose-800 mt-0.5", children: [
+                "B\xE3o cytokine. ",
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "N\u1EBFu \u2265 13\u201315" }),
+                ": Septicemia & S\u1ED1c!"
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2 bg-teal-50/80 rounded border border-teal-200 text-[11px] text-teal-900 leading-normal", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "\u{1F52C} EBM Naess et al. 2017 (Infection):" }),
+            " \u1EDE BN s\u1ED1t < 7 ng\xE0y, NLR ph\xE2n bi\u1EC7t ",
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Nhi\u1EC5m tr\xF9ng huy\u1EBFt (Median 15.69)" }),
+            " v\u1EDBi nhi\u1EC5m khu\u1EA9n khu tr\xFA (Median ~8.0, p=0.006) hi\u1EC7u qu\u1EA3 v\u01B0\u1EE3t tr\u1ED9i so v\u1EDBi WBC (p=0.559) v\xE0 CRP (p=0.615). Thang G\xFCrol 2015: 5-10 khu tr\xFA, 10-13 to\xE0n th\xE2n, 13-15 nhi\u1EC5m tr\xF9ng huy\u1EBFt, \u2265 15 s\u1ED1c nhi\u1EC5m khu\u1EA9n."
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-3 bg-amber-50/80 border border-amber-200 rounded-lg text-xs space-y-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-bold text-amber-950 block text-[11px] uppercase tracking-wide", children: "\u26A0\uFE0F B\u1EA3ng C\u1EA3nh B\xE1o Y\u1EBFu T\u1ED1 G\xE2y Nhi\u1EC5u K\u1EBFt Qu\u1EA3 (Confounders):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("ul", { className: "text-[11px] text-amber-900 space-y-1 list-disc pl-4 leading-relaxed", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Procalcitonin (PCT) t\u0103ng gi\u1EA3 t\u1EA1o:" }),
+              " \u0110\u1EA1i ph\u1EABu thu\u1EADt (nh\u1EA5t l\xE0 ch\u1EA1y tim ph\u1ED5i CPB), b\u1ECFng n\u1EB7ng, ch\u1EA5n th\u01B0\u01A1ng d\u1EADp n\xE1t, suy th\u1EADn ESRD, ung th\u01B0 gi\xE1p th\u1EC3 t\u1EE7y (MTC), s\u1ED1c tim sau \xE9p tim CPR. ",
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("em", { children: "\xC2m t\xEDnh gi\u1EA3:" }),
+              " Nhi\u1EC5m tr\xF9ng khu tr\xFA s\u1EDBm (\xE1p xe b\u1ECDc, vi\xEAm x\u01B0\u01A1ng), d\xF9ng Corticoid, nhi\u1EC5m tr\xF9ng \u0111\u1EE3t 2 (Second Hit)."
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "CRP sai l\u1EC7ch:" }),
+              " ",
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("em", { children: "D\u01B0\u01A1ng t\xEDnh gi\u1EA3:" }),
+              " B\u1EC7nh t\u1EF1 mi\u1EC5n (Lupus, Vi\xEAm kh\u1EDBp d\u1EA1ng th\u1EA5p), vi\xEAm t\u1EE5y v\xF4 khu\u1EA9n, nh\u1ED3i m\xE1u c\u01A1 tim, sau m\u1ED5 ng\xE0y 2-3. ",
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("em", { children: "\xC2m t\xEDnh gi\u1EA3:" }),
+              " Suy gan c\u1EA5p / x\u01A1 gan m\u1EA5t b\xF9 n\u1EB7ng (gan l\xE0 n\u01A1i DUY NH\u1EA4T t\u1EA1o CRP). Kh\xF4ng b\u1ECB \u1EA3nh h\u01B0\u1EDFng b\u1EDFi suy th\u1EADn."
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "NLR sai l\u1EC7ch:" }),
+              " ",
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("em", { children: "T\u0103ng gi\u1EA3:" }),
+              " \u0110ang d\xF9ng Corticosteroid (k\xEDch th\xEDch Neu, h\u1EE7y di\u1EC7t Lym), stress ph\u1EABu thu\u1EADt/ch\u1EA5n th\u01B0\u01A1ng, \u0111\u1ED9t qu\u1EF5, nh\u1ED3i m\xE1u c\u01A1 tim c\u1EA5p. ",
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("em", { children: "\xC2m t\xEDnh gi\u1EA3:" }),
+              " ",
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "S\u1ED1t k\xE9o d\xE0i > 7 ng\xE0y" }),
+              " (NLR gi\u1EA3m t\u1EF1 nhi\xEAn v\u1EC1 4\u20137 do th\xEDch nghi t\u1EE7y - Naess 2017), suy t\u1EE7y, h\u1EA1 b\u1EA1ch c\u1EA7u sau h\xF3a tr\u1ECB, nhi\u1EC5m HIV ti\u1EBFn tri\u1EC3n."
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "p-2.5 bg-cyan-50 border border-cyan-200 rounded-lg text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "font-bold text-cyan-950 block text-[11px]", children: "Thang \u0110i\u1EC3m Ph\u1ED1i H\u1EE3p LP-NEWS (Das et al. 2024 - AIIMS):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { className: "text-[11px] text-cyan-900 mt-0.5 leading-relaxed", children: [
+            "T\xEDch h\u1EE3p \u0111\u1ED3ng th\u1EDDi Lactate v\xE0 PCT v\xE0o NEWS \u0111\u1EA1t ",
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "AUROC = 0.966" }),
+            " d\u1EF1 b\xE1o t\u1EED vong 14 ng\xE0y. Ng\u01B0\u1EE1ng c\u1EAFt \u2265 11 \u0111i\u1EC3m c\xF3 \u0111\u1ED9 nh\u1EA1y 97%, \u0111\u1EB7c hi\u1EC7u 88%."
+          ] })
+        ] })
+      ] }),
+      activeSection === "molecular" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h4", { className: "font-bold text-slate-900 text-base", children: "\u0110\u1ED9t Ph\xE1 Ch\u1EA9n \u0110o\xE1n Ph\xE2n T\u1EED T2MR (Biomedicines 2026)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { children: [
+          "H\u1EC7 th\u1ED1ng ",
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "T2Bacteria / T2Resistance Panel" }),
+          " ph\xE2n t\xEDch tr\u1EF1c ti\u1EBFp m\xE1u to\xE0n ph\u1EA7n cho k\u1EBFt qu\u1EA3 sau ",
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "3\u20135 gi\u1EDD" }),
+          " (so v\u1EDBi trung v\u1ECB 103\u2013108 gi\u1EDD c\u1EE7a c\u1EA5y m\xE1u th\xF4ng th\u01B0\u1EDDng). Gi\xFAp ph\xE1t hi\u1EC7n nhanh c\xE1c ch\u1EE7ng ESKAPE v\xE0 gen kh\xE1ng Carbapenem (blaOXA-48, blaCTX-M, blaKPC) \u0111\u1EC3 \u0111\u1ED5i s\u1EDBm sang kh\xE1ng sinh nh\u1EAFm tr\xFAng \u0111\xEDch."
+        ] })
+      ] }),
+      activeSection === "golden-hour" && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h4", { className: "font-bold text-slate-900 text-base", children: "Ph\xE1c \u0110\u1ED3 Gi\u1EDD V\xE0ng (Hour-1 Bundle)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("ol", { className: "list-decimal pl-5 space-y-1.5 text-xs text-slate-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "\u0110o Lactate m\xE1u:" }),
+            " \u0110o l\u1EA1i n\u1EBFu ban \u0111\u1EA7u > 2 mmol/L."
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "C\u1EA5y m\xE1u tr\u01B0\u1EDBc kh\xE1ng sinh:" }),
+            " L\u1EA5y \xEDt nh\u1EA5t 2 b\u1ED9 c\u1EA5y m\xE1u (hi\u1EBFu kh\xED & k\u1EF5 kh\xED)."
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "Kh\xE1ng sinh ph\u1ED5 r\u1ED9ng:" }),
+            " Ti\xEAm t\u0129nh m\u1EA1ch trong v\xF2ng 1 gi\u1EDD \u0111\u1ED1i v\u1EDBi ca nguy c\u01A1 cao ho\u1EB7c s\u1ED1c."
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "B\xF9 d\u1ECBch tinh th\u1EC3 c\xE2n b\u1EB1ng:" }),
+            " NICE 2025/2026 khuy\u1EBFn c\xE1o bolus t\u1EEBng n\u1EA5c 250 mL; SSC 2021 khuy\u1EBFn c\xE1o 30 mL/kg trong 3 gi\u1EDD."
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("li", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("strong", { children: "D\xF9ng thu\u1ED1c v\u1EADn m\u1EA1ch:" }),
+            " Norepinephrine l\xE0 l\u1EF1a ch\u1ECDn h\xE0ng \u0111\u1EA7u, \u0111\xEDch MAP \u2265 65 mmHg."
+          ] })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "p-3 sm:p-4 border-t border-slate-200 bg-slate-50 flex justify-end shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+      "button",
+      {
+        onClick: onClose,
+        className: "px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-semibold",
+        children: "\u0110\xE3 Hi\u1EC3u & \u0110\xF3ng L\u1EA1i"
+      }
+    ) })
+  ] }) });
+};
+
+// antibiotic/src/sepsis/calculators.ts
+function calculateMAP(sbp, dbp) {
+  if (!sbp || !dbp) return 0;
+  return Math.round((sbp + 2 * dbp) / 3 * 10) / 10;
+}
+function calculateNEWS2(patient) {
+  const breakdown = [];
+  let score = 0;
+  let hasSingleParam3 = false;
+  const rr = patient.respiratoryRate;
+  let rrScore = 0;
+  let rrDesc = `${rr} l\u1EA7n/ph\xFAt (B\xECnh th\u01B0\u1EDDng: 12-20)`;
+  if (rr <= 8) {
+    rrScore = 3;
+    rrDesc = `${rr} l\u1EA7n/ph\xFAt (Nguy hi\u1EC3m: \u2264 8)`;
+  } else if (rr >= 9 && rr <= 11) {
+    rrScore = 1;
+    rrDesc = `${rr} l\u1EA7n/ph\xFAt (H\u01A1i ch\u1EADm: 9-11)`;
+  } else if (rr >= 12 && rr <= 20) {
+    rrScore = 0;
+  } else if (rr >= 21 && rr <= 24) {
+    rrScore = 2;
+    rrDesc = `${rr} l\u1EA7n/ph\xFAt (T\u0103ng nh\u1EB9-v\u1EEBa: 21-24)`;
+  } else if (rr >= 25) {
+    rrScore = 3;
+    rrDesc = `${rr} l\u1EA7n/ph\xFAt (Th\u1EDF r\u1EA5t nhanh: \u2265 25)`;
+  }
+  score += rrScore;
+  if (rrScore === 3) hasSingleParam3 = true;
+  breakdown.push({ name: "T\u1EA7n s\u1ED1 th\u1EDF", score: rrScore, description: rrDesc, isRedFlag: rrScore === 3 });
+  const spo2 = patient.spo2;
+  let spo2Score = 0;
+  let spo2Desc = `${spo2}%`;
+  if (patient.copdOrHypercapnicRisk) {
+    if (spo2 <= 83) {
+      spo2Score = 3;
+      spo2Desc = `${spo2}% (R\u1EA5t th\u1EA5p: \u2264 83%)`;
+    } else if (spo2 >= 84 && spo2 <= 85) {
+      spo2Score = 2;
+      spo2Desc = `${spo2}% (Th\u1EA5p: 84-85%)`;
+    } else if (spo2 >= 86 && spo2 <= 87) {
+      spo2Score = 1;
+      spo2Desc = `${spo2}% (H\u01A1i th\u1EA5p: 86-87%)`;
+    } else if (spo2 >= 88 && spo2 <= 92) {
+      spo2Score = 0;
+      spo2Desc = `${spo2}% (\u0110\u1EA1t \u0111\xEDch t\u0103ng CO2: 88-92%)`;
+    } else if (spo2 >= 93 && spo2 <= 94) {
+      spo2Score = patient.onSupplementalOxygen ? 1 : 0;
+      spo2Desc = `${spo2}% ${patient.onSupplementalOxygen ? "(Cao tr\xEAn oxy)" : "(B\xECnh th\u01B0\u1EDDng)"}`;
+    } else if (spo2 >= 95 && spo2 <= 96) {
+      spo2Score = patient.onSupplementalOxygen ? 2 : 0;
+      spo2Desc = `${spo2}% ${patient.onSupplementalOxygen ? "(Qu\xE1 cao tr\xEAn oxy)" : "(B\xECnh th\u01B0\u1EDDng)"}`;
+    } else if (spo2 >= 97) {
+      spo2Score = patient.onSupplementalOxygen ? 3 : 0;
+      spo2Desc = `${spo2}% ${patient.onSupplementalOxygen ? "(Nguy c\u01A1 \u1EE9c ch\u1EBF h\xF4 h\u1EA5p tr\xEAn oxy)" : "(B\xECnh th\u01B0\u1EDDng)"}`;
+    }
+  } else {
+    if (spo2 <= 91) {
+      spo2Score = 3;
+      spo2Desc = `${spo2}% (R\u1EA5t th\u1EA5p: \u2264 91%)`;
+    } else if (spo2 >= 92 && spo2 <= 93) {
+      spo2Score = 2;
+      spo2Desc = `${spo2}% (Th\u1EA5p: 92-93%)`;
+    } else if (spo2 >= 94 && spo2 <= 95) {
+      spo2Score = 1;
+      spo2Desc = `${spo2}% (H\u01A1i th\u1EA5p: 94-95%)`;
+    } else {
+      spo2Score = 0;
+      spo2Desc = `${spo2}% (B\xECnh th\u01B0\u1EDDng: \u2265 96%)`;
+    }
+  }
+  score += spo2Score;
+  if (spo2Score === 3) hasSingleParam3 = true;
+  breakdown.push({ name: "\u0110\u1ED9 b\xE3o h\xF2a Oxy (SpO2)", score: spo2Score, description: spo2Desc, isRedFlag: spo2Score === 3 });
+  const o2Score = patient.onSupplementalOxygen ? 2 : 0;
+  score += o2Score;
+  breakdown.push({
+    name: "Li\u1EC7u ph\xE1p Oxy",
+    score: o2Score,
+    description: patient.onSupplementalOxygen ? `\u0110ang th\u1EDF oxy h\u1ED7 tr\u1EE3 (FiO2 ~${patient.fio2Percent}%)` : "Th\u1EDF kh\xED ph\xF2ng t\u1EF1 nhi\xEAn (Kh\xED tr\u1EDDi)",
+    isRedFlag: false
+  });
+  const temp = patient.temperature;
+  let tempScore = 0;
+  let tempDesc = `${temp}\xB0C (B\xECnh th\u01B0\u1EDDng: 36.1 - 38.0\xB0C)`;
+  if (temp <= 35) {
+    tempScore = 3;
+    tempDesc = `${temp}\xB0C (H\u1EA1 th\xE2n nhi\u1EC7t n\u1EB7ng: \u2264 35.0\xB0C)`;
+  } else if (temp >= 35.1 && temp <= 36) {
+    tempScore = 1;
+    tempDesc = `${temp}\xB0C (H\u1EA1 th\xE2n nhi\u1EC7t nh\u1EB9: 35.1 - 36.0\xB0C)`;
+  } else if (temp >= 36.1 && temp <= 38) {
+    tempScore = 0;
+  } else if (temp >= 38.1 && temp <= 39) {
+    tempScore = 1;
+    tempDesc = `${temp}\xB0C (S\u1ED1t nh\u1EB9/v\u1EEBa: 38.1 - 39.0\xB0C)`;
+  } else if (temp >= 39.1) {
+    tempScore = 2;
+    tempDesc = `${temp}\xB0C (S\u1ED1t cao: \u2265 39.1\xB0C)`;
+  }
+  score += tempScore;
+  if (tempScore === 3) hasSingleParam3 = true;
+  breakdown.push({ name: "Th\xE2n nhi\u1EC7t", score: tempScore, description: tempDesc, isRedFlag: tempScore === 3 });
+  const sbp = patient.sbp;
+  let sbpScore = 0;
+  let sbpDesc = `${sbp} mmHg (B\xECnh th\u01B0\u1EDDng: 111 - 219)`;
+  if (sbp <= 90) {
+    sbpScore = 3;
+    sbpDesc = `${sbp} mmHg (T\u1EE5t huy\u1EBFt \xE1p n\u1EB7ng: \u2264 90)`;
+  } else if (sbp >= 91 && sbp <= 100) {
+    sbpScore = 2;
+    sbpDesc = `${sbp} mmHg (H\u1EA1 huy\u1EBFt \xE1p: 91 - 100)`;
+  } else if (sbp >= 101 && sbp <= 110) {
+    sbpScore = 1;
+    sbpDesc = `${sbp} mmHg (Huy\u1EBFt \xE1p ranh gi\u1EDBi: 101 - 110)`;
+  } else if (sbp >= 111 && sbp <= 219) {
+    sbpScore = 0;
+  } else if (sbp >= 220) {
+    sbpScore = 3;
+    sbpDesc = `${sbp} mmHg (T\u0103ng huy\u1EBFt \xE1p k\u1ECBch ph\xE1t: \u2265 220)`;
+  }
+  score += sbpScore;
+  if (sbpScore === 3) hasSingleParam3 = true;
+  breakdown.push({ name: "Huy\u1EBFt \xE1p t\xE2m thu", score: sbpScore, description: sbpDesc, isRedFlag: sbpScore === 3 });
+  const hr = patient.heartRate;
+  let hrScore = 0;
+  let hrDesc = `${hr} bpm (B\xECnh th\u01B0\u1EDDng: 51 - 90)`;
+  if (hr <= 40) {
+    hrScore = 3;
+    hrDesc = `${hr} bpm (Nh\u1ECBp qu\xE1 ch\u1EADm: \u2264 40)`;
+  } else if (hr >= 41 && hr <= 50) {
+    hrScore = 1;
+    hrDesc = `${hr} bpm (Nh\u1ECBp h\u01A1i ch\u1EADm: 41 - 50)`;
+  } else if (hr >= 51 && hr <= 90) {
+    hrScore = 0;
+  } else if (hr >= 91 && hr <= 110) {
+    hrScore = 1;
+    hrDesc = `${hr} bpm (Nh\u1ECBp nhanh nh\u1EB9: 91 - 110)`;
+  } else if (hr >= 111 && hr <= 130) {
+    hrScore = 2;
+    hrDesc = `${hr} bpm (Nh\u1ECBp nhanh v\u1EEBa: 111 - 130)`;
+  } else if (hr >= 131) {
+    hrScore = 3;
+    hrDesc = `${hr} bpm (Nh\u1ECBp r\u1EA5t nhanh: \u2265 131)`;
+  }
+  score += hrScore;
+  if (hrScore === 3) hasSingleParam3 = true;
+  breakdown.push({ name: "Nh\u1ECBp tim", score: hrScore, description: hrDesc, isRedFlag: hrScore === 3 });
+  let cScore = 0;
+  let cDesc = "T\u1EC9nh t\xE1o ho\xE0n to\xE0n (Alert)";
+  if (patient.avpu !== "A" || patient.newAlteredMentalState || patient.gcs !== void 0 && patient.gcs < 15) {
+    cScore = 3;
+    cDesc = `R\u1ED1i lo\u1EA1n tri gi\xE1c m\u1EDBi (AVPU: ${patient.avpu}, GCS: ${patient.gcs}/15)`;
+  }
+  score += cScore;
+  if (cScore === 3) hasSingleParam3 = true;
+  breakdown.push({ name: "\xDD th\u1EE9c / Tri gi\xE1c", score: cScore, description: cDesc, isRedFlag: cScore === 3 });
+  let riskCategory = "very_low";
+  if (score >= 7) {
+    riskCategory = "high";
+  } else if (score >= 5 || hasSingleParam3) {
+    riskCategory = "medium";
+  } else if (score >= 1) {
+    riskCategory = "low";
+  } else {
+    riskCategory = "very_low";
+  }
+  return { score, breakdown, hasSingleParam3, riskCategory };
+}
+function calculateLPNEWS(newsScore, lactate, pct) {
+  const breakdown = [
+    { name: "\u0110i\u1EC3m NEWS2 c\u01A1 b\u1EA3n", score: newsScore, description: `T\u1ED5ng \u0111i\u1EC3m sinh hi\u1EC7u: ${newsScore} \u0111i\u1EC3m` }
+  ];
+  let totalScore = newsScore;
+  let lacScore = 0;
+  let lacDesc = "Ch\u01B0a c\xF3 x\xE9t nghi\u1EC7m Lactate (t\xEDnh 0\u0111)";
+  if (lactate !== void 0 && lactate !== null) {
+    if (lactate < 2) {
+      lacScore = 0;
+      lacDesc = `${lactate} mmol/L (< 2.0 mmol/L: 0 \u0111i\u1EC3m)`;
+    } else if (lactate >= 2 && lactate <= 4) {
+      lacScore = 1;
+      lacDesc = `${lactate} mmol/L (2.0 - 4.0 mmol/L: +1 \u0111i\u1EC3m)`;
+    } else {
+      lacScore = 2;
+      lacDesc = `${lactate} mmol/L (> 4.0 mmol/L: +2 \u0111i\u1EC3m - T\u0103ng cao nghi\xEAm tr\u1ECDng)`;
+    }
+  }
+  totalScore += lacScore;
+  breakdown.push({ name: "Lactate m\xE1u \u0111\u1ED9ng m\u1EA1ch/t\u0129nh m\u1EA1ch", score: lacScore, description: lacDesc, isRedFlag: lacScore >= 2 });
+  let pctScore = 0;
+  let pctDesc = "Ch\u01B0a c\xF3 x\xE9t nghi\u1EC7m PCT (t\xEDnh 0\u0111)";
+  if (pct !== void 0 && pct !== null) {
+    if (pct < 2) {
+      pctScore = 0;
+      pctDesc = `${pct} ng/mL (< 2.0 ng/mL: 0 \u0111i\u1EC3m)`;
+    } else if (pct >= 2 && pct <= 7) {
+      pctScore = 1;
+      pctDesc = `${pct} ng/mL (2.0 - 7.0 ng/mL: +1 \u0111i\u1EC3m)`;
+    } else if (pct > 7 && pct <= 15) {
+      pctScore = 2;
+      pctDesc = `${pct} ng/mL (7.0 - 15.0 ng/mL: +2 \u0111i\u1EC3m)`;
+    } else {
+      pctScore = 3;
+      pctDesc = `${pct} ng/mL (> 15.0 ng/mL: +3 \u0111i\u1EC3m - B\xE3o h\xF2a ph\u1EA3n \u1EE9ng vi khu\u1EA9n)`;
+    }
+  }
+  totalScore += pctScore;
+  breakdown.push({ name: "Serum Procalcitonin (PCT)", score: pctScore, description: pctDesc, isRedFlag: pctScore >= 2 });
+  let riskTier = "low";
+  let predictedMortalityText = "";
+  if (totalScore > 16) {
+    riskTier = "critical";
+    predictedMortalityText = "\u0110i\u1EC3m LP-NEWS > 16: Nguy c\u01A1 t\u1EED vong 14 ng\xE0y c\u1EF1c k\u1EF3 cao (~100% trong nh\xF3m nghi\xEAn c\u1EE9u Das 2024). C\u1EA7n h\u1ED3i s\u1EE9c c\u1EA5p c\u1EE9u t\u1ED1i kh\u1EA9n c\u1EA5p!";
+  } else if (totalScore >= 11) {
+    riskTier = "high";
+    predictedMortalityText = "\u0110i\u1EC3m LP-NEWS \u2265 11 (Ng\u01B0\u1EE1ng c\u1EAFt t\u1ED1i \u01B0u nghi\xEAn c\u1EE9u, \u0110\u1ED9 nh\u1EA1y 96.9%, \u0110\u1ED9 \u0111\u1EB7c hi\u1EC7u 88.5%, AUROC 0.966): Ti\xEAn l\u01B0\u1EE3ng t\u1EED vong 14 ng\xE0y t\u0103ng \u0111\u1ED9t bi\u1EBFn.";
+  } else if (totalScore >= 7) {
+    riskTier = "moderate";
+    predictedMortalityText = "\u0110i\u1EC3m LP-NEWS 7-10: Nguy c\u01A1 ti\u1EBFn tri\u1EC3n x\u1EA5u trung b\xECnh. C\u1EA7n theo d\xF5i s\xE1t v\xE0 t\u1ED1i \u01B0u h\xF3a \u0111i\u1EC1u tr\u1ECB.";
+  } else {
+    riskTier = "low";
+    predictedMortalityText = "\u0110i\u1EC3m LP-NEWS < 7: Nguy c\u01A1 t\u1EED vong s\u1EDBm th\u1EA5p, theo d\xF5i \u0111\xE1p \u1EE9ng \u0111i\u1EC1u tr\u1ECB ti\xEAu chu\u1EA9n.";
+  }
+  return { score: totalScore, breakdown, riskTier, predictedMortalityText };
+}
+function calculateQSOFA(patient) {
+  const breakdown = [];
+  const criteriaMet = [];
+  let score = 0;
+  const rrMet = patient.respiratoryRate >= 22;
+  if (rrMet) {
+    score += 1;
+    criteriaMet.push(`Th\u1EDF ${patient.respiratoryRate} l/p (\u2265 22)`);
+  }
+  breakdown.push({
+    name: "T\u1EA7n s\u1ED1 th\u1EDF \u2265 22 l\u1EA7n/ph\xFAt",
+    score: rrMet ? 1 : 0,
+    description: `${patient.respiratoryRate} l\u1EA7n/ph\xFAt (${rrMet ? "\u0110\u1EA1t ti\xEAu chu\u1EA9n" : "B\xECnh th\u01B0\u1EDDng"})`
+  });
+  const gcsMet = patient.gcs < 15 || patient.newAlteredMentalState || patient.avpu !== "A";
+  if (gcsMet) {
+    score += 1;
+    criteriaMet.push(`Tri gi\xE1c bi\u1EBFn \u0111\u1ED5i (GCS ${patient.gcs}/15)`);
+  }
+  breakdown.push({
+    name: "Bi\u1EBFn \u0111\u1ED5i tri gi\xE1c (GCS < 15 / AVPU)",
+    score: gcsMet ? 1 : 0,
+    description: `GCS ${patient.gcs}/15 (${gcsMet ? "\u0110\u1EA1t ti\xEAu chu\u1EA9n" : "B\xECnh th\u01B0\u1EDDng"})`
+  });
+  const sbpMet = patient.sbp <= 100;
+  if (sbpMet) {
+    score += 1;
+    criteriaMet.push(`HATT ${patient.sbp} mmHg (\u2264 100)`);
+  }
+  breakdown.push({
+    name: "Huy\u1EBFt \xE1p t\xE2m thu \u2264 100 mmHg",
+    score: sbpMet ? 1 : 0,
+    description: `${patient.sbp} mmHg (${sbpMet ? "\u0110\u1EA1t ti\xEAu chu\u1EA9n" : "B\xECnh th\u01B0\u1EDDng"})`
+  });
+  return {
+    score,
+    breakdown,
+    criteriaMet,
+    isHighRisk: score >= 2
+  };
+}
+function calculateSIRS(patient) {
+  const breakdown = [];
+  const criteriaMet = [];
+  let score = 0;
+  const tempMet = patient.temperature > 38 || patient.temperature < 36;
+  if (tempMet) {
+    score += 1;
+    criteriaMet.push(`T\xB0 ${patient.temperature}\xB0C (>38\xB0C ho\u1EB7c <36\xB0C)`);
+  }
+  breakdown.push({
+    name: "Th\xE2n nhi\u1EC7t (T\xB0 > 38\xB0C ho\u1EB7c < 36\xB0C)",
+    score: tempMet ? 1 : 0,
+    description: `${patient.temperature}\xB0C (${tempMet ? "D\u01B0\u01A1ng t\xEDnh" : "B\xECnh th\u01B0\u1EDDng"})`
+  });
+  const hrMet = patient.heartRate > 90;
+  if (hrMet) {
+    score += 1;
+    criteriaMet.push(`M\u1EA1ch ${patient.heartRate} bpm (>90 bpm)`);
+  }
+  breakdown.push({
+    name: "Nh\u1ECBp tim (> 90 l\u1EA7n/ph\xFAt)",
+    score: hrMet ? 1 : 0,
+    description: `${patient.heartRate} l\u1EA7n/ph\xFAt (${hrMet ? "D\u01B0\u01A1ng t\xEDnh" : "B\xECnh th\u01B0\u1EDDng"})`
+  });
+  const rrMet = patient.respiratoryRate > 20;
+  if (rrMet) {
+    score += 1;
+    criteriaMet.push(`Th\u1EDF ${patient.respiratoryRate} l/p (>20 l/p)`);
+  }
+  breakdown.push({
+    name: "T\u1EA7n s\u1ED1 th\u1EDF (> 20 l\u1EA7n/ph\xFAt)",
+    score: rrMet ? 1 : 0,
+    description: `${patient.respiratoryRate} l\u1EA7n/ph\xFAt (${rrMet ? "D\u01B0\u01A1ng t\xEDnh" : "B\xECnh th\u01B0\u1EDDng"})`
+  });
+  const wbc = patient.wbc;
+  const wbcMet = wbc !== void 0 && (wbc > 12 || wbc < 4);
+  if (wbcMet) {
+    score += 1;
+    criteriaMet.push(`B\u1EA1ch c\u1EA7u WBC ${wbc} G/L (>12 ho\u1EB7c <4 G/L)`);
+  }
+  breakdown.push({
+    name: "B\u1EA1ch c\u1EA7u WBC (> 12 G/L ho\u1EB7c < 4 G/L)",
+    score: wbcMet ? 1 : 0,
+    description: wbc !== void 0 ? `WBC ${wbc} G/L (${wbcMet ? "D\u01B0\u01A1ng t\xEDnh" : "B\xECnh th\u01B0\u1EDDng"})` : "Ch\u01B0a c\xF3 x\xE9t nghi\u1EC7m WBC (0\u0111)"
+  });
+  return {
+    score,
+    criteriaMet,
+    isPositive: score >= 2,
+    breakdown
+  };
+}
+function calculateSOFA(patient) {
+  const breakdown = [];
+  let score = 0;
+  let respScore = 0;
+  let respDesc = "";
+  const fio2Dec = (patient.fio2Percent || 21) / 100;
+  const pao2 = patient.pao2;
+  const pafi = pao2 ? pao2 / fio2Dec : null;
+  const spofi = patient.spo2 / fio2Dec;
+  if (pafi !== null) {
+    if (pafi >= 400) respScore = 0;
+    else if (pafi >= 300) respScore = 1;
+    else if (pafi >= 200) respScore = 2;
+    else if (pafi >= 100 && (patient.invasiveMechanicalVentilation || patient.nonInvasiveVentilation)) respScore = 3;
+    else if (pafi < 100 && (patient.invasiveMechanicalVentilation || patient.nonInvasiveVentilation)) respScore = 4;
+    else respScore = 2;
+    respDesc = `PaO2/FiO2 = ${Math.round(pafi)} mmHg`;
+  } else {
+    if (spofi >= 302) respScore = 0;
+    else if (spofi >= 221) respScore = 1;
+    else if (spofi >= 142) respScore = 2;
+    else if (spofi >= 67 && (patient.invasiveMechanicalVentilation || patient.nonInvasiveVentilation)) respScore = 3;
+    else if (patient.invasiveMechanicalVentilation || patient.nonInvasiveVentilation) respScore = 4;
+    else respScore = 2;
+    respDesc = `SpO2/FiO2 t\u01B0\u01A1ng \u0111\u01B0\u01A1ng ~${Math.round(spofi)}`;
+  }
+  score += respScore;
+  breakdown.push({ name: "H\xF4 h\u1EA5p (PaO2/FiO2)", score: respScore, description: respDesc });
+  let coagScore = 0;
+  let coagDesc = "Ti\u1EC3u c\u1EA7u b\xECnh th\u01B0\u1EDDng";
+  if (patient.platelets !== void 0 && patient.platelets !== null) {
+    const plts = patient.platelets;
+    if (plts >= 150) coagScore = 0;
+    else if (plts >= 100) coagScore = 1;
+    else if (plts >= 50) coagScore = 2;
+    else if (plts >= 20) coagScore = 3;
+    else coagScore = 4;
+    coagDesc = `Ti\u1EC3u c\u1EA7u: ${plts} x10\xB3/\xB5L`;
+  }
+  score += coagScore;
+  breakdown.push({ name: "\u0110\xF4ng m\xE1u (Ti\u1EC3u c\u1EA7u)", score: coagScore, description: coagDesc });
+  let liverScore = 0;
+  let liverDesc = "Bilirubin b\xECnh th\u01B0\u1EDDng";
+  if (patient.bilirubinUmolL !== void 0 && patient.bilirubinUmolL !== null) {
+    const bili = patient.bilirubinUmolL;
+    if (bili < 20) liverScore = 0;
+    else if (bili <= 32) liverScore = 1;
+    else if (bili <= 101) liverScore = 2;
+    else if (bili <= 204) liverScore = 3;
+    else liverScore = 4;
+    liverDesc = `Bilirubin: ${bili} \xB5mol/L (~${(bili / 17.1).toFixed(1)} mg/dL)`;
+  }
+  score += liverScore;
+  breakdown.push({ name: "Gan (Bilirubin)", score: liverScore, description: liverDesc });
+  let cvScore = 0;
+  let cvDesc = "";
+  const map = calculateMAP(patient.sbp, patient.dbp);
+  const vaso = patient.vasoactiveUsed;
+  const hasHighVaso = vaso.norepinephrine && patient.vasoactiveMedCount >= 2 || vaso.epinephrine && patient.vasoactiveMedCount >= 2 || vaso.dopamine && patient.vasoactiveMedCount >= 2;
+  const hasModVaso = vaso.norepinephrine || vaso.epinephrine;
+  if (hasHighVaso) {
+    cvScore = 4;
+    cvDesc = "\u0110ang d\xF9ng ph\u1ED1i h\u1EE3p \u0111a v\u1EADn m\u1EA1ch ho\u1EB7c li\u1EC1u cao (Norepinephrine / Epinephrine / Dopamine > 15 \xB5g/kg/ph\xFAt)";
+  } else if (hasModVaso) {
+    cvScore = 3;
+    cvDesc = "\u0110ang d\xF9ng Norepinephrine ho\u1EB7c Epinephrine li\u1EC1u chu\u1EA9n (SOFA 3 \u0111i\u1EC3m)";
+  } else if (vaso.dopamine || vaso.dobutamine || patient.vasoactiveMedCount === 1) {
+    cvScore = 2;
+    cvDesc = "\u0110ang d\xF9ng Dopamine (\u2264 5 \xB5g/kg/ph\xFAt) ho\u1EB7c Dobutamine (b\u1EA5t k\u1EF3 li\u1EC1u n\xE0o)";
+  } else if (map < 70 && map > 0) {
+    cvScore = 1;
+    cvDesc = `Huy\u1EBFt \xE1p trung b\xECnh MAP ${map} mmHg (< 70 mmHg)`;
+  } else {
+    cvScore = 0;
+    cvDesc = `Huy\u1EBFt \xE1p trung b\xECnh MAP ${map} mmHg (\u2265 70 mmHg)`;
+  }
+  score += cvScore;
+  breakdown.push({ name: "Tim m\u1EA1ch & Huy\u1EBFt \u0111\u1ED9ng", score: cvScore, description: cvDesc });
+  let cnsScore = 0;
+  const gcs = patient.gcs || 15;
+  if (gcs >= 15) cnsScore = 0;
+  else if (gcs >= 13) cnsScore = 1;
+  else if (gcs >= 10) cnsScore = 2;
+  else if (gcs >= 6) cnsScore = 3;
+  else cnsScore = 4;
+  score += cnsScore;
+  breakdown.push({ name: "Th\u1EA7n kinh (Glasgow)", score: cnsScore, description: `Thang \u0111i\u1EC3m GCS: ${gcs}/15` });
+  let renalScore = 0;
+  let renalDesc = "Creatinine b\xECnh th\u01B0\u1EDDng";
+  const creat = patient.creatinineUmolL;
+  if (creat !== void 0 && creat !== null) {
+    if (creat < 110) renalScore = 0;
+    else if (creat <= 170) renalScore = 1;
+    else if (creat <= 299) renalScore = 2;
+    else if (creat <= 440) renalScore = 3;
+    else renalScore = 4;
+    renalDesc = `Creatinine: ${creat} \xB5mol/L (~${(creat / 88.4).toFixed(1)} mg/dL)`;
+  } else if (patient.urineOutputStatus === "not_over_18h") {
+    renalScore = 3;
+    renalDesc = "V\xF4 ni\u1EC7u k\xE9o d\xE0i > 18 gi\u1EDD";
+  }
+  score += renalScore;
+  breakdown.push({ name: "Th\u1EADn (Creatinine / N\u01B0\u1EDBc ti\u1EC3u)", score: renalScore, description: renalDesc });
+  return { score, breakdown };
+}
+function calculatePhoenixPediatric(patient) {
+  const breakdown = [];
+  let totalScore = 0;
+  let respScore = 0;
+  let respDesc = "H\xF4 h\u1EA5p b\xECnh th\u01B0\u1EDDng";
+  const fio2Dec = (patient.fio2Percent || 21) / 100;
+  const pafi = patient.pao2 ? patient.pao2 / fio2Dec : null;
+  const spofi = patient.spo2 / fio2Dec;
+  if (patient.invasiveMechanicalVentilation) {
+    if (pafi !== null && pafi < 100 || spofi < 148) {
+      respScore = 3;
+      respDesc = "Th\u1EDF m\xE1y x\xE2m l\u1EA5n (IMV) v\u1EDBi PaO2:FiO2 < 100 ho\u1EB7c SpO2:FiO2 < 148";
+    } else if (pafi !== null && pafi <= 200 || spofi <= 220) {
+      respScore = 2;
+      respDesc = "Th\u1EDF m\xE1y x\xE2m l\u1EA5n (IMV) v\u1EDBi PaO2:FiO2 100-200 ho\u1EB7c SpO2:FiO2 148-220";
+    } else {
+      respScore = 1;
+      respDesc = "Th\u1EDF m\xE1y x\xE2m l\u1EA5n (IMV) duy tr\xEC trao \u0111\u1ED5i kh\xED";
+    }
+  } else if (patient.onSupplementalOxygen || patient.nonInvasiveVentilation) {
+    if (pafi !== null && pafi < 400 || spofi < 292) {
+      respScore = 1;
+      respDesc = "H\u1ED7 tr\u1EE3 oxy/NIV/HFNC v\u1EDBi PaO2:FiO2 < 400 ho\u1EB7c SpO2:FiO2 < 292";
+    }
+  }
+  totalScore += respScore;
+  breakdown.push({ name: "Phoenix H\xF4 h\u1EA5p (0-3\u0111)", score: respScore, description: respDesc });
+  let cvScore = 0;
+  const cvDetails = [];
+  if (patient.vasoactiveMedCount >= 2) {
+    cvScore += 2;
+    cvDetails.push("\u2265 2 lo\u1EA1i thu\u1ED1c v\u1EADn m\u1EA1ch (+2\u0111)");
+  } else if (patient.vasoactiveMedCount === 1) {
+    cvScore += 1;
+    cvDetails.push("1 lo\u1EA1i thu\u1ED1c v\u1EADn m\u1EA1ch (+1\u0111)");
+  }
+  const lac = patient.lactateInitial;
+  if (lac !== void 0 && lac !== null) {
+    if (lac >= 11) {
+      cvScore += 2;
+      cvDetails.push(`Lactate \u2265 11 mmol/L (${lac} mmol/L: +2\u0111)`);
+    } else if (lac >= 5) {
+      cvScore += 1;
+      cvDetails.push(`Lactate 5.0 - 10.9 mmol/L (${lac} mmol/L: +1\u0111)`);
+    }
+  }
+  const map = calculateMAP(patient.sbp, patient.dbp);
+  const ageY = patient.ageYears;
+  const ageM = patient.ageMonths !== void 0 ? patient.ageMonths : ageY * 12;
+  let bpScore = 0;
+  if (ageM < 1) {
+    if (map < 17) bpScore = 2;
+    else if (map <= 30) bpScore = 1;
+  } else if (ageM >= 1 && ageM < 12) {
+    if (map < 25) bpScore = 2;
+    else if (map <= 38) bpScore = 1;
+  } else if (ageY >= 1 && ageY < 2) {
+    if (map < 31) bpScore = 2;
+    else if (map <= 43) bpScore = 1;
+  } else if (ageY >= 2 && ageY < 5) {
+    if (map < 32) bpScore = 2;
+    else if (map <= 44) bpScore = 1;
+  } else if (ageY >= 5 && ageY < 12) {
+    if (map < 36) bpScore = 2;
+    else if (map <= 48) bpScore = 1;
+  } else {
+    if (map < 38) bpScore = 2;
+    else if (map <= 51) bpScore = 1;
+  }
+  if (bpScore > 0) {
+    cvScore += bpScore;
+    cvDetails.push(`MAP ${map} mmHg t\u1EE5t theo tu\u1ED5i (+${bpScore}\u0111)`);
+  }
+  if (cvScore > 6) cvScore = 6;
+  totalScore += cvScore;
+  breakdown.push({
+    name: "Phoenix Tim m\u1EA1ch (0-6\u0111)",
+    score: cvScore,
+    description: cvDetails.length > 0 ? cvDetails.join("; ") : `MAP ${map} mmHg b\xECnh th\u01B0\u1EDDng, kh\xF4ng v\u1EADn m\u1EA1ch/lactate cao`,
+    isRedFlag: cvScore >= 1
+  });
+  let coagScore = 0;
+  const coagDetails = [];
+  if (patient.platelets && patient.platelets < 100) {
+    coagScore++;
+    coagDetails.push(`Ti\u1EC3u c\u1EA7u < 100k (${patient.platelets}k)`);
+  }
+  if (patient.inr && patient.inr > 1.3) {
+    coagScore++;
+    coagDetails.push(`INR > 1.3 (${patient.inr})`);
+  }
+  if (patient.dDimerMgL && patient.dDimerMgL > 2) {
+    coagScore++;
+    coagDetails.push(`D-dimer > 2.0 mg/L (${patient.dDimerMgL})`);
+  }
+  if (patient.fibrinogenMgDl && patient.fibrinogenMgDl < 100) {
+    coagScore++;
+    coagDetails.push(`Fibrinogen < 100 mg/dL (${patient.fibrinogenMgDl})`);
+  }
+  if (coagScore > 2) coagScore = 2;
+  totalScore += coagScore;
+  breakdown.push({
+    name: "Phoenix \u0110\xF4ng m\xE1u (0-2\u0111)",
+    score: coagScore,
+    description: coagDetails.length > 0 ? coagDetails.join(", ") : "\u0110\xF4ng m\xE1u trong gi\u1EDBi h\u1EA1n b\xECnh th\u01B0\u1EDDng"
+  });
+  let neuroScore = 0;
+  let neuroDesc = "Th\u1EA7n kinh b\xECnh th\u01B0\u1EDDng";
+  if (patient.bilateralFixedPupils) {
+    neuroScore = 2;
+    neuroDesc = "\u0110\u1ED3ng t\u1EED gi\xE3n c\u1ED1 \u0111\u1ECBnh c\u1EA3 hai b\xEAn (2\u0111)";
+  } else if (patient.gcs <= 10) {
+    neuroScore = 1;
+    neuroDesc = `Thang \u0111i\u1EC3m GCS \u2264 10 (${patient.gcs}/15: 1\u0111)`;
+  }
+  totalScore += neuroScore;
+  breakdown.push({ name: "Phoenix Th\u1EA7n kinh (0-2\u0111)", score: neuroScore, description: neuroDesc, isRedFlag: neuroScore >= 1 });
+  const isSepsis = patient.suspectedInfection && totalScore >= 2;
+  const isSepticShock = isSepsis && cvScore >= 1;
+  return {
+    score: totalScore,
+    cvScore,
+    breakdown,
+    isSepsis,
+    isSepticShock
+  };
+}
+function calculateObstetricScores(patient) {
+  const qsofaBreakdown = [];
+  let qScore = 0;
+  const sbpMet = patient.sbp < 90;
+  if (sbpMet) qScore++;
+  qsofaBreakdown.push({ name: "HATT < 90 mmHg", score: sbpMet ? 1 : 0, description: `${patient.sbp} mmHg` });
+  const rrMet = patient.respiratoryRate >= 25;
+  if (rrMet) qScore++;
+  qsofaBreakdown.push({ name: "T\u1EA7n s\u1ED1 th\u1EDF \u2265 25 l\u1EA7n/ph\xFAt", score: rrMet ? 1 : 0, description: `${patient.respiratoryRate} l\u1EA7n/ph\xFAt` });
+  const mentalMet = patient.newAlteredMentalState || patient.avpu !== "A" || patient.gcs < 15;
+  if (mentalMet) qScore++;
+  qsofaBreakdown.push({ name: "Tri gi\xE1c bi\u1EBFn \u0111\u1ED5i (Not Alert)", score: mentalMet ? 1 : 0, description: mentalMet ? "\xDD th\u1EE9c thay \u0111\u1ED5i" : "T\u1EC9nh t\xE1o" });
+  const isHighSuspicion = qScore >= 2;
+  const sofaBreakdown = [];
+  let sScore = 0;
+  const fio2Dec = (patient.fio2Percent || 21) / 100;
+  const pafi = patient.pao2 ? patient.pao2 / fio2Dec : patient.spo2 / fio2Dec;
+  let respPts = 0;
+  if (pafi < 300) respPts = 2;
+  else if (pafi < 400) respPts = 1;
+  sScore += respPts;
+  sofaBreakdown.push({ name: "H\xF4 h\u1EA5p (PaO2/FiO2)", score: respPts, description: `T\u1EF7 s\u1ED1 ~${Math.round(pafi)}` });
+  let pltsPts = 0;
+  if (patient.platelets) {
+    if (patient.platelets < 100) pltsPts = 2;
+    else if (patient.platelets < 150) pltsPts = 1;
+  }
+  sScore += pltsPts;
+  sofaBreakdown.push({ name: "\u0110\xF4ng m\xE1u (Ti\u1EC3u c\u1EA7u)", score: pltsPts, description: `${patient.platelets || "Ch\u01B0a XN"} x10\xB3/\xB5L` });
+  let biliPts = 0;
+  if (patient.bilirubinUmolL) {
+    if (patient.bilirubinUmolL > 32) biliPts = 2;
+    else if (patient.bilirubinUmolL >= 20) biliPts = 1;
+  }
+  sScore += biliPts;
+  sofaBreakdown.push({ name: "Gan (Bilirubin)", score: biliPts, description: `${patient.bilirubinUmolL || "Ch\u01B0a XN"} \xB5mol/L` });
+  const map = calculateMAP(patient.sbp, patient.dbp);
+  let cvPts = 0;
+  if (patient.vasoactiveMedCount > 0) cvPts = 2;
+  else if (map < 70) cvPts = 1;
+  sScore += cvPts;
+  sofaBreakdown.push({ name: "Tim m\u1EA1ch (MAP & V\u1EADn m\u1EA1ch)", score: cvPts, description: `MAP ${map} mmHg, V\u1EADn m\u1EA1ch: ${patient.vasoactiveMedCount > 0 ? "C\xF3" : "Kh\xF4ng"}` });
+  let neuroPts = 0;
+  if (patient.avpu === "P" || patient.avpu === "U" || patient.gcs < 10) neuroPts = 2;
+  else if (patient.avpu === "V" || patient.gcs < 15) neuroPts = 1;
+  sScore += neuroPts;
+  sofaBreakdown.push({ name: "Th\u1EA7n kinh (\xDD th\u1EE9c)", score: neuroPts, description: `AVPU ${patient.avpu}, GCS ${patient.gcs}/15` });
+  let renalPts = 0;
+  if (patient.creatinineUmolL) {
+    if (patient.creatinineUmolL > 120) renalPts = 2;
+    else if (patient.creatinineUmolL >= 90) renalPts = 1;
+  }
+  sScore += renalPts;
+  sofaBreakdown.push({ name: "Th\u1EADn (Creatinine thai k\u1EF3)", score: renalPts, description: `${patient.creatinineUmolL || "Ch\u01B0a XN"} \xB5mol/L (ng\u01B0\u1EE1ng thai k\u1EF3 > 90 \xB5mol/L)` });
+  const isSepsis = patient.suspectedInfection && sScore >= 2;
+  const isSepticShock = isSepsis && patient.vasoactiveMedCount > 0 && (patient.lactateInitial ? patient.lactateInitial >= 2 : false);
+  return {
+    qsofaScore: qScore,
+    qsofaBreakdown,
+    isHighSuspicion,
+    sofaScore: sScore,
+    sofaBreakdown,
+    isSepsis,
+    isSepticShock
+  };
+}
+function evaluateNICERisk(patient, newsResult) {
+  const highRiskCriteria = [];
+  const mediumRiskCriteria = [];
+  if (patient.setting === "acute_hospital" || patient.setting === "emergency_ambulance" || patient.setting === "icu") {
+    if (newsResult.score >= 7) {
+      highRiskCriteria.push(`\u0110i\u1EC3m NEWS2 \u2265 7 (${newsResult.score} \u0111i\u1EC3m)`);
+    } else if (newsResult.score >= 5) {
+      mediumRiskCriteria.push(`\u0110i\u1EC3m NEWS2 t\u1EEB 5 - 6 (${newsResult.score} \u0111i\u1EC3m)`);
+    }
+    if (newsResult.hasSingleParam3) {
+      mediumRiskCriteria.push("C\xF3 1 th\xF4ng s\u1ED1 sinh hi\u1EC7u \u0111\u1EA1t m\u1EE9c b\xE1o \u0111\u1ED9ng 3 \u0111i\u1EC3m (C\u1EA7n B\xE1c s\u0129 FY2+ \u0111\xE1nh gi\xE1 kh\u1EA9n)");
+    }
+    if (patient.mottledOrAshen) highRiskCriteria.push("Da v\xE2n \u0111\xE1 ho\u1EB7c t\xE1i x\xE1m (Mottled / Ashen skin)");
+    if (patient.cyanosis) highRiskCriteria.push("T\xEDm t\xE1i m\xF4i, da ho\u1EB7c l\u01B0\u1EE1i (Cyanosis)");
+    if (patient.nonBlanchingRash) highRiskCriteria.push("Ban xu\u1EA5t huy\u1EBFt kh\xF4ng bi\u1EBFn m\u1EA5t khi \u0111\xE8 \xE9p (Petechial / Purpuric rash)");
+    if (patient.lactateInitial && patient.lactateInitial > 2) highRiskCriteria.push(`B\u1EB1ng ch\u1EE9ng gi\u1EA3m t\u01B0\u1EDBi m\xE1u m\xF4: Lactate > 2.0 mmol/L (${patient.lactateInitial} mmol/L)`);
+    if (patient.urineOutputStatus === "not_over_18h") highRiskCriteria.push("V\xF4 ni\u1EC7u k\xE9o d\xE0i > 18 gi\u1EDD");
+  } else {
+    if (patient.newAlteredMentalState) highRiskCriteria.push("B\u1EB1ng ch\u1EE9ng kh\xE1ch quan v\u1EC1 r\u1ED1i lo\u1EA1n t\xE2m th\u1EA7n / l\xFA l\u1EABn m\u1EDBi");
+    if (patient.respiratoryRate >= 25) highRiskCriteria.push(`T\u1EA7n s\u1ED1 th\u1EDF \u2265 25 l\u1EA7n/ph\xFAt (${patient.respiratoryRate})`);
+    if (patient.onSupplementalOxygen && patient.fio2Percent >= 40) highRiskCriteria.push("Nhu c\u1EA7u oxy m\u1EDBi \u2265 40% FiO2 \u0111\u1EC3 duy tr\xEC Sat > 92%");
+    if (patient.sbp <= 90) highRiskCriteria.push(`Huy\u1EBFt \xE1p t\xE2m thu \u2264 90 mmHg (${patient.sbp} mmHg)`);
+    if (patient.heartRate > 130) highRiskCriteria.push(`Nh\u1ECBp tim > 130 l\u1EA7n/ph\xFAt (${patient.heartRate} bpm)`);
+    if (patient.urineOutputStatus === "not_over_18h") highRiskCriteria.push("Kh\xF4ng ti\u1EC3u trong 18 gi\u1EDD qua");
+    if (patient.mottledOrAshen) highRiskCriteria.push("Da v\xE2n \u0111\xE1 ho\u1EB7c t\xE1i x\xE1m");
+    if (patient.cyanosis) highRiskCriteria.push("T\xEDm t\xE1i m\xF4i, da, l\u01B0\u1EE1i");
+    if (patient.nonBlanchingRash) highRiskCriteria.push("Ban xu\u1EA5t huy\u1EBFt kh\xF4ng m\u1EA5t khi c\u0103ng da");
+    if (patient.communicationDifficulty) mediumRiskCriteria.push("Kh\xF3 kh\u0103n giao ti\u1EBFp / Sa s\xFAt tr\xED tu\u1EC7 / Thi\u1EC3u n\u0103ng");
+    if (patient.hasImmunosuppression) mediumRiskCriteria.push("H\u1EC7 mi\u1EC5n d\u1ECBch suy gi\u1EA3m (H\xF3a tr\u1ECB, thu\u1ED1c \u1EE9c ch\u1EBF MD, corticoid)");
+    if (patient.hasRecentSurgery) mediumRiskCriteria.push("Ch\u1EA5n th\u01B0\u01A1ng, ph\u1EABu thu\u1EADt ho\u1EB7c can thi\u1EC7p x\xE2m l\u1EA5n trong 6 tu\u1EA7n");
+    if (patient.respiratoryRate >= 21 && patient.respiratoryRate <= 24) mediumRiskCriteria.push(`T\u1EA7n s\u1ED1 th\u1EDF 21-24 l\u1EA7n/ph\xFAt (${patient.respiratoryRate})`);
+    if (patient.sbp >= 91 && patient.sbp <= 100) mediumRiskCriteria.push(`Huy\u1EBFt \xE1p t\xE2m thu 91-100 mmHg (${patient.sbp} mmHg)`);
+    if (patient.heartRate >= 91 && patient.heartRate <= 130) mediumRiskCriteria.push(`Nh\u1ECBp tim 91-130 l\u1EA7n/ph\xFAt (${patient.heartRate} bpm)`);
+    if (patient.urineOutputStatus === "not_12_18h") mediumRiskCriteria.push("Kh\xF4ng ti\u1EC3u trong 12 - 18 gi\u1EDD qua");
+    if (patient.temperature < 36) mediumRiskCriteria.push(`Th\xE2n nhi\u1EC7t h\u1EA1 < 36.0\xB0C (${patient.temperature}\xB0C)`);
+  }
+  let riskCategory = "low";
+  let maxAntibioticDelayHours = 6;
+  if (highRiskCriteria.length > 0) {
+    riskCategory = "high";
+    maxAntibioticDelayHours = 1;
+  } else if (mediumRiskCriteria.length > 0) {
+    riskCategory = "medium";
+    maxAntibioticDelayHours = 3;
+  } else {
+    riskCategory = "low";
+    maxAntibioticDelayHours = 6;
+  }
+  return {
+    riskCategory,
+    highRiskCriteria,
+    mediumRiskCriteria,
+    maxAntibioticDelayHours
+  };
+}
+function calculateLactateClearance(initial, repeat6h) {
+  if (initial === void 0 || repeat6h === void 0 || initial === 0) {
+    return {
+      evaluation: "na",
+      details: "C\u1EA7n \xEDt nh\u1EA5t 2 th\u1EDDi \u0111i\u1EC3m \u0111o Lactate (Ban \u0111\u1EA7u v\xE0 sau 2-6 gi\u1EDD) \u0111\u1EC3 \u0111\xE1nh gi\xE1 \u0111\u1ED9ng h\u1ECDc thanh th\u1EA3i d\u1ECBch."
+    };
+  }
+  const clearance = Math.round((initial - repeat6h) / initial * 100 * 10) / 10;
+  if (clearance >= 20) {
+    return {
+      clearancePercent: clearance,
+      evaluation: "adequate",
+      details: `Thanh th\u1EA3i Lactate \u0111\u1EA1t ${clearance}% (\u2265 20%): \u0110\xE1p \u1EE9ng h\u1ED3i s\u1EE9c d\u1ECBch v\xE0 t\u01B0\u1EDBi m\xE1u m\xF4 r\u1EA5t t\u1ED1t (OR t\u1EED vong = 0.47).`
+    };
+  } else if (clearance >= 10) {
+    return {
+      clearancePercent: clearance,
+      evaluation: "adequate",
+      details: `Thanh th\u1EA3i Lactate \u0111\u1EA1t ${clearance}% (\u2265 10%): \u0110\u1EA1t m\u1EE5c ti\xEAu h\u1ED3i s\u1EE9c ban \u0111\u1EA7u (OR t\u1EED vong = 0.52).`
+    };
+  } else if (clearance > 0) {
+    return {
+      clearancePercent: clearance,
+      evaluation: "suboptimal",
+      details: `Thanh th\u1EA3i Lactate ch\u1EC9 \u0111\u1EA1t ${clearance}% (< 10%): Ch\u01B0a \u0111\u1EA1t m\u1EE5c ti\xEAu \u0111\xE0o th\u1EA3i. C\u1EA7n \u0111\xE1nh gi\xE1 l\u1EA1i t\xECnh tr\u1EA1ng t\u01B0\u1EDBi m\xE1u, \u0111\xE1p \u1EE9ng b\xF9 d\u1ECBch v\xE0 c\xE2n nh\u1EAFc thu\u1ED1c v\u1EADn m\u1EA1ch.`
+    };
+  } else {
+    return {
+      clearancePercent: clearance,
+      evaluation: "poor",
+      details: `Lactate t\u0103ng th\xEAm (+${Math.abs(clearance)}%) t\u1EEB ${initial} l\xEAn ${repeat6h} mmol/L: Thi\u1EBFu oxy m\xF4 v\xE0 r\u1ED1i lo\u1EA1n chuy\u1EC3n h\xF3a k\u1EF5 kh\xED \u0111ang t\u0103ng n\u1EB7ng! B\xE1o \u0111\u1ED9ng \u0111\u1ECF h\u1ED3i s\u1EE9c.`
+    };
+  }
+}
+function calculateNLR(neutrophils, lymphocytes) {
+  if (neutrophils === void 0 || lymphocytes === void 0 || lymphocytes === 0) {
+    return {
+      riskLevel: "normal",
+      details: "Ch\u01B0a \u0111\u1EE7 s\u1ED1 li\u1EC7u Neutrophil v\xE0 Lymphocyte trong c\xF4ng th\u1EE9c m\xE1u."
+    };
+  }
+  const nlr = Math.round(neutrophils / lymphocytes * 10) / 10;
+  if (nlr >= 10) {
+    const isSepticemiaAlert = nlr >= 15;
+    const isSystemicInfection = nlr >= 13;
+    return {
+      nlr,
+      riskLevel: "critical",
+      tier: 4,
+      tierLabel: isSepticemiaAlert ? "M\u1EE9c 4: B\xE1o \u0110\u1ED9ng Nguy K\u1ECBch (\u2265 15.0 - Nguy C\u01A1 Septicemia & S\u1ED1c)" : "M\u1EE9c 4: B\xE1o \u0110\u1ED9ng Nguy K\u1ECBch (\u2265 10.0 - Nhi\u1EC5m Tr\xF9ng To\xE0n Th\xE2n)",
+      details: isSepticemiaAlert ? `NLR = ${nlr} (\u2265 15.0 - Ng\u01B0\u1EE1ng ch\u1EC9 \u0111i\u1EC3m Septicemia & S\u1ED1c nhi\u1EC5m khu\u1EA9n - Naess et al. 2017 & G\xFCrol et al. 2015): T\u1EF7 s\u1ED1 t\u0103ng v\u1ECDt b\xE1o hi\u1EC7u vi khu\u1EA9n x\xE2m nh\u1EADp v\xE0o tu\u1EA7n ho\xE0n (Median Septicemia = 15.7), b\xE3o cytokine d\u1EEF d\u1ED9i song h\xE0nh c\xF9ng c\u1EA1n ki\u1EC7t lympho b\xE0o. Nghi\xEAn c\u1EE9u Naess 2017 ch\u1EE9ng minh NLR ph\xE2n bi\u1EC7t Septicemia v\u1EDBi nhi\u1EC5m khu\u1EA9n khu tr\xFA v\u01B0\u1EE3t tr\u1ED9i h\u01A1n h\u1EB3n WBC (p=0.56) v\xE0 CRP (p=0.62). Kh\u1EA9n c\u1EA5p c\u1EA5y m\xE1u 2 v\u1ECB tr\xED & h\u1ED3i s\u1EE9c ICU.` : `NLR = ${nlr} (\u2265 10.0 - B\xE1o \u0111\u1ED9ng nguy k\u1ECBch): M\u1EA5t c\xE2n b\u1EB1ng mi\u1EC5n d\u1ECBch tr\u1EA7m tr\u1ECDng, b\xE3o cytokine d\u1EEF d\u1ED9i song h\xE0nh c\u1EA1n ki\u1EC7t lympho b\xE0o nghi\xEAm tr\u1ECDng (G\xFCrol 2015: 10-13 nhi\u1EC5m tr\xF9ng to\xE0n th\xE2n, \u2265 13-15 nhi\u1EC5m tr\xF9ng huy\u1EBFt). Nguy c\u01A1 r\u1EA5t cao ti\u1EBFn tri\u1EC3n S\u1ED1c nhi\u1EC5m khu\u1EA9n kh\xE1ng tr\u1ECB v\xE0 t\u1EED vong ng\u1EAFn h\u1EA1n. Kh\u1EA9n c\u1EA5p \u0111\xE1nh gi\xE1 t\u1EA1i gi\u01B0\u1EDDng & h\u1ED9i ch\u1EA9n ICU.`
+    };
+  } else if (nlr >= 6) {
+    return {
+      nlr,
+      riskLevel: "high",
+      tier: 3,
+      tierLabel: "M\u1EE9c 3: Nguy C\u01A1 Cao / Sepsis R\xF5 R\u1EC7t (6.0 - 9.9)",
+      details: `NLR = ${nlr} (6.0 - 9.9 - Nguy c\u01A1 cao): Nghi\xEAn c\u1EE9u Demni et al. 2026: NLR \u2265 6.0 l\xE0 y\u1EBFu t\u1ED1 ti\xEAn l\u01B0\u1EE3ng \u0111\u1ED9c l\u1EADp t\u1EED vong s\u1EDBm trong 72 gi\u1EDD (\u0110\u1ED9 nh\u1EA1y 92%, NPV 97%) v\xE0 ti\u1EBFn tri\u1EC3n suy c\u01A1 quan (\u0394SOFA \u2265 2). T\u01B0\u01A1ng \u1EE9ng d\u1EA3i nhi\u1EC5m khu\u1EA9n khu tr\xFA/n\u1EB7ng (Naess 2017: Median vi\xEAm ph\u1ED5i 7.9, vi\xEAm \u0111\xE0i b\u1EC3 th\u1EADn 8.2). K\xEDch ho\u1EA1t ngay quy tr\xECnh t\u1EA7m so\xE1t Sepsis.`
+    };
+  } else if (nlr >= 3) {
+    return {
+      nlr,
+      riskLevel: "mild",
+      tier: 2,
+      tierLabel: "M\u1EE9c 2: C\u1EA3nh B\xE1o / T\u0103ng Nh\u1EB9 - V\u1EEBa (3.0 - 5.9)",
+      details: `NLR = ${nlr} (3.0 - 5.9 - C\u1EA3nh b\xE1o): Ph\u1EA3n \u1EE9ng vi\xEAm khu tr\xFA, stress sinh l\xFD ho\u1EB7c nghi ng\u1EDD nhi\u1EC5m tr\xF9ng ti\u1EC1m \u1EA9n giai \u0111o\u1EA1n \u0111\u1EA7u (ho\u1EB7c s\u1ED1t k\xE9o d\xE0i > 7 ng\xE0y khi NLR b\u1EAFt \u0111\u1EA7u tho\xE1i tri\u1EC3n). C\u1EA7n \u0111\xE1nh gi\xE1 k\u1EBFt h\u1EE3p sinh hi\u1EC7u (NEWS2), \u1ED5 nhi\u1EC5m tr\xF9ng nghi ng\u1EDD v\xE0 l\u1EB7p l\u1EA1i c\xF4ng th\u1EE9c m\xE1u.`
+    };
+  } else {
+    return {
+      nlr,
+      riskLevel: "normal",
+      tier: 1,
+      tierLabel: "M\u1EE9c 1: Sinh L\xFD / B\xECnh Th\u01B0\u1EDDng (< 3.0)",
+      details: `NLR = ${nlr} (< 3.0 - B\xECnh th\u01B0\u1EDDng): T\u1EF7 s\u1ED1 trong gi\u1EDBi h\u1EA1n an to\xE0n, kh\xF4ng c\xF3 b\u1EB1ng ch\u1EE9ng k\xEDch ho\u1EA1t ph\u1EA3n \u1EE9ng vi\xEAm h\u1EC7 th\u1ED1ng c\u1EA5p t\xEDnh (N\u1EBFu s\u1ED1t cao li\xEAn t\u1EE5c nh\u01B0ng NLR < 2.5: C\u1EA3nh gi\xE1c nhi\u1EC5m virus - Naess 2017).`
+    };
+  }
+}
+function evaluatePatientCDSS(patient) {
+  const map = calculateMAP(patient.sbp, patient.dbp);
+  const news2 = calculateNEWS2(patient);
+  const lpNews = calculateLPNEWS(news2.score, patient.lactateInitial, patient.procalcitonin);
+  const qsofa = calculateQSOFA(patient);
+  const sirs = calculateSIRS(patient);
+  const sofa = calculateSOFA(patient);
+  const nice = evaluateNICERisk(patient, news2);
+  const lactateKinetics = calculateLactateClearance(patient.lactateInitial, patient.lactateRepeat6h);
+  const nlrCalc = calculateNLR(patient.neutrophilCount, patient.lymphocyteCount);
+  let phoenixRes = void 0;
+  if (patient.patientType === "pediatric" || patient.ageYears < 18) {
+    phoenixRes = calculatePhoenixPediatric(patient);
+  }
+  let obstetricRes = void 0;
+  if (patient.patientType === "maternal" || patient.pregnancyWeek || patient.isPostpartum) {
+    obstetricRes = calculateObstetricScores(patient);
+  }
+  let primaryDiagnosis = "no_sepsis";
+  let urgencyLevel = "routine";
+  let isSepsis3 = false;
+  let isSepticShock3 = false;
+  if (patient.patientType === "pediatric" && phoenixRes) {
+    if (phoenixRes.isSepticShock) {
+      primaryDiagnosis = "septic_shock";
+      urgencyLevel = "emergency";
+    } else if (phoenixRes.isSepsis) {
+      primaryDiagnosis = "confirmed_sepsis";
+      urgencyLevel = "urgent";
+    } else if (patient.suspectedInfection) {
+      primaryDiagnosis = "uncomplicated_infection";
+      urgencyLevel = "routine";
+    }
+  } else if (patient.patientType === "maternal" && obstetricRes) {
+    if (obstetricRes.isSepticShock) {
+      primaryDiagnosis = "septic_shock";
+      urgencyLevel = "emergency";
+    } else if (obstetricRes.isSepsis) {
+      primaryDiagnosis = "confirmed_sepsis";
+      urgencyLevel = "urgent";
+    } else if (obstetricRes.isHighSuspicion) {
+      primaryDiagnosis = "suspected_sepsis";
+      urgencyLevel = "urgent";
+    } else if (patient.suspectedInfection) {
+      primaryDiagnosis = "uncomplicated_infection";
+      urgencyLevel = "routine";
+    }
+  } else {
+    const deltaSofa = sofa.score;
+    isSepsis3 = patient.suspectedInfection && deltaSofa >= 2;
+    isSepticShock3 = isSepsis3 && patient.vasoactiveMedCount > 0 && (patient.lactateInitial ? patient.lactateInitial > 2 : false);
+    if (isSepticShock3) {
+      primaryDiagnosis = "septic_shock";
+      urgencyLevel = "emergency";
+    } else if (isSepsis3) {
+      primaryDiagnosis = "confirmed_sepsis";
+      urgencyLevel = "emergency";
+    } else if (patient.suspectedInfection && nice.riskCategory === "high") {
+      primaryDiagnosis = "suspected_sepsis";
+      urgencyLevel = "emergency";
+    } else if (patient.suspectedInfection && (nice.riskCategory === "medium" || qsofa.isHighRisk)) {
+      primaryDiagnosis = "suspected_sepsis";
+      urgencyLevel = "urgent";
+    } else if (patient.suspectedInfection) {
+      primaryDiagnosis = "uncomplicated_infection";
+      urgencyLevel = "routine";
+    } else {
+      primaryDiagnosis = "no_sepsis";
+      urgencyLevel = "routine";
+    }
+  }
+  let summarySentence = "";
+  if (primaryDiagnosis === "septic_shock") {
+    summarySentence = 'C\u1EA2NH B\xC1O \u0110\u1ECE: B\u1EC7nh nh\xE2n th\u1ECFa ti\xEAu chu\u1EA9n S\u1ED0C NHI\u1EC4M KHU\u1EA8N (Septic Shock) v\u1EDBi t\u1EE5t huy\u1EBFt \xE1p c\u1EA7n thu\u1ED1c v\u1EADn m\u1EA1ch v\xE0 t\u0103ng Lactate m\xE1u. Nguy c\u01A1 t\u1EED vong r\u1EA5t cao (> 40%), c\u1EA7n can thi\u1EC7p "Gi\u1EDD V\xE0ng" ngay l\u1EADp t\u1EE9c!';
+  } else if (primaryDiagnosis === "confirmed_sepsis") {
+    summarySentence = "X\xC1C NH\u1EACN NHI\u1EC4M KHU\u1EA8N HUY\u1EBET (Sepsis): C\xF3 b\u1EB1ng ch\u1EE9ng r\u1ED1i lo\u1EA1n ch\u1EE9c n\u0103ng c\u01A1 quan \u0111e d\u1ECDa t\xEDnh m\u1EA1ng (SOFA \u2265 2 / Phoenix \u2265 2 / Obs SOFA \u2265 2). Kh\u1EDFi \u0111\u1ED9ng ph\xE1c \u0111\u1ED3 c\u1EA5p c\u1EE9u Sepsis.";
+  } else if (primaryDiagnosis === "suspected_sepsis") {
+    summarySentence = "NGHI NG\u1EDC CAO NHI\u1EC4M KHU\u1EA8N HUY\u1EBET: B\u1EC7nh nh\xE2n c\xF3 nguy c\u01A1 cao theo ti\xEAu ch\xED NICE NG253 ho\u1EB7c NEWS2/qSOFA. C\u1EA7n b\xE1c s\u0129 kh\xE1m kh\u1EA9n c\u1EA5p, l\u1EA5y x\xE9t nghi\u1EC7m vi sinh v\xE0 chu\u1EA9n b\u1ECB \u0111i\u1EC1u tr\u1ECB theo khung gi\u1EDD.";
+  } else if (primaryDiagnosis === "uncomplicated_infection") {
+    summarySentence = "Nhi\u1EC5m khu\u1EA9n t\u1EA1i ch\u1ED7 / Ch\u01B0a c\xF3 b\u1EB1ng ch\u1EE9ng suy c\u01A1 quan \u0111e d\u1ECDa t\xEDnh m\u1EA1ng. Ti\u1EBFp t\u1EE5c theo d\xF5i s\xE1t thang \u0111i\u1EC3m c\u1EA3nh b\xE1o s\u1EDBm NEWS2 \u0111\u1ECBnh k\u1EF3.";
+  } else {
+    summarySentence = "Ch\u01B0a ghi nh\u1EADn b\u1EB1ng ch\u1EE9ng nhi\u1EC5m tr\xF9ng ho\u1EB7c nguy c\u01A1 sepsis t\u1EA1i th\u1EDDi \u0111i\u1EC3m \u0111\xE1nh gi\xE1.";
+  }
+  const antibioticRegimen = [];
+  let antibioticTiming = "";
+  let fluidResuscitation = "";
+  let vasopressorStrategy = "";
+  const escalationAndConsult = [];
+  let monitoringFrequency = "";
+  const microbiologySteps = [];
+  let sourceControlNotes = "";
+  if (primaryDiagnosis === "no_sepsis") {
+    antibioticTiming = "Hi\u1EC7n t\u1EA1i KH\xD4NG C\xD3 CH\u1EC8 \u0110\u1ECANH s\u1EED d\u1EE5ng kh\xE1ng sinh. Ti\u1EBFp t\u1EE5c theo d\xF5i l\xE2m s\xE0ng v\xE0 c\xE1c d\u1EA5u hi\u1EC7u c\u1EA3nh b\xE1o s\u1EDBm.";
+    antibioticRegimen.push("Ch\u01B0a c\xF3 ch\u1EC9 \u0111\u1ECBnh kh\xE1ng sinh (Ch\u01B0a ph\xE1t hi\u1EC7n \u1ED5 nhi\u1EC5m ho\u1EB7c h\u1ED9i ch\u1EE9ng nhi\u1EC5m tr\xF9ng).");
+  } else if (primaryDiagnosis === "septic_shock" || primaryDiagnosis === "confirmed_sepsis" || nice.riskCategory === "high") {
+    antibioticTiming = 'D\xD9NG KH\xC1NG SINH PH\u1ED4 R\u1ED8NG T\u0128NH M\u1EA0CH TRONG V\xD2NG 1 GI\u1EDC ("Gi\u1EDD v\xE0ng" / Hour-1 Bundle). M\u1ED7i gi\u1EDD ch\u1EADm tr\u1EC5 l\xE0m t\u0103ng t\u1EF7 l\u1EC7 t\u1EED vong 7 - 8%.';
+  } else if (nice.riskCategory === "medium") {
+    antibioticTiming = "\u0110\xE1nh gi\xE1 kh\u1EA9n v\xE0 kh\u1EDFi \u0111\u1EA7u kh\xE1ng sinh trong v\xF2ng 3 GI\u1EDC n\u1EBFu nguy\xEAn nh\xE2n nhi\u1EC5m khu\u1EA9n v\u1EABn c\xF2n nghi ng\u1EDD sau c\xE1c b\u01B0\u1EDBc th\u0103m d\xF2 nhanh.";
+  } else {
+    antibioticTiming = "Tr\xEC ho\xE3n kh\xE1ng sinh t\u1ED1i \u0111a 6 gi\u1EDD \u0111\u1EC3 thu th\u1EADp b\u1EB1ng ch\u1EE9ng ch\u1EA9n \u0111o\xE1n x\xE1c \u0111\u1ECBnh t\xE1c nh\xE2n, tr\xE1nh l\u1EA1m d\u1EE5ng kh\xE1ng sinh ph\u1ED5 r\u1ED9ng.";
+  }
+  if (primaryDiagnosis !== "no_sepsis") {
+    if (patient.rapidMolecularT2Done && patient.rapidMolecularResult === "positive" && patient.rapidMolecularPathogen) {
+      const genes = patient.rapidMolecularResistanceGenes || [];
+      antibioticRegimen.push(`T2Bacteria ph\xE1t hi\u1EC7n nhanh: ${patient.rapidMolecularPathogen} (Ti\u1EBFt ki\u1EC7m > 100 gi\u1EDD so v\u1EDBi c\u1EA5y m\xE1u th\u01B0\u1EDDng).`);
+      if (genes.includes("blaKPC") || genes.includes("blaOXA-48")) {
+        antibioticRegimen.push("Ph\xE1t hi\u1EC7n gen Carbapenemase (KPC / OXA-48): \u0110\u1ED5i sang Ceftazidime / Avibactam (c\xF3 th\u1EC3 k\u1EBFt h\u1EE3p Aztreonam n\u1EBFu c\xF3 Metallo-\u03B2-lactamase NDM/VIM).");
+      } else if (genes.includes("blaCTX-M")) {
+        antibioticRegimen.push("Ph\xE1t hi\u1EC7n gen ESBL (CTX-M): \u01AFu ti\xEAn d\xF9ng nh\xF3m Carbapenem (Meropenem 1-2g m\u1ED7i 8h truy\u1EC1n k\xE9o d\xE0i) ho\u1EB7c Ceftolozane/Tazobactam.");
+      }
+    } else {
+      if (patient.patientType === "maternal") {
+        antibioticRegimen.push("S\u1EA3n khoa: Meropenem 1g TTM q8h (truy\u1EC1n k\xE9o d\xE0i 3-4h) + Daptomycin 10mg/kg (ho\u1EB7c Linezolid 600mg q12h).");
+        if (patient.hasImmunosuppression) {
+          antibioticRegimen.push("N\u1EBFu d\u1ECB \u1EE9ng Penicillin: Ph\u1ED1i h\u1EE3p Aztreonam + Amikacin ho\u1EB7c Fosfomycin \u0111\u1EC3 bao ph\u1EE7 vi khu\u1EA9n Gr(-).");
+        }
+      } else if (patient.patientType === "pediatric") {
+        if (patient.ageYears >= 16) {
+          antibioticRegimen.push("Thanh thi\u1EBFu ni\xEAn 16-18 tu\u1ED5i (NICE NG253): Ceftriaxone 80 mg/kg ti\xEAm 1 l\u1EA7n/ng\xE0y (t\u1ED1i \u0111a 4g/ng\xE0y).");
+        } else {
+          antibioticRegimen.push("Nhi khoa: Ceftriaxone ho\u1EB7c Cefotaxime ph\u1ED1i h\u1EE3p Vancomycin n\u1EBFu nghi ng\u1EDD t\u1EE5 c\u1EA7u kh\xE1ng Methicillin (MRSA).");
+        }
+      } else {
+        if (patient.infectionSource === "respiratory") {
+          antibioticRegimen.push("H\xF4 h\u1EA5p (Vi\xEAm ph\u1ED5i n\u1EB7ng/Sepsis): Piperacillin/Tazobactam 4.5g TTM q6h (truy\u1EC1n k\xE9o d\xE0i 3-4h) HO\u1EB6C Cefepime 2g q8h, ph\u1ED1i h\u1EE3p Macrolide ho\u1EB7c Levofloxacin.");
+        } else if (patient.infectionSource === "urinary") {
+          antibioticRegimen.push("Ti\u1EBFt ni\u1EC7u: Ceftriaxone 2g/ng\xE0y ho\u1EB7c Meropenem 1g q8h n\u1EBFu c\xF3 y\u1EBFu t\u1ED1 nguy c\u01A1 vi khu\u1EA9n sinh ESBL.");
+        } else if (patient.infectionSource === "abdominal") {
+          antibioticRegimen.push("\u1ED4 b\u1EE5ng: Piperacillin/Tazobactam ho\u1EB7c Meropenem + Metronidazole n\u1EBFu c\u1EA7n b\u1EA3o v\u1EC7 vi khu\u1EA9n k\u1EF5 kh\xED s\xE2u.");
+        } else {
+          antibioticRegimen.push("Nhi\u1EC5m tr\xF9ng ch\u01B0a r\xF5 ngu\u1ED3n: Meropenem 1-2g q8h (truy\u1EC1n k\xE9o d\xE0i) + Vancomycin 15-20 mg/kg (n\u1EBFu c\xF3 nguy c\u01A1 cao MRSA).");
+        }
+      }
+    }
+  }
+  if (primaryDiagnosis === "no_sepsis") {
+    fluidResuscitation = "Ch\u01B0a c\xF3 ch\u1EC9 \u0111\u1ECBnh h\u1ED3i s\u1EE9c d\u1ECBch c\u1EA5p c\u1EE9u. Duy tr\xEC nhu c\u1EA7u d\u1ECBch c\u01A1 b\u1EA3n sinh l\xFD b\xECnh th\u01B0\u1EDDng.";
+  } else if (patient.patientType === "maternal") {
+    fluidResuscitation = patient.isPostpartum ? "H\u1EADu s\u1EA3n: Bolus ban \u0111\u1EA7u 30 mL/kg dung d\u1ECBch tinh th\u1EC3 \u0111\u1EB3ng tr\u01B0\u01A1ng (Ringer Lactate / Hartmann) trong 3 gi\u1EDD \u0111\u1EA7u. Tr\xE1nh qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n." : "Thai k\u1EF3: B\u1EAFt \u0111\u1EA7u th\u1EADn tr\u1ECDng h\u01A1n v\u1EDBi bolus 20 mL/kg dung d\u1ECBch tinh th\u1EC3 \u0111\u1EB3ng tr\u01B0\u01A1ng trong 3 gi\u1EDD \u0111\u1EA7u, do nguy c\u01A1 ph\xF9 ph\u1ED5i c\u1EA5p \u1EDF ph\u1EE5 n\u1EEF mang thai t\u0103ng cao.";
+  } else if (patient.patientType === "pediatric") {
+    fluidResuscitation = "Nhi khoa: Bolus 10 - 20 mL/kg dung d\u1ECBch tinh th\u1EC3 c\xE2n b\u1EB1ng trong 30 - 60 ph\xFAt, \u0111\xE1nh gi\xE1 k\u1EF9 d\u1EA5u hi\u1EC7u qu\xE1 t\u1EA3i d\u1ECBch (gan to, ran \u1EA9m ph\u1ED5i) tr\u01B0\u1EDBc m\u1ED7i li\u1EC1u l\u1EB7p l\u1EA1i.";
+  } else {
+    if (patient.setting === "acute_hospital" || patient.setting === "community_custodial") {
+      fluidResuscitation = "Khuy\u1EBFn c\xE1o NICE NG253 (2025/2026): B\u1EAFt \u0111\u1EA7u bolus 250 mL dung d\u1ECBch tinh th\u1EC3 c\xE2n b\u1EB1ng (Hartmann / Ringer Lactate) trong 10 - 15 ph\xFAt. C\xF3 th\u1EC3 l\u1EB7p l\u1EA1i t\u1EEBng li\u1EC1u 250 mL \u0111\u1EBFn t\u1ED1i \u0111a 1,000 mL. B\u1EAFt bu\u1ED9c \u0111\xE1nh gi\xE1 l\u1EA1i l\xE2m s\xE0ng v\xE0 SpO2 sau m\u1ED7i li\u1EC1u. N\u1EBFu sau 1,000 mL ch\u01B0a c\u1EA3i thi\u1EC7n huy\u1EBFt \xE1p/tri gi\xE1c, ph\u1EA3i h\u1ED9i ch\u1EA9n B\xE1c s\u0129 c\u1EA5p cao (ST3+) ho\u1EB7c ICU.";
+    } else {
+      fluidResuscitation = "Theo SSC 2021: Truy\u1EC1n \xEDt nh\u1EA5t 30 mL/kg dung d\u1ECBch tinh th\u1EC3 c\xE2n b\u1EB1ng (Balanced Crystalloid) trong 3 gi\u1EDD \u0111\u1EA7u \u0111\u1ED1i v\u1EDBi gi\u1EA3m t\u01B0\u1EDBi m\xE1u ho\u1EB7c s\u1ED1c nhi\u1EC5m khu\u1EA9n. H\u01B0\u1EDBng d\u1EABn b\xF9 d\u1ECBch ti\u1EBFp theo b\u1EB1ng c\xE1c bi\u1EC7n ph\xE1p \u0111\u1ED9ng h\u1ECDc (test n\xE2ng ch\xE2n th\u1EE5 \u0111\u1ED9ng PLR, bi\u1EBFn thi\xEAn th\u1EC3 t\xEDch nh\xE1t b\xF3p SVV) v\xE0 th\u1EDDi gian ph\u1EE5c h\u1ED3i m\xE0u da mao m\u1EA1ch (CRT \u2264 2s).";
+    }
+  }
+  if (primaryDiagnosis === "septic_shock" || map < 65) {
+    vasopressorStrategy = "Norepinephrine l\xE0 thu\u1ED1c v\u1EADn m\u1EA1ch l\u1EF1a ch\u1ECDn h\xE0ng \u0111\u1EA7u (First-line). \u0110\xEDch duy tr\xEC Huy\u1EBFt \xE1p trung b\xECnh MAP \u2265 65 mmHg. Theo SSC 2021 v\xE0 NICE 2025: c\xF3 th\u1EC3 kh\u1EDFi \u0111\u1ED9ng truy\u1EC1n qua \u0111\u01B0\u1EDDng ngo\u1EA1i bi\xEAn t\u1EA1m th\u1EDDi (t\u0129nh m\u1EA1ch l\u1EDBn v\xF9ng khu\u1EF7u tay tr\u1EDF l\xEAn) trong khi chu\u1EA9n b\u1ECB \u0111\u1EB7t Catheter t\u0129nh m\u1EA1ch trung t\xE2m (CVC) \u0111\u1EC3 tr\xE1nh ch\u1EADm tr\u1EC5. N\u1EBFu li\u1EC1u Norepinephrine \u0111\u1EA1t 0.25 - 0.5 mcg/kg/ph\xFAt m\xE0 MAP ch\u01B0a \u0111\u1EA1t, ph\u1ED1i h\u1EE3p th\xEAm Vasopressin 0.03 \u0111v/ph\xFAt thay v\xEC t\u0103ng li\u1EC1u cao Norepinephrine. Th\xEAm Dobutamine n\u1EBFu c\xF3 b\u1EB1ng ch\u1EE9ng r\u1ED1i lo\u1EA1n ch\u1EE9c n\u0103ng c\u01A1 tim/cung l\u01B0\u1EE3ng tim th\u1EA5p.";
+  } else {
+    vasopressorStrategy = "Hi\u1EC7n t\u1EA1i ch\u01B0a c\u1EA7n d\xF9ng thu\u1ED1c v\u1EADn m\u1EA1ch. Theo d\xF5i s\xE1t huy\u1EBFt \xE1p \u0111\u1ED9ng m\u1EA1ch v\xE0 duy tr\xEC MAP \u2265 65 mmHg.";
+  }
+  if (primaryDiagnosis === "septic_shock") {
+    escalationAndConsult.push("B\xE1o \u0111\u1ED9ng \u0110\u1ED9i H\u1ED3i s\u1EE9c T\xEDch c\u1EF1c (ICU / MET Team) ti\u1EBFp nh\u1EADn b\u1EC7nh nh\xE2n kh\u1EA9n c\u1EA5p (khuy\u1EBFn c\xE1o nh\u1EADp ICU trong v\xF2ng 6 gi\u1EDD).");
+    escalationAndConsult.push("B\xE1c s\u0129 c\u1EA5p cao (Senior decision maker ST3+ / B\xE1c s\u0129 CKII H\u1ED3i s\u1EE9c) ph\u1EA3i tr\u1EF1c ti\u1EBFp c\xF3 m\u1EB7t t\u1EA1i gi\u01B0\u1EDDng b\u1EC7nh.");
+  } else if (nice.riskCategory === "high") {
+    escalationAndConsult.push("Y\xEAu c\u1EA7u B\xE1c s\u0129 c\xF3 n\u0103ng l\u1EF1c h\u1ED3i s\u1EE9c c\u1EA5p c\u1EE9u (FY2 tr\u1EDF l\xEAn) \u0111\xE1nh gi\xE1 tr\u1EF1c ti\u1EBFp ngay t\u1EA1i gi\u01B0\u1EDDng b\u1EC7nh.");
+    escalationAndConsult.push("H\u1ED9i ch\u1EA9n B\xE1c s\u0129 c\u1EA5p cao (ST3+) n\u1EBFu b\u1EC7nh nh\xE2n kh\xF4ng c\u1EA3i thi\u1EC7n trong v\xF2ng 1 gi\u1EDD sau can thi\u1EC7p ban \u0111\u1EA7u.");
+  } else if (news2.hasSingleParam3) {
+    escalationAndConsult.push("C\u1EA3nh b\xE1o Red Flag (1 th\xF4ng s\u1ED1 3 \u0111i\u1EC3m): B\xE1c s\u0129 FY2+ \u0111\xE1nh gi\xE1 kh\u1EA9n c\u1EA5p \u0111\u1EC3 x\xE1c \u0111\u1ECBnh nguy c\u01A1 suy c\u01A1 quan ti\u1EC1m \u1EA9n do nhi\u1EC5m khu\u1EA9n.");
+  } else if (primaryDiagnosis === "no_sepsis") {
+    escalationAndConsult.push("Theo d\xF5i sinh hi\u1EC7u \u0111\u1ECBnh k\u1EF3 theo quy tr\xECnh th\u01B0\u1EDDng quy c\u1EE7a khoa ph\xF2ng.");
+  }
+  if (nice.riskCategory === "high" || primaryDiagnosis === "septic_shock") {
+    monitoringFrequency = "\u0110o l\u1EA1i sinh hi\u1EC7u & t\xEDnh \u0111i\u1EC3m NEWS2 m\u1ED7i 30 PH\xDAT. \u0110\xE1nh gi\xE1 l\u1EA1i li\xEAn t\u1EE5c \u0111\xE1p \u1EE9ng t\u01B0\u1EDBi m\xE1u m\xF4 (CRT, tri gi\xE1c, n\u01B0\u1EDBc ti\u1EC3u).";
+  } else if (nice.riskCategory === "medium") {
+    monitoringFrequency = "\u0110o l\u1EA1i sinh hi\u1EC7u & t\xEDnh \u0111i\u1EC3m NEWS2 m\u1ED7i 1 GI\u1EDC. \u0110\xE1nh gi\xE1 l\u1EA1i k\u1EBFt qu\u1EA3 Lactate t\u0129nh m\u1EA1ch trong v\xF2ng 1 gi\u1EDD.";
+  } else {
+    monitoringFrequency = "\u0110o l\u1EA1i sinh hi\u1EC7u & \u0111i\u1EC3m NEWS2 m\u1ED7i 4 - 6 GI\u1EDC ho\u1EB7c theo quy tr\xECnh ch\u0103m s\xF3c n\u1ED9i tr\xFA th\xF4ng th\u01B0\u1EDDng.";
+  }
+  if (primaryDiagnosis !== "no_sepsis") {
+    microbiologySteps.push("C\u1EA5y m\xE1u: L\u1EA5y \xEDt nh\u1EA5t 2 b\u1ED9 c\u1EA5y m\xE1u (hi\u1EBFu kh\xED & k\u1EF5 kh\xED) t\u1EEB 2 v\u1ECB tr\xED kh\xE1c nhau TR\u01AF\u1EDAC KHI TI\xCAM KH\xC1NG SINH, kh\xF4ng \u0111\u1EC3 vi\u1EC7c l\u1EA5y m\xE1u l\xE0m ch\u1EADm tr\u1EC5 kh\xE1ng sinh > 45 ph\xFAt.");
+    if (patient.infectionSource === "urinary") {
+      microbiologySteps.push("Vi sinh \u0111\u01B0\u1EDDng ni\u1EC7u: L\u1EA5y m\u1EABu n\u01B0\u1EDBc ti\u1EC3u gi\u1EEFa d\xF2ng (MSU) ho\u1EB7c qua \u1ED1ng th\xF4ng ni\u1EC7u v\xF4 khu\u1EA9n m\u1EDBi \u0111\u1EC3 soi t\u01B0\u01A1i vi khu\u1EA9n/b\u1EA1ch c\u1EA7u, t\u1ED5ng ph\xE2n t\xEDch n\u01B0\u1EDBc ti\u1EC3u v\xE0 c\u1EA5y vi sinh l\xE0m kh\xE1ng sinh \u0111\u1ED3 tr\u01B0\u1EDBc khi d\xF9ng kh\xE1ng sinh.");
+    }
+    microbiologySteps.push("X\xE9t nghi\u1EC7m m\xE1u t\u0129nh m\u1EA1ch kh\u1EA9n: Kh\xED m\xE1u (Lactate, Glucose), T\u1ED5ng ph\xE2n t\xEDch t\u1EBF b\xE0o m\xE1u, CRP, Ch\u1EE9c n\u0103ng th\u1EADn (Urea, Creatinine), Gan (Bilirubin, Men gan), \u0110\xF4ng m\xE1u (INR, D-dimer, Fibrinogen).");
+    microbiologySteps.push("Khuy\u1EBFn c\xE1o NICE 2026: C\xE2n nh\u1EAFc x\xE9t nghi\u1EC7m Procalcitonin (PCT) \u1EDF nh\xF3m nguy c\u01A1 trung b\xECnh v\xE0 cao \u0111\u1EC3 h\u01B0\u1EDBng d\u1EABn ph\xE2n t\u1EA7ng nguy c\u01A1 v\xE0 quy\u1EBFt \u0111\u1ECBnh d\u1EEBng kh\xE1ng sinh an to\xE0n.");
+    microbiologySteps.push("\u1EE8ng d\u1EE5ng ch\u1EA9n \u0111o\xE1n ph\xE2n t\u1EED nhanh (T2Bacteria / T2Resistance Panel): Cho k\u1EBFt qu\u1EA3 tr\u1EF1c ti\u1EBFp t\u1EEB m\xE1u to\xE0n ph\u1EA7n trong v\xF2ng 3-5 gi\u1EDD \u0111\u1ED1i v\u1EDBi vi khu\u1EA9n ESKAPE (K. pneumoniae, P. aeruginosa, A. baumannii) v\xE0 gen kh\xE1ng carbapenem, gi\xFAp chuy\u1EC3n kh\xE1ng sinh tr\xFAng \u0111\xEDch s\u1EDBm h\u01A1n > 100 gi\u1EDD.");
+  } else {
+    microbiologySteps.push("Ch\u01B0a c\xF3 ch\u1EC9 \u0111\u1ECBnh c\u1EA5y m\xE1u ho\u1EB7c ch\u1EA9n \u0111o\xE1n ph\xE2n t\u1EED kh\u1EA9n. Theo d\xF5i c\xE1c x\xE9t nghi\u1EC7m th\u01B0\u1EDDng quy.");
+  }
+  if (primaryDiagnosis === "no_sepsis") {
+    sourceControlNotes = "Ch\u01B0a ph\xE1t hi\u1EC7n \u1ED5 nhi\u1EC5m khu\u1EA9n c\u1EA7n can thi\u1EC7p ngo\u1EA1i khoa hay th\u1EE7 thu\u1EADt x\xE2m l\u1EA5n.";
+  } else if (patient.infectionSource === "urinary") {
+    sourceControlNotes = "Nhi\u1EC5m tr\xF9ng \u0111\u01B0\u1EDDng ni\u1EC7u (Urosepsis): Si\xEAu \xE2m h\u1EC7 ti\u1EBFt ni\u1EC7u kh\u1EA9n c\u1EA5p lo\u1EA1i tr\u1EEB \u1EE9 m\u1EE7 b\u1EC3 th\u1EADn ho\u1EB7c b\u1EBF t\u1EAFc do s\u1ECFi ni\u1EC7u qu\u1EA3n. N\u1EBFu c\xF3 b\u1EBF t\u1EAFc c\u01A1 h\u1ECDc k\xE8m nhi\u1EC5m tr\xF9ng, B\u1EAET BU\u1ED8C can thi\u1EC7p gi\u1EA3i \xE1p kh\u1EA9n (\u0111\u1EB7t \u1ED1ng th\xF4ng JJ ni\u1EC7u qu\u1EA3n ho\u1EB7c d\u1EABn l\u01B0u b\u1EC3 th\u1EADn qua da PCN) trong v\xF2ng 6 - 12 gi\u1EDD (SSC 2021 & EAU 2024 Guidelines). R\xFAt ho\u1EB7c thay catheter ni\u1EC7u n\u1EBFu b\u1EC7nh nh\xE2n \u0111ang \u0111\u1EB7t \u1ED1ng th\xF4ng l\u01B0u.";
+  } else {
+    sourceControlNotes = "T\xECm v\xE0 ki\u1EC3m so\xE1t tri\u1EC7t \u0111\u1EC3 \u1ED5 nhi\u1EC5m khu\u1EA9n trong v\xF2ng 6 - 12 gi\u1EDD (D\u1EABn l\u01B0u \xE1p xe, ph\u1EABu thu\u1EADt c\u1EAFt l\u1ECDc m\xF4 ho\u1EA1i t\u1EED, r\xFAt ngay catheter t\u0129nh m\u1EA1ch nghi nhi\u1EC5m khu\u1EA9n sau khi \u0111\xE3 thi\u1EBFt l\u1EADp \u0111\u01B0\u1EDDng truy\u1EC1n m\u1EDBi, si\xEAu \xE2m/CT b\u1EE5ng ti\u1EC3u khung n\u1EBFu ch\u01B0a r\xF5 ngu\u1ED3n).";
+  }
+  return {
+    sofaScore: sofa.score,
+    sofaBreakdown: sofa.breakdown,
+    deltaSofa: sofa.score,
+    qsofaScore: qsofa.score,
+    qsofaBreakdown: qsofa.breakdown,
+    qsofaCriteriaMet: qsofa.criteriaMet,
+    isQsofaPositive: qsofa.isHighRisk,
+    isSepsis3,
+    isSepticShock3,
+    sirsScore: sirs.score,
+    sirsCriteriaMet: sirs.criteriaMet,
+    isSirsPositive: sirs.isPositive,
+    news2Score: news2.score,
+    news2Breakdown: news2.breakdown,
+    news2RiskCategory: news2.riskCategory,
+    hasSingleParam3RedFlag: news2.hasSingleParam3,
+    lpNewsScore: lpNews.score,
+    lpNewsBreakdown: lpNews.breakdown,
+    lpNewsMortalityRiskTier: lpNews.riskTier,
+    lpNewsPredictedMortalityText: lpNews.predictedMortalityText,
+    niceRiskCategory: nice.riskCategory,
+    niceHighRiskCriteriaMet: nice.highRiskCriteria,
+    niceMediumRiskCriteriaMet: nice.mediumRiskCriteria,
+    niceAntibioticMaxDelayHours: nice.maxAntibioticDelayHours,
+    phoenixScore: phoenixRes?.score,
+    phoenixBreakdown: phoenixRes?.breakdown,
+    phoenixCardiovascularScore: phoenixRes?.cvScore,
+    isPhoenixSepsis: phoenixRes?.isSepsis,
+    isPhoenixSepticShock: phoenixRes?.isSepticShock,
+    obstetricQsofaScore: obstetricRes?.qsofaScore,
+    obstetricQsofaBreakdown: obstetricRes?.qsofaBreakdown,
+    obstetricSofaScore: obstetricRes?.sofaScore,
+    obstetricSofaBreakdown: obstetricRes?.sofaBreakdown,
+    isObstetricSepsis: obstetricRes?.isSepsis,
+    isObstetricSepticShock: obstetricRes?.isSepticShock,
+    calculatedMap: map,
+    calculatedNlr: nlrCalc.nlr,
+    nlrRiskLevel: nlrCalc.riskLevel,
+    lactateClearancePercent: lactateKinetics.clearancePercent,
+    lactateClearanceEvaluation: lactateKinetics.evaluation,
+    pctEvaluation: patient.procalcitonin ? `${patient.procalcitonin} ng/mL (${patient.procalcitonin >= 2 ? "Nguy c\u01A1 cao nhi\u1EC5m khu\u1EA9n huy\u1EBFt do vi khu\u1EA9n" : "M\u1EE9c th\u1EA5p/ch\u01B0a \u0111i\u1EC3n h\xECnh"})` : void 0,
+    crpEvaluation: patient.crp ? `${patient.crp} mg/L (${patient.crp > 100 ? "Vi\xEAm h\u1EC7 th\u1ED1ng c\u1EA5p t\xEDnh n\u1EB7ng" : "T\u0103ng m\u1EE9c \u0111\u1ED9 v\u1EEBa"})` : void 0,
+    primaryDiagnosis,
+    urgencyLevel,
+    summarySentence,
+    actions: {
+      antibioticTiming,
+      antibioticRegimen,
+      fluidResuscitation,
+      vasopressorStrategy,
+      escalationAndConsult,
+      monitoringFrequency,
+      microbiologySteps,
+      sourceControlNotes
+    }
+  };
+}
+
+// antibiotic/src/components/sepsis/CaseHistoryModal.tsx
+var import_lucide_react19 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime20 = __toESM(require_jsx_runtime(), 1);
+var CaseHistoryModal = ({
+  isOpen,
+  onClose,
+  savedCases,
+  onLoadCase,
+  onDeleteCase,
+  onClearAll
+}) => {
+  if (!isOpen) return null;
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.History, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("h3", { className: "text-base font-bold text-slate-900", children: [
+            "L\u1ECBch S\u1EED Ca B\u1EC7nh \u0110\xE3 L\u01B0u (",
+            savedCases.length,
+            ")"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-xs text-slate-500", children: "H\u1ED3 s\u01A1 l\u01B0u tr\u1EEF tr\xEAn tr\xECnh duy\u1EC7t h\u1ED7 tr\u1EE3 b\xE0n giao ca tr\u1EF1c & \u0111\u1ED1i chi\u1EBFu" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2", children: [
+        savedCases.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+          "button",
+          {
+            onClick: onClearAll,
+            className: "p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition-colors",
+            title: "X\xF3a t\u1EA5t c\u1EA3 h\u1ED3 s\u01A1",
+            children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Trash2, { className: "w-4 h-4" })
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+          "button",
+          {
+            onClick: onClose,
+            className: "p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors",
+            children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.X, { className: "w-5 h-5" })
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "p-4 overflow-y-auto space-y-3 flex-1", children: savedCases.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-center py-10", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.History, { className: "w-10 h-10 text-slate-300 mx-auto mb-2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-sm font-semibold text-slate-700", children: "Ch\u01B0a c\xF3 h\u1ED3 s\u01A1 ca b\u1EC7nh n\xE0o" }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-xs text-slate-400 mt-0.5", children: "Nh\u1EA5n bi\u1EC3u t\u01B0\u1EE3ng l\u01B0u tr\xEAn thanh c\xF4ng c\u1EE5 \u0111\u1EC3 l\u01B0u ca hi\u1EC7n t\u1EA1i" })
+    ] }) : savedCases.map((c) => {
+      const res = evaluatePatientCDSS(c.patientData);
+      const isEmergency = res.urgencyLevel === "emergency";
+      const isUrgent = res.urgencyLevel === "urgent";
+      return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+        "div",
+        {
+          className: "p-3.5 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-teal-50/30 hover:border-teal-300 transition-all flex items-center justify-between gap-3",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "min-w-0", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "font-bold text-xs text-slate-900 truncate", children: [
+                  "Ca ",
+                  c.patientData.patientType === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : c.patientData.patientType === "pediatric" ? "Nhi khoa" : "S\u1EA3n khoa",
+                  " \xB7 ",
+                  c.patientData.ageYears,
+                  " tu\u1ED5i (",
+                  c.patientData.gender === "male" ? "Nam" : "N\u1EEF",
+                  ")"
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: `text-[10px] font-bold px-1.5 py-0.5 rounded shrink-0 ${isEmergency ? "bg-rose-100 text-rose-800" : isUrgent ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`, children: res.primaryDiagnosis.replace("_", " ").toUpperCase() })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-3 text-[11px] text-slate-500 font-mono mt-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+                  "NEWS2: ",
+                  res.news2Score
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+                  "LP-NEWS: ",
+                  res.lpNewsScore
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { children: [
+                  "Lactate: ",
+                  c.patientData.lactateInitial ?? "N/A"
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-slate-400", children: "\xB7" }),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-[10px] flex items-center gap-1 font-sans", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Calendar, { className: "w-3 h-3 text-slate-400" }),
+                  new Date(c.savedAt).toLocaleDateString("vi-VN")
+                ] })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1 shrink-0", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+                "button",
+                {
+                  onClick: () => onDeleteCase(c.id),
+                  className: "p-1.5 text-slate-400 hover:text-rose-600 rounded",
+                  title: "X\xF3a ca n\xE0y",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Trash2, { className: "w-4 h-4" })
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+                "button",
+                {
+                  onClick: () => {
+                    onLoadCase(c.patientData);
+                    onClose();
+                  },
+                  className: "px-2.5 py-1.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold rounded-lg flex items-center gap-1 shadow-sm",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "M\u1EDF" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ArrowRight, { className: "w-3.5 h-3.5" })
+                  ]
+                }
+              )
+            ] })
+          ]
+        },
+        c.id
+      );
+    }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "p-3 border-t border-slate-200 bg-slate-50 flex justify-end shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+      "button",
+      {
+        onClick: onClose,
+        className: "px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-200/70 rounded-lg transition-colors",
+        children: "\u0110\xF3ng L\u1EA1i"
+      }
+    ) })
+  ] }) });
+};
+
+// antibiotic/src/sepsis/presetCases.ts
+var NORMAL_PATIENT_CASE = {
+  id: "case-normal",
+  patientName: "",
+  patientCode: "",
+  patientType: "adult",
+  ageYears: 35,
+  gender: "male",
+  setting: "acute_hospital",
+  weightKg: 65,
+  heightCm: 168,
+  dialysis: "none",
+  hasFrailty: false,
+  hasImmunosuppression: false,
+  hasRecentSurgery: false,
+  hasIndwellingCatheter: false,
+  hasRepeatedAntibioticUse: false,
+  hasSkinBreach: false,
+  communicationDifficulty: false,
+  suspectedInfection: false,
+  infectionSource: "unknown",
+  feverOrRigors: false,
+  recentMultiplePresentations: false,
+  sbp: 120,
+  dbp: 80,
+  heartRate: 72,
+  respiratoryRate: 16,
+  temperature: 36.6,
+  spo2: 99,
+  onSupplementalOxygen: false,
+  fio2Percent: 21,
+  copdOrHypercapnicRisk: false,
+  avpu: "A",
+  gcs: 15,
+  newAlteredMentalState: false,
+  bilateralFixedPupils: false,
+  mottledOrAshen: false,
+  cyanosis: false,
+  nonBlanchingRash: false,
+  capillaryRefillSeconds: 1.5,
+  urineOutputStatus: "normal",
+  invasiveMechanicalVentilation: false,
+  nonInvasiveVentilation: false,
+  vasoactiveMedCount: 0,
+  vasoactiveUsed: {
+    norepinephrine: false,
+    epinephrine: false,
+    vasopressin: false,
+    dopamine: false,
+    dobutamine: false
+  },
+  // Chỉ mới có cận lâm sàng các chỉ số của tổng phân tích tế bào máu (TPTTBM / CBC)
+  wbc: 6.8,
+  neutrophilCount: 4.2,
+  lymphocyteCount: 2.1,
+  platelets: 250,
+  // Chưa có các xét nghiệm chuyên sâu khác
+  lactateInitial: void 0,
+  lactateRepeat6h: void 0,
+  procalcitonin: void 0,
+  crp: void 0,
+  bilirubinUmolL: void 0,
+  creatinineUmolL: void 0,
+  bloodCultureCollected: false,
+  rapidMolecularT2Done: false
+};
+var PRESET_CASES = [
+  {
+    id: "case-0-normal",
+    title: "Ca 0: B\xECnh th\u01B0\u1EDDng (Kh\xE1m s\u1EE9c kh\u1ECFe / Ch\u01B0a c\xF3 nhi\u1EC5m khu\u1EA9n)",
+    subtitle: "Sinh hi\u1EC7u b\xECnh th\u01B0\u1EDDng, ch\u1EC9 m\u1EDBi c\xF3 C\u1EADn l\xE2m s\xE0ng TPTTBM (CBC)",
+    category: "M\u1EB7c \u0111\u1ECBnh - B\xECnh th\u01B0\u1EDDng",
+    clinicalScenario: "Nam 35 tu\u1ED5i ki\u1EC3m tra s\u1EE9c kh\u1ECFe t\u1ED5ng qu\xE1t. Kh\xF4ng s\u1ED1t, kh\xF4ng kh\xF3 th\u1EDF, kh\xF4ng c\xF3 d\u1EA5u hi\u1EC7u nhi\u1EC5m tr\xF9ng. Sinh hi\u1EC7u ho\xE0n to\xE0n \u1ED5n \u0111\u1ECBnh: HA 120/80 mmHg, M\u1EA1ch 72 l\u1EA7n/ph\xFAt, Th\u1EDF 16 l\u1EA7n/ph\xFAt, SpO2 99% kh\xED tr\u1EDDi. C\u1EADn l\xE2m s\xE0ng ch\u1EC9 m\u1EDBi c\xF3 T\u1ED5ng ph\xE2n t\xEDch t\u1EBF b\xE0o m\xE1u: WBC 6.8 G/L, NEU 4.2 G/L, LYM 2.1 G/L, PLT 250 G/L (NLR = 2.0 - M\u1EE9c 1: Sinh l\xFD / B\xECnh th\u01B0\u1EDDng).",
+    patientData: NORMAL_PATIENT_CASE
+  },
+  {
+    id: "case-1-adult-septic-shock",
+    title: "Ca 1: Ng\u01B0\u1EDDi l\u1EDBn S\u1ED1c Nhi\u1EC5m Khu\u1EA9n (Sepsis-3 & LP-NEWS)",
+    subtitle: "Vi\xEAm ph\u1ED5i c\u1ED9ng \u0111\u1ED3ng bi\u1EBFn ch\u1EE9ng suy \u0111a c\u01A1 quan, h\u1EA1 huy\u1EBFt \xE1p",
+    category: "Ng\u01B0\u1EDDi l\u1EDBn - H\u1ED3i s\u1EE9c c\u1EA5p c\u1EE9u",
+    clinicalScenario: "Nam 66 tu\u1ED5i, ti\u1EC1n s\u1EED \u0110T\u0110 type 2 v\xE0 t\u0103ng huy\u1EBFt \xE1p, nh\u1EADp vi\u1EC7n v\xEC s\u1ED1t cao r\xE9t run, ho kh\u1EA1c \u0111\u1EDDm m\u1EE7, kh\xF3 th\u1EDF d\u1EEF d\u1ED9i, l\xFA l\u1EABn m\u1EDBi xu\u1EA5t hi\u1EC7n. Huy\u1EBFt \xE1p t\u1EE5t 82/50 mmHg, SpO2 89% d\xF9 th\u1EDF oxy k\xEDnh, Lactate 3.8 mmol/L, PCT 18 ng/mL, NLR 12.5 (M\u1EE9c 4: B\xE1o \u0111\u1ED9ng nguy k\u1ECBch \u2265 10.0).",
+    patientData: {
+      id: "case-1",
+      patientName: "Tr\u1EA7n V\u0103n H.",
+      patientCode: "BN-2026-081",
+      patientType: "adult",
+      ageYears: 66,
+      gender: "male",
+      setting: "acute_hospital",
+      weightKg: 68,
+      heightCm: 168,
+      dialysis: "none",
+      hasFrailty: false,
+      hasImmunosuppression: false,
+      hasRecentSurgery: false,
+      hasIndwellingCatheter: false,
+      hasRepeatedAntibioticUse: false,
+      hasSkinBreach: false,
+      communicationDifficulty: false,
+      suspectedInfection: true,
+      infectionSource: "respiratory",
+      feverOrRigors: true,
+      recentMultiplePresentations: false,
+      sbp: 82,
+      dbp: 50,
+      heartRate: 124,
+      respiratoryRate: 28,
+      temperature: 38.9,
+      spo2: 89,
+      onSupplementalOxygen: true,
+      fio2Percent: 35,
+      copdOrHypercapnicRisk: false,
+      avpu: "V",
+      gcs: 13,
+      newAlteredMentalState: true,
+      bilateralFixedPupils: false,
+      mottledOrAshen: true,
+      cyanosis: false,
+      nonBlanchingRash: false,
+      capillaryRefillSeconds: 4,
+      urineOutputStatus: "not_12_18h",
+      urineOutputMlKgHr: 0.35,
+      invasiveMechanicalVentilation: false,
+      nonInvasiveVentilation: true,
+      vasoactiveMedCount: 1,
+      vasoactiveUsed: {
+        norepinephrine: true,
+        epinephrine: false,
+        vasopressin: false,
+        dopamine: false,
+        dobutamine: false
+      },
+      pao2: 65,
+      lactateInitial: 3.8,
+      lactateRepeat6h: 2.9,
+      procalcitonin: 18,
+      crp: 165,
+      wbc: 18.5,
+      neutrophilCount: 15.2,
+      lymphocyteCount: 1.2,
+      platelets: 115,
+      bilirubinUmolL: 28,
+      creatinineUmolL: 185,
+      inr: 1.4,
+      dDimerMgL: 2.8,
+      fibrinogenMgDl: 210,
+      bloodCultureCollected: true,
+      bloodCultureResult: "pending",
+      rapidMolecularT2Done: true,
+      rapidMolecularResult: "positive",
+      rapidMolecularPathogen: "Klebsiella pneumoniae",
+      rapidMolecularResistanceGenes: ["blaCTX-M"]
+    }
+  },
+  {
+    id: "case-2-maternal-sepsis",
+    title: "Ca 2: Sepsis S\u1EA3n Khoa H\u1EADu S\u1EA3n (Obstetric SOFA)",
+    subtitle: "Nhi\u1EC5m khu\u1EA9n h\u1EADu s\u1EA3n nghi vi\xEAm n\u1ED9i m\u1EA1c t\u1EED cung, m\u1EA1ch nhanh t\u1EE5t HA",
+    category: "S\u1EA3n Ph\u1EE5 Khoa",
+    clinicalScenario: "S\u1EA3n ph\u1EE5 28 tu\u1ED5i ng\xE0y th\u1EE9 4 sau sinh th\u01B0\u1EDDng, s\u1ED1t cao 39.2\xB0C, t\u1EED cung co h\u1ED3i ch\u1EADm \u1EA5n \u0111au nhi\u1EC1u, s\u1EA3n d\u1ECBch h\xF4i, m\u1EA1ch nhanh 128 bpm, huy\u1EBFt \xE1p 85/55 mmHg, th\u1EDF nhanh 26 l\u1EA7n/ph\xFAt. C\u1EA7n \xE1p d\u1EE5ng Obstetric qSOFA v\xE0 ph\xE1c \u0111\u1ED3 h\u1ED3i s\u1EE9c d\u1ECBch s\u1EA3n khoa.",
+    patientData: {
+      id: "case-2",
+      patientName: "Nguy\u1EC5n Th\u1ECB M.",
+      patientCode: "BN-2026-114",
+      patientType: "maternal",
+      ageYears: 28,
+      gender: "female",
+      setting: "acute_hospital",
+      isPostpartum: true,
+      weightKg: 58,
+      heightCm: 158,
+      dialysis: "none",
+      hasFrailty: false,
+      hasImmunosuppression: false,
+      hasRecentSurgery: false,
+      hasIndwellingCatheter: true,
+      hasRepeatedAntibioticUse: false,
+      hasSkinBreach: true,
+      communicationDifficulty: false,
+      suspectedInfection: true,
+      infectionSource: "pelvic_obstetric",
+      feverOrRigors: true,
+      recentMultiplePresentations: false,
+      sbp: 85,
+      dbp: 55,
+      heartRate: 128,
+      respiratoryRate: 26,
+      temperature: 39.2,
+      spo2: 95,
+      onSupplementalOxygen: false,
+      fio2Percent: 21,
+      copdOrHypercapnicRisk: false,
+      avpu: "A",
+      gcs: 14,
+      newAlteredMentalState: false,
+      bilateralFixedPupils: false,
+      mottledOrAshen: false,
+      cyanosis: false,
+      nonBlanchingRash: false,
+      capillaryRefillSeconds: 3,
+      urineOutputStatus: "normal",
+      urineOutputMlKgHr: 0.6,
+      invasiveMechanicalVentilation: false,
+      nonInvasiveVentilation: false,
+      vasoactiveMedCount: 0,
+      vasoactiveUsed: {
+        norepinephrine: false,
+        epinephrine: false,
+        vasopressin: false,
+        dopamine: false,
+        dobutamine: false
+      },
+      lactateInitial: 2.4,
+      lactateRepeat6h: 1.6,
+      procalcitonin: 4.8,
+      crp: 132,
+      wbc: 22,
+      neutrophilCount: 18.5,
+      lymphocyteCount: 1.5,
+      platelets: 135,
+      bilirubinUmolL: 22,
+      creatinineUmolL: 105,
+      inr: 1.2,
+      dDimerMgL: 1.6,
+      fibrinogenMgDl: 340,
+      bloodCultureCollected: true,
+      bloodCultureResult: "pending",
+      rapidMolecularT2Done: false
+    }
+  },
+  {
+    id: "case-3-pediatric-phoenix",
+    title: "Ca 3: Nhi Khoa - Ti\xEAu Chu\u1EA9n Phoenix Sepsis 2024",
+    subtitle: "B\u1EC7nh nhi 5 tu\u1ED5i s\u1ED1t li b\xEC, h\u1EA1 huy\u1EBFt \xE1p theo tu\u1ED5i, t\u0103ng Lactate",
+    category: "Nhi Khoa (< 18 tu\u1ED5i)",
+    clinicalScenario: "B\xE9 g\xE1i 5 tu\u1ED5i \u0111\u01B0\u1EE3c ng\u01B0\u1EDDi nh\xE0 \u0111\u01B0a \u0111\u1EBFn c\u1EA5p c\u1EE9u trong t\xECnh tr\u1EA1ng s\u1ED1t cao 39.5\xB0C li\xEAn t\u1EE5c 2 ng\xE0y, li b\xEC, m\u1EA1ch 146 bpm, huy\u1EBFt \xE1p 68/42 mmHg (MAP 50.7 mmHg - t\u1EE5t so v\u1EDBi tu\u1ED5i), th\u1EDF co k\xE9o 42 l\u1EA7n/ph\xFAt, SpO2 91% th\u1EDF kh\xED tr\u1EDDi, Lactate m\xE1u 5.6 mmol/L.",
+    patientData: {
+      id: "case-3",
+      patientName: "L\xEA B\u1EA3o N.",
+      patientCode: "BN-PED-045",
+      patientType: "pediatric",
+      ageYears: 5,
+      gender: "female",
+      setting: "acute_hospital",
+      weightKg: 18,
+      heightCm: 108,
+      dialysis: "none",
+      hasFrailty: false,
+      hasImmunosuppression: false,
+      hasRecentSurgery: false,
+      hasIndwellingCatheter: false,
+      hasRepeatedAntibioticUse: false,
+      hasSkinBreach: false,
+      communicationDifficulty: true,
+      suspectedInfection: true,
+      infectionSource: "respiratory",
+      feverOrRigors: true,
+      recentMultiplePresentations: true,
+      sbp: 68,
+      dbp: 42,
+      heartRate: 146,
+      respiratoryRate: 42,
+      temperature: 39.5,
+      spo2: 91,
+      onSupplementalOxygen: true,
+      fio2Percent: 40,
+      copdOrHypercapnicRisk: false,
+      avpu: "V",
+      gcs: 10,
+      newAlteredMentalState: true,
+      bilateralFixedPupils: false,
+      mottledOrAshen: true,
+      cyanosis: false,
+      nonBlanchingRash: false,
+      capillaryRefillSeconds: 4,
+      urineOutputStatus: "not_12_18h",
+      urineOutputMlKgHr: 0.4,
+      invasiveMechanicalVentilation: false,
+      nonInvasiveVentilation: true,
+      vasoactiveMedCount: 1,
+      vasoactiveUsed: {
+        norepinephrine: true,
+        epinephrine: false,
+        vasopressin: false,
+        dopamine: false,
+        dobutamine: false
+      },
+      pao2: 72,
+      lactateInitial: 5.6,
+      lactateRepeat6h: 3.2,
+      procalcitonin: 12.4,
+      crp: 110,
+      wbc: 24.5,
+      neutrophilCount: 20,
+      lymphocyteCount: 1.8,
+      platelets: 92,
+      inr: 1.45,
+      dDimerMgL: 3.1,
+      fibrinogenMgDl: 85,
+      bloodCultureCollected: true,
+      bloodCultureResult: "pending",
+      rapidMolecularT2Done: false
+    }
+  },
+  {
+    id: "case-4-ward-red-flag",
+    title: "Ca 4: Suy Gi\u1EA3m C\u1EA5p Tr\xEAn Khoa Ph\xF2ng (D\u1EA5u Hi\u1EC7u \u0110\u1ECF NICE)",
+    subtitle: "Nhi\u1EC5m tr\xF9ng \u0111\u01B0\u1EDDng ti\u1EC3u \u1EDF ng\u01B0\u1EDDi cao tu\u1ED5i, c\xF3 1 th\xF4ng s\u1ED1 NEWS2 = 3 \u0111i\u1EC3m",
+    category: "N\u1ED9i Tr\xFA / Y T\u1EBF C\u01A1 S\u1EDF",
+    clinicalScenario: "B\xE0 78 tu\u1ED5i n\u1EB1m \u0111i\u1EC1u tr\u1ECB s\u1ECFi th\u1EADn, \u0111\u1ED9t ng\u1ED9t s\u1ED1t l\u1EA1nh run 39.3\xB0C, m\u1EA1ch 118 bpm, huy\u1EBFt \xE1p gi\u1EA3m xu\u1ED1ng 94/60 mmHg, th\u1EDF 22 l\u1EA7n/ph\xFAt. D\xF9 t\u1ED5ng \u0111i\u1EC3m NEWS2 = 6, nh\u01B0ng c\xF3 c\xE1c d\u1EA5u hi\u1EC7u nguy c\u01A1 cao (tu\u1ED5i > 75, sonde ti\u1EC3u l\u01B0u, l\xFA l\u1EABn m\u1EDBi). C\u1EA7n b\xE1c s\u0129 FY2+ \u0111\xE1nh gi\xE1 kh\u1EA9n c\u1EA5p.",
+    patientData: {
+      id: "case-4",
+      patientName: "Ho\xE0ng Th\u1ECB K.",
+      patientCode: "BN-2026-309",
+      patientType: "adult",
+      ageYears: 78,
+      gender: "female",
+      setting: "acute_hospital",
+      weightKg: 52,
+      heightCm: 154,
+      dialysis: "none",
+      hasFrailty: true,
+      hasImmunosuppression: false,
+      hasRecentSurgery: false,
+      hasIndwellingCatheter: true,
+      hasRepeatedAntibioticUse: true,
+      hasSkinBreach: false,
+      communicationDifficulty: true,
+      suspectedInfection: true,
+      infectionSource: "urinary",
+      feverOrRigors: true,
+      recentMultiplePresentations: true,
+      sbp: 94,
+      dbp: 60,
+      heartRate: 118,
+      respiratoryRate: 22,
+      temperature: 39.3,
+      spo2: 95,
+      onSupplementalOxygen: false,
+      fio2Percent: 21,
+      copdOrHypercapnicRisk: false,
+      avpu: "A",
+      gcs: 14,
+      newAlteredMentalState: true,
+      bilateralFixedPupils: false,
+      mottledOrAshen: false,
+      cyanosis: false,
+      nonBlanchingRash: false,
+      capillaryRefillSeconds: 2.5,
+      urineOutputStatus: "not_12_18h",
+      urineOutputMlKgHr: 0.45,
+      invasiveMechanicalVentilation: false,
+      nonInvasiveVentilation: false,
+      vasoactiveMedCount: 0,
+      vasoactiveUsed: {
+        norepinephrine: false,
+        epinephrine: false,
+        vasopressin: false,
+        dopamine: false,
+        dobutamine: false
+      },
+      lactateInitial: 2.2,
+      lactateRepeat6h: 1.5,
+      procalcitonin: 3.5,
+      crp: 88,
+      wbc: 16.2,
+      neutrophilCount: 13.5,
+      lymphocyteCount: 1.6,
+      platelets: 165,
+      bilirubinUmolL: 18,
+      creatinineUmolL: 140,
+      bloodCultureCollected: true,
+      bloodCultureResult: "pending",
+      rapidMolecularT2Done: false
+    }
+  },
+  {
+    id: "case-5-molecular-t2mr",
+    title: "Ca 5: H\u1ED3i S\u1EE9c Sau Ph\u1EABu Thu\u1EADt Tim & T2Bacteria Si\xEAu T\u1ED1c",
+    subtitle: "ICU Tim m\u1EA1ch (Biomedicines 2026): Ph\xE1t hi\u1EC7n K. pneumoniae OXA-48 sau 4h",
+    category: "ICU Ph\u1EABu Thu\u1EADt Tim M\u1EA1ch",
+    clinicalScenario: "Nam 62 tu\u1ED5i sau ph\u1EABu thu\u1EADt b\u1EAFc c\u1EA7u m\u1EA1ch v\xE0nh (CABG) ng\xE0y th\u1EE9 3, s\u1ED1t 38.6\xB0C, \u0111\u1EB7t CVC v\xE0 n\u1ED9i kh\xED qu\u1EA3n. X\xE9t nghi\u1EC7m T2Bacteria v\xE0 T2Resistance Panel tr\u1EF1c ti\u1EBFp t\u1EEB m\xE1u to\xE0n ph\u1EA7n sau 4 gi\u1EDD ph\xE1t hi\u1EC7n K. pneumoniae mang gen kh\xE1ng carbapenem blaOXA-48 + blaCTX-M, gi\xFAp chuy\u1EC3n s\u1EDBm sang Ceftazidime/Avibactam tr\u01B0\u1EDBc c\u1EA5y m\xE1u 100 gi\u1EDD.",
+    patientData: {
+      id: "case-5",
+      patientName: "\u0110\u1EB7ng Tu\u1EA5n A.",
+      patientCode: "BN-ICU-612",
+      patientType: "adult",
+      ageYears: 62,
+      gender: "male",
+      setting: "icu",
+      weightKg: 72,
+      heightCm: 170,
+      dialysis: "none",
+      hasFrailty: false,
+      hasImmunosuppression: false,
+      hasRecentSurgery: true,
+      hasIndwellingCatheter: true,
+      hasRepeatedAntibioticUse: true,
+      hasSkinBreach: true,
+      communicationDifficulty: false,
+      suspectedInfection: true,
+      infectionSource: "bloodstream_catheter",
+      feverOrRigors: true,
+      recentMultiplePresentations: false,
+      sbp: 96,
+      dbp: 62,
+      heartRate: 110,
+      respiratoryRate: 24,
+      temperature: 38.6,
+      spo2: 96,
+      onSupplementalOxygen: true,
+      fio2Percent: 45,
+      copdOrHypercapnicRisk: false,
+      avpu: "A",
+      gcs: 14,
+      newAlteredMentalState: false,
+      bilateralFixedPupils: false,
+      mottledOrAshen: false,
+      cyanosis: false,
+      nonBlanchingRash: false,
+      capillaryRefillSeconds: 2.5,
+      urineOutputStatus: "normal",
+      urineOutputMlKgHr: 0.8,
+      invasiveMechanicalVentilation: true,
+      nonInvasiveVentilation: false,
+      vasoactiveMedCount: 1,
+      vasoactiveUsed: {
+        norepinephrine: true,
+        epinephrine: false,
+        vasopressin: false,
+        dopamine: false,
+        dobutamine: false
+      },
+      pao2: 95,
+      lactateInitial: 2.1,
+      lactateRepeat6h: 1.4,
+      procalcitonin: 6.8,
+      crp: 145,
+      wbc: 15.6,
+      neutrophilCount: 13,
+      lymphocyteCount: 1.4,
+      platelets: 125,
+      bilirubinUmolL: 25,
+      creatinineUmolL: 130,
+      bloodCultureCollected: true,
+      bloodCultureResult: "pending",
+      rapidMolecularT2Done: true,
+      rapidMolecularResult: "positive",
+      rapidMolecularPathogen: "Klebsiella pneumoniae",
+      rapidMolecularResistanceGenes: ["blaOXA-48", "blaCTX-M"]
+    }
+  },
+  {
+    id: "case-6-uti-urosepsis",
+    title: "Ca 6: Nhi\u1EC5m Tr\xF9ng Ti\u1EC3u (Vi\xEAm \u0110\xE0i B\u1EC3 Th\u1EADn C\u1EA5p / Urosepsis)",
+    subtitle: "N\u1EEF 54 tu\u1ED5i, s\u1ED1t r\xE9t run, \u0111au h\xF4ng l\u01B0ng, ti\u1EC3u bu\u1ED1t, t\u0103ng NLR & Lactate",
+    category: "Ng\u01B0\u1EDDi l\u1EDBn - Ti\u1EBFt ni\u1EC7u / C\u1EA5p c\u1EE9u",
+    clinicalScenario: "N\u1EEF 54 tu\u1ED5i, ti\u1EC1n s\u1EED \u0111\xE1i th\xE1o \u0111\u01B0\u1EDDng type 2 v\xE0 s\u1ECFi th\u1EADn, nh\u1EADp vi\u1EC7n v\xEC s\u1ED1t cao 39.2\xB0C, r\xE9t run th\xE0nh c\u01A1n, \u0111au t\u1EE9c d\u1EEF d\u1ED9i v\xF9ng h\xF4ng l\u01B0ng b\xEAn ph\u1EA3i k\xE8m ti\u1EC3u bu\u1ED1t r\u1EAFt, n\u01B0\u1EDBc ti\u1EC3u \u0111\u1EE5c. Kh\xE1m: Rung th\u1EADn (+) b\xEAn ph\u1EA3i. Sinh hi\u1EC7u: HA 105/65 mmHg, M\u1EA1ch 108 l/p, Th\u1EDF 23 l/p, SpO2 96% kh\xED tr\u1EDDi. C\u1EADn l\xE2m s\xE0ng: WBC 17.8 G/L, NEU 15.2 G/L, LYM 1.2 G/L (NLR 12.7 - M\u1EE9c 4: B\xE1o \u0111\u1ED9ng nguy k\u1ECBch \u2265 10.0), Ti\u1EC3u c\u1EA7u 190 G/L, Lactate 2.3 mmol/L, PCT 4.6 ng/mL, CRP 128 mg/L, Creatinine 135 \xB5mol/L (t\u0103ng so v\u1EDBi n\u1EC1n 75 \xB5mol/L). qSOFA = 1/3 (b\u1ECF s\xF3t), nh\u01B0ng NEWS2 = 6, SIRS = 4/4 v\xE0 NICE ph\xE2n t\u1EA7ng nguy c\u01A1 cao do Lactate > 2.0.",
+    patientData: {
+      id: "case-6",
+      patientName: "L\xEA Th\u1ECB M.",
+      patientCode: "BN-2026-118",
+      patientType: "adult",
+      ageYears: 54,
+      gender: "female",
+      setting: "acute_hospital",
+      weightKg: 58,
+      heightCm: 156,
+      dialysis: "none",
+      hasFrailty: false,
+      hasImmunosuppression: false,
+      hasRecentSurgery: false,
+      hasIndwellingCatheter: false,
+      hasRepeatedAntibioticUse: false,
+      hasSkinBreach: false,
+      communicationDifficulty: false,
+      suspectedInfection: true,
+      infectionSource: "urinary",
+      feverOrRigors: true,
+      recentMultiplePresentations: false,
+      sbp: 105,
+      dbp: 65,
+      heartRate: 108,
+      respiratoryRate: 23,
+      temperature: 39.2,
+      spo2: 96,
+      onSupplementalOxygen: false,
+      fio2Percent: 21,
+      copdOrHypercapnicRisk: false,
+      avpu: "A",
+      gcs: 15,
+      newAlteredMentalState: false,
+      bilateralFixedPupils: false,
+      mottledOrAshen: false,
+      cyanosis: false,
+      nonBlanchingRash: false,
+      capillaryRefillSeconds: 2,
+      urineOutputStatus: "normal",
+      urineOutputMlKgHr: 0.9,
+      invasiveMechanicalVentilation: false,
+      nonInvasiveVentilation: false,
+      vasoactiveMedCount: 0,
+      vasoactiveUsed: {
+        norepinephrine: false,
+        epinephrine: false,
+        vasopressin: false,
+        dopamine: false,
+        dobutamine: false
+      },
+      wbc: 17.8,
+      neutrophilCount: 15.2,
+      lymphocyteCount: 1.2,
+      platelets: 190,
+      lactateInitial: 2.3,
+      lactateRepeat6h: 1.5,
+      procalcitonin: 4.6,
+      crp: 128,
+      creatinineUmolL: 135,
+      bilirubinUmolL: 15,
+      bloodCultureCollected: true,
+      bloodCultureResult: "pending",
+      rapidMolecularT2Done: false
+    }
+  }
+];
+
+// antibiotic/src/components/sepsis/PresetCasesModal.tsx
+var import_lucide_react20 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime21 = __toESM(require_jsx_runtime(), 1);
+var PresetCasesModal = ({
+  isOpen,
+  onClose,
+  onSelectCase
+}) => {
+  if (!isOpen) return null;
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center justify-between pb-4 border-b border-slate-100", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center gap-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Sparkles, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h3", { className: "text-base font-bold text-slate-900", children: "B\u1ED9 Ca B\u1EC7nh M\u1EABu Th\u1EF1c T\u1EBF T\u1EEB Y V\u0103n (Clinical Presets)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-xs text-slate-500", children: "Ch\u1ECDn m\u1ED9t ca l\xE2m s\xE0ng \u0111\u1EC3 n\u1EA1p d\u1EEF li\u1EC7u v\xE0 ki\u1EC3m nghi\u1EC7m h\u1EC7 th\u1ED1ng CDSS" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+        "button",
+        {
+          onClick: onClose,
+          className: "p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors",
+          children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.X, { className: "w-5 h-5" })
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "space-y-3 mt-4 max-h-[65vh] overflow-y-auto pr-1", children: PRESET_CASES.map((cs) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+      "div",
+      {
+        onClick: () => onSelectCase(cs),
+        className: "p-4 rounded-xl border border-slate-200 hover:border-teal-400 bg-slate-50/60 hover:bg-teal-50/40 cursor-pointer transition-all group",
+        children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-start justify-between gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-[11px] font-semibold text-teal-800 uppercase tracking-wider block mb-1", children: cs.category }),
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h4", { className: "text-sm font-bold text-slate-900 group-hover:text-teal-900", children: cs.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: cs.subtitle }),
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-xs text-slate-700 mt-2 bg-white p-2.5 rounded-lg border border-slate-200/80 leading-relaxed font-sans", children: cs.clinicalScenario })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "shrink-0 p-2 text-slate-400 group-hover:text-teal-600 group-hover:translate-x-0.5 transition-all", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ArrowRight, { className: "w-5 h-5" }) })
+        ] })
+      },
+      cs.id
+    )) }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "mt-5 pt-3 border-t border-slate-100 flex justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+      "button",
+      {
+        onClick: onClose,
+        className: "px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg transition-colors",
+        children: "\u0110\xF3ng L\u1EA1i"
+      }
+    ) })
+  ] }) });
+};
+
 // antibiotic/src/App.tsx
-var import_lucide_react24 = __toESM(require_lucide_react(), 1);
+var import_lucide_react29 = __toESM(require_lucide_react(), 1);
 
 // antibiotic/src/components/selection/SelectionWizard.tsx
-var import_react18 = __toESM(require_react(), 1);
+var import_react21 = __toESM(require_react(), 1);
 
 // antibiotic/src/selection/data/riskFactors.ts
 var GENERAL_MDR_RISK_FACTORS = [
@@ -84701,8 +87065,8 @@ function calculateRenalMetrics(patient, drugWeightRule) {
 }
 
 // antibiotic/src/components/selection/SourceBadge.tsx
-var import_lucide_react18 = __toESM(require_lucide_react(), 1);
-var import_jsx_runtime19 = __toESM(require_jsx_runtime(), 1);
+var import_lucide_react21 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime22 = __toESM(require_jsx_runtime(), 1);
 var SourceBadge = ({ source, className = "" }) => {
   let docName = "BVBND 2026";
   let badgeColor = "bg-blue-50 text-blue-700 border-blue-200";
@@ -84723,14 +87087,14 @@ var SourceBadge = ({ source, className = "" }) => {
     badgeColor = "bg-sky-50 text-sky-800 border-sky-300";
   }
   const pageStr = Array.isArray(source.page) ? source.page.join(", ") : source.page;
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
     "span",
     {
       className: `inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[11px] font-semibold border ${badgeColor} ${className}`,
       title: `Ngu\u1ED3n y v\u0103n ch\xEDnh th\u1EE9c: ${docName}, Trang ${pageStr}${source.note ? ` (${source.note})` : ""}`,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_lucide_react18.BookOpen, { className: "w-3 h-3 shrink-0" }),
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.BookOpen, { className: "w-3 h-3 shrink-0" }),
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("span", { children: [
           docName,
           " \u2022 Tr.",
           pageStr
@@ -84742,7 +87106,7 @@ var SourceBadge = ({ source, className = "" }) => {
 
 // antibiotic/src/components/selection/SiteScoreCalculators.tsx
 var import_react15 = __toESM(require_react(), 1);
-var import_lucide_react19 = __toESM(require_lucide_react(), 1);
+var import_lucide_react22 = __toESM(require_lucide_react(), 1);
 
 // antibiotic/src/selection/scoring/siteScoresEngine.ts
 var SCORE_DEFINITIONS = [
@@ -85570,7 +87934,7 @@ function calculateCnsMeningitis(inputs) {
 }
 
 // antibiotic/src/components/selection/SiteScoreCalculators.tsx
-var import_jsx_runtime20 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime23 = __toESM(require_jsx_runtime(), 1);
 var RISK_BADGE_STYLES = {
   low: "bg-emerald-100 text-emerald-800 border-emerald-300",
   moderate: "bg-amber-100 text-amber-800 border-amber-300",
@@ -85759,12 +88123,12 @@ var SiteScoreCalculators = ({
     setAppliedActionId(scoreId);
     setTimeout(() => setAppliedActionId(null), 2200);
   };
-  const renderCheckbox = (checked, onChange, label, pointsLabel, autoNote) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+  const renderCheckbox = (checked, onChange, label, pointsLabel, autoNote) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
     "label",
     {
       className: `flex items-start space-x-2 p-2.5 rounded-xl border text-xs cursor-pointer transition-all ${checked ? "bg-teal-50/70 border-teal-400 text-slate-900 font-semibold shadow-2xs" : "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/70 text-slate-700"}`,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
           "input",
           {
             type: "checkbox",
@@ -85773,10 +88137,10 @@ var SiteScoreCalculators = ({
             className: "rounded text-teal-600 focus:ring-teal-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex-1 min-w-0 leading-snug", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center justify-between gap-1.5 flex-wrap", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: label }),
-            pointsLabel && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex-1 min-w-0 leading-snug", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center justify-between gap-1.5 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: label }),
+            pointsLabel && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
               "span",
               {
                 className: `px-1.5 py-0.2 rounded text-[10px] font-black shrink-0 ${checked ? "bg-teal-600 text-white" : "bg-slate-100 text-slate-600"}`,
@@ -85784,41 +88148,41 @@ var SiteScoreCalculators = ({
               }
             )
           ] }),
-          autoNote && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-[10px] text-teal-700 font-medium mt-0.5 flex items-center gap-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Sparkles, { className: "w-3 h-3 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: autoNote })
+          autoNote && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "text-[10px] text-teal-700 font-medium mt-0.5 flex items-center gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Sparkles, { className: "w-3 h-3 shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: autoNote })
           ] })
         ] })
       ]
     }
   );
-  const renderTierButtons = (label, value, options, onChange, autoNote) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-2.5 rounded-xl border border-slate-200 bg-white space-y-1.5", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center justify-between gap-1.5 flex-wrap", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-xs font-bold text-slate-800", children: label }),
-      autoNote && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-[10px] font-semibold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200", children: autoNote })
+  const renderTierButtons = (label, value, options, onChange, autoNote) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "p-2.5 rounded-xl border border-slate-200 bg-white space-y-1.5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center justify-between gap-1.5 flex-wrap", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-xs font-bold text-slate-800", children: label }),
+      autoNote && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-[10px] font-semibold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200", children: autoNote })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-1", children: options.map((opt) => {
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-1", children: options.map((opt) => {
       const isSelected = value === opt.val;
-      return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+      return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
         "button",
         {
           type: "button",
           onClick: () => onChange(opt.val),
           className: `px-2 py-1.5 rounded-lg border text-left transition-all cursor-pointer ${isSelected ? "bg-teal-600 text-white border-teal-600 shadow-2xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] font-extrabold leading-tight", children: opt.label }),
-            opt.sub && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: `text-[9px] mt-0.5 leading-tight ${isSelected ? "text-teal-100" : "text-slate-500"}`, children: opt.sub })
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] font-extrabold leading-tight", children: opt.label }),
+            opt.sub && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: `text-[9px] mt-0.5 leading-tight ${isSelected ? "text-teal-100" : "text-slate-500"}`, children: opt.sub })
           ]
         },
         opt.val
       );
     }) })
   ] });
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "pt-3 border-t border-slate-100 space-y-2.5", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1.5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Calculator, { className: "w-4 h-4 text-teal-600 shrink-0" }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-xs font-bold text-slate-800 uppercase tracking-wide", children: "Thang \u0110i\u1EC3m Chuy\xEAn Bi\u1EC7t Theo V\u1ECB Tr\xED Nhi\u1EC5m Tr\xF9ng" }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-[10px] text-slate-500 hidden md:inline", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "pt-3 border-t border-slate-100 space-y-2.5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Calculator, { className: "w-4 h-4 text-teal-600 shrink-0" }),
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-xs font-bold text-slate-800 uppercase tracking-wide", children: "Thang \u0110i\u1EC3m Chuy\xEAn Bi\u1EC7t Theo V\u1ECB Tr\xED Nhi\u1EC5m Tr\xF9ng" }),
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("span", { className: "text-[10px] text-slate-500 hidden md:inline", children: [
         "\u2022 T\u1EF1 \u0111\u1ED9ng l\u1EA5y Tu\u1ED5i (",
         patient.age,
         "), Gi\u1EDBi (",
@@ -85828,10 +88192,10 @@ var SiteScoreCalculators = ({
         " \xB5mol/L)"
       ] })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "flex flex-wrap items-center gap-1.5", children: availableScores.map((meta) => {
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex flex-wrap items-center gap-1.5", children: availableScores.map((meta) => {
       const isOpen = activeScoreId === meta.id;
       const saved = savedScores[meta.id];
-      return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+      return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
         "button",
         {
           type: "button",
@@ -85839,38 +88203,38 @@ var SiteScoreCalculators = ({
           className: `px-3 py-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${isOpen ? "bg-teal-700 text-white border-teal-700 shadow-xs ring-2 ring-teal-500/20" : saved ? "bg-white border-teal-300 text-slate-900 hover:bg-teal-50/60 shadow-2xs" : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-white hover:border-slate-300"}`,
           title: meta.subtitleVi,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: meta.shortName }),
-            meta.badgeText && !saved && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: meta.shortName }),
+            meta.badgeText && !saved && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
               "span",
               {
                 className: `px-1.5 py-0.2 rounded text-[9px] font-bold ${isOpen ? "bg-teal-600 text-teal-100" : "bg-slate-200/80 text-slate-600"}`,
                 children: meta.badgeText
               }
             ),
-            saved && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            saved && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
               "span",
               {
                 className: `px-1.5 py-0.2 rounded-full text-[10px] font-black border ${isOpen ? "bg-white text-teal-900 border-white" : RISK_BADGE_STYLES[saved.riskLevel]}`,
                 children: saved.displayScoreText
               }
             ),
-            isOpen ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ChevronUp, { className: "w-3.5 h-3.5 opacity-80" }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ChevronDown, { className: "w-3.5 h-3.5 opacity-60" })
+            isOpen ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.ChevronUp, { className: "w-3.5 h-3.5 opacity-80" }) : /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.ChevronDown, { className: "w-3.5 h-3.5 opacity-60" })
           ]
         },
         meta.id
       );
     }) }),
-    activeScoreId && activeMeta && activeResult && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "rounded-2xl border border-teal-200 bg-slate-50/70 p-3.5 sm:p-4 space-y-3.5 shadow-2xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-200/80", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("h4", { className: "text-xs sm:text-sm font-extrabold text-slate-900 flex items-center gap-1.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Activity, { className: "w-4 h-4 text-teal-600 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: activeMeta.titleVi })
+    activeScoreId && activeMeta && activeResult && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "rounded-2xl border border-teal-200 bg-slate-50/70 p-3.5 sm:p-4 space-y-3.5 shadow-2xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-200/80", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("h4", { className: "text-xs sm:text-sm font-extrabold text-slate-900 flex items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Activity, { className: "w-4 h-4 text-teal-600 shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: activeMeta.titleVi })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: activeMeta.subtitleVi })
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: activeMeta.subtitleVi })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-1.5 self-end sm:self-auto", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center gap-1.5 self-end sm:self-auto", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
             "button",
             {
               type: "button",
@@ -85878,12 +88242,12 @@ var SiteScoreCalculators = ({
               className: "px-2.5 py-1 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 text-[11px] font-bold flex items-center gap-1 cursor-pointer",
               title: "\u0110\u1EB7t l\u1EA1i v\u1EC1 th\xF4ng s\u1ED1 m\u1EB7c \u0111\u1ECBnh c\u1EE7a b\u1EC7nh nh\xE2n",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.RotateCcw, { className: "w-3 h-3" }),
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "\u0110\u1EB7t l\u1EA1i" })
+                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.RotateCcw, { className: "w-3 h-3" }),
+                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "\u0110\u1EB7t l\u1EA1i" })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
             "button",
             {
               type: "button",
@@ -85894,7 +88258,7 @@ var SiteScoreCalculators = ({
           )
         ] })
       ] }),
-      activeScoreId === "curb65" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
+      activeScoreId === "curb65" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
         renderCheckbox(
           curbInputs.confusion,
           (v) => setCurbInputs((p) => ({ ...p, confusion: v })),
@@ -85927,18 +88291,18 @@ var SiteScoreCalculators = ({
           `T\u1EF1 \u0111\u1ED9ng t\u1EEB h\u1ED3 s\u01A1 BN: ${patient.age} tu\u1ED5i`
         )
       ] }),
-      activeScoreId === "psi" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-xs", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "font-bold text-slate-800", children: "Tu\u1ED5i b\u1EC7nh nh\xE2n (+1\u0111 / n\u0103m)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-[10px] text-teal-700", children: [
+      activeScoreId === "psi" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "text-xs", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "font-bold text-slate-800", children: "Tu\u1ED5i b\u1EC7nh nh\xE2n (+1\u0111 / n\u0103m)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "text-[10px] text-teal-700", children: [
                 "T\u1EF1 \u0111\u1ED9ng t\u1EEB h\u1ED3 s\u01A1 BN (",
                 patient.age,
                 " tu\u1ED5i)"
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
               "input",
               {
                 type: "number",
@@ -85958,8 +88322,8 @@ var SiteScoreCalculators = ({
             `H\u1ED3 s\u01A1 BN: ${patient.gender === "f" ? "N\u1EEF" : "Nam"}`
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] font-bold text-slate-600 uppercase tracking-wider pt-1", children: "B\u1EC7nh n\u1EC1n & Y\u1EBFu t\u1ED1 d\u1ECBch t\u1EC5" }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] font-bold text-slate-600 uppercase tracking-wider pt-1", children: "B\u1EC7nh n\u1EC1n & Y\u1EBFu t\u1ED1 d\u1ECBch t\u1EC5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
           renderCheckbox(
             psiInputs.nursingHome,
             (v) => setPsiInputs((p) => ({ ...p, nursingHome: v })),
@@ -85999,8 +88363,8 @@ var SiteScoreCalculators = ({
             renal.crcl < 60 ? `CrCl hi\u1EC7n t\u1EA1i: ${renal.crcl} mL/p` : void 0
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] font-bold text-slate-600 uppercase tracking-wider pt-1", children: "Sinh hi\u1EC7u & C\u1EADn l\xE2m s\xE0ng" }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] font-bold text-slate-600 uppercase tracking-wider pt-1", children: "Sinh hi\u1EC7u & C\u1EADn l\xE2m s\xE0ng" }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
           renderCheckbox(
             psiInputs.alteredMentalStatus,
             (v) => setPsiInputs((p) => ({ ...p, alteredMentalStatus: v })),
@@ -86075,9 +88439,9 @@ var SiteScoreCalculators = ({
           )
         ] })
       ] }),
-      activeScoreId === "ats_cap" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] font-bold text-rose-700 uppercase tracking-wider", children: "Ti\xEAu chu\u1EA9n CH\xCDNH (Ch\u1EC9 c\u1EA7n \u2265 1 ti\xEAu chu\u1EA9n \u2192 CAP N\u1EB7ng / ICU)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
+      activeScoreId === "ats_cap" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] font-bold text-rose-700 uppercase tracking-wider", children: "Ti\xEAu chu\u1EA9n CH\xCDNH (Ch\u1EC9 c\u1EA7n \u2265 1 ti\xEAu chu\u1EA9n \u2192 CAP N\u1EB7ng / ICU)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
           renderCheckbox(
             atsInputs.invasiveMechVent,
             (v) => setAtsInputs((p) => ({ ...p, invasiveMechVent: v })),
@@ -86091,8 +88455,8 @@ var SiteScoreCalculators = ({
             "Ch\xEDnh"
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] font-bold text-slate-600 uppercase tracking-wider pt-1", children: "Ti\xEAu chu\u1EA9n PH\u1EE4 (C\u1EA7n \u2265 3 ti\xEAu chu\u1EA9n \u2192 CAP N\u1EB7ng / ICU)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] font-bold text-slate-600 uppercase tracking-wider pt-1", children: "Ti\xEAu chu\u1EA9n PH\u1EE4 (C\u1EA7n \u2265 3 ti\xEAu chu\u1EA9n \u2192 CAP N\u1EB7ng / ICU)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
           renderCheckbox(atsInputs.rrOver30, (v) => setAtsInputs((p) => ({ ...p, rrOver30: v })), "Nh\u1ECBp th\u1EDF \u2265 30 l\u1EA7n/ph\xFAt", "Ph\u1EE5"),
           renderCheckbox(atsInputs.pao2Fio2Under250, (v) => setAtsInputs((p) => ({ ...p, pao2Fio2Under250: v })), "PaO2/FiO2 \u2264 250 mmHg", "Ph\u1EE5"),
           renderCheckbox(atsInputs.multilobarInfiltrates, (v) => setAtsInputs((p) => ({ ...p, multilobarInfiltrates: v })), "Th\xE2m nhi\u1EC5m nhi\u1EC1u th\xF9y ph\u1ED5i", "Ph\u1EE5"),
@@ -86104,7 +88468,7 @@ var SiteScoreCalculators = ({
           renderCheckbox(atsInputs.hypotensionFluid, (v) => setAtsInputs((p) => ({ ...p, hypotensionFluid: v })), "T\u1EE5t huy\u1EBFt \xE1p c\u1EA7n b\xF9 d\u1ECBch t\xEDch c\u1EF1c", "Ph\u1EE5")
         ] })
       ] }),
-      activeScoreId === "cpis" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-2", children: [
+      activeScoreId === "cpis" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-2", children: [
         renderTierButtons(
           "1. Th\xE2n nhi\u1EC7t (\xB0C)",
           cpisInputs.tempScore,
@@ -86155,7 +88519,7 @@ var SiteScoreCalculators = ({
           ],
           (v) => setCpisInputs((p) => ({ ...p, culturePositive: v }))
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
           renderCheckbox(
             cpisInputs.oxygenationLow,
             (v) => setCpisInputs((p) => ({ ...p, oxygenationLow: v })),
@@ -86170,7 +88534,7 @@ var SiteScoreCalculators = ({
           )
         ] })
       ] }),
-      activeScoreId === "qsofa" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-3 gap-2", children: [
+      activeScoreId === "qsofa" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-3 gap-2", children: [
         renderCheckbox(
           qsofaInputs.alteredMental,
           (v) => setQsofaInputs((p) => ({ ...p, alteredMental: v })),
@@ -86194,7 +88558,7 @@ var SiteScoreCalculators = ({
         const isPeds = activeScoreId === "psofa_calc";
         const val = isPeds ? psofaInputs : sofaInputs;
         const setter = isPeds ? setPsofaInputs : setSofaInputs;
-        return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-2", children: [
+        return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-2", children: [
           renderTierButtons(
             "1. H\xF4 h\u1EA5p (PaO2/FiO2)",
             val.resp,
@@ -86270,8 +88634,8 @@ var SiteScoreCalculators = ({
           )
         ] });
       })(),
-      activeScoreId === "lrinec" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
+      activeScoreId === "lrinec" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
           renderCheckbox(
             lrinecInputs.crpOver150,
             (v) => setLrinecInputs((p) => ({ ...p, crpOver150: v })),
@@ -86298,7 +88662,7 @@ var SiteScoreCalculators = ({
             "+1\u0111"
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
           renderTierButtons(
             "B\u1EA1ch c\u1EA7u m\xE1u (/mm\xB3)",
             lrinecInputs.wbcTier,
@@ -86321,26 +88685,26 @@ var SiteScoreCalculators = ({
           )
         ] })
       ] }),
-      activeScoreId === "eron_ssti" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
+      activeScoreId === "eron_ssti" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
           { key: "none", title: "Kh\xF4ng c\xF3 d\u1EA5u hi\u1EC7u nhi\u1EC5m \u0111\u1ED9c to\xE0n th\xE2n", desc: "Sinh hi\u1EC7u b\xECnh th\u01B0\u1EDDng, kh\xF4ng b\u1EC7nh n\u1EC1n m\u1EA5t b\xF9 (Class I)" },
           { key: "mild_comorbid", title: "\u0110\u1ED9c t\xEDnh nh\u1EB9 ho\u1EB7c b\u1EC7nh n\u1EC1n \u1ED5n \u0111\u1ECBnh k\xE9m", desc: "S\u1ED1t nh\u1EB9, ho\u1EB7c suy t\u0129nh m\u1EA1ch/b\u1EC7nh m\u1EA1ch ngo\u1EA1i bi\xEAn (Class II)" },
           { key: "moderate_sepsis", title: "Nhi\u1EC5m \u0111\u1ED9c to\xE0n th\xE2n v\u1EEBa / Sepsis", desc: "S\u1ED1t cao, nh\u1ECBp tim nhanh, th\u1EDF nhanh, l\xFA l\u1EABn (Class III)" },
           { key: "severe_sepsis_necrotizing", title: "S\u1ED1c nhi\u1EC5m khu\u1EA9n ho\u1EB7c Vi\xEAm c\xE2n ho\u1EA1i t\u1EED", desc: "T\u1EE5t huy\u1EBFt \xE1p, b\u1ECDng n\u01B0\u1EDBc xu\u1EA5t huy\u1EBFt, l\xE9p b\xE9p d\u01B0\u1EDBi da (Class IV)" }
-        ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+        ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
           "button",
           {
             type: "button",
             onClick: () => setEronInputs((p) => ({ ...p, systemicToxicity: opt.key })),
             className: `p-2.5 rounded-xl border text-left transition-all cursor-pointer ${eronInputs.systemicToxicity === opt.key ? "bg-teal-600 text-white border-teal-600 shadow-2xs" : "bg-white border-slate-200 hover:bg-slate-50 text-slate-800"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-xs font-bold", children: opt.title }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: `text-[10px] mt-0.5 ${eronInputs.systemicToxicity === opt.key ? "text-teal-100" : "text-slate-500"}`, children: opt.desc })
+              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-xs font-bold", children: opt.title }),
+              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: `text-[10px] mt-0.5 ${eronInputs.systemicToxicity === opt.key ? "text-teal-100" : "text-slate-500"}`, children: opt.desc })
             ]
           },
           opt.key
         )) }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
           renderCheckbox(
             eronInputs.uncontrolledComorbidity,
             (v) => setEronInputs((p) => ({ ...p, uncontrolledComorbidity: v })),
@@ -86355,7 +88719,7 @@ var SiteScoreCalculators = ({
           )
         ] })
       ] }),
-      activeScoreId === "uti_esbl" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
+      activeScoreId === "uti_esbl" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
         renderCheckbox(
           utiEsblInputs.recentHospitalization,
           (v) => setUtiEsblInputs((p) => ({ ...p, recentHospitalization: v })),
@@ -86401,7 +88765,7 @@ var SiteScoreCalculators = ({
           "L\xE2m s\xE0ng"
         )
       ] }),
-      activeScoreId === "clif_sbp" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-2", children: [
+      activeScoreId === "clif_sbp" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-2", children: [
         renderTierButtons(
           "1. Gan (Bilirubin mg/dL)",
           clifInputs.liverBiliTier,
@@ -86483,9 +88847,9 @@ var SiteScoreCalculators = ({
           `SCr hi\u1EC7n t\u1EA1i: ${renal.scrMgdl} mg/dL`
         )
       ] }),
-      activeScoreId === "tg18_biliary" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] font-bold text-rose-700 uppercase tracking-wider", children: "Ti\xEAu chu\u1EA9n \u0110\u1ED9 III (N\u1EB7ng \u2014 Suy \xEDt nh\u1EA5t 1 c\u01A1 quan)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
+      activeScoreId === "tg18_biliary" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] font-bold text-rose-700 uppercase tracking-wider", children: "Ti\xEAu chu\u1EA9n \u0110\u1ED9 III (N\u1EB7ng \u2014 Suy \xEDt nh\u1EA5t 1 c\u01A1 quan)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
           renderCheckbox(tg18Inputs.cardioVasopressor, (v) => setTg18Inputs((p) => ({ ...p, cardioVasopressor: v })), "Tim m\u1EA1ch: H\u1EA1 HA c\u1EA7n v\u1EADn m\u1EA1ch", "Grade III"),
           renderCheckbox(tg18Inputs.neuroAltered, (v) => setTg18Inputs((p) => ({ ...p, neuroAltered: v })), "Th\u1EA7n kinh: R\u1ED1i lo\u1EA1n tri gi\xE1c", "Grade III"),
           renderCheckbox(tg18Inputs.respPao2Fio2Under300, (v) => setTg18Inputs((p) => ({ ...p, respPao2Fio2Under300: v })), "H\xF4 h\u1EA5p: PaO2/FiO2 < 300", "Grade III"),
@@ -86499,8 +88863,8 @@ var SiteScoreCalculators = ({
           renderCheckbox(tg18Inputs.hepaticInrOver15, (v) => setTg18Inputs((p) => ({ ...p, hepaticInrOver15: v })), "Gan: INR > 1.5", "Grade III"),
           renderCheckbox(tg18Inputs.hematoPltUnder100k, (v) => setTg18Inputs((p) => ({ ...p, hematoPltUnder100k: v })), "Huy\u1EBFt h\u1ECDc: Ti\u1EC3u c\u1EA7u < 100.000/mm\xB3", "Grade III")
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] font-bold text-amber-800 uppercase tracking-wider pt-1", children: "Ti\xEAu chu\u1EA9n \u0110\u1ED9 II (Trung b\xECnh \u2014 C\xF3 \u2265 2/5 ti\xEAu ch\xED)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] font-bold text-amber-800 uppercase tracking-wider pt-1", children: "Ti\xEAu chu\u1EA9n \u0110\u1ED9 II (Trung b\xECnh \u2014 C\xF3 \u2265 2/5 ti\xEAu ch\xED)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
           renderCheckbox(tg18Inputs.wbcAbnormal, (v) => setTg18Inputs((p) => ({ ...p, wbcAbnormal: v })), "B\u1EA1ch c\u1EA7u > 12.000 ho\u1EB7c < 4.000/mm\xB3", "Grade II"),
           renderCheckbox(tg18Inputs.highFever39, (v) => setTg18Inputs((p) => ({ ...p, highFever39: v })), "S\u1ED1t cao \u2265 39\xB0C", "Grade II"),
           renderCheckbox(
@@ -86514,17 +88878,17 @@ var SiteScoreCalculators = ({
           renderCheckbox(tg18Inputs.hypoalbuminemia, (v) => setTg18Inputs((p) => ({ ...p, hypoalbuminemia: v })), "Albumin m\xE1u gi\u1EA3m (< 0.7 gi\u1EDBi h\u1EA1n d\u01B0\u1EDBi)", "Grade II")
         ] })
       ] }),
-      activeScoreId === "cns_meningitis" && /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] font-bold text-slate-600 uppercase tracking-wider", children: "Thang \u0111i\u1EC3m Vi\xEAm m\xE0ng n\xE3o vi khu\u1EA9n (Bacterial Meningitis Score - BMS)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
+      activeScoreId === "cns_meningitis" && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] font-bold text-slate-600 uppercase tracking-wider", children: "Thang \u0111i\u1EC3m Vi\xEAm m\xE0ng n\xE3o vi khu\u1EA9n (Bacterial Meningitis Score - BMS)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2", children: [
           renderCheckbox(cnsInputs.gramStainPositive, (v) => setCnsInputs((p) => ({ ...p, gramStainPositive: v })), "Nhu\u1ED9m Gram d\u1ECBch n\xE3o t\u1EE7y d\u01B0\u01A1ng t\xEDnh", "+2\u0111"),
           renderCheckbox(cnsInputs.csfProteinOver80, (v) => setCnsInputs((p) => ({ ...p, csfProteinOver80: v })), "Protein d\u1ECBch n\xE3o t\u1EE7y \u2265 80 mg/dL (0.8 g/L)", "+1\u0111"),
           renderCheckbox(cnsInputs.peripheralAncOver10k, (v) => setCnsInputs((p) => ({ ...p, peripheralAncOver10k: v })), "B\u1EA1ch c\u1EA7u \u0111a nh\xE2n m\xE1u ngo\u1EA1i vi \u2265 10.000/mm\xB3", "+1\u0111"),
           renderCheckbox(cnsInputs.csfAncOver1000, (v) => setCnsInputs((p) => ({ ...p, csfAncOver1000: v })), "B\u1EA1ch c\u1EA7u \u0111a nh\xE2n d\u1ECBch n\xE3o t\u1EE7y \u2265 1.000/mm\xB3", "+1\u0111"),
           renderCheckbox(cnsInputs.seizureAtPresentation, (v) => setCnsInputs((p) => ({ ...p, seizureAtPresentation: v })), "C\xF3 co gi\u1EADt tr\u01B0\u1EDBc ho\u1EB7c l\xFAc nh\u1EADp vi\u1EC7n", "+1\u0111")
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-[11px] font-bold text-purple-800 uppercase tracking-wider pt-1", children: "Y\u1EBFu t\u1ED1 M\u1EDF r\u1ED9ng Ph\u1ED5 Kh\xE1ng Sinh (Listeria & B\u1EC7nh vi\u1EC7n)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-3 gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] font-bold text-purple-800 uppercase tracking-wider pt-1", children: "Y\u1EBFu t\u1ED1 M\u1EDF r\u1ED9ng Ph\u1ED5 Kh\xE1ng Sinh (Listeria & B\u1EC7nh vi\u1EC7n)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-3 gap-2", children: [
           renderCheckbox(
             cnsInputs.ageOver50,
             (v) => setCnsInputs((p) => ({ ...p, ageOver50: v })),
@@ -86546,51 +88910,51 @@ var SiteScoreCalculators = ({
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: `rounded-2xl border p-3.5 space-y-2.5 ${RISK_PANEL_STYLES[activeResult.riskLevel]}`, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-base sm:text-lg font-black tracking-tight", children: activeResult.displayScoreText }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: `px-2 py-0.5 rounded-full text-[11px] font-black border ${RISK_BADGE_STYLES[activeResult.riskLevel]}`, children: activeResult.riskClassVi })
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: `rounded-2xl border p-3.5 space-y-2.5 ${RISK_PANEL_STYLES[activeResult.riskLevel]}`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-base sm:text-lg font-black tracking-tight", children: activeResult.displayScoreText }),
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: `px-2 py-0.5 rounded-full text-[11px] font-black border ${RISK_BADGE_STYLES[activeResult.riskLevel]}`, children: activeResult.riskClassVi })
           ] }),
-          activeResult.mortalityTextVi && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-[11px] font-bold opacity-85", children: activeResult.mortalityTextVi })
+          activeResult.mortalityTextVi && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-[11px] font-bold opacity-85", children: activeResult.mortalityTextVi })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2 text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-2.5 rounded-xl bg-white/85 border border-black/5 space-y-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "font-extrabold text-[11px] uppercase tracking-wider text-slate-500 flex items-center gap-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Hospital, { className: "w-3.5 h-3.5 text-teal-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "H\u01B0\u1EDBng X\u1EED Tr\xED & N\u01A1i \u0110i\u1EC1u Tr\u1ECB" })
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2 text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "p-2.5 rounded-xl bg-white/85 border border-black/5 space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "font-extrabold text-[11px] uppercase tracking-wider text-slate-500 flex items-center gap-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Hospital, { className: "w-3.5 h-3.5 text-teal-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "H\u01B0\u1EDBng X\u1EED Tr\xED & N\u01A1i \u0110i\u1EC1u Tr\u1ECB" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-slate-800 leading-snug font-medium", children: activeResult.dispositionVi })
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-slate-800 leading-snug font-medium", children: activeResult.dispositionVi })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "p-2.5 rounded-xl bg-white/85 border border-black/5 space-y-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "font-extrabold text-[11px] uppercase tracking-wider text-slate-500 flex items-center gap-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ClipboardCheck, { className: "w-3.5 h-3.5 text-teal-600" }),
-              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "G\u1EE3i \xDD Kh\xE1ng Sinh Li\xEAn Quan" })
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "p-2.5 rounded-xl bg-white/85 border border-black/5 space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "font-extrabold text-[11px] uppercase tracking-wider text-slate-500 flex items-center gap-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.ClipboardCheck, { className: "w-3.5 h-3.5 text-teal-600" }),
+              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "G\u1EE3i \xDD Kh\xE1ng Sinh Li\xEAn Quan" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-slate-800 leading-snug font-medium", children: activeResult.antibioticImpactVi })
+            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-slate-800 leading-snug font-medium", children: activeResult.antibioticImpactVi })
           ] })
         ] }),
-        activeResult.clinicalNotesVi && activeResult.clinicalNotesVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "p-2.5 rounded-xl bg-white/90 border border-black/10 text-[11px] space-y-1 text-slate-800", children: activeResult.clinicalNotesVi.map((note, idx) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-start gap-1.5 leading-snug", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Info, { className: "w-3.5 h-3.5 text-teal-700 shrink-0 mt-0.5" }),
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: note })
+        activeResult.clinicalNotesVi && activeResult.clinicalNotesVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "p-2.5 rounded-xl bg-white/90 border border-black/10 text-[11px] space-y-1 text-slate-800", children: activeResult.clinicalNotesVi.map((note, idx) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-start gap-1.5 leading-snug", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Info, { className: "w-3.5 h-3.5 text-teal-700 shrink-0 mt-0.5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: note })
         ] }, idx)) }),
-        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("span", { className: "text-[10px] font-semibold opacity-75", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("span", { className: "text-[10px] font-semibold opacity-75", children: [
             "Tham chi\u1EBFu: ",
             activeResult.sourceText
           ] }),
-          activeResult.suggestedAction && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+          activeResult.suggestedAction && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
             "button",
             {
               type: "button",
               onClick: () => handleTriggerApplyAction(activeResult.suggestedAction, activeResult.scoreId),
               className: `px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${appliedActionId === activeResult.scoreId ? "bg-emerald-600 text-white" : "bg-teal-700 hover:bg-teal-800 text-white"}`,
-              children: appliedActionId === activeResult.scoreId ? /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_jsx_runtime20.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.Check, { className: "w-3.5 h-3.5" }),
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: "\u0110\xE3 \u0111\u1ED3ng b\u1ED9 v\xE0o CDSS!" })
-              ] }) : /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_jsx_runtime20.Fragment, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: activeResult.suggestedAction.actionLabelVi }),
-                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react19.ArrowRight, { className: "w-3.5 h-3.5" })
+              children: appliedActionId === activeResult.scoreId ? /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(import_jsx_runtime23.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Check, { className: "w-3.5 h-3.5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "\u0110\xE3 \u0111\u1ED3ng b\u1ED9 v\xE0o CDSS!" })
+              ] }) : /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(import_jsx_runtime23.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: activeResult.suggestedAction.actionLabelVi }),
+                /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.ArrowRight, { className: "w-3.5 h-3.5" })
               ] })
             }
           )
@@ -86601,8 +88965,8 @@ var SiteScoreCalculators = ({
 };
 
 // antibiotic/src/components/selection/StepAssessmentAndRegimens.tsx
-var import_lucide_react20 = __toESM(require_lucide_react(), 1);
-var import_jsx_runtime21 = __toESM(require_jsx_runtime(), 1);
+var import_lucide_react23 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime24 = __toESM(require_jsx_runtime(), 1);
 var StepAssessmentAndRegimens = ({
   site,
   onSelectSite,
@@ -86651,7 +89015,7 @@ var StepAssessmentAndRegimens = ({
       id: "respiratory",
       titleVi: "H\xF4 H\u1EA5p (Vi\xEAm Ph\u1ED5i)",
       subVi: "CAP, HAP, VAP th\u1EDF m\xE1y",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Stethoscope, { className: "w-4 h-4 text-sky-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Stethoscope, { className: "w-4 h-4 text-sky-600" }),
       color: "bg-sky-50 text-sky-700",
       borderActive: "border-sky-500 bg-sky-50/70 ring-2 ring-sky-500/20"
     },
@@ -86659,7 +89023,7 @@ var StepAssessmentAndRegimens = ({
       id: "sepsis",
       titleVi: "Nhi\u1EC5m Khu\u1EA9n Huy\u1EBFt",
       subVi: "Sepsis, S\u1ED1c NK",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Droplet, { className: "w-4 h-4 text-rose-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Droplet, { className: "w-4 h-4 text-rose-600" }),
       color: "bg-rose-50 text-rose-700",
       borderActive: "border-rose-500 bg-rose-50/70 ring-2 ring-rose-500/20"
     },
@@ -86667,7 +89031,7 @@ var StepAssessmentAndRegimens = ({
       id: "urinary",
       titleVi: "\u0110\u01B0\u1EDDng Ti\u1EBFt Ni\u1EC7u",
       subVi: "UTI, \u0110\xE0i b\u1EC3 th\u1EADn, CAUTI",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.HeartHandshake, { className: "w-4 h-4 text-indigo-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.HeartHandshake, { className: "w-4 h-4 text-indigo-600" }),
       color: "bg-indigo-50 text-indigo-700",
       borderActive: "border-indigo-500 bg-indigo-50/70 ring-2 ring-indigo-500/20"
     },
@@ -86675,7 +89039,7 @@ var StepAssessmentAndRegimens = ({
       id: "skin_soft_tissue",
       titleVi: "Da & M\xF4 M\u1EC1m (SSTI)",
       subVi: "Vi\xEAm m\xF4 TB, lo\xE9t t\xEC \u0111\xE8, \xE1p xe",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Flame, { className: "w-4 h-4 text-amber-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Flame, { className: "w-4 h-4 text-amber-600" }),
       color: "bg-amber-50 text-amber-700",
       borderActive: "border-amber-500 bg-amber-50/70 ring-2 ring-amber-500/20"
     },
@@ -86683,7 +89047,7 @@ var StepAssessmentAndRegimens = ({
       id: "peritoneal",
       titleVi: "D\u1ECBch B\xE1ng / B\u1EE5ng (SBP)",
       subVi: "Vi\xEAm ph\xFAc m\u1EA1c x\u01A1 gan",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Layers, { className: "w-4 h-4 text-emerald-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Layers, { className: "w-4 h-4 text-emerald-600" }),
       color: "bg-emerald-50 text-emerald-700",
       borderActive: "border-emerald-500 bg-emerald-50/70 ring-2 ring-emerald-500/20"
     },
@@ -86691,7 +89055,7 @@ var StepAssessmentAndRegimens = ({
       id: "cns",
       titleVi: "Th\u1EA7n Kinh TW (CNS)",
       subVi: "Vi\xEAm m\xE0ng n\xE3o m\u1EE7, \xE1p xe",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Brain, { className: "w-4 h-4 text-purple-600" }),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Brain, { className: "w-4 h-4 text-purple-600" }),
       color: "bg-purple-50 text-purple-700",
       borderActive: "border-purple-500 bg-purple-50/70 ring-2 ring-purple-500/20"
     }
@@ -86760,39 +89124,39 @@ var StepAssessmentAndRegimens = ({
     onToggleDetailedDrug(resolvedId);
   };
   const detailedDrugObj = ANTIBIOTICS.find((a) => a.id === (detailedDrugId || selectedDrugId)) || ANTIBIOTICS[0];
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "space-y-5", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "bg-white rounded-3xl border border-slate-200/90 p-4 sm:p-5 shadow-xs space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "w-7 h-7 rounded-xl bg-teal-600 text-white font-extrabold text-xs flex items-center justify-center shadow-xs", children: "1" }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "\u0110\xE1nh Gi\xE1 L\xE2m S\xE0ng & Ph\xE2n T\u1EA7ng Nguy C\u01A1 VK\u0110K" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-[11px] text-slate-500", children: "Chu\u1EA9n H\u01B0\u1EDBng D\u1EABn \u0110i\u1EC1u Tr\u1ECB Kh\xE1ng Sinh BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi (BVBND 2026)" })
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "space-y-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "bg-white rounded-3xl border border-slate-200/90 p-4 sm:p-5 shadow-xs space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "w-7 h-7 rounded-xl bg-teal-600 text-white font-extrabold text-xs flex items-center justify-center shadow-xs", children: "1" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "\u0110\xE1nh Gi\xE1 L\xE2m S\xE0ng & Ph\xE2n T\u1EA7ng Nguy C\u01A1 VK\u0110K" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "text-[11px] text-slate-500", children: "Chu\u1EA9n H\u01B0\u1EDBng D\u1EABn \u0110i\u1EC1u Tr\u1ECB Kh\xE1ng Sinh BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi (BVBND 2026)" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(SourceBadge, { source: { doc: "BVBND_PhanNhom", page: 2 } })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(SourceBadge, { source: { doc: "BVBND_PhanNhom", page: 2 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-1.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "V\u1ECB tr\xED \u1ED5 nhi\u1EC5m tr\xF9ng:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-[11px] font-semibold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200", children: sitesList.find((s) => s.id === site)?.titleVi })
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "V\u1ECB tr\xED \u1ED5 nhi\u1EC5m tr\xF9ng:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-[11px] font-semibold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200", children: sitesList.find((s) => s.id === site)?.titleVi })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2", children: sitesList.map((s) => {
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2", children: sitesList.map((s) => {
           const isSelected = site === s.id;
-          return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+          return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => onSelectSite(s.id),
               className: `p-2.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between min-h-[76px] ${isSelected ? s.borderActive : "border-slate-200 hover:border-slate-300 bg-slate-50/50 hover:bg-white"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center justify-between mb-1", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: `p-1.5 rounded-xl ${s.color}`, children: s.icon }),
-                  isSelected && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-600" })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center justify-between mb-1", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: `p-1.5 rounded-xl ${s.color}`, children: s.icon }),
+                  isSelected && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-600" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-xs font-bold text-slate-900 leading-snug", children: s.titleVi }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5 line-clamp-1", children: s.subVi })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-xs font-bold text-slate-900 leading-snug", children: s.titleVi }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5 line-clamp-1", children: s.subVi })
                 ] })
               ]
             },
@@ -86800,38 +89164,38 @@ var StepAssessmentAndRegimens = ({
           );
         }) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-wrap items-center gap-3 pt-3 border-t border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-xs font-bold text-slate-500 uppercase tracking-wider", children: "\u0110\u1ED1i t\u01B0\u1EE3ng:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "inline-flex rounded-xl border border-slate-200 p-0.5 bg-slate-100", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex flex-wrap items-center gap-3 pt-3 border-t border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-xs font-bold text-slate-500 uppercase tracking-wider", children: "\u0110\u1ED1i t\u01B0\u1EE3ng:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "inline-flex rounded-xl border border-slate-200 p-0.5 bg-slate-100", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => onSelectPopulation("adult"),
                 className: `px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1.5 cursor-pointer ${population === "adult" ? "bg-white text-teal-900 shadow-2xs font-bold" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.User, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Ng\u01B0\u1EDDi l\u1EDBn (\u2265 16T)" })
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.User, { className: "w-3.5 h-3.5" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Ng\u01B0\u1EDDi l\u1EDBn (\u2265 16T)" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => onSelectPopulation("pediatric"),
                 className: `px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1.5 cursor-pointer ${population === "pediatric" ? "bg-white text-teal-900 shadow-2xs font-bold" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Baby, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Tr\u1EBB em (< 16T)" })
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Baby, { className: "w-3.5 h-3.5" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Tr\u1EBB em (< 16T)" })
                 ]
               }
             )
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("label", { className: "flex items-center space-x-2 cursor-pointer bg-slate-50 px-3 py-1 rounded-xl border border-slate-200 hover:bg-slate-100 transition-colors", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("label", { className: "flex items-center space-x-2 cursor-pointer bg-slate-50 px-3 py-1 rounded-xl border border-slate-200 hover:bg-slate-100 transition-colors", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
             "input",
             {
               type: "checkbox",
@@ -86840,28 +89204,28 @@ var StepAssessmentAndRegimens = ({
               className: "rounded text-teal-600 focus:ring-teal-500 w-4 h-4 cursor-pointer"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-xs font-semibold text-slate-700", children: "B\u1EC7nh gan m\u1EA1n / X\u01A1 gan (Thang CLIF-SOFA)" })
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-xs font-semibold text-slate-700", children: "B\u1EC7nh gan m\u1EA1n / X\u01A1 gan (Thang CLIF-SOFA)" })
         ] }),
-        site === "sepsis" && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-2 w-full sm:w-auto sm:ml-auto", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-xs font-bold text-rose-600 uppercase tracking-wider shrink-0", children: "Ng\xF5 v\xE0o:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+        site === "sepsis" && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2 w-full sm:w-auto sm:ml-auto", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-xs font-bold text-rose-600 uppercase tracking-wider shrink-0", children: "Ng\xF5 v\xE0o:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
             "select",
             {
               value: sepsisSource || "respiratory",
               onChange: (e) => onSelectSepsisSource(e.target.value),
               className: "text-xs border border-slate-300 rounded-xl px-2.5 py-1 bg-white font-medium focus:ring-1 focus:ring-teal-500 cursor-pointer flex-1 sm:flex-none",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("option", { value: "respiratory", children: "T\u1EEB \u1ED5 H\xF4 h\u1EA5p (Ph\u1ED5i)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("option", { value: "urinary", children: "T\u1EEB \u1ED5 Ti\u1EBFt ni\u1EC7u" }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("option", { value: "gastrointestinal", children: "T\u1EEB \u1ED5 Ti\xEAu h\xF3a" }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("option", { value: "peritoneal", children: "T\u1EEB \u1ED5 D\u1ECBch b\xE1ng (SBP)" }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("option", { value: "skin_soft_tissue", children: "T\u1EEB \u1ED5 Da m\xF4 m\u1EC1m" })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("option", { value: "respiratory", children: "T\u1EEB \u1ED5 H\xF4 h\u1EA5p (Ph\u1ED5i)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("option", { value: "urinary", children: "T\u1EEB \u1ED5 Ti\u1EBFt ni\u1EC7u" }),
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("option", { value: "gastrointestinal", children: "T\u1EEB \u1ED5 Ti\xEAu h\xF3a" }),
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("option", { value: "peritoneal", children: "T\u1EEB \u1ED5 D\u1ECBch b\xE1ng (SBP)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("option", { value: "skin_soft_tissue", children: "T\u1EEB \u1ED5 Da m\xF4 m\u1EC1m" })
               ]
             }
           )
         ] })
       ] }),
-      onSaveScoreResult && onApplyScoreSuggestion && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+      onSaveScoreResult && onApplyScoreSuggestion && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
         SiteScoreCalculators,
         {
           site,
@@ -86874,73 +89238,73 @@ var StepAssessmentAndRegimens = ({
           onApplySuggestedAction: onApplyScoreSuggestion
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "pt-3 border-t border-slate-100 space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "pt-3 border-t border-slate-100 space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => onQuickGroupSelect("group_1"),
               className: `p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative ${!isGroup2 ? "border-emerald-500 bg-emerald-50/70 ring-2 ring-emerald-500/20 shadow-xs" : "border-slate-200 bg-slate-50/40 hover:bg-slate-50 hover:border-slate-300"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-2", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ShieldCheck, { className: `w-5 h-5 ${!isGroup2 ? "text-emerald-700" : "text-slate-400"}` }),
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-emerald-950", children: "Nh\xF3m 1: \xCDt Nguy C\u01A1 VK\u0110K" })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ShieldCheck, { className: `w-5 h-5 ${!isGroup2 ? "text-emerald-700" : "text-slate-400"}` }),
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-emerald-950", children: "Nh\xF3m 1: \xCDt Nguy C\u01A1 VK\u0110K" })
                   ] }),
-                  !isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-600 text-white", children: "\u0110ang ch\u1ECDn" })
+                  !isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-600 text-white", children: "\u0110ang ch\u1ECDn" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { className: "text-xs text-slate-600 leading-snug", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("p", { className: "text-xs text-slate-600 leading-snug", children: [
                   "Nhi\u1EC5m khu\u1EA9n ",
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "C\u1ED9ng \u0111\u1ED3ng" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "C\u1ED9ng \u0111\u1ED3ng" }),
                   ", kh\xF4ng ti\u1EC1n s\u1EED d\xF9ng KS / n\u1EB1m vi\u1EC7n 90 ng\xE0y qua, kh\xF4ng d\u1EE5ng c\u1EE5 x\xE2m l\u1EA5n, SOFA < 2."
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[11px] font-semibold text-emerald-700 mt-2", children: "\u2192 Khuy\u1EBFn c\xE1o: Kh\xE1ng sinh ph\u1ED5 h\u1EB9p ho\u1EB7c ti\xEAu chu\u1EA9n BVBND 2026." })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-[11px] font-semibold text-emerald-700 mt-2", children: "\u2192 Khuy\u1EBFn c\xE1o: Kh\xE1ng sinh ph\u1ED5 h\u1EB9p ho\u1EB7c ti\xEAu chu\u1EA9n BVBND 2026." })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => onQuickGroupSelect("group_2"),
               className: `p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative ${isGroup2 ? "border-rose-500 bg-rose-50/70 ring-2 ring-rose-500/20 shadow-xs" : "border-slate-200 bg-slate-50/40 hover:bg-slate-50 hover:border-slate-300"}`,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-2", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ShieldAlert, { className: `w-5 h-5 ${isGroup2 ? "text-rose-700" : "text-slate-400"}` }),
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-rose-950", children: "Nh\xF3m 2: Nguy C\u01A1 Cao VK\u0110K" })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center justify-between mb-1.5", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ShieldAlert, { className: `w-5 h-5 ${isGroup2 ? "text-rose-700" : "text-slate-400"}` }),
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-rose-950", children: "Nh\xF3m 2: Nguy C\u01A1 Cao VK\u0110K" })
                   ] }),
-                  isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-600 text-white", children: "\u0110ang ch\u1ECDn" })
+                  isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-600 text-white", children: "\u0110ang ch\u1ECDn" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { className: "text-xs text-slate-600 leading-snug", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("p", { className: "text-xs text-slate-600 leading-snug", children: [
                   "Nhi\u1EC5m khu\u1EA9n ",
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "B\u1EC7nh vi\u1EC7n / ICU" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "B\u1EC7nh vi\u1EC7n / ICU" }),
                   ", th\u1EDF m\xE1y, l\u1ECDc m\xE1u, d\xF9ng KS 30-90 ng\xE0y qua, ho\u1EB7c nhi\u1EC5m khu\u1EA9n n\u1EB7ng (SOFA \u2265 2)."
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[11px] font-semibold text-rose-700 mt-2", children: "\u2192 Khuy\u1EBFn c\xE1o: Ph\u1ED5 r\u1ED9ng di\u1EC7t Pseudomonas / Acineto, ph\u1ED1i h\u1EE3p MRSA/ESBL n\u1EBFu c\xF3 ch\u1EC9 \u0111\u1ECBnh." })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-[11px] font-semibold text-rose-700 mt-2", children: "\u2192 Khuy\u1EBFn c\xE1o: Ph\u1ED5 r\u1ED9ng di\u1EC7t Pseudomonas / Acineto, ph\u1ED1i h\u1EE3p MRSA/ESBL n\u1EBFu c\xF3 ch\u1EC9 \u0111\u1ECBnh." })
               ]
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-3 rounded-2xl bg-slate-50 border border-slate-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-xs font-bold text-slate-800 uppercase tracking-wide", children: population === "pediatric" ? "Thang \u0111i\u1EC3m pSOFA (Tr\u1EBB em):" : isChronicLiverDisease ? "Thang \u0111i\u1EC3m CLIF-SOFA (X\u01A1 gan):" : "M\u1EE9c \u0111\u1ED9 n\u1EB7ng (Thang \u0111i\u1EC3m SOFA):" }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: `px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${riskResult.isHighSeverity ? "bg-rose-100 text-rose-800 border border-rose-300" : "bg-emerald-100 text-emerald-800 border border-emerald-300"}`, children: riskResult.isHighSeverity ? "B\u1EC7nh c\u1EA3nh N\u1EB7ng / S\u1ED1c NK" : "M\u1EE9c \u0111\u1ED9 Ti\xEAu Chu\u1EA9n" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-3 rounded-2xl bg-slate-50 border border-slate-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-xs font-bold text-slate-800 uppercase tracking-wide", children: population === "pediatric" ? "Thang \u0111i\u1EC3m pSOFA (Tr\u1EBB em):" : isChronicLiverDisease ? "Thang \u0111i\u1EC3m CLIF-SOFA (X\u01A1 gan):" : "M\u1EE9c \u0111\u1ED9 n\u1EB7ng (Thang \u0111i\u1EC3m SOFA):" }),
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: `px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${riskResult.isHighSeverity ? "bg-rose-100 text-rose-800 border border-rose-300" : "bg-emerald-100 text-emerald-800 border border-emerald-300"}`, children: riskResult.isHighSeverity ? "B\u1EC7nh c\u1EA3nh N\u1EB7ng / S\u1ED1c NK" : "M\u1EE9c \u0111\u1ED9 Ti\xEAu Chu\u1EA9n" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-[11px] text-slate-500 mt-0.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-[11px] text-slate-500 mt-0.5", children: [
               "\u0110i\u1EC3m hi\u1EC7n t\u1EA1i: ",
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("strong", { className: "text-slate-800", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("strong", { className: "text-slate-800", children: [
                 currentSeverityScore,
                 " \u0111i\u1EC3m"
               ] }),
               " (SOFA \u2265 2 ph\u1EA3n \xE1nh suy t\u1EA1ng n\u1EB7ng li\xEAn quan nhi\u1EC5m khu\u1EA9n)"
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "flex items-center gap-1", children: [0, 1, 2, 4, 6, 8, 12].map((scoreVal) => {
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "flex items-center gap-1", children: [0, 1, 2, 4, 6, 8, 12].map((scoreVal) => {
             const isCurrent = currentSeverityScore === scoreVal;
-            return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+            return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
               "button",
               {
                 type: "button",
@@ -86956,43 +89320,43 @@ var StepAssessmentAndRegimens = ({
             );
           }) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/70 shadow-2xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/70 shadow-2xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
             "button",
             {
               type: "button",
               onClick: () => setShowGeneralRisks(!showGeneralRisks),
               className: "w-full p-3 flex items-center justify-between text-left hover:bg-slate-100/80 transition-colors cursor-pointer",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-2.5 min-w-0", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: `p-1.5 rounded-xl ${checkedGeneralRiskIds.length > 0 ? "bg-amber-100 text-amber-800" : "bg-slate-200/80 text-slate-600"}`, children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Shield, { className: "w-4 h-4" }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "min-w-0", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-xs font-black text-slate-900 flex items-center gap-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "B\u1EA3ng Ki\u1EC3m 8 Ti\xEAu Ch\xED Nguy C\u01A1 Vi Khu\u1EA9n \u0110a Kh\xE1ng Chung (BVBND 2026)" }) }),
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-[11px] text-slate-500 truncate mt-0.5", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2.5 min-w-0", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: `p-1.5 rounded-xl ${checkedGeneralRiskIds.length > 0 ? "bg-amber-100 text-amber-800" : "bg-slate-200/80 text-slate-600"}`, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Shield, { className: "w-4 h-4" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-xs font-black text-slate-900 flex items-center gap-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "B\u1EA3ng Ki\u1EC3m 8 Ti\xEAu Ch\xED Nguy C\u01A1 Vi Khu\u1EA9n \u0110a Kh\xE1ng Chung (BVBND 2026)" }) }),
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-[11px] text-slate-500 truncate mt-0.5", children: [
                       "C\xF3 \u2265 1 ti\xEAu ch\xED HO\u1EB6C SOFA \u2265 2 \u2192 T\u1EF1 \u0111\u1ED9ng x\u1EBFp v\xE0o ",
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "Nh\xF3m 2 (Nguy c\u01A1 cao VK\u0110K)" })
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "Nh\xF3m 2 (Nguy c\u01A1 cao VK\u0110K)" })
                     ] })
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-2 shrink-0", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: `text-[11px] font-bold px-2 py-0.5 rounded-full border ${checkedGeneralRiskIds.length > 0 ? "bg-amber-100 text-amber-900 border-amber-300" : "bg-slate-200/60 text-slate-600 border-slate-300"}`, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2 shrink-0", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: `text-[11px] font-bold px-2 py-0.5 rounded-full border ${checkedGeneralRiskIds.length > 0 ? "bg-amber-100 text-amber-900 border-amber-300" : "bg-slate-200/60 text-slate-600 border-slate-300"}`, children: [
                     "\u0110\xE3 ch\u1ECDn ",
                     checkedGeneralRiskIds.length,
                     "/8 ti\xEAu ch\xED"
                   ] }),
-                  showGeneralRisks ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ChevronUp, { className: "w-4 h-4 text-slate-500" }) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ChevronDown, { className: "w-4 h-4 text-slate-500" })
+                  showGeneralRisks ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ChevronUp, { className: "w-4 h-4 text-slate-500" }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ChevronDown, { className: "w-4 h-4 text-slate-500" })
                 ] })
               ]
             }
           ),
-          showGeneralRisks && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "p-3 border-t border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2 gap-2", children: GENERAL_MDR_RISK_FACTORS.map((factor) => {
+          showGeneralRisks && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "p-3 border-t border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2 gap-2", children: GENERAL_MDR_RISK_FACTORS.map((factor) => {
             const isChecked = checkedGeneralRiskIds.includes(factor.id);
-            return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+            return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
               "label",
               {
                 className: `flex items-start space-x-2.5 p-2.5 rounded-xl border text-xs cursor-pointer transition-all ${isChecked ? "border-amber-400 bg-amber-50/70 text-slate-900 shadow-2xs font-semibold" : "border-slate-200 hover:border-slate-300 bg-white text-slate-700 hover:bg-slate-50"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
                     "input",
                     {
                       type: "checkbox",
@@ -87005,10 +89369,10 @@ var StepAssessmentAndRegimens = ({
                       className: "rounded text-amber-600 focus:ring-amber-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex-1 min-w-0", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "leading-snug text-slate-900", children: factor.labelVi }),
-                    factor.noteVi && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[10px] text-slate-500 mt-1 font-normal leading-relaxed", children: factor.noteVi }),
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-wider", children: "Ngu\u1ED3n: BVBND L\u01B0u \u0111\u1ED3 ph\xE2n nh\xF3m, tr.2" })
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex-1 min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "leading-snug text-slate-900", children: factor.labelVi }),
+                    factor.noteVi && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-[10px] text-slate-500 mt-1 font-normal leading-relaxed", children: factor.noteVi }),
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-wider", children: "Ngu\u1ED3n: BVBND L\u01B0u \u0111\u1ED3 ph\xE2n nh\xF3m, tr.2" })
                   ] })
                 ]
               },
@@ -87016,30 +89380,30 @@ var StepAssessmentAndRegimens = ({
             );
           }) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "space-y-3 pt-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center justify-between flex-wrap gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-xs font-bold text-slate-800", children: "T\xE1c Nh\xE2n \u0110a Kh\xE1ng C\u1EA7n Bao Ph\u1EE7 C\u1EE5 Th\u1EC3 (BVBND 2026):" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: "text-[11px] font-bold text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-md border border-teal-200", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "space-y-3 pt-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center justify-between flex-wrap gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-xs font-bold text-slate-800", children: "T\xE1c Nh\xE2n \u0110a Kh\xE1ng C\u1EA7n Bao Ph\u1EE7 C\u1EE5 Th\u1EC3 (BVBND 2026):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: "text-[11px] font-bold text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-md border border-teal-200", children: [
                 "\u0110\xE3 nh\u1EADn di\u1EC7n: ",
                 checkedSpecificRisks.length,
                 " t\xE1c nh\xE2n"
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
                 "button",
                 {
                   type: "button",
                   onClick: () => setShowAllCriteria(!showAllCriteria),
                   className: "px-2.5 py-1 rounded-xl text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-colors cursor-pointer flex items-center space-x-1",
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: showAllCriteria ? "Thu g\u1ECDn ti\xEAu ch\xED" : "Xem to\xE0n b\u1ED9 ti\xEAu ch\xED BVBND" }),
-                    showAllCriteria ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ChevronUp, { className: "w-3 h-3" }) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ChevronDown, { className: "w-3 h-3" })
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: showAllCriteria ? "Thu g\u1ECDn ti\xEAu ch\xED" : "Xem to\xE0n b\u1ED9 ti\xEAu ch\xED BVBND" }),
+                    showAllCriteria ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ChevronUp, { className: "w-3 h-3" }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ChevronDown, { className: "w-3 h-3" })
                   ]
                 }
               )
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
             {
               id: "mrsa",
               title: "T\u1EE5 C\u1EA7u V\xE0ng Kh\xE1ng Methicillin (MRSA)",
@@ -87099,14 +89463,14 @@ var StepAssessmentAndRegimens = ({
             const isChecked = checkedSpecificRisks.includes(spec.id);
             const isExpanded = showAllCriteria || expandedPathogen === spec.id;
             const activeFactorCount = spec.factors.filter((f) => checkedSpecificRiskFactorIds.includes(f.id)).length;
-            return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+            return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
               "div",
               {
                 className: `rounded-2xl border transition-all ${isChecked ? "border-rose-400 bg-rose-50/40 ring-1 ring-rose-400/30 shadow-2xs" : spec.isTarget ? "border-sky-300 bg-sky-50/20" : "border-slate-200 bg-white hover:border-slate-300"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-3 flex items-start justify-between gap-2.5", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("label", { className: "flex items-start space-x-2.5 cursor-pointer flex-1 min-w-0", children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-3 flex items-start justify-between gap-2.5", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("label", { className: "flex items-start space-x-2.5 cursor-pointer flex-1 min-w-0", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
                         "input",
                         {
                           type: "checkbox",
@@ -87115,19 +89479,19 @@ var StepAssessmentAndRegimens = ({
                           className: "rounded text-rose-600 focus:ring-rose-500 w-4 h-4 mt-0.5 cursor-pointer shrink-0"
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "min-w-0 flex-1", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-1.5 flex-wrap gap-y-1", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: `text-xs font-black ${isChecked ? "text-rose-950" : "text-slate-900"} break-words`, children: spec.title }),
-                          spec.isTarget && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800", children: spec.targetLabel })
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "min-w-0 flex-1", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-1.5 flex-wrap gap-y-1", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: `text-xs font-black ${isChecked ? "text-rose-950" : "text-slate-900"} break-words`, children: spec.title }),
+                          spec.isTarget && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-sky-100 text-sky-800", children: spec.targetLabel })
                         ] }),
-                        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[11px] text-slate-500 mt-0.5 truncate", children: spec.name }),
-                        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-[11px] text-teal-800 font-semibold mt-1", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-[11px] text-slate-500 mt-0.5 truncate", children: spec.name }),
+                        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-[11px] text-teal-800 font-semibold mt-1", children: [
                           "Thu\u1ED1c bao ph\u1EE7: ",
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { className: "text-teal-900", children: spec.sub })
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { className: "text-teal-900", children: spec.sub })
                         ] })
                       ] })
                     ] }),
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
                       "button",
                       {
                         type: "button",
@@ -87135,25 +89499,25 @@ var StepAssessmentAndRegimens = ({
                         className: `px-2 py-1 rounded-xl text-[11px] font-bold transition-all cursor-pointer flex items-center space-x-1 shrink-0 ${isExpanded ? "bg-slate-200 text-slate-800" : activeFactorCount > 0 ? "bg-rose-100 text-rose-800 font-black" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`,
                         title: "Xem c\xE1c ti\xEAu ch\xED l\xE2m s\xE0ng nghi ng\u1EDD theo BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi",
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: activeFactorCount > 0 ? `${activeFactorCount}/${spec.factors.length} ti\xEAu ch\xED` : "Ti\xEAu ch\xED" }),
-                          isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ChevronUp, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ChevronDown, { className: "w-3.5 h-3.5" })
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: activeFactorCount > 0 ? `${activeFactorCount}/${spec.factors.length} ti\xEAu ch\xED` : "Ti\xEAu ch\xED" }),
+                          isExpanded ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ChevronUp, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ChevronDown, { className: "w-3.5 h-3.5" })
                         ]
                       }
                     )
                   ] }),
-                  isExpanded && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "px-3 pb-3 pt-2 border-t border-slate-100/90 space-y-1.5 bg-slate-50/70 rounded-b-2xl", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1 flex items-center justify-between", children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Ti\xEAu ch\xED l\xE2m s\xE0ng nghi ng\u1EDD (BVBND 2026):" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-[9px] text-slate-400", children: "Ch\u1ECDn \u0111\u1EC3 t\u1EF1 \u0111\u1ED9ng k\xEDch ho\u1EA1t bao ph\u1EE7" })
+                  isExpanded && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "px-3 pb-3 pt-2 border-t border-slate-100/90 space-y-1.5 bg-slate-50/70 rounded-b-2xl", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1 flex items-center justify-between", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Ti\xEAu ch\xED l\xE2m s\xE0ng nghi ng\u1EDD (BVBND 2026):" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-[9px] text-slate-400", children: "Ch\u1ECDn \u0111\u1EC3 t\u1EF1 \u0111\u1ED9ng k\xEDch ho\u1EA1t bao ph\u1EE7" })
                     ] }),
                     spec.factors.map((fact) => {
                       const isFactorChecked = checkedSpecificRiskFactorIds.includes(fact.id);
-                      return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                      return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
                         "label",
                         {
                           className: `flex items-start space-x-2 p-2 rounded-xl border text-[11px] cursor-pointer transition-all ${isFactorChecked ? "bg-white border-rose-400 font-semibold text-slate-900 shadow-2xs ring-1 ring-rose-400/20" : "border-slate-200/80 bg-white/80 hover:bg-white text-slate-700"}`,
                           children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+                            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
                               "input",
                               {
                                 type: "checkbox",
@@ -87169,9 +89533,9 @@ var StepAssessmentAndRegimens = ({
                                 className: "rounded text-rose-600 focus:ring-rose-500 w-3.5 h-3.5 mt-0.5 cursor-pointer shrink-0"
                               }
                             ),
-                            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex-1 leading-snug", children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: isFactorChecked ? "text-slate-900" : "text-slate-700", children: fact.labelVi }),
-                              fact.noteVi && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5 font-normal leading-relaxed", children: fact.noteVi })
+                            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex-1 leading-snug", children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: isFactorChecked ? "text-slate-900" : "text-slate-700", children: fact.labelVi }),
+                              fact.noteVi && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5 font-normal leading-relaxed", children: fact.noteVi })
                             ] })
                           ]
                         },
@@ -87185,27 +89549,27 @@ var StepAssessmentAndRegimens = ({
             );
           }) })
         ] }),
-        (riskResult.isGramPosGramNegCoRisk || riskResult.isDualGramNegRisk) && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "space-y-2 pt-1", children: [
-          riskResult.isGramPosGramNegCoRisk && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-3 rounded-2xl bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-xs flex items-start space-x-2.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.AlertCircle, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-xs leading-relaxed", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "font-black uppercase tracking-wide text-amber-200", children: "\u26A0\uFE0F QUY T\u1EAEC BVBND (Ghi ch\xFA b): B\u1EAET BU\u1ED8C PH\u1ED0I H\u1EE2P KH\xC1NG SINH GRAM (+) V\xC0 GRAM (-)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { className: "mt-0.5 opacity-95", children: [
+        (riskResult.isGramPosGramNegCoRisk || riskResult.isDualGramNegRisk) && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "space-y-2 pt-1", children: [
+          riskResult.isGramPosGramNegCoRisk && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-3 rounded-2xl bg-gradient-to-r from-rose-600 to-red-700 text-white shadow-xs flex items-start space-x-2.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.AlertCircle, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-xs leading-relaxed", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "font-black uppercase tracking-wide text-amber-200", children: "\u26A0\uFE0F QUY T\u1EAEC BVBND (Ghi ch\xFA b): B\u1EAET BU\u1ED8C PH\u1ED0I H\u1EE2P KH\xC1NG SINH GRAM (+) V\xC0 GRAM (-)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("p", { className: "mt-0.5 opacity-95", children: [
                 "B\u1EC7nh nh\xE2n c\xF3 \u0111\u1ED3ng th\u1EDDi nguy c\u01A1 nhi\u1EC5m c\u1EA7u khu\u1EA9n Gram (+) \u0111a kh\xE1ng (MRSA/VRE) v\xE0 tr\u1EF1c khu\u1EA9n Gram (-) \u0111a kh\xE1ng. ",
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "B\u1EAFt bu\u1ED9c ch\u1EC9 \u0111\u1ECBnh ph\xE1c \u0111\u1ED3 ph\u1ED1i h\u1EE3p 2 nh\xF3m thu\u1ED1c" }),
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "B\u1EAFt bu\u1ED9c ch\u1EC9 \u0111\u1ECBnh ph\xE1c \u0111\u1ED3 ph\u1ED1i h\u1EE3p 2 nh\xF3m thu\u1ED1c" }),
                 " (V\xED d\u1EE5: Vancomycin ho\u1EB7c Linezolid ph\u1ED1i h\u1EE3p v\u1EDBi Meropenem ho\u1EB7c Piperacillin/tazobactam)."
               ] })
             ] })
           ] }),
-          riskResult.isDualGramNegRisk && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white shadow-xs flex items-start space-x-2.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Zap, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-xs leading-relaxed", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "font-black uppercase tracking-wide text-amber-200", children: "\u26A1 QUY T\u1EAEC BVBND (Ghi ch\xFA b): \u01AFU TI\xCAN KH\xC1NG SINH DI\u1EC6T PSEUDOMONAS / ACINETOBACTER" }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { className: "mt-0.5 opacity-95", children: [
+          riskResult.isDualGramNegRisk && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-3 rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-800 text-white shadow-xs flex items-start space-x-2.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Zap, { className: "w-5 h-5 text-amber-300 shrink-0 mt-0.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-xs leading-relaxed", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "font-black uppercase tracking-wide text-amber-200", children: "\u26A1 QUY T\u1EAEC BVBND (Ghi ch\xFA b): \u01AFU TI\xCAN KH\xC1NG SINH DI\u1EC6T PSEUDOMONAS / ACINETOBACTER" }),
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("p", { className: "mt-0.5 opacity-95", children: [
                 "B\u1EC7nh nh\xE2n c\xF3 nguy c\u01A1 c\u1EA3 ESBL v\xE0 Pseudomonas/Acinetobacter. ",
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "\u01AFu ti\xEAn ch\u1ECDn kh\xE1ng sinh c\xF3 ho\u1EA1t ph\u1ED5 tr\xEAn Acinetobacter / Pseudomonas" }),
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "\u01AFu ti\xEAn ch\u1ECDn kh\xE1ng sinh c\xF3 ho\u1EA1t ph\u1ED5 tr\xEAn Acinetobacter / Pseudomonas" }),
                 " (nh\u01B0 Meropenem, Cefepime, Piperacillin/tazobactam) \u0111\u1EC3 bao ph\u1EE7 lu\xF4n c\u1EA3 ch\u1EE7ng sinh ESBL. ",
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("em", { children: "Tr\xE1nh d\xF9ng Ertapenem \u0111\u01A1n \u0111\u1ED9c" }),
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("em", { children: "Tr\xE1nh d\xF9ng Ertapenem \u0111\u01A1n \u0111\u1ED9c" }),
                 "."
               ] })
             ] })
@@ -87213,33 +89577,33 @@ var StepAssessmentAndRegimens = ({
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "bg-white rounded-3xl border border-slate-200/90 p-4 sm:p-5 shadow-xs space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "w-7 h-7 rounded-xl bg-teal-600 text-white font-extrabold text-xs flex items-center justify-center shadow-xs", children: "2" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "Ph\xE1c \u0110\u1ED3 & Li\u1EC1u C\xE1 Th\u1EC3 H\xF3a Khuy\u1EBFn C\xE1o" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: `px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${isGroup2 ? "bg-rose-100 text-rose-800 border border-rose-200" : "bg-emerald-100 text-emerald-800 border border-emerald-200"}`, children: isGroup2 ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: Ti\xEAu chu\u1EA9n" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: "text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "bg-white rounded-3xl border border-slate-200/90 p-4 sm:p-5 shadow-xs space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center gap-2 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "w-7 h-7 rounded-xl bg-teal-600 text-white font-extrabold text-xs flex items-center justify-center shadow-xs", children: "2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "Ph\xE1c \u0110\u1ED3 & Li\u1EC1u C\xE1 Th\u1EC3 H\xF3a Khuy\u1EBFn C\xE1o" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: `px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${isGroup2 ? "bg-rose-100 text-rose-800 border border-rose-200" : "bg-emerald-100 text-emerald-800 border border-emerald-200"}`, children: isGroup2 ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: Ti\xEAu chu\u1EA9n" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: "text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200", children: [
               "CrCl ",
               renal.crcl,
               " mL/p \u2022 ",
               renal.categoryLabelVi
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: "Li\u1EC1u khuy\u1EBFn c\xE1o \u0111\u01B0\u1EE3c t\xEDnh to\xE1n tr\u1EF1c ti\u1EBFp cho t\u1EEBng kh\xE1ng sinh theo th\xF4ng s\u1ED1 ch\u1EE9c n\u0103ng th\u1EADn Cockcroft-Gault" })
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: "Li\u1EC1u khuy\u1EBFn c\xE1o \u0111\u01B0\u1EE3c t\xEDnh to\xE1n tr\u1EF1c ti\u1EBFp cho t\u1EEBng kh\xE1ng sinh theo th\xF4ng s\u1ED1 ch\u1EE9c n\u0103ng th\u1EADn Cockcroft-Gault" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "inline-flex rounded-2xl p-1 bg-slate-100 border border-slate-200 text-xs font-bold", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "inline-flex rounded-2xl p-1 bg-slate-100 border border-slate-200 text-xs font-bold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setActiveGuidelineSource("bvbnd"),
                 className: `px-3 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${activeGuidelineSource === "bvbnd" ? "bg-white text-teal-900 shadow-2xs font-black" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.BookOpen, { className: "w-3.5 h-3.5 text-teal-600" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.BookOpen, { className: "w-3.5 h-3.5 text-teal-600" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { children: [
                     "BVBND (",
                     allBvbndRegimens.length,
                     ")"
@@ -87247,15 +89611,15 @@ var StepAssessmentAndRegimens = ({
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setActiveGuidelineSource("who"),
                 className: `px-3 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${activeGuidelineSource === "who" ? "bg-sky-600 text-white shadow-2xs font-black" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Globe, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Globe, { className: "w-3.5 h-3.5" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { children: [
                     "WHO AWaRe (",
                     whoRegimens.length,
                     ")"
@@ -87263,39 +89627,39 @@ var StepAssessmentAndRegimens = ({
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setActiveGuidelineSource("antibiogram"),
                 className: `px-3 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${activeGuidelineSource === "antibiogram" ? "bg-teal-700 text-white shadow-2xs font-black" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.FlaskConical, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "KS\u0110 T\u1EA1i Ch\u1ED7" })
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.FlaskConical, { className: "w-3.5 h-3.5" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "KS\u0110 T\u1EA1i Ch\u1ED7" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setActiveGuidelineSource("compare"),
                 className: `px-3 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${activeGuidelineSource === "compare" ? "bg-purple-600 text-white shadow-2xs font-black" : "text-slate-600 hover:text-slate-900"}`,
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Scale, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "\u0110\u1ED1i Chi\u1EBFu" })
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Scale, { className: "w-3.5 h-3.5" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "\u0110\u1ED1i Chi\u1EBFu" })
                 ]
               }
             )
           ] }),
-          onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+          onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
             "button",
             {
               type: "button",
               onClick: () => onOpenGuidelineAtlas(getTargetImageId()),
               className: "px-2.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 transition-all flex items-center gap-1 cursor-pointer",
               title: "Xem \u1EA3nh l\u01B0u \u0111\u1ED3 g\u1ED1c t\u1EEB t\xE0i li\u1EC7u BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026",
-              children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { children: [
+              children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { children: [
                 "L\u01B0u \u0111\u1ED3 g\u1ED1c Tr.",
                 currentPdfPage
               ] })
@@ -87303,13 +89667,13 @@ var StepAssessmentAndRegimens = ({
           )
         ] })
       ] }),
-      activeGuidelineSource === "bvbnd" && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "space-y-4", children: [
-        riskResult.group === "group_2" && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: "text-xs font-bold text-slate-500 flex items-center gap-1 mr-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Filter, { className: "w-3.5 h-3.5 text-slate-400" }),
+      activeGuidelineSource === "bvbnd" && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "space-y-4", children: [
+        riskResult.group === "group_2" && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: "text-xs font-bold text-slate-500 flex items-center gap-1 mr-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Filter, { className: "w-3.5 h-3.5 text-slate-400" }),
             "L\u1ECDc ph\xE1c \u0111\u1ED3:"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
             "button",
             {
               type: "button",
@@ -87322,7 +89686,7 @@ var StepAssessmentAndRegimens = ({
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
             "button",
             {
               type: "button",
@@ -87331,7 +89695,7 @@ var StepAssessmentAndRegimens = ({
               children: "Ph\xE1c \u0111\u1ED3 n\u1EC1n"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
             "button",
             {
               type: "button",
@@ -87340,7 +89704,7 @@ var StepAssessmentAndRegimens = ({
               children: "+ MRSA"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
             "button",
             {
               type: "button",
@@ -87349,7 +89713,7 @@ var StepAssessmentAndRegimens = ({
               children: "+ ESBL"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
             "button",
             {
               type: "button",
@@ -87359,25 +89723,25 @@ var StepAssessmentAndRegimens = ({
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "space-y-4", children: bvbndRegimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "space-y-4", children: bvbndRegimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
           "div",
           {
             className: "p-4 sm:p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs hover:border-teal-300 transition-all space-y-3.5",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-100", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("h4", { className: "text-sm font-extrabold text-slate-900 flex items-center gap-2", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: regimen.titleVi }),
-                    regimen.specificRisk && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-amber-100 text-amber-800 border border-amber-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-100", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("h4", { className: "text-sm font-extrabold text-slate-900 flex items-center gap-2", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: regimen.titleVi }),
+                    regimen.specificRisk && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-amber-100 text-amber-800 border border-amber-200", children: [
                       "Bao ph\u1EE7 ",
                       regimen.specificRisk.toUpperCase()
                     ] })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[11px] text-slate-500 italic mt-0.5", children: regimen.titleEn })
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-[11px] text-slate-500 italic mt-0.5", children: regimen.titleEn })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(SourceBadge, { source: regimen.source })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(SourceBadge, { source: regimen.source })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3.5", children: regimen.drugs.map((drug, dIdx) => {
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3.5", children: regimen.drugs.map((drug, dIdx) => {
                 const drugName = drug.nameVi || drug.drugName || "Kh\xE1ng sinh";
                 const doseText = drug.standardDoseVi || drug.dosageVi || "Theo h\u01B0\u1EDBng d\u1EABn";
                 const routeText = drug.route || "IV";
@@ -87385,74 +89749,74 @@ var StepAssessmentAndRegimens = ({
                 const resolvedDrugId = rawDrugId ? DRUG_MAP[rawDrugId]?.drugId || rawDrugId : void 0;
                 const liveDose = resolvedDrugId ? getLiveDose(resolvedDrugId) : null;
                 const isCurrentlyDetailed = Boolean(detailedDrugId && detailedDrugId === resolvedDrugId);
-                return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
                   "div",
                   {
                     className: `p-3.5 rounded-2xl border transition-all flex flex-col justify-between ${isCurrentlyDetailed ? "border-teal-500 ring-2 ring-teal-500/20 bg-teal-50/40 shadow-xs" : "border-slate-200/90 bg-slate-50/60 hover:bg-white hover:border-teal-300 hover:shadow-xs"}`,
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "font-extrabold text-xs sm:text-sm text-teal-950", children: drugName }),
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-200/80 text-slate-700 shrink-0", children: routeText })
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "font-extrabold text-xs sm:text-sm text-teal-950", children: drugName }),
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-200/80 text-slate-700 shrink-0", children: routeText })
                         ] }),
-                        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mt-1 text-xs text-slate-600", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "font-semibold text-slate-800", children: "Li\u1EC1u chu\u1EA9n BVBND:" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "mt-1 text-xs text-slate-600", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "font-semibold text-slate-800", children: "Li\u1EC1u chu\u1EA9n BVBND:" }),
                           " ",
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "font-medium text-slate-700", children: doseText })
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "font-medium text-slate-700", children: doseText })
                         ] }),
-                        drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mt-1 text-[11px] text-amber-900 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200/70 flex items-center gap-1.5 font-medium", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Clock, { className: "w-3 h-3 text-amber-600 shrink-0" }),
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: drug.infusionNoteVi })
+                        drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "mt-1 text-[11px] text-amber-900 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200/70 flex items-center gap-1.5 font-medium", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Clock, { className: "w-3 h-3 text-amber-600 shrink-0" }),
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: drug.infusionNoteVi })
                         ] }),
-                        liveDose ? /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mt-2.5 p-2.5 rounded-xl bg-white border border-teal-300 shadow-2xs space-y-1.5", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center justify-between gap-1 flex-wrap pb-1 border-b border-slate-100", children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: "text-[10px] font-black uppercase text-teal-900 tracking-wider flex items-center gap-1.5", children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-500 animate-pulse" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { children: [
+                        liveDose ? /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "mt-2.5 p-2.5 rounded-xl bg-white border border-teal-300 shadow-2xs space-y-1.5", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center justify-between gap-1 flex-wrap pb-1 border-b border-slate-100", children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: "text-[10px] font-black uppercase text-teal-900 tracking-wider flex items-center gap-1.5", children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-500 animate-pulse" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { children: [
                                 "Li\u1EC1u c\xE1 th\u1EC3 h\xF3a (CrCl ",
                                 renal.crcl,
                                 " mL/p):"
                               ] })
                             ] }),
-                            liveDose.dose.reductionPercentage && liveDose.dose.reductionPercentage > 0 ? /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: "px-1.5 py-0.2 rounded text-[9px] font-bold bg-amber-100 text-amber-800 border border-amber-200", children: [
+                            liveDose.dose.reductionPercentage && liveDose.dose.reductionPercentage > 0 ? /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: "px-1.5 py-0.2 rounded text-[9px] font-bold bg-amber-100 text-amber-800 border border-amber-200", children: [
                               "Gi\u1EA3m ",
                               liveDose.dose.reductionPercentage,
                               "% li\u1EC1u"
-                            ] }) : patient.dialysis !== "none" ? /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: "px-1.5 py-0.2 rounded text-[9px] font-bold bg-purple-100 text-purple-800 border border-purple-200", children: [
+                            ] }) : patient.dialysis !== "none" ? /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: "px-1.5 py-0.2 rounded text-[9px] font-bold bg-purple-100 text-purple-800 border border-purple-200", children: [
                               "L\u1ECDc m\xE1u ",
                               patient.dialysis.toUpperCase()
-                            ] }) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200", children: "100% li\u1EC1u chu\u1EA9n" })
+                            ] }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200", children: "100% li\u1EC1u chu\u1EA9n" })
                           ] }),
-                          liveDose.dose.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-[11px] text-amber-950 bg-amber-50/90 p-1.5 rounded-lg border border-amber-200/80 leading-snug", children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { className: "text-amber-900 font-extrabold", children: "Li\u1EC1u n\u1EA1p:" }),
+                          liveDose.dose.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-[11px] text-amber-950 bg-amber-50/90 p-1.5 rounded-lg border border-amber-200/80 leading-snug", children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { className: "text-amber-900 font-extrabold", children: "Li\u1EC1u n\u1EA1p:" }),
                             " ",
                             liveDose.dose.loadingDoseTextVi
                           ] }),
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-xs sm:text-sm font-black text-teal-950 leading-snug", children: liveDose.dose.maintenanceDoseTextVi }),
-                          liveDose.dose.infusionInstructionsVi && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-[11px] text-teal-800 flex items-center gap-1 font-medium", children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Clock, { className: "w-3 h-3 text-teal-600 shrink-0" }),
-                            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: liveDose.dose.infusionInstructionsVi })
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-xs sm:text-sm font-black text-teal-950 leading-snug", children: liveDose.dose.maintenanceDoseTextVi }),
+                          liveDose.dose.infusionInstructionsVi && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-[11px] text-teal-800 flex items-center gap-1 font-medium", children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Clock, { className: "w-3 h-3 text-teal-600 shrink-0" }),
+                            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: liveDose.dose.infusionInstructionsVi })
                           ] })
                         ] }) : null
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/70 flex items-center justify-between gap-2 flex-wrap", children: [
-                        liveDose?.dose?.orderTextVi ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/70 flex items-center justify-between gap-2 flex-wrap", children: [
+                        liveDose?.dose?.orderTextVi ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
                           "button",
                           {
                             type: "button",
                             onClick: () => handleCopyOrder(liveDose.dose.orderTextVi, resolvedDrugId),
                             className: "px-2.5 py-1 text-[11px] font-bold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-1 cursor-pointer transition-all shadow-2xs",
                             title: "Sao ch\xE9p y l\u1EC7nh v\xE0o EMR/HIS",
-                            children: copiedDrugId === resolvedDrugId ? /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(import_jsx_runtime21.Fragment, { children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Check, { className: "w-3 h-3 text-emerald-600" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-emerald-700 font-extrabold", children: "\u0110\xE3 ch\xE9p!" })
-                            ] }) : /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(import_jsx_runtime21.Fragment, { children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Copy, { className: "w-3 h-3 text-slate-500" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Sao ch\xE9p y l\u1EC7nh" })
+                            children: copiedDrugId === resolvedDrugId ? /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Check, { className: "w-3 h-3 text-emerald-600" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-emerald-700 font-extrabold", children: "\u0110\xE3 ch\xE9p!" })
+                            ] }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Copy, { className: "w-3 h-3 text-slate-500" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Sao ch\xE9p y l\u1EC7nh" })
                             ] })
                           }
-                        ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", {}),
-                        resolvedDrugId ? /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                        ) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", {}),
+                        resolvedDrugId ? /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
                           "button",
                           {
                             type: "button",
@@ -87460,8 +89824,8 @@ var StepAssessmentAndRegimens = ({
                             className: "px-3 py-1.5 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs bg-teal-600 hover:bg-teal-700 text-white",
                             title: "B\u1EADt b\u1EA3ng th\xF4ng tin chi ti\u1EBFt v\u1EC1 li\u1EC1u, hi\u1EC7u ch\u1EC9nh CrCl, l\u1ECDc m\xE1u v\xE0 t\u01B0\u01A1ng t\xE1c thu\u1ED1c",
                             children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.FileText, { className: "w-3.5 h-3.5" }),
-                              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Xem c\u1EE5 th\u1EC3" })
+                              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.FileText, { className: "w-3.5 h-3.5" }),
+                              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Xem c\u1EE5 th\u1EC3" })
                             ]
                           }
                         ) : null
@@ -87471,98 +89835,98 @@ var StepAssessmentAndRegimens = ({
                   dIdx
                 );
               }) }),
-              regimen.combinationRulesVi && regimen.combinationRulesVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-3 rounded-xl bg-teal-50/60 border border-teal-100 text-xs text-slate-700 space-y-1", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "font-bold text-teal-950 flex items-center gap-1", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Info, { className: "w-3.5 h-3.5 text-teal-600 shrink-0" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Quy t\u1EAFc ph\u1ED1i h\u1EE3p l\xE2m s\xE0ng:" })
+              regimen.combinationRulesVi && regimen.combinationRulesVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-3 rounded-xl bg-teal-50/60 border border-teal-100 text-xs text-slate-700 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "font-bold text-teal-950 flex items-center gap-1", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Info, { className: "w-3.5 h-3.5 text-teal-600 shrink-0" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Quy t\u1EAFc ph\u1ED1i h\u1EE3p l\xE2m s\xE0ng:" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("ul", { className: "list-disc list-inside space-y-0.5 pl-1 text-[11px]", children: regimen.combinationRulesVi.map((r, i) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("li", { children: r }, i)) })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("ul", { className: "list-disc list-inside space-y-0.5 pl-1 text-[11px]", children: regimen.combinationRulesVi.map((r, i) => /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("li", { children: r }, i)) })
               ] }),
-              regimen.cautionVi && regimen.cautionVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-3 rounded-xl bg-rose-50/70 border border-rose-200 text-xs text-rose-950 space-y-1", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "font-bold text-rose-950 flex items-center gap-1", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ShieldAlert, { className: "w-3.5 h-3.5 text-rose-600 shrink-0" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Ch\xFA \xFD an to\xE0n & Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh ph\u1ED1i h\u1EE3p:" })
+              regimen.cautionVi && regimen.cautionVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-3 rounded-xl bg-rose-50/70 border border-rose-200 text-xs text-rose-950 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "font-bold text-rose-950 flex items-center gap-1", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ShieldAlert, { className: "w-3.5 h-3.5 text-rose-600 shrink-0" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Ch\xFA \xFD an to\xE0n & Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh ph\u1ED1i h\u1EE3p:" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("ul", { className: "list-disc list-inside space-y-0.5 pl-1 text-[11px] text-rose-900", children: regimen.cautionVi.map((c, i) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("li", { children: c }, i)) })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("ul", { className: "list-disc list-inside space-y-0.5 pl-1 text-[11px] text-rose-900", children: regimen.cautionVi.map((c, i) => /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("li", { children: c }, i)) })
               ] })
             ]
           },
           regimen.id
         )) })
       ] }),
-      activeGuidelineSource === "who" && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "space-y-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-3.5 rounded-2xl bg-sky-50/80 border border-sky-200 text-xs text-sky-950 flex items-start gap-2.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Globe, { className: "w-5 h-5 text-sky-600 shrink-0 mt-0.5" }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { className: "font-extrabold", children: "The WHO AWaRe Antibiotic Book (2022):" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { className: "mt-0.5 text-slate-600 text-[11px] leading-relaxed", children: [
+      activeGuidelineSource === "who" && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-3.5 rounded-2xl bg-sky-50/80 border border-sky-200 text-xs text-sky-950 flex items-start gap-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Globe, { className: "w-5 h-5 text-sky-600 shrink-0 mt-0.5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { className: "font-extrabold", children: "The WHO AWaRe Antibiotic Book (2022):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("p", { className: "mt-0.5 text-slate-600 text-[11px] leading-relaxed", children: [
               "Ph\xE2n nh\xF3m kh\xE1ng sinh: ",
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "Access" }),
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "Access" }),
               " (\u01B0u ti\xEAn ti\u1EBFp c\u1EADn), ",
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "Watch" }),
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "Watch" }),
               " (gi\xE1m s\xE1t kh\xE1ng ch\xE9o), ",
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "Reserve" }),
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "Reserve" }),
               " (d\u1EF1 tr\u1EEF b\u01B0\u1EDBc cu\u1ED1i)."
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "space-y-3", children: whoRegimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "space-y-3", children: whoRegimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
           "div",
           {
             className: "p-4 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-3",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-100", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap mb-1", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: `px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1 ${regimen.line === "first_choice" ? "bg-emerald-100 text-emerald-800 border border-emerald-300" : "bg-amber-100 text-amber-800 border border-amber-300"}`, children: [
-                      regimen.line === "first_choice" ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Star, { className: "w-3 h-3 text-emerald-600" }) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.RefreshCw, { className: "w-3 h-3 text-amber-600" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: regimen.line === "first_choice" ? "\u0110\u1EA7u tay" : "L\u1EF1a ch\u1ECDn 2" })
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-100", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap mb-1", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: `px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1 ${regimen.line === "first_choice" ? "bg-emerald-100 text-emerald-800 border border-emerald-300" : "bg-amber-100 text-amber-800 border border-amber-300"}`, children: [
+                      regimen.line === "first_choice" ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Star, { className: "w-3 h-3 text-emerald-600" }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.RefreshCw, { className: "w-3 h-3 text-amber-600" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: regimen.line === "first_choice" ? "\u0110\u1EA7u tay" : "L\u1EF1a ch\u1ECDn 2" })
                     ] }),
-                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200", children: regimen.clinicalSetting === "primary_care" ? "Ngo\u1EA1i tr\xFA" : "B\u1EC7nh vi\u1EC7n" }),
-                    regimen.durationVi && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1", children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Clock, { className: "w-3 h-3 text-teal-600" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: regimen.durationVi })
+                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200", children: regimen.clinicalSetting === "primary_care" ? "Ngo\u1EA1i tr\xFA" : "B\u1EC7nh vi\u1EC7n" }),
+                    regimen.durationVi && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: "px-2 py-0.5 rounded text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Clock, { className: "w-3 h-3 text-teal-600" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: regimen.durationVi })
                     ] })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h4", { className: "text-sm font-extrabold text-slate-900", children: regimen.titleVi }),
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-[11px] text-slate-500 italic mt-0.5", children: regimen.titleEn })
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h4", { className: "text-sm font-extrabold text-slate-900", children: regimen.titleVi }),
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "text-[11px] text-slate-500 italic mt-0.5", children: regimen.titleEn })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(SourceBadge, { source: regimen.source })
+                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(SourceBadge, { source: regimen.source })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: regimen.drugs.map((drug, dIdx) => {
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: regimen.drugs.map((drug, dIdx) => {
                 const drugName = drug.nameVi || drug.drugName;
                 const rawDrugId = drug.drugId;
                 const resolvedDrugId = rawDrugId ? DRUG_MAP[rawDrugId]?.drugId || rawDrugId : void 0;
                 const liveDose = resolvedDrugId ? getLiveDose(resolvedDrugId) : null;
                 const isCurrentlyDetailed = Boolean(detailedDrugId && detailedDrugId === resolvedDrugId);
-                return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
                   "div",
                   {
                     className: "p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 flex flex-col justify-between",
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("span", { className: "font-bold text-xs sm:text-sm text-slate-900 flex items-center gap-1.5 flex-wrap", children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: drugName }),
-                            drug.awareCategory && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: `px-1.5 py-0.2 rounded text-[9px] font-black uppercase ${drug.awareCategory === "Access" ? "bg-emerald-100 text-emerald-800 border border-emerald-300" : drug.awareCategory === "Watch" ? "bg-amber-100 text-amber-800 border border-amber-300" : "bg-rose-100 text-rose-800 border border-rose-300"}`, children: drug.awareCategory })
+                      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { className: "font-bold text-xs sm:text-sm text-slate-900 flex items-center gap-1.5 flex-wrap", children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: drugName }),
+                            drug.awareCategory && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: `px-1.5 py-0.2 rounded text-[9px] font-black uppercase ${drug.awareCategory === "Access" ? "bg-emerald-100 text-emerald-800 border border-emerald-300" : drug.awareCategory === "Watch" ? "bg-amber-100 text-amber-800 border border-amber-300" : "bg-rose-100 text-rose-800 border border-rose-300"}`, children: drug.awareCategory })
                           ] }),
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-200/80 text-slate-700 shrink-0", children: drug.route || "IV" })
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-200/80 text-slate-700 shrink-0", children: drug.route || "IV" })
                         ] }),
-                        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mt-1 text-xs text-slate-700", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "font-semibold text-slate-900", children: "Li\u1EC1u WHO:" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "mt-1 text-xs text-slate-700", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "font-semibold text-slate-900", children: "Li\u1EC1u WHO:" }),
                           " ",
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: drug.standardDoseVi || drug.dosageVi })
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: drug.standardDoseVi || drug.dosageVi })
                         ] }),
-                        liveDose ? /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mt-2 p-2 rounded-xl bg-white border border-sky-200 text-xs text-sky-950 space-y-0.5", children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-[10px] font-bold text-sky-700 uppercase", children: [
+                        liveDose ? /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "mt-2 p-2 rounded-xl bg-white border border-sky-200 text-xs text-sky-950 space-y-0.5", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-[10px] font-bold text-sky-700 uppercase", children: [
                             "Li\u1EC1u theo CrCl ",
                             renal.crcl,
                             " mL/p:"
                           ] }),
-                          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "font-black text-teal-950", children: liveDose.dose.maintenanceDoseTextVi })
+                          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "font-black text-teal-950", children: liveDose.dose.maintenanceDoseTextVi })
                         ] }) : null
                       ] }),
-                      resolvedDrugId ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "mt-3 pt-2 border-t border-slate-200/70 flex items-center justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                      resolvedDrugId ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "mt-3 pt-2 border-t border-slate-200/70 flex items-center justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
                         "button",
                         {
                           type: "button",
@@ -87570,8 +89934,8 @@ var StepAssessmentAndRegimens = ({
                           className: "px-3 py-1.5 text-xs font-bold rounded-xl bg-sky-600 hover:bg-sky-700 text-white shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer",
                           title: "B\u1EADt b\u1EA3ng th\xF4ng tin chi ti\u1EBFt v\u1EC1 li\u1EC1u, hi\u1EC7u ch\u1EC9nh CrCl, l\u1ECDc m\xE1u v\xE0 t\u01B0\u01A1ng t\xE1c thu\u1ED1c",
                           children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.FileText, { className: "w-3.5 h-3.5" }),
-                            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Xem c\u1EE5 th\u1EC3" })
+                            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.FileText, { className: "w-3.5 h-3.5" }),
+                            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Xem c\u1EE5 th\u1EC3" })
                           ]
                         }
                       ) }) : null
@@ -87585,46 +89949,46 @@ var StepAssessmentAndRegimens = ({
           regimen.id
         )) })
       ] }),
-      activeGuidelineSource === "antibiogram" && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "space-y-3", children: antibiogramData ? /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-4 rounded-2xl border border-slate-200 bg-white space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h4", { className: "text-sm font-extrabold text-slate-900", children: "B\xE1o C\xE1o Vi Sinh & Kh\xE1ng Sinh \u0110\u1ED3 \u2014 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { className: "text-xs text-slate-500", children: [
+      activeGuidelineSource === "antibiogram" && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "space-y-3", children: antibiogramData ? /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-4 rounded-2xl border border-slate-200 bg-white space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h4", { className: "text-sm font-extrabold text-slate-900", children: "B\xE1o C\xE1o Vi Sinh & Kh\xE1ng Sinh \u0110\u1ED3 \u2014 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("p", { className: "text-xs text-slate-500", children: [
               "Th\u1EDDi gian kh\u1EA3o s\xE1t: ",
               antibiogramData.period,
               " | T\u1ED5ng s\u1ED1 ch\u1EE7ng ph\xE2n l\u1EADp: ",
               antibiogramData.sampleTotal
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(SourceBadge, { source: antibiogramData.source })
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(SourceBadge, { source: antibiogramData.source })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("table", { className: "w-full min-w-[500px] text-xs text-left", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("tr", { className: "bg-slate-50 border-b border-slate-200 text-slate-700 font-bold", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("th", { className: "py-2 px-3", children: "T\xE1c nh\xE2n" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("th", { className: "py-2 px-3 text-center", children: "T\u1EF7 l\u1EC7" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("th", { className: "py-2 px-3", children: "\u0110\u1ED9 nh\u1EA1y c\u1EA3m kh\xE1ng sinh th\u01B0\u1EDDng d\xF9ng" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("th", { className: "py-2 px-3", children: "\u0110\u1EB7c \u0111i\u1EC3m kh\xE1ng" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("table", { className: "w-full min-w-[500px] text-xs text-left", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("tr", { className: "bg-slate-50 border-b border-slate-200 text-slate-700 font-bold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("th", { className: "py-2 px-3", children: "T\xE1c nh\xE2n" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("th", { className: "py-2 px-3 text-center", children: "T\u1EF7 l\u1EC7" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("th", { className: "py-2 px-3", children: "\u0110\u1ED9 nh\u1EA1y c\u1EA3m kh\xE1ng sinh th\u01B0\u1EDDng d\xF9ng" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("th", { className: "py-2 px-3", children: "\u0110\u1EB7c \u0111i\u1EC3m kh\xE1ng" })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("tbody", { className: "divide-y divide-slate-100 text-slate-700", children: antibiogramData.organisms.map((org, idx) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("tr", { className: "hover:bg-slate-50/70", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("td", { className: "py-2.5 px-3 font-bold text-slate-900", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("tbody", { className: "divide-y divide-slate-100 text-slate-700", children: antibiogramData.organisms.map((org, idx) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("tr", { className: "hover:bg-slate-50/70", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("td", { className: "py-2.5 px-3 font-bold text-slate-900", children: [
               org.organismName,
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-[10px] text-slate-400 font-normal", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-[10px] text-slate-400 font-normal", children: [
                 "n = ",
                 org.sampleCount
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("td", { className: "py-2.5 px-3 text-center font-extrabold text-teal-700", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("td", { className: "py-2.5 px-3 text-center font-extrabold text-teal-700", children: [
               org.pctOfIsolates,
               "%"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("td", { className: "py-2.5 px-3", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "flex flex-wrap gap-1", children: org.sensitivities.map((s, sIdx) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("td", { className: "py-2.5 px-3", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "flex flex-wrap gap-1", children: org.sensitivities.map((s, sIdx) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
               "span",
               {
                 className: `px-1.5 py-0.5 rounded text-[10px] font-semibold border ${s.sensitivityPct >= 70 ? "bg-emerald-50 text-emerald-800 border-emerald-200" : s.sensitivityPct < 40 ? "bg-rose-50 text-rose-800 border-rose-200" : "bg-amber-50 text-amber-800 border-amber-200"}`,
                 children: [
                   s.antibioticName,
                   ": ",
-                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("strong", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("strong", { children: [
                     s.sensitivityPct,
                     "%"
                   ] })
@@ -87632,54 +89996,54 @@ var StepAssessmentAndRegimens = ({
               },
               sIdx
             )) }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("td", { className: "py-2.5 px-3 text-rose-700 font-medium text-[11px]", children: org.notableResistance || "\u2014" })
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("td", { className: "py-2.5 px-3 text-rose-700 font-medium text-[11px]", children: org.notableResistance || "\u2014" })
           ] }, idx)) })
         ] }) })
-      ] }) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "p-6 text-center text-xs text-slate-500 bg-slate-50 rounded-2xl border border-slate-200", children: "Ch\u01B0a c\xF3 d\u1EEF li\u1EC7u Antibiogram ri\xEAng cho \u1ED5 nhi\u1EC5m n\xE0y. Vui l\xF2ng tham kh\u1EA3o kh\u1EA3o s\xE1t vi sinh chung BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi n\u0103m 2024." }) }),
-      activeGuidelineSource === "compare" && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-4 rounded-2xl bg-white border border-teal-200 shadow-2xs space-y-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "font-extrabold text-xs text-teal-950 flex items-center gap-1.5 pb-2 border-b border-teal-100", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "w-2.5 h-2.5 rounded-full bg-teal-500" }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "B\u1EC7nh Vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi (2026)" })
+      ] }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "p-6 text-center text-xs text-slate-500 bg-slate-50 rounded-2xl border border-slate-200", children: "Ch\u01B0a c\xF3 d\u1EEF li\u1EC7u Antibiogram ri\xEAng cho \u1ED5 nhi\u1EC5m n\xE0y. Vui l\xF2ng tham kh\u1EA3o kh\u1EA3o s\xE1t vi sinh chung BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi n\u0103m 2024." }) }),
+      activeGuidelineSource === "compare" && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-4 rounded-2xl bg-white border border-teal-200 shadow-2xs space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "font-extrabold text-xs text-teal-950 flex items-center gap-1.5 pb-2 border-b border-teal-100", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "w-2.5 h-2.5 rounded-full bg-teal-500" }),
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "B\u1EC7nh Vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi (2026)" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("ul", { className: "list-disc list-inside space-y-1 text-xs text-slate-600", children: comparisonData.bvbndKeyPointsVi.map((pt, i) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("li", { className: "leading-relaxed", children: pt }, i)) })
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("ul", { className: "list-disc list-inside space-y-1 text-xs text-slate-600", children: comparisonData.bvbndKeyPointsVi.map((pt, i) => /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("li", { className: "leading-relaxed", children: pt }, i)) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-4 rounded-2xl bg-white border border-sky-200 shadow-2xs space-y-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "font-extrabold text-xs text-sky-950 flex items-center gap-1.5 pb-2 border-b border-sky-100", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "w-2.5 h-2.5 rounded-full bg-sky-500" }),
-              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "WHO AWaRe Book (2022)" })
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-4 rounded-2xl bg-white border border-sky-200 shadow-2xs space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "font-extrabold text-xs text-sky-950 flex items-center gap-1.5 pb-2 border-b border-sky-100", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "w-2.5 h-2.5 rounded-full bg-sky-500" }),
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "WHO AWaRe Book (2022)" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("ul", { className: "list-disc list-inside space-y-1 text-xs text-slate-600", children: comparisonData.whoKeyPointsVi.map((pt, i) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("li", { className: "leading-relaxed", children: pt }, i)) })
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("ul", { className: "list-disc list-inside space-y-1 text-xs text-slate-600", children: comparisonData.whoKeyPointsVi.map((pt, i) => /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("li", { className: "leading-relaxed", children: pt }, i)) })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "p-3.5 rounded-2xl bg-amber-50/80 border border-amber-300 text-xs text-amber-950", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("strong", { className: "font-bold flex items-center gap-1.5 text-amber-900 mb-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.Stethoscope, { className: "w-4 h-4 text-amber-700 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Khuy\u1EBFn c\xE1o D\u01B0\u1EE3c s\u0129 l\xE2m s\xE0ng:" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "p-3.5 rounded-2xl bg-amber-50/80 border border-amber-300 text-xs text-amber-950", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("strong", { className: "font-bold flex items-center gap-1.5 text-amber-900 mb-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Stethoscope, { className: "w-4 h-4 text-amber-700 shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Khuy\u1EBFn c\xE1o D\u01B0\u1EE3c s\u0129 l\xE2m s\xE0ng:" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "leading-relaxed pl-5 text-[11px] text-amber-900 font-medium", children: comparisonData.stewardshipAdviceVi })
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "leading-relaxed pl-5 text-[11px] text-amber-900 font-medium", children: comparisonData.stewardshipAdviceVi })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex items-center justify-between", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-xs text-slate-500 hidden sm:block", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex items-center justify-between", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-xs text-slate-500 hidden sm:block", children: [
         "B\u1EC7nh nh\xE2n: ",
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em" }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em" }),
         " \u2022 \u1ED4 nhi\u1EC5m: ",
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: sitesList.find((s) => s.id === site)?.titleVi }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: sitesList.find((s) => s.id === site)?.titleVi }),
         " \u2022 Nguy c\u01A1: ",
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: isGroup2 ? "Nh\xF3m 2 (Cao VK\u0110K)" : "Nh\xF3m 1" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: isGroup2 ? "Nh\xF3m 2 (Cao VK\u0110K)" : "Nh\xF3m 1" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
         "button",
         {
           type: "button",
           onClick: onNextStep,
           className: "w-full sm:w-auto px-6 py-3 rounded-2xl text-xs sm:text-sm font-extrabold text-white bg-teal-600 hover:bg-teal-700 shadow-md shadow-teal-600/20 transition-all flex items-center justify-center space-x-2 cursor-pointer ml-auto",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: "Sang B\u01B0\u1EDBc 2: T\xE1i \u0110\xE1nh Gi\xE1 48-72h" }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_lucide_react20.ArrowRight, { className: "w-4 h-4" })
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Sang B\u01B0\u1EDBc 2: T\xE1i \u0110\xE1nh Gi\xE1 48-72h" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ArrowRight, { className: "w-4 h-4" })
           ]
         }
       )
@@ -87689,20 +90053,37 @@ var StepAssessmentAndRegimens = ({
 
 // antibiotic/src/components/selection/StepReassess.tsx
 var import_react17 = __toESM(require_react(), 1);
-var import_lucide_react21 = __toESM(require_lucide_react(), 1);
-var import_jsx_runtime22 = __toESM(require_jsx_runtime(), 1);
+var import_lucide_react24 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime25 = __toESM(require_jsx_runtime(), 1);
 var StepReassess = ({
   site,
   onSelectDrugForDosing,
   onPrevStep,
-  onOpenGuidelineAtlas
+  onOpenGuidelineAtlas,
+  sepsisPatient,
+  sepsisResult,
+  suggestedMdrCategory,
+  suggestedCreEnzyme
 }) => {
   const [subTab, setSubTab] = (0, import_react17.useState)("decision_tree");
   const [clinicalStatus, setClinicalStatus] = (0, import_react17.useState)("improved");
   const [cultureStatus, setCultureStatus] = (0, import_react17.useState)("pending");
   const [susceptibilityStatus, setSusceptibilityStatus] = (0, import_react17.useState)("sensitive");
-  const [selectedMdr, setSelectedMdr] = (0, import_react17.useState)("cre");
-  const [creEnzyme, setCreEnzyme] = (0, import_react17.useState)("mbl");
+  const [selectedMdr, setSelectedMdr] = (0, import_react17.useState)(suggestedMdrCategory || "cre");
+  const [creEnzyme, setCreEnzyme] = (0, import_react17.useState)(suggestedCreEnzyme || "mbl");
+  (0, import_react17.useEffect)(() => {
+    if (suggestedMdrCategory) {
+      setSelectedMdr(suggestedMdrCategory);
+    }
+    if (suggestedCreEnzyme) {
+      setCreEnzyme(suggestedCreEnzyme);
+    }
+  }, [suggestedMdrCategory, suggestedCreEnzyme]);
+  (0, import_react17.useEffect)(() => {
+    if (sepsisPatient?.bloodCultureResult) {
+      setCultureStatus(sepsisPatient.bloodCultureResult);
+    }
+  }, [sepsisPatient?.bloodCultureResult]);
   const [currentDays, setCurrentDays] = (0, import_react17.useState)(5);
   const [checkedClinical, setCheckedClinical] = (0, import_react17.useState)([
     "crit_afebrile",
@@ -87734,17 +90115,69 @@ var StepReassess = ({
       (prev) => prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-200", children: "Giai \u0110o\u1EA1n 3" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h2", { className: "text-lg sm:text-xl font-extrabold text-slate-900", children: "T\xE1i \u0110\xE1nh Gi\xE1 48-72 Gi\u1EDD & Qu\u1EA3n L\xFD Kh\xE1ng Sinh (AMS)" })
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-200", children: "Giai \u0110o\u1EA1n 3" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h2", { className: "text-lg sm:text-xl font-extrabold text-slate-900", children: "T\xE1i \u0110\xE1nh Gi\xE1 48-72 Gi\u1EDD & Qu\u1EA3n L\xFD Kh\xE1ng Sinh (AMS)" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "text-xs text-slate-500 mt-1", children: "L\u01B0u \u0111\u1ED3 \u0111\xE1nh gi\xE1 l\u1EA1i sau 48-72h, \u0111i\u1EC1u tr\u1ECB tr\xFAng \u0111\xEDch vi khu\u1EA9n \u0111a kh\xE1ng (CRE, DTR-PA, CRAB), b\u1EA3ng ki\u1EC3m ng\u01B0ng kh\xE1ng sinh an to\xE0n v\xE0 chuy\u1EC3n \u0111\u1ED5i IV sang PO." })
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-xs text-slate-500 mt-1", children: "L\u01B0u \u0111\u1ED3 \u0111\xE1nh gi\xE1 l\u1EA1i sau 48-72h, \u0111i\u1EC1u tr\u1ECB tr\xFAng \u0111\xEDch vi khu\u1EA9n \u0111a kh\xE1ng (CRE, DTR-PA, CRAB), b\u1EA3ng ki\u1EC3m ng\u01B0ng kh\xE1ng sinh an to\xE0n v\xE0 chuy\u1EC3n \u0111\u1ED5i IV sang PO." })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "grid grid-cols-2 lg:grid-cols-4 gap-1.5 pt-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+      sepsisPatient && sepsisResult && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "mt-3 p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: "font-extrabold text-slate-800 flex items-center gap-1.5 text-[11px] uppercase tracking-wider", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Activity, { className: "w-3.5 h-3.5 text-teal-600" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "\u0110\u1ED9ng H\u1ECDc Biomarker & Vi Sinh \u0110\u1ED3ng B\u1ED9 T\u1EEB Giai \u0110o\u1EA1n 1" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex flex-wrap items-center gap-1.5 text-[11px] font-mono", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: "px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-800 font-bold", children: [
+              "SOFA: ",
+              sepsisResult.sofaScore,
+              "\u0111"
+            ] }),
+            sepsisResult.lactateClearancePercent !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: `px-2 py-0.5 rounded border font-bold ${sepsisResult.lactateClearancePercent >= 10 ? "bg-emerald-50 border-emerald-200 text-emerald-800" : "bg-rose-50 border-rose-200 text-rose-800"}`, children: [
+              "Thanh th\u1EA3i Lac: ",
+              sepsisResult.lactateClearancePercent,
+              "%"
+            ] }),
+            sepsisPatient.procalcitonin !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: "px-2 py-0.5 rounded bg-white border border-slate-200 text-teal-800 font-bold", children: [
+              "PCT: ",
+              sepsisPatient.procalcitonin,
+              " ng/mL"
+            ] }),
+            sepsisResult.calculatedNlr !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: "px-2 py-0.5 rounded bg-white border border-slate-200 text-indigo-800 font-bold", children: [
+              "NLR: ",
+              sepsisResult.calculatedNlr
+            ] })
+          ] })
+        ] }),
+        sepsisPatient.rapidMolecularT2Done && sepsisPatient.rapidMolecularResult === "positive" && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-2.5 rounded-lg bg-purple-50 border border-purple-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "text-[11px] text-purple-950 flex items-start gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Dna, { className: "w-4 h-4 text-purple-600 shrink-0 mt-0.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "T2Bacteria / T2Resistance (+):" }),
+              " ",
+              sepsisPatient.rapidMolecularPathogen || "Ch\u1EE7ng \u0111a kh\xE1ng",
+              sepsisPatient.rapidMolecularResistanceGenes && sepsisPatient.rapidMolecularResistanceGenes.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { children: [
+                " \u2014 Gen kh\xE1ng: ",
+                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: sepsisPatient.rapidMolecularResistanceGenes.join(", ") })
+              ] })
+            ] })
+          ] }),
+          subTab !== "mdr_pathways" && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setSubTab("mdr_pathways"),
+              className: "px-2.5 py-1 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-[11px] font-bold shrink-0 cursor-pointer transition-colors",
+              children: "M\u1EDF Ph\xE1c \u0110\u1ED3 \u0110\xEDch MDR \u2192"
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "grid grid-cols-2 lg:grid-cols-4 gap-1.5 pt-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
           "button",
           {
             type: "button",
@@ -87752,12 +90185,12 @@ var StepReassess = ({
             className: `px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "decision_tree" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
             title: "L\u01B0u \u0111\u1ED3 t\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0ng & vi sinh 48-72h (BVBND 2026)",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Clock, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "1. L\u01B0u \u0111\u1ED3 48-72h" })
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Clock, { className: "w-3.5 h-3.5 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "1. L\u01B0u \u0111\u1ED3 48-72h" })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
           "button",
           {
             type: "button",
@@ -87765,12 +90198,12 @@ var StepReassess = ({
             className: `px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "mdr_pathways" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
             title: "\u0110i\u1EC1u tr\u1ECB tr\xFAng \u0111\xEDch vi khu\u1EA9n \u0111a kh\xE1ng CRE, DTR-PA, CRAB",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Crosshair, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "2. Tr\xFAng \u0110\xEDch VK\u0110K" })
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Crosshair, { className: "w-3.5 h-3.5 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "2. Tr\xFAng \u0110\xEDch VK\u0110K" })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
           "button",
           {
             type: "button",
@@ -87778,12 +90211,12 @@ var StepReassess = ({
             className: `px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "stop_criteria" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
             title: "B\u1EA3ng ki\u1EC3m ti\xEAu chu\u1EA9n ng\u01B0ng kh\xE1ng sinh an to\xE0n",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Ban, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "3. Ng\u01B0ng Kh\xE1ng Sinh" })
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Ban, { className: "w-3.5 h-3.5 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "3. Ng\u01B0ng Kh\xE1ng Sinh" })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
           "button",
           {
             type: "button",
@@ -87791,27 +90224,27 @@ var StepReassess = ({
             className: `px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border text-center ${subTab === "iv_to_po" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
             title: "Ti\xEAu chu\u1EA9n v\xE0 danh m\u1EE5c chuy\u1EC3n \u0111\u1ED5i kh\xE1ng sinh t\u1EEB \u0111\u01B0\u1EDDng ti\xEAm sang \u0111\u01B0\u1EDDng u\u1ED1ng (IV to PO)",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.ArrowRightLeft, { className: "w-3.5 h-3.5 shrink-0" }),
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "4. Chuy\u1EC3n IV-sang-PO" })
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.ArrowRightLeft, { className: "w-3.5 h-3.5 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "4. Chuy\u1EC3n IV-sang-PO" })
             ]
           }
         )
       ] })
     ] }),
-    subTab === "decision_tree" && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h3", { className: "text-sm font-bold text-slate-900", children: "Nh\u1EADp t\xECnh tr\u1EA1ng ng\u01B0\u1EDDi b\u1EC7nh t\u1EA1i th\u1EDDi \u0111i\u1EC3m 48 - 72 gi\u1EDD:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 2 } })
+    subTab === "decision_tree" && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h3", { className: "text-sm font-bold text-slate-900", children: "Nh\u1EADp t\xECnh tr\u1EA1ng ng\u01B0\u1EDDi b\u1EC7nh t\u1EA1i th\u1EDDi \u0111i\u1EC3m 48 - 72 gi\u1EDD:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 2 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "1. \u0110\xE1p \u1EE9ng l\xE2m s\xE0ng:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "space-y-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "1. \u0110\xE1p \u1EE9ng l\xE2m s\xE0ng:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "space-y-2", children: [
             { id: "improved", label: "C\u1EA3i thi\u1EC7n (H\u1EBFt s\u1ED1t, sinh hi\u1EC7u \u1ED5n)", color: "text-emerald-700" },
             { id: "not_improved", label: "Kh\xF4ng c\u1EA3i thi\u1EC7n", color: "text-amber-700" },
             { id: "worsened", label: "X\u1EA5u \u0111i (S\u1ED1c, suy t\u1EA1ng t\u0103ng)", color: "text-rose-700" }
-          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
               "input",
               {
                 type: "radio",
@@ -87821,17 +90254,17 @@ var StepReassess = ({
                 className: "text-teal-600 focus:ring-teal-500"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: `font-semibold ${opt.color}`, children: opt.label })
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: `font-semibold ${opt.color}`, children: opt.label })
           ] }, opt.id)) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "2. K\u1EBFt qu\u1EA3 c\u1EA5y vi sinh:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "2. K\u1EBFt qu\u1EA3 c\u1EA5y vi sinh:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "space-y-2", children: [
             { id: "pending", label: "\u0110ang ch\u1EDD k\u1EBFt qu\u1EA3" },
             { id: "negative", label: "\xC2m t\xEDnh (Kh\xF4ng m\u1ECDc vi khu\u1EA9n)" },
             { id: "positive", label: "D\u01B0\u01A1ng t\xEDnh (Ph\xE2n l\u1EADp \u0111\u01B0\u1EE3c vi khu\u1EA9n)" }
-          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
               "input",
               {
                 type: "radio",
@@ -87841,17 +90274,17 @@ var StepReassess = ({
                 className: "text-teal-600 focus:ring-teal-500"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-slate-700 font-medium", children: opt.label })
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "text-slate-700 font-medium", children: opt.label })
           ] }, opt.id)) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: `p-3.5 rounded-xl border transition-all ${cultureStatus !== "positive" ? "opacity-50 pointer-events-none border-slate-200 bg-slate-100" : "border-slate-200/80 bg-slate-50/70"}`, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "3. \u0110\u1ED9 nh\u1EA1y KS tr\xEAn KS\u0110:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: `p-3.5 rounded-xl border transition-all ${cultureStatus !== "positive" ? "opacity-50 pointer-events-none border-slate-200 bg-slate-100" : "border-slate-200/80 bg-slate-50/70"}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("label", { className: "block text-xs font-bold text-slate-800 mb-2.5", children: "3. \u0110\u1ED9 nh\u1EA1y KS tr\xEAn KS\u0110:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "space-y-2", children: [
             { id: "sensitive", label: "Nh\u1EA1y c\u1EA3m (S)" },
             { id: "resistant", label: "\u0110\u1EC1 kh\xE1ng (R)" },
             { id: "intermediate", label: "Trung gian (I)" }
-          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+          ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
               "input",
               {
                 type: "radio",
@@ -87862,37 +90295,37 @@ var StepReassess = ({
                 className: "text-teal-600 focus:ring-teal-500"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-slate-700 font-medium", children: opt.label })
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "text-slate-700 font-medium", children: opt.label })
           ] }, opt.id)) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: `p-4 rounded-xl border mt-4 ${reassessResult.actionType === "de_escalate" ? "bg-emerald-50 border-emerald-300 text-emerald-950" : reassessResult.actionType === "switch_by_ast" ? "bg-rose-50 border-rose-300 text-rose-950" : reassessResult.actionType === "consult" ? "bg-amber-50 border-amber-300 text-amber-950" : "bg-teal-50 border-teal-300 text-teal-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-start gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-2xl shrink-0", children: reassessResult.actionType === "de_escalate" ? "\u{1F7E2}" : reassessResult.actionType === "switch_by_ast" ? "\u{1F534}" : reassessResult.actionType === "consult" ? "\u{1F7E1}" : "\u{1F535}" }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "space-y-1.5 flex-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h4", { className: "font-extrabold text-sm sm:text-base", children: reassessResult.actionTitleVi }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("ul", { className: "list-disc list-inside text-xs space-y-1 text-slate-800", children: reassessResult.recommendationsVi.map((rec, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("li", { className: "leading-relaxed font-medium", children: rec }, rIdx)) }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "pt-2 flex flex-wrap gap-2", children: [
-            reassessResult.stopChecklistEligible && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: `p-4 rounded-xl border mt-4 ${reassessResult.actionType === "de_escalate" ? "bg-emerald-50 border-emerald-300 text-emerald-950" : reassessResult.actionType === "switch_by_ast" ? "bg-rose-50 border-rose-300 text-rose-950" : reassessResult.actionType === "consult" ? "bg-amber-50 border-amber-300 text-amber-950" : "bg-teal-50 border-teal-300 text-teal-950"}`, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex items-start gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "text-2xl shrink-0", children: reassessResult.actionType === "de_escalate" ? "\u{1F7E2}" : reassessResult.actionType === "switch_by_ast" ? "\u{1F534}" : reassessResult.actionType === "consult" ? "\u{1F7E1}" : "\u{1F535}" }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "space-y-1.5 flex-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h4", { className: "font-extrabold text-sm sm:text-base", children: reassessResult.actionTitleVi }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("ul", { className: "list-disc list-inside text-xs space-y-1 text-slate-800", children: reassessResult.recommendationsVi.map((rec, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("li", { className: "leading-relaxed font-medium", children: rec }, rIdx)) }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "pt-2 flex flex-wrap gap-2", children: [
+            reassessResult.stopChecklistEligible && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setSubTab("stop_criteria"),
                 className: "px-3 py-1.5 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all cursor-pointer flex items-center space-x-1",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Ki\u1EC3m tra B\u1EA3ng ki\u1EC3m ng\u01B0ng KS ngay" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.ArrowRight, { className: "w-3.5 h-3.5" })
+                  /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "Ki\u1EC3m tra B\u1EA3ng ki\u1EC3m ng\u01B0ng KS ngay" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.ArrowRight, { className: "w-3.5 h-3.5" })
                 ]
               }
             ),
-            reassessResult.ivToPoEligible && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+            reassessResult.ivToPoEligible && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
               "button",
               {
                 type: "button",
                 onClick: () => setSubTab("iv_to_po"),
                 className: "px-3 py-1.5 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-xs transition-all cursor-pointer flex items-center space-x-1",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Xem x\xE9t Chuy\u1EC3n \u0111\u1ED5i IV sang PO" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.ArrowRight, { className: "w-3.5 h-3.5" })
+                  /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "Xem x\xE9t Chuy\u1EC3n \u0111\u1ED5i IV sang PO" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.ArrowRight, { className: "w-3.5 h-3.5" })
                 ]
               }
             )
@@ -87900,13 +90333,13 @@ var StepReassess = ({
         ] })
       ] }) })
     ] }) }),
-    subTab === "mdr_pathways" && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2.5", children: [
+    subTab === "mdr_pathways" && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2.5", children: [
         { id: "cre", label: "CRE (Enterobacterales kh\xE1ng Carbapenem)" },
         { id: "dtr_pseudo", label: "DTR-Pseudomonas aeruginosa" },
         { id: "crab", label: "CRAB (A. baumannii kh\xE1ng Carbapenem)" },
         { id: "s_maltophilia", label: "Stenotrophomonas maltophilia" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
         "button",
         {
           type: "button",
@@ -87916,14 +90349,14 @@ var StepReassess = ({
         },
         item.id
       )) }),
-      mdrData && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: mdrData.titleVi }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: mdrData.definitionVi })
+      mdrData && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: mdrData.titleVi }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: mdrData.definitionVi })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center gap-2", children: [
-            onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex items-center gap-2", children: [
+            onOpenGuidelineAtlas && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
               "button",
               {
                 id: "btn-open-mdr-flowchart",
@@ -87938,21 +90371,21 @@ var StepReassess = ({
                 className: "px-2.5 py-1 text-xs font-bold rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs",
                 title: "Xem \u1EA3nh l\u01B0u \u0111\u1ED3 g\u1ED1c BVBND cho vi khu\u1EA9n \u0111a kh\xE1ng n\xE0y",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Xem L\u01B0u \u0110\u1ED3 G\u1ED1c MDR" })
+                  /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.BookOpen, { className: "w-3.5 h-3.5 text-emerald-600" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "Xem L\u01B0u \u0110\u1ED3 G\u1ED1c MDR" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(SourceBadge, { source: { doc: "BVBND_HDSDKS_2026", page: selectedMdr === "cre" ? 15 : selectedMdr === "dtr_pseudo" ? 18 : 21 } })
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SourceBadge, { source: { doc: "BVBND_HDSDKS_2026", page: selectedMdr === "cre" ? 15 : selectedMdr === "dtr_pseudo" ? 18 : 21 } })
           ] })
         ] }),
-        selectedMdr === "cre" && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "text-xs font-bold text-slate-800", children: "Ph\xE2n lo\u1EA1i theo ki\u1EC3u men Carbapenemase (k\u1EBFt qu\u1EA3 PCR / test mCIM / Carba NP):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "flex flex-wrap gap-2", children: [
+        selectedMdr === "cre" && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "text-xs font-bold text-slate-800", children: "Ph\xE2n lo\u1EA1i theo ki\u1EC3u men Carbapenemase (k\u1EBFt qu\u1EA3 PCR / test mCIM / Carba NP):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "flex flex-wrap gap-2", children: [
             { id: "mbl", label: "Metallo-beta-lactamase (MBL: NDM, VIM, IMP)" },
             { id: "kpc", label: "Serine Carbapenemase nh\xF3m A (KPC)" },
             { id: "oxa48", label: "OXA-48-like (Serine Carbapenemase nh\xF3m D)" }
-          ].map((enz) => /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+          ].map((enz) => /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
             "button",
             {
               type: "button",
@@ -87962,43 +90395,43 @@ var StepReassess = ({
             },
             enz.id
           )) }),
-          creEnzyme === "mbl" && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-3 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-950 font-medium", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("strong", { children: "\u26A0\uFE0F MBL (NDM):" }),
+          creEnzyme === "mbl" && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-3 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-950 font-medium", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "\u26A0\uFE0F MBL (NDM):" }),
             " Men Metallo-beta-lactamase kh\xE1ng l\u1EA1i CAZ-AVI \u0111\u01A1n \u0111\u1ED9c. B\u1EAFt bu\u1ED9c ph\u1ED1i h\u1EE3p ",
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("strong", { children: "Ceftazidime/Avibactam + Aztreonam" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "Ceftazidime/Avibactam + Aztreonam" }),
             " truy\u1EC1n \u0111\u1ED3ng th\u1EDDi qua ",
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("strong", { children: "Y-site" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "Y-site" }),
             "."
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "space-y-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-500", children: "Kh\xE1ng sinh \u0110\u1EA7u tay Khuy\u1EBFn c\xE1o:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: mdrData.firstLineDrugs.map((drug, dIdx) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-500", children: "Kh\xE1ng sinh \u0110\u1EA7u tay Khuy\u1EBFn c\xE1o:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: mdrData.firstLineDrugs.map((drug, dIdx) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
             "div",
             {
               className: "p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex flex-col justify-between",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "font-bold text-sm text-teal-900", children: drug.nameVi }),
-                  /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "text-xs text-slate-700 mt-1", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "font-semibold text-slate-900", children: "Li\u1EC1u:" }),
+                /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "font-bold text-sm text-teal-900", children: drug.nameVi }),
+                  /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "text-xs text-slate-700 mt-1", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "font-semibold text-slate-900", children: "Li\u1EC1u:" }),
                     " ",
                     drug.standardDoseVi
                   ] }),
-                  drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "mt-1 text-[11px] text-amber-800 bg-amber-50 px-2 py-1 rounded-md border border-amber-200/60 font-medium flex items-center gap-1", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Clock, { className: "w-3 h-3 text-amber-600 shrink-0" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: drug.infusionNoteVi })
+                  drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "mt-1 text-[11px] text-amber-800 bg-amber-50 px-2 py-1 rounded-md border border-amber-200/60 font-medium flex items-center gap-1", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Clock, { className: "w-3 h-3 text-amber-600 shrink-0" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: drug.infusionNoteVi })
                   ] })
                 ] }),
-                drug.hasDosingCalculator && drug.drugId && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/80 flex justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+                drug.hasDosingCalculator && drug.drugId && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/80 flex justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
                   "button",
                   {
                     type: "button",
                     onClick: () => onSelectDrugForDosing(drug.drugId),
                     className: "px-3 py-1 text-xs font-bold rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-xs transition-all flex items-center gap-1 cursor-pointer",
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Calculator, { className: "w-3.5 h-3.5" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "T\xEDnh li\u1EC1u \u2192" })
+                      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Calculator, { className: "w-3.5 h-3.5" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "T\xEDnh li\u1EC1u \u2192" })
                     ]
                   }
                 ) })
@@ -88007,46 +90440,46 @@ var StepReassess = ({
             dIdx
           )) })
         ] }),
-        mdrData.combinationRegimens && mdrData.combinationRegimens.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "space-y-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-teal-700", children: "Ph\xE1c \u0111\u1ED3 Ph\u1ED1i h\u1EE3p B\u1EAFt bu\u1ED9c:" }),
-          mdrData.combinationRegimens.map((combo, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+        mdrData.combinationRegimens && mdrData.combinationRegimens.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "space-y-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-teal-700", children: "Ph\xE1c \u0111\u1ED3 Ph\u1ED1i h\u1EE3p B\u1EAFt bu\u1ED9c:" }),
+          mdrData.combinationRegimens.map((combo, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
             "div",
             {
               className: "p-3.5 rounded-xl bg-teal-50/60 border border-teal-100 space-y-2",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "flex flex-wrap items-center gap-2", children: combo.map((item, iIdx) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(import_react17.default.Fragment, { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "font-bold text-xs text-teal-950 bg-white px-2.5 py-1 rounded-md border border-teal-200 shadow-2xs", children: item.nameVi }),
-                  iIdx < combo.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "font-black text-xs text-teal-600", children: "+" })
+                /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "flex flex-wrap items-center gap-2", children: combo.map((item, iIdx) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_react17.default.Fragment, { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "font-bold text-xs text-teal-950 bg-white px-2.5 py-1 rounded-md border border-teal-200 shadow-2xs", children: item.nameVi }),
+                  iIdx < combo.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "font-black text-xs text-teal-600", children: "+" })
                 ] }, iIdx)) }),
-                combo.some((c) => c.infusionNoteVi) && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "text-xs text-teal-900 font-medium", children: combo.find((c) => c.infusionNoteVi)?.infusionNoteVi })
+                combo.some((c) => c.infusionNoteVi) && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-xs text-teal-900 font-medium", children: combo.find((c) => c.infusionNoteVi)?.infusionNoteVi })
               ]
             },
             cIdx
           ))
         ] }),
-        (mdrData.contraindicatedOrIneffectiveVi && mdrData.contraindicatedOrIneffectiveVi.length > 0 || mdrData.contraindicationsVi && mdrData.contraindicationsVi.length > 0) && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-3.5 rounded-xl bg-rose-50/70 border border-rose-200/80 space-y-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("h4", { className: "text-xs font-bold text-rose-950 flex items-center gap-1.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.ShieldAlert, { className: "w-3.5 h-3.5 text-rose-600" }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Ph\xE1c \u0111\u1ED3 KH\xD4NG khuy\u1EBFn c\xE1o / Kh\xF4ng hi\u1EC7u qu\u1EA3:" })
+        (mdrData.contraindicatedOrIneffectiveVi && mdrData.contraindicatedOrIneffectiveVi.length > 0 || mdrData.contraindicationsVi && mdrData.contraindicationsVi.length > 0) && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-3.5 rounded-xl bg-rose-50/70 border border-rose-200/80 space-y-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("h4", { className: "text-xs font-bold text-rose-950 flex items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.ShieldAlert, { className: "w-3.5 h-3.5 text-rose-600" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "Ph\xE1c \u0111\u1ED3 KH\xD4NG khuy\u1EBFn c\xE1o / Kh\xF4ng hi\u1EC7u qu\u1EA3:" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("ul", { className: "list-disc list-inside text-xs text-rose-900 space-y-0.5 font-medium", children: (mdrData.contraindicatedOrIneffectiveVi || mdrData.contraindicationsVi || []).map((warn, wIdx) => /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("li", { children: warn }, wIdx)) })
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("ul", { className: "list-disc list-inside text-xs text-rose-900 space-y-0.5 font-medium", children: (mdrData.contraindicatedOrIneffectiveVi || mdrData.contraindicationsVi || []).map((warn, wIdx) => /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("li", { children: warn }, wIdx)) })
         ] })
       ] })
     ] }),
-    subTab === "stop_criteria" && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-5", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "B\u1EA3ng ki\u1EC3m \u0110\u1EE7 \u0111i\u1EC1u ki\u1EC7n Ng\u01B0ng Kh\xE1ng Sinh (Stopping Checklist)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: "D\u1EF1a tr\xEAn l\u01B0u \u0111\u1ED3 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi & c\xE1c th\u1EED nghi\u1EC7m l\xE2m s\xE0ng ng\u1EABu nhi\xEAn c\xF3 \u0111\u1ED1i ch\u1EE9ng (RCTs)." })
+    subTab === "stop_criteria" && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "B\u1EA3ng ki\u1EC3m \u0110\u1EE7 \u0111i\u1EC1u ki\u1EC7n Ng\u01B0ng Kh\xE1ng Sinh (Stopping Checklist)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: "D\u1EF1a tr\xEAn l\u01B0u \u0111\u1ED3 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi & c\xE1c th\u1EED nghi\u1EC7m l\xE2m s\xE0ng ng\u1EABu nhi\xEAn c\xF3 \u0111\u1ED1i ch\u1EE9ng (RCTs)." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 3 } })
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 3 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-xs font-bold text-slate-900", children: "S\u1ED1 ng\xE0y b\u1EC7nh nh\xE2n \u0111\xE3 d\xF9ng kh\xE1ng sinh hi\u1EC7n t\u1EA1i:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "text-xs font-bold text-slate-900", children: "S\u1ED1 ng\xE0y b\u1EC7nh nh\xE2n \u0111\xE3 d\xF9ng kh\xE1ng sinh hi\u1EC7n t\u1EA1i:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { className: "text-[11px] text-slate-500 mt-0.5", children: [
             "Th\u1EDDi gian t\u1ED1i thi\u1EC3u chu\u1EA9n cho \u1ED5 nhi\u1EC5m n\xE0y: ",
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("strong", { className: "text-teal-700", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("strong", { className: "text-teal-700", children: [
               stopResult.minDays,
               " ng\xE0y"
             ] }),
@@ -88055,8 +90488,8 @@ var StepReassess = ({
             ")"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
             "input",
             {
               type: "number",
@@ -88067,24 +90500,24 @@ var StepReassess = ({
               className: "w-20 px-3 py-1.5 text-center text-sm font-bold rounded-lg border border-slate-300 bg-white text-slate-900 focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 outline-none"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-xs font-semibold text-slate-700", children: "ng\xE0y" })
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "text-xs font-semibold text-slate-700", children: "ng\xE0y" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Ti\xEAu chu\u1EA9n L\xE2m s\xE0ng (B\u1EAFt bu\u1ED9c \u0111\u1EA1t c\u1EA3 5/5):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("span", { className: `text-xs font-extrabold px-2.5 py-0.5 rounded-full border ${stopResult.clinicalCriteriaMet ? "bg-emerald-100 text-emerald-800 border-emerald-200" : "bg-amber-100 text-amber-800 border-amber-200"}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Ti\xEAu chu\u1EA9n L\xE2m s\xE0ng (B\u1EAFt bu\u1ED9c \u0111\u1EA1t c\u1EA3 5/5):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: `text-xs font-extrabold px-2.5 py-0.5 rounded-full border ${stopResult.clinicalCriteriaMet ? "bg-emerald-100 text-emerald-800 border-emerald-200" : "bg-amber-100 text-amber-800 border-amber-200"}`, children: [
             "\u0110\u1EA1t ",
             stopResult.clinicalCriteriaCount,
             " / 5 ti\xEAu ch\xED"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.clinicalCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.clinicalCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
           "label",
           {
             className: "flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/60 cursor-pointer hover:bg-slate-100/70 transition-all text-xs",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
                 "input",
                 {
                   type: "checkbox",
@@ -88093,27 +90526,27 @@ var StepReassess = ({
                   className: "mt-0.5 rounded text-teal-600 focus:ring-teal-500"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-slate-800 leading-relaxed font-medium", children: item.textVi })
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "text-slate-800 leading-relaxed font-medium", children: item.textVi })
             ]
           },
           item.id
         )) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Ti\xEAu chu\u1EA9n C\u1EADn L\xE2m s\xE0ng (C\u1EA7n \u0111\u1EA1t \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1):" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("span", { className: `text-xs font-extrabold px-2.5 py-0.5 rounded-full border ${stopResult.labCriteriaMet ? "bg-emerald-100 text-emerald-800 border-emerald-200" : "bg-slate-100 text-slate-700 border-slate-200"}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Ti\xEAu chu\u1EA9n C\u1EADn L\xE2m s\xE0ng (C\u1EA7n \u0111\u1EA1t \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("span", { className: `text-xs font-extrabold px-2.5 py-0.5 rounded-full border ${stopResult.labCriteriaMet ? "bg-emerald-100 text-emerald-800 border-emerald-200" : "bg-slate-100 text-slate-700 border-slate-200"}`, children: [
             "\u0110\u1EA1t ",
             stopResult.labCriteriaCount,
             " ch\u1EC9 s\u1ED1"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.labCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.labCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
           "label",
           {
             className: "flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 bg-slate-50/60 cursor-pointer hover:bg-slate-100/70 transition-all text-xs",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
                 "input",
                 {
                   type: "checkbox",
@@ -88122,89 +90555,89 @@ var StepReassess = ({
                   className: "mt-0.5 rounded text-teal-600 focus:ring-teal-500"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-slate-800 leading-relaxed font-medium", children: item.textVi })
+              /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "text-slate-800 leading-relaxed font-medium", children: item.textVi })
             ]
           },
           item.id
         )) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: `p-4 rounded-xl border text-sm ${stopResult.canStop ? "bg-emerald-50 border-emerald-300 text-emerald-950" : "bg-slate-50 border-slate-200 text-slate-800"}`, children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-start gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "text-2xl shrink-0", children: stopResult.canStop ? "\u{1F389}" : "\u23F3" }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("strong", { className: "font-extrabold text-sm sm:text-base", children: stopResult.canStop ? "\u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N XEM X\xC9T NG\u01AFNG KH\xC1NG SINH AN TO\xC0N" : "CH\u01AFA \u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N \u0110\u1EC2 NG\u01AFNG KH\xC1NG SINH" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "text-xs mt-1 leading-relaxed text-slate-700", children: stopResult.canStop ? `B\u1EC7nh nh\xE2n \u0111\xE3 \u0111\u1EA1t \u0111\u1EE7 s\u1ED1 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y), th\u1ECFa m\xE3n 5/5 ti\xEAu chu\u1EA9n \u1ED5n \u0111\u1ECBnh l\xE2m s\xE0ng v\xE0 \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1 ch\u1EC9 \u0111i\u1EC3m c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i. Khuy\u1EBFn c\xE1o ng\u01B0ng kh\xE1ng sinh \u0111\u1EC3 gi\u1EA3m thi\u1EC3u \u0111\u1ED9c t\xEDnh v\xE0 nguy c\u01A1 ch\u1ECDn l\u1ECDc ch\u1EE7ng \u0111\u1EC1 kh\xE1ng. Ghi nh\u1EADn quy\u1EBFt \u0111\u1ECBnh v\xE0o h\u1ED3 s\u01A1 b\u1EC7nh \xE1n.` : `Hi\u1EC7n t\u1EA1i ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 c\xE1c ti\xEAu ch\xED ng\u01B0ng thu\u1ED1c. L\xFD do: ${!stopResult.minDurationMet ? `Ch\u01B0a \u0111\u1EE7 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y); ` : ""}${!stopResult.clinicalCriteriaMet ? `Ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 5/5 ti\xEAu chu\u1EA9n l\xE2m s\xE0ng (${stopResult.clinicalCriteriaCount}/5); ` : ""}${!stopResult.labCriteriaMet ? "Ch\u01B0a c\xF3 ch\u1EC9 s\u1ED1 c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i." : ""}` })
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: `p-4 rounded-xl border text-sm ${stopResult.canStop ? "bg-emerald-50 border-emerald-300 text-emerald-950" : "bg-slate-50 border-slate-200 text-slate-800"}`, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex items-start gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "text-2xl shrink-0", children: stopResult.canStop ? "\u{1F389}" : "\u23F3" }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { className: "font-extrabold text-sm sm:text-base", children: stopResult.canStop ? "\u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N XEM X\xC9T NG\u01AFNG KH\xC1NG SINH AN TO\xC0N" : "CH\u01AFA \u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N \u0110\u1EC2 NG\u01AFNG KH\xC1NG SINH" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-xs mt-1 leading-relaxed text-slate-700", children: stopResult.canStop ? `B\u1EC7nh nh\xE2n \u0111\xE3 \u0111\u1EA1t \u0111\u1EE7 s\u1ED1 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y), th\u1ECFa m\xE3n 5/5 ti\xEAu chu\u1EA9n \u1ED5n \u0111\u1ECBnh l\xE2m s\xE0ng v\xE0 \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1 ch\u1EC9 \u0111i\u1EC3m c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i. Khuy\u1EBFn c\xE1o ng\u01B0ng kh\xE1ng sinh \u0111\u1EC3 gi\u1EA3m thi\u1EC3u \u0111\u1ED9c t\xEDnh v\xE0 nguy c\u01A1 ch\u1ECDn l\u1ECDc ch\u1EE7ng \u0111\u1EC1 kh\xE1ng. Ghi nh\u1EADn quy\u1EBFt \u0111\u1ECBnh v\xE0o h\u1ED3 s\u01A1 b\u1EC7nh \xE1n.` : `Hi\u1EC7n t\u1EA1i ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 c\xE1c ti\xEAu ch\xED ng\u01B0ng thu\u1ED1c. L\xFD do: ${!stopResult.minDurationMet ? `Ch\u01B0a \u0111\u1EE7 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y); ` : ""}${!stopResult.clinicalCriteriaMet ? `Ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 5/5 ti\xEAu chu\u1EA9n l\xE2m s\xE0ng (${stopResult.clinicalCriteriaCount}/5); ` : ""}${!stopResult.labCriteriaMet ? "Ch\u01B0a c\xF3 ch\u1EC9 s\u1ED1 c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i." : ""}` })
         ] })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-4 rounded-xl bg-teal-50/70 border border-teal-200/80 space-y-2 text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("h4", { className: "font-bold text-teal-950 flex items-center gap-1.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Info, { className: "w-4 h-4 text-teal-700" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Quy tr\xECnh Theo d\xF5i Sau khi Ng\u01B0ng Kh\xE1ng sinh & Xu\u1ED1ng thang (BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi):" })
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-4 rounded-xl bg-teal-50/70 border border-teal-200/80 space-y-2 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("h4", { className: "font-bold text-teal-950 flex items-center gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Info, { className: "w-4 h-4 text-teal-700" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "Quy tr\xECnh Theo d\xF5i Sau khi Ng\u01B0ng Kh\xE1ng sinh & Xu\u1ED1ng thang (BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi):" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-800", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "bg-white p-3 rounded-lg border border-teal-100 space-y-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("strong", { className: "text-teal-900 block font-bold", children: "1. Theo d\xF5i trong 24 \u2013 48 gi\u1EDD \u0111\u1EA7u:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "text-slate-600", children: "Theo d\xF5i s\xE1t nhi\u1EC7t \u0111\u1ED9 s\u1ED1t, sinh hi\u1EC7u, m\u1EE9c \u0111\u1ED9 tri gi\xE1c. L\u1EB7p l\u1EA1i x\xE9t nghi\u1EC7m Procalcitonin (PCT) n\u1EBFu l\xE2m s\xE0ng c\xF3 d\u1EA5u hi\u1EC7u nghi ng\u1EDD t\xE1i b\xF9ng ph\xE1t." })
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-800", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "bg-white p-3 rounded-lg border border-teal-100 space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { className: "text-teal-900 block font-bold", children: "1. Theo d\xF5i trong 24 \u2013 48 gi\u1EDD \u0111\u1EA7u:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-slate-600", children: "Theo d\xF5i s\xE1t nhi\u1EC7t \u0111\u1ED9 s\u1ED1t, sinh hi\u1EC7u, m\u1EE9c \u0111\u1ED9 tri gi\xE1c. L\u1EB7p l\u1EA1i x\xE9t nghi\u1EC7m Procalcitonin (PCT) n\u1EBFu l\xE2m s\xE0ng c\xF3 d\u1EA5u hi\u1EC7u nghi ng\u1EDD t\xE1i b\xF9ng ph\xE1t." })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "bg-white p-3 rounded-lg border border-teal-100 space-y-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("strong", { className: "text-rose-900 block font-bold", children: "2. X\u1EED tr\xED khi t\xE1i ph\xE1t tri\u1EC7u ch\u1EE9ng:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "text-slate-600", children: "C\u1EA5y m\xE1u / c\u1EA5y b\u1EC7nh ph\u1EA9m l\u1EA1i ngay l\u1EADp t\u1EE9c. Kh\u1EDFi \u0111\u1ED9ng l\u1EA1i kh\xE1ng sinh theo b\u1EB1ng ch\u1EE9ng vi sinh v\xE0 k\xEDch ho\u1EA1t h\u1ED9i ch\u1EA9n D\u01B0\u1EE3c l\xE2m s\xE0ng / H\u1ED3i s\u1EE9c." })
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "bg-white p-3 rounded-lg border border-teal-100 space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { className: "text-rose-900 block font-bold", children: "2. X\u1EED tr\xED khi t\xE1i ph\xE1t tri\u1EC7u ch\u1EE9ng:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-slate-600", children: "C\u1EA5y m\xE1u / c\u1EA5y b\u1EC7nh ph\u1EA9m l\u1EA1i ngay l\u1EADp t\u1EE9c. Kh\u1EDFi \u0111\u1ED9ng l\u1EA1i kh\xE1ng sinh theo b\u1EB1ng ch\u1EE9ng vi sinh v\xE0 k\xEDch ho\u1EA1t h\u1ED9i ch\u1EA9n D\u01B0\u1EE3c l\xE2m s\xE0ng / H\u1ED3i s\u1EE9c." })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 font-medium mt-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("strong", { children: "Quy t\u1EAFc xu\u1ED1ng thang (*):" }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 font-medium mt-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "Quy t\u1EAFc xu\u1ED1ng thang (*):" }),
           " C\xF3 th\u1EC3 ",
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("em", { children: "KH\xD4NG" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("em", { children: "KH\xD4NG" }),
           " xu\u1ED1ng thang khi th\u1EDDi gian s\u1EED d\u1EE5ng kh\xE1ng sinh c\xF2n l\u1EA1i \u2264 2 ng\xE0y. N\u1EBFu \u0111\u1ED5i sang kh\xE1ng sinh kh\xE1c, b\u1EAFt bu\u1ED9c ph\u1EA3i duy tr\xEC th\u1EDDi gian \u0111i\u1EC1u tr\u1ECB \xEDt nh\u1EA5t ",
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("strong", { children: "3 \u2013 5 ng\xE0y" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "3 \u2013 5 ng\xE0y" }),
           "."
         ] })
       ] })
     ] }) }),
-    subTab === "iv_to_po" && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "Quy tr\xECnh Chuy\u1EC3n \u0111\u1ED5i Kh\xE1ng sinh t\u1EEB Ti\xEAm sang U\u1ED1ng (IV to PO Switch)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: "Theo Quy\u1EBFt \u0111\u1ECBnh s\u1ED1 5631/Q\u0110-BYT n\u0103m 2020 c\u1EE7a B\u1ED9 Y t\u1EBF." })
+    subTab === "iv_to_po" && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "space-y-4", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-5 rounded-2xl border border-slate-200/90 bg-white shadow-xs space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h3", { className: "text-base font-extrabold text-slate-900", children: "Quy tr\xECnh Chuy\u1EC3n \u0111\u1ED5i Kh\xE1ng sinh t\u1EEB Ti\xEAm sang U\u1ED1ng (IV to PO Switch)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-xs text-slate-500 mt-0.5", children: "Theo Quy\u1EBFt \u0111\u1ECBnh s\u1ED1 5631/Q\u0110-BYT n\u0103m 2020 c\u1EE7a B\u1ED9 Y t\u1EBF." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(SourceBadge, { source: { doc: "BYT_5631_2020", page: 85 } })
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SourceBadge, { source: { doc: "BYT_5631_2020", page: 85 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "p-4 rounded-xl bg-rose-50/80 border border-rose-200 space-y-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("h4", { className: "text-xs font-bold text-rose-950 flex items-center gap-1.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.Ban, { className: "w-4 h-4 text-rose-600" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh chuy\u1EC3n \u0111\u1ED5i \u0111\u01B0\u1EDDng u\u1ED1ng (B\u1EAFt bu\u1ED9c d\xF9ng to\xE0n b\u1ED9 li\u1EC7u tr\xECnh qua \u0111\u01B0\u1EDDng ti\xEAm t\u0129nh m\u1EA1ch):" })
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "p-4 rounded-xl bg-rose-50/80 border border-rose-200 space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("h4", { className: "text-xs font-bold text-rose-950 flex items-center gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Ban, { className: "w-4 h-4 text-rose-600" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh chuy\u1EC3n \u0111\u1ED5i \u0111\u01B0\u1EDDng u\u1ED1ng (B\u1EAFt bu\u1ED9c d\xF9ng to\xE0n b\u1ED9 li\u1EC7u tr\xECnh qua \u0111\u01B0\u1EDDng ti\xEAm t\u0129nh m\u1EA1ch):" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-rose-900 font-medium", children: IV_TO_PO_CONTRAINDICATIONS.map((c, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "flex items-center gap-1.5", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "\u2022" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: c })
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-rose-900 font-medium", children: IV_TO_PO_CONTRAINDICATIONS.map((c, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "\u2022" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: c })
         ] }, cIdx)) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "space-y-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Danh m\u1EE5c Kh\xE1ng sinh Chuy\u1EC3n \u0111\u1ED5i Th\u01B0\u1EDDng d\xF9ng (Nh\xF3m 1 - Sinh kh\u1EA3 d\u1EE5ng cao > 90%):" }),
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("table", { className: "w-full min-w-[500px] text-xs text-left border-collapse", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("tr", { className: "border-b border-slate-200 bg-slate-50 text-slate-700 font-bold", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("th", { className: "py-2.5 px-3", children: "Thu\u1ED1c ti\xEAm (IV)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("th", { className: "py-2.5 px-3", children: "Chuy\u1EC3n sang thu\u1ED1c u\u1ED1ng (PO)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("th", { className: "py-2.5 px-3", children: "Li\u1EC1u u\u1ED1ng khuy\u1EBFn c\xE1o" }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("th", { className: "py-2.5 px-3", children: "Sinh kh\u1EA3 d\u1EE5ng (F)" })
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600", children: "Danh m\u1EE5c Kh\xE1ng sinh Chuy\u1EC3n \u0111\u1ED5i Th\u01B0\u1EDDng d\xF9ng (Nh\xF3m 1 - Sinh kh\u1EA3 d\u1EE5ng cao > 90%):" }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "overflow-x-auto rounded-xl border border-slate-200", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("table", { className: "w-full min-w-[500px] text-xs text-left border-collapse", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("tr", { className: "border-b border-slate-200 bg-slate-50 text-slate-700 font-bold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("th", { className: "py-2.5 px-3", children: "Thu\u1ED1c ti\xEAm (IV)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("th", { className: "py-2.5 px-3", children: "Chuy\u1EC3n sang thu\u1ED1c u\u1ED1ng (PO)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("th", { className: "py-2.5 px-3", children: "Li\u1EC1u u\u1ED1ng khuy\u1EBFn c\xE1o" }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("th", { className: "py-2.5 px-3", children: "Sinh kh\u1EA3 d\u1EE5ng (F)" })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("tbody", { className: "divide-y divide-slate-100 text-slate-700", children: IV_TO_PO_DRUG_PAIRS.filter((p) => p.group === 1).map((pair, pIdx) => /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("tr", { className: "hover:bg-slate-50/70 transition-colors", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("td", { className: "py-2.5 px-3 font-extrabold text-slate-900", children: pair.ivName }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("td", { className: "py-2.5 px-3 font-bold text-teal-700", children: pair.poName }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("td", { className: "py-2.5 px-3 font-medium", children: pair.poDoseVi }),
-            /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("td", { className: "py-2.5 px-3 text-emerald-700 font-bold", children: pair.bioavailabilityVi })
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("tbody", { className: "divide-y divide-slate-100 text-slate-700", children: IV_TO_PO_DRUG_PAIRS.filter((p) => p.group === 1).map((pair, pIdx) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("tr", { className: "hover:bg-slate-50/70 transition-colors", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("td", { className: "py-2.5 px-3 font-extrabold text-slate-900", children: pair.ivName }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("td", { className: "py-2.5 px-3 font-bold text-teal-700", children: pair.poName }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("td", { className: "py-2.5 px-3 font-medium", children: pair.poDoseVi }),
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("td", { className: "py-2.5 px-3 text-emerald-700 font-bold", children: pair.bioavailabilityVi })
           ] }, pIdx)) })
         ] }) })
       ] })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 shadow-xs flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
       "button",
       {
         type: "button",
         onClick: onPrevStep,
         className: "w-full sm:w-auto px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer min-h-[44px]",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_lucide_react21.ArrowLeft, { className: "w-4 h-4" }),
-          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { children: "Quay l\u1EA1i B\u01B0\u1EDBc 1 (Ph\xE1c \u0111\u1ED3 & T\xEDnh li\u1EC1u)" })
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.ArrowLeft, { className: "w-4 h-4" }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: "Quay l\u1EA1i B\u01B0\u1EDBc 1 (Ph\xE1c \u0111\u1ED3 & T\xEDnh li\u1EC1u)" })
         ]
       }
     ) })
@@ -88212,8 +90645,8 @@ var StepReassess = ({
 };
 
 // antibiotic/src/components/selection/DecisionSummaryCard.tsx
-var import_lucide_react22 = __toESM(require_lucide_react(), 1);
-var import_jsx_runtime23 = __toESM(require_jsx_runtime(), 1);
+var import_lucide_react25 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime26 = __toESM(require_jsx_runtime(), 1);
 var DecisionSummaryCard = ({
   state,
   riskResult,
@@ -88238,42 +90671,42 @@ var DecisionSummaryCard = ({
     peritoneal: "T\u1EEB \u1ED5 D\u1ECBch b\xE1ng",
     urinary: "T\u1EEB \u1ED5 Ti\u1EBFt ni\u1EC7u"
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 lg:sticky lg:top-16 space-y-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center justify-between border-b border-slate-100 pb-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("h3", { className: "text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center space-x-1.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Activity, { className: "w-3.5 h-3.5 text-teal-600" }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "T\xF3m T\u1EAFt Quy\u1EBFt \u0110\u1ECBnh CDSS" })
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 lg:sticky lg:top-16 space-y-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "flex items-center justify-between border-b border-slate-100 pb-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("h3", { className: "text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center space-x-1.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react25.Activity, { className: "w-3.5 h-3.5 text-teal-600" }),
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: "T\xF3m T\u1EAFt Quy\u1EBFt \u0110\u1ECBnh CDSS" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("span", { className: "text-[11px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("span", { className: "text-[11px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200", children: [
         "Giai \u0111o\u1EA1n ",
         currentStage,
         "/2"
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
       "div",
       {
         onClick: () => onNavigateStep(1),
         className: "p-3 rounded-xl border border-slate-100 hover:border-teal-300 bg-slate-50/60 cursor-pointer transition-all hover:shadow-2xs",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "Ch\u1EC9 \u0110\u1ECBnh & \u1ED4 Nhi\u1EC5m" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-teal-600 font-semibold", children: "Ch\u1EC9nh s\u1EEDa" })
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: "Ch\u1EC9 \u0110\u1ECBnh & \u1ED4 Nhi\u1EC5m" }),
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "text-teal-600 font-semibold", children: "Ch\u1EC9nh s\u1EEDa" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center space-x-1.5 mt-1.5", children: [
-            state.indicationConfirmed ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.CheckCircle2, { className: "w-4 h-4 text-emerald-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.AlertTriangle, { className: "w-4 h-4 text-amber-500 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-xs font-bold text-slate-800 break-words", children: state.indicationConfirmed ? "C\xF3 ch\u1EC9 \u0111\u1ECBnh c\u1EA5p t\xEDnh" : "C\u1EA7n theo d\xF5i th\xEAm" })
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "flex items-center space-x-1.5 mt-1.5", children: [
+            state.indicationConfirmed ? /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react25.CheckCircle2, { className: "w-4 h-4 text-emerald-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react25.AlertTriangle, { className: "w-4 h-4 text-amber-500 shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "text-xs font-bold text-slate-800 break-words", children: state.indicationConfirmed ? "C\xF3 ch\u1EC9 \u0111\u1ECBnh c\u1EA5p t\xEDnh" : "C\u1EA7n theo d\xF5i th\xEAm" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center space-x-1.5 text-xs text-slate-600 mt-1 pl-5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.User, { className: "w-3.5 h-3.5 text-slate-400 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("span", { className: "break-words", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "flex items-center space-x-1.5 text-xs text-slate-600 mt-1 pl-5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react25.User, { className: "w-3.5 h-3.5 text-slate-400 shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("span", { className: "break-words", children: [
               state.population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em",
               " \u2022 ",
               siteLabels[state.site] || state.site
             ] })
           ] }),
-          state.site === "sepsis" && state.sepsisSource && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-[11px] text-rose-600 font-medium pl-5 mt-0.5", children: sepsisSourceLabels[state.sepsisSource] || state.sepsisSource }),
-          state.calculatedScores && Object.values(state.calculatedScores).length > 0 && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex flex-wrap gap-1 mt-2 pl-5", children: Object.values(state.calculatedScores).map((sc) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
+          state.site === "sepsis" && state.sepsisSource && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "text-[11px] text-rose-600 font-medium pl-5 mt-0.5", children: sepsisSourceLabels[state.sepsisSource] || state.sepsisSource }),
+          state.calculatedScores && Object.values(state.calculatedScores).length > 0 && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "flex flex-wrap gap-1 mt-2 pl-5", children: Object.values(state.calculatedScores).map((sc) => /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
             "span",
             {
               className: "text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200",
@@ -88289,21 +90722,21 @@ var DecisionSummaryCard = ({
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
       "div",
       {
         onClick: () => onNavigateStep(1),
         className: `p-3 rounded-xl border cursor-pointer transition-all hover:shadow-2xs ${isGroup2 ? "bg-rose-50/70 border-rose-200 text-rose-950" : "bg-emerald-50/70 border-emerald-200 text-emerald-950"}`,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center justify-between text-[10px] font-black uppercase tracking-wider opacity-80", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "Ph\xE2n T\u1EA7ng Nguy C\u01A1 VK\u0110K" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-[10px] underline", children: "Chi ti\u1EBFt" })
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "flex items-center justify-between text-[10px] font-black uppercase tracking-wider opacity-80", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: "Ph\xE2n T\u1EA7ng Nguy C\u01A1 VK\u0110K" }),
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "text-[10px] underline", children: "Chi ti\u1EBFt" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center space-x-2 mt-1.5", children: [
-            isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.ShieldAlert, { className: "w-5 h-5 text-rose-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-xs font-black", children: isGroup2 ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: \xCDt nguy c\u01A1 VK\u0110K" }),
-              /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "text-[10px] opacity-80", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "flex items-center space-x-2 mt-1.5", children: [
+            isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react25.ShieldAlert, { className: "w-5 h-5 text-rose-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react25.ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "text-xs font-black", children: isGroup2 ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: \xCDt nguy c\u01A1 VK\u0110K" }),
+              /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "text-[10px] opacity-80", children: [
                 riskResult.generalRiskCount,
                 "/8 y\u1EBFu t\u1ED1 chung \u2022 ",
                 riskResult.severityScoreType.toUpperCase(),
@@ -88312,33 +90745,33 @@ var DecisionSummaryCard = ({
               ] })
             ] })
           ] }),
-          isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "space-y-1.5 mt-2 pt-2 border-t border-rose-200/60", children: [
-            state.checkedSpecificRisks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex flex-wrap gap-1", children: state.checkedSpecificRisks.map((r) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-200/80 text-rose-800", children: r === "mrsa" ? "MRSA" : r === "esbl" ? "ESBL" : r === "pseudo_acineto" ? "Pseudo/Acineto" : "Enterococcus" }, r)) }),
-            riskResult.isGramPosGramNegCoRisk && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-800 border border-red-200 flex items-center space-x-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "\u26A0\uFE0F" }),
-              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "Ph\u1ED1i h\u1EE3p Gram(+) & Gram(-)" })
+          isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "space-y-1.5 mt-2 pt-2 border-t border-rose-200/60", children: [
+            state.checkedSpecificRisks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "flex flex-wrap gap-1", children: state.checkedSpecificRisks.map((r) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-rose-200/80 text-rose-800", children: r === "mrsa" ? "MRSA" : r === "esbl" ? "ESBL" : r === "pseudo_acineto" ? "Pseudo/Acineto" : "Enterococcus" }, r)) }),
+            riskResult.isGramPosGramNegCoRisk && /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-red-100 text-red-800 border border-red-200 flex items-center space-x-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: "\u26A0\uFE0F" }),
+              /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: "Ph\u1ED1i h\u1EE3p Gram(+) & Gram(-)" })
             ] }),
-            riskResult.isDualGramNegRisk && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-200 flex items-center space-x-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "\u26A1" }),
-              /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "Di\u1EC7t Pseudo / Acineto" })
+            riskResult.isDualGramNegRisk && /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-200 flex items-center space-x-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: "\u26A1" }),
+              /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: "Di\u1EC7t Pseudo / Acineto" })
             ] })
           ] })
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
       "div",
       {
         onClick: () => onNavigateStep(1),
         className: "p-3 rounded-xl border border-slate-100 hover:border-teal-300 bg-slate-50/60 cursor-pointer transition-all hover:shadow-2xs",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "Ph\xE1c \u0110\u1ED3 & Li\u1EC1u Tr\u1EF1c Ti\u1EBFp" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "text-teal-600 font-semibold", children: "B\u01B0\u1EDBc 1" })
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: "Ph\xE1c \u0110\u1ED3 & Li\u1EC1u Tr\u1EF1c Ti\u1EBFp" }),
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "text-teal-600 font-semibold", children: "B\u01B0\u1EDBc 1" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex items-center space-x-2 mt-1.5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Pill, { className: "w-4 h-4 text-teal-600 shrink-0" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("span", { className: "text-xs font-bold text-slate-800", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "flex items-center space-x-2 mt-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react25.Pill, { className: "w-4 h-4 text-teal-600 shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("span", { className: "text-xs font-bold text-slate-800", children: [
               "BVBND 2026 \u2022 T\xEDnh li\u1EC1u tr\u1EF1c ti\u1EBFp (",
               isGroup2 ? "Ph\u1ED5 r\u1ED9ng \u0111a kh\xE1ng" : "Ph\xE1c \u0111\u1ED3 chu\u1EA9n",
               ")"
@@ -88347,47 +90780,1781 @@ var DecisionSummaryCard = ({
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "pt-2 border-t border-slate-100 space-y-2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "pt-2 border-t border-slate-100 space-y-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
         "button",
         {
           type: "button",
           onClick: () => onSwitchToDosing(state.selectedDrugForDosing),
           className: "w-full py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm flex items-center justify-center space-x-1.5 transition-all cursor-pointer",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.Calculator, { className: "w-3.5 h-3.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { children: "T\xEDnh Li\u1EC1u & CrCl" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_react22.ArrowRight, { className: "w-3.5 h-3.5" })
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react25.Calculator, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { children: "T\xEDnh Li\u1EC1u & CrCl" }),
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react25.ArrowRight, { className: "w-3.5 h-3.5" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-[10px] text-slate-400 text-center", children: "T\u1EF1 \u0111\u1ED9ng \u0111\u1ED3ng b\u1ED9 ch\u1EA9n \u0111o\xE1n & th\xF4ng s\u1ED1 b\u1EC7nh nh\xE2n" })
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("p", { className: "text-[10px] text-slate-400 text-center", children: "T\u1EF1 \u0111\u1ED9ng \u0111\u1ED3ng b\u1ED9 ch\u1EA9n \u0111o\xE1n & th\xF4ng s\u1ED1 b\u1EC7nh nh\xE2n" })
     ] })
   ] });
 };
 
+// antibiotic/src/components/sepsis/CompactPatientForm.tsx
+var import_react19 = __toESM(require_react(), 1);
+
+// antibiotic/src/components/sepsis/SmartNumberInput.tsx
+var import_react18 = __toESM(require_react(), 1);
+var import_jsx_runtime27 = __toESM(require_jsx_runtime(), 1);
+var SmartNumberInput = ({
+  value,
+  onChange,
+  placeholder,
+  isDecimal = false,
+  min,
+  max,
+  className = "",
+  fallbackValue,
+  disabled = false
+}) => {
+  const [text, setText] = (0, import_react18.useState)(() => {
+    if (value !== void 0 && value !== null && !isNaN(value)) {
+      return String(value);
+    }
+    return "";
+  });
+  const [isFocused, setIsFocused] = (0, import_react18.useState)(false);
+  (0, import_react18.useEffect)(() => {
+    if (!isFocused) {
+      if (value !== void 0 && value !== null && !isNaN(value)) {
+        setText(String(value));
+      } else {
+        setText("");
+      }
+    }
+  }, [value, isFocused]);
+  const handleChange = (e) => {
+    let raw = e.target.value;
+    if (isDecimal) {
+      raw = raw.replace(",", ".");
+      raw = raw.replace(/[^\d.-]/g, "");
+      const parts = raw.split(".");
+      if (parts.length > 2) {
+        raw = parts[0] + "." + parts.slice(1).join("");
+      }
+    } else {
+      raw = raw.replace(/[^\d-]/g, "");
+    }
+    setText(raw);
+    const trimmed = raw.trim();
+    if (trimmed === "" || trimmed === "-" || trimmed === "." || trimmed === "-.") {
+      if (fallbackValue === void 0) {
+        onChange(void 0);
+      }
+      return;
+    }
+    const num = Number(trimmed);
+    if (!isNaN(num)) {
+      onChange(num);
+    }
+  };
+  const handleFocus = (e) => {
+    setIsFocused(true);
+    e.target.select();
+  };
+  const handleBlur = () => {
+    setIsFocused(false);
+    let trimmed = text.trim();
+    if (trimmed.endsWith(".")) {
+      trimmed = trimmed.slice(0, -1);
+      setText(trimmed);
+    }
+    if (trimmed === "" || isNaN(Number(trimmed))) {
+      if (fallbackValue !== void 0) {
+        setText(String(fallbackValue));
+        onChange(fallbackValue);
+      } else {
+        setText("");
+        onChange(void 0);
+      }
+      return;
+    }
+    let num = Number(trimmed);
+    if (min !== void 0 && num < min) num = min;
+    if (max !== void 0 && num > max) num = max;
+    setText(String(num));
+    onChange(num);
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+    "input",
+    {
+      type: "text",
+      inputMode: isDecimal ? "decimal" : "numeric",
+      value: text,
+      onChange: handleChange,
+      onFocus: handleFocus,
+      onBlur: handleBlur,
+      placeholder,
+      disabled,
+      className,
+      autoComplete: "off",
+      autoCorrect: "off",
+      spellCheck: false
+    }
+  );
+};
+
+// antibiotic/src/components/sepsis/CompactPatientForm.tsx
+var import_lucide_react26 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime28 = __toESM(require_jsx_runtime(), 1);
+var CompactPatientForm = ({
+  data,
+  onChange,
+  isCollapsed: externalIsCollapsed,
+  onToggleCollapse: externalOnToggleCollapse,
+  crcl
+}) => {
+  const [internalCollapsed, setInternalCollapsed] = (0, import_react19.useState)(false);
+  const isAllCollapsed = externalIsCollapsed !== void 0 ? externalIsCollapsed : internalCollapsed;
+  const toggleCollapse = externalOnToggleCollapse || (() => setInternalCollapsed(!internalCollapsed));
+  const map = calculateMAP(data.sbp, data.dbp);
+  const nlrCalc = calculateNLR(data.neutrophilCount, data.lymphocyteCount);
+  const lactateKinetics = calculateLactateClearance(data.lactateInitial, data.lactateRepeat6h);
+  const getSettingLabel = (setting) => {
+    switch (setting) {
+      case "acute_hospital":
+        return "C\u1EA5p c\u1EE9u / Khoa ph\xF2ng";
+      case "icu":
+        return "ICU / H\u1ED3i s\u1EE9c";
+      case "emergency_ambulance":
+        return "Ti\u1EC1n vi\u1EC7n / C\u1EA5p c\u1EE9u 115";
+      case "community_custodial":
+        return "Tr\u1EA1m y t\u1EBF / Ban \u0111\u1EA7u";
+      default:
+        return "";
+    }
+  };
+  const getInfectionSourceLabel = (src) => {
+    switch (src) {
+      case "respiratory":
+        return "H\xF4 h\u1EA5p";
+      case "urinary":
+        return "Ti\u1EBFt ni\u1EC7u";
+      case "abdominal":
+        return "\u1ED4 b\u1EE5ng";
+      case "skin_soft_tissue":
+        return "Da/M\xF4 m\u1EC1m";
+      case "bloodstream_catheter":
+        return "M\xE1u/Catheter";
+      case "pelvic_obstetric":
+        return "S\u1EA3n ph\u1EE5 khoa";
+      default:
+        return "Ch\u01B0a r\xF5";
+    }
+  };
+  const update = (field, value) => {
+    onChange({
+      ...data,
+      [field]: value
+    });
+  };
+  const updateVasoactive = (key, val) => {
+    const updatedUsed = {
+      ...data.vasoactiveUsed,
+      [key]: val
+    };
+    const count = Object.values(updatedUsed).filter(Boolean).length;
+    onChange({
+      ...data,
+      vasoactiveUsed: updatedUsed,
+      vasoactiveMedCount: count
+    });
+  };
+  if (isAllCollapsed) {
+    return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "w-full", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "hidden lg:flex flex-col items-center py-3 px-1.5 bg-slate-900 rounded-2xl border border-slate-800 shadow-sm space-y-2.5 sticky top-[116px]", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+          "button",
+          {
+            type: "button",
+            onClick: toggleCollapse,
+            className: "p-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 shadow-xs transition-all active:scale-95 cursor-pointer",
+            title: "M\u1EDF r\u1ED9ng b\u1EA3ng nh\u1EADp li\u1EC7u l\xE2m s\xE0ng",
+            children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.ChevronsRight, { className: "w-4 h-4" })
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "w-7 h-px bg-slate-700 my-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+          "button",
+          {
+            type: "button",
+            onClick: toggleCollapse,
+            className: "p-2.5 rounded-xl bg-slate-50 hover:bg-teal-50 border border-slate-200 hover:border-teal-300 text-teal-600 transition-all hover:scale-105",
+            title: `1. Th\xF4ng tin \u0111\u1ED1i t\u01B0\u1EE3ng (${data.patientType === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : data.patientType === "pediatric" ? "Nhi" : "S\u1EA3n khoa"}, ${data.ageYears} tu\u1ED5i)`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.User, { className: "w-5 h-5" })
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: toggleCollapse,
+            className: "p-2.5 rounded-xl bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-rose-300 text-rose-600 transition-all hover:scale-105 relative",
+            title: `2. Sinh hi\u1EC7u & Huy\u1EBFt \u0111\u1ED9ng (HA: ${data.sbp}/${data.dbp}, MAP: ${map}, HR: ${data.heartRate} bpm, RR: ${data.respiratoryRate})`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.Heart, { className: "w-5 h-5" }),
+              map < 65 && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "w-2 h-2 rounded-full bg-rose-600 absolute top-1 right-1 ring-2 ring-white animate-pulse" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: toggleCollapse,
+            className: "p-2.5 rounded-xl bg-slate-50 hover:bg-teal-50 border border-slate-200 hover:border-teal-300 text-teal-600 transition-all hover:scale-105 relative",
+            title: `3. Da, T\u01B0\u1EDBi m\xE1u m\xF4 & V\u1EADn m\u1EA1ch (${data.vasoactiveMedCount > 0 ? `${data.vasoactiveMedCount} thu\u1ED1c VM` : "Kh\xF4ng VM"}, CRT: ${data.capillaryRefillSeconds}s)`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.Droplet, { className: "w-5 h-5" }),
+              (data.mottledOrAshen || data.vasoactiveMedCount > 0) && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "w-2 h-2 rounded-full bg-rose-600 absolute top-1 right-1 ring-2 ring-white" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+          "button",
+          {
+            type: "button",
+            onClick: toggleCollapse,
+            className: "p-2.5 rounded-xl bg-slate-50 hover:bg-cyan-50 border border-slate-200 hover:border-cyan-300 text-cyan-600 transition-all hover:scale-105",
+            title: `4. C\u1EADn l\xE2m s\xE0ng: TPTTBM, Biomarkers & Vi sinh (WBC: ${data.wbc ?? "N/A"}, Lac: ${data.lactateInitial ?? "N/A"})`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.TestTube, { className: "w-5 h-5" })
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex lg:hidden items-center justify-between p-2.5 bg-white rounded-xl border border-slate-200 shadow-2xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: toggleCollapse,
+            className: "flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-teal-600 text-white rounded-lg shadow-2xs active:scale-95",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.ChevronsRight, { className: "w-4 h-4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "M\u1EDF r\u1ED9ng" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("button", { type: "button", onClick: toggleCollapse, className: "p-2 rounded-lg bg-slate-50 text-teal-600 border border-slate-200", title: "Th\xF4ng tin \u0111\u1ED1i t\u01B0\u1EE3ng", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.User, { className: "w-4 h-4" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("button", { type: "button", onClick: toggleCollapse, className: "p-2 rounded-lg bg-slate-50 text-rose-600 border border-slate-200 relative", title: "Sinh hi\u1EC7u & Huy\u1EBFt \u0111\u1ED9ng", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.Heart, { className: "w-4 h-4" }),
+            map < 65 && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-rose-600 absolute top-0.5 right-0.5" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("button", { type: "button", onClick: toggleCollapse, className: "p-2 rounded-lg bg-slate-50 text-teal-600 border border-slate-200 relative", title: "Da & V\u1EADn m\u1EA1ch", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.Droplet, { className: "w-4 h-4" }),
+            (data.mottledOrAshen || data.vasoactiveMedCount > 0) && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-rose-600 absolute top-0.5 right-0.5" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("button", { type: "button", onClick: toggleCollapse, className: "p-2 rounded-lg bg-slate-50 text-cyan-600 border border-slate-200", title: "C\u1EADn l\xE2m s\xE0ng & Vi sinh", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.TestTube, { className: "w-4 h-4" }) })
+        ] })
+      ] })
+    ] });
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "space-y-3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex items-center justify-between px-3.5 py-3 bg-slate-900 text-white rounded-2xl border border-slate-800 shadow-xs", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex items-center gap-2.5 min-w-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "w-8 h-8 rounded-xl bg-teal-500/20 text-teal-400 border border-teal-500/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.Layers, { className: "w-4 h-4" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "min-w-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "text-xs font-extrabold tracking-tight text-white block leading-tight truncate", children: "H\u1ED3 S\u01A1 L\xE2m S\xE0ng & Sinh Hi\u1EC7u" }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: "text-[10px] text-slate-400 block leading-tight truncate font-mono tabular-nums", children: [
+            "MAP ",
+            map,
+            " \u2022 ",
+            crcl !== void 0 ? `CrCl ${crcl} mL/p` : `${data.weightKg}kg`
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+        "button",
+        {
+          type: "button",
+          onClick: toggleCollapse,
+          className: "flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-bold rounded-xl transition-colors bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 cursor-pointer shrink-0",
+          title: "Thu g\u1ECDn b\u1EA3ng nh\u1EADp li\u1EC7u th\xE0nh thanh icon",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.ChevronsLeft, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "hidden sm:inline", children: "Thu g\u1ECDn" })
+          ]
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs transition-all overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-3.5 flex items-center justify-between gap-2 bg-white border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "flex items-center gap-2 min-w-0 flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: "text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5 shrink-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.User, { className: "w-3.5 h-3.5 text-teal-600" }),
+          "Th\xF4ng Tin \u0110\u1ED1i T\u01B0\u1EE3ng"
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "flex items-center gap-2 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "hidden sm:flex items-center gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => update("patientType", "adult"),
+              className: `px-2 py-0.5 text-[11px] font-semibold rounded-md border transition-colors ${data.patientType === "adult" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100"}`,
+              children: "Ng\u01B0\u1EDDi l\u1EDBn"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => update("patientType", "pediatric"),
+              className: `px-2 py-0.5 text-[11px] font-semibold rounded-md border transition-colors ${data.patientType === "pediatric" ? "bg-purple-600 text-white border-purple-600 shadow-xs" : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100"}`,
+              children: "Nhi (<18t)"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => update("patientType", "maternal"),
+              className: `px-2 py-0.5 text-[11px] font-semibold rounded-md border transition-colors ${data.patientType === "maternal" ? "bg-pink-600 text-white border-pink-600 shadow-xs" : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100"}`,
+              children: "S\u1EA3n khoa"
+            }
+          )
+        ] }) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-3.5 pt-3 space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex sm:hidden items-center gap-1 pb-1 border-b border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => update("patientType", "adult"),
+              className: `flex-1 py-1 text-[11px] font-semibold rounded-md border text-center transition-colors ${data.patientType === "adult" ? "bg-teal-600 text-white border-teal-600 shadow-xs" : "bg-slate-50 text-slate-600 border-slate-200"}`,
+              children: "Ng\u01B0\u1EDDi l\u1EDBn"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => update("patientType", "pediatric"),
+              className: `flex-1 py-1 text-[11px] font-semibold rounded-md border text-center transition-colors ${data.patientType === "pediatric" ? "bg-purple-600 text-white border-purple-600 shadow-xs" : "bg-slate-50 text-slate-600 border-slate-200"}`,
+              children: "Nhi (<18t)"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => update("patientType", "maternal"),
+              className: `flex-1 py-1 text-[11px] font-semibold rounded-md border text-center transition-colors ${data.patientType === "maternal" ? "bg-pink-600 text-white border-pink-600 shadow-xs" : "bg-slate-50 text-slate-600 border-slate-200"}`,
+              children: "S\u1EA3n khoa"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "grid grid-cols-3 gap-2 text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[11px] font-medium text-slate-500 block mb-0.5", children: data.patientType === "pediatric" ? "Tu\u1ED5i (N\u0103m)" : "Tu\u1ED5i" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                placeholder: "Tu\u1ED5i",
+                value: data.ageYears,
+                fallbackValue: data.patientType === "pediatric" ? 5 : 45,
+                min: 0,
+                max: 120,
+                onChange: (v) => update("ageYears", v ?? 45),
+                className: "w-full h-8 px-2 text-xs font-mono tabular-nums bg-slate-50 border border-slate-200 rounded-md focus:bg-white focus:ring-1 focus:ring-teal-500"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[11px] font-medium text-slate-500 block mb-0.5", children: "Gi\u1EDBi t\xEDnh" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+              "select",
+              {
+                value: data.gender,
+                onChange: (e) => update("gender", e.target.value),
+                className: "w-full h-8 px-2 text-xs bg-slate-50 border border-slate-200 rounded-md focus:bg-white focus:ring-1 focus:ring-teal-500",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "male", children: "Nam" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "female", children: "N\u1EEF" })
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[11px] font-medium text-slate-500 block mb-0.5", children: "C\xE2n n\u1EB7ng (kg)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                placeholder: "kg",
+                value: data.weightKg,
+                isDecimal: true,
+                fallbackValue: 60,
+                min: 1,
+                max: 250,
+                onChange: (v) => update("weightKg", v ?? 60),
+                className: "w-full h-8 px-2 text-xs font-mono tabular-nums bg-slate-50 border border-slate-200 rounded-md focus:bg-white focus:ring-1 focus:ring-teal-500"
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex items-center gap-2 pt-1 border-t border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "text-[11px] text-slate-500 shrink-0", children: "B\u1ED1i c\u1EA3nh:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+            "select",
+            {
+              value: data.setting,
+              onChange: (e) => update("setting", e.target.value),
+              className: "h-7 px-2 text-xs bg-slate-50 border border-slate-200 rounded-md flex-1 text-slate-800",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "acute_hospital", children: "C\u1EA5p c\u1EE9u / Khoa ph\xF2ng n\u1ED9i tr\xFA" }),
+                /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "icu", children: "H\u1ED3i s\u1EE9c t\xEDch c\u1EF1c (ICU / CVIU)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "emergency_ambulance", children: "Xe c\u1EA5p c\u1EE9u / Ti\u1EC1n vi\u1EC7n" }),
+                /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "community_custodial", children: "Y t\u1EBF ban \u0111\u1EA7u / Tr\u1EA1m x\xE1" })
+              ]
+            }
+          )
+        ] }),
+        data.patientType === "maternal" && /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-2 bg-pink-50/70 border border-pink-200 rounded-md flex items-center justify-between text-xs text-pink-950", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("label", { className: "flex items-center gap-1.5 cursor-pointer", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: data.isPostpartum,
+                onChange: (e) => update("isPostpartum", e.target.checked),
+                className: "w-3.5 h-3.5 text-pink-600 rounded"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "Giai \u0111o\u1EA1n H\u1EADu s\u1EA3n (\u2264 4 tu\u1EA7n)" })
+          ] }),
+          !data.isPostpartum && /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex items-center gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "Tu\u1EA7n:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                value: data.pregnancyWeek ?? 32,
+                fallbackValue: 32,
+                min: 4,
+                max: 44,
+                onChange: (v) => update("pregnancyWeek", v ?? 32),
+                className: "w-12 h-6 px-1 text-xs font-mono bg-white border border-pink-300 rounded"
+              }
+            )
+          ] })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "bg-white rounded-xl border border-slate-200 shadow-sm transition-all overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-3.5 flex items-center justify-between gap-2 bg-white border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "flex items-center gap-2 min-w-0 flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: "text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5 shrink-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.Heart, { className: "w-3.5 h-3.5 text-rose-600" }),
+          "LS: Sinh Hi\u1EC7u & Huy\u1EBFt \u0110\u1ED9ng"
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "flex items-center gap-2 shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: "text-[11px] font-mono text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded", children: [
+          "MAP: ",
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("strong", { className: map < 65 ? "text-rose-600" : "text-slate-800", children: map }),
+          " mmHg"
+        ] }) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-3.5 pt-3 space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "grid grid-cols-3 gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block", children: "HATT (mmHg)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                value: data.sbp,
+                fallbackValue: 120,
+                min: 30,
+                max: 300,
+                onChange: (v) => update("sbp", v ?? 120),
+                className: `w-full h-8 px-2 text-xs font-mono tabular-nums rounded-md border ${data.sbp <= 90 ? "bg-rose-50 border-rose-400 text-rose-900 font-bold" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block", children: "HATTr (mmHg)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                value: data.dbp,
+                fallbackValue: 80,
+                min: 10,
+                max: 200,
+                onChange: (v) => update("dbp", v ?? 80),
+                className: "w-full h-8 px-2 text-xs font-mono tabular-nums bg-slate-50 border border-slate-200 rounded-md"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block", children: "M\u1EA1ch (HR) (bpm)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                value: data.heartRate,
+                fallbackValue: 80,
+                min: 20,
+                max: 250,
+                onChange: (v) => update("heartRate", v ?? 80),
+                className: `w-full h-8 px-2 text-xs font-mono tabular-nums rounded-md border ${data.heartRate > 130 || data.heartRate < 40 ? "bg-rose-50 border-rose-400 text-rose-900 font-bold" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block", children: "Th\u1EDF (RR) (l/p)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                value: data.respiratoryRate,
+                fallbackValue: 16,
+                min: 4,
+                max: 70,
+                onChange: (v) => update("respiratoryRate", v ?? 16),
+                className: `w-full h-8 px-2 text-xs font-mono tabular-nums rounded-md border ${data.respiratoryRate >= 25 || data.respiratoryRate <= 8 ? "bg-rose-50 border-rose-400 text-rose-900 font-bold" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block", children: "T\xB0 Th\xE2n nhi\u1EC7t (\xB0C)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                value: data.temperature,
+                isDecimal: true,
+                fallbackValue: 37,
+                min: 25,
+                max: 45,
+                onChange: (v) => update("temperature", v ?? 37),
+                className: `w-full h-8 px-2 text-xs font-mono tabular-nums rounded-md border ${data.temperature <= 35 || data.temperature >= 39 ? "bg-amber-50 border-amber-400 font-bold text-amber-900" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block", children: "SpO2 (%)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                value: data.spo2,
+                fallbackValue: 98,
+                min: 40,
+                max: 100,
+                onChange: (v) => update("spo2", v ?? 98),
+                className: `w-full h-8 px-2 text-xs font-mono tabular-nums rounded-md border ${data.spo2 <= 91 ? "bg-rose-50 border-rose-400 text-rose-900 font-bold" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-100 text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("label", { className: "flex items-center gap-1.5 cursor-pointer text-[11px] text-slate-700", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: data.onSupplementalOxygen,
+                onChange: (e) => update("onSupplementalOxygen", e.target.checked),
+                className: "w-3.5 h-3.5 text-teal-600 rounded"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "Th\u1EDF Oxy h\u1ED7 tr\u1EE3" })
+          ] }),
+          data.onSupplementalOxygen && /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex items-center gap-1 text-[11px]", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "text-slate-500", children: "FiO2:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                min: 21,
+                max: 100,
+                value: data.fio2Percent,
+                fallbackValue: 21,
+                onChange: (v) => update("fio2Percent", v ?? 21),
+                className: "w-12 h-6 px-1 text-xs font-mono bg-slate-50 border border-slate-200 rounded text-center"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "text-slate-500", children: "%" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("label", { className: "flex items-center gap-1.5 cursor-pointer text-[11px] text-slate-700", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: data.copdOrHypercapnicRisk,
+                onChange: (e) => update("copdOrHypercapnicRisk", e.target.checked),
+                className: "w-3.5 h-3.5 text-teal-600 rounded"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "COPD (Thang SpO2 2)" })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "grid grid-cols-2 gap-2 pt-1 border-t border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block mb-0.5", children: "Tri gi\xE1c AVPU" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+              "select",
+              {
+                value: data.avpu,
+                onChange: (e) => update("avpu", e.target.value),
+                className: "w-full h-7 px-1.5 text-xs bg-slate-50 border border-slate-200 rounded-md",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "A", children: "A - Alert (T\u1EC9nh t\xE1o)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "V", children: "V - Voice (\u0110\xE1p \u1EE9ng l\u1EDDi n\xF3i)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "P", children: "P - Pain (\u0110\xE1p \u1EE9ng \u0111au)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "U", children: "U - Unresponsive (M\u1EA5t tri gi\xE1c)" })
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block mb-0.5", children: "\u0110i\u1EC3m GCS (3-15)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                min: 3,
+                max: 15,
+                value: data.gcs,
+                fallbackValue: 15,
+                onChange: (v) => update("gcs", v ?? 15),
+                className: "w-full h-7 px-2 text-xs font-mono bg-slate-50 border border-slate-200 rounded-md"
+              }
+            )
+          ] })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "bg-white rounded-xl border border-slate-200 shadow-sm transition-all overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "p-3.5 flex items-center justify-between gap-2 bg-white border-b border-slate-100", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "flex items-center gap-2 min-w-0 flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: "text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5 shrink-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.Droplet, { className: "w-3.5 h-3.5 text-teal-600" }),
+        "LS: Da, T\u01B0\u1EDBi M\xE1u M\xF4 & V\u1EADn M\u1EA1ch"
+      ] }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-3.5 pt-2.5 space-y-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "grid grid-cols-2 gap-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("label", { className: `p-2 rounded-lg border cursor-pointer text-[11px] transition-colors flex items-center gap-1.5 ${data.mottledOrAshen ? "bg-rose-50 border-rose-300 font-semibold text-rose-900" : "bg-slate-50 border-slate-200 text-slate-700"}`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: data.mottledOrAshen,
+                onChange: (e) => update("mottledOrAshen", e.target.checked),
+                className: "w-3.5 h-3.5 text-rose-600 rounded"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "Da v\xE2n \u0111\xE1 / T\xE1i x\xE1m" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("label", { className: `p-2 rounded-lg border cursor-pointer text-[11px] transition-colors flex items-center gap-1.5 ${data.cyanosis ? "bg-rose-50 border-rose-300 font-semibold text-rose-900" : "bg-slate-50 border-slate-200 text-slate-700"}`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: data.cyanosis,
+                onChange: (e) => update("cyanosis", e.target.checked),
+                className: "w-3.5 h-3.5 text-rose-600 rounded"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "T\xEDm t\xE1i da / M\xF4i" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("label", { className: `p-2 rounded-lg border cursor-pointer text-[11px] transition-colors flex items-center gap-1.5 ${data.nonBlanchingRash ? "bg-rose-50 border-rose-300 font-semibold text-rose-900" : "bg-slate-50 border-slate-200 text-slate-700"}`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: data.nonBlanchingRash,
+                onChange: (e) => update("nonBlanchingRash", e.target.checked),
+                className: "w-3.5 h-3.5 text-rose-600 rounded"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "Ban xu\u1EA5t huy\u1EBFt kh\xF4ng m\u1EA5t" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("label", { className: `p-2 rounded-lg border cursor-pointer text-[11px] transition-colors flex items-center gap-1.5 ${data.newAlteredMentalState ? "bg-amber-50 border-amber-300 font-semibold text-amber-900" : "bg-slate-50 border-slate-200 text-slate-700"}`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: data.newAlteredMentalState,
+                onChange: (e) => update("newAlteredMentalState", e.target.checked),
+                className: "w-3.5 h-3.5 text-teal-600 rounded"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "L\xFA l\u1EABn c\u1EA5p t\xEDnh m\u1EDBi" })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "grid grid-cols-2 gap-2 pt-1 border-t border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block", children: "Th\u1EDDi gian CRT (gi\xE2y)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                value: data.capillaryRefillSeconds,
+                isDecimal: true,
+                fallbackValue: 2,
+                min: 0,
+                max: 15,
+                onChange: (v) => update("capillaryRefillSeconds", v ?? 2),
+                className: `w-full h-7 px-2 text-xs font-mono rounded-md border ${data.capillaryRefillSeconds > 2 ? "bg-amber-50 border-amber-300 font-semibold" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-500 block", children: "N\u01B0\u1EDBc ti\u1EC3u (18h)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+              "select",
+              {
+                value: data.urineOutputStatus,
+                onChange: (e) => update("urineOutputStatus", e.target.value),
+                className: "w-full h-7 px-1 text-xs bg-slate-50 border border-slate-200 rounded-md",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "normal", children: "B\xECnh th\u01B0\u1EDDng" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "not_12_18h", children: "Thi\u1EC3u ni\u1EC7u (12-18h)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "not_over_18h", children: "V\xF4 ni\u1EC7u (>18h - Red Flag)" })
+                ]
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "pt-1 border-t border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "text-[10px] font-medium text-slate-500 block mb-1", children: "Thu\u1ED1c v\u1EADn m\u1EA1ch \u0111ang d\xF9ng:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "flex flex-wrap gap-1", children: ["norepinephrine", "epinephrine", "vasopressin", "dopamine"].map((drug) => /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+            "button",
+            {
+              type: "button",
+              onClick: () => updateVasoactive(drug, !data.vasoactiveUsed[drug]),
+              className: `px-2 py-0.5 text-[10px] font-semibold rounded border transition-colors ${data.vasoactiveUsed[drug] ? "bg-rose-600 text-white border-rose-600 shadow-xs" : "bg-slate-100 text-slate-600 border-slate-200"}`,
+              children: [
+                drug === "norepinephrine" && "NorEpi",
+                drug === "epinephrine" && "Epi",
+                drug === "vasopressin" && "Vaso",
+                drug === "dopamine" && "Dopa"
+              ]
+            },
+            drug
+          )) })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "bg-white rounded-xl border border-slate-200 shadow-sm transition-all overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-3.5 flex items-center justify-between gap-2 bg-white border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "flex items-center gap-2 min-w-0 flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: "text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5 shrink-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react26.TestTube, { className: "w-3.5 h-3.5 text-cyan-600" }),
+          "CLS: TPTTBM, Biomarkers & Vi Sinh"
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "flex items-center gap-2 shrink-0", children: nlrCalc.nlr !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: `text-[10px] font-mono px-1.5 py-0.5 rounded font-bold ${nlrCalc.riskLevel === "high" ? "bg-rose-100 text-rose-800" : nlrCalc.riskLevel === "elevated" ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`, children: [
+          "NLR: ",
+          nlrCalc.nlr
+        ] }) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-3.5 pt-3 space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-2.5 bg-slate-50 border border-slate-200 rounded-lg space-y-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex items-center justify-between text-[11px] text-slate-700 font-semibold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { children: "T\u1ED5ng ph\xE2n t\xEDch t\u1EBF b\xE0o m\xE1u (TPTTBM / CBC)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "text-[10px] font-normal text-slate-500", children: "\u0110\u01A1n v\u1ECB: G/L (x10\u2079/L)" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "grid grid-cols-4 gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[9px] font-semibold text-slate-600 block", children: "WBC (G/L)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+                SmartNumberInput,
+                {
+                  isDecimal: true,
+                  value: data.wbc,
+                  onChange: (v) => update("wbc", v),
+                  placeholder: "4-10",
+                  className: `w-full h-7 px-1.5 text-xs font-mono rounded border ${(data.wbc ?? 0) > 12 || (data.wbc ?? 10) < 4 && data.wbc !== void 0 ? "bg-amber-50 border-amber-400 font-bold text-amber-900" : "bg-white border-slate-200"}`
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[9px] font-semibold text-slate-600 block", children: "NEU (G/L)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+                SmartNumberInput,
+                {
+                  isDecimal: true,
+                  value: data.neutrophilCount,
+                  onChange: (v) => update("neutrophilCount", v),
+                  placeholder: "2-7",
+                  className: "w-full h-7 px-1.5 text-xs font-mono bg-white border border-slate-200 rounded"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[9px] font-semibold text-slate-600 block", children: "LYM (G/L)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+                SmartNumberInput,
+                {
+                  isDecimal: true,
+                  value: data.lymphocyteCount,
+                  onChange: (v) => update("lymphocyteCount", v),
+                  placeholder: "1-3",
+                  className: "w-full h-7 px-1.5 text-xs font-mono bg-white border border-slate-200 rounded"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[9px] font-semibold text-slate-600 block", children: "PLT (G/L)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+                SmartNumberInput,
+                {
+                  value: data.platelets,
+                  onChange: (v) => update("platelets", v),
+                  placeholder: "150-400",
+                  className: `w-full h-7 px-1.5 text-xs font-mono rounded border ${(data.platelets ?? 300) < 100 && data.platelets !== void 0 ? "bg-rose-50 border-rose-400 font-bold text-rose-900" : "bg-white border-slate-200"}`
+                }
+              )
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-600 block", children: "Lactate 0h (mmol/L)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                isDecimal: true,
+                value: data.lactateInitial,
+                onChange: (v) => update("lactateInitial", v),
+                placeholder: "< 2.0",
+                className: `w-full h-7 px-2 text-xs font-mono rounded-md border ${(data.lactateInitial ?? 0) > 2 ? "bg-rose-50 border-rose-400 font-bold text-rose-900" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-600 block", children: "Lactate 6h (mmol/L)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                isDecimal: true,
+                value: data.lactateRepeat6h,
+                onChange: (v) => update("lactateRepeat6h", v),
+                placeholder: "mmol/L",
+                className: "w-full h-7 px-2 text-xs font-mono bg-slate-50 border border-slate-200 rounded-md"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-600 block", children: "PCT (ng/mL)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                isDecimal: true,
+                value: data.procalcitonin,
+                onChange: (v) => update("procalcitonin", v),
+                placeholder: "< 0.5",
+                className: `w-full h-7 px-2 text-xs font-mono rounded-md border ${(data.procalcitonin ?? 0) >= 2 ? "bg-cyan-50 border-cyan-400 font-bold text-cyan-900" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-600 block", children: "CRP (mg/L)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                isDecimal: true,
+                value: data.crp,
+                onChange: (v) => update("crp", v),
+                placeholder: "< 5",
+                className: "w-full h-7 px-2 text-xs font-mono bg-slate-50 border border-slate-200 rounded-md"
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "grid grid-cols-2 gap-2 pt-1 border-t border-slate-100", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex items-center justify-between gap-1 mb-0.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-600 block", children: "Creatinine (\xB5mol/L)" }),
+              crcl !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { className: "text-[9px] font-mono font-bold px-1 rounded bg-teal-50 text-teal-800 border border-teal-200", children: [
+                "CrCl ",
+                crcl
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                isDecimal: true,
+                value: data.creatinineUmolL,
+                onChange: (v) => update("creatinineUmolL", v),
+                placeholder: "60-110",
+                className: `w-full h-7 px-2 text-xs font-mono rounded-md border ${(data.creatinineUmolL ?? 0) > 120 ? "bg-amber-50 border-amber-400 font-bold text-amber-900" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("label", { className: "text-[10px] font-medium text-slate-600 block", children: "Bilirubin Gan (\xB5mol/L)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+              SmartNumberInput,
+              {
+                isDecimal: true,
+                value: data.bilirubinUmolL,
+                onChange: (v) => update("bilirubinUmolL", v),
+                placeholder: "< 20",
+                className: `w-full h-7 px-2 text-xs font-mono rounded-md border ${(data.bilirubinUmolL ?? 0) > 33 ? "bg-amber-50 border-amber-400 font-bold text-amber-900" : "bg-slate-50 border-slate-200"}`
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "pt-2 border-t border-slate-100 space-y-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "text-[10px] text-slate-500 shrink-0 font-medium", children: "Nghi ng\u1EDD \u1ED5 nhi\u1EC5m:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+              "select",
+              {
+                value: data.infectionSource,
+                onChange: (e) => {
+                  const src = e.target.value;
+                  onChange({
+                    ...data,
+                    infectionSource: src,
+                    suspectedInfection: src !== "unknown"
+                  });
+                },
+                className: "h-7 px-2 text-xs bg-slate-50 border border-slate-200 rounded-md flex-1 text-slate-800",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "unknown", children: "Ch\u01B0a ph\xE1t hi\u1EC7n / Kh\xE1m s\u1EE9c kh\u1ECFe" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "respiratory", children: "H\xF4 h\u1EA5p (Vi\xEAm ph\u1ED5i, \u0110\u1EE3t c\u1EA5p)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "urinary", children: "Ti\u1EBFt ni\u1EC7u (Vi\xEAm \u0111\xE0i b\u1EC3 th\u1EADn)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "abdominal", children: "\u1ED4 b\u1EE5ng / Vi\xEAm ru\u1ED9t th\u1EEBa / Vi\xEAm t\u1EE5y" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "skin_soft_tissue", children: "Da & M\xF4 m\u1EC1m (Vi\xEAm m\xF4 t\u1EBF b\xE0o)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "bloodstream_catheter", children: "Catheter / Nhi\u1EC5m khu\u1EA9n huy\u1EBFt" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "pelvic_obstetric", children: "S\u1EA3n khoa / Ti\u1EC3u khung" })
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "p-2 bg-purple-50/50 border border-purple-200 rounded-lg flex items-center justify-between text-xs text-purple-950", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("label", { className: "flex items-center gap-1.5 cursor-pointer", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+                "input",
+                {
+                  type: "checkbox",
+                  checked: data.rapidMolecularT2Done,
+                  onChange: (e) => update("rapidMolecularT2Done", e.target.checked),
+                  className: "w-3.5 h-3.5 text-purple-600 rounded"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "font-semibold text-[11px]", children: "T2MR Ph\xE2n T\u1EED (3-5h)" })
+            ] }),
+            data.rapidMolecularT2Done && /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+              "select",
+              {
+                value: data.rapidMolecularResult ?? "pending",
+                onChange: (e) => update("rapidMolecularResult", e.target.value),
+                className: "h-6 px-1 text-[11px] bg-white border border-purple-300 rounded",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "pending", children: "\u0110ang ch\u1EA1y m\xE1y" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "positive", children: "D\u01B0\u01A1ng t\xEDnh (+)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("option", { value: "negative", children: "\xC2m t\xEDnh (-)" })
+                ]
+              }
+            )
+          ] })
+        ] })
+      ] })
+    ] })
+  ] });
+};
+
+// antibiotic/src/components/sepsis/SepsisDashboard.tsx
+var import_react20 = __toESM(require_react(), 1);
+
+// antibiotic/src/sepsis/patientBridge.ts
+function syncSepsisToRenalPatient(sepsis, prevRenal) {
+  let scr = prevRenal.scr;
+  if (sepsis.creatinineUmolL !== void 0 && sepsis.creatinineUmolL > 0) {
+    scr = prevRenal.scrUnit === "mgdl" ? Math.round(sepsis.creatinineUmolL / 88.4 * 100) / 100 : Math.round(sepsis.creatinineUmolL);
+  }
+  return {
+    ...prevRenal,
+    age: sepsis.ageYears > 0 ? sepsis.ageYears : prevRenal.age,
+    gender: sepsis.gender === "female" ? "f" : "m",
+    weight: sepsis.weightKg > 0 ? sepsis.weightKg : prevRenal.weight,
+    height: sepsis.heightCm !== void 0 ? sepsis.heightCm : prevRenal.height,
+    dialysis: sepsis.dialysis !== void 0 ? sepsis.dialysis : prevRenal.dialysis,
+    scr
+  };
+}
+function syncRenalToSepsisPatient(updatedRenal, prevSepsis, nextRenal) {
+  const next = { ...prevSepsis };
+  if (updatedRenal.age !== void 0 && updatedRenal.age > 0) {
+    next.ageYears = updatedRenal.age;
+    if (updatedRenal.age < 18 && next.patientType !== "pediatric") {
+      next.patientType = "pediatric";
+    } else if (updatedRenal.age >= 18 && next.patientType === "pediatric") {
+      next.patientType = "adult";
+    }
+  }
+  if (updatedRenal.gender !== void 0) {
+    next.gender = updatedRenal.gender === "f" ? "female" : "male";
+    if (updatedRenal.gender === "m" && next.patientType === "maternal") {
+      next.patientType = "adult";
+    }
+  }
+  if (updatedRenal.weight !== void 0 && updatedRenal.weight > 0) {
+    next.weightKg = updatedRenal.weight;
+  }
+  if (updatedRenal.height !== void 0) {
+    next.heightCm = updatedRenal.height || void 0;
+  }
+  if (updatedRenal.dialysis !== void 0) {
+    next.dialysis = updatedRenal.dialysis;
+  }
+  if (updatedRenal.scr !== void 0 || updatedRenal.scrUnit !== void 0) {
+    if (nextRenal.scr > 0) {
+      next.creatinineUmolL = nextRenal.scrUnit === "mgdl" ? Math.round(nextRenal.scr * 88.4) : Math.round(nextRenal.scr);
+    }
+  }
+  return next;
+}
+function mapSepsisSourceToInfectionSite(source, primaryDiagnosis) {
+  const isConfirmedSepsisOrShock = primaryDiagnosis === "confirmed_sepsis" || primaryDiagnosis === "septic_shock";
+  if (source === "bloodstream_catheter" || source === "unknown" || source === "pelvic_obstetric") {
+    return {
+      site: "sepsis",
+      sepsisSource: source === "pelvic_obstetric" ? "urinary" : void 0
+    };
+  }
+  if (isConfirmedSepsisOrShock) {
+    if (source === "cns") {
+      return { site: "cns" };
+    }
+    const mappedSepsisSource = source === "abdominal" ? "gastrointestinal" : source === "respiratory" ? "respiratory" : source === "urinary" ? "urinary" : "skin_soft_tissue";
+    return {
+      site: "sepsis",
+      sepsisSource: mappedSepsisSource
+    };
+  }
+  switch (source) {
+    case "respiratory":
+      return { site: "respiratory" };
+    case "urinary":
+      return { site: "urinary" };
+    case "abdominal":
+      return { site: "gastrointestinal" };
+    case "skin_soft_tissue":
+      return { site: "skin_soft_tissue" };
+    case "cns":
+      return { site: "cns" };
+    default:
+      return { site: "respiratory" };
+  }
+}
+function deriveAntibioticBridgeFromSepsis(patient, result) {
+  const population = patient.patientType === "pediatric" || patient.ageYears < 18 ? "pediatric" : "adult";
+  const isMaternal = patient.patientType === "maternal" || Boolean(patient.pregnancyWeek || patient.isPostpartum);
+  const { site, sepsisSource } = mapSepsisSourceToInfectionSite(
+    patient.infectionSource,
+    result.primaryDiagnosis
+  );
+  const sofaScore = patient.patientType === "maternal" && result.obstetricSofaScore !== void 0 ? result.obstetricSofaScore : result.sofaScore;
+  const psofaScore = result.phoenixScore ?? 0;
+  const generalRiskIds = [];
+  const specificRisks = /* @__PURE__ */ new Set();
+  const specificRiskFactorIds = [];
+  const syncHighlightsVi = [];
+  if (patient.setting === "icu") {
+    generalRiskIds.push("hospital_90d");
+    specificRisks.add("pseudo_acineto");
+    specificRiskFactorIds.push("ps_icu_5d");
+    syncHighlightsVi.push("B\u1ED1i c\u1EA3nh ICU \u2192 G\u1EE3i \xFD Nh\xF3m 2 & nguy c\u01A1 P. aeruginosa/Acinetobacter");
+  }
+  if (patient.hasIndwellingCatheter || patient.hasRecentSurgery) {
+    generalRiskIds.push("invasive_device");
+    if (patient.hasIndwellingCatheter) {
+      specificRisks.add("mrsa");
+      specificRiskFactorIds.push("mrsa_cvc_foley");
+      specificRisks.add("pseudo_acineto");
+      specificRiskFactorIds.push("ps_devices");
+    }
+  }
+  if (patient.hasRepeatedAntibioticUse) {
+    generalRiskIds.push("iv_abx_30d");
+    specificRisks.add("esbl");
+  }
+  if (patient.hasImmunosuppression) {
+    generalRiskIds.push("transplant_chemo");
+  }
+  if (patient.ageYears > 60) {
+    generalRiskIds.push("age_over_60");
+  }
+  let suggestedMdrCategory = void 0;
+  let suggestedCreEnzyme = void 0;
+  if (patient.rapidMolecularT2Done && patient.rapidMolecularResult === "positive") {
+    const genes = (patient.rapidMolecularResistanceGenes || []).map((g) => g.toLowerCase());
+    const pathogen = (patient.rapidMolecularPathogen || "").toLowerCase();
+    if (genes.some((g) => g.includes("ctx-m") || g.includes("esbl"))) {
+      specificRisks.add("esbl");
+      syncHighlightsVi.push("T2Resistance (+): blaCTX-M (ESBL) \u2192 \u01AFu ti\xEAn Carbapenem");
+    }
+    if (genes.some((g) => g.includes("meca"))) {
+      specificRisks.add("mrsa");
+      syncHighlightsVi.push("T2Resistance (+): mecA (MRSA) \u2192 Ph\u1EE7 Vancomycin/Linezolid");
+    }
+    if (genes.some((g) => g.includes("oxa-48") || g.includes("oxa48"))) {
+      suggestedMdrCategory = "cre";
+      suggestedCreEnzyme = "oxa48";
+      syncHighlightsVi.push("T2Resistance (+): blaOXA-48 (CRE) \u2192 K\xEDch ho\u1EA1t nh\xE1nh Ceftazidime/Avibactam");
+    } else if (genes.some((g) => g.includes("kpc"))) {
+      suggestedMdrCategory = "cre";
+      suggestedCreEnzyme = "kpc";
+      syncHighlightsVi.push("T2Resistance (+): blaKPC (CRE) \u2192 K\xEDch ho\u1EA1t nh\xE1nh Ceftazidime/Avibactam");
+    } else if (genes.some((g) => g.includes("ndm") || g.includes("vim") || g.includes("imp"))) {
+      suggestedMdrCategory = "cre";
+      suggestedCreEnzyme = "mbl";
+      syncHighlightsVi.push("T2Resistance (+): MBL (NDM/VIM) \u2192 K\xEDch ho\u1EA1t nh\xE1nh CAZ-AVI + Aztreonam");
+    } else if (pathogen.includes("pseudomonas")) {
+      specificRisks.add("pseudo_acineto");
+      suggestedMdrCategory = "dtr_pseudo";
+    } else if (pathogen.includes("acinetobacter")) {
+      specificRisks.add("pseudo_acineto");
+      suggestedMdrCategory = "crab";
+    }
+  }
+  if (sofaScore >= 2) {
+    syncHighlightsVi.unshift(`SOFA = ${sofaScore}\u0111 (\u2265 2) \u2192 T\u1EF1 \u0111\u1ED9ng ph\xE2n t\u1EA7ng \u0111\u1ED9 n\u1EB7ng cao`);
+  } else if (population === "pediatric" && psofaScore >= 2) {
+    syncHighlightsVi.unshift(`Phoenix Sepsis = ${psofaScore}\u0111 \u2192 T\u1EF1 \u0111\u1ED9ng \u0111\u1ED3ng b\u1ED9 \u0111\u1ED9 n\u1EB7ng Nhi`);
+  }
+  return {
+    population,
+    site,
+    sepsisSource,
+    sofaScore,
+    psofaScore,
+    generalRiskIds: Array.from(new Set(generalRiskIds)),
+    specificRisks: Array.from(specificRisks),
+    specificRiskFactorIds: Array.from(new Set(specificRiskFactorIds)),
+    suggestedMdrCategory,
+    suggestedCreEnzyme,
+    isMaternal,
+    syncHighlightsVi
+  };
+}
+function extractSepsisQuickDrugChips(patient, result) {
+  if (result.primaryDiagnosis === "no_sepsis") {
+    return [];
+  }
+  const chips = [];
+  const addChip = (chip) => {
+    if (!chips.some((c) => c.drugId === chip.drugId)) {
+      chips.push(chip);
+    }
+  };
+  if (patient.rapidMolecularT2Done && patient.rapidMolecularResult === "positive") {
+    const genes = (patient.rapidMolecularResistanceGenes || []).map((g) => g.toLowerCase());
+    if (genes.some((g) => g.includes("kpc") || g.includes("oxa-48") || g.includes("oxa48"))) {
+      addChip({
+        drugId: "ceftazidim_avibactam",
+        label: "Ceftazidime/Avibactam",
+        role: "targeted_mdr",
+        noteVi: "Tr\xFAng \u0111\xEDch KPC / OXA-48"
+      });
+      addChip({
+        drugId: "aztreonam",
+        label: "Aztreonam",
+        role: "combination",
+        noteVi: "Ph\u1ED1i h\u1EE3p n\u1EBFu nghi MBL"
+      });
+      return chips;
+    }
+    if (genes.some((g) => g.includes("ctx-m"))) {
+      addChip({
+        drugId: "meropenem",
+        label: "Meropenem (TKD)",
+        role: "targeted_mdr",
+        noteVi: "\u01AFu ti\xEAn cho ESBL CTX-M"
+      });
+      addChip({
+        drugId: "ceftolozan_tazo",
+        label: "Ceftolozane/Tazo",
+        role: "alternative",
+        noteVi: "L\u1EF1a ch\u1ECDn thay th\u1EBF"
+      });
+      return chips;
+    }
+  }
+  if (patient.patientType === "maternal") {
+    addChip({ drugId: "meropenem", label: "Meropenem", role: "primary", noteVi: "Truy\u1EC1n k\xE9o d\xE0i 3-4h" });
+    addChip({ drugId: "daptomycin", label: "Daptomycin", role: "combination", noteVi: "Ph\u1EE7 Gram (+)" });
+    addChip({ drugId: "linezolid", label: "Linezolid", role: "alternative", noteVi: "Thay th\u1EBF Gram (+)" });
+    if (patient.hasImmunosuppression) {
+      addChip({ drugId: "aztreonam", label: "Aztreonam", role: "alternative", noteVi: "D\u1ECB \u1EE9ng Penicillin" });
+      addChip({ drugId: "amikacin", label: "Amikacin", role: "combination" });
+    }
+    return chips;
+  }
+  if (patient.patientType === "pediatric") {
+    addChip({ drugId: "ceftriaxon", label: "Ceftriaxone", role: "primary" });
+    addChip({ drugId: "cefotaxim", label: "Cefotaxime", role: "alternative" });
+    addChip({ drugId: "vancomycin", label: "Vancomycin", role: "combination", noteVi: "N\u1EBFu nghi MRSA" });
+    return chips;
+  }
+  switch (patient.infectionSource) {
+    case "respiratory":
+      addChip({ drugId: "piperacillin_tazo", label: "Pip/Tazobactam", role: "primary", noteVi: "TKD 3-4h" });
+      addChip({ drugId: "cefepim", label: "Cefepime", role: "primary" });
+      addChip({ drugId: "meropenem", label: "Meropenem", role: "alternative", noteVi: "N\u1EBFu s\u1ED1c/nguy c\u01A1 ESBL" });
+      addChip({ drugId: "levofloxacin", label: "Levofloxacin", role: "combination", noteVi: "Kh\xF4ng \u0111i\u1EC3n h\xECnh" });
+      if (patient.hasIndwellingCatheter || patient.setting === "icu") {
+        addChip({ drugId: "vancomycin", label: "Vancomycin", role: "combination", noteVi: "Ph\u1EE7 MRSA" });
+      }
+      break;
+    case "urinary":
+      addChip({ drugId: "ceftriaxon", label: "Ceftriaxone", role: "primary", noteVi: "Nh\xF3m 1" });
+      addChip({ drugId: "meropenem", label: "Meropenem", role: "primary", noteVi: "N\u1EBFu nguy c\u01A1 ESBL / S\u1ED1c" });
+      addChip({ drugId: "amikacin", label: "Amikacin", role: "combination", noteVi: "Ph\u1ED1i h\u1EE3p s\u1ED1c" });
+      break;
+    case "abdominal":
+      addChip({ drugId: "piperacillin_tazo", label: "Pip/Tazobactam", role: "primary" });
+      addChip({ drugId: "meropenem", label: "Meropenem", role: "primary", noteVi: "S\u1ED1c / ESBL" });
+      addChip({ drugId: "metronidazol", label: "Metronidazole", role: "combination", noteVi: "K\u1EF5 kh\xED s\xE2u" });
+      break;
+    case "cns":
+      addChip({ drugId: "ceftriaxon", label: "Ceftriaxone 2g q12h", role: "primary" });
+      addChip({ drugId: "meropenem", label: "Meropenem 2g q8h", role: "alternative", noteVi: "Li\u1EC1u m\xE0ng n\xE3o" });
+      addChip({ drugId: "vancomycin", label: "Vancomycin", role: "combination", noteVi: "Ph\u1EE7 ph\u1EBF c\u1EA7u kh\xE1ng/MRSA" });
+      break;
+    case "skin_soft_tissue":
+      addChip({ drugId: "vancomycin", label: "Vancomycin", role: "primary", noteVi: "Ph\u1EE7 MRSA" });
+      addChip({ drugId: "piperacillin_tazo", label: "Pip/Tazobactam", role: "combination" });
+      addChip({ drugId: "clindamycin", label: "Clindamycin", role: "combination", noteVi: "Ch\u1ED1ng \u0111\u1ED9c t\u1ED1" });
+      break;
+    default:
+      addChip({ drugId: "meropenem", label: "Meropenem", role: "primary", noteVi: "Ph\u1ED5 r\u1ED9ng gi\u1EDD v\xE0ng" });
+      addChip({ drugId: "vancomycin", label: "Vancomycin", role: "combination", noteVi: "N\u1EBFu nguy c\u01A1 MRSA" });
+      addChip({ drugId: "piperacillin_tazo", label: "Pip/Tazobactam", role: "alternative" });
+      break;
+  }
+  return chips;
+}
+function buildUnifiedConsultationSummary(params) {
+  const {
+    patient,
+    renal,
+    sepsisPatient,
+    sepsisResult,
+    site,
+    riskGroupLabelVi,
+    selectedDrugName,
+    doseSummaryVi
+  } = params;
+  const siteNames = {
+    respiratory: "H\xF4 h\u1EA5p (HAP/VAP/CAP)",
+    sepsis: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt / S\u1ED1c nhi\u1EC5m khu\u1EA9n",
+    skin_soft_tissue: "Nhi\u1EC5m tr\xF9ng Da & M\xF4 m\u1EC1m",
+    urinary: "Nhi\u1EC5m tr\xF9ng Ti\u1EBFt ni\u1EC7u",
+    peritoneal: "Vi\xEAm ph\xFAc m\u1EA1c / D\u1ECBch b\xE1ng (SBP)",
+    gastrointestinal: "Ti\xEAu h\xF3a - \u1ED4 b\u1EE5ng",
+    cns: "Th\u1EA7n kinh trung \u01B0\u01A1ng"
+  };
+  return `=== T\xD3M T\u1EAET H\u1ED8I CH\u1EA8N SEPSIS & KH\xC1NG SINH (InfectoSepsis CDSS v4.0) ===
+1. B\u1EC6NH NH\xC2N & TH\u1EACN: ${sepsisPatient.patientType === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : sepsisPatient.patientType === "pediatric" ? "Nhi khoa" : "S\u1EA3n khoa"}, ${patient.age} tu\u1ED5i, ${patient.gender === "m" ? "Nam" : "N\u1EEF"} | CN: ${patient.weight} kg (IBW ${renal.ibw ?? "N/A"} kg, BMI ${renal.bmi ?? "N/A"})
+   Scr: ${patient.scr} ${patient.scrUnit === "umol" ? "\xB5mol/L" : "mg/dL"} | CrCl: ${renal.crcl} mL/ph\xFAt (${renal.categoryLabelVi}) | L\u1ECDc m\xE1u: ${patient.dialysis === "none" ? "Kh\xF4ng" : patient.dialysis.toUpperCase()}
+2. \u0110\xC1NH GI\xC1 SEPSIS (GI\u1EDC V\xC0NG): ${sepsisResult.primaryDiagnosis.toUpperCase()} (M\u1EE9c: ${sepsisResult.urgencyLevel.toUpperCase()})
+   Sinh hi\u1EC7u: HA ${sepsisPatient.sbp}/${sepsisPatient.dbp} (MAP ${sepsisResult.calculatedMap} mmHg) | HR ${sepsisPatient.heartRate} | RR ${sepsisPatient.respiratoryRate} | T\xB0 ${sepsisPatient.temperature}\xB0C | SpO2 ${sepsisPatient.spo2}%
+   \u0110i\u1EC3m s\u1ED1: NEWS2 ${sepsisResult.news2Score} | LP-NEWS ${sepsisResult.lpNewsScore} | SOFA ${sepsisResult.sofaScore} | SIRS ${sepsisResult.sirsScore}/4 | qSOFA ${sepsisResult.qsofaScore}/3 | NLR ${sepsisResult.calculatedNlr ?? "N/A"} | Lactate ${sepsisPatient.lactateInitial ?? "N/A"} mmol/L (TT ${sepsisResult.lactateClearancePercent ?? "N/A"}%)
+   H\u1ED3i s\u1EE9c: ${sepsisResult.actions.antibioticTiming.split(".")[0]}
+3. PH\xC2N T\u1EA6NG MDR & KH\xC1NG SINH (BVBND 2026):
+   \u1ED4 nhi\u1EC5m: ${site ? siteNames[site] || site : sepsisPatient.infectionSource} | ${riskGroupLabelVi || (sepsisResult.sofaScore >= 2 ? "NH\xD3M 2 (Nguy c\u01A1 cao VK\u0110K)" : "NH\xD3M 1 (\xCDt nguy c\u01A1 VK\u0110K)")}
+   Kh\xE1ng sinh ch\u1EC9 \u0111\u1ECBnh: ${selectedDrugName || "Theo ph\xE1c \u0111\u1ED3 BVBND 2026"}${doseSummaryVi ? `
+   Li\u1EC1u c\xE1 th\u1EC3 h\xF3a: ${doseSummaryVi}` : ""}
+4. K\u1EBE HO\u1EA0CH AMS: C\u1EA5y m\xE1u tr\u01B0\u1EDBc KS, theo d\xF5i \u0111\u1ED9ng h\u1ECDc Lactate/PCT/NLR & t\xE1i \u0111\xE1nh gi\xE1 xu\u1ED1ng thang sau 48-72h.`;
+}
+
+// antibiotic/src/components/sepsis/SepsisDashboard.tsx
+var import_lucide_react27 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime29 = __toESM(require_jsx_runtime(), 1);
+var SepsisDashboard = ({
+  patient,
+  result,
+  renal,
+  onSaveCase,
+  saveSuccess,
+  onSelectDrugForDosing,
+  onGoToAntibioticStage,
+  onGoToReassessStage,
+  onOpenSepsisGuide
+}) => {
+  const [copiedSbar, setCopiedSbar] = (0, import_react20.useState)(false);
+  const [showDetailedActions, setShowDetailedActions] = (0, import_react20.useState)(false);
+  const [showNlrEbm, setShowNlrEbm] = (0, import_react20.useState)(false);
+  const quickDrugs = extractSepsisQuickDrugChips(patient, result);
+  const bridgeSnapshot = deriveAntibioticBridgeFromSepsis(patient, result);
+  const generateSbarText = () => {
+    return `[SBAR INFECTOSEPSIS CDSS v4.0] ${(/* @__PURE__ */ new Date()).toLocaleTimeString("vi-VN")}
+\u0110\u1ED1i t\u01B0\u1EE3ng: ${patient.patientType === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : patient.patientType === "pediatric" ? "Nhi" : "S\u1EA3n khoa"} (${patient.ageYears}t, ${patient.gender === "male" ? "Nam" : "N\u1EEF"}, ${patient.weightKg}kg) | CrCl: ${renal.crcl} mL/p | B\u1ED1i c\u1EA3nh: ${patient.setting}
+1. S: ${result.summarySentence} - M\u1EE9c: ${result.urgencyLevel.toUpperCase()}
+2. B: \u1ED4 nhi\u1EC5m ${patient.infectionSource} | YTNC: ${patient.hasImmunosuppression ? "Suy gi\u1EA3m MD;" : ""} ${patient.hasIndwellingCatheter ? "Sonde l\u01B0u;" : ""}
+3. A: LS: HA ${patient.sbp}/${patient.dbp} mmHg (MAP ${result.calculatedMap}) | HR ${patient.heartRate} bpm | RR ${patient.respiratoryRate} l/p | T\xB0 ${patient.temperature}\xB0C | SpO2 ${patient.spo2}%
+   CLS: WBC ${patient.wbc ?? "N/A"} G/L | NEU ${patient.neutrophilCount ?? "N/A"} | LYM ${patient.lymphocyteCount ?? "N/A"} | NLR ${result.calculatedNlr ?? "N/A"} | Lac 0h ${patient.lactateInitial ?? "N/A"} | Lac 6h ${patient.lactateRepeat6h ?? "N/A"} (TT ${result.lactateClearancePercent ?? "N/A"}%) | PCT ${patient.procalcitonin ?? "N/A"} ng/mL
+   \u0110i\u1EC3m s\u1ED1: NEWS2 ${result.news2Score} | LP-NEWS ${result.lpNewsScore} | SOFA ${result.sofaScore} | SIRS ${result.sirsScore}/4 | qSOFA ${result.qsofaScore}/3
+4. R: ${result.actions.antibioticTiming} - D\u1ECBch: ${result.actions.fluidResuscitation} - V\u1EADn m\u1EA1ch: ${result.actions.vasopressorStrategy}`;
+  };
+  const handleCopySbar = () => {
+    navigator.clipboard.writeText(generateSbarText());
+    setCopiedSbar(true);
+    setTimeout(() => setCopiedSbar(false), 2e3);
+  };
+  const isEmergency = result.urgencyLevel === "emergency";
+  const isUrgent = result.urgencyLevel === "urgent";
+  const diagnosisHeadline = result.primaryDiagnosis === "septic_shock" ? "S\u1ED0C NHI\u1EC4M KHU\u1EA8N (SEPTIC SHOCK)" : result.primaryDiagnosis === "confirmed_sepsis" ? "X\xC1C NH\u1EACN NHI\u1EC4M KHU\u1EA8N HUY\u1EBET (SEPSIS)" : result.primaryDiagnosis === "suspected_sepsis" ? "NGHI NG\u1EDC CAO NHI\u1EC4M KHU\u1EA8N HUY\u1EBET" : result.primaryDiagnosis === "uncomplicated_infection" ? "NHI\u1EC4M KHU\u1EA8N TH\u01AF\u1EDCNG (CH\u01AFA SUY T\u1EA0NG)" : "CH\u01AFA GHI NH\u1EACN NGUY C\u01A0 NHI\u1EC4M KHU\u1EA8N HUY\u1EBET";
+  const organScoreValue = patient.patientType === "pediatric" ? result.phoenixScore : patient.patientType === "maternal" ? result.obstetricSofaScore : result.sofaScore;
+  const isShockOrgan = Boolean(
+    result.isSepticShock3 || result.isPhoenixSepticShock || result.isObstetricSepticShock
+  );
+  const isSepsisOrgan = Boolean(
+    result.isSepsis3 || result.isPhoenixSepsis || result.isObstetricSepsis
+  );
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "space-y-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: `bg-white rounded-2xl border shadow-xs overflow-hidden transition-all border-l-[6px] ${isEmergency ? "border-rose-200 border-l-rose-600" : isUrgent ? "border-amber-200 border-l-amber-500" : "border-emerald-200 border-l-emerald-500"}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: `p-4 sm:p-5 ${isEmergency ? "bg-gradient-to-r from-rose-50/90 via-rose-50/40 to-white" : isUrgent ? "bg-gradient-to-r from-amber-50/80 via-amber-50/30 to-white" : "bg-gradient-to-r from-emerald-50/70 via-emerald-50/20 to-white"}`, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-start justify-between gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-start gap-3 min-w-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: `w-10 h-10 rounded-xl text-white shrink-0 flex items-center justify-center shadow-sm mt-0.5 ${isEmergency ? "bg-rose-600 animate-pulse" : isUrgent ? "bg-amber-500" : "bg-emerald-600"}`, children: isEmergency ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.AlertOctagon, { className: "w-5 h-5" }) : isUrgent ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.AlertTriangle, { className: "w-5 h-5" }) : /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.CheckCircle2, { className: "w-5 h-5" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "min-w-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex flex-wrap items-center gap-1.5 mb-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: `px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider ${isEmergency ? "bg-rose-600 text-white" : isUrgent ? "bg-amber-500 text-white" : "bg-emerald-600 text-white"}`, children: isEmergency ? "T\u1ED0I KH\u1EA8N C\u1EA4P" : isUrgent ? "M\u1EE8C \u0110\u1ED8 KH\u1EA8N" : "THEO D\xD5I CHU\u1EA8N" }),
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200", children: patient.patientType === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : patient.patientType === "pediatric" ? "Nhi khoa" : "S\u1EA3n khoa" }),
+              result.primaryDiagnosis !== "no_sepsis" && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: `inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-black font-mono ${result.niceAntibioticMaxDelayHours <= 1 ? "bg-rose-100 text-rose-800 border border-rose-300" : result.niceAntibioticMaxDelayHours <= 3 ? "bg-amber-100 text-amber-800 border border-amber-300" : "bg-teal-100 text-teal-800 border border-teal-200"}`, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Clock, { className: "w-3 h-3" }),
+                "M\u1EE4C TI\xCAU KS \u2264 ",
+                result.niceAntibioticMaxDelayHours,
+                "H"
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("h2", { className: `text-lg sm:text-xl font-black tracking-tight leading-snug ${isEmergency ? "text-rose-950" : isUrgent ? "text-amber-950" : "text-slate-900"}`, children: diagnosisHeadline }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-xs text-slate-700 mt-1 leading-relaxed font-medium", children: result.summarySentence })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center gap-1.5 shrink-0 self-end sm:self-start", children: [
+          onOpenSepsisGuide && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: onOpenSepsisGuide,
+              className: "p-2 bg-white text-slate-600 hover:text-teal-700 border border-slate-200 rounded-xl shadow-2xs hover:bg-slate-50 transition-colors cursor-pointer",
+              title: "H\u01B0\u1EDBng d\u1EABn Y khoa Sepsis (NICE NG253, Phoenix, NLR, T2MR)",
+              children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.BookOpen, { className: "w-4 h-4" })
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: handleCopySbar,
+              className: "p-2 bg-white text-slate-600 hover:text-teal-700 border border-slate-200 rounded-xl shadow-2xs hover:bg-slate-50 transition-colors cursor-pointer",
+              title: "Sao ch\xE9p b\xE1o c\xE1o SBAR",
+              children: copiedSbar ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Check, { className: "w-4 h-4 text-emerald-600" }) : /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Copy, { className: "w-4 h-4" })
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: onSaveCase,
+              className: "p-2 bg-white text-slate-600 hover:text-teal-700 border border-slate-200 rounded-xl shadow-2xs hover:bg-slate-50 transition-colors cursor-pointer",
+              title: "L\u01B0u h\u1ED3 s\u01A1 ca b\u1EC7nh",
+              children: saveSuccess ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Check, { className: "w-4 h-4 text-emerald-600" }) : /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.BookmarkPlus, { className: "w-4 h-4" })
+            }
+          )
+        ] })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "px-4 sm:px-5 py-2.5 bg-slate-50/90 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex flex-wrap items-center gap-x-4 gap-y-1 font-mono tabular-nums text-[11px]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "text-slate-600", children: [
+            "MAP: ",
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("strong", { className: result.calculatedMap < 65 ? "text-rose-700 font-black" : "text-slate-900", children: result.calculatedMap }),
+            " mmHg"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "text-slate-600", children: [
+            "CrCl: ",
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("strong", { className: renal.crcl < 50 ? "text-amber-700 font-black" : "text-teal-700 font-bold", children: renal.crcl }),
+            " mL/p"
+          ] }),
+          result.calculatedNlr !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "text-slate-600", children: [
+            "NLR: ",
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("strong", { className: result.nlrRiskLevel === "critical" ? "text-rose-700 font-black" : result.nlrRiskLevel === "high" ? "text-rose-600 font-bold" : "text-slate-900", children: result.calculatedNlr })
+          ] }),
+          patient.lactateInitial !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "text-slate-600", children: [
+            "Lac: ",
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("strong", { className: patient.lactateInitial > 2 ? "text-rose-700 font-black" : "text-slate-900", children: patient.lactateInitial }),
+            " mmol/L",
+            result.lactateClearancePercent !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: `ml-1 px-1.5 py-0.2 rounded text-[10px] font-bold ${result.lactateClearancePercent >= 10 ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`, children: [
+              "TT ",
+              result.lactateClearancePercent,
+              "%"
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: onGoToAntibioticStage,
+            className: "inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-[11px] font-bold transition-colors cursor-pointer shadow-2xs",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: "Ch\u1ECDn Ph\xE1c \u0110\u1ED3 & Li\u1EC1u KS" }),
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.ArrowRight, { className: "w-3.5 h-3.5" })
+            ]
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden flex flex-col", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: `h-1 w-full ${result.news2RiskCategory === "high" ? "bg-rose-500" : result.news2RiskCategory === "medium" ? "bg-amber-500" : "bg-emerald-500"}` }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3 flex-1 flex flex-col justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[10px] font-extrabold text-slate-500 uppercase tracking-wider", children: "NEWS2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: `font-black px-1.5 py-0.5 rounded-md text-[9px] uppercase ${result.news2RiskCategory === "high" ? "bg-rose-100 text-rose-800" : result.news2RiskCategory === "medium" ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`, children: result.news2RiskCategory })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "my-1.5 flex items-baseline gap-1 font-mono tabular-nums", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-2xl sm:text-3xl font-black text-slate-900", children: result.news2Score }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[10px] text-slate-400", children: "/ 20" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-[10.5px] text-slate-600 leading-snug line-clamp-2", children: result.hasSingleParam3RedFlag ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-rose-700 font-bold", children: "\u25CF Red Flag: Th\xF4ng s\u1ED1 3\u0111" }) : `Theo d\xF5i m\u1ED7i ${result.news2Score >= 7 ? "30p" : result.news2Score >= 5 ? "1h" : "4-6h"}` })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden flex flex-col", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: `h-1 w-full ${isShockOrgan ? "bg-rose-600" : isSepsisOrgan ? "bg-amber-500" : "bg-slate-300"}` }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3 flex-1 flex flex-col justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[10px] font-extrabold text-slate-500 uppercase tracking-wider truncate", children: patient.patientType === "pediatric" ? "Phoenix 2024" : patient.patientType === "maternal" ? "Obs SOFA" : "SOFA" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: `font-black px-1.5 py-0.5 rounded-md text-[9px] uppercase shrink-0 ${isShockOrgan ? "bg-rose-100 text-rose-800" : isSepsisOrgan ? "bg-amber-100 text-amber-800" : "bg-slate-100 text-slate-600"}`, children: isShockOrgan ? "S\u1ED0C NK" : isSepsisOrgan ? "SEPSIS" : "\u1ED4N" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "my-1.5 flex items-baseline gap-1 font-mono tabular-nums", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-2xl sm:text-3xl font-black text-slate-900", children: organScoreValue }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[10px] text-slate-400", children: "\u0111i\u1EC3m" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-[10.5px] text-slate-600 leading-snug line-clamp-2", children: patient.patientType === "pediatric" ? `Tim m\u1EA1ch: ${result.phoenixCardiovascularScore}\u0111` : patient.patientType === "maternal" ? `Obs qSOFA: ${result.obstetricQsofaScore}/3` : `\u0394SOFA +${result.deltaSofa}\u0111 \u2022 qSOFA ${result.qsofaScore}/3` })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden flex flex-col", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: `h-1 w-full ${result.sirsScore >= 2 ? "bg-amber-500" : "bg-slate-300"}` }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3 flex-1 flex flex-col justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[10px] font-extrabold text-slate-500 uppercase tracking-wider", children: "SIRS" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: `font-black px-1.5 py-0.5 rounded-md text-[9px] ${result.sirsScore >= 2 ? "bg-amber-100 text-amber-900" : "bg-slate-100 text-slate-600"}`, children: result.sirsScore >= 2 ? "SIRS (+)" : "SIRS (-)" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "my-1.5 flex items-baseline gap-1 font-mono tabular-nums", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-2xl sm:text-3xl font-black text-slate-900", children: result.sirsScore }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[10px] text-slate-400", children: "/ 4" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-[10.5px] text-slate-600 leading-snug line-clamp-2", children: result.sirsScore >= 2 ? "\u0110\xE1p \u1EE9ng vi\xEAm h\u1EC7 th\u1ED1ng (\u2265 2/4)" : "Ch\u01B0a \u0111\u1EE7 ti\xEAu ch\xED SIRS" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "bg-white rounded-2xl border border-cyan-200/90 shadow-2xs overflow-hidden flex flex-col", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "h-1 w-full bg-cyan-500" }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3 flex-1 flex flex-col justify-between bg-gradient-to-b from-cyan-50/30 to-white", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[10px] font-extrabold text-cyan-800 uppercase tracking-wider", children: "LP-NEWS" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "font-black px-1.5 py-0.5 rounded-md text-[9px] bg-cyan-100 text-cyan-800 font-mono", children: "AUC .966" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "my-1.5 flex items-baseline gap-1 font-mono tabular-nums", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-2xl sm:text-3xl font-black text-cyan-950", children: result.lpNewsScore }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[10px] text-cyan-700", children: "\u0111i\u1EC3m" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-[10.5px] text-slate-600 leading-snug line-clamp-2", children: result.lpNewsMortalityRiskTier === "critical" ? "T\u1EED vong 14d r\u1EA5t cao" : result.lpNewsMortalityRiskTier === "high" ? "Ti\xEAn l\u01B0\u1EE3ng t\u1EED vong cao" : "Nguy c\u01A1 t\u1EED vong th\u1EA5p" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden flex flex-col col-span-2 sm:col-span-1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: `h-1 w-full ${result.niceRiskCategory === "high" ? "bg-rose-600" : result.niceRiskCategory === "medium" ? "bg-amber-500" : "bg-emerald-500"}` }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3 flex-1 flex flex-col justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[10px] font-extrabold text-slate-500 uppercase tracking-wider", children: "NICE NG253" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: `font-black px-1.5 py-0.5 rounded-md text-[9px] uppercase ${result.niceRiskCategory === "high" ? "bg-rose-100 text-rose-800" : result.niceRiskCategory === "medium" ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`, children: result.niceRiskCategory === "high" ? "R\u1EA4T CAO" : result.niceRiskCategory === "medium" ? "V\u1EEAA" : "TH\u1EA4P" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "my-1.5 flex items-baseline gap-1 font-mono tabular-nums", children: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "text-xl sm:text-2xl font-black text-slate-900", children: [
+            "KS \u2264 ",
+            result.niceAntibioticMaxDelayHours,
+            "h"
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-[10.5px] text-slate-600 leading-snug line-clamp-2", children: result.niceHighRiskCriteriaMet.length > 0 ? `${result.niceHighRiskCriteriaMet.length} d\u1EA5u hi\u1EC7u nguy c\u01A1 cao` : "Theo d\xF5i s\xE1t di\u1EC5n ti\u1EBFn" })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-3.5 sm:p-4 shadow-2xs space-y-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "w-7 h-7 rounded-lg bg-teal-50 border border-teal-200/80 text-teal-700 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.TestTube, { className: "w-3.5 h-3.5" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-xs font-extrabold text-slate-900 block leading-tight", children: "Ph\xE2n T\u1EA7ng T\u1EF7 L\u1EC7 NLR (Neutrophil / Lymphocyte)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "text-[10px] text-slate-500 font-mono tabular-nums", children: [
+              "NEU ",
+              patient.neutrophilCount ?? "--",
+              " G/L \xF7 LYM ",
+              patient.lymphocyteCount ?? "--",
+              " G/L"
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center gap-2", children: [
+          result.calculatedNlr !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: `text-[11px] font-mono tabular-nums px-2.5 py-1 rounded-lg font-extrabold ${result.nlrRiskLevel === "critical" ? "bg-rose-600 text-white shadow-xs" : result.nlrRiskLevel === "high" ? "bg-rose-100 text-rose-800 border border-rose-300" : result.nlrRiskLevel === "mild" || result.nlrRiskLevel === "elevated" ? "bg-amber-100 text-amber-800 border border-amber-300" : "bg-emerald-100 text-emerald-800 border border-emerald-300"}`, children: [
+            "NLR = ",
+            result.calculatedNlr,
+            " \u2022",
+            " ",
+            result.nlrRiskLevel === "critical" ? "M\u1EE8C 4: NGUY K\u1ECACH (\u2265 10.0)" : result.nlrRiskLevel === "high" ? "M\u1EE8C 3: NGUY C\u01A0 CAO (6.0\u20139.9)" : result.nlrRiskLevel === "mild" || result.nlrRiskLevel === "elevated" ? "M\u1EE8C 2: C\u1EA2NH B\xC1O (3.0\u20135.9)" : "M\u1EE8C 1: B\xCCNH TH\u01AF\u1EDCNG (< 3.0)"
+          ] }) : /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[11px] text-slate-400 font-mono", children: "Ch\u01B0a nh\u1EADp NEU/LYM" }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setShowNlrEbm(!showNlrEbm),
+              className: "text-[10px] font-bold text-slate-500 hover:text-teal-700 px-2 py-1 rounded-lg bg-slate-50 border border-slate-200 cursor-pointer",
+              children: showNlrEbm ? "\u1EA8n EBM" : "EBM & Nhi\u1EC5u"
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10.5px]", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: `p-2.5 rounded-xl border transition-all ${result.calculatedNlr !== void 0 && result.calculatedNlr < 3 ? "bg-emerald-50 border-emerald-500 text-emerald-950 ring-2 ring-emerald-400/50 shadow-xs" : "bg-slate-50/70 border-slate-200/80 text-slate-500"}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between font-mono font-black", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: "< 3.0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[9px] font-sans px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800", children: "M\u1EE9c 1" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "font-bold text-slate-800 mt-0.5", children: "Sinh l\xFD / B\xECnh th\u01B0\u1EDDng" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: `p-2.5 rounded-xl border transition-all ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 3 && result.calculatedNlr < 6 ? "bg-amber-50 border-amber-500 text-amber-950 ring-2 ring-amber-400/50 shadow-xs" : "bg-slate-50/70 border-slate-200/80 text-slate-500"}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between font-mono font-black", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: "3.0 \u2013 5.9" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[9px] font-sans px-1.5 py-0.2 rounded bg-amber-100 text-amber-800", children: "M\u1EE9c 2" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "font-bold text-slate-800 mt-0.5", children: "C\u1EA3nh b\xE1o / Vi\xEAm nh\u1EB9" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: `p-2.5 rounded-xl border transition-all ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 6 && result.calculatedNlr < 10 ? "bg-rose-50 border-rose-500 text-rose-950 ring-2 ring-rose-400/50 shadow-xs" : "bg-slate-50/70 border-slate-200/80 text-slate-500"}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between font-mono font-black", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: "6.0 \u2013 9.9" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "text-[9px] font-sans px-1.5 py-0.2 rounded bg-rose-100 text-rose-800", children: "M\u1EE9c 3" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "font-bold text-slate-800 mt-0.5", children: "Sepsis r\xF5 (NPV 97%)" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: `p-2.5 rounded-xl border transition-all ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 10 ? "bg-rose-600 border-rose-700 text-white ring-2 ring-rose-500/40 shadow-sm" : "bg-slate-50/70 border-slate-200/80 text-slate-500"}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between font-mono font-black", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: "\u2265 10.0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: `text-[9px] font-sans px-1.5 py-0.2 rounded ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 10 ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"}`, children: "M\u1EE9c 4" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: `font-bold mt-0.5 ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 10 ? "text-white" : "text-slate-800"}`, children: result.calculatedNlr !== void 0 && result.calculatedNlr >= 15 ? "B\xE1o \u0111\u1ED9ng Septicemia" : "B\xE1o \u0111\u1ED9ng Nguy k\u1ECBch" })
+        ] })
+      ] }),
+      showNlrEbm && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-2.5 rounded-xl bg-teal-50/60 border border-teal-200/80 text-[11px] text-slate-700 leading-relaxed space-y-1 animate-fadeIn", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("strong", { className: "text-teal-900", children: "EBM (Zahorec 2021, Demni 2026, Naess 2017):" }),
+          " \u1EDE BN s\u1ED1t < 7 ng\xE0y, NLR ph\xE2n bi\u1EC7t ",
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("strong", { children: "Nhi\u1EC5m tr\xF9ng huy\u1EBFt (Median 15.7)" }),
+          " v\u1EDBi nhi\u1EC5m khu\u1EA9n khu tr\xFA (Median ~8.0, p=0.006) v\u01B0\u1EE3t tr\u1ED9i WBC & CRP."
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "text-amber-900", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("strong", { children: "L\u01B0u \xFD nhi\u1EC5u:" }),
+          " Corticoid ho\u1EB7c stress h\u1EADu ph\u1EABu l\xE0m t\u0103ng gi\u1EA3 NLR; s\u1ED1t k\xE9o d\xE0i > 7 ng\xE0y c\xF3 th\u1EC3 l\xE0m gi\u1EA3m gi\u1EA3 NLR."
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-2xs space-y-3.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between gap-2 pb-2.5 border-b border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("h3", { className: "text-xs sm:text-sm font-extrabold text-slate-900 flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white flex items-center justify-center text-[11px] font-black", children: "1h" }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: "Ph\xE1c \u0110\u1ED3 X\u1EED Tr\xED Gi\u1EDD V\xE0ng & H\xE0nh \u0110\u1ED9ng Can Thi\u1EC7p" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => setShowDetailedActions(!showDetailedActions),
+            className: "text-[11px] text-teal-700 hover:text-teal-900 font-bold flex items-center gap-1 px-2.5 py-1 rounded-lg bg-teal-50 hover:bg-teal-100 transition-colors cursor-pointer",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: showDetailedActions ? "\u1EA8n Source Control & Vi sinh" : "Xem Source Control & Vi sinh" }),
+              showDetailedActions ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.ChevronUp, { className: "w-3.5 h-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.ChevronDown, { className: "w-3.5 h-3.5" })
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3.5 rounded-xl bg-teal-50/60 border border-teal-200/90 flex flex-col justify-between space-y-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "space-y-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center justify-between gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "font-extrabold text-teal-950 text-[11px] uppercase flex items-center gap-1.5", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Pill, { className: "w-3.5 h-3.5 text-teal-600" }),
+                "1. Kh\xE1ng Sinh T\u0129nh M\u1EA1ch (NICE NG253)"
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-white text-teal-800 border border-teal-200 tabular-nums", children: [
+                "CrCl ",
+                renal.crcl,
+                " mL/p"
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "font-bold text-teal-900 text-[11.5px] leading-snug", children: result.actions.antibioticTiming }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("ul", { className: "text-slate-700 space-y-1 list-disc pl-4 text-[11px] leading-relaxed", children: result.actions.antibioticRegimen.map((r, idx) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("li", { children: r }, idx)) })
+          ] }),
+          quickDrugs.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "pt-2.5 border-t border-teal-200/70", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "text-[10px] font-extrabold text-teal-900 uppercase tracking-wide block mb-1.5", children: [
+              "B\u1EA5m \u0111\u1EC3 t\xEDnh li\u1EC1u c\xE1 th\u1EC3 h\xF3a theo CrCl (",
+              renal.crcl,
+              " mL/p):"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "flex flex-wrap gap-1.5", children: quickDrugs.map((chip) => /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: () => onSelectDrugForDosing(chip.drugId),
+                className: `inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold border transition-all cursor-pointer shadow-2xs ${chip.role === "targeted_mdr" ? "bg-purple-600 hover:bg-purple-700 text-white border-purple-700" : chip.role === "primary" ? "bg-teal-600 hover:bg-teal-700 text-white border-teal-700" : "bg-white hover:bg-teal-50 text-teal-900 border-teal-300"}`,
+                title: chip.noteVi ? `${chip.label} \u2014 ${chip.noteVi}` : `T\xEDnh li\u1EC1u ${chip.label}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Calculator, { className: "w-3 h-3 shrink-0" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: chip.label })
+                ]
+              },
+              chip.drugId
+            )) })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3.5 rounded-xl bg-sky-50/60 border border-sky-200/90 space-y-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "font-extrabold text-sky-950 text-[11px] uppercase flex items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Droplet, { className: "w-3.5 h-3.5 text-sky-600" }),
+            "2. Li\u1EC7u Ph\xE1p D\u1ECBch Tinh Th\u1EC3 C\xE2n B\u1EB1ng"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-slate-800 text-[11.5px] leading-relaxed", children: result.actions.fluidResuscitation })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3.5 rounded-xl bg-rose-50/60 border border-rose-200/90 space-y-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "font-extrabold text-rose-950 text-[11px] uppercase flex items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Heart, { className: "w-3.5 h-3.5 text-rose-600" }),
+            "3. Thu\u1ED1c V\u1EADn M\u1EA1ch & Huy\u1EBFt \u0110\u1ED9ng"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-slate-800 text-[11.5px] leading-relaxed", children: result.actions.vasopressorStrategy })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3.5 rounded-xl bg-amber-50/60 border border-amber-200/90 space-y-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "font-extrabold text-amber-950 text-[11px] uppercase flex items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Users, { className: "w-3.5 h-3.5 text-amber-600" }),
+            "4. B\u1EADc Thang B\xE1o \u0110\u1ED9ng & H\u1ED9i Ch\u1EA9n"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("ul", { className: "text-slate-800 space-y-1 list-disc pl-4 text-[11.5px] leading-relaxed", children: result.actions.escalationAndConsult.map((e, idx) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("li", { children: e }, idx)) })
+        ] })
+      ] }),
+      showDetailedActions && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "pt-3 border-t border-slate-100 text-xs text-slate-700 space-y-2.5 animate-fadeIn", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3 rounded-xl bg-slate-50 border border-slate-200/80", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "font-extrabold text-slate-900 block mb-1 text-[11px] uppercase", children: "Ki\u1EC3m So\xE1t Ngu\u1ED3n Nhi\u1EC5m (Source Control)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-[11px] text-slate-700 leading-relaxed", children: result.actions.sourceControlNotes })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3 rounded-xl bg-slate-50 border border-slate-200/80", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { className: "font-extrabold text-slate-900 block mb-1 text-[11px] uppercase", children: "T\u1EA7n Su\u1EA5t Theo D\xF5i Sinh Hi\u1EC7u" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "text-[11px] text-slate-700 leading-relaxed", children: result.actions.monitoringFrequency })
+          ] })
+        ] }),
+        result.actions.microbiologySteps.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3 rounded-xl bg-indigo-50/50 border border-indigo-200/80", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "font-extrabold text-indigo-950 text-[11px] uppercase flex items-center gap-1.5 mb-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Microscope, { className: "w-3.5 h-3.5 text-indigo-600" }),
+            "Chi\u1EBFn L\u01B0\u1EE3c C\u1EA5y M\xE1u & Vi Sinh"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("ul", { className: "list-disc pl-4 space-y-1 text-[11px] text-slate-700", children: result.actions.microbiologySteps.map((step, idx) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("li", { children: step }, idx)) })
+        ] }),
+        patient.rapidMolecularResult === "positive" && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "p-3 rounded-xl bg-purple-50 border border-purple-200 text-purple-950", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { className: "font-extrabold text-[11px] flex items-center gap-1.5 uppercase", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Dna, { className: "w-3.5 h-3.5 text-purple-600" }),
+            "K\u1EBFt Qu\u1EA3 Ph\xE2n T\u1EED T2Bacteria / T2Resistance Si\xEAu T\u1ED1c (3-5h)"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("p", { className: "text-[11px] mt-1 leading-relaxed", children: [
+            "Ph\xE1t hi\u1EC7n: ",
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("strong", { children: patient.rapidMolecularPathogen }),
+            ". Gen kh\xE1ng: ",
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("strong", { children: patient.rapidMolecularResistanceGenes?.join(", ") || "Ch\u01B0a ghi nh\u1EADn" }),
+            ". C\u1EA7n chuy\u1EC3n kh\xE1ng sinh nh\u1EAFm \u0111\xEDch ngay l\u1EADp t\u1EE9c!"
+          ] })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-sm border border-teal-500/30", children: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex flex-col md:flex-row md:items-center justify-between gap-3.5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "space-y-1.5 min-w-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex items-center gap-1.5 text-teal-300 text-[10.5px] font-black uppercase tracking-wider", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Sparkles, { className: "w-3.5 h-3.5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: "C\u1EA7u N\u1ED1i D\u1EEF Li\u1EC7u T\u1EF1 \u0110\u1ED9ng \u2192 Ph\xE2n H\u1EC7 Kh\xE1ng Sinh & AMS" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("p", { className: "text-xs text-slate-200 leading-relaxed", children: [
+          "\u0110\xE3 \u0111\u1ED3ng b\u1ED9 t\u1EF1 \u0111\u1ED9ng ",
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("strong", { className: "text-white", children: [
+            "SOFA ",
+            bridgeSnapshot.sofaScore,
+            "\u0111"
+          ] }),
+          ",",
+          " ",
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("strong", { className: "text-teal-300", children: [
+            "CrCl ",
+            renal.crcl,
+            " mL/p"
+          ] }),
+          ", \u1ED5 nhi\u1EC5m tr\xF9ng v\xE0",
+          " ",
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("strong", { className: "text-white", children: [
+            bridgeSnapshot.generalRiskIds.length,
+            " YTNC \u0111a kh\xE1ng"
+          ] }),
+          " sang Giai \u0111o\u1EA1n 2."
+        ] }),
+        bridgeSnapshot.syncHighlightsVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "flex flex-wrap gap-1.5 pt-0.5", children: bridgeSnapshot.syncHighlightsVi.slice(0, 3).map((hl, i) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+          "span",
+          {
+            className: "text-[10px] font-semibold px-2 py-0.5 rounded-md bg-white/10 text-teal-200 border border-teal-400/20",
+            children: hl
+          },
+          i
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "flex flex-wrap items-center gap-2 shrink-0", children: [
+        patient.rapidMolecularResult === "positive" && onGoToReassessStage && /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: onGoToReassessStage,
+            className: "px-3.5 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-400 text-white text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.Dna, { className: "w-4 h-4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: "Ph\xE1c \u0110\u1ED3 \u0110\xEDch MDR (B\u01B0\u1EDBc 3)" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: onGoToAntibioticStage,
+            className: "px-4 py-2.5 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer shadow-sm",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { children: "Ti\u1EBFp T\u1EE5c: Ph\xE1c \u0110\u1ED3 BVBND & Li\u1EC1u KS" }),
+              /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_lucide_react27.ArrowRight, { className: "w-4 h-4" })
+            ]
+          }
+        )
+      ] })
+    ] }) })
+  ] });
+};
+
 // antibiotic/src/components/selection/SelectionWizard.tsx
-var import_lucide_react23 = __toESM(require_lucide_react(), 1);
-var import_jsx_runtime24 = __toESM(require_jsx_runtime(), 1);
+var import_lucide_react28 = __toESM(require_lucide_react(), 1);
+var import_jsx_runtime30 = __toESM(require_jsx_runtime(), 1);
 var SelectionWizard = ({
   currentStage,
   onStageChange,
+  viewMode,
   onSelectDrugForDosing,
   onOpenGuidelineAtlas,
   dosingResult,
   selectedDrugId,
   patient,
   renal,
-  onCalculateDoseForDrug,
-  onPatientChange,
   onExportPdf,
   detailedDrugId: externalDetailedDrugId,
   onToggleDetailedDrug: externalToggleDetailedDrug,
-  children
+  sepsisPatient,
+  sepsisResult,
+  onSepsisPatientChange,
+  onSelectPreset,
+  onSaveCase,
+  saveSuccess,
+  onOpenSepsisGuide,
+  sepsisSyncToken
 }) => {
-  const [viewMode, setViewMode] = (0, import_react18.useState)("stepper");
-  const [copiedSummary, setCopiedSummary] = (0, import_react18.useState)(false);
-  const [internalDetailedDrugId, setInternalDetailedDrugId] = (0, import_react18.useState)(null);
+  const [copiedSummary, setCopiedSummary] = (0, import_react21.useState)(false);
+  const [internalDetailedDrugId, setInternalDetailedDrugId] = (0, import_react21.useState)(null);
+  const [isSepsisFormCollapsed, setIsSepsisFormCollapsed] = (0, import_react21.useState)(false);
+  const [sepsisMobileTab, setSepsisMobileTab] = (0, import_react21.useState)("dashboard");
   const activeDetailedDrugId = externalDetailedDrugId !== void 0 ? externalDetailedDrugId : internalDetailedDrugId;
   const handleToggleDetailed = (dId) => {
     if (externalToggleDetailedDrug) {
@@ -88409,44 +92576,61 @@ var SelectionWizard = ({
     dialysis: "none"
   };
   const activeRenal = renal || calculateRenalMetrics(activePatient);
-  const [indicationConfirmed, setIndicationConfirmed] = (0, import_react18.useState)(true);
-  const [population, setPopulation] = (0, import_react18.useState)("adult");
-  const [site, setSite] = (0, import_react18.useState)("respiratory");
-  const [sepsisSource, setSepsisSource] = (0, import_react18.useState)(void 0);
-  const [checkedGeneralRiskIds, setCheckedGeneralRiskIds] = (0, import_react18.useState)([
-    "hospital_90d",
-    "invasive_device",
-    "iv_abx_30d"
-  ]);
-  const [sofaScore, setSofaScore] = (0, import_react18.useState)(8);
-  const [psofaScore, setPsofaScore] = (0, import_react18.useState)(0);
-  const [clifSofaScore, setClifSofaScore] = (0, import_react18.useState)(0);
-  const [isChronicLiverDisease, setIsChronicLiverDisease] = (0, import_react18.useState)(false);
-  const [checkedSpecificRisks, setCheckedSpecificRisks] = (0, import_react18.useState)([
-    "pseudo_acineto",
-    "mrsa"
-  ]);
-  const [checkedSpecificRiskFactorIds, setCheckedSpecificRiskFactorIds] = (0, import_react18.useState)([
-    "ps_icu_5d",
-    "ps_devices",
-    "mrsa_cvc_foley"
-  ]);
-  const [savedScores, setSavedScores] = (0, import_react18.useState)({});
-  const [clinicalResponse, setClinicalResponse] = (0, import_react18.useState)("improved");
-  const [cultureStatus, setCultureStatus] = (0, import_react18.useState)("pending");
-  const [susceptibilityStatus, setSusceptibilityStatus] = (0, import_react18.useState)("sensitive");
-  const [daysOnAntibiotic, setDaysOnAntibiotic] = (0, import_react18.useState)(3);
+  const bridgeSnapshot = deriveAntibioticBridgeFromSepsis(sepsisPatient, sepsisResult);
+  const [indicationConfirmed] = (0, import_react21.useState)(true);
+  const [population, setPopulation] = (0, import_react21.useState)(bridgeSnapshot.population);
+  const [site, setSite] = (0, import_react21.useState)(bridgeSnapshot.site);
+  const [sepsisSource, setSepsisSource] = (0, import_react21.useState)(bridgeSnapshot.sepsisSource);
+  const [checkedGeneralRiskIds, setCheckedGeneralRiskIds] = (0, import_react21.useState)(
+    bridgeSnapshot.generalRiskIds.length > 0 ? bridgeSnapshot.generalRiskIds : ["hospital_90d", "invasive_device", "iv_abx_30d"]
+  );
+  const [sofaScore, setSofaScore] = (0, import_react21.useState)(bridgeSnapshot.sofaScore);
+  const [psofaScore, setPsofaScore] = (0, import_react21.useState)(bridgeSnapshot.psofaScore);
+  const [clifSofaScore, setClifSofaScore] = (0, import_react21.useState)(0);
+  const [isChronicLiverDisease, setIsChronicLiverDisease] = (0, import_react21.useState)(false);
+  const [checkedSpecificRisks, setCheckedSpecificRisks] = (0, import_react21.useState)(
+    bridgeSnapshot.specificRisks
+  );
+  const [checkedSpecificRiskFactorIds, setCheckedSpecificRiskFactorIds] = (0, import_react21.useState)(
+    bridgeSnapshot.specificRiskFactorIds
+  );
+  const [savedScores, setSavedScores] = (0, import_react21.useState)({});
+  const [isManuallyOverridden, setIsManuallyOverridden] = (0, import_react21.useState)(false);
+  const [clinicalResponse] = (0, import_react21.useState)("improved");
+  const [cultureStatus] = (0, import_react21.useState)("pending");
+  const [susceptibilityStatus] = (0, import_react21.useState)("sensitive");
+  const [daysOnAntibiotic] = (0, import_react21.useState)(3);
+  const applyBridgeFromSepsis = (0, import_react21.useCallback)(() => {
+    const snap = deriveAntibioticBridgeFromSepsis(sepsisPatient, sepsisResult);
+    setPopulation(snap.population);
+    setSite(snap.site);
+    setSepsisSource(snap.sepsisSource);
+    setSofaScore(snap.sofaScore);
+    setPsofaScore(snap.psofaScore);
+    setCheckedGeneralRiskIds(snap.generalRiskIds);
+    setCheckedSpecificRisks(snap.specificRisks);
+    setCheckedSpecificRiskFactorIds(snap.specificRiskFactorIds);
+    setIsManuallyOverridden(false);
+  }, [sepsisPatient, sepsisResult]);
+  (0, import_react21.useEffect)(() => {
+    if (sepsisSyncToken > 0) {
+      applyBridgeFromSepsis();
+    }
+  }, [sepsisSyncToken]);
   const handleToggleSpecificRisk = (risk) => {
+    setIsManuallyOverridden(true);
     setCheckedSpecificRisks(
       (prev) => prev.includes(risk) ? prev.filter((x) => x !== risk) : [...prev, risk]
     );
   };
   const handleToggleGeneralRisk = (factorId) => {
+    setIsManuallyOverridden(true);
     setCheckedGeneralRiskIds(
       (prev) => prev.includes(factorId) ? prev.filter((x) => x !== factorId) : [...prev, factorId]
     );
   };
   const handleToggleSpecificRiskFactor = (factorId) => {
+    setIsManuallyOverridden(true);
     setCheckedSpecificRiskFactorIds((prev) => {
       const next = prev.includes(factorId) ? prev.filter((x) => x !== factorId) : [...prev, factorId];
       let riskType = null;
@@ -88488,6 +92672,7 @@ var SelectionWizard = ({
     checkedSpecificRiskFactorIds
   );
   const handleQuickGroupSelect = (targetGroup) => {
+    setIsManuallyOverridden(true);
     if (targetGroup === "group_1") {
       setCheckedGeneralRiskIds([]);
       setCheckedSpecificRisks([]);
@@ -88505,7 +92690,7 @@ var SelectionWizard = ({
       if (sofaScore < 2) setSofaScore(4);
     }
   };
-  const handleSaveScoreResult = (0, import_react18.useCallback)((result) => {
+  const handleSaveScoreResult = (0, import_react21.useCallback)((result) => {
     setSavedScores((prev) => {
       const existing = prev[result.scoreId];
       if (existing && existing.totalScore === result.totalScore && existing.displayScoreText === result.displayScoreText && existing.riskClassVi === result.riskClassVi) {
@@ -88514,8 +92699,9 @@ var SelectionWizard = ({
       return { ...prev, [result.scoreId]: result };
     });
   }, []);
-  const handleApplyScoreSuggestion = (0, import_react18.useCallback)(
+  const handleApplyScoreSuggestion = (0, import_react21.useCallback)(
     (action) => {
+      setIsManuallyOverridden(true);
       if (action.suggestSofaScore !== void 0) {
         setSofaScore(action.suggestSofaScore);
       }
@@ -88569,329 +92755,331 @@ var SelectionWizard = ({
     calculatedScores: savedScores
   };
   const handleCopyConsultationSummary = () => {
-    const isGroup2 = riskResult.group === "group_2";
-    const siteNames = {
-      respiratory: "H\xF4 h\u1EA5p (HAP/VAP/CAP)",
-      sepsis: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt / S\u1ED1c nhi\u1EC5m khu\u1EA9n",
-      skin_soft_tissue: "Nhi\u1EC5m tr\xF9ng Da & M\xF4 m\u1EC1m",
-      urinary: "Nhi\u1EC5m tr\xF9ng Ti\u1EBFt ni\u1EC7u",
-      peritoneal: "Vi\xEAm ph\xFAc m\u1EA1c / D\u1ECBch b\xE1ng (SBP)",
-      gastrointestinal: "Ti\xEAu h\xF3a - \u1ED4 b\u1EE5ng",
-      cns: "Th\u1EA7n kinh trung \u01B0\u01A1ng"
-    };
-    const calculatedScoreEntries = Object.values(savedScores).filter(
-      (s) => Boolean(s)
-    );
-    const scoresSummaryLine = calculatedScoreEntries.length > 0 ? `
-THANG \u0110I\u1EC2M CHUY\xCAN KHOA: ${calculatedScoreEntries.map((s) => `${s.shortName}: ${s.displayScoreText} (${s.riskClassVi})`).join(" | ")}` : "";
-    const text = `=== T\xD3M T\u1EAET H\u1ED8I CH\u1EA8N L\xC2M S\xC0NG & KH\xC1NG SINH (InfectoDose CDSS) ===
-TH\xD4NG S\u1ED0 L\xC2M S\xC0NG: ${population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em"}, ${patient?.age} tu\u1ED5i, ${patient?.gender === "m" ? "Nam" : "N\u1EEF"} | C\xE2n n\u1EB7ng: ${patient?.weight} kg (IBW ${renal?.ibw} kg, BMI ${renal?.bmi})
-CH\u1EE8C N\u0102NG TH\u1EACN: Scr ${patient?.scr} ${patient?.scrUnit === "umol" ? "\xB5mol/L" : "mg/dL"} | CrCl: ${renal?.crcl} mL/ph\xFAt (${renal?.categoryLabelVi}) | L\u1ECDc m\xE1u: ${patient?.dialysis === "none" ? "Kh\xF4ng" : patient?.dialysis?.toUpperCase()}
-\u1ED4 NHI\u1EC4M TR\xD9NG: ${siteNames[site] || site} | \u0110\u1ED1i t\u01B0\u1EE3ng: ${population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em"}
-\u0110I\u1EC2M \u0110\u1ED8 N\u1EB6NG: ${activeSeverity.scoreType.toUpperCase()} ${activeSeverity.scoreValue} \u0111i\u1EC3m${scoresSummaryLine}
-PH\xC2N T\u1EA6NG NGUY C\u01A0: ${isGroup2 ? "NH\xD3M 2 (Nguy c\u01A1 cao vi khu\u1EA9n \u0111a kh\xE1ng MDR)" : "NH\xD3M 1 (\xCDt nguy c\u01A1 VK\u0110K)"}
-KH\xC1NG SINH CH\u1EC8 \u0110\u1ECANH: ${selectedDrugId?.toUpperCase() || "Kh\xE1ng sinh theo ph\xE1c \u0111\u1ED3 BVBND 2026"}
-${dosingResult ? `LI\u1EC0U C\xC1 TH\u1EC2 H\xD3A: Li\u1EC1u duy tr\xEC: ${dosingResult.maintenanceDoseTextVi} | C\xE1ch d\xF9ng: ${dosingResult.infusionInstructionsVi}` : ""}
-K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0ng & vi sinh sau 48-72 gi\u1EDD; xu\u1ED1ng thang kh\xE1ng sinh \u0111\u1ED3 khi c\xF3 k\u1EBFt qu\u1EA3 c\u1EA5y.`;
+    const text = buildUnifiedConsultationSummary({
+      patient: activePatient,
+      renal: activeRenal,
+      sepsisPatient,
+      sepsisResult,
+      site,
+      riskGroupLabelVi: riskResult.group === "group_2" ? "NH\xD3M 2 (Nguy c\u01A1 cao VK\u0110K MDR)" : "NH\xD3M 1 (\xCDt nguy c\u01A1 VK\u0110K)",
+      selectedDrugName: selectedDrugId?.toUpperCase(),
+      doseSummaryVi: dosingResult ? `${dosingResult.loadingDoseTextVi ? `Li\u1EC1u n\u1EA1p ${dosingResult.loadingDoseTextVi} | ` : ""}Li\u1EC1u duy tr\xEC ${dosingResult.maintenanceDoseTextVi} | ${dosingResult.infusionInstructionsVi}` : void 0
+    });
     navigator.clipboard.writeText(text);
     setCopiedSummary(true);
     setTimeout(() => setCopiedSummary(false), 2500);
   };
-  const stagesList = [
-    {
-      stage: 1,
-      badge: "1. Ph\xE1c \u0110\u1ED3 & T\xEDnh Li\u1EC1u",
-      sub: "BVBND 2026 \u2022 T\xEDnh li\u1EC1u tr\u1EF1c ti\u1EBFp",
-      title: "Ph\xE1c \u0110\u1ED3 & C\xE1 Th\u1EC3 H\xF3a Li\u1EC1u",
-      desc: "\u0110\xE1nh gi\xE1 \u1ED5 nhi\u1EC5m, ph\xE2n t\u1EA7ng nguy c\u01A1 VK\u0110K, t\xEDnh li\u1EC1u tr\u1EF1c ti\u1EBFp theo CrCl v\xE0 b\u1EA3ng chi ti\u1EBFt kh\xE1ng sinh",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Pill, { className: "w-4 h-4" })
-    },
-    {
-      stage: 2,
-      badge: "2. T\xE1i \u0110\xE1nh Gi\xE1",
-      sub: "48-72h \u2022 Xu\u1ED1ng thang KS\u0110",
-      title: "T\xE1i \u0110\xE1nh Gi\xE1 48-72h & Qu\u1EA3n L\xFD Kh\xE1ng Sinh (AMS)",
-      desc: "\u0110\xE1p \u1EE9ng l\xE2m s\xE0ng & KS\u0110 \u2022 Xu\u1ED1ng thang \u2022 Ng\u01B0ng KS / Chuy\u1EC3n \u0111\u01B0\u1EDDng u\u1ED1ng IV-to-PO",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Clock, { className: "w-4 h-4" })
-    }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "space-y-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200/90 p-2.5 sm:p-3 shadow-xs", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-100", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-teal-100 text-teal-800", children: "Quy Tr\xECnh 2 B\u01B0\u1EDBc" }),
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-[11px] text-slate-500 hidden md:inline", children: "BVBND 2026 \u2022 T\xEDnh Li\u1EC1u Tr\u1EF1c Ti\u1EBFp & B\u1EA3ng C\u1EE5 Th\u1EC3 \u2022 T\xE1i \u0110\xE1nh Gi\xE1 48-72h" })
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "space-y-6", children: [
+    (viewMode === "all-in-one" || currentStage === 1) && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("section", { id: "section-stage-1", className: "space-y-3.5 scroll-mt-32", children: [
+      viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "flex items-center gap-2.5 pb-2 border-b border-slate-200", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: "w-7 h-7 rounded-xl bg-rose-600 text-white font-black text-xs flex items-center justify-center shadow-xs", children: "01" }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("h2", { className: "text-sm sm:text-base font-extrabold text-slate-900 leading-tight", children: "Giai \u0110o\u1EA1n 1: S\xE0ng L\u1ECDc Sepsis \u0110a Thang \u0110i\u1EC3m & Ph\xE1c \u0110\u1ED3 Gi\u1EDD V\xE0ng (0\u20131h)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("p", { className: "text-[11px] text-slate-500", children: "NEWS2 \u2022 Sepsis-3 SOFA \u2022 Phoenix 2024 \u2022 Obstetric SOFA \u2022 LP-NEWS \u2022 NICE NG253 \u2022 NLR" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "bg-white/90 rounded-2xl border border-slate-200/90 px-3 py-2 shadow-2xs flex items-center gap-2 overflow-x-auto scrollbar-none", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "flex items-center gap-1.5 shrink-0 pr-2 border-r border-slate-200", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_react28.Sparkles, { className: "w-3.5 h-3.5 text-amber-500" }),
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: "text-[11px] font-extrabold text-slate-700 whitespace-nowrap", children: "Ca l\xE2m s\xE0ng m\u1EABu:" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-1.5 self-end sm:self-auto", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className: "flex items-center gap-1.5 overflow-x-auto scrollbar-none", children: PRESET_CASES.map((c) => {
+          const isSelectedPreset = sepsisPatient.id === c.patientData.id;
+          return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
             "button",
             {
               type: "button",
-              onClick: handleCopyConsultationSummary,
-              className: `px-2.5 py-1 rounded-xl text-xs font-bold transition-all flex items-center space-x-1 cursor-pointer border ${copiedSummary ? "bg-emerald-600 text-white border-emerald-600" : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"}`,
-              title: "Sao ch\xE9p to\xE0n b\u1ED9 t\xF3m t\u1EAFt h\u1ED9i ch\u1EA9n \u0111\u1EC3 d\xE1n v\xE0o B\u1EC7nh \xE1n EMR/HIS",
-              "aria-label": "Sao ch\xE9p t\xF3m t\u1EAFt EMR",
-              children: [
-                copiedSummary ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Check, { className: "w-3.5 h-3.5 text-white" }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Copy, { className: "w-3.5 h-3.5 text-slate-500" }),
-                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-[11px]", children: copiedSummary ? "\u0110\xE3 sao ch\xE9p" : "EMR" })
-              ]
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "inline-flex rounded-xl p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
-              "button",
-              {
-                type: "button",
-                onClick: () => setViewMode("stepper"),
-                className: `p-1.5 rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${viewMode === "stepper" ? "bg-white text-teal-900 shadow-2xs" : "text-slate-600 hover:text-slate-900"}`,
-                title: "Ch\u1EBF \u0111\u1ED9 T\u1EEBng B\u01B0\u1EDBc l\xE2m s\xE0ng",
-                "aria-label": "T\u1EEBng b\u01B0\u1EDBc",
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.LayoutList, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "hidden sm:inline text-[11px]", children: "T\u1EEBng B\u01B0\u1EDBc" })
-                ]
-              }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
-              "button",
-              {
-                type: "button",
-                onClick: () => setViewMode("all-in-one"),
-                className: `p-1.5 rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${viewMode === "all-in-one" ? "bg-white text-teal-900 shadow-2xs" : "text-slate-600 hover:text-slate-900"}`,
-                title: "Ch\u1EBF \u0111\u1ED9 Xem To\xE0n B\u1ED9 tr\xEAn 1 trang",
-                "aria-label": "To\xE0n b\u1ED9",
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Layers, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "hidden sm:inline text-[11px]", children: "To\xE0n B\u1ED9" })
-                ]
-              }
-            )
-          ] })
-        ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: stagesList.map((st) => {
-        const isActive = currentStage === st.stage;
-        const isCompleted = currentStage > st.stage;
-        return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
-          "button",
-          {
-            type: "button",
-            onClick: () => {
-              onStageChange(st.stage);
-              if (viewMode === "all-in-one") {
-                const el = document.getElementById(`section-stage-${st.stage}`);
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }
-            },
-            title: st.desc,
-            className: `p-2.5 rounded-2xl border text-left transition-all cursor-pointer flex items-center space-x-2.5 ${isActive ? "border-teal-500 bg-teal-50/90 ring-2 ring-teal-500/20 text-teal-950 shadow-xs" : isCompleted ? "border-slate-200 bg-white text-slate-800 hover:border-slate-300" : "border-slate-100 bg-slate-50/60 text-slate-500 hover:bg-slate-50"}`,
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
-                "div",
-                {
-                  className: `w-8 h-8 rounded-xl shrink-0 flex items-center justify-center font-bold text-xs ${isActive ? "bg-teal-600 text-white shadow-xs" : isCompleted ? "bg-emerald-500 text-white" : "bg-slate-200/80 text-slate-600"}`,
-                  children: isCompleted ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Check, { className: "w-4 h-4 text-white" }) : st.icon
+              onClick: () => {
+                onSelectPreset(c);
+                if (window.innerWidth < 1024) {
+                  setSepsisMobileTab("dashboard");
                 }
-              ),
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "min-w-0 flex-1", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center justify-between", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-xs font-black text-slate-900 truncate", children: st.badge }),
-                  isActive && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "w-2 h-2 rounded-full bg-teal-500 shrink-0" })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-[10px] font-semibold text-slate-500 truncate mt-0.5", children: st.sub })
-              ] })
-            ]
-          },
-          st.stage
-        );
-      }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "lg:hidden mt-3 p-3 rounded-2xl border bg-slate-50/80 border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2.5 min-w-0", children: [
-          riskResult.group === "group_2" ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ShieldAlert, { className: "w-5 h-5 text-rose-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0" }),
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "min-w-0 flex-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center gap-1.5 flex-wrap", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "text-xs font-black text-slate-900 truncate", children: riskResult.group === "group_2" ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: \xCDt nguy c\u01A1 VK\u0110K" }),
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: `text-[10px] font-bold px-1.5 py-0.2 rounded ${riskResult.group === "group_2" ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: riskResult.isHighSeverity ? "N\u1EB7ng (SOFA \u22652)" : "Ti\xEAu chu\u1EA9n" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "text-[11px] text-slate-500 truncate mt-0.5", children: [
-              population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em",
-              " \u2022 SOFA: ",
-              activeSeverity.scoreValue,
-              "\u0111 \u2022 CrCl: ",
-              activeRenal.crcl,
-              " mL/p"
-            ] })
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "flex items-center gap-2 shrink-0", children: currentStage === 1 ? /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
+              },
+              className: `px-2.5 py-1 text-[11px] font-bold rounded-lg whitespace-nowrap transition-all cursor-pointer border ${isSelectedPreset ? "bg-slate-900 text-teal-300 border-slate-900 shadow-2xs" : "bg-slate-50 border-slate-200/90 hover:border-teal-400 hover:bg-teal-50/40 text-slate-700"}`,
+              children: [
+                c.title.split(":")[0],
+                " \u2022 ",
+                c.category.split("-")[0].trim()
+              ]
+            },
+            c.id
+          );
+        }) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "lg:hidden bg-white p-1 rounded-xl border border-slate-200 grid grid-cols-2 gap-1 shadow-2xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
           "button",
           {
             type: "button",
-            onClick: () => {
-              onStageChange(2);
-              window.scrollTo({ top: 80, behavior: "smooth" });
-            },
-            className: "w-full sm:w-auto px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs flex items-center justify-center space-x-1 cursor-pointer",
+            onClick: () => setSepsisMobileTab("input"),
+            className: `py-2 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${sepsisMobileTab === "input" ? "bg-slate-900 text-white shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Sang B\u01B0\u1EDBc 2" }),
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ArrowRight, { className: "w-3.5 h-3.5" })
+              /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_react28.Stethoscope, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { children: "Nh\u1EADp Kh\xE1m & CLS" })
             ]
           }
-        ) : /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
           "button",
           {
             type: "button",
-            onClick: () => {
-              onStageChange(1);
-              window.scrollTo({ top: 80, behavior: "smooth" });
-            },
-            className: "w-full sm:w-auto px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 shadow-xs flex items-center justify-center space-x-1 cursor-pointer",
+            onClick: () => setSepsisMobileTab("dashboard"),
+            className: `py-2 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-colors relative cursor-pointer ${sepsisMobileTab === "dashboard" ? "bg-teal-600 text-white shadow-xs" : "text-slate-600 hover:text-slate-900"}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.ArrowLeft, { className: "w-3.5 h-3.5" }),
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "V\u1EC1 B\u01B0\u1EDBc 1" })
+              /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_react28.Activity, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { children: "K\u1EBFt Qu\u1EA3 & Gi\u1EDD V\xE0ng" }),
+              sepsisResult.urgencyLevel === "emergency" && /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: "w-2 h-2 rounded-full bg-rose-500 animate-ping absolute top-2 right-3" })
             ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "flex flex-col lg:flex-row items-start gap-4 lg:gap-5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className: `transition-all duration-200 shrink-0 ${sepsisMobileTab === "dashboard" ? "hidden lg:block" : "block"} ${isSepsisFormCollapsed ? "w-full lg:w-16" : "w-full lg:w-[360px] xl:w-[390px] lg:sticky lg:top-[116px] lg:max-h-[calc(100vh-132px)] lg:overflow-y-auto cockpit-dock-scroll lg:pr-1"}`, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+          CompactPatientForm,
+          {
+            data: sepsisPatient,
+            onChange: onSepsisPatientChange,
+            isCollapsed: isSepsisFormCollapsed,
+            onToggleCollapse: () => setIsSepsisFormCollapsed(!isSepsisFormCollapsed),
+            crcl: activeRenal.crcl
+          }
+        ) }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className: `w-full flex-1 min-w-0 ${sepsisMobileTab === "input" ? "hidden lg:block" : "block"}`, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+          SepsisDashboard,
+          {
+            patient: sepsisPatient,
+            result: sepsisResult,
+            renal: activeRenal,
+            onSaveCase,
+            saveSuccess,
+            onSelectDrugForDosing: (drugId) => {
+              onSelectDrugForDosing(drugId);
+              handleToggleDetailed(drugId);
+            },
+            onGoToAntibioticStage: () => {
+              applyBridgeFromSepsis();
+              onStageChange(2);
+              window.scrollTo({ top: 60, behavior: "smooth" });
+            },
+            onGoToReassessStage: () => {
+              applyBridgeFromSepsis();
+              onStageChange(3);
+              window.scrollTo({ top: 60, behavior: "smooth" });
+            },
+            onOpenSepsisGuide
           }
         ) })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "w-full space-y-6", children: [
-      (viewMode === "all-in-one" || currentStage === 1) && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { id: "section-stage-1", className: "space-y-4", children: [
-        viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2 pt-2 pb-1 border-b border-slate-200", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "1" }),
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "B\u01B0\u1EDBc 1: \u0110\xE1nh Gi\xE1, L\u1EF1a Ch\u1ECDn Ph\xE1c \u0110\u1ED3 BVBND 2026 & C\xE1 Th\u1EC3 H\xF3a T\xEDnh Li\u1EC1u" })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
-          StepAssessmentAndRegimens,
-          {
-            site,
-            onSelectSite: setSite,
-            population,
-            onSelectPopulation: setPopulation,
-            isChronicLiverDisease,
-            onToggleChronicLiver: setIsChronicLiverDisease,
-            sepsisSource,
-            onSelectSepsisSource: setSepsisSource,
-            riskResult,
-            onQuickGroupSelect: handleQuickGroupSelect,
-            sofaScore,
-            onSofaChange: setSofaScore,
-            psofaScore,
-            onPsofaChange: setPsofaScore,
-            clifSofaScore,
-            onClifSofaChange: setClifSofaScore,
-            checkedSpecificRisks,
-            onToggleSpecificRisk: handleToggleSpecificRisk,
-            checkedGeneralRiskIds,
-            onToggleGeneralRisk: handleToggleGeneralRisk,
-            checkedSpecificRiskFactorIds,
-            onToggleSpecificRiskFactor: handleToggleSpecificRiskFactor,
-            patient: activePatient,
-            renal: activeRenal,
-            selectedDrugId: selectedDrugId || "meropenem",
-            onSelectDrug: (drugId) => {
-              onSelectDrugForDosing(drugId);
-              handleToggleDetailed(drugId);
-            },
-            detailedDrugId: activeDetailedDrugId,
-            onToggleDetailedDrug: handleToggleDetailed,
-            onNextStep: () => {
-              onStageChange(2);
-              window.scrollTo({ top: 80, behavior: "smooth" });
-            },
-            onOpenGuidelineAtlas,
-            savedScores,
-            onSaveScoreResult: handleSaveScoreResult,
-            onApplyScoreSuggestion: handleApplyScoreSuggestion
-          }
-        )
+    (viewMode === "all-in-one" || currentStage === 2) && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("section", { id: "section-stage-2", className: "space-y-4 scroll-mt-32", children: [
+      viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "flex items-center gap-2.5 pt-2 pb-2 border-b border-slate-200", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: "w-7 h-7 rounded-xl bg-teal-600 text-white font-black text-xs flex items-center justify-center shadow-xs", children: "02" }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("h2", { className: "text-sm sm:text-base font-extrabold text-slate-900 leading-tight", children: "Giai \u0110o\u1EA1n 2: Ph\xE2n T\u1EA7ng MDR, Ph\xE1c \u0110\u1ED3 BVBND 2026 & T\xEDnh Li\u1EC1u 43 Kh\xE1ng Sinh" }),
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("p", { className: "text-[11px] text-slate-500", children: "Nh\xF3m 1 / Nh\xF3m 2 VK\u0110K \u2022 BVBND 2026 vs WHO AWaRe \u2022 CrCl / HD / CRRT / DDI" })
+        ] })
       ] }),
-      (viewMode === "all-in-one" || currentStage === 2) && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { id: "section-stage-2", className: "space-y-6", children: [
-        viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center", children: "2" }),
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "B\u01B0\u1EDBc 2: T\xE1i \u0110\xE1nh Gi\xE1 48-72h, Xu\u1ED1ng Thang & Qu\u1EA3n L\xFD Kh\xE1ng Sinh (AMS)" })
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: `px-3.5 py-2.5 rounded-2xl border shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs ${sepsisResult.urgencyLevel === "emergency" ? "bg-rose-50/80 border-rose-200 text-rose-950" : "bg-white border-slate-200/90 text-slate-800"}`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "flex items-center gap-2 min-w-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: `w-2 h-2 rounded-full shrink-0 ${sepsisResult.urgencyLevel === "emergency" ? "bg-rose-600 animate-pulse" : "bg-teal-500"}` }),
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "truncate flex items-center gap-1.5 flex-wrap", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: "font-extrabold text-slate-900", children: "\u0110\u1ED3ng b\u1ED9 Sepsis:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("span", { className: "font-mono font-bold text-[11px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-200/80", children: [
+              "SOFA ",
+              bridgeSnapshot.sofaScore,
+              "\u0111"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("span", { className: "font-mono font-bold text-[11px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-200/80", children: [
+              "NEWS2 ",
+              sepsisResult.news2Score
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: "text-[11px] font-semibold text-slate-600 truncate", children: sepsisResult.actions.antibioticTiming.split(".")[0] }),
+            bridgeSnapshot.isMaternal && /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: "px-1.5 py-0.5 rounded bg-pink-100 text-pink-800 text-[10px] font-extrabold border border-pink-200", children: "S\u1EA3n khoa (Thai k\u1EF3/H\u1EADu s\u1EA3n)" })
+          ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
-          StepReassess,
-          {
-            site,
-            onOpenGuidelineAtlas,
-            onSelectDrugForDosing: (drugId) => {
-              onSelectDrugForDosing(drugId);
-              handleToggleDetailed(drugId);
-              onStageChange(1);
-              setTimeout(() => {
-                const el = document.getElementById("detailed-drug-section");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }, 100);
-            },
-            onPrevStep: () => {
-              onStageChange(1);
-              window.scrollTo({ top: 80, behavior: "smooth" });
-            }
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
-            DecisionSummaryCard,
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "flex items-center gap-1.5 shrink-0", children: [
+          isManuallyOverridden && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+            "button",
             {
-              state: wizardState,
-              riskResult,
-              onNavigateStep: (s) => {
-                onStageChange(s);
-                window.scrollTo({ top: 80, behavior: "smooth" });
-              },
-              onSwitchToDosing: (drugId) => {
-                const targetDrug = drugId || selectedDrugId || "meropenem";
-                onSelectDrugForDosing(targetDrug);
-                handleToggleDetailed(targetDrug);
-                onStageChange(1);
-                setTimeout(() => {
-                  const el = document.getElementById("detailed-drug-section");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }, 100);
-              },
-              currentStage
+              type: "button",
+              onClick: applyBridgeFromSepsis,
+              className: "px-2.5 py-1 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-[11px] font-bold flex items-center gap-1 cursor-pointer transition-colors shadow-2xs",
+              title: "Kh\xF4i ph\u1EE5c \u0111\u1ED3ng b\u1ED9 SOFA, \u1ED4 nhi\u1EC5m & YTNC t\u1EEB Giai \u0111o\u1EA1n 1",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_react28.RefreshCw, { className: "w-3 h-3" }),
+                /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { children: "\u0110\u1ED3ng b\u1ED9 l\u1EA1i t\u1EEB Sepsis" })
+              ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "bg-gradient-to-br from-slate-900 to-teal-950 text-white p-5 rounded-3xl shadow-md border border-teal-500/30 flex flex-col justify-between", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex items-center space-x-2 text-teal-400 text-xs font-black uppercase tracking-wider mb-2", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Sparkles, { className: "w-4 h-4" }),
-                /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "H\xE0nh \u0110\u1ED9ng Khuy\u1EBFn Ngh\u1ECB Ti\u1EBFp Theo" })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "text-lg font-black text-white mb-2", children: "Ho\xE0n T\u1EA5t Quy Tr\xECnh H\u1ED9i Ch\u1EA9n InfectoDose CDSS" }),
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("p", { className: "text-xs text-slate-300 leading-relaxed", children: [
-                "B\u1EA1n \u0111\xE3 ho\xE0n th\xE0nh \u0111\xE1nh gi\xE1 to\xE0n di\u1EC7n 2 b\u01B0\u1EDBc t\u1EEB ti\u1EBFp nh\u1EADn, ph\xE2n t\u1EA7ng nguy c\u01A1 & l\u1EF1a ch\u1ECDn ph\xE1c \u0111\u1ED3 BVBND 2026 k\xE8m t\xEDnh li\u1EC1u tr\u1EF1c ti\u1EBFp theo CrCl ",
-                activeRenal.crcl,
-                " mL/ph\xFAt, v\xE0 l\u1EADp k\u1EBF ho\u1EA1ch t\xE1i \u0111\xE1nh gi\xE1 48-72h."
-              ] })
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+            "button",
+            {
+              type: "button",
+              onClick: () => {
+                onStageChange(1);
+                window.scrollTo({ top: 60, behavior: "smooth" });
+              },
+              className: "px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-bold flex items-center gap-1 cursor-pointer transition-colors",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_react28.ArrowLeft, { className: "w-3 h-3" }),
+                /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { children: "Sepsis (B\u01B0\u1EDBc 1)" })
+              ]
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+        StepAssessmentAndRegimens,
+        {
+          site,
+          onSelectSite: (s) => {
+            setIsManuallyOverridden(true);
+            setSite(s);
+          },
+          population,
+          onSelectPopulation: (p) => {
+            setIsManuallyOverridden(true);
+            setPopulation(p);
+          },
+          isChronicLiverDisease,
+          onToggleChronicLiver: setIsChronicLiverDisease,
+          sepsisSource,
+          onSelectSepsisSource: (src) => {
+            setIsManuallyOverridden(true);
+            setSepsisSource(src);
+          },
+          riskResult,
+          onQuickGroupSelect: handleQuickGroupSelect,
+          sofaScore,
+          onSofaChange: (val) => {
+            setIsManuallyOverridden(true);
+            setSofaScore(val);
+          },
+          psofaScore,
+          onPsofaChange: (val) => {
+            setIsManuallyOverridden(true);
+            setPsofaScore(val);
+          },
+          clifSofaScore,
+          onClifSofaChange: (val) => {
+            setIsManuallyOverridden(true);
+            setClifSofaScore(val);
+          },
+          checkedSpecificRisks,
+          onToggleSpecificRisk: handleToggleSpecificRisk,
+          checkedGeneralRiskIds,
+          onToggleGeneralRisk: handleToggleGeneralRisk,
+          checkedSpecificRiskFactorIds,
+          onToggleSpecificRiskFactor: handleToggleSpecificRiskFactor,
+          patient: activePatient,
+          renal: activeRenal,
+          selectedDrugId: selectedDrugId || "meropenem",
+          onSelectDrug: (drugId) => {
+            onSelectDrugForDosing(drugId);
+            handleToggleDetailed(drugId);
+          },
+          detailedDrugId: activeDetailedDrugId,
+          onToggleDetailedDrug: handleToggleDetailed,
+          onNextStep: () => {
+            onStageChange(3);
+            window.scrollTo({ top: 60, behavior: "smooth" });
+          },
+          onOpenGuidelineAtlas,
+          savedScores,
+          onSaveScoreResult: handleSaveScoreResult,
+          onApplyScoreSuggestion: handleApplyScoreSuggestion
+        }
+      )
+    ] }),
+    (viewMode === "all-in-one" || currentStage === 3) && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("section", { id: "section-stage-3", className: "space-y-5 scroll-mt-32", children: [
+      viewMode === "all-in-one" && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "flex items-center gap-2.5 pt-2 pb-2 border-b border-slate-200", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: "w-7 h-7 rounded-xl bg-indigo-600 text-white font-black text-xs flex items-center justify-center shadow-xs", children: "03" }),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("h2", { className: "text-sm sm:text-base font-extrabold text-slate-900 leading-tight", children: "Giai \u0110o\u1EA1n 3: T\xE1i \u0110\xE1nh Gi\xE1 48\u201372h, Ph\xE1c \u0110\u1ED3 \u0110\xEDch MDR & Qu\u1EA3n L\xFD Kh\xE1ng Sinh (AMS)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("p", { className: "text-[11px] text-slate-500", children: "\u0110\u1ED9ng h\u1ECDc Lactate/PCT/NLR \u2022 T2MR CRE/CRAB/DTR-PA \u2022 Ng\u01B0ng KS & Chuy\u1EC3n IV-to-PO" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+        StepReassess,
+        {
+          site,
+          onOpenGuidelineAtlas,
+          sepsisPatient,
+          sepsisResult,
+          suggestedMdrCategory: bridgeSnapshot.suggestedMdrCategory,
+          suggestedCreEnzyme: bridgeSnapshot.suggestedCreEnzyme,
+          onSelectDrugForDosing: (drugId) => {
+            onSelectDrugForDosing(drugId);
+            handleToggleDetailed(drugId);
+          },
+          onPrevStep: () => {
+            onStageChange(2);
+            window.scrollTo({ top: 60, behavior: "smooth" });
+          }
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+          DecisionSummaryCard,
+          {
+            state: wizardState,
+            riskResult,
+            onNavigateStep: (s) => {
+              onStageChange(s === 1 ? 2 : 3);
+              window.scrollTo({ top: 60, behavior: "smooth" });
+            },
+            onSwitchToDosing: (drugId) => {
+              const targetDrug = drugId || selectedDrugId || "meropenem";
+              onSelectDrugForDosing(targetDrug);
+              handleToggleDetailed(targetDrug);
+            },
+            currentStage: currentStage === 3 ? 2 : 1
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white p-5 rounded-2xl shadow-sm border border-teal-500/30 flex flex-col justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "flex items-center space-x-2 text-teal-300 text-[11px] font-black uppercase tracking-wider mb-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_react28.Sparkles, { className: "w-4 h-4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { children: "Ho\xE0n T\u1EA5t H\u1ED3 S\u01A1 H\u1ED9i Ch\u1EA9n Si\xEAu H\u1EC7 Th\u1ED1ng" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "pt-4 mt-4 border-t border-white/10 flex flex-wrap gap-2", children: [
-              onExportPdf && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
-                "button",
-                {
-                  type: "button",
-                  onClick: onExportPdf,
-                  className: "px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-all flex items-center space-x-1.5 cursor-pointer shadow-sm",
-                  children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.FileText, { className: "w-4 h-4" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: "Xu\u1EA5t Phi\u1EBFu H\u1ED9i Ch\u1EA9n PDF" })
-                  ]
-                }
-              ),
-              /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
-                "button",
-                {
-                  type: "button",
-                  onClick: handleCopyConsultationSummary,
-                  className: "px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all flex items-center space-x-1.5 cursor-pointer border border-white/20",
-                  children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_lucide_react23.Copy, { className: "w-4 h-4" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { children: copiedSummary ? "\u0110\xE3 sao ch\xE9p t\xF3m t\u1EAFt EMR" : "Sao ch\xE9p t\xF3m t\u1EAFt EMR" })
-                  ]
-                }
-              )
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("h3", { className: "text-base sm:text-lg font-black text-white mb-2", children: "InfectoSepsis CDSS v4.0 \u2014 B\xE1o C\xE1o T\u1ED5ng H\u1EE3p" }),
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("p", { className: "text-xs text-slate-300 leading-relaxed", children: [
+              "T\xEDch h\u1EE3p \u0111\u1EA7y \u0111\u1EE7 d\u1EEF li\u1EC7u 3 giai \u0111o\u1EA1n: \u0110\xE1nh gi\xE1 Sepsis & Gi\u1EDD v\xE0ng (NEWS2 ",
+              sepsisResult.news2Score,
+              ", SOFA ",
+              sepsisResult.sofaScore,
+              "\u0111, MAP ",
+              sepsisResult.calculatedMap,
+              " mmHg), Ph\xE2n t\u1EA7ng MDR & T\xEDnh li\u1EC1u theo CrCl ",
+              activeRenal.crcl,
+              " mL/p, v\xE0 k\u1EBF ho\u1EA1ch xu\u1ED1ng thang AMS 48\u201372h."
             ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { className: "pt-4 mt-4 border-t border-white/10 flex flex-wrap gap-2", children: [
+            onExportPdf && /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: onExportPdf,
+                className: "px-4 py-2 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-black text-xs transition-all flex items-center space-x-1.5 cursor-pointer shadow-sm",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_react28.FileText, { className: "w-4 h-4" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { children: "Xu\u1EA5t Phi\u1EBFu H\u1ED9i Ch\u1EA9n PDF" })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: handleCopyConsultationSummary,
+                className: "px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all flex items-center space-x-1.5 cursor-pointer border border-white/20",
+                children: [
+                  copiedSummary ? /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_react28.Check, { className: "w-4 h-4 text-emerald-400" }) : /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_react28.Copy, { className: "w-4 h-4" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { children: copiedSummary ? "\u0110\xE3 sao ch\xE9p SBAR + EMR" : "Sao ch\xE9p SBAR + EMR" })
+                ]
+              }
+            )
           ] })
         ] })
       ] })
@@ -88900,7 +93088,7 @@ K\u1EBE HO\u1EA0CH: T\xE1i \u0111\xE1nh gi\xE1 \u0111\xE1p \u1EE9ng l\xE2m s\xE0
 };
 
 // antibiotic/src/App.tsx
-var import_jsx_runtime25 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime31 = __toESM(require_jsx_runtime(), 1);
 var DEFAULT_PATIENT = {
   scr: 90,
   scrUnit: "umol",
@@ -88910,23 +93098,94 @@ var DEFAULT_PATIENT = {
   height: 165,
   dialysis: "none"
 };
+function getInitialStage() {
+  if (typeof window === "undefined") return 2;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const stageParam = params.get("stage");
+    if (stageParam === "1" || stageParam === "2" || stageParam === "3") {
+      return Number(stageParam);
+    }
+    const tabParam = (params.get("tab") || "").toLowerCase();
+    if (tabParam === "sepsis") return 1;
+    if (tabParam === "antibiotic" || tabParam === "dosing") return 2;
+    if (tabParam === "reassess" || tabParam === "ams") return 3;
+    const winStage = window.__CDSS_INITIAL_STAGE__;
+    if (winStage === 1 || winStage === 2 || winStage === 3) {
+      return winStage;
+    }
+    if (window.location.pathname.toLowerCase().includes("/sepsis")) {
+      return 1;
+    }
+  } catch {
+  }
+  return 2;
+}
+function buildInitialSepsisPatient(initialStage) {
+  if (initialStage === 1) {
+    return {
+      ...NORMAL_PATIENT_CASE,
+      id: "current-patient"
+    };
+  }
+  return {
+    ...NORMAL_PATIENT_CASE,
+    id: "current-patient",
+    ageYears: DEFAULT_PATIENT.age,
+    gender: DEFAULT_PATIENT.gender === "f" ? "female" : "male",
+    weightKg: DEFAULT_PATIENT.weight,
+    heightCm: DEFAULT_PATIENT.height || 165,
+    dialysis: DEFAULT_PATIENT.dialysis,
+    creatinineUmolL: DEFAULT_PATIENT.scr
+  };
+}
 function App() {
-  const [language, setLanguage] = (0, import_react19.useState)("vi");
-  const [patient, setPatient] = (0, import_react19.useState)(DEFAULT_PATIENT);
-  const [selectedDrugId, setSelectedDrugId] = (0, import_react19.useState)("meropenem");
-  const [selectedScenario, setSelectedScenario] = (0, import_react19.useState)("standard");
-  const [currentStep, setCurrentStep] = (0, import_react19.useState)(1);
-  const [detailedDrugId, setDetailedDrugId] = (0, import_react19.useState)(null);
-  const [activeTab, setActiveTab] = (0, import_react19.useState)("all");
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = (0, import_react19.useState)(false);
-  const [isQuickPatientOpen, setIsQuickPatientOpen] = (0, import_react19.useState)(false);
-  const [isDrugSearchOpen, setIsDrugSearchOpen] = (0, import_react19.useState)(false);
-  const [isAmrOpen, setIsAmrOpen] = (0, import_react19.useState)(false);
-  const [isOriginalOpen, setIsOriginalOpen] = (0, import_react19.useState)(false);
-  const [isPdfModalOpen, setIsPdfModalOpen] = (0, import_react19.useState)(false);
-  const [isGuidelineAtlasOpen, setIsGuidelineAtlasOpen] = (0, import_react19.useState)(false);
-  const [guidelineAtlasImageId, setGuidelineAtlasImageId] = (0, import_react19.useState)(void 0);
-  (0, import_react19.useEffect)(() => {
+  const [initialStage] = (0, import_react22.useState)(() => getInitialStage());
+  const [language, setLanguage] = (0, import_react22.useState)("vi");
+  const [sepsisPatient, setSepsisPatient] = (0, import_react22.useState)(() => buildInitialSepsisPatient(initialStage));
+  const [patient, setPatient] = (0, import_react22.useState)(() => {
+    if (initialStage === 1) {
+      return syncSepsisToRenalPatient(NORMAL_PATIENT_CASE, {
+        ...DEFAULT_PATIENT,
+        age: NORMAL_PATIENT_CASE.ageYears,
+        weight: NORMAL_PATIENT_CASE.weightKg,
+        height: NORMAL_PATIENT_CASE.heightCm || 168
+      });
+    }
+    return DEFAULT_PATIENT;
+  });
+  const [sepsisSyncToken, setSepsisSyncToken] = (0, import_react22.useState)(0);
+  const [selectedDrugId, setSelectedDrugId] = (0, import_react22.useState)("meropenem");
+  const [selectedScenario, setSelectedScenario] = (0, import_react22.useState)("standard");
+  const [currentStep, setCurrentStep] = (0, import_react22.useState)(initialStage);
+  const [viewMode, setViewMode] = (0, import_react22.useState)("stepper");
+  const [detailedDrugId, setDetailedDrugId] = (0, import_react22.useState)(null);
+  const [activeTab, setActiveTab] = (0, import_react22.useState)("all");
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = (0, import_react22.useState)(false);
+  const [savedCases, setSavedCases] = (0, import_react22.useState)([]);
+  const [saveSuccess, setSaveSuccess] = (0, import_react22.useState)(false);
+  const [copiedSummary, setCopiedSummary] = (0, import_react22.useState)(false);
+  const [isQuickPatientOpen, setIsQuickPatientOpen] = (0, import_react22.useState)(false);
+  const [isDrugSearchOpen, setIsDrugSearchOpen] = (0, import_react22.useState)(false);
+  const [isAmrOpen, setIsAmrOpen] = (0, import_react22.useState)(false);
+  const [isOriginalOpen, setIsOriginalOpen] = (0, import_react22.useState)(false);
+  const [isPdfModalOpen, setIsPdfModalOpen] = (0, import_react22.useState)(false);
+  const [isGuidelineAtlasOpen, setIsGuidelineAtlasOpen] = (0, import_react22.useState)(false);
+  const [guidelineAtlasImageId, setGuidelineAtlasImageId] = (0, import_react22.useState)(void 0);
+  const [isPresetsOpen, setIsPresetsOpen] = (0, import_react22.useState)(false);
+  const [isSepsisGuideOpen, setIsSepsisGuideOpen] = (0, import_react22.useState)(false);
+  const [isHistoryOpen, setIsHistoryOpen] = (0, import_react22.useState)(false);
+  (0, import_react22.useEffect)(() => {
+    try {
+      const stored = localStorage.getItem("sepsis_cdss_saved_cases");
+      if (stored) {
+        setSavedCases(JSON.parse(stored));
+      }
+    } catch (e) {
+      console.error("Failed to parse saved cases:", e);
+    }
+  }, []);
+  (0, import_react22.useEffect)(() => {
     const handleKeyDown = (e) => {
       if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
         e.preventDefault();
@@ -88936,32 +93195,91 @@ function App() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+  const sepsisResult = (0, import_react22.useMemo)(() => {
+    return evaluatePatientCDSS(sepsisPatient);
+  }, [sepsisPatient]);
   const handleOpenGuidelineAtlas = (imageId) => {
     setGuidelineAtlasImageId(imageId);
     setIsGuidelineAtlasOpen(true);
   };
-  const activeDrug = (0, import_react19.useMemo)(() => {
+  const activeDrug = (0, import_react22.useMemo)(() => {
     return ANTIBIOTICS.find((a) => a.id === selectedDrugId) || ANTIBIOTICS[0];
   }, [selectedDrugId]);
-  const drugDetails = (0, import_react19.useMemo)(() => {
+  const drugDetails = (0, import_react22.useMemo)(() => {
     return extractDrugData(selectedDrugId);
   }, [selectedDrugId]);
-  (0, import_react19.useEffect)(() => {
+  (0, import_react22.useEffect)(() => {
     const defScn = drugDetails.scenarios.find((s) => s.def) || drugDetails.scenarios[0];
     if (defScn) {
       setSelectedScenario(defScn.key);
     }
   }, [selectedDrugId, drugDetails]);
-  const renal = (0, import_react19.useMemo)(() => {
+  const renal = (0, import_react22.useMemo)(() => {
     return calculateRenalMetrics(patient, drugDetails.weightRule);
   }, [patient, drugDetails]);
-  const doseResult = (0, import_react19.useMemo)(() => {
+  const doseResult = (0, import_react22.useMemo)(() => {
     return calculateDose(drugDetails, renal, selectedScenario, patient);
   }, [drugDetails, renal, selectedScenario, patient]);
-  const [dosingResult, setDosingResult] = (0, import_react19.useState)(null);
-  (0, import_react19.useEffect)(() => {
+  const [dosingResult, setDosingResult] = (0, import_react22.useState)(null);
+  (0, import_react22.useEffect)(() => {
     setDosingResult(doseResult);
   }, [doseResult]);
+  const handlePatientChange = (updated) => {
+    setPatient((prev) => {
+      const nextRenal = { ...prev, ...updated };
+      setSepsisPatient((prevSepsis) => syncRenalToSepsisPatient(updated, prevSepsis, nextRenal));
+      return nextRenal;
+    });
+  };
+  const handleSepsisPatientChange = (updated) => {
+    setSepsisPatient(updated);
+    setPatient((prevRenal) => syncSepsisToRenalPatient(updated, prevRenal));
+    setSepsisSyncToken((t) => t + 1);
+  };
+  const handleSelectPreset = (preset) => {
+    const cloned = { ...preset.patientData };
+    setSepsisPatient(cloned);
+    setPatient((prevRenal) => syncSepsisToRenalPatient(cloned, prevRenal));
+    setSepsisSyncToken((t) => t + 1);
+    setIsPresetsOpen(false);
+  };
+  const handleSaveCurrentCase = () => {
+    const newRecord = {
+      id: `rec-${Date.now()}`,
+      savedAt: (/* @__PURE__ */ new Date()).toISOString(),
+      patientData: {
+        ...sepsisPatient,
+        heightCm: patient.height || sepsisPatient.heightCm,
+        dialysis: patient.dialysis
+      }
+    };
+    const updated = [newRecord, ...savedCases].slice(0, 30);
+    setSavedCases(updated);
+    try {
+      localStorage.setItem("sepsis_cdss_saved_cases", JSON.stringify(updated));
+    } catch (e) {
+      console.error("Failed to save to localStorage:", e);
+    }
+    setSaveSuccess(true);
+    setTimeout(() => setSaveSuccess(false), 2e3);
+  };
+  const handleDeleteCase = (id) => {
+    const updated = savedCases.filter((c) => c.id !== id);
+    setSavedCases(updated);
+    localStorage.setItem("sepsis_cdss_saved_cases", JSON.stringify(updated));
+  };
+  const handleClearAllCases = () => {
+    if (window.confirm("B\u1EA1n c\xF3 ch\u1EAFc ch\u1EAFn mu\u1ED1n x\xF3a to\xE0n b\u1ED9 l\u1ECBch s\u1EED ca b\u1EC7nh \u0111\xE3 l\u01B0u?")) {
+      setSavedCases([]);
+      localStorage.removeItem("sepsis_cdss_saved_cases");
+    }
+  };
+  const handleLoadCase = (data) => {
+    const cloned = { ...data };
+    setSepsisPatient(cloned);
+    setPatient((prevRenal) => syncSepsisToRenalPatient(cloned, prevRenal));
+    setSepsisSyncToken((t) => t + 1);
+  };
   const handleCalculateDoseInSelection = (drugId, autoScrollToDosing = false) => {
     const exists = ANTIBIOTICS.some((a) => a.id === drugId);
     if (exists) {
@@ -88982,17 +93300,16 @@ function App() {
       }
     }
   };
-  const drugInteractions = (0, import_react19.useMemo)(() => {
+  const drugInteractions = (0, import_react22.useMemo)(() => {
     return DRUG_INTERACTIONS.filter((di) => di.antibioticIds.includes(selectedDrugId));
   }, [selectedDrugId]);
-  const handlePatientChange = (updated) => {
-    setPatient((prev) => ({ ...prev, ...updated }));
-  };
   const handleReset = () => {
-    setPatient(DEFAULT_PATIENT);
+    const resetSepsis = buildInitialSepsisPatient(currentStep);
+    setSepsisPatient(resetSepsis);
+    setPatient(syncSepsisToRenalPatient(resetSepsis, DEFAULT_PATIENT));
+    setSepsisSyncToken((t) => t + 1);
     setSelectedDrugId("meropenem");
     setSelectedScenario("standard");
-    setCurrentStep(1);
     setDetailedDrugId(null);
     setActiveTab("all");
   };
@@ -89013,11 +93330,27 @@ function App() {
     doseResult,
     interactions: drugInteractions,
     scenarioLabel,
-    language
+    language,
+    sepsisPatient,
+    sepsisResult
   };
   const isEn = language === "en";
-  const renderDosingWorkspace = () => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { id: "unified-dosing-workspace", className: "space-y-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+  const showDesktopRenalSidebar = !(currentStep === 1 && viewMode === "stepper");
+  const handleCopyUnifiedSummary = () => {
+    const text = buildUnifiedConsultationSummary({
+      patient,
+      renal,
+      sepsisPatient,
+      sepsisResult,
+      selectedDrugName: activeDrug.name,
+      doseSummaryVi: doseResult ? `${doseResult.loadingDoseTextVi ? `Li\u1EC1u n\u1EA1p ${doseResult.loadingDoseTextVi} | ` : ""}Li\u1EC1u duy tr\xEC ${doseResult.maintenanceDoseTextVi} | ${doseResult.infusionInstructionsVi}` : void 0
+    });
+    navigator.clipboard.writeText(text);
+    setCopiedSummary(true);
+    setTimeout(() => setCopiedSummary(false), 2200);
+  };
+  const renderDosingWorkspace = () => /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { id: "unified-dosing-workspace", className: "space-y-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       AntibioticSearch,
       {
         antibiotics: ANTIBIOTICS,
@@ -89030,76 +93363,82 @@ function App() {
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-1.5 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "flex flex-wrap items-center gap-1", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-1.5 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "flex flex-wrap items-center gap-1", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
         "button",
         {
+          type: "button",
           onClick: () => setActiveTab("all"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "all" ? "bg-teal-600 text-white shadow-2xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.LayoutGrid, { className: "w-3.5 h-3.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: isEn ? "All Sections" : "T\u1EA5t c\u1EA3" })
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_lucide_react29.LayoutGrid, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { children: isEn ? "All Sections" : "T\u1EA5t c\u1EA3" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
         "button",
         {
+          type: "button",
           onClick: () => setActiveTab("dosing"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "dosing" ? "bg-teal-600 text-white shadow-2xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Pill, { className: "w-3.5 h-3.5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: isEn ? "Dose & CrCl Table" : "Li\u1EC1u & B\u1EA3ng CrCl" })
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_lucide_react29.Pill, { className: "w-3.5 h-3.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { children: isEn ? "Dose & CrCl Table" : "Li\u1EC1u & B\u1EA3ng CrCl" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
         "button",
         {
+          type: "button",
           onClick: () => setActiveTab("dialysis"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "dialysis" ? "bg-purple-600 text-white shadow-2xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.Droplets, { className: "w-3.5 h-3.5 text-purple-500" }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: isEn ? "Dialysis (HD/CRRT)" : "L\u1ECDc m\xE1u (HD/CRRT)" })
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_lucide_react29.Droplets, { className: "w-3.5 h-3.5 text-purple-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { children: isEn ? "Dialysis (HD/CRRT)" : "L\u1ECDc m\xE1u (HD/CRRT)" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
         "button",
         {
+          type: "button",
           onClick: () => setActiveTab("ddi"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "ddi" ? "bg-rose-600 text-white shadow-2xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.ShieldAlert, { className: "w-3.5 h-3.5 text-rose-500" }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: isEn ? "Interactions" : "T\u01B0\u01A1ng t\xE1c thu\u1ED1c" }),
-            drugInteractions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: `text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeTab === "ddi" ? "bg-white text-rose-600" : "bg-rose-100 text-rose-700"}`, children: drugInteractions.length })
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_lucide_react29.ShieldAlert, { className: "w-3.5 h-3.5 text-rose-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { children: isEn ? "Interactions" : "T\u01B0\u01A1ng t\xE1c thu\u1ED1c" }),
+            drugInteractions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { className: `text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeTab === "ddi" ? "bg-white text-rose-600" : "bg-rose-100 text-rose-700"}`, children: drugInteractions.length })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
         "button",
         {
+          type: "button",
           onClick: () => setActiveTab("notes"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "notes" ? "bg-indigo-600 text-white shadow-2xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.FileText, { className: "w-3.5 h-3.5 text-indigo-500" }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: isEn ? "Clinical Guidance (Tier 1-3)" : "L\u01B0u \xFD D\u01B0\u1EE3c l\xFD" })
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_lucide_react29.FileText, { className: "w-3.5 h-3.5 text-indigo-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { children: isEn ? "Clinical Guidance (Tier 1-3)" : "L\u01B0u \xFD D\u01B0\u1EE3c l\xFD" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
         "button",
         {
+          type: "button",
           onClick: () => setActiveTab("refs"),
           className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${activeTab === "refs" ? "bg-slate-800 text-white shadow-2xs" : "text-slate-600 hover:bg-slate-100"}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_react24.BookOpen, { className: "w-3.5 h-3.5 text-slate-500" }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { children: isEn ? "References" : "T\xE0i li\u1EC7u tham kh\u1EA3o" })
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_lucide_react29.BookOpen, { className: "w-3.5 h-3.5 text-slate-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("span", { children: isEn ? "References" : "T\xE0i li\u1EC7u tham kh\u1EA3o" })
           ]
         }
       )
     ] }) }),
-    (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { id: "dosing-card-anchor", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { id: "dosing-card-anchor", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       DosingRecommendationCard,
       {
         drugDetails,
@@ -89111,7 +93450,7 @@ function App() {
         onExportPdf: () => setIsPdfModalOpen(true)
       }
     ) }),
-    (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { id: "renal-table-section", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { id: "renal-table-section", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       RenalAdjustmentTable,
       {
         drugDetails,
@@ -89120,7 +93459,7 @@ function App() {
         language
       }
     ) }),
-    (activeTab === "all" || activeTab === "dialysis") && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { id: "dialysis-section", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    (activeTab === "all" || activeTab === "dialysis") && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { id: "dialysis-section", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       DialysisPanel,
       {
         drugDetails,
@@ -89128,7 +93467,7 @@ function App() {
         language
       }
     ) }),
-    (activeTab === "all" || activeTab === "ddi") && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { id: "ddi-section", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    (activeTab === "all" || activeTab === "ddi") && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { id: "ddi-section", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       DrugInteractionChecker,
       {
         antibioticId: selectedDrugId,
@@ -89136,14 +93475,14 @@ function App() {
         language
       }
     ) }),
-    (activeTab === "all" || activeTab === "notes") && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { id: "notes-section", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    (activeTab === "all" || activeTab === "notes") && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { id: "notes-section", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       ClinicalNotesTiers,
       {
         drugDetails,
         language
       }
     ) }),
-    (activeTab === "all" || activeTab === "refs") && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { id: "references-section", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    (activeTab === "all" || activeTab === "refs") && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { id: "references-section", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       ReferencesList,
       {
         drugDetails,
@@ -89151,8 +93490,8 @@ function App() {
       }
     ) })
   ] });
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "min-h-screen bg-slate-50/70 flex flex-col selection:bg-teal-600 selection:text-white pb-24 md:pb-8", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "min-h-screen cockpit-canvas flex flex-col selection:bg-teal-600 selection:text-white pb-24 md:pb-8", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       Header,
       {
         language,
@@ -89164,40 +93503,57 @@ function App() {
         onOpenGuidelineAtlas: () => handleOpenGuidelineAtlas(),
         onOpenDrugSearch: () => setIsDrugSearchOpen(true),
         onOpenQuickPatient: () => setIsQuickPatientOpen(true),
+        onOpenPresets: () => setIsPresetsOpen(true),
+        onOpenSepsisGuide: () => setIsSepsisGuideOpen(true),
+        onOpenHistory: () => setIsHistoryOpen(true),
+        savedCount: savedCases.length,
         selectedDrugName: activeDrug.name
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       StickyPatientBar,
       {
         patient,
         renal,
         dialysis: patient.dialysis,
+        sepsisPatient,
+        sepsisResult,
         selectedDrugName: activeDrug.name,
         currentStep,
         onStepChange: (step) => {
           setCurrentStep(step);
-          window.scrollTo({ top: 80, behavior: "smooth" });
+          if (viewMode === "stepper") {
+            window.scrollTo({ top: 56, behavior: "smooth" });
+          }
         },
+        viewMode,
+        onViewModeChange: setViewMode,
+        onCopyUnifiedSummary: handleCopyUnifiedSummary,
+        copiedSummary,
         onOpenQuickPatient: () => setIsQuickPatientOpen(true),
         onOpenDrugSearch: () => setIsDrugSearchOpen(true),
         onExportPdf: () => setIsPdfModalOpen(true),
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("main", { className: "flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "lg:flex lg:gap-6 items-start", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("main", { className: "flex-1 max-w-[1440px] w-full mx-auto px-3 sm:px-5 lg:px-6 py-4 sm:py-5", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "lg:flex lg:gap-5 items-start", children: [
+      showDesktopRenalSidebar && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
         "aside",
         {
           "aria-label": "Patient and Renal Parameters",
-          className: `hidden lg:block shrink-0 mb-6 lg:mb-0 transition-all duration-300 lg:sticky lg:top-32 ${isSidebarCollapsed ? "lg:w-[260px] xl:w-[280px]" : "lg:w-[350px] xl:w-[380px]"}`,
-          children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+          className: `hidden lg:block shrink-0 mb-6 lg:mb-0 transition-all duration-200 lg:sticky lg:top-[116px] lg:max-h-[calc(100vh-132px)] lg:overflow-y-auto cockpit-dock-scroll lg:pr-1 ${isSidebarCollapsed ? "lg:w-[250px] xl:w-[270px]" : "lg:w-[340px] xl:w-[365px]"}`,
+          children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
             PatientSidebar,
             {
               patient,
               onChange: handlePatientChange,
               renal,
               dialysis: patient.dialysis,
+              sepsisResult,
+              onGoToSepsisStage: () => {
+                setCurrentStep(1);
+                window.scrollTo({ top: 56, behavior: "smooth" });
+              },
               language,
               needsHeight: activeDrug.needsHeight,
               isCollapsed: isSidebarCollapsed,
@@ -89206,11 +93562,13 @@ function App() {
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "flex-1 min-w-0 space-y-6", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { className: "flex-1 min-w-0 space-y-6", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
         SelectionWizard,
         {
           currentStage: currentStep,
           onStageChange: (st) => setCurrentStep(st),
+          viewMode,
+          onViewModeChange: setViewMode,
           onSelectDrugForDosing: handleSelectDrugFromSelection,
           onOpenGuidelineAtlas: handleOpenGuidelineAtlas,
           dosingResult,
@@ -89227,46 +93585,54 @@ function App() {
               setSelectedDrugId(dId);
               handleCalculateDoseInSelection(dId, false);
             }
-          }
+          },
+          sepsisPatient,
+          sepsisResult,
+          onSepsisPatientChange: handleSepsisPatientChange,
+          onSelectPreset: handleSelectPreset,
+          onSaveCase: handleSaveCurrentCase,
+          saveSuccess,
+          onOpenSepsisGuide: () => setIsSepsisGuideOpen(true),
+          sepsisSyncToken
         }
       ) })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "print-only p-8 text-black bg-white", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "border-b-2 border-black pb-4 mb-4 flex justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h1", { className: "text-xl font-bold uppercase", children: "B\u1EC6NH VI\u1EC6N - KHOA D\u01AF\u1EE2C L\xC2M S\xC0NG" }),
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h2", { className: "text-sm font-semibold", children: "PHI\u1EBEU H\u1ED8I CH\u1EA8N & QU\u1EA2N L\xDD LI\u1EC0U KH\xC1NG SINH (CDSS)" })
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "print-only p-8 text-black bg-white", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "border-b-2 border-black pb-4 mb-4 flex justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("h1", { className: "text-xl font-bold uppercase", children: "B\u1EC6NH VI\u1EC6N - H\u1ED8I CH\u1EA8N H\u1ED2I S\u1EE8C & D\u01AF\u1EE2C L\xC2M S\xC0NG" }),
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("h2", { className: "text-sm font-semibold", children: "PHI\u1EBEU \u0110\xC1NH GI\xC1 SEPSIS & QU\u1EA2N L\xDD LI\u1EC0U KH\xC1NG SINH (CDSS)" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "text-right text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "text-right text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
             "Th\u1EDDi \u0111i\u1EC3m t\xEDnh: ",
             (/* @__PURE__ */ new Date()).toLocaleDateString("vi-VN")
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "font-semibold text-slate-600", children: "CDSS INFECTODOSE v3.0" })
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("p", { className: "font-semibold text-slate-600", children: "INFECTOSEPSIS CDSS v4.0 SUPER" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "mb-4 text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "Th\xF4ng s\u1ED1 nh\xE2n tr\u1EAFc:" }),
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "mb-3 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "Th\xF4ng s\u1ED1 nh\xE2n tr\u1EAFc:" }),
           " ",
           patient.age,
           " tu\u1ED5i / ",
           patient.gender === "m" ? "Nam" : "N\u1EEF",
           " | ",
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "C\xE2n n\u1EB7ng:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "C\xE2n n\u1EB7ng:" }),
           " ",
           patient.weight,
           " kg ",
           patient.height ? `| Chi\u1EC1u cao: ${patient.height} cm (IBW: ${renal.ibw} kg, BMI: ${renal.bmi})` : ""
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "Sinh h\xF3a & Th\u1EADn:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "Sinh h\xF3a & Th\u1EADn:" }),
           " Scr: ",
           renal.scrUmol,
           " \xB5mol/L (",
           renal.scrMgdl,
           " mg/dL) | ",
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "CrCl (Cockcroft-Gault):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "CrCl (Cockcroft-Gault):" }),
           " ",
           renal.crcl,
           " mL/ph\xFAt (",
@@ -89275,51 +93641,97 @@ function App() {
           patient.dialysis !== "none" ? `| L\u1ECDc m\xE1u: ${patient.dialysis.toUpperCase()}` : ""
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "border border-black p-3 mb-4 text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { className: "text-sm font-bold", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "border border-black p-3 mb-3 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { className: "text-sm font-bold uppercase", children: [
+          "\u0110\xE1nh gi\xE1 Sepsis & Huy\u1EBFt \u0111\u1ED9ng: ",
+          sepsisResult.primaryDiagnosis.replace("_", " ")
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "\u0110i\u1EC3m s\u1ED1:" }),
+          " NEWS2: ",
+          sepsisResult.news2Score,
+          " | SOFA: ",
+          sepsisResult.sofaScore,
+          " | LP-NEWS: ",
+          sepsisResult.lpNewsScore,
+          " | SIRS: ",
+          sepsisResult.sirsScore,
+          "/4 | qSOFA: ",
+          sepsisResult.qsofaScore,
+          "/3 | NLR: ",
+          sepsisResult.calculatedNlr ?? "N/A"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "Sinh hi\u1EC7u:" }),
+          " HA ",
+          sepsisPatient.sbp,
+          "/",
+          sepsisPatient.dbp,
+          " (MAP ",
+          sepsisResult.calculatedMap,
+          " mmHg) | HR ",
+          sepsisPatient.heartRate,
+          " | RR ",
+          sepsisPatient.respiratoryRate,
+          " | T\xB0 ",
+          sepsisPatient.temperature,
+          "\xB0C | SpO2 ",
+          sepsisPatient.spo2,
+          "% | Lactate: ",
+          sepsisPatient.lactateInitial ?? "N/A",
+          " mmol/L"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "Khung gi\u1EDD v\xE0ng NICE:" }),
+          " ",
+          sepsisResult.actions.antibioticTiming
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "border border-black p-3 mb-4 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { className: "text-sm font-bold", children: [
           "Kh\xE1ng sinh ch\u1EC9 \u0111\u1ECBnh: ",
           activeDrug.name,
           " (",
           activeDrug.group,
           ")"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
           "Ph\xE1c \u0111\u1ED3 / K\u1ECBch b\u1EA3n: ",
           scenarioLabel
         ] }),
-        doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "Li\u1EC1u n\u1EA1p:" }),
+        doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "Li\u1EC1u n\u1EA1p:" }),
           " ",
           doseResult.loadingDoseTextVi
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "Li\u1EC1u duy tr\xEC:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "Li\u1EC1u duy tr\xEC:" }),
           " ",
           doseResult.maintenanceDoseTextVi
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "C\xE1ch d\xF9ng:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "C\xE1ch d\xF9ng:" }),
           " ",
           doseResult.infusionInstructionsVi
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "mb-4 text-xs", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("p", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("strong", { children: "C\u01A1 s\u1EDF hi\u1EC7u ch\u1EC9nh li\u1EC1u:" }),
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { className: "mb-4 text-xs", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("p", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("strong", { children: "C\u01A1 s\u1EDF hi\u1EC7u ch\u1EC9nh li\u1EC1u:" }),
         " ",
         doseResult.renalAdjustmentAdviceVi
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "mt-12 grid grid-cols-2 text-center text-xs", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "font-bold", children: "B\xC1C S\u0128 \u0110I\u1EC0U TR\u1ECA" }),
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "mt-12 grid grid-cols-2 text-center text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("p", { className: "font-bold", children: "B\xC1C S\u0128 \u0110I\u1EC0U TR\u1ECA" }),
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "font-bold", children: "D\u01AF\u1EE2C S\u0128 L\xC2M S\xC0NG" }),
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("p", { className: "font-bold", children: "D\u01AF\u1EE2C S\u0128 L\xC2M S\xC0NG" }),
+          /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       QuickPatientDrawer,
       {
         isOpen: isQuickPatientOpen,
@@ -89330,7 +93742,7 @@ function App() {
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       DrugSearchModal,
       {
         isOpen: isDrugSearchOpen,
@@ -89344,7 +93756,7 @@ function App() {
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       DrugDetailModal,
       {
         isOpen: Boolean(detailedDrugId),
@@ -89355,7 +93767,7 @@ function App() {
         children: renderDosingWorkspace()
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       AmrModal,
       {
         isOpen: isAmrOpen,
@@ -89365,7 +93777,7 @@ function App() {
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       OriginalPreviewModal,
       {
         isOpen: isOriginalOpen,
@@ -89376,7 +93788,7 @@ function App() {
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       PdfConsultationModal,
       {
         isOpen: isPdfModalOpen,
@@ -89385,7 +93797,7 @@ function App() {
         language
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
       GuidelineImageModal,
       {
         isOpen: isGuidelineAtlasOpen,
@@ -89393,17 +93805,43 @@ function App() {
         initialImageId: guidelineAtlasImageId
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("footer", { className: "no-print bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "max-w-7xl mx-auto px-4 space-y-1", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "font-bold text-slate-700", children: "H\u1EC7 th\u1ED1ng H\u1ED7 Tr\u1EE3 Ra Quy\u1EBFt \u0110\u1ECBnh L\xE2m S\xE0ng Kh\xE1ng Sinh (InfectoDose CDSS v3.0 Pro)" }),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { children: "T\xEDch h\u1EE3p H\u01B0\u1EDBng D\u1EABn BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026, Ti\xEAu Chu\u1EA9n NHSN-CDC, Q\u0110 5631/BYT & D\u01B0\u1EE3c \u0110\u1ED9ng H\u1ECDc Stanford/UCSF." })
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+      ClinicalGuideModal,
+      {
+        isOpen: isSepsisGuideOpen,
+        onClose: () => setIsSepsisGuideOpen(false)
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+      CaseHistoryModal,
+      {
+        isOpen: isHistoryOpen,
+        onClose: () => setIsHistoryOpen(false),
+        savedCases,
+        onLoadCase: handleLoadCase,
+        onDeleteCase: handleDeleteCase,
+        onClearAll: handleClearAllCases
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+      PresetCasesModal,
+      {
+        isOpen: isPresetsOpen,
+        onClose: () => setIsPresetsOpen(false),
+        onSelectCase: handleSelectPreset
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("footer", { className: "no-print bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { className: "max-w-7xl mx-auto px-4 space-y-1", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("p", { className: "font-bold text-slate-700", children: "Si\xEAu H\u1EC7 Th\u1ED1ng H\u1ED7 Tr\u1EE3 Ra Quy\u1EBFt \u0110\u1ECBnh L\xE2m S\xE0ng Nhi\u1EC5m Tr\xF9ng, Sepsis & Kh\xE1ng Sinh (InfectoSepsis CDSS v4.0 Super)" }),
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("p", { children: "H\u1EE3p nh\u1EA5t NICE NG253 (2024/2026), Sepsis-3, Phoenix 2024, H\u01B0\u1EDBng D\u1EABn BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi 2026, WHO AWaRe, NHSN-CDC & D\u01B0\u1EE3c \u0110\u1ED9ng H\u1ECDc Stanford/UCSF." })
     ] }) })
   ] });
 }
 
 // antibiotic/src/main.tsx
-var import_jsx_runtime26 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime32 = __toESM(require_jsx_runtime(), 1);
 (0, import_client.createRoot)(document.getElementById("root")).render(
-  /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react20.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(App, {}) })
+  /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_react23.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(App, {}) })
 );
 /**
  * @license

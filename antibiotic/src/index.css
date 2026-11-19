@@ -7,10 +7,45 @@
 @layer base {
   html, body {
     color-scheme: light;
-    background-color: #f8fafc;
+    background-color: #f3f6f9;
     color: #0f172a;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
+}
+
+/* Super-CDSS Clinical Cockpit Utilities */
+.cockpit-canvas {
+  background-color: #f3f6f9;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.cockpit-dock-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.cockpit-dock-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.cockpit-dock-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cockpit-dock-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 /* Animations for Drawers and Modals */

@@ -28,7 +28,7 @@ export const PdfConsultationModal: React.FC<PdfConsultationModalProps> = ({
     triggerPrintConsultation();
   };
 
-  const { patient, renal, drug, doseResult, interactions, scenarioLabel } = reportData;
+  const { patient, renal, drug, doseResult, interactions, scenarioLabel, sepsisPatient, sepsisResult } = reportData;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
@@ -122,6 +122,40 @@ export const PdfConsultationModal: React.FC<PdfConsultationModalProps> = ({
                 <span>{isEn ? 'Calculated Weight:' : 'Cân nặng tính CrCl:'} <strong className="text-slate-800">{renal.usedWeight} kg ({renal.usedWeightType})</strong></span>
               </div>
             </div>
+
+            {/* 1B. Integrated Sepsis & Hemodynamic Assessment */}
+            {sepsisResult && sepsisPatient && (
+              <div className={`p-3 rounded-lg border ${
+                sepsisResult.urgencyLevel === 'emergency'
+                  ? 'bg-rose-50/70 border-rose-200'
+                  : 'bg-teal-50/50 border-teal-200'
+              }`}>
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className={`font-bold text-xs uppercase ${
+                    sepsisResult.urgencyLevel === 'emergency' ? 'text-rose-900' : 'text-teal-900'
+                  }`}>
+                    1B. {isEn ? 'Sepsis & Hemodynamic Stratification' : 'Phân Tầng Nguy Cơ Sepsis & Huyết Động'}
+                  </span>
+                  <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${
+                    sepsisResult.urgencyLevel === 'emergency'
+                      ? 'bg-rose-600 text-white'
+                      : sepsisResult.urgencyLevel === 'urgent'
+                      ? 'bg-amber-500 text-white'
+                      : 'bg-emerald-600 text-white'
+                  }`}>
+                    {sepsisResult.primaryDiagnosis.replace('_', ' ')} • KS ≤ {sepsisResult.niceAntibioticMaxDelayHours}h
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-[11px] font-mono">
+                  <div>NEWS2: <strong>{sepsisResult.news2Score}</strong></div>
+                  <div>SOFA: <strong>{sepsisResult.sofaScore}</strong> (qSOFA {sepsisResult.qsofaScore}/3)</div>
+                  <div>LP-NEWS: <strong>{sepsisResult.lpNewsScore}</strong></div>
+                  <div>MAP: <strong>{sepsisResult.calculatedMap} mmHg</strong></div>
+                  <div>NLR: <strong>{sepsisResult.calculatedNlr ?? 'N/A'}</strong></div>
+                  <div>Lactate: <strong>{sepsisPatient.lactateInitial ?? 'N/A'} mmol/L</strong></div>
+                </div>
+              </div>
+            )}
 
             {/* 2. Antibiotic Regimen Recommendation */}
             <div className="bg-blue-50/60 p-3 rounded-lg border border-blue-200">

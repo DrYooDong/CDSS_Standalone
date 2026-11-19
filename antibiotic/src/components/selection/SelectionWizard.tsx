@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   SelectionWizardState,
   Population,
@@ -18,31 +18,35 @@ import { classifyRiskGroup } from '../../selection/engine';
 import { StepAssessmentAndRegimens } from './StepAssessmentAndRegimens';
 import { StepReassess } from './StepReassess';
 import { DecisionSummaryCard } from './DecisionSummaryCard';
+import { CompactPatientForm } from '../sepsis/CompactPatientForm';
+import { SepsisDashboard } from '../sepsis/SepsisDashboard';
+import { PRESET_CASES, PresetCase } from '../../sepsis/presetCases';
+import { CDSSAssessmentResult, PatientData } from '../../sepsis/types';
+import {
+  buildUnifiedConsultationSummary,
+  deriveAntibioticBridgeFromSepsis
+} from '../../sepsis/patientBridge';
 import { 
-  ClipboardCheck, 
-  Pill, 
-  Clock, 
-  LayoutList, 
-  Layers,
   Sparkles,
-  ArrowRight,
-  ArrowLeft,
-  ShieldAlert,
-  ShieldCheck,
-  CheckCircle2,
   Activity,
   Copy,
   Check,
-  FileText
+  FileText,
+  Stethoscope,
+  RefreshCw,
+  ArrowLeft
 } from 'lucide-react';
 
 import { DoseResult } from '../../utils/drugDataExtractor';
 import { PatientState, CalculatedRenalMetrics } from '../../types';
 import { calculateRenalMetrics } from '../../utils/clinicalFormulas';
+import { UnifiedStage } from '../StickyPatientBar';
 
 interface SelectionWizardProps {
-  currentStage: 1 | 2;
-  onStageChange: (stage: 1 | 2) => void;
+  currentStage: UnifiedStage;
+  onStageChange: (stage: UnifiedStage) => void;
+  viewMode: 'stepper' | 'all-in-one';
+  onViewModeChange: (mode: 'stepper' | 'all-in-one') => void;
   onSelectDrugForDosing: (drugId?: string) => void;
   onOpenGuidelineAtlas?: (imageId?: string) => void;
   dosingResult?: DoseResult | null;
@@ -54,28 +58,44 @@ interface SelectionWizardProps {
   onExportPdf?: () => void;
   detailedDrugId?: string | null;
   onToggleDetailedDrug?: (drugId: string | null) => void;
-  children?: React.ReactNode; // Dosing & Safety Workspace
+  // Unified Sepsis State
+  sepsisPatient: PatientData;
+  sepsisResult: CDSSAssessmentResult;
+  onSepsisPatientChange: (updated: PatientData) => void;
+  onSelectPreset: (preset: PresetCase) => void;
+  onSaveCase: () => void;
+  saveSuccess: boolean;
+  onOpenSepsisGuide: () => void;
+  sepsisSyncToken: number;
+  children?: React.ReactNode;
 }
 
 export const SelectionWizard: React.FC<SelectionWizardProps> = ({
   currentStage,
   onStageChange,
+  viewMode,
   onSelectDrugForDosing,
   onOpenGuidelineAtlas,
   dosingResult,
   selectedDrugId,
   patient,
   renal,
-  onCalculateDoseForDrug,
-  onPatientChange,
   onExportPdf,
   detailedDrugId: externalDetailedDrugId,
   onToggleDetailedDrug: externalToggleDetailedDrug,
-  children
+  sepsisPatient,
+  sepsisResult,
+  onSepsisPatientChange,
+  onSelectPreset,
+  onSaveCase,
+  saveSuccess,
+  onOpenSepsisGuide,
+  sepsisSyncToken
 }) => {
-  const [viewMode, setViewMode] = useState<'stepper' | 'all-in-one'>('stepper');
   const [copiedSummary, setCopiedSummary] = useState(false);
   const [internalDetailedDrugId, setInternalDetailedDrugId] = useState<string | null>(null);
+  const [isSepsisFormCollapsed, setIsSepsisFormCollapsed] = useState(false);
+  const [sepsisMobileTab, setSepsisMobileTab] = useState<'input' | 'dashboard'>('dashboard');
 
   const activeDetailedDrugId = externalDetailedDrugId !== undefined ? externalDetailedDrugId : internalDetailedDrugId;
   const handleToggleDetailed = (dId: string | null) => {
@@ -100,53 +120,77 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
   };
   const activeRenal: CalculatedRenalMetrics = renal || calculateRenalMetrics(activePatient);
 
-  // Clinical State
-  const [indicationConfirmed, setIndicationConfirmed] = useState<boolean>(true);
-  const [population, setPopulation] = useState<Population>('adult');
-  const [site, setSite] = useState<InfectionSite>('respiratory');
-  const [sepsisSource, setSepsisSource] = useState<SepsisSource | undefined>(undefined);
-  const [checkedGeneralRiskIds, setCheckedGeneralRiskIds] = useState<string[]>([
-    'hospital_90d',
-    'invasive_device',
-    'iv_abx_30d'
-  ]);
-  const [sofaScore, setSofaScore] = useState<number>(8);
-  const [psofaScore, setPsofaScore] = useState<number>(0);
+  // Compute live bridge snapshot from Sepsis
+  const bridgeSnapshot = deriveAntibioticBridgeFromSepsis(sepsisPatient, sepsisResult);
+
+  // Clinical State (Stage 2 Antibiotic Selection)
+  const [indicationConfirmed] = useState<boolean>(true);
+  const [population, setPopulation] = useState<Population>(bridgeSnapshot.population);
+  const [site, setSite] = useState<InfectionSite>(bridgeSnapshot.site);
+  const [sepsisSource, setSepsisSource] = useState<SepsisSource | undefined>(bridgeSnapshot.sepsisSource);
+  const [checkedGeneralRiskIds, setCheckedGeneralRiskIds] = useState<string[]>(
+    bridgeSnapshot.generalRiskIds.length > 0
+      ? bridgeSnapshot.generalRiskIds
+      : ['hospital_90d', 'invasive_device', 'iv_abx_30d']
+  );
+  const [sofaScore, setSofaScore] = useState<number>(bridgeSnapshot.sofaScore);
+  const [psofaScore, setPsofaScore] = useState<number>(bridgeSnapshot.psofaScore);
   const [clifSofaScore, setClifSofaScore] = useState<number>(0);
   const [isChronicLiverDisease, setIsChronicLiverDisease] = useState<boolean>(false);
-  const [checkedSpecificRisks, setCheckedSpecificRisks] = useState<SpecificPathogenRisk[]>([
-    'pseudo_acineto',
-    'mrsa'
-  ]);
-  const [checkedSpecificRiskFactorIds, setCheckedSpecificRiskFactorIds] = useState<string[]>([
-    'ps_icu_5d',
-    'ps_devices',
-    'mrsa_cvc_foley'
-  ]);
+  const [checkedSpecificRisks, setCheckedSpecificRisks] = useState<SpecificPathogenRisk[]>(
+    bridgeSnapshot.specificRisks
+  );
+  const [checkedSpecificRiskFactorIds, setCheckedSpecificRiskFactorIds] = useState<string[]>(
+    bridgeSnapshot.specificRiskFactorIds
+  );
   const [savedScores, setSavedScores] = useState<Partial<Record<ClinicalScoreId, ScoreCalculationResult>>>({});
+  const [isManuallyOverridden, setIsManuallyOverridden] = useState<boolean>(false);
 
   // 48-72h State
-  const [clinicalResponse, setClinicalResponse] = useState<ClinicalResponseStatus>('improved');
-  const [cultureStatus, setCultureStatus] = useState<CultureStatus>('pending');
-  const [susceptibilityStatus, setSusceptibilityStatus] = useState<SusceptibilityStatus>('sensitive');
-  const [daysOnAntibiotic, setDaysOnAntibiotic] = useState<number>(3);
+  const [clinicalResponse] = useState<ClinicalResponseStatus>('improved');
+  const [cultureStatus] = useState<CultureStatus>('pending');
+  const [susceptibilityStatus] = useState<SusceptibilityStatus>('sensitive');
+  const [daysOnAntibiotic] = useState<number>(3);
+
+  // Apply bridge snapshot helper
+  const applyBridgeFromSepsis = useCallback(() => {
+    const snap = deriveAntibioticBridgeFromSepsis(sepsisPatient, sepsisResult);
+    setPopulation(snap.population);
+    setSite(snap.site);
+    setSepsisSource(snap.sepsisSource);
+    setSofaScore(snap.sofaScore);
+    setPsofaScore(snap.psofaScore);
+    setCheckedGeneralRiskIds(snap.generalRiskIds);
+    setCheckedSpecificRisks(snap.specificRisks);
+    setCheckedSpecificRiskFactorIds(snap.specificRiskFactorIds);
+    setIsManuallyOverridden(false);
+  }, [sepsisPatient, sepsisResult]);
+
+  // Auto-sync whenever Sepsis data is modified in Stage 1 or a preset/history case is loaded
+  useEffect(() => {
+    if (sepsisSyncToken > 0) {
+      applyBridgeFromSepsis();
+    }
+  }, [sepsisSyncToken]);
 
   const handleToggleSpecificRisk = (risk: SpecificPathogenRisk) => {
+    setIsManuallyOverridden(true);
     setCheckedSpecificRisks(prev =>
       prev.includes(risk) ? prev.filter(x => x !== risk) : [...prev, risk]
     );
   };
 
   const handleToggleGeneralRisk = (factorId: string) => {
+    setIsManuallyOverridden(true);
     setCheckedGeneralRiskIds(prev =>
       prev.includes(factorId) ? prev.filter(x => x !== factorId) : [...prev, factorId]
     );
   };
 
   const handleToggleSpecificRiskFactor = (factorId: string) => {
+    setIsManuallyOverridden(true);
     setCheckedSpecificRiskFactorIds(prev => {
       const next = prev.includes(factorId) ? prev.filter(x => x !== factorId) : [...prev, factorId];
-      // Automatically sync corresponding SpecificPathogenRisk
       let riskType: SpecificPathogenRisk | null = null;
       if (factorId.startsWith('mrsa_')) riskType = 'mrsa';
       else if (factorId.startsWith('esbl_')) riskType = 'esbl';
@@ -192,6 +236,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
 
   // Quick 1-click group adjust
   const handleQuickGroupSelect = (targetGroup: 'group_1' | 'group_2') => {
+    setIsManuallyOverridden(true);
     if (targetGroup === 'group_1') {
       setCheckedGeneralRiskIds([]);
       setCheckedSpecificRisks([]);
@@ -227,6 +272,7 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
 
   const handleApplyScoreSuggestion = useCallback(
     (action: ScoreSuggestedAction) => {
+      setIsManuallyOverridden(true);
       if (action.suggestSofaScore !== undefined) {
         setSofaScore(action.suggestSofaScore);
       }
@@ -282,400 +328,386 @@ export const SelectionWizard: React.FC<SelectionWizardProps> = ({
     calculatedScores: savedScores as Record<string, ScoreCalculationResult>
   };
 
-  // Copy clinical consultation summary to clipboard
+  // Copy Unified Sepsis SBAR + Antibiotic EMR Consultation Summary
   const handleCopyConsultationSummary = () => {
-    const isGroup2 = riskResult.group === 'group_2';
-    const siteNames: Record<string, string> = {
-      respiratory: 'Hô hấp (HAP/VAP/CAP)',
-      sepsis: 'Nhiễm khuẩn huyết / Sốc nhiễm khuẩn',
-      skin_soft_tissue: 'Nhiễm trùng Da & Mô mềm',
-      urinary: 'Nhiễm trùng Tiết niệu',
-      peritoneal: 'Viêm phúc mạc / Dịch báng (SBP)',
-      gastrointestinal: 'Tiêu hóa - Ổ bụng',
-      cns: 'Thần kinh trung ương'
-    };
-
-    const calculatedScoreEntries = Object.values(savedScores).filter(
-      (s): s is ScoreCalculationResult => Boolean(s)
-    );
-    const scoresSummaryLine =
-      calculatedScoreEntries.length > 0
-        ? `\nTHANG ĐIỂM CHUYÊN KHOA: ${calculatedScoreEntries
-            .map(s => `${s.shortName}: ${s.displayScoreText} (${s.riskClassVi})`)
-            .join(' | ')}`
-        : '';
-
-    const text = `=== TÓM TẮT HỘI CHẨN LÂM SÀNG & KHÁNG SINH (InfectoDose CDSS) ===
-THÔNG SỐ LÂM SÀNG: ${population === 'adult' ? 'Người lớn' : 'Trẻ em'}, ${patient?.age} tuổi, ${patient?.gender === 'm' ? 'Nam' : 'Nữ'} | Cân nặng: ${patient?.weight} kg (IBW ${renal?.ibw} kg, BMI ${renal?.bmi})
-CHỨC NĂNG THẬN: Scr ${patient?.scr} ${patient?.scrUnit === 'umol' ? 'µmol/L' : 'mg/dL'} | CrCl: ${renal?.crcl} mL/phút (${renal?.categoryLabelVi}) | Lọc máu: ${patient?.dialysis === 'none' ? 'Không' : patient?.dialysis?.toUpperCase()}
-Ổ NHIỄM TRÙNG: ${siteNames[site] || site} | Đối tượng: ${population === 'adult' ? 'Người lớn' : 'Trẻ em'}
-ĐIỂM ĐỘ NẶNG: ${activeSeverity.scoreType.toUpperCase()} ${activeSeverity.scoreValue} điểm${scoresSummaryLine}
-PHÂN TẦNG NGUY CƠ: ${isGroup2 ? 'NHÓM 2 (Nguy cơ cao vi khuẩn đa kháng MDR)' : 'NHÓM 1 (Ít nguy cơ VKĐK)'}
-KHÁNG SINH CHỈ ĐỊNH: ${selectedDrugId?.toUpperCase() || 'Kháng sinh theo phác đồ BVBND 2026'}
-${dosingResult ? `LIỀU CÁ THỂ HÓA: Liều duy trì: ${dosingResult.maintenanceDoseTextVi} | Cách dùng: ${dosingResult.infusionInstructionsVi}` : ''}
-KẾ HOẠCH: Tái đánh giá đáp ứng lâm sàng & vi sinh sau 48-72 giờ; xuống thang kháng sinh đồ khi có kết quả cấy.`;
-
+    const text = buildUnifiedConsultationSummary({
+      patient: activePatient,
+      renal: activeRenal,
+      sepsisPatient,
+      sepsisResult,
+      site,
+      riskGroupLabelVi: riskResult.group === 'group_2' ? 'NHÓM 2 (Nguy cơ cao VKĐK MDR)' : 'NHÓM 1 (Ít nguy cơ VKĐK)',
+      selectedDrugName: selectedDrugId?.toUpperCase(),
+      doseSummaryVi: dosingResult
+        ? `${dosingResult.loadingDoseTextVi ? `Liều nạp ${dosingResult.loadingDoseTextVi} | ` : ''}Liều duy trì ${dosingResult.maintenanceDoseTextVi} | ${dosingResult.infusionInstructionsVi}`
+        : undefined
+    });
     navigator.clipboard.writeText(text);
     setCopiedSummary(true);
     setTimeout(() => setCopiedSummary(false), 2500);
   };
 
-  // 2 Unified Clinical Stages (Step 1: Phác đồ & Tính liều, Step 2: Tái đánh giá 48-72h)
-  const stagesList = [
-    {
-      stage: 1 as const,
-      badge: '1. Phác Đồ & Tính Liều',
-      sub: 'BVBND 2026 • Tính liều trực tiếp',
-      title: 'Phác Đồ & Cá Thể Hóa Liều',
-      desc: 'Đánh giá ổ nhiễm, phân tầng nguy cơ VKĐK, tính liều trực tiếp theo CrCl và bảng chi tiết kháng sinh',
-      icon: <Pill className="w-4 h-4" />
-    },
-    {
-      stage: 2 as const,
-      badge: '2. Tái Đánh Giá',
-      sub: '48-72h • Xuống thang KSĐ',
-      title: 'Tái Đánh Giá 48-72h & Quản Lý Kháng Sinh (AMS)',
-      desc: 'Đáp ứng lâm sàng & KSĐ • Xuống thang • Ngưng KS / Chuyển đường uống IV-to-PO',
-      icon: <Clock className="w-4 h-4" />
-    }
-  ];
-
   return (
-    <div className="space-y-4">
-      
-      {/* Top Clinical Pipeline Header & View Switcher */}
-      <div className="bg-white rounded-2xl border border-slate-200/90 p-2.5 sm:p-3 shadow-xs">
-        
-        {/* Top meta row */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-100">
-          <div className="flex items-center space-x-2">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-teal-100 text-teal-800">
-              Quy Trình 2 Bước
-            </span>
-            <span className="text-[11px] text-slate-500 hidden md:inline">
-              BVBND 2026 • Tính Liều Trực Tiếp &amp; Bảng Cụ Thể • Tái Đánh Giá 48-72h
-            </span>
+    <div className="space-y-6">
+
+      {/* ============================================================== */}
+      {/* STAGE 1: SEPSIS SCREENING, MULTI-SCORES & HOUR-1 RESUSCITATION */}
+      {/* ============================================================== */}
+      {(viewMode === 'all-in-one' || currentStage === 1) && (
+        <section id="section-stage-1" className="space-y-3.5 scroll-mt-32">
+          {viewMode === 'all-in-one' && (
+            <div className="flex items-center gap-2.5 pb-2 border-b border-slate-200">
+              <span className="w-7 h-7 rounded-xl bg-rose-600 text-white font-black text-xs flex items-center justify-center shadow-xs">
+                01
+              </span>
+              <div>
+                <h2 className="text-sm sm:text-base font-extrabold text-slate-900 leading-tight">
+                  Giai Đoạn 1: Sàng Lọc Sepsis Đa Thang Điểm &amp; Phác Đồ Giờ Vàng (0–1h)
+                </h2>
+                <p className="text-[11px] text-slate-500">NEWS2 • Sepsis-3 SOFA • Phoenix 2024 • Obstetric SOFA • LP-NEWS • NICE NG253 • NLR</p>
+              </div>
+            </div>
+          )}
+
+          {/* Sleek Quick Clinical Presets Strip */}
+          <div className="bg-white/90 rounded-2xl border border-slate-200/90 px-3 py-2 shadow-2xs flex items-center gap-2 overflow-x-auto scrollbar-none">
+            <div className="flex items-center gap-1.5 shrink-0 pr-2 border-r border-slate-200">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <span className="text-[11px] font-extrabold text-slate-700 whitespace-nowrap">Ca lâm sàng mẫu:</span>
+            </div>
+            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+              {PRESET_CASES.map((c) => {
+                const isSelectedPreset = sepsisPatient.id === c.patientData.id;
+                return (
+                  <button
+                    key={c.id}
+                    type="button"
+                    onClick={() => {
+                      onSelectPreset(c);
+                      if (window.innerWidth < 1024) {
+                        setSepsisMobileTab('dashboard');
+                      }
+                    }}
+                    className={`px-2.5 py-1 text-[11px] font-bold rounded-lg whitespace-nowrap transition-all cursor-pointer border ${
+                      isSelectedPreset
+                        ? 'bg-slate-900 text-teal-300 border-slate-900 shadow-2xs'
+                        : 'bg-slate-50 border-slate-200/90 hover:border-teal-400 hover:bg-teal-50/40 text-slate-700'
+                    }`}
+                  >
+                    {c.title.split(':')[0]} • {c.category.split('-')[0].trim()}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="flex items-center space-x-1.5 self-end sm:self-auto">
-            {/* Copy Summary Button */}
+          {/* Mobile View Toggle (Input Form vs Results Dashboard) */}
+          <div className="lg:hidden bg-white p-1 rounded-xl border border-slate-200 grid grid-cols-2 gap-1 shadow-2xs">
             <button
               type="button"
-              onClick={handleCopyConsultationSummary}
-              className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all flex items-center space-x-1 cursor-pointer border ${
-                copiedSummary
-                  ? 'bg-emerald-600 text-white border-emerald-600'
-                  : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
+              onClick={() => setSepsisMobileTab('input')}
+              className={`py-2 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
+                sepsisMobileTab === 'input'
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
-              title="Sao chép toàn bộ tóm tắt hội chẩn để dán vào Bệnh án EMR/HIS"
-              aria-label="Sao chép tóm tắt EMR"
             >
-              {copiedSummary ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5 text-slate-500" />}
-              <span className="text-[11px]">{copiedSummary ? 'Đã sao chép' : 'EMR'}</span>
+              <Stethoscope className="w-3.5 h-3.5" />
+              <span>Nhập Khám &amp; CLS</span>
             </button>
-
-            {/* View Mode Toggle */}
-            <div className="inline-flex rounded-xl p-0.5 bg-slate-100 border border-slate-200 text-xs font-bold">
-              <button
-                type="button"
-                onClick={() => setViewMode('stepper')}
-                className={`p-1.5 rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${
-                  viewMode === 'stepper'
-                    ? 'bg-white text-teal-900 shadow-2xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-                title="Chế độ Từng Bước lâm sàng"
-                aria-label="Từng bước"
-              >
-                <LayoutList className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline text-[11px]">Từng Bước</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setViewMode('all-in-one')}
-                className={`p-1.5 rounded-lg transition-all cursor-pointer flex items-center space-x-1 ${
-                  viewMode === 'all-in-one'
-                    ? 'bg-white text-teal-900 shadow-2xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-                title="Chế độ Xem Toàn Bộ trên 1 trang"
-                aria-label="Toàn bộ"
-              >
-                <Layers className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline text-[11px]">Toàn Bộ</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* 2-Step Interactive Pipeline Header */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {stagesList.map((st) => {
-            const isActive = currentStage === st.stage;
-            const isCompleted = currentStage > st.stage;
-
-            return (
-              <button
-                key={st.stage}
-                type="button"
-                onClick={() => {
-                  onStageChange(st.stage);
-                  if (viewMode === 'all-in-one') {
-                    const el = document.getElementById(`section-stage-${st.stage}`);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                title={st.desc}
-                className={`p-2.5 rounded-2xl border text-left transition-all cursor-pointer flex items-center space-x-2.5 ${
-                  isActive
-                    ? 'border-teal-500 bg-teal-50/90 ring-2 ring-teal-500/20 text-teal-950 shadow-xs'
-                    : isCompleted
-                    ? 'border-slate-200 bg-white text-slate-800 hover:border-slate-300'
-                    : 'border-slate-100 bg-slate-50/60 text-slate-500 hover:bg-slate-50'
-                }`}
-              >
-                <div
-                  className={`w-8 h-8 rounded-xl shrink-0 flex items-center justify-center font-bold text-xs ${
-                    isActive
-                      ? 'bg-teal-600 text-white shadow-xs'
-                      : isCompleted
-                      ? 'bg-emerald-500 text-white'
-                      : 'bg-slate-200/80 text-slate-600'
-                  }`}
-                >
-                  {isCompleted ? <Check className="w-4 h-4 text-white" /> : st.icon}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-slate-900 truncate">
-                      {st.badge}
-                    </span>
-                    {isActive && (
-                      <span className="w-2 h-2 rounded-full bg-teal-500 shrink-0"></span>
-                    )}
-                  </div>
-                  <div className="text-[10px] font-semibold text-slate-500 truncate mt-0.5">
-                    {st.sub}
-                  </div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Mobile Quick Decision Banner (Always visible on mobile & tablet) */}
-        <div className="lg:hidden mt-3 p-3 rounded-2xl border bg-slate-50/80 border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-          <div className="flex items-center space-x-2.5 min-w-0">
-            {riskResult.group === 'group_2' ? (
-              <ShieldAlert className="w-5 h-5 text-rose-600 shrink-0" />
-            ) : (
-              <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-            )}
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-xs font-black text-slate-900 truncate">
-                  {riskResult.group === 'group_2' ? 'Nhóm 2: Nguy cơ cao VKĐK' : 'Nhóm 1: Ít nguy cơ VKĐK'}
-                </span>
-                <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${
-                  riskResult.group === 'group_2' ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
-                }`}>
-                  {riskResult.isHighSeverity ? 'Nặng (SOFA ≥2)' : 'Tiêu chuẩn'}
-                </span>
-              </div>
-              <div className="text-[11px] text-slate-500 truncate mt-0.5">
-                {population === 'adult' ? 'Người lớn' : 'Trẻ em'} • SOFA: {activeSeverity.scoreValue}đ • CrCl: {activeRenal.crcl} mL/p
-              </div>
-            </div>
+            <button
+              type="button"
+              onClick={() => setSepsisMobileTab('dashboard')}
+              className={`py-2 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-colors relative cursor-pointer ${
+                sepsisMobileTab === 'dashboard'
+                  ? 'bg-teal-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Activity className="w-3.5 h-3.5" />
+              <span>Kết Quả &amp; Giờ Vàng</span>
+              {sepsisResult.urgencyLevel === 'emergency' && (
+                <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping absolute top-2 right-3" />
+              )}
+            </button>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
-            {currentStage === 1 ? (
-              <button
-                type="button"
-                onClick={() => {
-                  onStageChange(2);
-                  window.scrollTo({ top: 80, behavior: 'smooth' });
-                }}
-                className="w-full sm:w-auto px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs flex items-center justify-center space-x-1 cursor-pointer"
-              >
-                <span>Sang Bước 2</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  onStageChange(1);
-                  window.scrollTo({ top: 80, behavior: 'smooth' });
-                }}
-                className="w-full sm:w-auto px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 shadow-xs flex items-center justify-center space-x-1 cursor-pointer"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Về Bước 1</span>
-              </button>
-            )}
-          </div>
-        </div>
-
-      </div>
-
-      {/* Main Clinical Content Area */}
-      <div className="w-full space-y-6">
-        
-        {/* ============================================================== */}
-        {/* STEP 1: UNIFIED CLINICAL ASSESSMENT, REGIMENS & DIRECT DOSING */}
-        {/* ============================================================== */}
-        {(viewMode === 'all-in-one' || currentStage === 1) && (
-          <div id="section-stage-1" className="space-y-4">
-            {viewMode === 'all-in-one' && (
-              <div className="flex items-center space-x-2 pt-2 pb-1 border-b border-slate-200">
-                <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">1</span>
-                <h2 className="text-base font-extrabold text-slate-900">
-                  Bước 1: Đánh Giá, Lựa Chọn Phác Đồ BVBND 2026 &amp; Cá Thể Hóa Tính Liều
-                </h2>
-              </div>
-            )}
-            
-            <StepAssessmentAndRegimens
-              site={site}
-              onSelectSite={setSite}
-              population={population}
-              onSelectPopulation={setPopulation}
-              isChronicLiverDisease={isChronicLiverDisease}
-              onToggleChronicLiver={setIsChronicLiverDisease}
-              sepsisSource={sepsisSource}
-              onSelectSepsisSource={setSepsisSource}
-              riskResult={riskResult}
-              onQuickGroupSelect={handleQuickGroupSelect}
-              sofaScore={sofaScore}
-              onSofaChange={setSofaScore}
-              psofaScore={psofaScore}
-              onPsofaChange={setPsofaScore}
-              clifSofaScore={clifSofaScore}
-              onClifSofaChange={setClifSofaScore}
-              checkedSpecificRisks={checkedSpecificRisks}
-              onToggleSpecificRisk={handleToggleSpecificRisk}
-              checkedGeneralRiskIds={checkedGeneralRiskIds}
-              onToggleGeneralRisk={handleToggleGeneralRisk}
-              checkedSpecificRiskFactorIds={checkedSpecificRiskFactorIds}
-              onToggleSpecificRiskFactor={handleToggleSpecificRiskFactor}
-              patient={activePatient}
-              renal={activeRenal}
-              selectedDrugId={selectedDrugId || 'meropenem'}
-              onSelectDrug={(drugId) => {
-                onSelectDrugForDosing(drugId);
-                handleToggleDetailed(drugId);
-              }}
-              detailedDrugId={activeDetailedDrugId}
-              onToggleDetailedDrug={handleToggleDetailed}
-              onNextStep={() => {
-                onStageChange(2);
-                window.scrollTo({ top: 80, behavior: 'smooth' });
-              }}
-              onOpenGuidelineAtlas={onOpenGuidelineAtlas}
-              savedScores={savedScores}
-              onSaveScoreResult={handleSaveScoreResult}
-              onApplyScoreSuggestion={handleApplyScoreSuggestion}
-            />
-          </div>
-        )}
-
-        {/* ============================================================== */}
-        {/* STEP 2: 48-72h REASSESSMENT & ANTIMICROBIAL STEWARDSHIP (AMS) */}
-        {/* ============================================================== */}
-        {(viewMode === 'all-in-one' || currentStage === 2) && (
-          <div id="section-stage-2" className="space-y-6">
-            {viewMode === 'all-in-one' && (
-              <div className="flex items-center space-x-2 pt-4 pb-1 border-b border-slate-200">
-                <span className="w-6 h-6 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">2</span>
-                <h2 className="text-base font-extrabold text-slate-900">
-                  Bước 2: Tái Đánh Giá 48-72h, Xuống Thang &amp; Quản Lý Kháng Sinh (AMS)
-                </h2>
-              </div>
-            )}
-
-            <StepReassess
-              site={site}
-              onOpenGuidelineAtlas={onOpenGuidelineAtlas}
-              onSelectDrugForDosing={(drugId) => {
-                onSelectDrugForDosing(drugId);
-                handleToggleDetailed(drugId);
-                onStageChange(1);
-                setTimeout(() => {
-                  const el = document.getElementById('detailed-drug-section');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
-              onPrevStep={() => {
-                onStageChange(1);
-                window.scrollTo({ top: 80, behavior: 'smooth' });
-              }}
-            />
-
-            {/* Master CDSS Decision Summary Card */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <DecisionSummaryCard
-                state={wizardState}
-                riskResult={riskResult}
-                onNavigateStep={(s) => {
-                  onStageChange(s as 1 | 2);
-                  window.scrollTo({ top: 80, behavior: 'smooth' });
-                }}
-                onSwitchToDosing={(drugId) => {
-                  const targetDrug = drugId || selectedDrugId || 'meropenem';
-                  onSelectDrugForDosing(targetDrug);
-                  handleToggleDetailed(targetDrug);
-                  onStageChange(1);
-                  setTimeout(() => {
-                    const el = document.getElementById('detailed-drug-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
-                }}
-                currentStage={currentStage}
+          {/* Unified Split Cockpit: Sticky Scrollable Left Intake Dock + Fluid Right Command Dashboard */}
+          <div className="flex flex-col lg:flex-row items-start gap-4 lg:gap-5">
+            <div className={`transition-all duration-200 shrink-0 ${
+              sepsisMobileTab === 'dashboard' ? 'hidden lg:block' : 'block'
+            } ${
+              isSepsisFormCollapsed
+                ? 'w-full lg:w-16'
+                : 'w-full lg:w-[360px] xl:w-[390px] lg:sticky lg:top-[116px] lg:max-h-[calc(100vh-132px)] lg:overflow-y-auto cockpit-dock-scroll lg:pr-1'
+            }`}>
+              <CompactPatientForm
+                data={sepsisPatient}
+                onChange={onSepsisPatientChange}
+                isCollapsed={isSepsisFormCollapsed}
+                onToggleCollapse={() => setIsSepsisFormCollapsed(!isSepsisFormCollapsed)}
+                crcl={activeRenal.crcl}
               />
+            </div>
 
-              {/* Consultation Next Steps Card */}
-              <div className="bg-gradient-to-br from-slate-900 to-teal-950 text-white p-5 rounded-3xl shadow-md border border-teal-500/30 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center space-x-2 text-teal-400 text-xs font-black uppercase tracking-wider mb-2">
-                    <Sparkles className="w-4 h-4" />
-                    <span>Hành Động Khuyến Nghị Tiếp Theo</span>
-                  </div>
-                  <h3 className="text-lg font-black text-white mb-2">
-                    Hoàn Tất Quy Trình Hội Chẩn InfectoDose CDSS
-                  </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    Bạn đã hoàn thành đánh giá toàn diện 2 bước từ tiếp nhận, phân tầng nguy cơ &amp; lựa chọn phác đồ BVBND 2026 kèm tính liều trực tiếp theo CrCl {activeRenal.crcl} mL/phút, và lập kế hoạch tái đánh giá 48-72h.
-                  </p>
+            <div className={`w-full flex-1 min-w-0 ${
+              sepsisMobileTab === 'input' ? 'hidden lg:block' : 'block'
+            }`}>
+              <SepsisDashboard
+                patient={sepsisPatient}
+                result={sepsisResult}
+                renal={activeRenal}
+                onSaveCase={onSaveCase}
+                saveSuccess={saveSuccess}
+                onSelectDrugForDosing={(drugId) => {
+                  onSelectDrugForDosing(drugId);
+                  handleToggleDetailed(drugId);
+                }}
+                onGoToAntibioticStage={() => {
+                  applyBridgeFromSepsis();
+                  onStageChange(2);
+                  window.scrollTo({ top: 60, behavior: 'smooth' });
+                }}
+                onGoToReassessStage={() => {
+                  applyBridgeFromSepsis();
+                  onStageChange(3);
+                  window.scrollTo({ top: 60, behavior: 'smooth' });
+                }}
+                onOpenSepsisGuide={onOpenSepsisGuide}
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============================================================== */}
+      {/* STAGE 2: ANTIBIOTIC MDR STRATIFICATION, REGIMENS & DOSING      */}
+      {/* ============================================================== */}
+      {(viewMode === 'all-in-one' || currentStage === 2) && (
+        <section id="section-stage-2" className="space-y-4 scroll-mt-32">
+          {viewMode === 'all-in-one' && (
+            <div className="flex items-center gap-2.5 pt-2 pb-2 border-b border-slate-200">
+              <span className="w-7 h-7 rounded-xl bg-teal-600 text-white font-black text-xs flex items-center justify-center shadow-xs">
+                02
+              </span>
+              <div>
+                <h2 className="text-sm sm:text-base font-extrabold text-slate-900 leading-tight">
+                  Giai Đoạn 2: Phân Tầng MDR, Phác Đồ BVBND 2026 &amp; Tính Liều 43 Kháng Sinh
+                </h2>
+                <p className="text-[11px] text-slate-500">Nhóm 1 / Nhóm 2 VKĐK • BVBND 2026 vs WHO AWaRe • CrCl / HD / CRRT / DDI</p>
+              </div>
+            </div>
+          )}
+
+          {/* Compact Sepsis-to-Antibiotic Live Context Ribbon */}
+          <div className={`px-3.5 py-2.5 rounded-2xl border shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs ${
+            sepsisResult.urgencyLevel === 'emergency'
+              ? 'bg-rose-50/80 border-rose-200 text-rose-950'
+              : 'bg-white border-slate-200/90 text-slate-800'
+          }`}>
+            <div className="flex items-center gap-2 min-w-0">
+              <span className={`w-2 h-2 rounded-full shrink-0 ${
+                sepsisResult.urgencyLevel === 'emergency' ? 'bg-rose-600 animate-pulse' : 'bg-teal-500'
+              }`} />
+              <div className="truncate flex items-center gap-1.5 flex-wrap">
+                <span className="font-extrabold text-slate-900">Đồng bộ Sepsis:</span>
+                <span className="font-mono font-bold text-[11px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-200/80">
+                  SOFA {bridgeSnapshot.sofaScore}đ
+                </span>
+                <span className="font-mono font-bold text-[11px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-200/80">
+                  NEWS2 {sepsisResult.news2Score}
+                </span>
+                <span className="text-[11px] font-semibold text-slate-600 truncate">
+                  {sepsisResult.actions.antibioticTiming.split('.')[0]}
+                </span>
+                {bridgeSnapshot.isMaternal && (
+                  <span className="px-1.5 py-0.5 rounded bg-pink-100 text-pink-800 text-[10px] font-extrabold border border-pink-200">
+                    Sản khoa (Thai kỳ/Hậu sản)
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 shrink-0">
+              {isManuallyOverridden && (
+                <button
+                  type="button"
+                  onClick={applyBridgeFromSepsis}
+                  className="px-2.5 py-1 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-[11px] font-bold flex items-center gap-1 cursor-pointer transition-colors shadow-2xs"
+                  title="Khôi phục đồng bộ SOFA, Ổ nhiễm & YTNC từ Giai đoạn 1"
+                >
+                  <RefreshCw className="w-3 h-3" />
+                  <span>Đồng bộ lại từ Sepsis</span>
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  onStageChange(1);
+                  window.scrollTo({ top: 60, behavior: 'smooth' });
+                }}
+                className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-bold flex items-center gap-1 cursor-pointer transition-colors"
+              >
+                <ArrowLeft className="w-3 h-3" />
+                <span>Sepsis (Bước 1)</span>
+              </button>
+            </div>
+          </div>
+          
+          <StepAssessmentAndRegimens
+            site={site}
+            onSelectSite={(s) => {
+              setIsManuallyOverridden(true);
+              setSite(s);
+            }}
+            population={population}
+            onSelectPopulation={(p) => {
+              setIsManuallyOverridden(true);
+              setPopulation(p);
+            }}
+            isChronicLiverDisease={isChronicLiverDisease}
+            onToggleChronicLiver={setIsChronicLiverDisease}
+            sepsisSource={sepsisSource}
+            onSelectSepsisSource={(src) => {
+              setIsManuallyOverridden(true);
+              setSepsisSource(src);
+            }}
+            riskResult={riskResult}
+            onQuickGroupSelect={handleQuickGroupSelect}
+            sofaScore={sofaScore}
+            onSofaChange={(val) => {
+              setIsManuallyOverridden(true);
+              setSofaScore(val);
+            }}
+            psofaScore={psofaScore}
+            onPsofaChange={(val) => {
+              setIsManuallyOverridden(true);
+              setPsofaScore(val);
+            }}
+            clifSofaScore={clifSofaScore}
+            onClifSofaChange={(val) => {
+              setIsManuallyOverridden(true);
+              setClifSofaScore(val);
+            }}
+            checkedSpecificRisks={checkedSpecificRisks}
+            onToggleSpecificRisk={handleToggleSpecificRisk}
+            checkedGeneralRiskIds={checkedGeneralRiskIds}
+            onToggleGeneralRisk={handleToggleGeneralRisk}
+            checkedSpecificRiskFactorIds={checkedSpecificRiskFactorIds}
+            onToggleSpecificRiskFactor={handleToggleSpecificRiskFactor}
+            patient={activePatient}
+            renal={activeRenal}
+            selectedDrugId={selectedDrugId || 'meropenem'}
+            onSelectDrug={(drugId) => {
+              onSelectDrugForDosing(drugId);
+              handleToggleDetailed(drugId);
+            }}
+            detailedDrugId={activeDetailedDrugId}
+            onToggleDetailedDrug={handleToggleDetailed}
+            onNextStep={() => {
+              onStageChange(3);
+              window.scrollTo({ top: 60, behavior: 'smooth' });
+            }}
+            onOpenGuidelineAtlas={onOpenGuidelineAtlas}
+            savedScores={savedScores}
+            onSaveScoreResult={handleSaveScoreResult}
+            onApplyScoreSuggestion={handleApplyScoreSuggestion}
+          />
+        </section>
+      )}
+
+      {/* ============================================================== */}
+      {/* STAGE 3: 48-72h REASSESSMENT & ANTIMICROBIAL STEWARDSHIP (AMS) */}
+      {/* ============================================================== */}
+      {(viewMode === 'all-in-one' || currentStage === 3) && (
+        <section id="section-stage-3" className="space-y-5 scroll-mt-32">
+          {viewMode === 'all-in-one' && (
+            <div className="flex items-center gap-2.5 pt-2 pb-2 border-b border-slate-200">
+              <span className="w-7 h-7 rounded-xl bg-indigo-600 text-white font-black text-xs flex items-center justify-center shadow-xs">
+                03
+              </span>
+              <div>
+                <h2 className="text-sm sm:text-base font-extrabold text-slate-900 leading-tight">
+                  Giai Đoạn 3: Tái Đánh Giá 48–72h, Phác Đồ Đích MDR &amp; Quản Lý Kháng Sinh (AMS)
+                </h2>
+                <p className="text-[11px] text-slate-500">Động học Lactate/PCT/NLR • T2MR CRE/CRAB/DTR-PA • Ngưng KS &amp; Chuyển IV-to-PO</p>
+              </div>
+            </div>
+          )}
+
+          <StepReassess
+            site={site}
+            onOpenGuidelineAtlas={onOpenGuidelineAtlas}
+            sepsisPatient={sepsisPatient}
+            sepsisResult={sepsisResult}
+            suggestedMdrCategory={bridgeSnapshot.suggestedMdrCategory}
+            suggestedCreEnzyme={bridgeSnapshot.suggestedCreEnzyme}
+            onSelectDrugForDosing={(drugId) => {
+              onSelectDrugForDosing(drugId);
+              handleToggleDetailed(drugId);
+            }}
+            onPrevStep={() => {
+              onStageChange(2);
+              window.scrollTo({ top: 60, behavior: 'smooth' });
+            }}
+          />
+
+          {/* Master CDSS Decision Summary & Export Deck */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <DecisionSummaryCard
+              state={wizardState}
+              riskResult={riskResult}
+              onNavigateStep={(s) => {
+                onStageChange(s === 1 ? 2 : 3);
+                window.scrollTo({ top: 60, behavior: 'smooth' });
+              }}
+              onSwitchToDosing={(drugId) => {
+                const targetDrug = drugId || selectedDrugId || 'meropenem';
+                onSelectDrugForDosing(targetDrug);
+                handleToggleDetailed(targetDrug);
+              }}
+              currentStage={currentStage === 3 ? 2 : 1}
+            />
+
+            {/* Unified Consultation Export Deck */}
+            <div className="bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white p-5 rounded-2xl shadow-sm border border-teal-500/30 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center space-x-2 text-teal-300 text-[11px] font-black uppercase tracking-wider mb-2">
+                  <Sparkles className="w-4 h-4" />
+                  <span>Hoàn Tất Hồ Sơ Hội Chẩn Siêu Hệ Thống</span>
                 </div>
+                <h3 className="text-base sm:text-lg font-black text-white mb-2">
+                  InfectoSepsis CDSS v4.0 — Báo Cáo Tổng Hợp
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Tích hợp đầy đủ dữ liệu 3 giai đoạn: Đánh giá Sepsis &amp; Giờ vàng (NEWS2 {sepsisResult.news2Score}, SOFA {sepsisResult.sofaScore}đ, MAP {sepsisResult.calculatedMap} mmHg), Phân tầng MDR &amp; Tính liều theo CrCl {activeRenal.crcl} mL/p, và kế hoạch xuống thang AMS 48–72h.
+                </p>
+              </div>
 
-                <div className="pt-4 mt-4 border-t border-white/10 flex flex-wrap gap-2">
-                  {onExportPdf && (
-                    <button
-                      type="button"
-                      onClick={onExportPdf}
-                      className="px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-all flex items-center space-x-1.5 cursor-pointer shadow-sm"
-                    >
-                      <FileText className="w-4 h-4" />
-                      <span>Xuất Phiếu Hội Chẩn PDF</span>
-                    </button>
-                  )}
+              <div className="pt-4 mt-4 border-t border-white/10 flex flex-wrap gap-2">
+                {onExportPdf && (
                   <button
                     type="button"
-                    onClick={handleCopyConsultationSummary}
-                    className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all flex items-center space-x-1.5 cursor-pointer border border-white/20"
+                    onClick={onExportPdf}
+                    className="px-4 py-2 rounded-xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-black text-xs transition-all flex items-center space-x-1.5 cursor-pointer shadow-sm"
                   >
-                    <Copy className="w-4 h-4" />
-                    <span>{copiedSummary ? 'Đã sao chép tóm tắt EMR' : 'Sao chép tóm tắt EMR'}</span>
+                    <FileText className="w-4 h-4" />
+                    <span>Xuất Phiếu Hội Chẩn PDF</span>
                   </button>
-                </div>
+                )}
+                <button
+                  type="button"
+                  onClick={handleCopyConsultationSummary}
+                  className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all flex items-center space-x-1.5 cursor-pointer border border-white/20"
+                >
+                  {copiedSummary ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  <span>{copiedSummary ? 'Đã sao chép SBAR + EMR' : 'Sao chép SBAR + EMR'}</span>
+                </button>
               </div>
             </div>
-
           </div>
-        )}
-
-      </div>
+        </section>
+      )}
 
     </div>
   );

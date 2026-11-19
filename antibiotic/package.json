@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
-    "test": "npx tsx src/selection/engine.test.ts"
+    "test": "npx tsx src/selection/engine.test.ts && npx tsx src/sepsis/patientBridge.test.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

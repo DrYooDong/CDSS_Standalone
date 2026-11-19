@@ -1,29 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Activity, 
   Pill, 
-  FileText, 
-  Copy, 
-  Check, 
-  AlertTriangle, 
   User, 
-  ClipboardCheck, 
   Clock, 
-  Edit3, 
-  ArrowUp,
-  Search,
-  Sparkles,
-  Layers
+  Stethoscope,
+  Layers,
+  LayoutList,
+  Copy,
+  Check,
+  AlertOctagon,
+  Dna
 } from 'lucide-react';
 import { CalculatedRenalMetrics, DialysisMode, Language, PatientState } from '../types';
+import { CDSSAssessmentResult, PatientData } from '../sepsis/types';
+
+export type UnifiedStage = 1 | 2 | 3;
 
 interface StickyPatientBarProps {
   patient: PatientState;
   renal: CalculatedRenalMetrics;
   dialysis: DialysisMode;
+  sepsisPatient?: PatientData;
+  sepsisResult?: CDSSAssessmentResult;
   selectedDrugName?: string;
-  currentStep: 1 | 2;
-  onStepChange: (step: 1 | 2) => void;
+  currentStep: UnifiedStage;
+  onStepChange: (step: UnifiedStage) => void;
+  viewMode: 'stepper' | 'all-in-one';
+  onViewModeChange: (mode: 'stepper' | 'all-in-one') => void;
+  onCopyUnifiedSummary?: () => void;
+  copiedSummary?: boolean;
   onOpenQuickPatient: () => void;
   onOpenDrugSearch?: () => void;
   onExportPdf?: () => void;
@@ -34,124 +40,198 @@ export const StickyPatientBar: React.FC<StickyPatientBarProps> = ({
   patient,
   renal,
   dialysis,
-  selectedDrugName,
+  sepsisPatient,
+  sepsisResult,
   currentStep,
   onStepChange,
+  viewMode,
+  onViewModeChange,
+  onCopyUnifiedSummary,
+  copiedSummary = false,
   onOpenQuickPatient,
-  onOpenDrugSearch,
-  onExportPdf,
   language
 }) => {
-  const [copied, setCopied] = useState(false);
   const isEn = language === 'en';
 
-  const getCrclColor = () => {
-    if (dialysis !== 'none') return 'bg-purple-100 text-purple-900 border-purple-300';
-    if (renal.isArc) return 'bg-teal-100 text-teal-900 border-teal-300';
-    if (renal.crcl >= 90) return 'bg-emerald-100 text-emerald-900 border-emerald-300';
-    if (renal.crcl >= 60) return 'bg-blue-100 text-blue-900 border-blue-300';
-    if (renal.crcl >= 30) return 'bg-amber-100 text-amber-900 border-amber-300';
-    if (renal.crcl >= 15) return 'bg-orange-100 text-orange-900 border-orange-300';
-    return 'bg-rose-100 text-rose-900 border-rose-300';
+  const getCrclStyle = () => {
+    if (dialysis !== 'none') return 'bg-purple-50 text-purple-900 border-purple-300';
+    if (renal.isArc) return 'bg-teal-50 text-teal-900 border-teal-300';
+    if (renal.crcl >= 90) return 'bg-emerald-50 text-emerald-900 border-emerald-300';
+    if (renal.crcl >= 60) return 'bg-sky-50 text-sky-900 border-sky-300';
+    if (renal.crcl >= 30) return 'bg-amber-50 text-amber-900 border-amber-300';
+    return 'bg-rose-50 text-rose-900 border-rose-300';
   };
 
-  const getCrclBadgeBg = () => {
-    if (dialysis !== 'none') return 'bg-purple-600 text-white';
-    if (renal.isArc) return 'bg-teal-600 text-white';
-    if (renal.crcl >= 90) return 'bg-emerald-600 text-white';
-    if (renal.crcl >= 60) return 'bg-blue-600 text-white';
-    if (renal.crcl >= 30) return 'bg-amber-500 text-white';
-    if (renal.crcl >= 15) return 'bg-orange-600 text-white';
-    return 'bg-rose-600 text-white';
-  };
+  const genderText = patient.gender === 'm' ? (isEn ? 'M' : 'Nam') : (isEn ? 'F' : 'Nữ');
+  const isEmergency = sepsisResult?.urgencyLevel === 'emergency';
+  const isUrgent = sepsisResult?.urgencyLevel === 'urgent';
+  const hasPositiveT2 = sepsisPatient?.rapidMolecularT2Done && sepsisPatient?.rapidMolecularResult === 'positive';
 
-  const genderText = patient.gender === 'm' ? (isEn ? 'Male' : 'Nam') : (isEn ? 'Female' : 'Nữ');
+  const stages = [
+    {
+      id: 1 as const,
+      short: isEn ? '1. Sepsis & 1h' : '1. Sepsis & Giờ Vàng',
+      icon: Stethoscope,
+      activeClass: 'bg-rose-600 text-white shadow-sm',
+      dot: isEmergency ? 'bg-rose-500 animate-ping' : isUrgent ? 'bg-amber-500' : ''
+    },
+    {
+      id: 2 as const,
+      short: isEn ? '2. Regimens & Dose' : '2. Phác Đồ & Liều KS',
+      icon: Pill,
+      activeClass: 'bg-teal-600 text-white shadow-sm',
+      dot: ''
+    },
+    {
+      id: 3 as const,
+      short: isEn ? '3. 48-72h AMS' : '3. Tái Đánh Giá 48-72h',
+      icon: Clock,
+      activeClass: 'bg-indigo-600 text-white shadow-sm',
+      dot: hasPositiveT2 ? 'bg-purple-500' : ''
+    }
+  ];
+
+  const handleStageSelect = (stage: UnifiedStage) => {
+    onStepChange(stage);
+    if (viewMode === 'all-in-one') {
+      const el = document.getElementById(`section-stage-${stage}`);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <>
-      {/* 1. TOP STICKY PATIENT CAPSULE (Always accessible on Mobile, Tablet & Desktop when scrolled) */}
-      <div className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs no-print transition-all">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2">
-          <div className="flex items-center justify-between gap-2">
+      {/* 1. UNIFIED CLINICAL COMMAND & TELEMETRY DOCK (Sticky cleanly right below 54px portal navbar) */}
+      <div className="sticky top-[54px] z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs no-print">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-5 lg:px-6 py-2">
+          <div className="flex items-center justify-between gap-2.5">
             
-            {/* Left: Patient Quick Glance & Click to Edit */}
+            {/* LEFT: Patient Capsule (1-Click Quick Edit) */}
             <button
               type="button"
               onClick={onOpenQuickPatient}
-              className="flex items-center space-x-2 text-left hover:bg-slate-100/80 p-1 rounded-xl transition-all cursor-pointer group min-w-0"
-              title="Nhấn để chỉnh sửa nhanh thông số bệnh nhân"
+              className="flex items-center gap-2 text-left hover:bg-slate-100/80 px-2 py-1 rounded-xl transition-all cursor-pointer group min-w-0 shrink-0"
+              title="Bấm để chỉnh sửa nhanh nhân trắc & chức năng thận"
             >
-              <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-200/80 text-teal-700 flex items-center justify-center shrink-0 group-hover:bg-teal-600 group-hover:text-white transition-all shadow-2xs">
-                <User className="w-4 h-4" />
+              <div className={`w-7 h-7 rounded-lg border flex items-center justify-center shrink-0 transition-colors ${
+                isEmergency
+                  ? 'bg-rose-50 border-rose-300 text-rose-600 group-hover:bg-rose-600 group-hover:text-white'
+                  : 'bg-teal-50 border-teal-200 text-teal-700 group-hover:bg-teal-600 group-hover:text-white'
+              }`}>
+                <User className="w-3.5 h-3.5" />
               </div>
-              <div className="min-w-0">
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="font-black text-xs text-slate-900 truncate">
-                    {genderText}, {patient.age} tuổi • {patient.weight} kg
-                  </span>
-                  <span className="text-[10px] text-teal-700 font-bold bg-teal-50 px-1.5 py-0.2 rounded border border-teal-200/60 hidden md:inline">
-                    Chỉnh thông số <Edit3 className="w-2.5 h-2.5 inline ml-0.5" />
-                  </span>
+              <div className="min-w-0 leading-tight">
+                <div className="font-extrabold text-xs text-slate-900 truncate tabular-nums">
+                  {genderText}, {patient.age}t • {patient.weight}kg
                 </div>
-                <div className="text-[11px] text-slate-600 font-semibold flex items-center gap-1.5 truncate">
-                  <span>Scr: {patient.scr} {patient.scrUnit === 'umol' ? 'µmol/L' : 'mg/dL'}</span>
-                  {patient.height && (
-                    <>
-                      <span className="text-slate-300">•</span>
-                      <span>{patient.height} cm</span>
-                    </>
-                  )}
-                  <span className="text-slate-300 hidden sm:inline">•</span>
-                  <span className="text-slate-500 hidden sm:inline">IBW: {renal.ibw} kg</span>
+                <div className="text-[10px] text-slate-500 font-mono tabular-nums truncate">
+                  SCr {patient.scr}{patient.scrUnit === 'umol' ? 'µmol' : 'mg'}
+                  {patient.height ? ` • ${patient.height}cm` : ''}
                 </div>
               </div>
             </button>
 
-            {/* Right: CrCl Metric Pill + Quick Actions */}
-            <div className="flex items-center space-x-1.5 shrink-0">
-              
-              {/* CrCl Pill Button */}
+            {/* CENTER: 3-Stage Segmented Clinical Pipeline Switcher (Desktop & Tablet) */}
+            <div className="hidden md:flex items-center gap-1.5 bg-slate-100/90 p-1 rounded-xl border border-slate-200/90">
+              {stages.map((st) => {
+                const Icon = st.icon;
+                const isActive = viewMode === 'stepper' && currentStep === st.id;
+                return (
+                  <button
+                    key={st.id}
+                    type="button"
+                    onClick={() => handleStageSelect(st.id)}
+                    className={`relative px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap ${
+                      isActive
+                        ? st.activeClass
+                        : 'text-slate-600 hover:text-slate-950 hover:bg-white/80'
+                    }`}
+                  >
+                    <Icon className="w-3.5 h-3.5 shrink-0" />
+                    <span>{st.short}</span>
+                    {st.dot && !isActive && (
+                      <span className={`w-2 h-2 rounded-full ${st.dot}`} />
+                    )}
+                    {st.id === 3 && hasPositiveT2 && !isActive && (
+                      <Dna className="w-3 h-3 text-purple-600" />
+                    )}
+                  </button>
+                );
+              })}
+
+              <div className="w-px h-5 bg-slate-300/70 mx-0.5" />
+
+              {/* All-in-One / Stepper Toggle */}
+              <button
+                type="button"
+                onClick={() => onViewModeChange(viewMode === 'stepper' ? 'all-in-one' : 'stepper')}
+                className={`px-2.5 py-1.5 rounded-lg text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer whitespace-nowrap ${
+                  viewMode === 'all-in-one'
+                    ? 'bg-slate-900 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
+                }`}
+                title={viewMode === 'all-in-one' ? 'Đang xem toàn bộ 3 giai đoạn — Bấm để xem từng bước' : 'Xem toàn bộ 3 giai đoạn trên cùng 1 trang'}
+              >
+                {viewMode === 'all-in-one' ? <LayoutList className="w-3.5 h-3.5" /> : <Layers className="w-3.5 h-3.5" />}
+                <span className="hidden xl:inline">{viewMode === 'all-in-one' ? 'Từng Bước' : 'Toàn Bộ'}</span>
+              </button>
+            </div>
+
+            {/* RIGHT: Live Telemetry Chips (Sepsis + CrCl) & SBAR+EMR Copy */}
+            <div className="flex items-center gap-1.5 shrink-0">
+              {/* Live Sepsis Telemetry Pill */}
+              {sepsisResult && (
+                <button
+                  type="button"
+                  onClick={() => handleStageSelect(1)}
+                  className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-[11px] font-bold font-mono tabular-nums cursor-pointer transition-all ${
+                    isEmergency
+                      ? 'bg-rose-600 text-white border-rose-700 shadow-xs'
+                      : isUrgent
+                      ? 'bg-amber-50 text-amber-900 border-amber-300'
+                      : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                  }`}
+                  title={`Sepsis HUD: NEWS2 ${sepsisResult.news2Score} | SOFA ${sepsisResult.sofaScore} | MAP ${sepsisResult.calculatedMap} mmHg`}
+                >
+                  {isEmergency && <AlertOctagon className="w-3.5 h-3.5 animate-pulse shrink-0" />}
+                  <span className="font-sans font-black">
+                    {isEmergency ? `KS ≤${sepsisResult.niceAntibioticMaxDelayHours}h` : `NEWS2 ${sepsisResult.news2Score}`}
+                  </span>
+                  <span className="opacity-70 hidden xl:inline">|</span>
+                  <span className="hidden xl:inline">SOFA {sepsisResult.sofaScore}</span>
+                </button>
+              )}
+
+              {/* Live Renal CrCl Pill */}
               <button
                 type="button"
                 onClick={onOpenQuickPatient}
-                className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-xl border text-xs font-bold transition-transform active:scale-95 cursor-pointer shadow-2xs ${getCrclColor()}`}
-                title="Bấm để xem và sửa chi tiết chức năng thận"
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border text-[11px] font-bold font-mono tabular-nums cursor-pointer transition-transform active:scale-95 ${getCrclStyle()}`}
+                title={`Độ thanh thải Creatinine (Cockcroft-Gault): ${renal.crcl} mL/phút (${renal.categoryLabelVi})`}
               >
-                <Activity className="w-3.5 h-3.5" />
-                <span className="font-black text-xs">CrCl: {renal.crcl}</span>
-                <span className="text-[10px] opacity-75 hidden sm:inline">mL/p</span>
+                <Activity className="w-3.5 h-3.5 shrink-0" />
+                <span>CrCl {renal.crcl}</span>
                 {dialysis !== 'none' && (
-                  <span className="uppercase text-[9px] font-black bg-purple-700 text-white px-1.5 py-0.2 rounded-md ml-0.5">
+                  <span className="uppercase text-[9px] font-black bg-purple-700 text-white px-1 py-0.2 rounded">
                     {dialysis}
                   </span>
                 )}
               </button>
 
-              {/* Drug Search Quick Trigger */}
-              {onOpenDrugSearch && (
+              {/* 1-Click Unified SBAR + EMR Copy */}
+              {onCopyUnifiedSummary && (
                 <button
                   type="button"
-                  onClick={onOpenDrugSearch}
-                  className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-all flex items-center space-x-1 cursor-pointer border border-slate-200"
-                  title="Tìm nhanh trong 43 kháng sinh (Phím tắt /)"
+                  onClick={onCopyUnifiedSummary}
+                  className={`px-2.5 py-1 rounded-xl text-[11px] font-bold border transition-all flex items-center gap-1 cursor-pointer ${
+                    copiedSummary
+                      ? 'bg-emerald-600 text-white border-emerald-600'
+                      : 'bg-white hover:bg-slate-100 text-slate-700 border-slate-200'
+                  }`}
+                  title="Sao chép toàn bộ tóm tắt SBAR Sepsis & Kháng sinh cho Bệnh án EMR/HIS"
                 >
-                  <Search className="w-3.5 h-3.5 text-teal-600" />
-                  <span className="hidden md:inline">Tra thuốc</span>
-                  <kbd className="hidden lg:inline-block px-1 py-0.2 text-[9px] bg-white border border-slate-300 rounded text-slate-500 font-mono">
-                    /
-                  </kbd>
-                </button>
-              )}
-
-              {/* PDF Action */}
-              {onExportPdf && (
-                <button
-                  type="button"
-                  onClick={onExportPdf}
-                  className="p-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white transition-all cursor-pointer shadow-2xs flex items-center justify-center"
-                  title="Xuất phiếu hội chẩn lâm sàng PDF"
-                >
-                  <FileText className="w-4 h-4" />
+                  {copiedSummary ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5 text-slate-500" />}
+                  <span className="hidden xl:inline">{copiedSummary ? 'Đã chép' : 'SBAR'}</span>
                 </button>
               )}
             </div>
@@ -160,42 +240,37 @@ export const StickyPatientBar: React.FC<StickyPatientBarProps> = ({
         </div>
       </div>
 
-      {/* 2. MOBILE BOTTOM NAVIGATION DOCK (Thumb-friendly 2-step workflow bar for smartphones < 768px) */}
-      <nav aria-label="Clinical steps on mobile" className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-lg px-2 py-1.5 no-print">
-        <div className="grid grid-cols-2 gap-2">
-          
-          {/* Step 1: Phác đồ & Tính liều */}
-          <button
-            type="button"
-            onClick={() => onStepChange(1)}
-            className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${
-              currentStep === 1
-                ? 'bg-teal-50 text-teal-800 font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 font-medium'
-            }`}
-          >
-            <Pill className={`w-4 h-4 mb-0.5 ${currentStep === 1 ? 'text-teal-600' : 'text-slate-400'}`} />
-            <span className="text-[10px] leading-tight text-center font-bold">
-              1. Phác đồ &amp; Liều
-            </span>
-          </button>
-
-          {/* Step 2: Tái đánh giá 48-72h */}
-          <button
-            type="button"
-            onClick={() => onStepChange(2)}
-            className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer ${
-              currentStep === 2
-                ? 'bg-teal-50 text-teal-800 font-bold shadow-2xs'
-                : 'text-slate-500 hover:text-slate-900 font-medium'
-            }`}
-          >
-            <Clock className={`w-4 h-4 mb-0.5 ${currentStep === 2 ? 'text-teal-600' : 'text-slate-400'}`} />
-            <span className="text-[10px] leading-tight text-center font-bold">
-              2. Tái đánh giá
-            </span>
-          </button>
-
+      {/* 2. MOBILE BOTTOM NAVIGATION DOCK (3-Stage Tactile Switcher for < md) */}
+      <nav aria-label="Clinical stages on mobile" className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-lg px-2 py-1.5 no-print">
+        <div className="grid grid-cols-3 gap-1.5">
+          {stages.map((st) => {
+            const Icon = st.icon;
+            const isActive = currentStep === st.id;
+            return (
+              <button
+                key={st.id}
+                type="button"
+                onClick={() => handleStageSelect(st.id)}
+                className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all cursor-pointer relative ${
+                  isActive
+                    ? st.id === 1
+                      ? 'bg-rose-50 text-rose-800 font-bold shadow-2xs ring-1 ring-rose-200'
+                      : st.id === 2
+                      ? 'bg-teal-50 text-teal-800 font-bold shadow-2xs ring-1 ring-teal-200'
+                      : 'bg-indigo-50 text-indigo-800 font-bold shadow-2xs ring-1 ring-indigo-200'
+                    : 'text-slate-500 hover:text-slate-900 font-medium'
+                }`}
+              >
+                <Icon className="w-4 h-4 mb-0.5" />
+                <span className="text-[10px] leading-tight text-center font-bold">
+                  {st.id === 1 ? '1. Sepsis' : st.id === 2 ? '2. Phác đồ' : '3. 48-72h'}
+                </span>
+                {st.id === 1 && isEmergency && (
+                  <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping absolute top-1.5 right-3" />
+                )}
+              </button>
+            );
+          })}
         </div>
       </nav>
     </>
