@@ -17,6 +17,7 @@ import { DrugInteractionChecker } from './components/DrugInteractionChecker';
 import { ClinicalNotesTiers } from './components/ClinicalNotesTiers';
 import { ReferencesList } from './components/ReferencesList';
 import { AmrModal } from './components/AmrModal';
+import { AntibioticSpectrumModal } from './components/AntibioticSpectrumModal';
 import { OriginalPreviewModal } from './components/OriginalPreviewModal';
 import { PdfConsultationModal } from './components/PdfConsultationModal';
 import { GuidelineImageModal } from './components/selection/GuidelineImageModal';
@@ -149,6 +150,7 @@ export default function App() {
   const [isQuickPatientOpen, setIsQuickPatientOpen] = useState(false);
   const [isDrugSearchOpen, setIsDrugSearchOpen] = useState(false);
   const [isAmrOpen, setIsAmrOpen] = useState(false);
+  const [isSpectrumOpen, setIsSpectrumOpen] = useState(false);
   const [isOriginalOpen, setIsOriginalOpen] = useState(false);
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
   const [isGuidelineAtlasOpen, setIsGuidelineAtlasOpen] = useState(false);
@@ -555,6 +557,7 @@ export default function App() {
         onLanguageChange={setLanguage}
         onReset={handleReset}
         onOpenAmr={() => setIsAmrOpen(true)}
+        onOpenSpectrum={() => setIsSpectrumOpen(true)}
         onOpenOriginal={() => setIsOriginalOpen(true)}
         onOpenPdfModal={() => setIsPdfModalOpen(true)}
         onOpenGuidelineAtlas={() => handleOpenGuidelineAtlas()}
@@ -748,6 +751,17 @@ export default function App() {
       </DrugDetailModal>
 
       {/* Modals */}
+      <AntibioticSpectrumModal
+        isOpen={isSpectrumOpen}
+        onClose={() => setIsSpectrumOpen(false)}
+        language={language}
+        onSelectDrug={(drugId) => {
+          setSelectedDrugId(drugId);
+          handleCalculateDoseInSelection(drugId);
+          setDetailedDrugId(drugId);
+        }}
+      />
+
       <AmrModal
         isOpen={isAmrOpen}
         onClose={() => setIsAmrOpen(false)}

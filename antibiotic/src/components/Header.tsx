@@ -13,7 +13,8 @@ import {
   History,
   Stethoscope,
   ChevronDown,
-  Library
+  Library,
+  Table2
 } from 'lucide-react';
 import { Language } from '../types';
 import { CdssLogo } from './CdssLogo';
@@ -23,6 +24,7 @@ interface HeaderProps {
   onLanguageChange: (lang: Language) => void;
   onReset: () => void;
   onOpenAmr: () => void;
+  onOpenSpectrum?: () => void;
   onOpenOriginal: () => void;
   onOpenPdfModal: () => void;
   onOpenGuidelineAtlas?: () => void;
@@ -40,6 +42,7 @@ export const Header: React.FC<HeaderProps> = ({
   onLanguageChange,
   onReset,
   onOpenAmr,
+  onOpenSpectrum,
   onOpenOriginal,
   onOpenPdfModal,
   onOpenGuidelineAtlas,
@@ -128,6 +131,21 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
 
+            {/* 2b. Full Antibiotic Spectrum Matrix */}
+            {onOpenSpectrum && (
+              <button
+                id="btn-open-spectrum-matrix"
+                type="button"
+                onClick={onOpenSpectrum}
+                className="px-2.5 py-1.5 rounded-xl text-indigo-900 bg-indigo-50/90 hover:bg-indigo-100 border border-indigo-200/90 transition-colors flex items-center gap-1.5 text-xs font-bold cursor-pointer"
+                title={isEn ? 'Open full antibiotic spectrum matrix' : 'Mở bảng phổ kháng sinh đầy đủ (Gram+, Gram-, Kỵ khí, Không điển hình)'}
+                aria-label="Bảng phổ kháng sinh đầy đủ"
+              >
+                <Table2 className="w-3.5 h-3.5 text-indigo-600" />
+                <span>{isEn ? 'Spectrum' : 'Phổ KS'}</span>
+              </button>
+            )}
+
             {/* 3. Unified Reference Library & History Dropdown */}
             <div className="relative" ref={libraryRef}>
               <button
@@ -190,6 +208,25 @@ export const Header: React.FC<HeaderProps> = ({
                       <div className="min-w-0">
                         <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-900">Atlas Lưu Đồ BVBND 2026</div>
                         <div className="text-[10px] text-slate-500 truncate">Ảnh phác đồ gốc &amp; kháng sinh đồ</div>
+                      </div>
+                    </button>
+                  )}
+
+                  {onOpenSpectrum && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onOpenSpectrum();
+                        setLibraryOpen(false);
+                      }}
+                      className="w-full px-2.5 py-2 rounded-xl hover:bg-indigo-50/80 text-left flex items-center gap-2.5 transition-colors cursor-pointer group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
+                        <Table2 className="w-4 h-4" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-900">Bảng Phổ Kháng Sinh Đầy Đủ</div>
+                        <div className="text-[10px] text-slate-500 truncate">Gram(+), Gram(-), Kỵ khí, Không điển hình &amp; 5 Lỗ hổng</div>
                       </div>
                     </button>
                   )}
@@ -334,6 +371,17 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
 
+            {onOpenSpectrum && (
+              <button
+                type="button"
+                onClick={onOpenSpectrum}
+                className="p-2 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200 hover:bg-indigo-100 cursor-pointer"
+                title="Bảng phổ kháng sinh đầy đủ"
+              >
+                <Table2 className="w-4 h-4" />
+              </button>
+            )}
+
             <button
               type="button"
               onClick={onOpenPdfModal}
@@ -427,6 +475,20 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <User className="w-4 h-4 text-teal-600" />
               <span>Chỉnh Sửa Thông Số Bệnh Nhân &amp; Thận</span>
+            </button>
+          )}
+
+          {onOpenSpectrum && (
+            <button
+              type="button"
+              onClick={() => {
+                onOpenSpectrum();
+                setMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center justify-center space-x-2 py-2.5 rounded-xl text-xs font-bold text-indigo-900 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 cursor-pointer"
+            >
+              <Table2 className="w-4 h-4 text-indigo-600" />
+              <span>Bảng Phổ Kháng Sinh Đầy Đủ</span>
             </button>
           )}
 
